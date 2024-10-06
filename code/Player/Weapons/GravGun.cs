@@ -1,260 +1,261 @@
 
 using System;
+using System.Threading.Tasks;
 using Sandbox.Events;
 
 public class Gravgun : Item, IGameEventHandler<DeathEvent>
 {
-    bool CanPickup = false;
-    bool CouldPickup = false;
-    TimeSince timeSinceLastCanPickup = 10f;
+	bool CanPickup = false;
+	bool CouldPickup = false;
+	TimeSince timeSinceLastCanPickup = 10f;
 
-    protected virtual float MaxPullDistance => 2000f;
-    protected virtual float MaxPushDistance => 500;
-    protected virtual float LinearFrequency => 10f;
-    protected virtual float LinearDampingRatio => 1f;
-    protected virtual float AngularFrequency => 10f;
-    protected virtual float AngularDampingRatio => 1f;
-    protected virtual float PullForce => 20f;
-    protected virtual float PushForce => 1000f;
-    protected virtual float ThrowForce => 2000f;
-    protected virtual float HoldDistance => 50f;
-    protected virtual float DropCooldown => 0.5f;
-    protected virtual float BreakLinearForce => 2000f;
+	protected virtual float MaxPullDistance => 2000f;
+	protected virtual float MaxPushDistance => 500;
+	protected virtual float LinearFrequency => 10f;
+	protected virtual float LinearDampingRatio => 1f;
+	protected virtual float AngularFrequency => 10f;
+	protected virtual float AngularDampingRatio => 1f;
+	protected virtual float PullForce => 20f;
+	protected virtual float PushForce => 1000f;
+	protected virtual float ThrowForce => 2000f;
+	protected virtual float HoldDistance => 50f;
+	protected virtual float DropCooldown => 0.5f;
+	protected virtual float BreakLinearForce => 2000f;
 
-    public const string GrabbedTag = "grabbed";
+	public const string GrabbedTag = "grabbed";
 
-    public Vector3 HeldPosition { get; private set; }
-    public Rotation HeldRotation { get; private set; }
-    public Vector3 HoldPosition { get; private set; }
-    public Rotation HoldRotation { get; private set; }
+	public Vector3 HeldPosition { get; private set; }
+	public Rotation HeldRotation { get; private set; }
+	public Vector3 HoldPosition { get; private set; }
+	public Rotation HoldRotation { get; private set; }
 
-    [Sync] public int GrabbedBone { get; set; }
-    PhysicsBody HeldBody = null;
-    [Sync] public GameObject GrabbedObject { get; set; }
+	[Sync] public int GrabbedBone { get; set; }
+	PhysicsBody HeldBody = null;
+	[Sync] public GameObject GrabbedObject { get; set; }
 
-    SceneTrace GravGunTrace => Scene.Trace.Ray( new Ray( PlayerController.Local.Eye.WorldPosition, PlayerController.Local.EyeAngles.Forward ), 350f )
-            .IgnoreGameObjectHierarchy( GameObject.Root )
-            .WithoutTags( "trigger", "player", "map" );
+	SceneTrace GravGunTrace => Scene.Trace.Ray( new Ray( PlayerController.Local.Eye.WorldPosition, PlayerController.Local.EyeAngles.Forward ), 350f )
+			.IgnoreGameObjectHierarchy( GameObject.Root )
+			.WithoutTags( "trigger", "player", "map" );
 
-    protected override void OnUpdate()
-    {
-        if ( IsProxy )
-            return;
+	protected override void OnUpdate()
+	{
+		if ( IsProxy )
+			return;
 
-        var player = PlayerController.Local;
+		var player = PlayerController.Local;
 
-        if ( !player.IsValid() )
-            return;
+		if ( !player.IsValid() )
+			return;
 
-        if ( Input.Pressed( "attack1" ) )
-        {
-            PrimaryUse();
+		if ( Input.Pressed( "attack1" ) )
+		{
+			PrimaryUse();
 
-            GameObject.Dispatch( new WeaponAnimEvent( "b_attack", true ) );
-        }
-        else if ( Input.Pressed( "attack2" ) )
-        {
-            SecondaryUse();
+			GameObject.Dispatch( new WeaponAnimEvent( "b_attack", true ) );
+		}
+		else if ( Input.Pressed( "attack2" ) )
+		{
+			SecondaryUse();
 
-            GameObject.Dispatch( new WeaponAnimEvent( "b_attack", true ) );
-        }
+			GameObject.Dispatch( new WeaponAnimEvent( "b_attack", true ) );
+		}
 
-        GrabMove( player.Eye.WorldPosition, player.EyeAngles.Forward, player.Eye.WorldRotation );
-        PhysicsStep();
-    }
+		GrabMove( player.Eye.WorldPosition, player.EyeAngles.Forward, player.Eye.WorldRotation );
+		PhysicsStep();
+	}
 
-    protected override void OnFixedUpdate()
-    {
-        if ( IsProxy ) return;
+	protected override void OnFixedUpdate()
+	{
+		if ( IsProxy ) return;
 
-        var tr = GravGunTrace.Run();
+		var tr = GravGunTrace.Run();
 
-        if ( GrabbedObject.IsValid() )
-        {
-            CanPickup = false;
-        }
-        else
-        {
-            CanPickup = tr.Body.IsValid() && tr.Body.BodyType == PhysicsBodyType.Dynamic && tr.GameObject.Components.TryGet<RollerMine>( out var p )
-            && !tr.GameObject.Root.Tags.HasAny( "map", "player" );
-            if ( CanPickup ) timeSinceLastCanPickup = 0f;
-        }
+		if ( GrabbedObject.IsValid() )
+		{
+			CanPickup = false;
+		}
+		else
+		{
+			CanPickup = tr.Body.IsValid() && tr.Body.BodyType == PhysicsBodyType.Dynamic && tr.GameObject.Components.TryGet<RollerMine>( out var p )
+			&& !tr.GameObject.Root.Tags.HasAny( "map", "player" );
+			if ( CanPickup ) timeSinceLastCanPickup = 0f;
+		}
 
-        if ( CanPickup && !CouldPickup )
-        {
-            CouldPickup = true;
-        }
-        else if ( CouldPickup && !CanPickup )
-        {
-            if ( timeSinceLastCanPickup > 1f )
-            {
-                CouldPickup = false;
-            }
-        }
-    }
+		if ( CanPickup && !CouldPickup )
+		{
+			CouldPickup = true;
+		}
+		else if ( CouldPickup && !CanPickup )
+		{
+			if ( timeSinceLastCanPickup > 1f )
+			{
+				CouldPickup = false;
+			}
+		}
+	}
 
-    protected override void OnDisabled()
-    {
-        GrabEnd();
-    }
+	protected override void OnDisabled()
+	{
+		GrabEnd();
+	}
 
-    void PrimaryUse()
-    {
-        if ( GrabbedObject.IsValid() )
-        {
-            GrabEnd();
-            CanPickup = true;
-        }
+	void PrimaryUse()
+	{
+		if ( GrabbedObject.IsValid() )
+		{
+			GrabEnd();
+			CanPickup = true;
+		}
 
-        if ( CanPickup )
-        {
-            var tr = GravGunTrace.Run();
+		if ( CanPickup )
+		{
+			var tr = GravGunTrace.Run();
 
-            if ( tr.Body.IsValid() )
-            {
-                if ( tr.Body.BodyType == PhysicsBodyType.Static )
-                    tr.Body.BodyType = PhysicsBodyType.Dynamic;
+			if ( tr.Body.IsValid() )
+			{
+				if ( tr.Body.BodyType == PhysicsBodyType.Static )
+					tr.Body.BodyType = PhysicsBodyType.Dynamic;
 
-                tr.GameObject.Network.SetOwnerTransfer( OwnerTransfer.Takeover );
+				tr.GameObject.Network.SetOwnerTransfer( OwnerTransfer.Takeover );
 
-                tr.GameObject.Network.TakeOwnership();
-                tr.Body.Velocity += PlayerController.Local.EyeAngles.Forward * ThrowForce;
-            }
-        }
-        else
-        {
-            timeSinceLastCanPickup = 10f;
-        }
-    }
+				tr.GameObject.Network.TakeOwnership();
+				tr.Body.Velocity += PlayerController.Local.EyeAngles.Forward * ThrowForce;
+			}
+		}
+		else
+		{
+			timeSinceLastCanPickup = 10f;
+		}
+	}
 
-    void SecondaryUse()
-    {
-        if ( CanPickup )
-        {
-            var player = PlayerController.Local;
+	void SecondaryUse()
+	{
+		if ( CanPickup )
+		{
+			var player = PlayerController.Local;
 
-            if ( !player.IsValid() )
-                return;
+			if ( !player.IsValid() )
+				return;
 
-            var tr = GravGunTrace.Run();
+			var tr = GravGunTrace.Run();
 
-            if ( tr.Body.IsValid() )
-            {
-                GrabInit( tr.GameObject, tr.Body, player.Eye.WorldPosition + player.Eye.WorldRotation.Forward * HoldDistance, player.EyeAngles );
-            }
-        }
-        else
-        {
-            if ( GrabbedObject.IsValid() )
-            {
-                GrabEnd();
-            }
-            else
-            {
-                timeSinceLastCanPickup = 10f;
-            }
-        }
-    }
+			if ( tr.Body.IsValid() )
+			{
+				GrabInit( tr.GameObject, tr.Body, player.Eye.WorldPosition + player.Eye.WorldRotation.Forward * HoldDistance, player.EyeAngles );
+			}
+		}
+		else
+		{
+			if ( GrabbedObject.IsValid() )
+			{
+				GrabEnd();
+			}
+			else
+			{
+				timeSinceLastCanPickup = 10f;
+			}
+		}
+	}
 
-    void PhysicsStep()
-    {
-        if ( !HeldBody.IsValid() ) return;
+	void PhysicsStep()
+	{
+		if ( !HeldBody.IsValid() ) return;
 
-        var velocity = HeldBody.Velocity;
-        Vector3.SmoothDamp( HeldBody.Position, HoldPosition, ref velocity, 0.075f, Time.Delta );
-        HeldBody.Velocity = velocity;
+		var velocity = HeldBody.Velocity;
+		Vector3.SmoothDamp( HeldBody.Position, HoldPosition, ref velocity, 0.075f, Time.Delta );
+		HeldBody.Velocity = velocity;
 
-        var angularVelocity = HeldBody.AngularVelocity;
-        Rotation.SmoothDamp( HeldBody.Rotation, HoldRotation, ref angularVelocity, 0.075f, Time.Delta );
-        HeldBody.AngularVelocity = angularVelocity;
+		var angularVelocity = HeldBody.AngularVelocity;
+		Rotation.SmoothDamp( HeldBody.Rotation, HoldRotation, ref angularVelocity, 0.075f, Time.Delta );
+		HeldBody.AngularVelocity = angularVelocity;
 
-        var heldBodyGb = HeldBody.GetGameObject();
+		var heldBodyGb = HeldBody.GetGameObject();
 
-        var local = PlayerController.Local;
+		var local = PlayerController.Local;
 
-        var gs = Scene.GetAll<GameSystem>()?.FirstOrDefault();
+		var gs = Scene.GetAll<GameSystem>()?.FirstOrDefault();
 
-        if ( !heldBodyGb.IsValid() || !local.IsValid() || !gs.IsValid() )
-            return;
+		if ( !heldBodyGb.IsValid() || !local.IsValid() || !gs.IsValid() )
+			return;
 
-        if ( !heldBodyGb.Tags.Has( "rollermine" ) )
-            return;
+		if ( !heldBodyGb.Tags.Has( "rollermine" ) )
+			return;
 
-        var teamComponent = local.TeamComponent;
+		var teamComponent = local.TeamComponent;
 
-        if ( !teamComponent.IsValid() )
-            return;
+		if ( !teamComponent.IsValid() )
+			return;
 
-        var team = teamComponent.Team;
+		var team = teamComponent.Team;
 
-        gs.SubtractTimeHeld( team, Time.Delta );
-    }
+		gs.SubtractTimeHeld( team, Time.Delta );
+	}
 
-    void GrabInit( GameObject gameObject, PhysicsBody body, Vector3 grabPosition, Rotation grabRotation )
-    {
-        GrabbedObject = gameObject;
+	void GrabInit( GameObject gameObject, PhysicsBody body, Vector3 grabPosition, Rotation grabRotation )
+	{
+		GrabbedObject = gameObject;
 
-        gameObject.Network.SetOwnerTransfer( OwnerTransfer.Takeover );
-        gameObject.Network.TakeOwnership();
-        GrabbedBone = body.GroupIndex;
+		gameObject.Network.SetOwnerTransfer( OwnerTransfer.Takeover );
+		gameObject.Network.TakeOwnership();
+		GrabbedBone = body.GroupIndex;
 
-        if ( body.BodyType == PhysicsBodyType.Static )
-            body.BodyType = PhysicsBodyType.Dynamic;
+		if ( body.BodyType == PhysicsBodyType.Static )
+			body.BodyType = PhysicsBodyType.Dynamic;
 
-        Physgun.AddTag( gameObject, GrabbedTag );
+		Physgun.AddTag( gameObject, GrabbedTag );
 
-        HeldBody = body;
-        HeldPosition = HeldBody.LocalMassCenter;
-        HeldRotation = grabRotation.Inverse * HeldBody.Rotation;
+		HeldBody = body;
+		HeldPosition = HeldBody.LocalMassCenter;
+		HeldRotation = grabRotation.Inverse * HeldBody.Rotation;
 
-        HoldPosition = HeldBody.Position;
-        HoldRotation = HeldBody.Rotation;
+		HoldPosition = HeldBody.Position;
+		HoldRotation = HeldBody.Rotation;
 
-        HeldBody.Sleeping = false;
-        HeldBody.AutoSleep = false;
+		HeldBody.Sleeping = false;
+		HeldBody.AutoSleep = false;
 
 		var local = PlayerController.Local;
 
 		if ( gameObject.Components.TryGet<FortwarsProp>( out var prop ) && local.IsValid() )
 			prop.SetGrabber( local );
 
-        if ( gameObject.Components.TryGet<RollerMine>( out var rollerMine, FindMode.EverythingInSelfAndParent ) )
-            rollerMine.SetGrabbed( true );
-    }
+		if ( gameObject.Components.TryGet<RollerMine>( out var rollerMine, FindMode.EverythingInSelfAndParent ) )
+			rollerMine.SetGrabbed( true );
+	}
 
-    void IGameEventHandler<DeathEvent>.OnGameEvent( DeathEvent eventArgs )
-    {
-        if ( !GrabbedObject.IsValid() )
-            return;
+	void IGameEventHandler<DeathEvent>.OnGameEvent( DeathEvent eventArgs )
+	{
+		if ( !GrabbedObject.IsValid() )
+			return;
 
-        GrabEnd();
-    }
+		GrabEnd();
+	}
 
-    void GrabMove( Vector3 startPos, Vector3 dir, Rotation rot )
-    {
-        if ( HeldBody.IsValid() )
-        {
-            var attachPos = HeldBody.FindClosestPoint( startPos );
-            var holdDistance = HoldDistance + attachPos.Distance( HeldBody.MassCenter );
+	void GrabMove( Vector3 startPos, Vector3 dir, Rotation rot )
+	{
+		if ( HeldBody.IsValid() )
+		{
+			var attachPos = HeldBody.FindClosestPoint( startPos );
+			var holdDistance = HoldDistance + attachPos.Distance( HeldBody.MassCenter );
 
-            HoldPosition = startPos - HeldPosition * HeldBody.Rotation + dir * holdDistance;
-            HoldRotation = rot * HeldRotation;
-        }
-    }
+			HoldPosition = startPos - HeldPosition * HeldBody.Rotation + dir * holdDistance;
+			HoldRotation = rot * HeldRotation;
+		}
+	}
 
-    void GrabEnd()
-    {
-        if ( !GrabbedObject.IsValid() ) return;
+	void GrabEnd()
+	{
+		if ( !GrabbedObject.IsValid() ) return;
 
-        if ( GrabbedObject.Components.TryGet<RollerMine>( out var rollerMine, FindMode.EverythingInSelfAndParent ) )
-            rollerMine.SetGrabbed( false );
+		if ( GrabbedObject.Components.TryGet<RollerMine>( out var rollerMine, FindMode.EverythingInSelfAndParent ) )
+			rollerMine.SetGrabbed( false );
 
 		if ( GrabbedObject.Components.TryGet<FortwarsProp>( out var prop ) )
 			prop.SetGrabber( null );
 
-        Physgun.RemoveTag( GrabbedObject, GrabbedTag );
+		Physgun.RemoveTag( GrabbedObject, GrabbedTag );
 
-        GrabbedObject = null;
-        HeldBody = null;
-    }
+		GrabbedObject = null;
+		HeldBody = null;
+	}
 }
