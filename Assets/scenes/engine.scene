@@ -1,0 +1,131 @@
+{
+  "__guid": "ed2ccfe8-7b62-4251-a912-dcca640f7264",
+  "GameObjects": [
+    {
+      "__guid": "fe6d824a-6390-4981-a429-f26252954cdc",
+      "Flags": 0,
+      "Name": "Manager",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "Components": [
+        {
+          "__type": "GameSystem",
+          "__guid": "b8144820-b85a-4475-b605-5adebdc7652c",
+          "BlueTimeHeld": 60,
+          "BuildTime": 60,
+          "ClassicIndents": {
+            "facepunch.wooden_crate": 0,
+            "rust.wall_plaster_300x300": 100,
+            "\u0022rust.wall_conc_300x300": 100,
+            "rust.wall_conc_300x600": 100,
+            "reizer.wall_1a": 100,
+            "facepunch.pallet": 0
+          },
+          "ClassicModels": true,
+          "FightTime": 120,
+          "FourTeams": false,
+          "GreenTimeHeld": 60,
+          "LoadLobbySettings": false,
+          "LobbySettings": {
+            "BuildTime": 150,
+            "FightTime": 300,
+            "ClassicModels": true
+          },
+          "MaxProps": 50,
+          "MountedIndents": [],
+          "PlayerPrefab": {
+            "_type": "gameobject",
+            "prefab": "prefabs/playerdead4left.prefab"
+          },
+          "PlayerToStart": 2,
+          "RedTimeHeld": 60,
+          "SpawnPlayer": true,
+          "StartServer": true,
+          "State": "Waiting",
+          "YellowTimeHeld": 60
+        }
+      ]
+    },
+    {
+      "__guid": "ebd14e3c-d8c8-4c0d-b06a-1bfb4e3a33ef",
+      "Flags": 0,
+      "Name": "Screen",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.ScreenPanel",
+          "__guid": "dfda30d7-5746-4b47-b94f-98ebec19576b",
+          "AutoScreenScale": true,
+          "Opacity": 1,
+          "Scale": 1,
+          "ScaleStrategy": "ConsistentHeight",
+          "ZIndex": 100
+        },
+        {
+          "__type": "HUD",
+          "__guid": "cdeab878-15c6-487a-bb4d-40fea74d9361"
+        },
+        {
+          "__type": "PauseMenu",
+          "__guid": "4fa6adb0-4e26-448d-86b9-10a1e045b9f6",
+          "MenuScene": "scenes/fortwarsmenu.scene"
+        }
+      ],
+      "Children": [
+        {
+          "__guid": "0f694c39-e817-40cb-b286-734a4ec8b3ee",
+          "Flags": 0,
+          "Name": "Chat",
+          "Enabled": true,
+          "NetworkMode": 1,
+          "Components": [
+            {
+              "__type": "Chat",
+              "__guid": "3911b77f-c527-449f-a1e0-a69170be7a11"
+            }
+          ]
+        },
+        {
+          "__guid": "98c07871-0f30-4892-9318-b9f8faf4928b",
+          "Flags": 0,
+          "Name": "Popup",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "PopupHolder",
+              "__guid": "45f6c124-84d6-4ae5-a430-0d697fba8af8"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "SceneProperties": {
+    "FixedUpdateFrequency": 50,
+    "MaxFixedUpdates": 5,
+    "NetworkFrequency": 30,
+    "NetworkInterpolation": true,
+    "PhysicsSubSteps": 1,
+    "ThreadedAnimation": true,
+    "TimeScale": 1,
+    "UseFixedUpdate": true,
+    "NavMesh": {
+      "Enabled": false,
+      "IncludeStaticBodies": true,
+      "IncludeKeyframedBodies": true,
+      "EditorAutoUpdate": true,
+      "AgentHeight": 64,
+      "AgentRadius": 16,
+      "AgentStepSize": 18,
+      "AgentMaxSlope": 40,
+      "ExcludedBodies": "",
+      "IncludedBodies": ""
+    }
+  },
+  "Title": "engine",
+  "Description": "",
+  "ResourceVersion": 1,
+  "__references": [],
+  "IsValid": true,
+  "__version": 1
+}

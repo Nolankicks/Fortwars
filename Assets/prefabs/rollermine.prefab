@@ -78,6 +78,50 @@
         "InsideObscuredColor": "0,0,0,0",
         "ObscuredColor": "0.4,0.93,1,0.36",
         "Width": 0.54999995
+      },
+      {
+        "__type": "Sandbox.TrailRenderer",
+        "__guid": "de1bc7e9-a6c8-4248-ae88-e6c3c740281d",
+        "BlendMode": "Normal",
+        "CastShadows": false,
+        "Color": {
+          "color": [
+            {
+              "t": 0.5,
+              "c": "0,1,1,1"
+            }
+          ],
+          "alpha": []
+        },
+        "Face": "Camera",
+        "LifeTime": 0.2,
+        "MaxPoints": 64,
+        "Opaque": true,
+        "PointDistance": 8,
+        "RenderOptions": {
+          "GameLayer": true,
+          "OverlayLayer": false,
+          "BloomLayer": false,
+          "AfterUILayer": false
+        },
+        "Texturing": {
+          "WorldSpace": true,
+          "UnitsPerTexture": 10,
+          "Scale": 1
+        },
+        "Width": [
+          {
+            "x": 0.67410713,
+            "y": 1
+          },
+          {
+            "x": 1,
+            "y": 0.021276595,
+            "in": 3.684211,
+            "out": -3.684211
+          }
+        ],
+        "Wireframe": false
       }
     ],
     "Children": [

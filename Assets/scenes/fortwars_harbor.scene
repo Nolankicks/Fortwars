@@ -1,0 +1,325 @@
+{
+  "__guid": "fc7b08c5-48d6-49d4-9bfe-3fb408936aca",
+  "GameObjects": [
+    {
+      "__guid": "106eec1a-e501-4c70-adcf-8133c8170e53",
+      "Flags": 0,
+      "Name": "Camera",
+      "Position": "-16.00006,-353.9998,326",
+      "Rotation": "0,0,0.7071067,0.7071068",
+      "Tags": "maincamera",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.CameraComponent",
+          "__guid": "198436e9-824a-4dea-8a56-cf90b472f058",
+          "BackgroundColor": "0.33333,0.46275,0.52157,1",
+          "ClearFlags": "All",
+          "FieldOfView": 90,
+          "IsMainCamera": true,
+          "Orthographic": false,
+          "OrthographicHeight": 1204,
+          "Priority": 1,
+          "RenderExcludeTags": "",
+          "RenderTags": "",
+          "TargetEye": "None",
+          "Viewport": "0,0,1,1",
+          "ZFar": 10000,
+          "ZNear": 5
+        },
+        {
+          "__type": "Sandbox.Bloom",
+          "__guid": "ec12ae61-09d1-412c-a6c1-ddcbc97d0558",
+          "BloomColor": {
+            "color": [
+              {
+                "c": "1,1,1,1"
+              },
+              {
+                "t": 1,
+                "c": "1,1,1,1"
+              }
+            ],
+            "alpha": []
+          },
+          "BloomCurve": [
+            {
+              "y": 0.5
+            },
+            {
+              "x": 1,
+              "y": 1
+            }
+          ],
+          "Mode": "Blur",
+          "Strength": 0.2,
+          "Threshold": 0.5,
+          "ThresholdWidth": 0
+        },
+        {
+          "__type": "Sandbox.Highlight",
+          "__guid": "702f5540-334e-4aa3-96eb-11399b0c940f"
+        },
+        {
+          "__type": "Sandbox.Tonemapping",
+          "__guid": "2ce6197f-ad8e-4dea-af83-af7d185625c7",
+          "__version": 1,
+          "AutoExposureEnabled": true,
+          "ExposureBias": 2,
+          "ExposureCompensation": 0.41,
+          "ExposureMethod": "RGB",
+          "MaximumExposure": 2.65,
+          "MinimumExposure": 1.23,
+          "Mode": "Legacy",
+          "Rate": 8.57
+        },
+        {
+          "__type": "Sandbox.AmbientOcclusion",
+          "__guid": "5d05ce22-abe5-4acf-af7f-474fec1d5aa6",
+          "FalloffDistance": 1,
+          "Intensity": 8,
+          "Quality": "High",
+          "Radius": 32
+        },
+        {
+          "__type": "Sandbox.CubemapFog",
+          "__guid": "3992931e-e20e-4ba4-8bd2-3cf41791c6ab",
+          "Blur": 0.5,
+          "EndDistance": 4096,
+          "FalloffExponent": 1,
+          "HeightExponent": 2,
+          "HeightStart": 2000,
+          "HeightWidth": 0,
+          "StartDistance": 2496,
+          "Tint": "1,1,1,1"
+        }
+      ]
+    },
+    {
+      "__guid": "a8fe4e08-4ef5-459c-a55d-ce37e9515ea6",
+      "Flags": 0,
+      "Name": "Manager",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "Components": [
+        {
+          "__type": "GameSystem",
+          "__guid": "05ff2acf-6c9c-4367-bddf-f988d5b2e726",
+          "BlueTimeHeld": 60,
+          "BuildTime": 1,
+          "ClassicIndents": {
+            "facepunch.wooden_crate": 100,
+            "facepunch.concrete_barrier": 100,
+            "facepunch.pallet": 100
+          },
+          "ClassicModels": true,
+          "FightTime": 240,
+          "FourTeams": false,
+          "GreenTimeHeld": 60,
+          "LoadLobbySettings": false,
+          "LobbySettings": {
+            "BuildTime": 150,
+            "FightTime": 300,
+            "ClassicModels": true
+          },
+          "MaxProps": 50,
+          "MountedIndents": [],
+          "PlayerPrefab": {
+            "_type": "gameobject",
+            "prefab": "prefabs/playerdead4left.prefab"
+          },
+          "PlayerToStart": 1,
+          "RedTimeHeld": 60,
+          "SpawnPlayer": true,
+          "StartServer": true,
+          "State": "Waiting",
+          "YellowTimeHeld": 60
+        }
+      ]
+    },
+    {
+      "__guid": "27e5ccc0-47f9-4225-953e-372adcdf7313",
+      "Flags": 0,
+      "Name": "Screen",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.ScreenPanel",
+          "__guid": "c1877ab2-031e-4b5a-8825-2546c9e374a4",
+          "AutoScreenScale": true,
+          "Opacity": 1,
+          "Scale": 1,
+          "ScaleStrategy": "ConsistentHeight",
+          "ZIndex": 100
+        },
+        {
+          "__type": "HUD",
+          "__guid": "2478d8c6-1b22-49e7-afcd-759142bd7896"
+        },
+        {
+          "__type": "PauseMenu",
+          "__guid": "9da6045e-8421-401f-8f35-69a1f39341ae",
+          "MenuScene": "scenes/fortwarsmenu.scene"
+        }
+      ],
+      "Children": [
+        {
+          "__guid": "8ae67c88-c101-4543-9d0f-0cbf5edd769d",
+          "Flags": 0,
+          "Name": "Chat",
+          "Enabled": true,
+          "NetworkMode": 1,
+          "Components": [
+            {
+              "__type": "Chat",
+              "__guid": "5a0d6745-ba08-46f4-8807-fc44d9ede3c9"
+            }
+          ]
+        },
+        {
+          "__guid": "a0007cf0-70e7-4cc7-830f-386ae62735af",
+          "Flags": 0,
+          "Name": "Popup",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "PopupHolder",
+              "__guid": "461cdb2d-824e-49d6-a869-9a29ca0f71cd"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "__guid": "c24cdc36-7f7b-461a-80da-2f1a95e6614d",
+      "Flags": 0,
+      "Name": "map",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.MapInstance",
+          "__guid": "34cb13ba-2571-44e4-a1be-bbb2cf11b64c",
+          "__version": 1,
+          "EnableCollision": true,
+          "MapName": "maps/fw_devgrounds.vmap",
+          "NoOrigin": false,
+          "OnMapLoaded": null,
+          "OnMapUnloaded": null,
+          "UseMapFromLaunch": false
+        }
+      ],
+      "Children": []
+    },
+    {
+      "__guid": "a0c691ee-0614-46dc-8f1f-216870efff18",
+      "Flags": 0,
+      "Name": "Spawn",
+      "Position": "-960,128,0",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "TeamSpawnPoint",
+          "__guid": "d45e5867-5464-4a1b-9ae4-e27a54d5f5b8",
+          "Team": "Blue"
+        }
+      ]
+    },
+    {
+      "__guid": "8342854b-2b3f-4f75-af23-cdc00bda9dfc",
+      "Flags": 0,
+      "Name": "Spawn (1)",
+      "Position": "-960,128,0",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "TeamSpawnPoint",
+          "__guid": "8e2bcf31-e94f-4b84-9c8e-9b1a79e5a6c1",
+          "Team": "Red"
+        }
+      ]
+    },
+    {
+      "__guid": "2a8367ba-795f-4039-8f5e-58aa1c67475d",
+      "Flags": 0,
+      "Name": "Sun",
+      "Position": "-1098.606,-330.1522,428.6853",
+      "Rotation": "0.7682831,0.03532018,-0.4646799,0.4388237",
+      "Tags": "light_directional,light",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.DirectionalLight",
+          "__guid": "3128e215-bc23-4c0a-9d1a-27e932d727aa",
+          "FogMode": "Enabled",
+          "FogStrength": 1,
+          "LightColor": "0.91373,0.98039,1,1",
+          "Shadows": true,
+          "SkyColor": "0.38605,0.38605,0.38605,1"
+        }
+      ]
+    },
+    {
+      "__guid": "00668135-b5ed-4b7d-b736-8b081b30ae0e",
+      "Flags": 0,
+      "Name": "Sky",
+      "Position": "-288,-0.00005537389,384",
+      "Tags": "skybox",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.SkyBox2D",
+          "__guid": "f33a63c2-a0dd-4359-9571-c45f5f43af40",
+          "SkyMaterial": "materials/skybox/skybox_day_01.vmat",
+          "Tint": "1,1,1,1"
+        },
+        {
+          "__type": "Sandbox.EnvmapProbe",
+          "__guid": "eff54963-8d49-4962-9934-020133881c07",
+          "Bounds": {
+            "Mins": "-512,-512,-512",
+            "Maxs": "512,512,512"
+          },
+          "DelayBetweenUpdates": 0.1,
+          "Feathering": 0.25,
+          "FrameInterval": 5,
+          "MaxDistance": 512,
+          "MultiBounce": true,
+          "Projection": "Sphere",
+          "RenderDynamically": true,
+          "TintColor": "1,1,1,1",
+          "UpdateStrategy": "OnEnabled",
+          "ZFar": 4096,
+          "ZNear": 16
+        }
+      ]
+    }
+  ],
+  "SceneProperties": {
+    "FixedUpdateFrequency": 50,
+    "MaxFixedUpdates": 5,
+    "NetworkFrequency": 30,
+    "NetworkInterpolation": true,
+    "PhysicsSubSteps": 1,
+    "ThreadedAnimation": true,
+    "TimeScale": 1,
+    "UseFixedUpdate": true,
+    "NavMesh": {
+      "Enabled": false,
+      "IncludeStaticBodies": true,
+      "IncludeKeyframedBodies": true,
+      "EditorAutoUpdate": true,
+      "AgentHeight": 64,
+      "AgentRadius": 16,
+      "AgentStepSize": 18,
+      "AgentMaxSlope": 40,
+      "ExcludedBodies": "",
+      "IncludedBodies": ""
+    }
+  },
+  "Title": "fortwars_harbor",
+  "Description": "",
+  "ResourceVersion": 1,
+  "__references": [],
+  "IsValid": true,
+  "__version": 1
+}

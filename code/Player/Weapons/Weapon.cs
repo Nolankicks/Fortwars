@@ -199,7 +199,6 @@ public sealed class Weapon : Item
 			var sound = Sound.Play( FireSound, pos );
 			if ( !sound.IsValid() )
 				return;
-			sound.Volume *= 5f;
 		}
 
 		if ( !hit )

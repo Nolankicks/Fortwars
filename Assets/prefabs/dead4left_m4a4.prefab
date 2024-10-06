@@ -8,13 +8,16 @@
       {
         "__type": "Weapon",
         "__guid": "4ed6a63a-4d64-4b12-b540-69664f44f101",
+        "AttackAnimName": "b_attack",
         "Damage": 15,
         "FireRate": 0.08,
-        "FireSound": "sounds/toolgun/toolgun-fire.sound",
+        "FireSound": "audio/rifle.fire.sound",
         "HoldType": "Rifle",
+        "IsShotgun": false,
         "MaxAmmo": 30,
         "Offset": "2.883967,0.1033601,-4.295026",
         "Range": 50000,
+        "ReloadAnimName": "b_reload",
         "ReloadDelay": 1.8,
         "Spread": 0.03,
         "TraceTimes": 1,
@@ -44,6 +47,13 @@
         "CreateBoneObjects": false,
         "Model": "models/first_person/first_person_arms.vmdl",
         "Morphs": {},
+        "Parameters": {
+          "bools": {},
+          "ints": {},
+          "floats": {},
+          "vectors": {},
+          "rotations": {}
+        },
         "RenderOptions": {
           "GameLayer": false,
           "OverlayLayer": true,
@@ -69,6 +79,13 @@
             "CreateBoneObjects": false,
             "Model": "models/weapons/sbox_assault_m4a1/v_m4a1.vmdl",
             "Morphs": {},
+            "Parameters": {
+              "bools": {},
+              "ints": {},
+              "floats": {},
+              "vectors": {},
+              "rotations": {}
+            },
             "RenderOptions": {
               "GameLayer": false,
               "OverlayLayer": true,
@@ -91,8 +108,7 @@
   "ResourceVersion": 1,
   "__references": [
     "facepunch.v_m4a1#68031",
-    "facepunch.w_m4a1#60166",
-    "mdlresrc.toolgunshoot#10038"
+    "facepunch.w_m4a1#60166"
   ],
   "IsValid": true,
   "__version": 1

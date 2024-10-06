@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("fortwars")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3a4613fa359ec22354da21379802488ab978f00a")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+35326c54456d3ff318d2ff656aeaf4dc1aba3664")]
 [assembly: System.Reflection.AssemblyProductAttribute("fortwars")]
 [assembly: System.Reflection.AssemblyTitleAttribute("fortwars")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -1,0 +1,21 @@
+{
+  "publish": {
+    "Enabled": false,
+    "ProjectConfig": {
+      "Title": "fw_devgrounds",
+      "Type": "map",
+      "Org": "local",
+      "Ident": "fw_devgrounds",
+      "Schema": 0,
+      "IncludeSourceFiles": false,
+      "Resources": null,
+      "PackageReferences": [],
+      "EditorReferences": [],
+      "IsWhitelistDisabled": false,
+      "Metadata": {
+        "SingleAssetSource": "maps/fw_devgrounds.vmap",
+        "ParentPackage": "nolankicks.fortwars"
+      }
+    }
+  }
+}
