@@ -69,7 +69,7 @@
           "ExposureCompensation": 0.2,
           "ExposureMethod": "RGB",
           "MaximumExposure": 2.65,
-          "MinimumExposure": 1.5,
+          "MinimumExposure": 1.7,
           "Mode": "Legacy",
           "Rate": 8.57
         },
