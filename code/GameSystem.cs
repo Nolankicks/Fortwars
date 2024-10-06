@@ -68,7 +68,7 @@ IGameEventHandler<OnGameOvertimeBuild>, IGameEventHandler<OnGameOvertimeFight>
 	[Sync] public int Overtimes { get; set; } = 0;
 	[Property, Sync, Category( "Game Data" )] public List<string> MountedIndents { get; set; } = new();
 	[Property, Category( "Lobby Settings" ), InlineEditor] public LobbySettings LobbySettings { get; set; } = new();
-	
+
 	[Property, Category( "Game Config" )] public Dictionary<string, int> ClassicIndents { get; set; } = new();
 
 	[Sync] public float InitBlueTimeHeld { get; set; } = 5;
@@ -83,8 +83,6 @@ IGameEventHandler<OnGameOvertimeBuild>, IGameEventHandler<OnGameOvertimeFight>
 
 	[Property, Sync] public int MaxProps { get; set; } = 50;
 
-	public static MapInfo MapInfo { get; set; }
-
 	protected override async Task OnLoad()
 	{
 		if ( Networking.IsHost && !Networking.IsActive && StartServer && !Scene.IsEditor )
@@ -98,14 +96,9 @@ IGameEventHandler<OnGameOvertimeBuild>, IGameEventHandler<OnGameOvertimeFight>
 	protected override void OnStart()
 	{
 		Instance = this;
-
+        
 		if ( Networking.IsHost )
 		{
-			if ( MapInfo is not null )
-			{
-				FourTeams = MapInfo.FourTeams;
-			}
-			
 			InitBlueTimeHeld = BlueTimeHeld;
 			InitRedTimeHeld = RedTimeHeld;
 			InitYellowTimeHeld = YellowTimeHeld;
@@ -434,16 +427,6 @@ IGameEventHandler<OnGameOvertimeBuild>, IGameEventHandler<OnGameOvertimeFight>
 		Scene.Dispatch( new PlayerReset() );
 	}
 
-	// public void OnDisconnected( Connection connection )
-	// {
-	// 	if ( Connection.All.Count() - 1 <= PlayerToStart )
-	// 	{
-	// 		Scene.Dispatch( new OnGameEnd() );
-	// 		State = GameState.Ended;
-	// 		StateSwitch = 0;
-	// 	}
-	// }
-
 	[Authority]
 	public void SubtractTimeHeld( Team team, float time )
 	{
@@ -538,5 +521,24 @@ IGameEventHandler<OnGameOvertimeBuild>, IGameEventHandler<OnGameOvertimeFight>
 		Log.Info( $"Saved Lobby Settings as {FileSystem.Data?.ReadAllText( "lobbysettings.json" )}" );
 
 		Log.Info( $"Loaded Lobby Settings as {JsonSerializer.Serialize( LobbySettings.Load() )}" );
+	}
+}
+
+public sealed class MapLoadingSystem : GameObjectSystem<MapLoadingSystem>
+{
+	public MapLoadingSystem( Scene scene ) : base( scene ) 
+	{
+		Listen( Stage.SceneLoaded, 1, OnSceneLoad, "OnSceneLoad" );
+	}
+
+	void OnSceneLoad()
+	{
+		if ( Scene.GetAll<GameSystem>().Count() > 0 || Scene.IsEditor || Scene.GetAll<MainMenu>().Count() > 0 )
+			return;
+
+		var slo = new SceneLoadOptions();
+		slo.SetScene( "scenes/fortwarsmain.scene" );
+		slo.IsAdditive = true;
+		Scene.Load( slo );
 	}
 }

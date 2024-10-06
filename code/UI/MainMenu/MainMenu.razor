@@ -101,15 +101,15 @@
 					</label>
 
 					<label>
-						Build mode: 5 min
+						Build mode: 2 min
 					</label>
 
 					<label>
-						Fight mode: 10 min
+						Fight mode: 4 min
 					</label>
 
 					<label>
-						Ball time held to win: 5 min
+						Ball time held to win: 1 min
 					</label>
 			</div>
 
@@ -132,16 +132,11 @@
 	public List<LobbyInformation> Lobbies { get; set; } = new();
 	public bool Fetching { get; set; }
 	public bool FetchingLeaderboard { get; set; }
-
 	[Property] public SceneFile MainScene { get; set; }
-	[Property] public SceneFile SDFScene { get; set; }
-
 	public Sandbox.Services.Leaderboards.Board2 Leaderboard { get; set; }
 	public SortBy CurrentSortBy { get; set; } = SortBy.AllTime;
 	public bool Country { get; set; }
 	public bool Friends { get; set; }
-
-	[Property, MapAssetPath] public string MapIndent { get; set; }
 
 	public enum SortBy
 	{
@@ -155,17 +150,6 @@
 	public bool IsMe(Sandbox.Services.Leaderboards.Board2.Entry entry)
 	{
 		return entry.SteamId == (long)Sandbox.Utility.Steam.SteamId;
-	}
-
-	[Button]
-	public void LoadMap()
-	{
-		if (string.IsNullOrEmpty(MapIndent) || Scene.IsEditor)
-			return;
-
-		LaunchArguments.Map = MapIndent;
-
-		Game.ActiveScene?.Load(MainScene);
 	}
 
 	public async Task FetchLobbyInfo()

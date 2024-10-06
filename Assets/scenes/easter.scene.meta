@@ -1,0 +1,24 @@
+{
+  "publish": {
+    "Enabled": true,
+    "ProjectConfig": {
+      "Title": "fw_easter",
+      "Type": "map",
+      "Org": "nolankicks",
+      "Ident": "easter",
+      "Schema": 0,
+      "IncludeSourceFiles": true,
+      "Resources": null,
+      "PackageReferences": [],
+      "EditorReferences": null,
+      "IsWhitelistDisabled": false,
+      "Metadata": {
+        "SingleAssetSource": "scenes/easter.scene",
+        "ParentPackage": "nolankicks.fortwars",
+        "GameSupport": [
+          "nolankicks.fortwars"
+        ]
+      }
+    }
+  }
+}

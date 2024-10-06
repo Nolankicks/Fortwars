@@ -3,7 +3,7 @@
   "GameObjects": [
     {
       "__guid": "106eec1a-e501-4c70-adcf-8133c8170e53",
-      "Flags": 0,
+      "Flags": 2048,
       "Name": "Camera",
       "Position": "-16.00006,-353.9998,326",
       "Rotation": "0,0,0.7071067,0.7071068",
@@ -92,48 +92,6 @@
           "HeightWidth": 0,
           "StartDistance": 2496,
           "Tint": "1,1,1,1"
-        }
-      ]
-    },
-    {
-      "__guid": "a8fe4e08-4ef5-459c-a55d-ce37e9515ea6",
-      "Flags": 0,
-      "Name": "Manager",
-      "Enabled": true,
-      "NetworkMode": 1,
-      "Components": [
-        {
-          "__type": "GameSystem",
-          "__guid": "05ff2acf-6c9c-4367-bddf-f988d5b2e726",
-          "BlueTimeHeld": 60,
-          "BuildTime": 120,
-          "ClassicIndents": {
-            "facepunch.wooden_crate": 100,
-            "facepunch.concrete_barrier": 100,
-            "facepunch.pallet": 100
-          },
-          "ClassicModels": true,
-          "FightTime": 240,
-          "FourTeams": false,
-          "GreenTimeHeld": 60,
-          "LoadLobbySettings": false,
-          "LobbySettings": {
-            "BuildTime": 150,
-            "FightTime": 300,
-            "ClassicModels": true
-          },
-          "MaxProps": 50,
-          "MountedIndents": [],
-          "PlayerPrefab": {
-            "_type": "gameobject",
-            "prefab": "prefabs/playerdead4left.prefab"
-          },
-          "PlayerToStart": 1,
-          "RedTimeHeld": 60,
-          "SpawnPlayer": true,
-          "StartServer": true,
-          "State": "Waiting",
-          "YellowTimeHeld": 60
         }
       ]
     },
