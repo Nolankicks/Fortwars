@@ -6,6 +6,7 @@
   "WalkSpeed": 350,
   "RunSpeed": 400,
   "Health": 120,
+  "Hidden": true,
   "__references": [],
   "IsValid": true,
   "__version": 0

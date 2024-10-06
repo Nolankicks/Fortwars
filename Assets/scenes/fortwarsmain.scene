@@ -149,7 +149,7 @@
             "_type": "gameobject",
             "prefab": "prefabs/playerdead4left.prefab"
           },
-          "PlayerToStart": 1,
+          "PlayerToStart": 2,
           "RedTimeHeld": 60,
           "SpawnPlayer": true,
           "StartServer": true,
@@ -1327,7 +1327,6 @@
       "Enabled": true,
       "NetworkMode": 1,
       "NetworkOrphaned": 1,
-      "OwnerTransfer": 0,
       "Components": [
         {
           "__type": "WallComponent",

@@ -119,13 +119,15 @@ public sealed class Weapon : Item
 		{
 			reloadTime = 0;
 
-			Reload();
-
 			GameObject.Dispatch( new WeaponAnimEvent( "b_reload", true ) );
 
 			GameObject.Dispatch( new WeaponAnimEvent( "b_empty", false ) );
 
-			Invoke( ReloadDelay, () => GameObject.Dispatch( new WeaponAnimEvent( ReloadAnimName, true ) ) );
+			Invoke( ReloadDelay, () =>
+			{
+				Reload();
+				GameObject.Dispatch( new WeaponAnimEvent( ReloadAnimName, true ) );
+			} );
 		}
 
 		if ( Ammo <= 0 )

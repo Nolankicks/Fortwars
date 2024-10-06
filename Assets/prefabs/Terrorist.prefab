@@ -18,7 +18,7 @@
         "Offset": "2.883967,0.1033601,-4.295026",
         "Range": 50000,
         "ReloadAnimName": "reload",
-        "ReloadDelay": 0,
+        "ReloadDelay": 2,
         "Spread": 0.04,
         "TraceTimes": 1,
         "UsesAmmo": true,
@@ -51,6 +51,13 @@
             "CreateBoneObjects": false,
             "Model": "models/v_h1_ak47.vmdl",
             "Morphs": {},
+            "Parameters": {
+              "bools": {},
+              "ints": {},
+              "floats": {},
+              "vectors": {},
+              "rotations": {}
+            },
             "RenderOptions": {
               "GameLayer": false,
               "OverlayLayer": true,

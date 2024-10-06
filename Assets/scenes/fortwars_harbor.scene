@@ -106,7 +106,7 @@
           "__type": "GameSystem",
           "__guid": "05ff2acf-6c9c-4367-bddf-f988d5b2e726",
           "BlueTimeHeld": 60,
-          "BuildTime": 1,
+          "BuildTime": 120,
           "ClassicIndents": {
             "facepunch.wooden_crate": 100,
             "facepunch.concrete_barrier": 100,
