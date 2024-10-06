@@ -6,11 +6,12 @@
 .vs/*
 .vscode/*
 *.csproj
-obj
-bin
+obj/*
+bin/*
 Properties/*
 code/obj/*
 code/Properties/*
+Libraries/obj/*
 
 .sbox/*
 
@@ -24,6 +25,10 @@ code/Properties/*
 *.sln
 
 *idea
+*csproj
 
 # Exported / standalone games
 Exports/
+*.csproj
+
+/Libraries/facepunch.libevents/UnitTests

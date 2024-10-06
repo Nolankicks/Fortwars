@@ -68,16 +68,16 @@
                 switch ( localTeam.Team )
                 {
                     case Team.Red:
-                        <div>Props left: @(gs.MaxProps - gs.RedProps.Count())</div>
+                        <div style="width: 100%; align-items: center; font-size: 32px;">Props left: @(gs.MaxProps - gs.RedProps.Count())</div>
                         break;
                     case Team.Blue:
-                        <div>Props left: @(gs.MaxProps - gs.BlueProps.Count())</div>
+                        <div>Props left: @(gs.MaxProps - gs.BlueProps?.Count())</div>
                         break;
                     case Team.Green:
-                        <div>Props left: @(gs.MaxProps - gs.GreenProps.Count())</div>
+                        <div>Props left: @(gs.MaxProps - gs.GreenProps?.Count())</div>
                         break;
                     case Team.Yellow:
-                        <div>Props left: @(gs.MaxProps - gs.YellowProps.Count())</div>
+                        <div>Props left: @(gs.MaxProps - gs.YellowProps?.Count())</div>
                         break;
                 }
             }

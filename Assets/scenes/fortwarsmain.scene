@@ -119,10 +119,6 @@
           },
           "PlayerToStart": 2,
           "RedTimeHeld": 60,
-          "RollerMinePrefab": {
-            "_type": "gameobject",
-            "prefab": "prefabs/rollermine.prefab"
-          },
           "SpawnPlayer": true,
           "StartServer": true,
           "State": "Waiting",
@@ -1528,24 +1524,10 @@
       ]
     },
     {
-      "__guid": "3f12fa20-e1af-40b1-8fb5-a1774794a2ab",
-      "Flags": 0,
-      "Name": "Rollermine Spawn",
-      "Position": "0,0,469.2873",
-      "Enabled": true,
-      "NetworkMode": 1,
-      "Components": [
-        {
-          "__type": "RollerMineSpawn",
-          "__guid": "eab40b8c-f8b2-4687-a22c-2fae28eec392"
-        }
-      ]
-    },
-    {
       "__guid": "79815291-7aaf-481d-ac02-dcfbfade61d1",
       "Flags": 0,
       "Name": "rollermine",
-      "Position": "8.15483,-32.20495,468.1819",
+      "Position": "0,0,480",
       "Rotation": "0.0000000000001332268,0.000003516674,-0.00000001898161,0.9999999",
       "Tags": "rollermine",
       "Enabled": true,

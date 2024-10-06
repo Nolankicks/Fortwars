@@ -3,24 +3,10 @@
     "__guid": "39ef8517-7e7e-45e6-b649-a5a0aa4cdedd",
     "Flags": 0,
     "Name": "rollermine",
-    "Position": "0,0,469.2873",
     "Tags": "rollermine",
     "Enabled": true,
     "NetworkMode": 1,
     "Components": [
-      {
-        "__type": "FortwarsProp",
-        "__guid": "00406c82-ab3e-4f50-957c-e072614fafc0",
-        "CollisionThreshold": 500,
-        "Divisor": 20,
-        "Invincible": true,
-        "Rigidbody": {
-          "_type": "component",
-          "component_id": "25e96918-402a-43e9-88f4-7fcf220fb16b",
-          "go": "39ef8517-7e7e-45e6-b649-a5a0aa4cdedd",
-          "component_type": "Rigidbody"
-        }
-      },
       {
         "__type": "Sandbox.SkinnedModelRenderer",
         "__guid": "f8b32643-7800-458e-add2-00f12fea5a3c",
@@ -28,6 +14,13 @@
         "CreateBoneObjects": false,
         "Model": "models/rollermine.vmdl",
         "Morphs": {},
+        "Parameters": {
+          "bools": {},
+          "ints": {},
+          "floats": {},
+          "vectors": {},
+          "rotations": {}
+        },
         "RenderOptions": {
           "GameLayer": true,
           "OverlayLayer": false,
@@ -61,9 +54,25 @@
       },
       {
         "__type": "RollerMine",
-        "__guid": "f387172a-94d7-4729-aadf-021985a966d4"
+        "__guid": "92081e8f-596b-4ade-a874-8d4970511081"
+      },
+      {
+        "__type": "FortwarsProp",
+        "__guid": "f3202565-7b00-4282-adc7-46297ebc4923",
+        "CollisionThreshold": 100,
+        "Divisor": 20,
+        "Invincible": true,
+        "Rigidbody": {
+          "_type": "component",
+          "component_id": "25e96918-402a-43e9-88f4-7fcf220fb16b",
+          "go": "39ef8517-7e7e-45e6-b649-a5a0aa4cdedd",
+          "component_type": "Rigidbody"
+        },
+        "Team": "None"
       }
-    ]
+    ],
+    "Children": [],
+    "__variables": []
   },
   "ShowInMenu": false,
   "MenuPath": null,

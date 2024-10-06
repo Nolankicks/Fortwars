@@ -76,8 +76,6 @@ IGameEventHandler<OnGameOvertimeBuild>, IGameEventHandler<OnGameOvertimeFight>
 	[Sync] public float InitYellowTimeHeld { get; set; } = 5;
 	[Sync] public float InitGreenTimeHeld { get; set; } = 5;
 
-	[Property, Sync] public GameObject RollerMinePrefab { get; set; }
-
 	public IEnumerable<FortwarsProp> RedProps => Scene?.GetAll<FortwarsProp>().Where( x => x.Team == Team.Red );
 	public IEnumerable<FortwarsProp> BlueProps => Scene?.GetAll<FortwarsProp>().Where( x => x.Team == Team.Blue );
 	public IEnumerable<FortwarsProp> YellowProps => Scene?.GetAll<FortwarsProp>().Where( x => x.Team == Team.Yellow );
@@ -541,8 +539,4 @@ IGameEventHandler<OnGameOvertimeBuild>, IGameEventHandler<OnGameOvertimeFight>
 
 		Log.Info( $"Loaded Lobby Settings as {JsonSerializer.Serialize( LobbySettings.Load() )}" );
 	}
-}
-
-public sealed class RollerMineSpawn : Component
-{	
 }

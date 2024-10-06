@@ -29,37 +29,31 @@ IGameEventHandler<OnGameWaiting>
 
 	void IGameEventHandler<OnGameEnd>.OnGameEvent( OnGameEnd eventArgs )
 	{
-		DestroyGb();
+		ResetPosition();
 	}
 
 	void IGameEventHandler<OnBuildMode>.OnGameEvent( OnBuildMode eventArgs )
 	{
-		DestroyGb();
+		ResetPosition();
 	}
 
 	void IGameEventHandler<OnFightMode>.OnGameEvent( OnFightMode eventArgs )
 	{
-		DestroyGb();
+		ResetPosition();
 	}
 
 	void IGameEventHandler<OnGameOvertimeBuild>.OnGameEvent( OnGameOvertimeBuild eventArgs )
 	{
-		DestroyGb();
+		ResetPosition();
 	}
 
 	void IGameEventHandler<OnGameOvertimeFight>.OnGameEvent( OnGameOvertimeFight eventArgs )
 	{
-		DestroyGb();
+		ResetPosition();
 	}
 
 	void IGameEventHandler<OnGameWaiting>.OnGameEvent( OnGameWaiting eventArgs )
 	{
-		DestroyGb();
-	}
-
-	[Broadcast]
-	public void DestroyGb()
-	{
-		GameObject?.Destroy();
+		ResetPosition();
 	}
 }
