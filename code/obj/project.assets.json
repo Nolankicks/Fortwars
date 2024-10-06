@@ -69,8 +69,8 @@
   "libraries": {
     "Base Library/1.0.0": {
       "type": "project",
-      "path": "../../../../../Program Files (x86)/Steam/steamapps/common/sbox/addons/base/Code/Base Library.csproj",
-      "msbuildProject": "../../../../../Program Files (x86)/Steam/steamapps/common/sbox/addons/base/Code/Base Library.csproj"
+      "path": "../../../../../../Program Files (x86)/Steam/steamapps/common/sbox/addons/base/Code/Base Library.csproj",
+      "msbuildProject": "../../../../../../Program Files (x86)/Steam/steamapps/common/sbox/addons/base/Code/Base Library.csproj"
     },
     "libevents/1.0.0": {
       "type": "project",
@@ -103,23 +103,26 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\talle\\.nuget\\packages\\": {},
+    "C:\\Users\\harry\\.nuget\\packages\\": {},
+    "C:\\Users\\harry\\AppData\\Roaming\\Godot\\mono\\GodotNuGetFallbackFolder": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\talle\\Desktop\\Kicks\\Code\\fortwars.csproj",
+      "projectUniqueName": "C:\\Users\\harry\\OneDrive\\Documents\\Fortwars\\Code\\fortwars.csproj",
       "projectName": "fortwars",
-      "projectPath": "C:\\Users\\talle\\Desktop\\Kicks\\Code\\fortwars.csproj",
-      "packagesPath": "C:\\Users\\talle\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\talle\\Desktop\\Kicks\\Code\\obj\\",
+      "projectPath": "C:\\Users\\harry\\OneDrive\\Documents\\Fortwars\\Code\\fortwars.csproj",
+      "packagesPath": "C:\\Users\\harry\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\harry\\OneDrive\\Documents\\Fortwars\\Code\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
+        "C:\\Users\\harry\\AppData\\Roaming\\Godot\\mono\\GodotNuGetFallbackFolder",
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\talle\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\harry\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\harry\\AppData\\Roaming\\NuGet\\config\\Godot.Offline.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -138,20 +141,25 @@
             "C:\\Program Files (x86)\\Steam\\steamapps\\common\\sbox\\addons\\base\\Code\\Base Library.csproj": {
               "projectPath": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\sbox\\addons\\base\\Code\\Base Library.csproj"
             },
-            "C:\\Users\\talle\\Desktop\\Kicks\\Libraries\\facepunch.libevents\\Code\\libevents.csproj": {
-              "projectPath": "C:\\Users\\talle\\Desktop\\Kicks\\Libraries\\facepunch.libevents\\Code\\libevents.csproj"
+            "C:\\Users\\harry\\OneDrive\\Documents\\Fortwars\\Libraries\\facepunch.libevents\\Code\\libevents.csproj": {
+              "projectPath": "C:\\Users\\harry\\OneDrive\\Documents\\Fortwars\\Libraries\\facepunch.libevents\\Code\\libevents.csproj"
             },
-            "C:\\Users\\talle\\Desktop\\Kicks\\Libraries\\facepunch.libstates\\Code\\libstates.csproj": {
-              "projectPath": "C:\\Users\\talle\\Desktop\\Kicks\\Libraries\\facepunch.libstates\\Code\\libstates.csproj"
+            "C:\\Users\\harry\\OneDrive\\Documents\\Fortwars\\Libraries\\facepunch.libstates\\Code\\libstates.csproj": {
+              "projectPath": "C:\\Users\\harry\\OneDrive\\Documents\\Fortwars\\Libraries\\facepunch.libstates\\Code\\libstates.csproj"
             },
-            "C:\\Users\\talle\\Desktop\\Kicks\\Libraries\\fish.scc\\Code\\scc.csproj": {
-              "projectPath": "C:\\Users\\talle\\Desktop\\Kicks\\Libraries\\fish.scc\\Code\\scc.csproj"
+            "C:\\Users\\harry\\OneDrive\\Documents\\Fortwars\\Libraries\\fish.scc\\Code\\scc.csproj": {
+              "projectPath": "C:\\Users\\harry\\OneDrive\\Documents\\Fortwars\\Libraries\\fish.scc\\Code\\scc.csproj"
             },
-            "C:\\Users\\talle\\Desktop\\Kicks\\Libraries\\xenthio.xgui\\Code\\xgui.csproj": {
-              "projectPath": "C:\\Users\\talle\\Desktop\\Kicks\\Libraries\\xenthio.xgui\\Code\\xgui.csproj"
+            "C:\\Users\\harry\\OneDrive\\Documents\\Fortwars\\Libraries\\xenthio.xgui\\Code\\xgui.csproj": {
+              "projectPath": "C:\\Users\\harry\\OneDrive\\Documents\\Fortwars\\Libraries\\xenthio.xgui\\Code\\xgui.csproj"
             }
           }
         }
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
       }
     },
     "frameworks": {
@@ -173,7 +181,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400\\RuntimeIdentifierGraph.json"
       }
     }
   }

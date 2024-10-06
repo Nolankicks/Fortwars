@@ -34,3 +34,8 @@ Exports/
 /Libraries/facepunch.libevents/UnitTests
 *.weapons_c
 *.vtex_c
+/Libraries/xenthio.xgui/Editor/obj
+/Libraries/facepunch.libstates/UnitTests
+/Libraries/xenthio.xgui/Editor
+/code/obj
+/code/obj

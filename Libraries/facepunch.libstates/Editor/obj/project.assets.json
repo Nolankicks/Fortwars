@@ -79,23 +79,23 @@
   "libraries": {
     "actiongraph/1.0.0": {
       "type": "project",
-      "path": "../../../../../../../Program Files (x86)/Steam/steamapps/common/sbox/editor/ActionGraph/Code/actiongraph.csproj",
-      "msbuildProject": "../../../../../../../Program Files (x86)/Steam/steamapps/common/sbox/editor/ActionGraph/Code/actiongraph.csproj"
+      "path": "../../../../../../../../Program Files (x86)/Steam/steamapps/common/sbox/editor/ActionGraph/Code/actiongraph.csproj",
+      "msbuildProject": "../../../../../../../../Program Files (x86)/Steam/steamapps/common/sbox/editor/ActionGraph/Code/actiongraph.csproj"
     },
     "Base Editor Library/1.0.0": {
       "type": "project",
-      "path": "../../../../../../../Program Files (x86)/Steam/steamapps/common/sbox/addons/tools/Code/Base Editor Library.csproj",
-      "msbuildProject": "../../../../../../../Program Files (x86)/Steam/steamapps/common/sbox/addons/tools/Code/Base Editor Library.csproj"
+      "path": "../../../../../../../../Program Files (x86)/Steam/steamapps/common/sbox/addons/tools/Code/Base Editor Library.csproj",
+      "msbuildProject": "../../../../../../../../Program Files (x86)/Steam/steamapps/common/sbox/addons/tools/Code/Base Editor Library.csproj"
     },
     "Base Library/1.0.0": {
       "type": "project",
-      "path": "../../../../../../../Program Files (x86)/Steam/steamapps/common/sbox/addons/base/Code/Base Library.csproj",
-      "msbuildProject": "../../../../../../../Program Files (x86)/Steam/steamapps/common/sbox/addons/base/Code/Base Library.csproj"
+      "path": "../../../../../../../../Program Files (x86)/Steam/steamapps/common/sbox/addons/base/Code/Base Library.csproj",
+      "msbuildProject": "../../../../../../../../Program Files (x86)/Steam/steamapps/common/sbox/addons/base/Code/Base Library.csproj"
     },
     "hammer/1.0.0": {
       "type": "project",
-      "path": "../../../../../../../Program Files (x86)/Steam/steamapps/common/sbox/editor/Hammer/Code/hammer.csproj",
-      "msbuildProject": "../../../../../../../Program Files (x86)/Steam/steamapps/common/sbox/editor/Hammer/Code/hammer.csproj"
+      "path": "../../../../../../../../Program Files (x86)/Steam/steamapps/common/sbox/editor/Hammer/Code/hammer.csproj",
+      "msbuildProject": "../../../../../../../../Program Files (x86)/Steam/steamapps/common/sbox/editor/Hammer/Code/hammer.csproj"
     },
     "libstates/1.0.0": {
       "type": "project",
@@ -104,8 +104,8 @@
     },
     "shadergraph/1.0.0": {
       "type": "project",
-      "path": "../../../../../../../Program Files (x86)/Steam/steamapps/common/sbox/editor/ShaderGraph/Code/shadergraph.csproj",
-      "msbuildProject": "../../../../../../../Program Files (x86)/Steam/steamapps/common/sbox/editor/ShaderGraph/Code/shadergraph.csproj"
+      "path": "../../../../../../../../Program Files (x86)/Steam/steamapps/common/sbox/editor/ShaderGraph/Code/shadergraph.csproj",
+      "msbuildProject": "../../../../../../../../Program Files (x86)/Steam/steamapps/common/sbox/editor/ShaderGraph/Code/shadergraph.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -118,23 +118,26 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\talle\\.nuget\\packages\\": {},
+    "C:\\Users\\harry\\.nuget\\packages\\": {},
+    "C:\\Users\\harry\\AppData\\Roaming\\Godot\\mono\\GodotNuGetFallbackFolder": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\talle\\Desktop\\Kicks\\Libraries\\facepunch.libstates\\Editor\\libstates.editor.csproj",
+      "projectUniqueName": "C:\\Users\\harry\\OneDrive\\Documents\\Fortwars\\Libraries\\facepunch.libstates\\Editor\\libstates.editor.csproj",
       "projectName": "libstates.editor",
-      "projectPath": "C:\\Users\\talle\\Desktop\\Kicks\\Libraries\\facepunch.libstates\\Editor\\libstates.editor.csproj",
-      "packagesPath": "C:\\Users\\talle\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\talle\\Desktop\\Kicks\\Libraries\\facepunch.libstates\\Editor\\obj\\",
+      "projectPath": "C:\\Users\\harry\\OneDrive\\Documents\\Fortwars\\Libraries\\facepunch.libstates\\Editor\\libstates.editor.csproj",
+      "packagesPath": "C:\\Users\\harry\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\harry\\OneDrive\\Documents\\Fortwars\\Libraries\\facepunch.libstates\\Editor\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
+        "C:\\Users\\harry\\AppData\\Roaming\\Godot\\mono\\GodotNuGetFallbackFolder",
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\talle\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\harry\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\harry\\AppData\\Roaming\\NuGet\\config\\Godot.Offline.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -162,11 +165,16 @@
             "C:\\Program Files (x86)\\Steam\\steamapps\\common\\sbox\\editor\\ShaderGraph\\Code\\shadergraph.csproj": {
               "projectPath": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\sbox\\editor\\ShaderGraph\\Code\\shadergraph.csproj"
             },
-            "C:\\Users\\talle\\Desktop\\Kicks\\Libraries\\facepunch.libstates\\Code\\libstates.csproj": {
-              "projectPath": "C:\\Users\\talle\\Desktop\\Kicks\\Libraries\\facepunch.libstates\\Code\\libstates.csproj"
+            "C:\\Users\\harry\\OneDrive\\Documents\\Fortwars\\Libraries\\facepunch.libstates\\Code\\libstates.csproj": {
+              "projectPath": "C:\\Users\\harry\\OneDrive\\Documents\\Fortwars\\Libraries\\facepunch.libstates\\Code\\libstates.csproj"
             }
           }
         }
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
       }
     },
     "frameworks": {
@@ -188,7 +196,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400\\RuntimeIdentifierGraph.json"
       }
     }
   }

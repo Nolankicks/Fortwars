@@ -68,10 +68,10 @@
           "ExposureBias": 2,
           "ExposureCompensation": 0,
           "ExposureMethod": "RGB",
-          "MaximumExposure": 3,
-          "MinimumExposure": 1,
-          "Mode": "ACES",
-          "Rate": 1
+          "MaximumExposure": 2.65,
+          "MinimumExposure": 1.23,
+          "Mode": "Legacy",
+          "Rate": 8.57
         },
         {
           "__type": "Sandbox.AmbientOcclusion",
@@ -149,7 +149,7 @@
             "_type": "gameobject",
             "prefab": "prefabs/playerdead4left.prefab"
           },
-          "PlayerToStart": 2,
+          "PlayerToStart": 1,
           "RedTimeHeld": 60,
           "SpawnPlayer": true,
           "StartServer": true,
@@ -1566,6 +1566,34 @@
       "NetworkMode": 1,
       "__Prefab": "prefabs/rollermine.prefab",
       "__PrefabVariables": {}
+    },
+    {
+      "__guid": "55976e37-58aa-4851-8e77-30a5150d5b47",
+      "Flags": 0,
+      "Name": "probe",
+      "Position": "-773.7429,168.0918,63.9747",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.EnvmapProbe",
+          "__guid": "0cad4643-d09d-4f87-9130-fe1e3c7ce1ae",
+          "Bounds": {
+            "Mins": "-512,-512,-512",
+            "Maxs": "512,512,512"
+          },
+          "DelayBetweenUpdates": 0.1,
+          "Feathering": 0.25,
+          "FrameInterval": 5,
+          "MaxDistance": 512,
+          "MultiBounce": true,
+          "Projection": "Sphere",
+          "RenderDynamically": true,
+          "TintColor": "1,1,1,1",
+          "UpdateStrategy": "OnEnabled",
+          "ZFar": 4096,
+          "ZNear": 16
+        }
+      ]
     }
   ],
   "SceneProperties": {
