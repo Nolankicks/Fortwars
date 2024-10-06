@@ -1,0 +1,67 @@
+{
+  "RootObject": {
+    "__guid": "a5289cfc-32c3-46e6-b837-ea46fa9f500e",
+    "Flags": 0,
+    "Name": "bulletdecal",
+    "Enabled": true,
+    "Components": [
+      {
+        "__type": "Sandbox.DecalRenderer",
+        "__guid": "10f3c791-2346-4e7d-8be8-efdb9a0c621f",
+        "CutoffAngle": 60,
+        "CutoffAngleSoftness": 5,
+        "Material": "materials/decals/bullethole.vmat",
+        "Mod2XBlending": false,
+        "RenderOptions": {
+          "GameLayer": true,
+          "OverlayLayer": false,
+          "BloomLayer": false,
+          "AfterUILayer": false
+        },
+        "Size": "8,8,16",
+        "TintColor": "1,1,1,1",
+        "TriPlanar": false
+      },
+      {
+        "__type": "Destoryer",
+        "__guid": "f80525c4-2a5b-4248-b4c1-8614d54bd7f9",
+        "Time": 10
+      }
+    ],
+    "Children": [
+      {
+        "__guid": "38c54ace-7897-4c5f-b26f-5b843a4f315b",
+        "Flags": 2048,
+        "Name": "Plane",
+        "Position": "10.09315,0,-0.000001804797",
+        "Rotation": "0,-0.7071067,0,0.7071068",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.ModelRenderer",
+            "__guid": "734795bb-eb8c-4095-aefa-dd89443a1415",
+            "BodyGroups": 18446744073709551615,
+            "Model": "models/dev/plane.vmdl",
+            "RenderOptions": {
+              "GameLayer": true,
+              "OverlayLayer": false,
+              "BloomLayer": false,
+              "AfterUILayer": false
+            },
+            "RenderType": "On",
+            "Tint": "1,1,1,1"
+          }
+        ]
+      }
+    ],
+    "__variables": []
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "DontBreakAsTemplate": false,
+  "ResourceVersion": 1,
+  "__references": [],
+  "IsValid": true,
+  "__version": 1
+}

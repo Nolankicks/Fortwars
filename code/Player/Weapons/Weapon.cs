@@ -1,4 +1,3 @@
-using Sandbox;
 using Sandbox.Citizen;
 using Sandbox.Events;
 
@@ -91,6 +90,7 @@ public sealed class Weapon : Item
 		equipTime = 0;
 		reloadTime = ReloadDelay;
 		lastFired = FireRate;
+		GameObject.Dispatch( new WeaponAnimEvent( "b_reload", false ) );
 	}
 
 	protected override void OnUpdate()
@@ -107,8 +107,6 @@ public sealed class Weapon : Item
 
 			if ( local.IsValid() )
 			{
-				BroadcastFireSound( local.Eye.WorldPosition );
-
 				local.BroadcastAttack();
 			}
 
@@ -117,13 +115,14 @@ public sealed class Weapon : Item
 			lastFired = 0;
 		}
 
-		if ( Input.Pressed( "reload" ) && reloadTime > ReloadDelay  )
+		if ( Input.Pressed( "reload" ) && reloadTime > ReloadDelay && Ammo != MaxAmmo )
 		{
 			reloadTime = 0;
 
 			Reload();
 
 			GameObject.Dispatch( new WeaponAnimEvent( "b_reload", true ) );
+
 			GameObject.Dispatch( new WeaponAnimEvent( "b_empty", false ) );
 
 			Invoke( ReloadDelay, () => GameObject.Dispatch( new WeaponAnimEvent( ReloadAnimName, true ) ) );
@@ -155,11 +154,17 @@ public sealed class Weapon : Item
 		// local.EyeAngles += new Angles( Game.Random.Float( -1, 1 ), Game.Random.Float( -1, 1 ), 0 );
 
 		if ( !tr.Hit )
+		{
+			BroadcastFireEffects( WorldPosition, Vector3.Zero, Vector3.Zero );
 			return;
+		}
 
 		if ( tr.GameObject.Components.TryGet<TeamComponent>( out var team, FindMode.EverythingInSelfAndParent ) && local.TeamComponent.IsValid()
 			&& local.TeamComponent.IsFriendly( team ) )
+		{
+			BroadcastFireEffects( WorldPosition, Vector3.Zero, Vector3.Zero );
 			return;
+		}
 
 		if ( tr.GameObject.Components.TryGet<HealthComponent>( out var health, FindMode.EverythingInSelfAndParent ) )
 		{
@@ -178,20 +183,29 @@ public sealed class Weapon : Item
 		}
 
 		SubtractAmmo();
+
+		BroadcastFireEffects( WorldPosition, tr.HitPosition, tr.Normal, true );
 	}
 
 	[Broadcast]
-	public void BroadcastFireSound( Vector3 pos )
+	public void BroadcastFireEffects( Vector3 pos, Vector3 hitPos, Vector3 normal, bool hit = false )
 	{
-		if ( FireSound is null )
+		if ( FireSound is not null )
+		{
+			var sound = Sound.Play( FireSound, pos );
+			if ( !sound.IsValid() )
+				return;
+			sound.Volume *= 5f;
+		}
+
+		if ( !hit )
 			return;
 
-		var sound = Sound.Play( FireSound, pos );
+		var decal = GameObject.Clone( "prefabs/bulletdecal.prefab", new CloneConfig { Parent = Scene.Root, StartEnabled = true } );
+		decal.WorldPosition = hitPos + normal;
+		decal.WorldRotation = Rotation.LookAt( -normal );
+		decal.WorldScale = 1.0f;
 
-		if ( !sound.IsValid() )
-			return;
-
-		sound.Volume *= 5f;
 	}
 
 	public static void SpawnParticleEffect( ParticleSystem system, Vector3 pos )

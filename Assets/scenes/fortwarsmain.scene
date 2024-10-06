@@ -127,7 +127,7 @@
           "__type": "GameSystem",
           "__guid": "636af314-35f2-4a97-9dbb-bd94e367aece",
           "BlueTimeHeld": 60,
-          "BuildTime": 120,
+          "BuildTime": 1,
           "ClassicIndents": {
             "facepunch.wooden_crate": 100,
             "facepunch.concrete_barrier": 100,
@@ -1594,6 +1594,23 @@
           "ZNear": 16
         }
       ]
+    },
+    {
+      "__guid": "0bb86c6a-1c6b-48ca-ac92-7b8ffdc12955",
+      "Flags": 0,
+      "Name": "Ambience",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.SoundscapeTrigger",
+          "__guid": "faf63b60-1482-4c32-a492-a0ee97a1bd55",
+          "BoxSize": "50,50,50",
+          "Radius": 500,
+          "Soundscape": "soundscapes/field/field_day_breeze_01a.sndscape",
+          "StayActiveOnExit": true,
+          "Type": "Point"
+        }
+      ]
     }
   ],
   "SceneProperties": {
@@ -1624,6 +1641,7 @@
   "__references": [
     "eurorp.door01_right_01#12553",
     "facepunch.wooden_crate#29138",
+    "rust.field_day_breeze_01a#43855",
     "rustextended.terrain_grass#43376"
   ],
   "IsValid": true,
