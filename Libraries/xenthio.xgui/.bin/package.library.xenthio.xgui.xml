@@ -1,0 +1,256 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>package.library.xenthio.xgui</name>
+    </assembly>
+    <members>
+        <member name="P:XGUI.Check.CheckMark">
+            <summary>
+            The checkmark icon. Although no guarentees it's an icon!
+            </summary>
+        </member>
+        <member name="P:XGUI.Check.Checked">
+            <summary>
+            Returns true if this checkbox is checked
+            </summary>
+        </member>
+        <member name="P:XGUI.Check.Value">
+            <summary>
+            Returns true if this checkbox is checked
+            </summary>
+        </member>
+        <member name="P:XGUI.Pane.PopupSource">
+            <summary>
+            Which panel triggered this popup. Set by <see cref="M:XGUI.Pane.SetPositioning(Sandbox.UI.Panel,XGUI.Pane.PositionMode,System.Single)"/> or the constructor.
+            </summary>
+        </member>
+        <member name="P:XGUI.Pane.SelectedChild">
+            <summary>
+            Currently selected option in the popup. Used internally for keyboard navigation.
+            </summary>
+        </member>
+        <member name="P:XGUI.Pane.Position">
+            <summary>
+            Positioning mode for this popup.
+            </summary>
+        </member>
+        <member name="P:XGUI.Pane.PopupSourceOffset">
+            <summary>
+            Offset away from <see cref="P:XGUI.Pane.PopupSource"/> based on <see cref="P:XGUI.Pane.Position"/>.
+            </summary>
+        </member>
+        <member name="T:XGUI.Pane.PositionMode">
+            <summary>
+            Dictates where a <see cref="T:Sandbox.UI.Popup"/> is positioned.
+            </summary>
+        </member>
+        <member name="F:XGUI.Pane.PositionMode.Left">
+            <summary>
+            To the left of the source panel, centered.
+            </summary>
+        </member>
+        <member name="F:XGUI.Pane.PositionMode.LeftBottom">
+            <summary>
+            To the left of the source panel, aligned to the bottom.
+            </summary>
+        </member>
+        <member name="F:XGUI.Pane.PositionMode.AboveLeft">
+            <summary>
+            Above the source panel, aligned to the left.
+            </summary>
+        </member>
+        <member name="F:XGUI.Pane.PositionMode.BelowLeft">
+            <summary>
+            Below the source panel, aliging on the left. Do not stretch to size of <see cref="P:Sandbox.UI.Popup.PopupSource"/>.
+            </summary>
+        </member>
+        <member name="F:XGUI.Pane.PositionMode.BelowCenter">
+            <summary>
+            Below the source panel, centered horizontally.
+            </summary>
+        </member>
+        <member name="F:XGUI.Pane.PositionMode.BelowStretch">
+            <summary>
+            Below the source panel, stretch to the width of the <see cref="P:Sandbox.UI.Popup.PopupSource"/>.
+            </summary>
+        </member>
+        <member name="M:XGUI.Pane.#ctor(Sandbox.UI.Panel,XGUI.Pane.PositionMode,System.Single)">
+            <inheritdoc cref="M:XGUI.Pane.SetPositioning(Sandbox.UI.Panel,XGUI.Pane.PositionMode,System.Single)"/>
+        </member>
+        <member name="M:XGUI.Pane.SetPositioning(Sandbox.UI.Panel,XGUI.Pane.PositionMode,System.Single)">
+            <summary>
+            Sets <see cref="P:XGUI.Pane.PopupSource"/>, <see cref="P:XGUI.Pane.Position"/> and <see cref="P:XGUI.Pane.PopupSourceOffset"/>.
+            Applies relevant CSS classes.
+            </summary>
+            <param name="sourcePanel">Which panel triggered this popup.</param>
+            <param name="position">Desired positioning mode.</param>
+            <param name="offset">Offset away from the <paramref name="sourcePanel"/>.</param>
+        </member>
+        <member name="F:XGUI.Pane.Header">
+            <summary>
+            Header panel that holds <see cref="F:XGUI.Pane.TitleLabel"/> and <see cref="F:XGUI.Pane.IconPanel"/>.
+            </summary>
+        </member>
+        <member name="F:XGUI.Pane.TitleLabel">
+            <summary>
+            Label that dispalys <see cref="P:XGUI.Pane.Title"/>.
+            </summary>
+        </member>
+        <member name="F:XGUI.Pane.IconPanel">
+            <summary>
+            Panel that dispalys <see cref="P:XGUI.Pane.Icon"/>.
+            </summary>
+        </member>
+        <member name="P:XGUI.Pane.Title">
+            <summary>
+            If set, will add an unselectable header with given text and <see cref="P:XGUI.Pane.Icon"/>.
+            </summary>
+        </member>
+        <member name="P:XGUI.Pane.Icon">
+            <summary>
+            If set, will add an unselectable header with given icon and <see cref="P:XGUI.Pane.Title"/>.
+            </summary>
+        </member>
+        <member name="M:XGUI.Pane.Success">
+            <summary>
+            Closes all panels, marks this one as a success and closes it.
+            </summary>
+        </member>
+        <member name="M:XGUI.Pane.Failure">
+            <summary>
+            Closes all panels, marks this one as a failure and closes it.
+            </summary>
+        </member>
+        <member name="M:XGUI.Pane.AddOption(System.String,System.Action)">
+            <summary>
+            Add an option to this popup with given text and click action.
+            </summary>
+        </member>
+        <member name="M:XGUI.Pane.AddOption(System.String,System.String,System.Action)">
+            <summary>
+            Add an option to this popup with given text, icon and click action.
+            </summary>
+        </member>
+        <member name="M:XGUI.Pane.MoveSelection(System.Int32)">
+            <summary>
+            Move selection in given direction.
+            </summary>
+            <param name="dir">Positive numbers move selection downwards, negative - upwards.</param>
+        </member>
+        <member name="T:XGUI.Selector">
+            <summary>
+            A UI control which provides multiple options via a dropdown box.
+            </summary>
+        </member>
+        <member name="F:XGUI.Selector.DropdownIndicator">
+            <summary>
+            The icon of an arrow pointing down on the right of the element.
+            </summary>
+        </member>
+        <member name="P:XGUI.Selector.ValueChanged">
+            <summary>
+            Called when the value has been changed,
+            </summary>
+        </member>
+        <member name="P:XGUI.Selector.BuildOptions">
+            <summary>
+            Called just before opening, allows options to be dynamic
+            </summary>
+        </member>
+        <member name="P:XGUI.Selector.Options">
+            <summary>
+            The options to show on click. You can edit these directly via this property.
+            </summary>
+        </member>
+        <member name="P:XGUI.Selector.Value">
+            <summary>
+            The current string value. This is useful to have if Selected is null.
+            </summary>
+        </member>
+        <member name="P:XGUI.Selector.Selected">
+            <summary>
+            The currently selected option.
+            </summary>
+        </member>
+        <member name="M:XGUI.Selector.PopulateOptionsFromType(System.Type)">
+            <summary>
+            Given the type, populate options. This is useful if you're an enum type.
+            </summary>
+        </member>
+        <member name="M:XGUI.Selector.Open">
+            <summary>
+            Open the dropdown.
+            </summary>
+        </member>
+        <member name="M:XGUI.Selector.Select(Sandbox.UI.Option,System.Boolean)">
+            <summary>
+            Select an option.
+            </summary>
+        </member>
+        <member name="M:XGUI.Selector.Select(System.String,System.Boolean)">
+            <summary>
+            Select an option by value string.
+            </summary>
+        </member>
+        <member name="T:XGUI.SliderScale">
+            <summary>
+            A horizontal slider. Can be float or whole number.
+            </summary>
+        </member>
+        <member name="P:XGUI.SliderScale.MaxValue">
+            <summary>
+            The right side of the slider
+            </summary>
+        </member>
+        <member name="P:XGUI.SliderScale.MinValue">
+            <summary>
+            The left side of the slider
+            </summary>
+        </member>
+        <member name="P:XGUI.SliderScale.Step">
+            <summary>
+            If set to 1, value will be rounded to 1's
+            If set to 10, value will be rounded to 10's
+            If set to 0.1, value will be rounded to 0.1's
+            </summary>
+        </member>
+        <member name="P:XGUI.SliderScale.Value">
+            <summary>
+            The actual value. Setting the value will snap and clamp it.
+            </summary>
+        </member>
+        <member name="M:XGUI.SliderScale.ScreenPosToValue(Vector2)">
+            <summary>
+            Convert a screen position to a value. The value is clamped, but not snapped.
+            </summary>
+        </member>
+        <member name="M:XGUI.SliderScale.OnMouseMove(Sandbox.UI.MousePanelEvent)">
+            <summary>
+            If we move the mouse while we're being pressed then set the position,
+            but skip transitions.
+            </summary>
+        </member>
+        <member name="M:XGUI.SliderScale.OnMouseDown(Sandbox.UI.MousePanelEvent)">
+            <summary>
+            On mouse press jump to that position
+            </summary>
+        </member>
+        <member name="M:XGUI.SliderScale.UpdateSliderPositions">
+            <summary>
+            Updates the styles for TrackInner and Thumb to position us based on the current value.
+            Note this purposely uses percentages instead of pixels when setting up, this way we don't
+            have to worry about parent size, screen scale etc.
+            </summary>
+        </member>
+        <member name="T:XGUI.SliderScaleEntry">
+            <summary>
+            A horizontal slider with a text entry on the right
+            </summary>
+        </member>
+        <member name="P:XGUI.SliderScaleEntry.Value">
+            <summary>
+            The actual value. Setting the value will snap and clamp it.
+            </summary>
+        </member>
+    </members>
+</doc>
