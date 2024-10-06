@@ -125,7 +125,7 @@ public class Physgun : Item
 			.WithoutTags( "player", "trigger" )
 			.Run();
 
-		if ( !tr.Hit || !tr.GameObject.IsValid() || tr.GameObject.Tags.Has( "map" ) || tr.StartedSolid ) return;
+		if ( !tr.Hit || !tr.GameObject.IsValid() || tr.GameObject.Tags.Has( "map" ) || tr.StartedSolid || tr.GameObject.Tags.Has( "ragdoll" ) ) return;
 
 		var rootObject = tr.GameObject.Root;
 		var body = tr.Body;
@@ -145,7 +145,7 @@ public class Physgun : Item
 		if ( !body.IsValid() ) return;
 
 		// Don't move keyframed unless it's a player
-		if ( body.BodyType == PhysicsBodyType.Keyframed && !rootObject.Tags.Has( "player" ) ) return;
+		if ( body.BodyType == PhysicsBodyType.Keyframed && !rootObject.Tags.Has( "player" ) || rootObject.Components.TryGet<WallComponent>( out var w, FindMode.EverythingInSelfAndParent ) ) return;
 
 		// Unfreeze
 		if ( body.BodyType != PhysicsBodyType.Dynamic )

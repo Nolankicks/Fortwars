@@ -2,6 +2,7 @@ using Sandbox.Citizen;
 using Sandbox.Events;
 
 public record WeaponAnimEvent( string anim, bool value ) : IGameEvent;
+public record OnReloadEvent() : IGameEvent;
 
 public class Item : Component, IGameEventHandler<OnItemEquipped>
 {
@@ -29,6 +30,7 @@ public class Item : Component, IGameEventHandler<OnItemEquipped>
 	public void Reload()
 	{
 		Ammo = MaxAmmo;
+		GameObject.Dispatch( new OnReloadEvent() );
 	}
 
 	protected override void OnAwake()
@@ -66,7 +68,7 @@ public class Item : Component, IGameEventHandler<OnItemEquipped>
 	}
 }
 
-public sealed class Weapon : Item
+public sealed class Weapon : Item, IGameEventHandler<OnReloadEvent>
 {
 	[Property] public float FireRate { get; set; } = 0.1f;
 	[Property] public float ReloadDelay { get; set; } = 1f;
@@ -90,7 +92,7 @@ public sealed class Weapon : Item
 		equipTime = 0;
 		reloadTime = ReloadDelay;
 		lastFired = FireRate;
-		GameObject.Dispatch( new WeaponAnimEvent( "b_reload", false ) );
+		GameObject.Dispatch( new WeaponAnimEvent( "b_empty", false ) );
 	}
 
 	protected override void OnUpdate()
@@ -114,6 +116,10 @@ public sealed class Weapon : Item
 
 			lastFired = 0;
 		}
+		else if ( (Input.Pressed( "attack1" ) || Input.Down( "attack1" ) && lastFired > FireRate) && Ammo <= 0 && reloadTime > ReloadDelay )
+		{
+			GameObject.Dispatch( new WeaponAnimEvent( "b_attack_dry", true ) );
+		}
 
 		if ( Input.Pressed( "reload" ) && reloadTime > ReloadDelay && Ammo != MaxAmmo )
 		{
@@ -121,12 +127,11 @@ public sealed class Weapon : Item
 
 			GameObject.Dispatch( new WeaponAnimEvent( "b_reload", true ) );
 
-			GameObject.Dispatch( new WeaponAnimEvent( "b_empty", false ) );
-
 			Invoke( ReloadDelay, () =>
 			{
 				Reload();
 				GameObject.Dispatch( new WeaponAnimEvent( ReloadAnimName, true ) );
+				GameObject.Dispatch( new WeaponAnimEvent( "b_empty", false ) );
 			} );
 		}
 
@@ -179,15 +184,23 @@ public sealed class Weapon : Item
 		damage.Position = tr.HitPosition;
 		damage.Shape = tr.Shape;
 
-		foreach ( var damageable in tr.GameObject.Components.GetAll<IDamageable>() )
+		if ( !tr.GameObject.Root.Components.TryGet<PlayerController>( out var p, FindMode.EverythingInSelfAndParent ) && !tr.GameObject.Tags.Has( "ragdoll" ) )
 		{
-			damageable.OnDamage( damage );
+			tr.GameObject.Root.Network.TakeOwnership();
+
+			if ( tr.Body.IsValid() )
+				tr.Body.BodyType = PhysicsBodyType.Static;
+
+			foreach ( var damageable in tr.GameObject.Components.GetAll<IDamageable>() )
+			{
+				damageable.OnDamage( damage );
+			}
 		}
 
 		SubtractAmmo();
 
 		// Shitty hack
-		if ( tr.GameObject.Components.TryGet<PlayerController>( out var player ) )
+		if ( tr.GameObject.Components.TryGet<PlayerController>( out var player, FindMode.EverythingInSelfAndParent ) )
 			BroadcastFireEffects( WorldPosition, 0, 0 );
 		else
 			BroadcastFireEffects( WorldPosition, tr.HitPosition, tr.Normal, true );
@@ -226,6 +239,14 @@ public sealed class Weapon : Item
 		gb.Components.Create<Destoryer>();
 
 		gb.NetworkSpawn( null );
+	}
+
+	void IGameEventHandler<OnReloadEvent>.OnGameEvent( OnReloadEvent eventArgs )
+	{
+		if ( IsProxy )
+			return;
+
+		GameObject.Dispatch( new WeaponAnimEvent( "b_reload", false ) );
 	}
 }
 

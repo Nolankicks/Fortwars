@@ -54,11 +54,18 @@
       },
       {
         "__type": "RollerMine",
-        "__guid": "92081e8f-596b-4ade-a874-8d4970511081"
+        "__guid": "92081e8f-596b-4ade-a874-8d4970511081",
+        "Renderer": {
+          "_type": "component",
+          "component_id": "f8b32643-7800-458e-add2-00f12fea5a3c",
+          "go": "39ef8517-7e7e-45e6-b649-a5a0aa4cdedd",
+          "component_type": "SkinnedModelRenderer"
+        }
       },
       {
         "__type": "FortwarsProp",
         "__guid": "f3202565-7b00-4282-adc7-46297ebc4923",
+        "CanKill": true,
         "CollisionThreshold": 100,
         "Divisor": 20,
         "Invincible": true,
@@ -130,7 +137,7 @@
         "FogMode": "Enabled",
         "FogStrength": 1,
         "LightColor": "0.13953,0.79922,1,1",
-        "Radius": 40,
+        "Radius": 30,
         "Shadows": false
       }
     ],

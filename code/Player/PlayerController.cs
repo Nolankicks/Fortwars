@@ -438,7 +438,8 @@ public sealed class PlayerController : Component, IGameEventHandler<DamageEvent>
 
 			var go = new GameObject( true, $"{Network.Owner?.DisplayName}'s ragdoll" );
 			go.Tags.Add( "ragdoll" );
-			go.WorldTransform = WorldTransform;
+			go.WorldTransform = target.WorldTransform;
+			go.WorldRotation = target.WorldRotation;
 
 			var ragdollBody = go.Components.Create<SkinnedModelRenderer>();
 			ragdollBody.CopyFrom( target );
@@ -479,7 +480,7 @@ public sealed class PlayerController : Component, IGameEventHandler<DamageEvent>
 				BroadcastEnable( target.GameObject, true );
 
 				IsRespawning = false;
-				
+
 				GameObject.Dispatch( new PlayerReset() );
 			} );
 		}

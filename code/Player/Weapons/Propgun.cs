@@ -99,9 +99,12 @@ public sealed class Propgun : Item
 
 			player.CanMoveHead = !Input.Down( "attack2" );
 
-			if ( tr.Hit && Input.Pressed( "destroy" ) && (tr.GameObject?.Root?.Components.TryGet<Prop>( out var prop, FindMode.EverythingInSelfAndDescendants ) ?? false) )
+			if ( tr.Hit && Input.Pressed( "destroy" ) && (tr.GameObject?.Root?.Components.TryGet<FortwarsProp>( out var prop, FindMode.EverythingInSelfAndDescendants ) ?? false) )
 			{
-				tr.GameObject.Root.Destroy();
+				if ( prop.Invincible )
+					return;
+
+				tr.GameObject?.Root?.Destroy();
 			}
 
 			if ( Input.Down( "attack2" ) )
@@ -165,6 +168,7 @@ public sealed class Propgun : Item
 					fortWarsProp.Team = team.Team;
 
 				fortWarsProp.Prop = renderer;
+				fortWarsProp.CanKill = false;
 
 				if ( PropIdent is not null && (gs.ClassicIndents?.TryGetValue( PropIdent, out var propHealth ) ?? false) && propHealth > 0 )
 					renderer.Health = propHealth;

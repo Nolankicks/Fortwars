@@ -1,3 +1,4 @@
+using System;
 using Sandbox;
 using Sandbox.Events;
 
@@ -9,6 +10,8 @@ public sealed class FortwarsProp : Component, Component.ICollisionListener, IGam
 	[Property, Sync] public float CollisionThreshold { get; set; } = 1300;
 	[Property, Sync] public int Divisor { get; set; } = 20;
 	[Property, Sync] public Team Team { get; set; }
+	[Property, Sync] public PlayerController Grabber { get; set; }
+	[Property, Sync] public bool CanKill { get; set; } = true;
 
 	public void OnCollisionStart( Collision other )
 	{
@@ -18,7 +21,7 @@ public sealed class FortwarsProp : Component, Component.ICollisionListener, IGam
 		var otherSpeed = other.Other.Body.Velocity.Length;
 		if ( otherSpeed > speed ) speed = otherSpeed;
 
-		if ( other.Other.GameObject.Root.Components.TryGet<Gib>( out var gib, FindMode.EnabledInSelfAndChildren ) )
+		if ( other.Other.GameObject.Root.Components.TryGet<Gib>( out var gib, FindMode.EnabledInSelfAndChildren ) || !CanKill )
 			return;
 
 		if ( speed >= CollisionThreshold )
@@ -28,9 +31,12 @@ public sealed class FortwarsProp : Component, Component.ICollisionListener, IGam
 			if ( !Invincible )
 				Damage( dmg );
 
-			if ( other.Other.GameObject.Root.Components.TryGet<HealthComponent>( out var player ) )
+			if ( other.Other.GameObject?.Root?.Components?.TryGet<HealthComponent>( out var player ) == true )
 			{
-				player.TakeDamage( GameObject, (int)dmg, WorldPosition );
+				if ( player?.Network.OwnerId == Grabber?.Network.OwnerId && player.Network.OwnerId != Guid.Empty && Grabber.Network.OwnerId != Guid.Empty && Grabber.IsValid() )
+					return;
+
+				player?.TakeDamage( GameObject, (int)dmg, WorldPosition );
 			}
 		}
 	}
@@ -69,5 +75,11 @@ public sealed class FortwarsProp : Component, Component.ICollisionListener, IGam
 			return;
 
 		GameObject.Destroy();
+	}
+
+	[Authority]
+	public void SetGrabber( PlayerController player )
+	{
+		Grabber = player;
 	}
 }

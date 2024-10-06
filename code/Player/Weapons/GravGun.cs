@@ -38,25 +38,25 @@ public class Gravgun : Item, IGameEventHandler<DeathEvent>
 
     protected override void OnUpdate()
     {
-		if ( IsProxy )
-			return;
+        if ( IsProxy )
+            return;
 
-		var player = PlayerController.Local;
+        var player = PlayerController.Local;
 
-		if ( !player.IsValid() )
-			return;
+        if ( !player.IsValid() )
+            return;
 
         if ( Input.Pressed( "attack1" ) )
         {
             PrimaryUse();
 
-			GameObject.Dispatch( new WeaponAnimEvent( "b_attack", true ) );
+            GameObject.Dispatch( new WeaponAnimEvent( "b_attack", true ) );
         }
         else if ( Input.Pressed( "attack2" ) )
         {
             SecondaryUse();
 
-			GameObject.Dispatch( new WeaponAnimEvent( "b_attack", true ) );
+            GameObject.Dispatch( new WeaponAnimEvent( "b_attack", true ) );
         }
 
         GrabMove( player.Eye.WorldPosition, player.EyeAngles.Forward, player.Eye.WorldRotation );
@@ -75,8 +75,8 @@ public class Gravgun : Item, IGameEventHandler<DeathEvent>
         }
         else
         {
-            CanPickup = tr.Body.IsValid() && ( tr.Body.BodyType == PhysicsBodyType.Dynamic || tr.GameObject.Components.TryGet<FortwarsProp>( out var p ) ) 
-			&& !tr.GameObject.Root.Tags.HasAny( "map", "player" );
+            CanPickup = tr.Body.IsValid() && tr.Body.BodyType == PhysicsBodyType.Dynamic && tr.GameObject.Components.TryGet<RollerMine>( out var p )
+            && !tr.GameObject.Root.Tags.HasAny( "map", "player" );
             if ( CanPickup ) timeSinceLastCanPickup = 0f;
         }
 
@@ -112,10 +112,10 @@ public class Gravgun : Item, IGameEventHandler<DeathEvent>
 
             if ( tr.Body.IsValid() )
             {
-				if ( tr.Body.BodyType == PhysicsBodyType.Static )
-					tr.Body.BodyType = PhysicsBodyType.Dynamic;
+                if ( tr.Body.BodyType == PhysicsBodyType.Static )
+                    tr.Body.BodyType = PhysicsBodyType.Dynamic;
 
-				tr.GameObject.Network.SetOwnerTransfer( OwnerTransfer.Takeover );
+                tr.GameObject.Network.SetOwnerTransfer( OwnerTransfer.Takeover );
 
                 tr.GameObject.Network.TakeOwnership();
                 tr.Body.Velocity += PlayerController.Local.EyeAngles.Forward * ThrowForce;
@@ -131,10 +131,10 @@ public class Gravgun : Item, IGameEventHandler<DeathEvent>
     {
         if ( CanPickup )
         {
-			var player = PlayerController.Local;
+            var player = PlayerController.Local;
 
-			if ( !player.IsValid() )
-				return;
+            if ( !player.IsValid() )
+                return;
 
             var tr = GravGunTrace.Run();
 
@@ -168,40 +168,40 @@ public class Gravgun : Item, IGameEventHandler<DeathEvent>
         Rotation.SmoothDamp( HeldBody.Rotation, HoldRotation, ref angularVelocity, 0.075f, Time.Delta );
         HeldBody.AngularVelocity = angularVelocity;
 
-		var heldBodyGb = HeldBody.GetGameObject();
+        var heldBodyGb = HeldBody.GetGameObject();
 
-		var local = PlayerController.Local;
+        var local = PlayerController.Local;
 
-		var gs = Scene.GetAll<GameSystem>()?.FirstOrDefault();
+        var gs = Scene.GetAll<GameSystem>()?.FirstOrDefault();
 
-		if ( !heldBodyGb.IsValid() || !local.IsValid() || !gs.IsValid() )
-			return;
+        if ( !heldBodyGb.IsValid() || !local.IsValid() || !gs.IsValid() )
+            return;
 
-		if ( !heldBodyGb.Tags.Has( "rollermine" ) )
-			return;
+        if ( !heldBodyGb.Tags.Has( "rollermine" ) )
+            return;
 
-		var teamComponent = local.TeamComponent;
-		
-		if ( !teamComponent.IsValid() )
-			return;
+        var teamComponent = local.TeamComponent;
 
-		var team = teamComponent.Team;
+        if ( !teamComponent.IsValid() )
+            return;
 
-		gs.SubtractTimeHeld( team, Time.Delta );
+        var team = teamComponent.Team;
+
+        gs.SubtractTimeHeld( team, Time.Delta );
     }
 
     void GrabInit( GameObject gameObject, PhysicsBody body, Vector3 grabPosition, Rotation grabRotation )
     {
         GrabbedObject = gameObject;
 
-		gameObject.Network.SetOwnerTransfer( OwnerTransfer.Takeover );
+        gameObject.Network.SetOwnerTransfer( OwnerTransfer.Takeover );
         gameObject.Network.TakeOwnership();
         GrabbedBone = body.GroupIndex;
 
-		if ( body.BodyType == PhysicsBodyType.Static )
-			body.BodyType = PhysicsBodyType.Dynamic;
+        if ( body.BodyType == PhysicsBodyType.Static )
+            body.BodyType = PhysicsBodyType.Dynamic;
 
-		Physgun.AddTag( gameObject, GrabbedTag );
+        Physgun.AddTag( gameObject, GrabbedTag );
 
         HeldBody = body;
         HeldPosition = HeldBody.LocalMassCenter;
@@ -212,15 +212,23 @@ public class Gravgun : Item, IGameEventHandler<DeathEvent>
 
         HeldBody.Sleeping = false;
         HeldBody.AutoSleep = false;
+
+		var local = PlayerController.Local;
+
+		if ( gameObject.Components.TryGet<FortwarsProp>( out var prop ) && local.IsValid() )
+			prop.SetGrabber( local );
+
+        if ( gameObject.Components.TryGet<RollerMine>( out var rollerMine, FindMode.EverythingInSelfAndParent ) )
+            rollerMine.SetGrabbed( true );
     }
 
-	void IGameEventHandler<DeathEvent>.OnGameEvent(DeathEvent eventArgs)
-	{
-		if ( !GrabbedObject.IsValid() )
-			return;
-		
-		GrabEnd();
-	}
+    void IGameEventHandler<DeathEvent>.OnGameEvent( DeathEvent eventArgs )
+    {
+        if ( !GrabbedObject.IsValid() )
+            return;
+
+        GrabEnd();
+    }
 
     void GrabMove( Vector3 startPos, Vector3 dir, Rotation rot )
     {
@@ -238,7 +246,13 @@ public class Gravgun : Item, IGameEventHandler<DeathEvent>
     {
         if ( !GrabbedObject.IsValid() ) return;
 
-		Physgun.RemoveTag( GrabbedObject, GrabbedTag );
+        if ( GrabbedObject.Components.TryGet<RollerMine>( out var rollerMine, FindMode.EverythingInSelfAndParent ) )
+            rollerMine.SetGrabbed( false );
+
+		if ( GrabbedObject.Components.TryGet<FortwarsProp>( out var prop ) )
+			prop.SetGrabber( null );
+
+        Physgun.RemoveTag( GrabbedObject, GrabbedTag );
 
         GrabbedObject = null;
         HeldBody = null;

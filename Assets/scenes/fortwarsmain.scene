@@ -1323,7 +1323,7 @@
       "__guid": "fc14cc31-45fa-4a2b-b6c2-d147fcecb044",
       "Flags": 0,
       "Name": "BorderWall",
-      "Position": "0,32,1040",
+      "Position": "0,0,1040",
       "Enabled": true,
       "NetworkMode": 1,
       "NetworkOrphaned": 1,
@@ -1402,10 +1402,10 @@
               "0.25,0.25"
             ],
             "TextureOffset": [
-              "0,128",
-              "0,128",
-              "128,64",
-              "384,64",
+              "0,0",
+              "0,0",
+              "0,64",
+              "0,64",
               "0,64",
               "0,64"
             ],
@@ -1560,7 +1560,7 @@
       "Name": "rollermine",
       "Position": "0,0,480",
       "Rotation": "0.0000000000001332268,0.000003516674,-0.00000001898161,0.9999999",
-      "Tags": "rollermine",
+      "Tags": "light,light_point,rollermine",
       "Enabled": true,
       "NetworkMode": 1,
       "__Prefab": "prefabs/rollermine.prefab",

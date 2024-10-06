@@ -6,6 +6,8 @@ IGameEventHandler<OnFightMode>, IGameEventHandler<OnGameOvertimeBuild>, IGameEve
 IGameEventHandler<OnGameWaiting>
 {
 	[Sync] public Transform StartingTransform { get; set; }
+	[Sync] public bool IsGrabbed { get; set; } = false;
+	[Property, Sync] public SkinnedModelRenderer Renderer { get; set; }
 
 	protected override void OnStart()
 	{
@@ -25,6 +27,12 @@ IGameEventHandler<OnGameWaiting>
 		Transform.ClearInterpolation();
 
 		Transform.World = StartingTransform;
+	}
+
+	protected override void OnUpdate()
+	{
+		if ( Renderer.IsValid() )
+			Renderer.Set( "b_open", IsGrabbed );
 	}
 
 	void IGameEventHandler<OnGameEnd>.OnGameEvent( OnGameEnd eventArgs )
@@ -55,5 +63,11 @@ IGameEventHandler<OnGameWaiting>
 	void IGameEventHandler<OnGameWaiting>.OnGameEvent( OnGameWaiting eventArgs )
 	{
 		ResetPosition();
+	}
+
+	[Broadcast]
+	public void SetGrabbed( bool isGrabbed )
+	{
+		IsGrabbed = isGrabbed;
 	}
 }
