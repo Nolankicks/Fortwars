@@ -11,9 +11,9 @@
 
 		var gs = GameSystem.Instance;
 
-		if (!player.IsValid() || !gs.IsValid()) return;
+		if ( !player.IsValid() || !gs.IsValid() ) return;
 
-		if (!player.Inventory.IsValid())
+		if ( !player.Inventory.IsValid() )
 			return;
 	}
 
@@ -55,8 +55,32 @@
 			var color = GetColor();
 		}
 
-		<div style="position: absolute; width: 300px; top: 12; left: 12;">
+		<div style="position: absolute; width: 300px; top: 12; left: 12; flex-direction: column;">
 			<TeamProgress />
+
+            @if ( gs.State == GameSystem.GameState.BuildMode || gs.State == GameSystem.GameState.OvertimeBuild )
+            {
+                var localTeam = player.TeamComponent;
+
+                if ( !localTeam.IsValid() )
+                    return;
+
+                switch ( localTeam.Team )
+                {
+                    case Team.Red:
+                        <div>Props left: @(gs.MaxProps - gs.RedProps.Count())</div>
+                        break;
+                    case Team.Blue:
+                        <div>Props left: @(gs.MaxProps - gs.BlueProps.Count())</div>
+                        break;
+                    case Team.Green:
+                        <div>Props left: @(gs.MaxProps - gs.GreenProps.Count())</div>
+                        break;
+                    case Team.Yellow:
+                        <div>Props left: @(gs.MaxProps - gs.YellowProps.Count())</div>
+                        break;
+                }
+            }
 		</div>
 
 		<div class="healthholder">
@@ -170,6 +194,8 @@
 		{
 			hash += System.HashCode.Combine( item.Ammo );
 		}
+
+		hash += System.HashCode.Combine( GameSystem.Instance?.RedProps?.Count(), GameSystem.Instance?.BlueProps?.Count(), GameSystem.Instance?.GreenProps?.Count(), GameSystem.Instance?.YellowProps?.Count() );
 
 		return hash;
 	}

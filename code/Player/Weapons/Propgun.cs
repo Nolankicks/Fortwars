@@ -91,7 +91,7 @@ public sealed class Propgun : Item
 			var gizmo = Gizmo.Draw.Model( Prop.ResourcePath );
 			gizmo.ColorTint = Color.White.WithAlpha( 0.5f );
 			gizmo.Rotation = PropRotation.SnapToGrid( 15 );
-			gizmo.Position = tr.EndPosition;
+			gizmo.Position = tr.EndPosition.SnapToGrid( 15 );
 
 			player.CanMoveHead = !Input.Down( "attack2" );
 
@@ -151,10 +151,15 @@ public sealed class Propgun : Item
 
 				renderer.Model = Prop;
 
-				gb.WorldPosition = tr.EndPosition;
+				gb.WorldPosition = tr.EndPosition.SnapToGrid( 15 );
 				gb.WorldRotation = PropRotation.SnapToGrid( 15 );
 
 				var fortWarsProp = gb.Components.Create<FortwarsProp>();
+
+				var team = player.TeamComponent;
+
+				if ( team.IsValid() )
+					fortWarsProp.Team = team.Team;
 
 				fortWarsProp.Prop = renderer;
 

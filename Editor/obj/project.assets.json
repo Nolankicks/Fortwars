@@ -135,18 +135,18 @@
   "libraries": {
     "actiongraph/1.0.0": {
       "type": "project",
-      "path": "../../../../../../Program Files (x86)/Steam/steamapps/common/sbox/editor/ActionGraph/Code/actiongraph.csproj",
-      "msbuildProject": "../../../../../../Program Files (x86)/Steam/steamapps/common/sbox/editor/ActionGraph/Code/actiongraph.csproj"
+      "path": "../../../../../Program Files (x86)/Steam/steamapps/common/sbox/editor/ActionGraph/Code/actiongraph.csproj",
+      "msbuildProject": "../../../../../Program Files (x86)/Steam/steamapps/common/sbox/editor/ActionGraph/Code/actiongraph.csproj"
     },
     "Base Editor Library/1.0.0": {
       "type": "project",
-      "path": "../../../../../../Program Files (x86)/Steam/steamapps/common/sbox/addons/tools/Code/Base Editor Library.csproj",
-      "msbuildProject": "../../../../../../Program Files (x86)/Steam/steamapps/common/sbox/addons/tools/Code/Base Editor Library.csproj"
+      "path": "../../../../../Program Files (x86)/Steam/steamapps/common/sbox/addons/tools/Code/Base Editor Library.csproj",
+      "msbuildProject": "../../../../../Program Files (x86)/Steam/steamapps/common/sbox/addons/tools/Code/Base Editor Library.csproj"
     },
     "Base Library/1.0.0": {
       "type": "project",
-      "path": "../../../../../../Program Files (x86)/Steam/steamapps/common/sbox/addons/base/Code/Base Library.csproj",
-      "msbuildProject": "../../../../../../Program Files (x86)/Steam/steamapps/common/sbox/addons/base/Code/Base Library.csproj"
+      "path": "../../../../../Program Files (x86)/Steam/steamapps/common/sbox/addons/base/Code/Base Library.csproj",
+      "msbuildProject": "../../../../../Program Files (x86)/Steam/steamapps/common/sbox/addons/base/Code/Base Library.csproj"
     },
     "fortwars/1.0.0": {
       "type": "project",
@@ -155,8 +155,8 @@
     },
     "hammer/1.0.0": {
       "type": "project",
-      "path": "../../../../../../Program Files (x86)/Steam/steamapps/common/sbox/editor/Hammer/Code/hammer.csproj",
-      "msbuildProject": "../../../../../../Program Files (x86)/Steam/steamapps/common/sbox/editor/Hammer/Code/hammer.csproj"
+      "path": "../../../../../Program Files (x86)/Steam/steamapps/common/sbox/editor/Hammer/Code/hammer.csproj",
+      "msbuildProject": "../../../../../Program Files (x86)/Steam/steamapps/common/sbox/editor/Hammer/Code/hammer.csproj"
     },
     "libevents/1.0.0": {
       "type": "project",
@@ -175,8 +175,8 @@
     },
     "shadergraph/1.0.0": {
       "type": "project",
-      "path": "../../../../../../Program Files (x86)/Steam/steamapps/common/sbox/editor/ShaderGraph/Code/shadergraph.csproj",
-      "msbuildProject": "../../../../../../Program Files (x86)/Steam/steamapps/common/sbox/editor/ShaderGraph/Code/shadergraph.csproj"
+      "path": "../../../../../Program Files (x86)/Steam/steamapps/common/sbox/editor/ShaderGraph/Code/shadergraph.csproj",
+      "msbuildProject": "../../../../../Program Files (x86)/Steam/steamapps/common/sbox/editor/ShaderGraph/Code/shadergraph.csproj"
     },
     "xgui/1.0.0": {
       "type": "project",
@@ -200,11 +200,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\talle\\Downloads\\Dead-4-Left-Rewrite-main\\sBox-Fortwars\\Editor\\fortwars.editor.csproj",
+      "projectUniqueName": "C:\\Users\\talle\\Desktop\\Kicks\\Editor\\fortwars.editor.csproj",
       "projectName": "fortwars.editor",
-      "projectPath": "C:\\Users\\talle\\Downloads\\Dead-4-Left-Rewrite-main\\sBox-Fortwars\\Editor\\fortwars.editor.csproj",
+      "projectPath": "C:\\Users\\talle\\Desktop\\Kicks\\Editor\\fortwars.editor.csproj",
       "packagesPath": "C:\\Users\\talle\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\talle\\Downloads\\Dead-4-Left-Rewrite-main\\sBox-Fortwars\\Editor\\obj\\",
+      "outputPath": "C:\\Users\\talle\\Desktop\\Kicks\\Editor\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -238,8 +238,8 @@
             "C:\\Program Files (x86)\\Steam\\steamapps\\common\\sbox\\editor\\ShaderGraph\\Code\\shadergraph.csproj": {
               "projectPath": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\sbox\\editor\\ShaderGraph\\Code\\shadergraph.csproj"
             },
-            "C:\\Users\\talle\\Downloads\\Dead-4-Left-Rewrite-main\\sBox-Fortwars\\Code\\fortwars.csproj": {
-              "projectPath": "C:\\Users\\talle\\Downloads\\Dead-4-Left-Rewrite-main\\sBox-Fortwars\\Code\\fortwars.csproj"
+            "C:\\Users\\talle\\Desktop\\Kicks\\Code\\fortwars.csproj": {
+              "projectPath": "C:\\Users\\talle\\Desktop\\Kicks\\Code\\fortwars.csproj"
             }
           }
         }

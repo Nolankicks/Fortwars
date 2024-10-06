@@ -1,7 +1,7 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\talle\\Downloads\\Dead-4-Left-Rewrite-main\\sBox-Fortwars\\Libraries\\facepunch.libevents\\UnitTests\\libevents.unittest.csproj": {}
+    "C:\\Users\\talle\\Desktop\\Kicks\\Libraries\\facepunch.libevents\\UnitTests\\libevents.unittest.csproj": {}
   },
   "projects": {
     "C:\\Program Files (x86)\\Steam\\steamapps\\common\\sbox\\addons\\base\\Code\\Base Library.csproj": {
@@ -114,14 +114,14 @@
         }
       }
     },
-    "C:\\Users\\talle\\Downloads\\Dead-4-Left-Rewrite-main\\sBox-Fortwars\\Libraries\\facepunch.libevents\\Code\\libevents.csproj": {
+    "C:\\Users\\talle\\Desktop\\Kicks\\Libraries\\facepunch.libevents\\Code\\libevents.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\talle\\Downloads\\Dead-4-Left-Rewrite-main\\sBox-Fortwars\\Libraries\\facepunch.libevents\\Code\\libevents.csproj",
+        "projectUniqueName": "C:\\Users\\talle\\Desktop\\Kicks\\Libraries\\facepunch.libevents\\Code\\libevents.csproj",
         "projectName": "libevents",
-        "projectPath": "C:\\Users\\talle\\Downloads\\Dead-4-Left-Rewrite-main\\sBox-Fortwars\\Libraries\\facepunch.libevents\\Code\\libevents.csproj",
+        "projectPath": "C:\\Users\\talle\\Desktop\\Kicks\\Libraries\\facepunch.libevents\\Code\\libevents.csproj",
         "packagesPath": "C:\\Users\\talle\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\talle\\Downloads\\Dead-4-Left-Rewrite-main\\sBox-Fortwars\\Libraries\\facepunch.libevents\\Code\\obj\\",
+        "outputPath": "C:\\Users\\talle\\Desktop\\Kicks\\Libraries\\facepunch.libevents\\Code\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -173,14 +173,14 @@
         }
       }
     },
-    "C:\\Users\\talle\\Downloads\\Dead-4-Left-Rewrite-main\\sBox-Fortwars\\Libraries\\facepunch.libevents\\UnitTests\\libevents.unittest.csproj": {
+    "C:\\Users\\talle\\Desktop\\Kicks\\Libraries\\facepunch.libevents\\UnitTests\\libevents.unittest.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\talle\\Downloads\\Dead-4-Left-Rewrite-main\\sBox-Fortwars\\Libraries\\facepunch.libevents\\UnitTests\\libevents.unittest.csproj",
+        "projectUniqueName": "C:\\Users\\talle\\Desktop\\Kicks\\Libraries\\facepunch.libevents\\UnitTests\\libevents.unittest.csproj",
         "projectName": "libevents.unittest",
-        "projectPath": "C:\\Users\\talle\\Downloads\\Dead-4-Left-Rewrite-main\\sBox-Fortwars\\Libraries\\facepunch.libevents\\UnitTests\\libevents.unittest.csproj",
+        "projectPath": "C:\\Users\\talle\\Desktop\\Kicks\\Libraries\\facepunch.libevents\\UnitTests\\libevents.unittest.csproj",
         "packagesPath": "C:\\Users\\talle\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\talle\\Downloads\\Dead-4-Left-Rewrite-main\\sBox-Fortwars\\Libraries\\facepunch.libevents\\UnitTests\\obj\\",
+        "outputPath": "C:\\Users\\talle\\Desktop\\Kicks\\Libraries\\facepunch.libevents\\UnitTests\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -205,8 +205,8 @@
               "C:\\Program Files (x86)\\Steam\\steamapps\\common\\sbox\\addons\\tools\\Code\\Base Editor Library.csproj": {
                 "projectPath": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\sbox\\addons\\tools\\Code\\Base Editor Library.csproj"
               },
-              "C:\\Users\\talle\\Downloads\\Dead-4-Left-Rewrite-main\\sBox-Fortwars\\Libraries\\facepunch.libevents\\Code\\libevents.csproj": {
-                "projectPath": "C:\\Users\\talle\\Downloads\\Dead-4-Left-Rewrite-main\\sBox-Fortwars\\Libraries\\facepunch.libevents\\Code\\libevents.csproj"
+              "C:\\Users\\talle\\Desktop\\Kicks\\Libraries\\facepunch.libevents\\Code\\libevents.csproj": {
+                "projectPath": "C:\\Users\\talle\\Desktop\\Kicks\\Libraries\\facepunch.libevents\\Code\\libevents.csproj"
               }
             }
           }

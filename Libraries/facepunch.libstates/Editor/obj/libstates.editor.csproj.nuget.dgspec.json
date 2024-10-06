@@ -1,7 +1,7 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\talle\\Downloads\\Dead-4-Left-Rewrite-main\\sBox-Fortwars\\Libraries\\facepunch.libstates\\Editor\\libstates.editor.csproj": {}
+    "C:\\Users\\talle\\Desktop\\Kicks\\Libraries\\facepunch.libstates\\Editor\\libstates.editor.csproj": {}
   },
   "projects": {
     "C:\\Program Files (x86)\\Steam\\steamapps\\common\\sbox\\addons\\base\\Code\\Base Library.csproj": {
@@ -291,14 +291,14 @@
         }
       }
     },
-    "C:\\Users\\talle\\Downloads\\Dead-4-Left-Rewrite-main\\sBox-Fortwars\\Libraries\\facepunch.libstates\\Code\\libstates.csproj": {
+    "C:\\Users\\talle\\Desktop\\Kicks\\Libraries\\facepunch.libstates\\Code\\libstates.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\talle\\Downloads\\Dead-4-Left-Rewrite-main\\sBox-Fortwars\\Libraries\\facepunch.libstates\\Code\\libstates.csproj",
+        "projectUniqueName": "C:\\Users\\talle\\Desktop\\Kicks\\Libraries\\facepunch.libstates\\Code\\libstates.csproj",
         "projectName": "libstates",
-        "projectPath": "C:\\Users\\talle\\Downloads\\Dead-4-Left-Rewrite-main\\sBox-Fortwars\\Libraries\\facepunch.libstates\\Code\\libstates.csproj",
+        "projectPath": "C:\\Users\\talle\\Desktop\\Kicks\\Libraries\\facepunch.libstates\\Code\\libstates.csproj",
         "packagesPath": "C:\\Users\\talle\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\talle\\Downloads\\Dead-4-Left-Rewrite-main\\sBox-Fortwars\\Libraries\\facepunch.libstates\\Code\\obj\\",
+        "outputPath": "C:\\Users\\talle\\Desktop\\Kicks\\Libraries\\facepunch.libstates\\Code\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -350,14 +350,14 @@
         }
       }
     },
-    "C:\\Users\\talle\\Downloads\\Dead-4-Left-Rewrite-main\\sBox-Fortwars\\Libraries\\facepunch.libstates\\Editor\\libstates.editor.csproj": {
+    "C:\\Users\\talle\\Desktop\\Kicks\\Libraries\\facepunch.libstates\\Editor\\libstates.editor.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\talle\\Downloads\\Dead-4-Left-Rewrite-main\\sBox-Fortwars\\Libraries\\facepunch.libstates\\Editor\\libstates.editor.csproj",
+        "projectUniqueName": "C:\\Users\\talle\\Desktop\\Kicks\\Libraries\\facepunch.libstates\\Editor\\libstates.editor.csproj",
         "projectName": "libstates.editor",
-        "projectPath": "C:\\Users\\talle\\Downloads\\Dead-4-Left-Rewrite-main\\sBox-Fortwars\\Libraries\\facepunch.libstates\\Editor\\libstates.editor.csproj",
+        "projectPath": "C:\\Users\\talle\\Desktop\\Kicks\\Libraries\\facepunch.libstates\\Editor\\libstates.editor.csproj",
         "packagesPath": "C:\\Users\\talle\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\talle\\Downloads\\Dead-4-Left-Rewrite-main\\sBox-Fortwars\\Libraries\\facepunch.libstates\\Editor\\obj\\",
+        "outputPath": "C:\\Users\\talle\\Desktop\\Kicks\\Libraries\\facepunch.libstates\\Editor\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -391,8 +391,8 @@
               "C:\\Program Files (x86)\\Steam\\steamapps\\common\\sbox\\editor\\ShaderGraph\\Code\\shadergraph.csproj": {
                 "projectPath": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\sbox\\editor\\ShaderGraph\\Code\\shadergraph.csproj"
               },
-              "C:\\Users\\talle\\Downloads\\Dead-4-Left-Rewrite-main\\sBox-Fortwars\\Libraries\\facepunch.libstates\\Code\\libstates.csproj": {
-                "projectPath": "C:\\Users\\talle\\Downloads\\Dead-4-Left-Rewrite-main\\sBox-Fortwars\\Libraries\\facepunch.libstates\\Code\\libstates.csproj"
+              "C:\\Users\\talle\\Desktop\\Kicks\\Libraries\\facepunch.libstates\\Code\\libstates.csproj": {
+                "projectPath": "C:\\Users\\talle\\Desktop\\Kicks\\Libraries\\facepunch.libstates\\Code\\libstates.csproj"
               }
             }
           }

@@ -1,7 +1,7 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\talle\\Downloads\\Dead-4-Left-Rewrite-main\\sBox-Fortwars\\Code\\fortwars.csproj": {}
+    "C:\\Users\\talle\\Desktop\\Kicks\\Code\\fortwars.csproj": {}
   },
   "projects": {
     "C:\\Program Files (x86)\\Steam\\steamapps\\common\\sbox\\addons\\base\\Code\\Base Library.csproj": {
@@ -59,14 +59,14 @@
         }
       }
     },
-    "C:\\Users\\talle\\Downloads\\Dead-4-Left-Rewrite-main\\sBox-Fortwars\\Code\\fortwars.csproj": {
+    "C:\\Users\\talle\\Desktop\\Kicks\\Code\\fortwars.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\talle\\Downloads\\Dead-4-Left-Rewrite-main\\sBox-Fortwars\\Code\\fortwars.csproj",
+        "projectUniqueName": "C:\\Users\\talle\\Desktop\\Kicks\\Code\\fortwars.csproj",
         "projectName": "fortwars",
-        "projectPath": "C:\\Users\\talle\\Downloads\\Dead-4-Left-Rewrite-main\\sBox-Fortwars\\Code\\fortwars.csproj",
+        "projectPath": "C:\\Users\\talle\\Desktop\\Kicks\\Code\\fortwars.csproj",
         "packagesPath": "C:\\Users\\talle\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\talle\\Downloads\\Dead-4-Left-Rewrite-main\\sBox-Fortwars\\Code\\obj\\",
+        "outputPath": "C:\\Users\\talle\\Desktop\\Kicks\\Code\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -91,17 +91,17 @@
               "C:\\Program Files (x86)\\Steam\\steamapps\\common\\sbox\\addons\\base\\Code\\Base Library.csproj": {
                 "projectPath": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\sbox\\addons\\base\\Code\\Base Library.csproj"
               },
-              "C:\\Users\\talle\\Downloads\\Dead-4-Left-Rewrite-main\\sBox-Fortwars\\Libraries\\facepunch.libevents\\Code\\libevents.csproj": {
-                "projectPath": "C:\\Users\\talle\\Downloads\\Dead-4-Left-Rewrite-main\\sBox-Fortwars\\Libraries\\facepunch.libevents\\Code\\libevents.csproj"
+              "C:\\Users\\talle\\Desktop\\Kicks\\Libraries\\facepunch.libevents\\Code\\libevents.csproj": {
+                "projectPath": "C:\\Users\\talle\\Desktop\\Kicks\\Libraries\\facepunch.libevents\\Code\\libevents.csproj"
               },
-              "C:\\Users\\talle\\Downloads\\Dead-4-Left-Rewrite-main\\sBox-Fortwars\\Libraries\\facepunch.libstates\\Code\\libstates.csproj": {
-                "projectPath": "C:\\Users\\talle\\Downloads\\Dead-4-Left-Rewrite-main\\sBox-Fortwars\\Libraries\\facepunch.libstates\\Code\\libstates.csproj"
+              "C:\\Users\\talle\\Desktop\\Kicks\\Libraries\\facepunch.libstates\\Code\\libstates.csproj": {
+                "projectPath": "C:\\Users\\talle\\Desktop\\Kicks\\Libraries\\facepunch.libstates\\Code\\libstates.csproj"
               },
-              "C:\\Users\\talle\\Downloads\\Dead-4-Left-Rewrite-main\\sBox-Fortwars\\Libraries\\fish.scc\\Code\\scc.csproj": {
-                "projectPath": "C:\\Users\\talle\\Downloads\\Dead-4-Left-Rewrite-main\\sBox-Fortwars\\Libraries\\fish.scc\\Code\\scc.csproj"
+              "C:\\Users\\talle\\Desktop\\Kicks\\Libraries\\fish.scc\\Code\\scc.csproj": {
+                "projectPath": "C:\\Users\\talle\\Desktop\\Kicks\\Libraries\\fish.scc\\Code\\scc.csproj"
               },
-              "C:\\Users\\talle\\Downloads\\Dead-4-Left-Rewrite-main\\sBox-Fortwars\\Libraries\\xenthio.xgui\\Code\\xgui.csproj": {
-                "projectPath": "C:\\Users\\talle\\Downloads\\Dead-4-Left-Rewrite-main\\sBox-Fortwars\\Libraries\\xenthio.xgui\\Code\\xgui.csproj"
+              "C:\\Users\\talle\\Desktop\\Kicks\\Libraries\\xenthio.xgui\\Code\\xgui.csproj": {
+                "projectPath": "C:\\Users\\talle\\Desktop\\Kicks\\Libraries\\xenthio.xgui\\Code\\xgui.csproj"
               }
             }
           }
@@ -130,14 +130,14 @@
         }
       }
     },
-    "C:\\Users\\talle\\Downloads\\Dead-4-Left-Rewrite-main\\sBox-Fortwars\\Libraries\\facepunch.libevents\\Code\\libevents.csproj": {
+    "C:\\Users\\talle\\Desktop\\Kicks\\Libraries\\facepunch.libevents\\Code\\libevents.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\talle\\Downloads\\Dead-4-Left-Rewrite-main\\sBox-Fortwars\\Libraries\\facepunch.libevents\\Code\\libevents.csproj",
+        "projectUniqueName": "C:\\Users\\talle\\Desktop\\Kicks\\Libraries\\facepunch.libevents\\Code\\libevents.csproj",
         "projectName": "libevents",
-        "projectPath": "C:\\Users\\talle\\Downloads\\Dead-4-Left-Rewrite-main\\sBox-Fortwars\\Libraries\\facepunch.libevents\\Code\\libevents.csproj",
+        "projectPath": "C:\\Users\\talle\\Desktop\\Kicks\\Libraries\\facepunch.libevents\\Code\\libevents.csproj",
         "packagesPath": "C:\\Users\\talle\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\talle\\Downloads\\Dead-4-Left-Rewrite-main\\sBox-Fortwars\\Libraries\\facepunch.libevents\\Code\\obj\\",
+        "outputPath": "C:\\Users\\talle\\Desktop\\Kicks\\Libraries\\facepunch.libevents\\Code\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -189,14 +189,14 @@
         }
       }
     },
-    "C:\\Users\\talle\\Downloads\\Dead-4-Left-Rewrite-main\\sBox-Fortwars\\Libraries\\facepunch.libstates\\Code\\libstates.csproj": {
+    "C:\\Users\\talle\\Desktop\\Kicks\\Libraries\\facepunch.libstates\\Code\\libstates.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\talle\\Downloads\\Dead-4-Left-Rewrite-main\\sBox-Fortwars\\Libraries\\facepunch.libstates\\Code\\libstates.csproj",
+        "projectUniqueName": "C:\\Users\\talle\\Desktop\\Kicks\\Libraries\\facepunch.libstates\\Code\\libstates.csproj",
         "projectName": "libstates",
-        "projectPath": "C:\\Users\\talle\\Downloads\\Dead-4-Left-Rewrite-main\\sBox-Fortwars\\Libraries\\facepunch.libstates\\Code\\libstates.csproj",
+        "projectPath": "C:\\Users\\talle\\Desktop\\Kicks\\Libraries\\facepunch.libstates\\Code\\libstates.csproj",
         "packagesPath": "C:\\Users\\talle\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\talle\\Downloads\\Dead-4-Left-Rewrite-main\\sBox-Fortwars\\Libraries\\facepunch.libstates\\Code\\obj\\",
+        "outputPath": "C:\\Users\\talle\\Desktop\\Kicks\\Libraries\\facepunch.libstates\\Code\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -248,14 +248,14 @@
         }
       }
     },
-    "C:\\Users\\talle\\Downloads\\Dead-4-Left-Rewrite-main\\sBox-Fortwars\\Libraries\\fish.scc\\Code\\scc.csproj": {
+    "C:\\Users\\talle\\Desktop\\Kicks\\Libraries\\fish.scc\\Code\\scc.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\talle\\Downloads\\Dead-4-Left-Rewrite-main\\sBox-Fortwars\\Libraries\\fish.scc\\Code\\scc.csproj",
+        "projectUniqueName": "C:\\Users\\talle\\Desktop\\Kicks\\Libraries\\fish.scc\\Code\\scc.csproj",
         "projectName": "scc",
-        "projectPath": "C:\\Users\\talle\\Downloads\\Dead-4-Left-Rewrite-main\\sBox-Fortwars\\Libraries\\fish.scc\\Code\\scc.csproj",
+        "projectPath": "C:\\Users\\talle\\Desktop\\Kicks\\Libraries\\fish.scc\\Code\\scc.csproj",
         "packagesPath": "C:\\Users\\talle\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\talle\\Downloads\\Dead-4-Left-Rewrite-main\\sBox-Fortwars\\Libraries\\fish.scc\\Code\\obj\\",
+        "outputPath": "C:\\Users\\talle\\Desktop\\Kicks\\Libraries\\fish.scc\\Code\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -307,14 +307,14 @@
         }
       }
     },
-    "C:\\Users\\talle\\Downloads\\Dead-4-Left-Rewrite-main\\sBox-Fortwars\\Libraries\\xenthio.xgui\\Code\\xgui.csproj": {
+    "C:\\Users\\talle\\Desktop\\Kicks\\Libraries\\xenthio.xgui\\Code\\xgui.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\talle\\Downloads\\Dead-4-Left-Rewrite-main\\sBox-Fortwars\\Libraries\\xenthio.xgui\\Code\\xgui.csproj",
+        "projectUniqueName": "C:\\Users\\talle\\Desktop\\Kicks\\Libraries\\xenthio.xgui\\Code\\xgui.csproj",
         "projectName": "xgui",
-        "projectPath": "C:\\Users\\talle\\Downloads\\Dead-4-Left-Rewrite-main\\sBox-Fortwars\\Libraries\\xenthio.xgui\\Code\\xgui.csproj",
+        "projectPath": "C:\\Users\\talle\\Desktop\\Kicks\\Libraries\\xenthio.xgui\\Code\\xgui.csproj",
         "packagesPath": "C:\\Users\\talle\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\talle\\Downloads\\Dead-4-Left-Rewrite-main\\sBox-Fortwars\\Libraries\\xenthio.xgui\\Code\\obj\\",
+        "outputPath": "C:\\Users\\talle\\Desktop\\Kicks\\Libraries\\xenthio.xgui\\Code\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

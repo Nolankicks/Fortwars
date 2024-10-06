@@ -78,10 +78,10 @@ IGameEventHandler<OnGameOvertimeBuild>, IGameEventHandler<OnGameOvertimeFight>
 
 	[Property, Sync] public GameObject RollerMinePrefab { get; set; }
 
-	public IEnumerable<FortwarsProp> RedProps => Scene.GetAll<FortwarsProp>().Where( x => x.Team == Team.Red );
-	public IEnumerable<FortwarsProp> BlueProps => Scene.GetAll<FortwarsProp>().Where( x => x.Team == Team.Blue );
-	public IEnumerable<FortwarsProp> YellowProps => Scene.GetAll<FortwarsProp>().Where( x => x.Team == Team.Yellow );
-	public IEnumerable<FortwarsProp> GreenProps => Scene.GetAll<FortwarsProp>().Where( x => x.Team == Team.Green );
+	public IEnumerable<FortwarsProp> RedProps => Scene?.GetAll<FortwarsProp>().Where( x => x.Team == Team.Red );
+	public IEnumerable<FortwarsProp> BlueProps => Scene?.GetAll<FortwarsProp>().Where( x => x.Team == Team.Blue );
+	public IEnumerable<FortwarsProp> YellowProps => Scene?.GetAll<FortwarsProp>().Where( x => x.Team == Team.Yellow );
+	public IEnumerable<FortwarsProp> GreenProps => Scene?.GetAll<FortwarsProp>().Where( x => x.Team == Team.Green );
 
 	[Property, Sync] public int MaxProps { get; set; } = 50;
 
