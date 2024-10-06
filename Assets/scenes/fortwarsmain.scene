@@ -1519,7 +1519,7 @@
       "Flags": 0,
       "Name": "Point Light",
       "Position": "-768,480,106.7836",
-      "Tags": "light_point,light",
+      "Tags": "light,light_point",
       "Enabled": true,
       "Components": [
         {
@@ -1530,7 +1530,7 @@
           "FogStrength": 1,
           "LightColor": "0,0.18333,1,1",
           "Radius": 408.4999,
-          "Shadows": true
+          "Shadows": false
         }
       ]
     },
@@ -1550,7 +1550,7 @@
           "FogStrength": 1,
           "LightColor": "1,0,0,1",
           "Radius": 566.4001,
-          "Shadows": true
+          "Shadows": false
         }
       ]
     },
