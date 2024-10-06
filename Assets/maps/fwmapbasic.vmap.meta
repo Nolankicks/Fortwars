@@ -1,0 +1,24 @@
+{
+  "publish": {
+    "Enabled": true,
+    "ProjectConfig": {
+      "Title": "fwmapbasic",
+      "Type": "map",
+      "Org": "darklands",
+      "Ident": "fwmapbasic",
+      "Schema": 0,
+      "IncludeSourceFiles": false,
+      "Resources": null,
+      "PackageReferences": [],
+      "EditorReferences": [
+        "eurorp.door01_right_01#12553",
+        "rustextended.terrain_grass#43376"
+      ],
+      "IsWhitelistDisabled": false,
+      "Metadata": {
+        "SingleAssetSource": "maps/fwmapbasic.vmap",
+        "ParentPackage": "darklands.fortwars"
+      }
+    }
+  }
+}

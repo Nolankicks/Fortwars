@@ -1,0 +1,11 @@
+{
+  "Name": "Phys Gun",
+  "Icon": null,
+  "WeaponPrefab": {
+    "_type": "gameobject",
+    "prefab": "prefabs/fortwarsphysgun.prefab"
+  },
+  "__references": [],
+  "IsValid": true,
+  "__version": 0
+}

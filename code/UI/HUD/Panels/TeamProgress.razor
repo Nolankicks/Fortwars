@@ -1,0 +1,68 @@
+@using Sandbox;
+@using Sandbox.UI;
+@using System.Threading.Tasks;
+@using System;
+@inherits Panel
+@attribute [StyleSheet]
+
+<root>
+	@{
+		var gs = GameSystem.Instance;
+
+		if ( !gs.IsValid() )
+			return;
+
+		var green = gs.InitGreenTimeHeld;
+		var yellow = gs.InitYellowTimeHeld;
+		var red = gs.InitRedTimeHeld;
+		var blue = gs.InitBlueTimeHeld;
+
+		if ( gs.State == GameSystem.GameState.Waiting || gs.State == GameSystem.GameState.Ended )
+			return;
+	}
+
+	<div class="team-bar">
+		<div class="bar">
+			<div class="fill blue" style="width: @(gs.BlueTimeHeld / blue * 100)%;"></div>
+		</div>
+		<div class="time">@FormatTime(gs.BlueTimeHeld)</div>
+	</div>
+
+	<div class="team-bar">
+		<div class="bar">
+			<div class="fill red" style="width: @(gs.RedTimeHeld / red * 100)%;"></div>
+		</div>
+		<div class="time">@FormatTime(gs.RedTimeHeld)</div>
+	</div>
+
+	@if ( !gs.FourTeams )
+		return;
+
+	<div class="team-bar">
+		<div class="bar green" style="width: @(gs.GreenTimeHeld / green * 100)%;"></div>
+		<div class="time">@FormatTime(gs.GreenTimeHeld)</div>
+	</div>
+
+	<div class="team-bar">
+		<div class="bar yellow" style="width: @(gs.YellowTimeHeld / yellow * 100)%;"></div>
+		<div class="time">@FormatTime(gs.YellowTimeHeld)</div>
+	</div>
+</root>
+
+@code
+{
+	protected override int BuildHash()
+	{
+		var gs = GameSystem.Instance;
+
+		if ( !gs.IsValid() )
+			return 0;
+
+		return HashCode.Combine( gs.BlueTimeHeld, 1, gs.RedTimeHeld, 1, gs.GreenTimeHeld, gs.YellowTimeHeld, gs.State );
+	}
+
+	public string FormatTime( float time )
+	{
+		return $"{TimeSpan.FromSeconds( time ):mm\\:ss}";
+	}
+}

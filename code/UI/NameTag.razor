@@ -1,0 +1,26 @@
+@using Sandbox;
+@using Sandbox.UI;
+@inherits PanelComponent
+
+<root>
+	@if ( !IsProxy )
+		return;
+	
+	<div class="title" style="color: @TextColor.Hex">@Network.Owner.DisplayName</div>
+	<img src=@GetAvatarTexture( Network.Owner )/>
+</root>
+
+@code
+{
+	public Color TextColor { get; set; } = Color.White;
+
+	public string GetAvatarTexture( Connection connection )
+	{
+		return $"avatar:{connection.SteamId}";
+	}
+
+	/// <summary>
+	/// the hash determines if the system should be rebuilt. If it changes, it will be rebuilt
+	/// </summary>
+	protected override int BuildHash() => System.HashCode.Combine( Network.Owner?.DisplayName );
+}

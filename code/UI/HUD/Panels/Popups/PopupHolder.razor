@@ -1,0 +1,36 @@
+@using Sandbox;
+@using Sandbox.UI;
+@using System.Threading.Tasks;
+@using System;
+@inherits PanelComponent
+
+<root>
+</root>
+
+@code
+{
+	public static PopupHolder Instance { get; set; }
+
+	protected override void OnStart()
+	{
+		Instance = this;
+	}
+
+	public static void AddPopup( Panel popup )
+	{
+		if ( !Instance.IsValid() )
+			return;
+
+		Instance.Panel?.AddChild( popup );
+	}
+
+	[Broadcast]
+	public static void BroadcastPopup( string title, int time )
+	{
+		var popup = new Popup();
+		popup.Title = title;
+		popup.Time = time;
+
+		AddPopup( popup );
+	}
+}

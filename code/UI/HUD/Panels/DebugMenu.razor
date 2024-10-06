@@ -1,0 +1,106 @@
+@using Sandbox;
+@using Sandbox.UI;
+@using System;
+@using XGUI; 
+@attribute [StyleSheet( "/XGUI/DefaultStyles/OliveGreen.scss" )]
+@inherits Window
+
+<root title="Debug Menu" width="512px" height="406px" minwidth="512px" minheight="406px" style="align-items: center; justify-content: center;">
+
+	@{
+		var gs = Scene.GetAll<GameSystem>()?.FirstOrDefault();
+
+		if ( !gs.IsValid() )
+			return;
+	}
+
+	<div style="align-items: center; justify-content: flex-start; width: 100%; height: 100%; padding: 16px; flex-direction: column;">
+		<button style="width: 100%;">Game State: @gs.State</button>
+
+		@if ( gs.State == GameSystem.GameState.Waiting )
+		{
+			<button style="width: 100%;">Time: @(TimeSpan.FromSeconds(gs.StateSwitch.Relative.CeilToInt()))</button>
+		}
+		else
+		{
+			<button style="width: 100%;">Countdown: @(TimeSpan.FromSeconds(gs.CurrentTime - gs.StateSwitch.Relative.CeilToInt()))</button>
+		}
+		
+		<button style="width: 100%;">Connections: @Connection.All.Count</button>
+
+		<div style="height: 50px; justify-content: center; align-items: center; font-size: 32px;">Players:</div>
+		@foreach ( var conn in Connection.All )
+		{
+			<button style="width: 100%;">@conn.DisplayName</button>
+		}
+
+		<div style="height: 50px; align-items: center; justify-content: center; font-size: 32px;">Teams:</div>
+
+		@if ( gs.BlueTeam.Count() > 0 )
+		{
+			<div>Blue:</div>
+		}
+
+		@foreach ( var blue in gs.BlueTeam )
+		{
+			<button style="width: 100%;">@blue.Network.Owner?.DisplayName</button>
+		}
+
+		@if ( gs.RedTeam.Count() > 0 )
+		{
+			<div>Red:</div>
+		}
+
+		@foreach ( var red in gs.RedTeam )
+		{
+			<button style="width: 100%;">@red.Network.Owner?.DisplayName</button>
+		}
+
+		@if ( gs.GreenTeam.Count() > 0 )
+		{
+			<div>Green:</div>
+		}
+
+		@foreach ( var green in gs.GreenTeam )
+		{
+			<button style="width: 100%;">@green.Network.Owner?.DisplayName</button>
+		}
+
+		@if ( gs.YellowTeam.Count() > 0 )
+		{
+			<div>Yellow:</div>
+		}
+
+		@foreach ( var yellow in gs.YellowTeam )
+		{
+			<button style="width: 100%;">@yellow.Network.Owner?.DisplayName</button>
+		}
+
+		@if ( gs.NoneTeam.Count() > 0 )
+		{
+			<div>None:</div>
+		}
+
+		@foreach ( var none in gs.NoneTeam )
+		{
+			<button style="width: 100%;">@none.Network.Owner?.DisplayName</button>
+		}
+
+		<button style="width: 100%;">Blue Time Held: @gs.BlueTimeHeld</button>
+		<button style="width: 100%;">Red Time Held: @gs.RedTimeHeld</button>
+		<button style="width: 100%;">Green Time Held: @gs.GreenTimeHeld</button>
+		<button style="width: 100%;">Yellow Time Held: @gs.YellowTimeHeld</button>
+	</div>
+</root>
+
+@code
+{
+	protected override int BuildHash()
+	{
+		var gs = Scene.GetAll<GameSystem>()?.FirstOrDefault();
+
+		return System.HashCode.Combine( gs?.State, Connection.All.Count, gs?.StateSwitch.Relative.CeilToInt(), gs?.BlueTeam.Count(), gs?.RedTeam.Count(), gs?.GreenTeam.Count(), gs?.YellowTeam.Count(), gs?.NoneTeam.Count() );
+	}
+}
+
+

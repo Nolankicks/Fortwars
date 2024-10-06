@@ -1,0 +1,76 @@
+@import "/UI/HUD/HUD.razor.scss";
+
+TeamProgress
+{
+    position: relative;
+
+    width: 100%;
+
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+    justify-content: center;
+
+    .team-bar
+    {
+        height: 30px;
+        width: 100%;
+
+        border-radius: 4px;
+        align-items: center;
+        justify-content: center;
+        background-color: $secondary;
+
+        .bar
+        {
+            height: 100%;
+            width: 60%;
+
+            border-radius: 4 0 0 4;
+
+            .fill
+            {
+                height: 100%;
+                width: 100%;
+
+                border-radius: 4 0 0 4;
+
+                &.blue
+                {
+                    background-color: blue;
+                }
+
+                &.red
+                {
+                    background-color: red;
+                }
+
+                &.green
+                {
+                    background-color: green;
+                }
+
+                &.yellow
+                {
+                    background-color: yellow;
+                }
+            }
+        }
+
+        .time
+        {
+            height: 100%;
+            width: 40%;
+            flex-shrink: 0;
+            
+            background-color: $primary;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 0 4 4 0;
+
+            font-size: 20px;
+            font-weight: bold;
+        }
+    }
+}

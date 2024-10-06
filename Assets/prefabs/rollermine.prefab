@@ -1,0 +1,78 @@
+{
+  "RootObject": {
+    "__guid": "39ef8517-7e7e-45e6-b649-a5a0aa4cdedd",
+    "Flags": 0,
+    "Name": "rollermine",
+    "Position": "0,0,469.2873",
+    "Tags": "rollermine",
+    "Enabled": true,
+    "NetworkMode": 1,
+    "Components": [
+      {
+        "__type": "FortwarsProp",
+        "__guid": "00406c82-ab3e-4f50-957c-e072614fafc0",
+        "CollisionThreshold": 500,
+        "Divisor": 20,
+        "Invincible": true,
+        "Rigidbody": {
+          "_type": "component",
+          "component_id": "25e96918-402a-43e9-88f4-7fcf220fb16b",
+          "go": "39ef8517-7e7e-45e6-b649-a5a0aa4cdedd",
+          "component_type": "Rigidbody"
+        }
+      },
+      {
+        "__type": "Sandbox.SkinnedModelRenderer",
+        "__guid": "f8b32643-7800-458e-add2-00f12fea5a3c",
+        "BodyGroups": 18446744073709551615,
+        "CreateBoneObjects": false,
+        "Model": "models/rollermine.vmdl",
+        "Morphs": {},
+        "RenderOptions": {
+          "GameLayer": true,
+          "OverlayLayer": false,
+          "BloomLayer": false,
+          "AfterUILayer": false
+        },
+        "RenderType": "On",
+        "Tint": "1,1,1,1",
+        "UseAnimGraph": true
+      },
+      {
+        "__type": "Sandbox.ModelCollider",
+        "__guid": "400a1e24-2b5b-45c7-a0fa-2ef9948e3899",
+        "IsTrigger": false,
+        "Model": "models/rollermine.vmdl",
+        "Static": false
+      },
+      {
+        "__type": "Sandbox.Rigidbody",
+        "__guid": "25e96918-402a-43e9-88f4-7fcf220fb16b",
+        "AngularDamping": 0,
+        "Gravity": true,
+        "LinearDamping": 0,
+        "Locking": {},
+        "MassCenterOverride": "0,0,0",
+        "MassOverride": 0,
+        "MotionEnabled": true,
+        "OverrideMassCenter": false,
+        "RigidbodyFlags": 0,
+        "StartAsleep": false
+      },
+      {
+        "__type": "RollerMine",
+        "__guid": "f387172a-94d7-4729-aadf-021985a966d4"
+      }
+    ]
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "DontBreakAsTemplate": false,
+  "ResourceVersion": 1,
+  "__references": [
+    "igrium.rollermine-model#19481"
+  ],
+  "IsValid": true,
+  "__version": 1
+}

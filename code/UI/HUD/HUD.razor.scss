@@ -1,0 +1,243 @@
+$primary: #1a1a1a;
+$secondary: #242424;
+$tertiary: #fdc418;
+
+$button-primary: #ffffff !default;
+$button-primary-fg: #ffffff !default;
+$button-secondary: #282828 !default;
+$button-secondary-fg: #dadada !default;
+$button-size: 45px;
+
+
+HUD {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    justify-content: center;
+    align-items: center;
+    font-family: Tahoma;
+    font-weight: bold;
+    transition: all 0.1s linear;
+    font-family: Poppins;
+    color: white;
+
+    .items {
+        position: absolute;
+        right: 12px;
+        padding-bottom: 12px;
+
+        width: 300px;
+        height: 100%;
+
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-end;
+
+        .item {
+            height: 35px;
+            width: 100%;
+            background-color: $primary;
+            font-size: 20px;
+            opacity: 0.5;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.1s ease-out;
+            transition: height 0.1s ease-in;
+
+            .slot-number {
+                height: 100%;
+                margin-right: 8px;
+                width: 34px;
+                text-align: center;
+                align-items: center;
+                justify-content: center;
+                font-weight: bold;
+            }
+
+            .slot-text {
+                flex-grow: 1;
+                align-items: center;
+                justify-content: center;
+            }
+            
+            .slot-ammo
+            {
+                height: 100%;
+                width: 100px;
+                align-items: center;
+                justify-content: center;
+                font-weight: bold;
+            }
+
+            &.active {
+                opacity: 1;
+            }
+
+            &:first-child {
+                border-top-left-radius: 4px;
+                border-top-right-radius: 4px;
+
+                .slot-number {
+                    border-top-left-radius: 4px;
+                }
+            }
+
+            &:last-child {
+                border-bottom-left-radius: 4px;
+                border-bottom-right-radius: 4px;
+
+                .slot-number {
+                    border-bottom-left-radius: 4px;
+                }
+            }
+
+            &:outro,
+            &:intro {
+                height: 0;
+                opacity: 0;
+            }
+        }
+    }
+
+    >.score {
+        position: absolute;
+        top: 32px;
+        left: 32px;
+
+        font-size: 42px;
+
+        color: white;
+    }
+
+    .crosshair {
+        position: absolute;
+        border-radius: 50%;
+        background-color: white;
+        opacity: 0.3;
+        width: 4px;
+        height: 4px;
+    }
+
+    .healthholder 
+    {
+        position: absolute;
+        bottom: 12px;
+        left: 12px;
+        flex-direction: column;
+        gap: 16px;
+        width: 300px;
+
+        .health
+        {
+            width: 300px;
+            align-items: center;
+            height: 60px;
+    
+            .team {
+                padding: 4px 32px;
+                border-radius: 4 0 0 4;
+                justify-content: center;
+                align-items: center;
+                font-size: 30px;
+                font-weight: bold;
+    
+                background-color: $primary;
+                width: 60%;
+                height: 100%;
+            }
+    
+            .number {
+                width: 40%;
+                padding: 4px 12px;
+                border-radius: 0 4 4 0;
+                font-size: 30px;
+                font-weight: bold;
+                align-items: center;
+                justify-content: space-evenly;
+                height: 100%;
+                flex-shrink: 0;
+    
+                background-color: $primary;
+            }
+        }
+       
+    }
+
+    .timer
+    {
+        position: absolute;
+        top: 12px;
+        
+        font-size: 16px;
+        
+        font-weight: bold;
+
+        min-width: 200px;
+        height: 60px;
+
+        border-radius: 4px;
+        padding: 8px;
+
+        align-items: center;
+        justify-content: center;
+
+
+        .status
+        {
+            min-width: 50px;
+            padding: 16px;
+            height: 100%;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            background-color: $primary;
+            
+            border-radius: 4 0 0 4;
+
+            transition: width 0.1s ease-out;
+        }
+
+        .time
+        {
+            width: 90px;
+            height: 100%;
+            align-items: center;
+            padding: 16px;
+            justify-content: center;
+            background-color: #1e1e1ea2;
+            flex-shrink: 0;
+            
+            border-radius: 0 4 4 0;
+
+            transition: width 0.1s ease-out;
+        }
+    }
+
+    .about
+    {
+        width: 700px;
+        height: 600px;
+        background-color: $primary;
+        flex-direction: column;
+        border-radius: 4px;
+
+        padding: 24px;
+        border-radius: 4px;
+        pointer-events: all;
+        gap: 21px;
+        font-size: 26px;
+        overflow-y: scroll;
+        overflow-x: hidden;
+        align-items: flex-start;
+        justify-content: center;
+
+        >label
+        {
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+    }
+}

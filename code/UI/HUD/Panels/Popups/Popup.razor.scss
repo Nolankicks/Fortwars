@@ -1,0 +1,40 @@
+$primary: #1a1a1a;
+
+Popup {
+    transition: all 0.5s ease-in-out;
+    font-size: 16px;
+
+    position: relative;
+    
+    font-weight: bold;
+
+    width: 400px;
+    padding: 8px;
+    min-height: 70px;
+
+    align-items: center;
+    font-family: Poppins;
+    justify-content: flex-end;
+
+    .main {
+        height: 100%;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        font-size: 20px;
+        background-color: $primary;
+        border-radius: 4px;
+
+        padding: 14px;
+    }
+
+    &:intro
+    {
+        transform: translateX(100%);
+    }
+
+    &:outro
+    {
+        transform: translateX(100%);
+    }
+}

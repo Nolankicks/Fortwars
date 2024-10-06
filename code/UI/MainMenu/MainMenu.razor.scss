@@ -1,0 +1,358 @@
+$primary: #1a1a1a;
+$secondary: #242424;
+$tertiary: #fdc418;
+
+$button-primary: #ffffff !default;
+$button-primary-fg: #ffffff !default;
+$button-secondary: #282828 !default;
+$button-secondary-fg: #dadada !default;
+$button-size: 45px;
+
+MainMenu
+{
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	justify-content: center;
+	align-items: center;
+	font-weight: bold;
+    pointer-events: all;
+    font-family: Poppins;
+    color: white;
+
+	.buttons
+    {
+        position: absolute;
+        bottom: 32px;
+        left: 32px;
+        width: 500px;
+        align-items: center;
+        justify-content: center;
+
+        flex-direction: column;
+        gap: 16px;
+
+        .button
+        {
+            width: 100%;
+            font-size: 42px;
+            height: 100px;
+
+            border-radius: 4px;
+
+
+            background-color: $primary;
+            align-items: center;
+            justify-content: center;
+
+            &:hover
+            {
+                background-color: hsl(0, 0%, 20%);
+                sound-in: ui.button.over;
+                cursor: pointer;
+            }
+
+            &:active
+            {
+                background-color: hsl(0, 0%, 15%);
+                sound-in: ui.button.press;
+                cursor: pointer;
+            }
+        }
+    }
+
+    .title
+    {
+        position: absolute;
+        top: 32px;
+        left: 32px;
+
+        font-size: 64px;
+
+        gap: 12px;
+
+        color: white;
+    }
+
+    .lobbies
+    {
+        position: absolute;
+        right: 32px;
+        height: 95%;
+        width: 600px;
+
+        background-color: $primary;
+        justify-content: flex-start;
+        align-items: center;
+
+        padding: 16px;
+
+        border-radius: 4px;
+
+        flex-direction: column;
+
+        >.header
+        {
+            width: 100%;
+            height: 100px;
+            font-size: 42px;
+
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lobby-holder
+        {
+            width: 100%;
+            height: 100%;
+            gap: 16px;
+            align-items: center;
+            justify-content: flex-start;
+            background-color: $secondary;
+            border-radius: 4px;
+            flex-direction: column;
+            padding: 2px;
+            overflow-y: scroll;
+            overflow-x: hidden;
+
+            .info
+            {
+                width: 100%;
+                height: 100px;
+                font-size: 42px;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .lobby
+            {
+                width: 100%;
+                height: 100px;
+                font-size: 32px;
+                flex-shrink: 0;
+                background-color: $button-secondary;
+                align-items: center;
+                justify-content: center;
+                gap: 16px;
+
+                &:hover
+                {
+                    background-color: hsl(0, 0%, 20%);
+                    sound-in: ui.button.over;
+                    cursor: pointer;
+                }
+
+                &:active
+                {
+                    background-color: hsl(0, 0%, 15%);
+                    sound-in: ui.button.press;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+
+    .leaderboard
+    {
+        position: absolute;
+        right: 32px;
+        height: 95%;
+        width: 600px;
+
+        background-color: hsl(0, 0%, 11%);
+        border-color: hsl(0, 0%, 15%);
+        border-width: 6;
+        justify-content: flex-start;
+        align-items: center;
+
+        padding: 16px;
+
+        flex-direction: column;
+
+        >.header
+        {
+            width: 100%;
+            height: 100px;
+            font-size: 42px;
+
+            align-items: center;
+            justify-content: center;
+        }
+
+        .leaderboard-holder
+        {
+            width: 100%;
+            height: 100%;
+            gap: 16px;
+            align-items: center;
+            justify-content: flex-start;
+            background-color: hsl(0, 0%, 14%);
+            border-color: hsl(0, 0%, 20%);
+            border-width: 6;
+            flex-direction: column;
+            padding: 2px;
+            overflow-y: scroll;
+            overflow-x: hidden;
+
+            .info
+            {
+                width: 100%;
+                height: 100px;
+                font-size: 42px;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .entry
+            {
+                width: 100%;
+                height: 100px;
+                font-size: 42px;
+                flex-shrink: 0;
+                background-color: hsl(0, 0%, 11%);
+                border-color: hsl(0, 0%, 15%);
+                border-width: 6;
+                align-items: center;
+                justify-content: center;
+                gap: 16px;
+                padding: 12px;
+
+                &.me
+                {
+                    background-color: hsl(0, 0%, 19%);
+                }
+
+                .name
+                {
+                    flex-grow: 1;
+                    height: 100%;
+                    font-size: 32px;
+                    align-items: center;
+                    justify-content: flex-start;
+                    text-overflow: clip;
+                }
+
+                &:hover
+                {
+                    background-color: hsl(0, 0%, 20%);
+                    sound-in: ui.button.over;
+                    cursor: pointer;
+                }
+
+                &:active
+                {
+                    background-color: hsl(0, 0%, 15%);
+                    sound-in: ui.button.press;
+                    cursor: pointer;
+                }
+            }
+        }
+
+        .sort
+        {
+            width: 100%;
+            height: 100px;
+            font-size: 42px;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            margin: 12px;
+
+            .button
+            {
+                width: 100%;
+                font-size: 42px;
+                height: 100px;
+                background-color: hsl(0, 0%, 11%);
+                border-color: hsl(0, 0%, 15%);
+                border-width: 6;
+                align-items: center;
+                justify-content: center;
+
+                &:hover
+                {
+                    background-color: hsl(0, 0%, 20%);
+                    sound-in: ui.button.over;
+                    cursor: pointer;
+                }
+
+                &:active
+                {
+                    background-color: hsl(0, 0%, 15%);
+                    sound-in: ui.button.press;
+                    cursor: pointer;
+                }
+        }
+    }
+    }
+
+    .play
+    {
+        width: 500px;
+        height: 400px;
+
+        background-color: hsl(0, 0%, 11%);
+        border-color: hsl(0, 0%, 15%);
+        border-width: 6;
+        align-items: center;
+        justify-content: center;
+        padding: 16px;
+        gap: 16px;
+
+        flex-direction: column;
+
+        .button
+        {
+            width: 100%;
+            height: 100%;
+            font-size: 42px;
+            background-color: hsl(0, 0%, 11%);
+            border-color: hsl(0, 0%, 15%);
+            border-width: 6;
+            align-items: center;
+            justify-content: center;
+
+            &:hover
+            {
+                background-color: hsl(0, 0%, 20%);
+                sound-in: ui.button.over;
+                cursor: pointer;
+            }
+
+            &:active
+            {
+                background-color: hsl(0, 0%, 15%);
+                sound-in: ui.button.press;
+                cursor: pointer;
+            }
+        }
+    }
+
+    .about
+    {
+        width: 700px;
+        height: 600px;
+        background-color: $primary;
+        flex-direction: column;
+        border-radius: 4px;
+
+        padding: 24px;
+        border-radius: 4px;
+        pointer-events: all;
+        gap: 21px;
+        font-size: 26px;
+        overflow-y: scroll;
+        overflow-x: hidden;
+        align-items: flex-start;
+        justify-content: center;
+
+        >label
+        {
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+    }
+}

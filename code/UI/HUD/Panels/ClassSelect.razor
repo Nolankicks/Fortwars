@@ -1,0 +1,64 @@
+@using Sandbox;
+@using Sandbox.UI;
+@using System.Threading.Tasks;
+@using System;
+@inherits Panel
+@attribute [StyleSheet]
+
+<root>
+	<div class="main">
+		<div class="classes">
+		@foreach ( var playerClass in ResourceLibrary.GetAll<PlayerClass>() )
+		{
+			<div class="class" onclick=@( () => SelectedClass = playerClass)>@playerClass.ClassName</div>
+		}
+	</div>
+
+	<div class="description">
+		@if ( SelectedClass is not null )
+		{
+			<div class="header">@SelectedClass.ClassName</div>
+			<div class="body">@SelectedClass.ClassDescription</div>
+			<div class="class" onclick=@( () => SelectClass( SelectedClass ) )>Select</div>
+		}
+	</div>
+	</div>
+
+	<div class="close" onclick=@Close>close</div>
+</root>
+
+@code
+{
+	public Inventory Inventory { get; set; }
+
+	public PlayerClass SelectedClass { get; set; }
+
+	public static bool FirstTimeClosing { get; set; } = true;
+	
+
+	public void SelectClass( PlayerClass playerClass )
+	{
+		if ( !Inventory.IsValid() )
+			return;
+
+		Inventory.AddClass( playerClass );
+
+		Delete();
+	}
+
+	public void Close()
+	{
+		if ( FirstTimeClosing )
+		{
+			var popup = new Popup();
+			popup.Title = $"You can open this at anytime by pressing {Input.GetButtonOrigin( "view" )}";
+			popup.Time = 5;
+
+			PopupHolder.AddPopup( popup );
+
+			FirstTimeClosing = false;
+		}
+
+		Delete();
+	}
+}

@@ -1,0 +1,77 @@
+@using Sandbox;
+@using Sandbox.UI;
+@using Sandbox.Network;
+@inherits PanelComponent
+
+<root style="opacity: @( Visible ? "1" : "0");">
+	<div class="title">
+		<div>Fortwars</div>
+	</div>
+
+	<div class="buttons">
+		<div class="button" onclick=@( () => Visible = false )> Resume </div>
+		<div class="button" onclick=@( () => Game.Overlay.ShowServerList( new Sandbox.Modals.ServerListConfig( Game.Ident ) ) )> Servers </div>
+		<div class="button" onclick=@( () => Game.Overlay.ShowReviewModal( Package.Fetch( Game.Ident, false )?.Result ) )> Review </div>
+		<div class="button" onclick=@( () => ShowAboutMenu = !ShowAboutMenu )> About </div>
+		<div class="button" onclick=@( () => Game.Overlay.ShowSettingsModal() )> Settings </div>
+		<div class="button" onclick=@BackToMenu> Back to Menu </div>
+		<div class="button" onclick=@( () => Game.Close() )> Exit </div>
+	</div>
+
+	@if ( ShowAboutMenu )
+	{
+		<div class="about">
+					<label>
+						Fortwars is a fps game mode that consists of teams fighting for control of the ball while building forts out of props to provide cover. 
+					</label>
+					
+					<label>
+						Climb the scoreboard by killing enemies, retrieve the ball for your team, and destroy thosebases to win the game!
+					</label>
+
+					<label>
+						Build mode: 5 min
+					</label>
+
+					<label>
+						Fight mode: 10 min
+					</label>
+
+					<label>
+						Ball time held to win: 5 min
+					</label>
+
+					<div class="close" onclick=@( () => ShowAboutMenu = false )>close</div>
+		</div>
+	}
+</root>
+
+@code
+{
+	public bool Visible { get; set; } = false;
+	[Property] public SceneFile MenuScene { get; set; }
+	public bool ShowAboutMenu { get; set; } = false;
+
+	protected override void OnUpdate()
+	{
+		if ( Input.EscapePressed )
+		{
+			Visible = !Visible;
+
+			//Can't convince me this is not dumb
+			Input.EscapePressed = false;
+		}
+	}
+
+	public void BackToMenu()
+	{
+		Networking.Disconnect();
+
+		Game.ActiveScene.Load( MenuScene );
+	}
+
+	/// <summary>
+	/// the hash determines if the system should be rebuilt. If it changes, it will be rebuilt
+	/// </summary>
+	protected override int BuildHash() => System.HashCode.Combine( Input.EscapePressed, Visible );
+}

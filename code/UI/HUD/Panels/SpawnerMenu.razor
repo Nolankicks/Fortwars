@@ -1,0 +1,149 @@
+@using Sandbox;
+@using Sandbox.UI;
+@using System.Threading.Tasks;
+@using System;
+@using XGUI;
+@inherits Window
+@attribute [StyleSheet]
+
+<root title="Models" width="512px" height="406px" minwidth="512px" minheight="406px" style="align-items: center; justify-content: center;">
+	@{
+		var local = PlayerController.Local;
+		var gs = GameSystem.Instance;
+
+		if ( !local.IsValid() || !gs.IsValid() )
+			return;
+	}
+
+	<div class="models">
+		@if ( Models is null )
+			return;
+
+		@if ( Models.Count() == 0 && !FirstTime )
+		{
+			<div class="empty">
+				No models found
+			</div>
+		}
+		else if ( Models.Count() == 0 && FirstTime )
+		{
+			<div class="empty">
+				Loading models...
+			</div>
+		}
+		else
+		{
+			foreach ( var model in Models )
+			{
+				<button class="model" onclick=@( () =>
+				{
+					LoadModel( model.FullIdent, Propgun );
+					Delete();
+				} )>
+					<img src=@model?.Thumb/>
+				</button>
+			}
+		}
+	</div>
+
+	@if ( gs.ClassicModels )
+		return;
+	
+	<TextEntry @ref="Search" placeholder="Search..." onsubmit=@FetchModels />
+</root>
+
+@code
+{
+	public Propgun Propgun { get; set; }
+
+	public Package.FindResult Packages { get; set; }
+
+	public List<Package> Models { get; set; } = new();
+
+	public bool FirstTime { get; set; } = true;
+
+	TextEntry Search;
+
+
+	protected override void OnAfterTreeRender( bool firstTime )
+	{
+		base.OnAfterTreeRender( firstTime );
+
+		if ( !firstTime )
+			return;
+
+		FetchModels();
+	}
+
+	public async void FetchModels()
+	{
+		Log.Info( $"Fetching models: {Search?.Text}" );
+
+		var gs = GameSystem.Instance;
+
+		if ( !gs.IsValid() )
+			return;
+
+		List<Package> packages = new();
+
+		if ( gs.ClassicModels )
+		{
+			foreach ( var value in gs.ClassicIndents )
+			{
+				var package = await Package.Fetch( value.Key, false );
+
+				if ( package is null )
+					continue;
+
+				packages.Add( package );
+			}
+		}
+		else
+		{
+			var packageList = await Package.FindAsync( $"type:model sort:popular {Search?.Text}", 201 );
+
+			if ( packageList is not null )
+				packages = packageList.Packages?.ToList();
+		}
+
+		if ( packages is null )
+			return;
+
+		Models = packages;
+
+		FirstTime = false;
+
+		StateHasChanged();
+	}
+
+	[Broadcast]
+	public static async void LoadModel( string indent, Propgun propgun )
+	{
+		var package = await Package.Fetch( indent, false );
+
+		if ( package is null )
+			return;
+
+		var mounted = await package.MountAsync();
+
+		var model = package.GetMeta<Model>( "PrimaryAsset" );
+
+		if ( propgun.IsValid() && propgun.Network.IsOwner && model is not null )
+		{
+			propgun.Prop = model;
+			propgun.PropIdent = indent;
+		}
+
+		var gs = GameSystem.Instance;
+
+		if ( !gs.IsValid() )
+			return;
+
+		gs.MountedIndents.Add( indent );
+	}
+
+	protected override int BuildHash()
+	{
+		return System.HashCode.Combine( Models?.Count() );
+	}
+}

@@ -1,0 +1,137 @@
+@import "/XGUI/FunctionStyles/FunctionStyles.scss";
+@import "/UI/HUD/HUD.razor.scss";
+$window-close-button: url("XGUI/Resources/icon_close.png");
+
+SpawnerMenu
+{
+    background-color: $primary;
+    flex-direction: column;
+
+    pointer-events: all;
+    border-radius: 4px;
+
+    .main
+    {
+        width: 100%;
+        height: 100%;
+        padding: 16px;
+    }
+    
+    .models
+    {
+        padding: 16px;
+        width: 100%;
+        height: 100%;
+        overflow-y: scroll;
+        overflow-x: hidden;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        gap: 4px;
+
+        >.model
+        {
+            align-items: center;
+            justify-content: center;
+            padding: 6px;
+            width: 150px;
+            height: 150px;
+
+            .icon
+            {
+                width: 100%;
+                height: 100%;
+                color: white;
+            }
+
+            &.active
+            {
+                background-color: hsl(0, 0%, 20%);
+            }
+
+            >img
+            {
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+
+    .TitleBar
+    {
+        //align-items: center;
+        margin-bottom: 8px;
+        background-color: hsl(0, 0%, 20%);
+        border-radius: 4px;
+        height: 36px;
+
+        .CloseButton
+        {
+            height: 100%;
+            background-color: hsl(0, 0%, 20%);
+            border-radius: 4px;
+            background-size: 16px;
+            align-items: center;
+            justify-content: flex-start;
+
+            cursor: pointer;
+
+            &:hover
+            {
+                background-color: hsl(0, 0%, 30%);
+            }
+        }
+
+        .TitleLabel
+        {
+            height: 100%;
+            align-items: center;
+            justify-content: center;
+            padding: 8px;
+        }
+    }
+
+   
+    button
+    {
+        border-radius: 4px;
+        padding: 8px;
+        background-color: $secondary;
+        cursor: pointer;
+
+        &:hover
+        {
+            background-color: hsl(0, 0%, 30%);
+            
+            sound-in: ui.button.over;
+        }
+
+        &:active
+        {
+            background-color: hsl(0, 0%, 40%);
+
+            sound-in: ui.button.press;
+        }
+    }
+
+    .TextEntry {
+        padding: 5px;
+        height: 42px;
+        border-radius: 4px;
+        font-size: 18px;
+        margin: 14px;
+        align-items: center;
+
+
+        .content-label,
+	    .prefix-label,
+	    .suffix-label,
+	    .placeholder
+	    {
+            padding:0px;    
+        }
+
+        background-color: hsl(0, 0%, 20%);
+    }
+}

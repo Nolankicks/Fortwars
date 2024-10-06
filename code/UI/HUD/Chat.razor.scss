@@ -1,0 +1,85 @@
+Chat
+{
+	position: absolute;
+
+	left: 12px;
+	bottom: 300px;
+	width: 600px;
+    height: 400px;
+    
+	justify-content: center;
+	align-items: center;
+	font-weight: bolder;
+
+	flex-direction: column;
+	align-items: stretch;
+	font-size: 17px;
+	font-family: Poppins;
+	gap: 10px;
+
+	.output
+	{
+		flex-grow: 1;
+		flex-direction: column;
+		justify-content: flex-end;
+		align-items: stretch;
+		gap: 6px;
+        height: 75%;
+
+        overflow-x: hidden;
+        overflow-y: scroll;
+
+		.chat_entry
+		{
+			padding: 2px;
+			gap: 10px;
+			align-items: center;
+            flex-shrink: 0;
+
+			.avatar
+			{
+				width: 32px;
+				height: 32px;
+				background-position: center;
+				background-size: cover;
+				border-radius: 4px;
+			}
+
+			.author
+			{
+				white-space: nowrap;
+				flex-shrink: 0;
+			}
+
+			.message
+			{
+				color: #fff;
+			}
+		}
+	}
+
+	.input
+	{
+        height: 15%;
+
+		color: white;
+
+		.textentry
+		{
+			align-items: flex-start;
+			white-space: normal;
+		}
+	}
+
+	&.open
+	{
+		.input
+		{
+			background-color: hsl(0, 0%, 11%);
+            border-color: hsl(0, 0%, 15%);
+            border-width: 6;
+		}
+
+        pointer-events: all;
+	}
+}

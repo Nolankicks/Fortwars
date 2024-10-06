@@ -1,0 +1,27 @@
+@using Sandbox;
+@using Sandbox.UI;
+@using System.Threading.Tasks;
+@using System;
+@inherits Panel
+@attribute [StyleSheet]
+
+<root>
+	<div class="main">@Title</div>
+</root>
+
+@code
+{
+	public TimeUntil Time { get; set; } = 0;
+
+	public string Title { get; set; } = "Popup";
+
+	public override void Tick()
+	{
+		if ( Time )
+		{
+			AddClass( "outro" );
+
+			Invoke( 1f, () => Delete() );
+		}	
+	}
+}

@@ -1,0 +1,176 @@
+@using Sandbox;
+@using Sandbox.UI;
+@using System;
+@using Sandbox.Events;
+@inherits PanelComponent
+@implements IGameEventHandler<PlayerDamage>
+
+<root>
+	@{
+		var player = PlayerController.Local;
+
+		var gs = GameSystem.Instance;
+
+		if (!player.IsValid() || !gs.IsValid()) return;
+
+		if (!player.Inventory.IsValid())
+			return;
+	}
+
+	@if ( player.Inventory.ItemsData.Count() > 0)
+	{
+		<div class="items">
+		@for (int i = 0; i < player.Inventory.ItemsData.Count(); i++)
+		{
+			var index = i;
+
+			if ( player.Inventory.ItemsData.Count() <= index )
+				continue;
+
+			var item = player.Inventory.ItemsData.ElementAt( index );
+			var itemGb = player.Inventory.Items.ElementAt( index );
+
+			if ( item is null || !itemGb.IsValid() )
+				continue;
+
+			var itemComponent = itemGb.Components.Get<Item>( true );
+
+			<div class="item @(index == player.Inventory.Index && player.Inventory.CurrentItem.IsValid() ? "active" : "" )">
+				<div class="slot-number" style="background-color: @GetColor().Hex;">@(index + 1)</div>
+				<div class="slot-text">@item.Name</div>
+
+				@if ( itemComponent.IsValid() && itemComponent.UsesAmmo )
+				{
+					<div class="slot-ammo">@itemComponent?.Ammo / @itemComponent?.MaxAmmo</div>
+				}
+			</div>
+		}
+	</div>
+	}
+
+
+
+	<div class="crosshair"></div>
+		@{
+			var color = GetColor();
+		}
+
+		<div style="position: absolute; width: 300px; top: 12; left: 12;">
+			<TeamProgress />
+		</div>
+
+		<div class="healthholder">
+		<div class="health">
+			<div class="team" style="background-color: @GetColor().Hex;">@player.TeamComponent?.Team</div>
+			<div class="number">
+				✚<div>@player.HealthComponent?.Health</div>
+				</div>
+		</div>
+		</div>
+
+	<div class="timer">
+		<div class="status">@GetStateText( gs.State )</div>
+		<div class="time">@FormatedTimer()</div>
+	</div>
+
+	<Scoreboard style="opacity: @( ShowScoreboard ? "1" : "0");" />
+</root>
+
+@code
+{
+	public bool ShowScoreboard => Input.Down( "score" );
+
+	void IGameEventHandler<PlayerDamage>.OnGameEvent( PlayerDamage eventArgs )
+	{
+		Panel.FlashClass( "damage", 1f );
+		Log.Info( $"Player took damage" );
+	}
+
+	public string GetStateText( GameSystem.GameState gameState )
+	{
+		var gs = GameSystem.Instance;
+
+		if ( !gs.IsValid() )
+			return "Unknown";
+
+		switch ( gameState )
+		{
+			case GameSystem.GameState.Waiting:
+				return "Waiting";
+			case GameSystem.GameState.BuildMode:
+				return "Build Mode";
+			case GameSystem.GameState.FightMode:
+				return "Ongoing";
+			case GameSystem.GameState.Ended:
+				return "Ending";
+			case GameSystem.GameState.OvertimeBuild:
+				return "Overtime Build " + ( gs.Overtimes != 0 ? gs.Overtimes + 1 : "" );
+			case GameSystem.GameState.OvertimeFight:
+				return "Overtime Fight " + ( gs.Overtimes != 0 ? gs.Overtimes + 1 : "" );
+			default:
+				return "Unknown";
+		}
+	}
+
+	public Color GetColor()
+	{
+		switch ( PlayerController.Local?.TeamComponent?.Team )
+		{
+			case Team.Red:
+				return Color.Red;
+			case Team.Blue:
+				return Color.Blue;
+			case Team.Green:
+				return Color.Green;
+			case Team.Yellow:
+				return Color.Yellow;
+			default:
+				return "#1a1a1b";
+		}
+	}
+
+	public float GetTime()
+	{
+		var gs = Scene.GetAll<GameSystem>().FirstOrDefault();
+
+		if ( gs.IsValid() )
+		{
+			if ( gs.State == GameSystem.GameState.Waiting )
+			{
+				return gs.StateSwitch.Relative;
+			}
+			else
+			{
+				return gs.CurrentTime - gs.StateSwitch.Relative;
+			}
+		}
+
+		return 0;
+	}
+
+	public string FormatedTimer()
+	{
+		return $"{TimeSpan.FromSeconds( GetTime() ):mm\\:ss}";
+	}
+
+
+	/// <summary>
+	/// the hash determines if the system should be rebuilt. If it changes, it will be rebuilt
+	/// </summary>
+	protected override int BuildHash()
+	{
+		var hash = 0;
+
+		hash += System.HashCode.Combine(PlayerController.Local?.Inventory?.CurrentItem,
+		PlayerController.Local?.Inventory?.Items?.Count(), PlayerController.Local?.HealthComponent?.Health, PlayerController.Local?.TeamComponent?.Team, FormatedTimer(), ShowScoreboard );
+
+		var currentItem = PlayerController.Local?.Inventory?.CurrentItem;
+
+		if ( currentItem.IsValid() && currentItem.Components.TryGet<Item>( out var item ) && item.UsesAmmo )
+		{
+			hash += System.HashCode.Combine( item.Ammo );
+		}
+
+		return hash;
+	}
+}

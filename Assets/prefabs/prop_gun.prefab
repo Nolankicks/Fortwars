@@ -1,0 +1,95 @@
+{
+  "RootObject": {
+    "__guid": "a5118bba-4493-49c1-aef3-63013c7b83e2",
+    "Flags": 0,
+    "Name": "prop_gun",
+    "Enabled": true,
+    "Components": [
+      {
+        "__type": "Viewmodel",
+        "__guid": "ce11aa8c-a54e-4a5d-8ed0-d266231e1043",
+        "Renderer": {
+          "_type": "component",
+          "component_id": "ed68cf25-ab23-4bd7-8959-bb414ba3d3d8",
+          "go": "7a575244-1bd2-4b42-b9de-2c7a24d4cada",
+          "component_type": "SkinnedModelRenderer"
+        }
+      },
+      {
+        "__type": "Propgun",
+        "__guid": "0cedd94d-76f3-4c31-82dc-14ddcd516f68",
+        "HoldType": "Pistol",
+        "MaxAmmo": 30,
+        "Offset": "0,0,0",
+        "Prop": "models/sbox_props/wooden_crate/wooden_crate.vmdl",
+        "PropIdent": "facepunch.wooden_crate",
+        "UsesAmmo": false,
+        "WorldModel": "models/weapons/sbox_pistol_usp/w_usp.vmdl"
+      },
+      {
+        "__type": "Sandbox.SkinnedModelRenderer",
+        "__guid": "900c78e5-b5d5-4c0b-975a-9652e8b2ab45",
+        "BodyGroups": 21,
+        "BoneMergeTarget": {
+          "_type": "component",
+          "component_id": "ed68cf25-ab23-4bd7-8959-bb414ba3d3d8",
+          "go": "7a575244-1bd2-4b42-b9de-2c7a24d4cada",
+          "component_type": "SkinnedModelRenderer"
+        },
+        "CreateBoneObjects": false,
+        "Model": "models/first_person/first_person_arms.vmdl",
+        "Morphs": {},
+        "RenderOptions": {
+          "GameLayer": false,
+          "OverlayLayer": true,
+          "BloomLayer": false,
+          "AfterUILayer": false
+        },
+        "RenderType": "Off",
+        "Tint": "1,1,1,1",
+        "UseAnimGraph": true
+      }
+    ],
+    "Children": [
+      {
+        "__guid": "7a575244-1bd2-4b42-b9de-2c7a24d4cada",
+        "Flags": 0,
+        "Name": "gun",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.SkinnedModelRenderer",
+            "__guid": "ed68cf25-ab23-4bd7-8959-bb414ba3d3d8",
+            "BodyGroups": 547,
+            "CreateBoneObjects": false,
+            "MaterialOverride": "materials/dev/primary_white_emissive.vmat",
+            "Model": "models/weapons/sbox_pistol_usp/v_usp.vmdl",
+            "Morphs": {},
+            "RenderOptions": {
+              "GameLayer": false,
+              "OverlayLayer": true,
+              "BloomLayer": false,
+              "AfterUILayer": false
+            },
+            "RenderType": "Off",
+            "Tint": "1,1,1,1",
+            "UseAnimGraph": true
+          }
+        ]
+      }
+    ],
+    "__variables": []
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "DontBreakAsTemplate": false,
+  "ResourceVersion": 1,
+  "__references": [
+    "facepunch.v_usp#64712",
+    "facepunch.w_usp#17493",
+    "facepunch.wooden_crate#29138"
+  ],
+  "IsValid": true,
+  "__version": 1
+}

@@ -1,0 +1,92 @@
+{
+  "RootObject": {
+    "__guid": "3aa8eae1-a187-4dec-914a-d4e86fa4cb7f",
+    "Flags": 0,
+    "Name": "fortwarsphysgun",
+    "Enabled": true,
+    "Components": [
+      {
+        "__type": "Viewmodel",
+        "__guid": "ff3254c1-8c59-426c-bb8b-77c61290eec4",
+        "Renderer": {
+          "_type": "component",
+          "component_id": "ed68cf25-ab23-4bd7-8959-bb414ba3d3d8",
+          "go": "f0b6ea72-794b-4a22-90d6-a6d8fabcf378",
+          "component_type": "SkinnedModelRenderer"
+        }
+      },
+      {
+        "__type": "Physgun",
+        "__guid": "310b6a92-94d6-4c64-9bdd-c082fb7fc75a",
+        "HoldType": "Pistol",
+        "MaxAmmo": 30,
+        "Offset": "0,0,0",
+        "UsesAmmo": false,
+        "WorldModel": "models/weapons/sbox_pistol_usp/w_usp.vmdl"
+      },
+      {
+        "__type": "Sandbox.SkinnedModelRenderer",
+        "__guid": "3411e326-bf60-42de-b9a5-e2b38e4dfd3a",
+        "BodyGroups": 21,
+        "BoneMergeTarget": {
+          "_type": "component",
+          "component_id": "ed68cf25-ab23-4bd7-8959-bb414ba3d3d8",
+          "go": "f0b6ea72-794b-4a22-90d6-a6d8fabcf378",
+          "component_type": "SkinnedModelRenderer"
+        },
+        "CreateBoneObjects": false,
+        "Model": "models/first_person/first_person_arms.vmdl",
+        "Morphs": {},
+        "RenderOptions": {
+          "GameLayer": false,
+          "OverlayLayer": true,
+          "BloomLayer": false,
+          "AfterUILayer": false
+        },
+        "RenderType": "Off",
+        "Tint": "1,1,1,1",
+        "UseAnimGraph": true
+      }
+    ],
+    "Children": [
+      {
+        "__guid": "f0b6ea72-794b-4a22-90d6-a6d8fabcf378",
+        "Flags": 0,
+        "Name": "gun",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.SkinnedModelRenderer",
+            "__guid": "ed68cf25-ab23-4bd7-8959-bb414ba3d3d8",
+            "BodyGroups": 579,
+            "CreateBoneObjects": false,
+            "MaterialOverride": "materials/dev/primary_white_emissive.vmat",
+            "Model": "models/weapons/sbox_pistol_usp/v_usp.vmdl",
+            "Morphs": {},
+            "RenderOptions": {
+              "GameLayer": false,
+              "OverlayLayer": true,
+              "BloomLayer": false,
+              "AfterUILayer": false
+            },
+            "RenderType": "Off",
+            "Tint": "0,0.05,1,1",
+            "UseAnimGraph": true
+          }
+        ]
+      }
+    ],
+    "__variables": []
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "DontBreakAsTemplate": false,
+  "ResourceVersion": 1,
+  "__references": [
+    "facepunch.v_usp#64712",
+    "facepunch.w_usp#17493"
+  ],
+  "IsValid": true,
+  "__version": 1
+}

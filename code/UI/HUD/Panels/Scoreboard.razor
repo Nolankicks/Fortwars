@@ -1,0 +1,128 @@
+@using Sandbox;
+@using Sandbox.UI;
+@using System;
+@attribute [StyleSheet]
+@inherits Panel
+
+<root>
+	@{
+		var gs = GameSystem.Instance;
+
+		if (!gs.IsValid()) return;
+	}
+
+	<div class="team-column blue">
+
+		<div class="title">Blue</div>
+
+		<div class="holder">
+			@foreach ( var player in gs.BlueTeam )
+			{
+			var controller = player?.Components?.Get<PlayerController>();
+
+			if ( !controller.IsValid() )
+				return;
+
+			<div class="player blue">
+				<div class="name blue">@player?.GameObject?.Network.Owner?.DisplayName</div>
+				<div class="score">@controller.Kills / @controller.Deaths</div>
+			</div>
+			}
+		</div>
+	</div>
+
+	<div class="team-column red">
+
+		<div class="title">Red</div>
+
+		<div class="holder">
+			@foreach ( var player in gs.RedTeam )
+			{
+			var controller = player?.Components?.Get<PlayerController>();
+
+			if ( !controller.IsValid() )
+				return;
+
+			<div class="player red">
+				<div class="name red">@player?.GameObject?.Network.Owner?.DisplayName</div>
+				<div class="score">@controller.Kills / @controller.Deaths</div>
+			</div>
+			}
+		</div>
+	</div>
+
+	@if ( gs.NoneTeam.Count() > 0 )
+	{
+		<div class="team-column none">
+			
+			<div class="title">None</div>
+
+			<div class="holder">
+				@foreach ( var player in gs.NoneTeam )
+				{
+				var controller = player?.Components?.Get<PlayerController>();
+
+				if ( !controller.IsValid() )
+					return;
+
+				<div class="player">
+					<div class="name none" style="width: 100%;">@controller.GameObject?.Network.Owner?.DisplayName</div>
+				</div>
+				}
+			</div>
+		</div>
+	}
+
+	@if ( !gs.FourTeams )
+		return;
+
+	<div class="team-column yellow">
+
+		<div class="title">Yellow</div>
+
+		<div class="holder">
+			@foreach ( var player in gs.YellowTeam )
+			{
+			var controller = player?.Components?.Get<PlayerController>();
+
+				if ( !controller.IsValid() )
+					return;
+
+			<div class="player yellow">
+				<div class="name yellow">@player?.GameObject?.Network.Owner?.DisplayName</div>
+				<div class="score">@controller.Kills / @controller.Deaths</div>
+			</div>
+			}
+		</div>
+	</div>
+
+	<div class="team-column green">
+
+		<div class="title">Green</div>
+
+		<div class="holder">
+			@foreach ( var player in gs.GreenTeam )
+			{
+			var controller = player?.Components?.Get<PlayerController>();
+
+				if ( !controller.IsValid() )
+					return;
+
+			<div class="player green">
+				<div class="name green">@player?.GameObject?.Network.Owner?.DisplayName</div>
+				<div class="score">@controller.Kills / @controller.Deaths</div>
+			</div>
+			}
+		</div>
+	</div>
+</root>
+
+@code
+{
+	protected override int BuildHash()
+	{
+		var gs = GameSystem.Instance;
+
+		return HashCode.Combine( gs?.BlueTeam?.Count(), gs?.RedTeam?.Count(), gs?.YellowTeam?.Count(), gs?.GreenTeam?.Count(), gs?.NoneTeam?.Count(), gs?.FourTeams, gs?.TotalKills );
+	}
+}

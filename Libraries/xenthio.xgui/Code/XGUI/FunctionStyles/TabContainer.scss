@@ -1,0 +1,35 @@
+﻿.TabContainer {
+    flex-direction: column;
+
+    > .tabs {
+
+        > .button {
+
+            &.active {
+            }
+
+            &:hover {
+            }
+        }
+    }
+
+
+    > .sheets {
+        z-index: -1;
+        flex-direction: column;
+        flex-grow: 1;
+
+        tab {
+            flex-grow: 1;
+
+            div {
+                flex-grow: 0;
+                flex-direction: column;
+            }
+        }
+
+        > :not( .active ) {
+            display: none;
+        }
+    }
+}

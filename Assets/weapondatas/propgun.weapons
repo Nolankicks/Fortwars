@@ -1,0 +1,11 @@
+{
+  "Name": "Prop Gun",
+  "Icon": null,
+  "WeaponPrefab": {
+    "_type": "gameobject",
+    "prefab": "prefabs/prop_gun.prefab"
+  },
+  "__references": [],
+  "IsValid": true,
+  "__version": 0
+}

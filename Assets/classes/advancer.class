@@ -1,0 +1,12 @@
+{
+  "WeaponData": "weapondatas/mp5.weapons",
+  "ClassName": "Advancer",
+  "ClassDescription": "This class is armed with an MP5 with a high rate of fire and moves at a medium speed. Advancer\u0027s special ability is a must have, allowing this class to be one of the most agile, and great for ball control. ",
+  "ClassIcon": null,
+  "WalkSpeed": 400,
+  "RunSpeed": 550,
+  "Health": 80,
+  "__references": [],
+  "IsValid": true,
+  "__version": 0
+}

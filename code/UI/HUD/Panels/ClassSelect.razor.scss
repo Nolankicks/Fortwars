@@ -1,0 +1,166 @@
+$primary: #1a1a1a;
+$secondary: #242424;
+$tertiary: #fdc418;
+
+$button-primary: #ffffff !default;
+$button-primary-fg: #ffffff !default;
+$button-secondary: #282828 !default;
+$button-secondary-fg: #dadada !default;
+$button-size: 45px;
+
+ClassSelect {
+    position: relative;
+    pointer-events: all;
+
+    width: 800px;
+    height: 500px;
+
+    padding: 16px;
+
+    background-color: #1a1a1a;
+    opacity: 0.99;
+    color: #c8c8c8;
+    font-family: Poppins;
+    flex-direction: column;
+    font-size: 13px;
+
+    border-radius: 4px;
+
+    .main {
+        width: 100%;
+        height: 100%;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .classes {
+        flex-direction: row;
+        color: #c8c8c8;
+        width: 100%;
+        height: 100%;
+        align-items: flex-start;
+        justify-content: center;
+        flex-shrink: 1;
+
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 24px;
+        align-items: center;
+        justify-content: center;
+
+        overflow-x: hidden;
+        overflow-y: scroll;
+        padding: 16px;
+
+       
+    }
+
+    .description {
+        flex-direction: row;
+        width: 100%;
+        height: 100%;
+        font-size: 42px;
+        align-items: flex-start;
+        justify-content: center;
+        color: white;
+        padding: 16px;
+        font-family: Poppins;
+
+        flex-direction: column;
+        align-items: center;
+
+        .header {
+            width: 100%;
+            font-size: 42px;
+            height: 150px;
+
+            align-items: center;
+            justify-content: center;
+        }
+
+        .body {
+            width: 100%;
+            height: 100%;
+            overflow-x: hidden;
+            overflow-y: scroll;
+            font-size: 22px;
+            align-items: flex-start;
+            justify-content: center;
+            text-align: center;
+            padding: 2px;
+        }
+
+        .button {
+            width: 100%;
+            font-size: 42px;
+            height: 100px;
+            align-items: center;
+            justify-content: center;
+            font-family: Tahoma;
+        }
+    }
+
+    .class {
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+        font-family: Poppins;
+        font-size: 16px;
+        cursor: pointer;
+        padding: 5px;
+        color: $button-primary-fg;
+        min-height: $button-size;
+        flex-shrink: 0;
+        align-items: center;
+        margin-right: 5px;
+        transition: color 0.15s ease-out;
+        transition: background-color 0.15s ease-out;
+        background-color: $secondary;
+
+        border-radius: 4px;
+
+        font-size: 24px;
+
+        &:hover {
+            color: $button-secondary-fg;
+            background-color: $button-secondary;
+
+            sound-in: ui.button.over;
+        }
+
+        &:active {
+            color: $button-primary-fg;
+            background-color: $secondary;
+
+            sound-in: ui.button.press;
+        }
+    }
+
+    .close
+    {
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        align-items: center;
+        justify-content: center;
+        font-family: Material Icons;
+        background-color: $secondary;
+        width: 32px;
+        height: 32px;
+
+        font-size: 32px;
+
+        cursor: pointer;
+        border-radius: 4px;
+
+        &:hover {
+            background-color: $button-secondary;
+        }
+
+        &:active
+        {
+            background-color: $secondary;
+        }
+    }
+}
