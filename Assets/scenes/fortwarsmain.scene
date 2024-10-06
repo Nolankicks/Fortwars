@@ -66,10 +66,10 @@
           "__version": 1,
           "AutoExposureEnabled": true,
           "ExposureBias": 2,
-          "ExposureCompensation": 0,
+          "ExposureCompensation": 0.2,
           "ExposureMethod": "RGB",
           "MaximumExposure": 2.65,
-          "MinimumExposure": 1.23,
+          "MinimumExposure": 1.5,
           "Mode": "Legacy",
           "Rate": 8.57
         },
