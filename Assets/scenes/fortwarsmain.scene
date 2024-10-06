@@ -52,7 +52,7 @@
             }
           ],
           "Mode": "Blur",
-          "Strength": 0.2,
+          "Strength": 0.15,
           "Threshold": 0.5,
           "ThresholdWidth": 0
         },
