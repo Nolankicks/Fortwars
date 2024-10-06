@@ -39,3 +39,6 @@ Exports/
 /Libraries/xenthio.xgui/Editor
 /code/obj
 /code/obj
+code/fortwars.csproj
+code/fortwars.csproj
+Editor/fortwars.editor.csproj

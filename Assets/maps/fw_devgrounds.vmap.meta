@@ -1,10 +1,10 @@
 {
   "publish": {
-    "Enabled": false,
+    "Enabled": true,
     "ProjectConfig": {
       "Title": "fw_devgrounds",
       "Type": "map",
-      "Org": "local",
+      "Org": "nolankicks",
       "Ident": "fw_devgrounds",
       "Schema": 0,
       "IncludeSourceFiles": false,

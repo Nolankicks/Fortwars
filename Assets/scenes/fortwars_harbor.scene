@@ -201,7 +201,7 @@
           "__guid": "34cb13ba-2571-44e4-a1be-bbb2cf11b64c",
           "__version": 1,
           "EnableCollision": true,
-          "MapName": "maps/fw_devgrounds.vmap",
+          "MapName": "nolankicks.fw_devgrounds",
           "NoOrigin": false,
           "OnMapLoaded": null,
           "OnMapUnloaded": null,
