@@ -6,39 +6,24 @@
 .vs/*
 .vscode/*
 *.csproj
-obj/*
-bin/*
+obj
+bin
 Properties/*
 code/obj/*
 code/Properties/*
-Libraries/obj/*
 
-.sbox/*
+# Standalone Builds
+Exports/*
 
 # Auto-generated asset related files
+.sbox/*
 *.generated.*
 *.*_c
 !*.shader_c
 *.los
 *.vpk
+
 *launchSettings.json
 *.sln
 
 *idea
-*csproj
-
-# Exported / standalone games
-Exports/
-*.csproj
-
-/Libraries/facepunch.libevents/UnitTests
-*.weapons_c
-*.vtex_c
-/Libraries/xenthio.xgui/Editor/obj
-/Libraries/facepunch.libstates/UnitTests
-/Libraries/xenthio.xgui/Editor
-/code/obj
-/code/obj
-code/fortwars.csproj
-code/fortwars.csproj
-Editor/fortwars.editor.csproj
