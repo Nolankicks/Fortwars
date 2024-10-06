@@ -32,3 +32,5 @@ Exports/
 *.csproj
 
 /Libraries/facepunch.libevents/UnitTests
+*.weapons_c
+*.vtex_c
