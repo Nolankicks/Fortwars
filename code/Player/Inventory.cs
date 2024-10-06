@@ -1,7 +1,6 @@
-using System;
-using Sandbox;
 using Sandbox.Citizen;
 using Sandbox.Events;
+using System;
 
 public record OnItemEquipped() : IGameEvent;
 
@@ -46,7 +45,7 @@ public sealed class Inventory : Component
 		var temp = Items[index1];
 		Items[index1] = Items[index2];
 		Items[index2] = temp;
-		
+
 		var tempData = ItemsData[index1];
 		ItemsData[index1] = ItemsData[index2];
 		ItemsData[index2] = tempData;
@@ -57,7 +56,7 @@ public sealed class Inventory : Component
 			Index = index1;
 	}
 
-	[Description("Swaps the items in the inventory, please null check the GameObjects before calling this method.")]
+	[Description( "Swaps the items in the inventory, please null check the GameObjects before calling this method." )]
 	public void SwapItems( GameObject gb1, GameObject gb2 )
 	{
 		if ( !gb1.IsValid() || !gb2.IsValid() )
@@ -69,7 +68,7 @@ public sealed class Inventory : Component
 		if ( index1 == -1 || index2 == -1 )
 			return;
 
-		SwapItems( index1, index2  );
+		SwapItems( index1, index2 );
 	}
 
 	protected override void OnUpdate()
@@ -106,7 +105,7 @@ public sealed class Inventory : Component
 		{
 			var local = PlayerController.Local;
 
-			if ( !local.IsValid() || ( !local?.CanMoveHead ?? false ) )
+			if ( !local.IsValid() || (!local?.CanMoveHead ?? false) )
 				return;
 
 			Index = (Index - Math.Sign( Input.MouseWheel.y )) % Items.Count();
@@ -232,9 +231,9 @@ public sealed class Inventory : Component
 
 		if ( dataIndex < 0 || dataIndex >= ItemsData.Count() )
 			return;
-		
+
 		ItemsData.RemoveAt( Items.IndexOf( item ) );
-		
+
 		if ( Items.Contains( item ) )
 			Items.Remove( item );
 
@@ -283,7 +282,7 @@ public sealed class Inventory : Component
 	[Authority]
 	public void ChangeItem( int index, List<GameObject> items )
 	{
-		if ( index < 0 || index >= items?.Count() || items is null )
+		if ( index < 0 || index >= items?.Count() || items is null || items.ElementAt( index ) == CurrentItem )
 			return;
 
 		Index = index;
@@ -321,7 +320,7 @@ public sealed class Inventory : Component
 
 		CurrentWeaponData = null;
 	}
-	
+
 	[Authority]
 	public void ClearSelectedClass()
 	{
@@ -398,7 +397,7 @@ public sealed class Inventory : Component
 		var classSelect = new ClassSelect();
 
 		classSelect.Inventory = this;
-		
+
 		hud.Panel.AddChild( classSelect );
 
 		Log.Info( "Opened class select" );
