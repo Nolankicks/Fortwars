@@ -30,7 +30,6 @@
         {
           "__type": "Sandbox.Bloom",
           "__guid": "26b899ea-47a8-44f3-a7a8-9ed32f9053cd",
-          "__enabled": false,
           "BloomColor": {
             "color": [
               {
@@ -60,6 +59,39 @@
         {
           "__type": "Sandbox.Highlight",
           "__guid": "06337347-e646-45cb-a748-58a9499e3d23"
+        },
+        {
+          "__type": "Sandbox.Tonemapping",
+          "__guid": "7d61b0e8-36ab-4920-81b8-0b15a6e592ce",
+          "__version": 1,
+          "AutoExposureEnabled": true,
+          "ExposureBias": 2,
+          "ExposureCompensation": 0,
+          "ExposureMethod": "RGB",
+          "MaximumExposure": 3,
+          "MinimumExposure": 1,
+          "Mode": "ACES",
+          "Rate": 1
+        },
+        {
+          "__type": "Sandbox.AmbientOcclusion",
+          "__guid": "92e90f3b-e0cb-431d-81a1-2ccd06c26a1c",
+          "FalloffDistance": 1,
+          "Intensity": 8,
+          "Quality": "High",
+          "Radius": 32
+        },
+        {
+          "__type": "Sandbox.CubemapFog",
+          "__guid": "c1a33f6c-3dd9-4e55-a091-d9d11d6c9bcf",
+          "Blur": 0.5,
+          "EndDistance": 4096,
+          "FalloffExponent": 1,
+          "HeightExponent": 2,
+          "HeightStart": 2000,
+          "HeightWidth": 0,
+          "StartDistance": 2496,
+          "Tint": "1,1,1,1"
         }
       ]
     },
@@ -1499,7 +1531,7 @@
           "FogStrength": 1,
           "LightColor": "0,0.18333,1,1",
           "Radius": 400,
-          "Shadows": true
+          "Shadows": false
         }
       ]
     },
@@ -1519,7 +1551,7 @@
           "FogStrength": 1,
           "LightColor": "1,0,0,1",
           "Radius": 400,
-          "Shadows": true
+          "Shadows": false
         }
       ]
     },
