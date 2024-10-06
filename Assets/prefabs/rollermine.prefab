@@ -3,7 +3,7 @@
     "__guid": "39ef8517-7e7e-45e6-b649-a5a0aa4cdedd",
     "Flags": 0,
     "Name": "rollermine",
-    "Tags": "rollermine",
+    "Tags": "rollermine,light_point,light",
     "Enabled": true,
     "NetworkMode": 1,
     "Components": [
@@ -122,6 +122,16 @@
           }
         ],
         "Wireframe": false
+      },
+      {
+        "__type": "Sandbox.PointLight",
+        "__guid": "71d72345-f061-44f1-9f54-cf24f1094d95",
+        "Attenuation": 10,
+        "FogMode": "Enabled",
+        "FogStrength": 1,
+        "LightColor": "0.13953,0.79922,1,1",
+        "Radius": 40,
+        "Shadows": false
       }
     ],
     "Children": [
