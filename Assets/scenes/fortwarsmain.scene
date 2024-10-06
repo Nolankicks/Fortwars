@@ -1519,19 +1519,19 @@
       "__guid": "dc27d8d0-79e7-4654-9f0e-8de04a99370f",
       "Flags": 0,
       "Name": "Point Light",
-      "Position": "-768,480,160",
+      "Position": "-768,480,106.7836",
       "Tags": "light_point,light",
       "Enabled": true,
       "Components": [
         {
           "__type": "Sandbox.PointLight",
           "__guid": "19ede3b8-ab18-421d-9c16-f7b8bb136f90",
-          "Attenuation": 0.04,
+          "Attenuation": 0.16,
           "FogMode": "Enabled",
           "FogStrength": 1,
           "LightColor": "0,0.18333,1,1",
-          "Radius": 400,
-          "Shadows": false
+          "Radius": 408.4999,
+          "Shadows": true
         }
       ]
     },
@@ -1539,19 +1539,19 @@
       "__guid": "750f0f75-4aa9-4926-a3cb-45349c83766e",
       "Flags": 0,
       "Name": "Point Light (1)",
-      "Position": "768,480,160",
+      "Position": "751.6962,480,123.3543",
       "Tags": "light_point,light",
       "Enabled": true,
       "Components": [
         {
           "__type": "Sandbox.PointLight",
           "__guid": "6d219096-209f-449e-b298-82dd3dfdff04",
-          "Attenuation": 0.04,
+          "Attenuation": 0.49,
           "FogMode": "Enabled",
           "FogStrength": 1,
           "LightColor": "1,0,0,1",
-          "Radius": 400,
-          "Shadows": false
+          "Radius": 566.4001,
+          "Shadows": true
         }
       ]
     },

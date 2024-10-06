@@ -1,10 +1,4 @@
-using System;
-using System.Collections.Specialized;
-using System.Net.Http.Headers;
-using System.Threading.Tasks;
-using Sandbox;
 using Sandbox.Events;
-using Sandbox.UI;
 
 public sealed class Propgun : Item
 {
@@ -81,12 +75,18 @@ public sealed class Propgun : Item
 			if ( !player.IsValid() )
 				return;
 
-			var tr = Scene.Trace.Ray( player.Eye.WorldPosition, player.Eye.WorldPosition + player.Eye.WorldRotation.Forward * 1000 )
+			Vector3 ObjectPos = player.Eye.WorldPosition + player.Eye.WorldRotation.Forward * 100.0f;
+
+			var tr = Scene.Trace
+				.Box( Prop.Bounds.Rotate( PropRotation ), player.Eye.WorldPosition, player.Eye.WorldPosition + player.Eye.WorldRotation.Forward * 200.0f )
 				.IgnoreGameObjectHierarchy( GameObject.Root )
 				.Run();
 
-			if ( !tr.Hit )
-				return;
+			if ( tr.Hit )
+			{
+				ObjectPos = tr.HitPosition;
+			}
+
 
 			var gizmo = Gizmo.Draw.Model( Prop.ResourcePath );
 			gizmo.ColorTint = Color.White.WithAlpha( 0.5f );
@@ -95,7 +95,7 @@ public sealed class Propgun : Item
 
 			player.CanMoveHead = !Input.Down( "attack2" );
 
-			if ( Input.Pressed( "destroy" ) && ( tr.GameObject?.Root?.Components.TryGet<Prop>( out var prop, FindMode.EverythingInSelfAndDescendants ) ?? false) )
+			if ( tr.Hit && Input.Pressed( "destroy" ) && (tr.GameObject?.Root?.Components.TryGet<Prop>( out var prop, FindMode.EverythingInSelfAndDescendants ) ?? false) )
 			{
 				tr.GameObject.Root.Destroy();
 			}
@@ -103,7 +103,6 @@ public sealed class Propgun : Item
 			if ( Input.Down( "attack2" ) )
 			{
 				var rot = Input.AnalogLook.WithRoll( 0 );
-
 
 				PropRotation += new Angles( -rot.pitch, -rot.yaw, 0 );
 			}
@@ -126,20 +125,20 @@ public sealed class Propgun : Item
 				switch ( currentTeam )
 				{
 					case Team.Red:
-						if (gs.RedProps.Count() >= gs.MaxProps)
-						return;
+						if ( gs.RedProps.Count() >= gs.MaxProps )
+							return;
 						break;
 					case Team.Blue:
-						if (gs.BlueProps.Count() >= gs.MaxProps)
-						return;
+						if ( gs.BlueProps.Count() >= gs.MaxProps )
+							return;
 						break;
 					case Team.Green:
-						if (gs.GreenProps.Count() >= gs.MaxProps)
-						return;
+						if ( gs.GreenProps.Count() >= gs.MaxProps )
+							return;
 						break;
 					case Team.Yellow:
-						if (gs.YellowProps.Count() >= gs.MaxProps)
-						return;
+						if ( gs.YellowProps.Count() >= gs.MaxProps )
+							return;
 						break;
 				}
 
@@ -151,7 +150,7 @@ public sealed class Propgun : Item
 
 				renderer.Model = Prop;
 
-				gb.WorldPosition = tr.EndPosition.SnapToGrid( 15 );
+				gb.WorldPosition = ObjectPos.SnapToGrid( 15 );
 				gb.WorldRotation = PropRotation.SnapToGrid( 15 );
 
 				var fortWarsProp = gb.Components.Create<FortwarsProp>();
@@ -163,7 +162,7 @@ public sealed class Propgun : Item
 
 				fortWarsProp.Prop = renderer;
 
-				if (PropIdent is not null && (gs.ClassicIndents?.TryGetValue( PropIdent, out var propHealth ) ?? false) && propHealth > 0 )
+				if ( PropIdent is not null && (gs.ClassicIndents?.TryGetValue( PropIdent, out var propHealth ) ?? false) && propHealth > 0 )
 					renderer.Health = propHealth;
 
 				if ( gb.Components.TryGet<Rigidbody>( out var rb, FindMode.EverythingInSelfAndParent ) )
