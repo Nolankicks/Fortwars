@@ -84,7 +84,7 @@ public sealed class Propgun : Item
 
 			if ( tr.Hit )
 			{
-				ObjectPos = tr.HitPosition;
+				ObjectPos = tr.EndPosition;
 			}
 
 
@@ -92,6 +92,10 @@ public sealed class Propgun : Item
 			gizmo.ColorTint = Color.White.WithAlpha( 0.5f );
 			gizmo.Rotation = PropRotation.SnapToGrid( 15 );
 			gizmo.Position = tr.EndPosition.SnapToGrid( 15 );
+			if ( !tr.Hit )
+			{
+				gizmo.ColorTint = Color.Red.WithAlpha( 0.5f );
+			}
 
 			player.CanMoveHead = !Input.Down( "attack2" );
 
@@ -113,7 +117,7 @@ public sealed class Propgun : Item
 			}
 
 
-			if ( Input.Pressed( "attack1" ) )
+			if ( tr.Hit && Input.Pressed( "attack1" ) )
 			{
 				var currentTeam = player.TeamComponent?.Team;
 
