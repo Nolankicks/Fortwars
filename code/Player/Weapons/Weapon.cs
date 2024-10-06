@@ -184,7 +184,11 @@ public sealed class Weapon : Item
 
 		SubtractAmmo();
 
-		BroadcastFireEffects( WorldPosition, tr.HitPosition, tr.Normal, true );
+		// Shitty hack
+		if ( tr.GameObject.Components.TryGet<PlayerController>( out var player ) )
+			BroadcastFireEffects( WorldPosition, 0, 0 );
+		else
+			BroadcastFireEffects( WorldPosition, tr.HitPosition, tr.Normal, true );
 	}
 
 	[Broadcast]
