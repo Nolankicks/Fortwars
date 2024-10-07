@@ -83,16 +83,20 @@ public sealed class Propgun : Item
 				.IgnoreGameObjectHierarchy( GameObject.Root )
 				.Run();
 
-			if ( tr.Hit && (MustBeUp && tr.Normal == Vector3.Up) )
+			if ( tr.Hit )
 			{
 				ObjectPos = tr.EndPosition;
 			}
+
+			ObjectPos = ObjectPos.SnapToGrid( 15, true, true, false );
 
 
 			var gizmo = Gizmo.Draw.Model( Prop.ResourcePath );
 			gizmo.ColorTint = Color.White.WithAlpha( 0.5f );
 			gizmo.Rotation = PropRotation.SnapToGrid( 15 );
-			gizmo.Position = tr.EndPosition.SnapToGrid( 15 );
+			gizmo.Position = ObjectPos;
+
+
 			if ( !tr.Hit )
 			{
 				gizmo.ColorTint = Color.Red.WithAlpha( 0.5f );
@@ -121,7 +125,7 @@ public sealed class Propgun : Item
 			}
 
 
-			if ( tr.Hit && (MustBeUp && tr.Normal == Vector3.Up) && Input.Pressed( "attack1" ) )
+			if ( tr.Hit && Input.Pressed( "attack1" ) )
 			{
 				var currentTeam = player.TeamComponent?.Team;
 
