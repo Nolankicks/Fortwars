@@ -20,6 +20,7 @@
         "__guid": "0cedd94d-76f3-4c31-82dc-14ddcd516f68",
         "HoldType": "Pistol",
         "MaxAmmo": 30,
+        "MustBeUp": true,
         "Offset": "0,0,0",
         "Prop": "models/sbox_props/wooden_crate/wooden_crate.vmdl",
         "PropIdent": "facepunch.wooden_crate",

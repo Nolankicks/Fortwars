@@ -145,7 +145,7 @@ public class Physgun : Item
 		if ( !body.IsValid() ) return;
 
 		// Don't move keyframed unless it's a player
-		if ( body.BodyType == PhysicsBodyType.Keyframed && !rootObject.Tags.Has( "player" ) || rootObject.Components.TryGet<WallComponent>( out var w, FindMode.EverythingInSelfAndParent ) ) return;
+		if ( body.BodyType == PhysicsBodyType.Keyframed && !rootObject.Tags.Has( "player" ) || rootObject.Components.TryGet<WallComponent>( out var w, FindMode.EverythingInSelfAndParent ) || tr.GameObject.Components.TryGet<MapCollider>( out var m, FindMode.EverythingInSelfAndParent ) ) return;
 
 		// Unfreeze
 		if ( body.BodyType != PhysicsBodyType.Dynamic )
@@ -165,6 +165,8 @@ public class Physgun : Item
 
 		GrabbedPosition = body.Transform.PointToLocal( tr.EndPosition );
 		GrabbedBone = body.GroupIndex;
+
+		Log.Info( tr.GameObject );
 	}
 
 	[Broadcast]

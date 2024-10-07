@@ -7,6 +7,7 @@ public sealed class Propgun : Item
 	public static bool FirstTime { get; set; } = true;
 	public Angles PropRotation { get; set; }
 
+	[Property] bool MustBeUp { get; set; } = false;
 	protected override void OnStart()
 	{
 		if ( IsProxy || !FirstTime )
@@ -82,7 +83,7 @@ public sealed class Propgun : Item
 				.IgnoreGameObjectHierarchy( GameObject.Root )
 				.Run();
 
-			if ( tr.Hit )
+			if ( tr.Hit && (MustBeUp && tr.Normal == Vector3.Up) )
 			{
 				ObjectPos = tr.EndPosition;
 			}
@@ -120,7 +121,7 @@ public sealed class Propgun : Item
 			}
 
 
-			if ( tr.Hit && Input.Pressed( "attack1" ) )
+			if ( tr.Hit && (MustBeUp && tr.Normal == Vector3.Up) && Input.Pressed( "attack1" ) )
 			{
 				var currentTeam = player.TeamComponent?.Team;
 
