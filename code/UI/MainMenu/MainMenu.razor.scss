@@ -124,7 +124,7 @@ MainMenu
             background-color: $secondary;
             border-radius: 4px;
             flex-direction: column;
-            padding: 2px;
+            padding: 6px;
             overflow-y: scroll;
             overflow-x: hidden;
 
@@ -135,6 +135,27 @@ MainMenu
                 font-size: 42px;
                 align-items: center;
                 justify-content: center;
+
+                background-color: $button-secondary;
+                color: $button-secondary-fg;
+    
+                border-width: 2px;
+                border-color: $primary;
+                border-radius: 4px;
+
+                &:hover
+                {
+                    background-color: hsl(0, 0%, 20%);
+                    sound-in: ui.button.over;
+                    cursor: pointer;
+                }
+
+                &:active
+                {
+                    background-color: hsl(0, 0%, 15%);
+                    sound-in: ui.button.press;
+                    cursor: pointer;
+                }
             }
 
             .lobby
@@ -144,6 +165,11 @@ MainMenu
                 font-size: 32px;
                 flex-shrink: 0;
                 background-color: $button-secondary;
+                color: $button-secondary-fg;
+    
+                border-width: 2px;
+                border-color: $primary;
+                border-radius: 4px;
                 align-items: center;
                 justify-content: center;
                 gap: 16px;
