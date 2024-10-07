@@ -78,7 +78,7 @@ public sealed class Propgun : Item
 			Vector3 ObjectPos = player.Eye.WorldPosition + player.Eye.WorldRotation.Forward * 100.0f;
 
 			var tr = Scene.Trace
-				.Box( Prop.Bounds.Rotate( PropRotation ), player.Eye.WorldPosition, player.Eye.WorldPosition + player.Eye.WorldRotation.Forward * 200.0f )
+				.Box( Prop.Bounds.Rotate( PropRotation ) * 0.75f, player.Eye.WorldPosition, player.Eye.WorldPosition + player.Eye.WorldRotation.Forward * 200.0f )
 				.IgnoreGameObjectHierarchy( GameObject.Root )
 				.Run();
 
