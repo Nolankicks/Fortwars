@@ -11,118 +11,39 @@
         "runtime": {
           "bin/placeholder/Base Library.dll": {}
         }
-      },
-      "libevents/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
-        "dependencies": {
-          "Base Library": "1.0.0"
-        },
-        "compile": {
-          "bin/placeholder/libevents.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/libevents.dll": {}
-        }
-      },
-      "libstates/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
-        "dependencies": {
-          "Base Library": "1.0.0"
-        },
-        "compile": {
-          "bin/placeholder/libstates.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/libstates.dll": {}
-        }
-      },
-      "scc/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
-        "dependencies": {
-          "Base Library": "1.0.0"
-        },
-        "compile": {
-          "bin/placeholder/scc.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/scc.dll": {}
-        }
-      },
-      "xgui/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
-        "dependencies": {
-          "Base Library": "1.0.0"
-        },
-        "compile": {
-          "bin/placeholder/xgui.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/xgui.dll": {}
-        }
       }
     }
   },
   "libraries": {
     "Base Library/1.0.0": {
       "type": "project",
-      "path": "../../../../../../Program Files (x86)/Steam/steamapps/common/sbox/addons/base/Code/Base Library.csproj",
-      "msbuildProject": "../../../../../../Program Files (x86)/Steam/steamapps/common/sbox/addons/base/Code/Base Library.csproj"
-    },
-    "libevents/1.0.0": {
-      "type": "project",
-      "path": "../Libraries/facepunch.libevents/Code/libevents.csproj",
-      "msbuildProject": "../Libraries/facepunch.libevents/Code/libevents.csproj"
-    },
-    "libstates/1.0.0": {
-      "type": "project",
-      "path": "../Libraries/facepunch.libstates/Code/libstates.csproj",
-      "msbuildProject": "../Libraries/facepunch.libstates/Code/libstates.csproj"
-    },
-    "scc/1.0.0": {
-      "type": "project",
-      "path": "../Libraries/fish.scc/Code/scc.csproj",
-      "msbuildProject": "../Libraries/fish.scc/Code/scc.csproj"
-    },
-    "xgui/1.0.0": {
-      "type": "project",
-      "path": "../Libraries/xenthio.xgui/Code/xgui.csproj",
-      "msbuildProject": "../Libraries/xenthio.xgui/Code/xgui.csproj"
+      "path": "../../../../../Program Files (x86)/Steam/steamapps/common/sbox/addons/base/Code/Base Library.csproj",
+      "msbuildProject": "../../../../../Program Files (x86)/Steam/steamapps/common/sbox/addons/base/Code/Base Library.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net7.0": [
-      "Base Library >= 1.0.0",
-      "libevents >= 1.0.0",
-      "libstates >= 1.0.0",
-      "scc >= 1.0.0",
-      "xgui >= 1.0.0"
+      "Base Library >= 1.0.0"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\harry\\.nuget\\packages\\": {},
-    "C:\\Users\\harry\\AppData\\Roaming\\Godot\\mono\\GodotNuGetFallbackFolder": {},
+    "C:\\Users\\talle\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\harry\\OneDrive\\Documents\\Fortwars\\Code\\fortwars.csproj",
+      "projectUniqueName": "C:\\Users\\talle\\Downloads\\Fortwars\\Code\\fortwars.csproj",
       "projectName": "fortwars",
-      "projectPath": "C:\\Users\\harry\\OneDrive\\Documents\\Fortwars\\Code\\fortwars.csproj",
-      "packagesPath": "C:\\Users\\harry\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\harry\\OneDrive\\Documents\\Fortwars\\Code\\obj\\",
+      "projectPath": "C:\\Users\\talle\\Downloads\\Fortwars\\Code\\fortwars.csproj",
+      "packagesPath": "C:\\Users\\talle\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\talle\\Downloads\\Fortwars\\Code\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Users\\harry\\AppData\\Roaming\\Godot\\mono\\GodotNuGetFallbackFolder",
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\harry\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Users\\harry\\AppData\\Roaming\\NuGet\\config\\Godot.Offline.Config",
+        "C:\\Users\\talle\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -140,26 +61,9 @@
           "projectReferences": {
             "C:\\Program Files (x86)\\Steam\\steamapps\\common\\sbox\\addons\\base\\Code\\Base Library.csproj": {
               "projectPath": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\sbox\\addons\\base\\Code\\Base Library.csproj"
-            },
-            "C:\\Users\\harry\\OneDrive\\Documents\\Fortwars\\Libraries\\facepunch.libevents\\Code\\libevents.csproj": {
-              "projectPath": "C:\\Users\\harry\\OneDrive\\Documents\\Fortwars\\Libraries\\facepunch.libevents\\Code\\libevents.csproj"
-            },
-            "C:\\Users\\harry\\OneDrive\\Documents\\Fortwars\\Libraries\\facepunch.libstates\\Code\\libstates.csproj": {
-              "projectPath": "C:\\Users\\harry\\OneDrive\\Documents\\Fortwars\\Libraries\\facepunch.libstates\\Code\\libstates.csproj"
-            },
-            "C:\\Users\\harry\\OneDrive\\Documents\\Fortwars\\Libraries\\fish.scc\\Code\\scc.csproj": {
-              "projectPath": "C:\\Users\\harry\\OneDrive\\Documents\\Fortwars\\Libraries\\fish.scc\\Code\\scc.csproj"
-            },
-            "C:\\Users\\harry\\OneDrive\\Documents\\Fortwars\\Libraries\\xenthio.xgui\\Code\\xgui.csproj": {
-              "projectPath": "C:\\Users\\harry\\OneDrive\\Documents\\Fortwars\\Libraries\\xenthio.xgui\\Code\\xgui.csproj"
             }
           }
         }
-      },
-      "restoreAuditProperties": {
-        "enableAudit": "true",
-        "auditLevel": "low",
-        "auditMode": "direct"
       }
     },
     "frameworks": {
@@ -181,7 +85,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
       }
     }
   }
