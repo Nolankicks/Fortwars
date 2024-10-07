@@ -6,8 +6,8 @@ public sealed class Propgun : Item
 	[Property] public string PropIdent { get; set; }
 	public static bool FirstTime { get; set; } = true;
 	public Angles PropRotation { get; set; }
-
 	[Property] bool MustBeUp { get; set; } = false;
+
 	protected override void OnStart()
 	{
 		if ( IsProxy || !FirstTime )
@@ -15,7 +15,7 @@ public sealed class Propgun : Item
 
 		var popup = new Popup();
 
-		popup.Title = $"Press {Input.GetButtonOrigin( "menu" ).ToUpper()} to open the propgun menu";
+		popup.Title = $"Press {Input.GetButtonOrigin( "menu" )?.ToUpper()} to open the propgun menu";
 		popup.Time = 8;
 
 		PopupHolder.AddPopup( popup );
@@ -23,7 +23,7 @@ public sealed class Propgun : Item
 		Invoke( 2, () =>
 		{
 			var destroy = new Popup();
-			destroy.Title = $"Press {Input.GetButtonOrigin( "destroy" ).ToUpper()} to destroy the prop you're looking at";
+			destroy.Title = $"Press {Input.GetButtonOrigin( "destroy" )?.ToUpper()} to destroy the prop you're looking at";
 			destroy.Time = 8;
 
 			PopupHolder.AddPopup( destroy );
@@ -32,7 +32,7 @@ public sealed class Propgun : Item
 		Invoke( 4, () =>
 		{
 			var reload = new Popup();
-			reload.Title = $"Press {Input.GetButtonOrigin( "attack2" ).ToUpper()} to change the prop's rotation";
+			reload.Title = $"Press {Input.GetButtonOrigin( "attack2" )?.ToUpper()} to change the prop's rotation";
 			reload.Time = 8;
 
 			PopupHolder.AddPopup( reload );
@@ -41,7 +41,7 @@ public sealed class Propgun : Item
 		Invoke( 6, () =>
 		{
 			var attack1 = new Popup();
-			attack1.Title = $"Press {Input.GetButtonOrigin( "reload" ).ToUpper()} to reset the rotation";
+			attack1.Title = $"Press {Input.GetButtonOrigin( "reload" )?.ToUpper()} to reset the rotation";
 			attack1.Time = 8;
 
 			PopupHolder.AddPopup( attack1 );
