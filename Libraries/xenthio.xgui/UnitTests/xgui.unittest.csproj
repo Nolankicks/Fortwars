@@ -61,8 +61,8 @@
 
   <ItemGroup>
 		<ProjectReference Include="C:\Program Files (x86)\Steam\steamapps\common\sbox\addons\tools\Code\Base Editor Library.csproj" />
-		<ProjectReference Include="C:\Users\talle\Downloads\Fortwars\Libraries\xenthio.xgui\Code\xgui.csproj" />
-		<ProjectReference Include="C:\Users\talle\Downloads\Fortwars\Libraries\xenthio.xgui\Editor\xgui.editor.csproj" />
+		<ProjectReference Include="C:\Users\harry\OneDrive\Documents\Fortwars\Libraries\xenthio.xgui\Code\xgui.csproj" />
+		<ProjectReference Include="C:\Users\harry\OneDrive\Documents\Fortwars\Libraries\xenthio.xgui\Editor\xgui.editor.csproj" />
 
   </ItemGroup>
 

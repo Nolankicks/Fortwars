@@ -50,11 +50,11 @@
 	</ItemGroup>
 
   <ItemGroup>
-		<ProjectReference Include="C:\Users\talle\Downloads\Fortwars\Libraries\facepunch.libevents\Code\libevents.csproj" />
-		<ProjectReference Include="C:\Users\talle\Downloads\Fortwars\Libraries\facepunch.libstates\Code\libstates.csproj" />
-		<ProjectReference Include="C:\Users\talle\Downloads\Fortwars\Libraries\fish.scc\Code\scc.csproj" />
+		<ProjectReference Include="C:\Users\harry\OneDrive\Documents\Fortwars\Libraries\facepunch.libevents\Code\libevents.csproj" />
+		<ProjectReference Include="C:\Users\harry\OneDrive\Documents\Fortwars\Libraries\facepunch.libstates\Code\libstates.csproj" />
+		<ProjectReference Include="C:\Users\harry\OneDrive\Documents\Fortwars\Libraries\fish.scc\Code\scc.csproj" />
 		<ProjectReference Include="C:\Program Files (x86)\Steam\steamapps\common\sbox\addons\base\Code\Base Library.csproj" />
-		<ProjectReference Include="C:\Users\talle\Downloads\Fortwars\Libraries\xenthio.xgui\Code\xgui.csproj" />
+		<ProjectReference Include="C:\Users\harry\OneDrive\Documents\Fortwars\Libraries\xenthio.xgui\Code\xgui.csproj" />
 
   </ItemGroup>
 

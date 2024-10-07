@@ -2,153 +2,6 @@
   "__guid": "fc7b08c5-48d6-49d4-9bfe-3fb408936aca",
   "GameObjects": [
     {
-      "__guid": "106eec1a-e501-4c70-adcf-8133c8170e53",
-      "Flags": 2048,
-      "Name": "Camera",
-      "Position": "-16.00006,-353.9998,326",
-      "Rotation": "0,0,0.7071067,0.7071068",
-      "Tags": "maincamera",
-      "Enabled": true,
-      "Components": [
-        {
-          "__type": "Sandbox.CameraComponent",
-          "__guid": "198436e9-824a-4dea-8a56-cf90b472f058",
-          "BackgroundColor": "0.33333,0.46275,0.52157,1",
-          "ClearFlags": "All",
-          "FieldOfView": 90,
-          "IsMainCamera": true,
-          "Orthographic": false,
-          "OrthographicHeight": 1204,
-          "Priority": 1,
-          "RenderExcludeTags": "",
-          "RenderTags": "",
-          "TargetEye": "None",
-          "Viewport": "0,0,1,1",
-          "ZFar": 10000,
-          "ZNear": 5
-        },
-        {
-          "__type": "Sandbox.Bloom",
-          "__guid": "ec12ae61-09d1-412c-a6c1-ddcbc97d0558",
-          "BloomColor": {
-            "color": [
-              {
-                "c": "1,1,1,1"
-              },
-              {
-                "t": 1,
-                "c": "1,1,1,1"
-              }
-            ],
-            "alpha": []
-          },
-          "BloomCurve": [
-            {
-              "y": 0.5
-            },
-            {
-              "x": 1,
-              "y": 1
-            }
-          ],
-          "Mode": "Blur",
-          "Strength": 0.2,
-          "Threshold": 0.5,
-          "ThresholdWidth": 0
-        },
-        {
-          "__type": "Sandbox.Highlight",
-          "__guid": "702f5540-334e-4aa3-96eb-11399b0c940f"
-        },
-        {
-          "__type": "Sandbox.Tonemapping",
-          "__guid": "2ce6197f-ad8e-4dea-af83-af7d185625c7",
-          "__version": 1,
-          "AutoExposureEnabled": true,
-          "ExposureBias": 2,
-          "ExposureCompensation": 0.41,
-          "ExposureMethod": "RGB",
-          "MaximumExposure": 2.65,
-          "MinimumExposure": 1.23,
-          "Mode": "Legacy",
-          "Rate": 8.57
-        },
-        {
-          "__type": "Sandbox.AmbientOcclusion",
-          "__guid": "5d05ce22-abe5-4acf-af7f-474fec1d5aa6",
-          "FalloffDistance": 1,
-          "Intensity": 8,
-          "Quality": "High",
-          "Radius": 32
-        },
-        {
-          "__type": "Sandbox.CubemapFog",
-          "__guid": "3992931e-e20e-4ba4-8bd2-3cf41791c6ab",
-          "Blur": 0.5,
-          "EndDistance": 4096,
-          "FalloffExponent": 1,
-          "HeightExponent": 2,
-          "HeightStart": 2000,
-          "HeightWidth": 0,
-          "StartDistance": 2496,
-          "Tint": "1,1,1,1"
-        }
-      ]
-    },
-    {
-      "__guid": "27e5ccc0-47f9-4225-953e-372adcdf7313",
-      "Flags": 0,
-      "Name": "Screen",
-      "Enabled": true,
-      "Components": [
-        {
-          "__type": "Sandbox.ScreenPanel",
-          "__guid": "c1877ab2-031e-4b5a-8825-2546c9e374a4",
-          "AutoScreenScale": true,
-          "Opacity": 1,
-          "Scale": 1,
-          "ScaleStrategy": "ConsistentHeight",
-          "ZIndex": 100
-        },
-        {
-          "__type": "HUD",
-          "__guid": "2478d8c6-1b22-49e7-afcd-759142bd7896"
-        },
-        {
-          "__type": "PauseMenu",
-          "__guid": "9da6045e-8421-401f-8f35-69a1f39341ae",
-          "MenuScene": "scenes/fortwarsmenu.scene"
-        }
-      ],
-      "Children": [
-        {
-          "__guid": "8ae67c88-c101-4543-9d0f-0cbf5edd769d",
-          "Flags": 0,
-          "Name": "Chat",
-          "Enabled": true,
-          "NetworkMode": 1,
-          "Components": [
-            {
-              "__type": "Chat",
-              "__guid": "5a0d6745-ba08-46f4-8807-fc44d9ede3c9"
-            }
-          ]
-        },
-        {
-          "__guid": "a0007cf0-70e7-4cc7-830f-386ae62735af",
-          "Flags": 0,
-          "Name": "Popup",
-          "Enabled": true,
-          "Components": [
-            {
-              "__type": "PopupHolder",
-              "__guid": "461cdb2d-824e-49d6-a869-9a29ca0f71cd"
-            }
-          ]
-        }
-      ]
-    },
-    {
       "__guid": "c24cdc36-7f7b-461a-80da-2f1a95e6614d",
       "Flags": 0,
       "Name": "map",
@@ -159,7 +12,7 @@
           "__guid": "34cb13ba-2571-44e4-a1be-bbb2cf11b64c",
           "__version": 1,
           "EnableCollision": true,
-          "MapName": "nolankicks.fw_devgrounds",
+          "MapName": "maps/fw_devgrounds.vmap",
           "NoOrigin": false,
           "OnMapLoaded": null,
           "OnMapUnloaded": null,
@@ -227,6 +80,7 @@
         {
           "__type": "Sandbox.SkyBox2D",
           "__guid": "f33a63c2-a0dd-4359-9571-c45f5f43af40",
+          "SkyIndirectLighting": true,
           "SkyMaterial": "materials/skybox/skybox_day_01.vmat",
           "Tint": "1,1,1,1"
         },

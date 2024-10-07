@@ -27,3 +27,4 @@ Exports/*
 *.sln
 
 *idea
+*.cache

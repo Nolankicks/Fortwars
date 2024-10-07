@@ -1,14 +1,9 @@
+using Sandbox.Citizen;
+using Sandbox.Events;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection.Emit;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
-using Sandbox;
-using Sandbox.Citizen;
-using Sandbox.Events;
-using Sandbox.Network;
 
 public record OnBuildMode() : IGameEvent;
 public record OnFightMode() : IGameEvent;
@@ -96,7 +91,7 @@ IGameEventHandler<OnGameOvertimeBuild>, IGameEventHandler<OnGameOvertimeFight>
 	protected override void OnStart()
 	{
 		Instance = this;
-        
+
 		if ( Networking.IsHost )
 		{
 			InitBlueTimeHeld = BlueTimeHeld;
@@ -529,11 +524,17 @@ IGameEventHandler<OnGameOvertimeBuild>, IGameEventHandler<OnGameOvertimeFight>
 
 		Log.Info( $"Loaded Lobby Settings as {JsonSerializer.Serialize( LobbySettings.Load() )}" );
 	}
+
+	[ConCmd( "skip_wait" )]
+	public static void SkipWait()
+	{
+		Instance?.Scene.Dispatch( new OnBuildMode() );
+	}
 }
 
 public sealed class MapLoadingSystem : GameObjectSystem<MapLoadingSystem>
 {
-	public MapLoadingSystem( Scene scene ) : base( scene ) 
+	public MapLoadingSystem( Scene scene ) : base( scene )
 	{
 		Listen( Stage.SceneLoaded, 1, OnSceneLoad, "OnSceneLoad" );
 	}
