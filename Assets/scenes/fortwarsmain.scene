@@ -113,7 +113,6 @@
             "facepunch.pallet": 100
           },
           "ClassicModels": true,
-          "DefaultScene": "scenes/easter.scene",
           "FightTime": 240,
           "FourTeams": false,
           "GreenTimeHeld": 60,

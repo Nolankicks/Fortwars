@@ -1,5 +1,5 @@
-using Sandbox;
 using Sandbox.Events;
+using ShrimpleCharacterController;
 
 public enum Team
 {
@@ -21,6 +21,7 @@ public sealed class TeamComponent : Component, IGameEventHandler<OnBuildMode>,
 		Team = team;
 
 		var controller = Components.Get<PlayerController>();
+		var charc = Components.Get<ShrimpleWalker>();
 
 		if ( controller.IsValid() )
 		{
@@ -37,6 +38,17 @@ public sealed class TeamComponent : Component, IGameEventHandler<OnBuildMode>,
 				};
 
 				renderer.Tint = BlendColors( originalColor, teamColor, 0.6f );
+			}
+
+			// HACK
+			foreach ( var col in Team.GetNames( typeof( Team ) ) )
+			{
+				if ( col != team.ToString() )
+					continue;
+
+
+				controller.Tags.Add( col.ToLower() );
+				charc.Controller.IgnoreTags.Add( col.ToLower() );
 			}
 		}
 	}

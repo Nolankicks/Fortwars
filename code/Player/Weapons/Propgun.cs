@@ -90,9 +90,9 @@ public sealed class Propgun : Item
 
 
 
-			ObjectPos = ObjectPos.SnapToGrid( 16, true, true, !tr.Hit );
+			ObjectPos = ObjectPos.SnapToGrid( 16, true, true, !(tr.Hit && tr.Normal == Vector3.Up) );
 
-			bool CanPlace = tr.Hit && tr.Distance > 32.0f && ObjectPos.Distance( GameObject.Root.WorldPosition ) > 32.0f;
+			bool CanPlace = tr.Hit && tr.Distance > 32.0f && ObjectPos.Distance( GameObject.Root.WorldPosition ) > 32.0f && !tr.GameObject.Tags.Has( "no_build" );
 
 			var gizmo = Gizmo.Draw.Model( Prop.ResourcePath );
 			gizmo.ColorTint = Color.White.WithAlpha( 0.5f );
