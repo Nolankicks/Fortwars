@@ -104,6 +104,13 @@ IGameEventHandler<OnGameOvertimeBuild>, IGameEventHandler<OnGameOvertimeFight>
 			InitYellowTimeHeld = YellowTimeHeld;
 			InitGreenTimeHeld = GreenTimeHeld;
 
+			var mapData = Scene.GetAll<MapData>()?.FirstOrDefault();
+
+			if ( mapData.IsValid() )
+			{
+				FourTeams = mapData.FourTeams;
+			}
+
 			var lobbySettings = LobbySettings.Load();
 
 			if ( LoadLobbySettings && lobbySettings is not null )
@@ -541,4 +548,19 @@ public sealed class MapLoadingSystem : GameObjectSystem<MapLoadingSystem>
 		slo.IsAdditive = true;
 		Scene.Load( slo );
 	}
+}
+
+[Description( "Lets you set data for the map" )]
+public sealed class MapData : Component
+{
+	[Property] public bool FourTeams { get; set; } = false;
+}
+
+[GameResource( "Map Info", "mapinfo", "Info about the map" )]
+public sealed class MapInfo : GameResource
+{
+	public string MapName { get; set; }
+	public string MapDescription { get; set; }
+	public bool FourTeams { get; set; }
+	public SceneFile Scene { get; set; }
 }

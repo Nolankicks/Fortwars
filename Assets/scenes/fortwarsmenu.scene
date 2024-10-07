@@ -47,8 +47,7 @@
         {
           "__type": "MainMenu",
           "__guid": "ac0ca2f8-e1f1-416c-81a5-d169bcd5f741",
-          "MainScene": "scenes/easter.scene",
-          "SDFScene": "scenes/sdfworld.scene"
+          "MainScene": "scenes/easter.scene"
         }
       ]
     },
