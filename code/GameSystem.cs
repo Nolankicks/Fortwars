@@ -485,6 +485,41 @@ IGameEventHandler<OnGameOvertimeBuild>, IGameEventHandler<OnGameOvertimeFight>
 		Instance?.Scene.Dispatch( new OnBuildMode() );
 		Instance.State = GameState.BuildMode;
 	}
+
+    [Button( "Build Mode")]
+    public void BuildMode()
+    {
+        Scene.Dispatch( new OnBuildMode() );
+        State = GameState.BuildMode;
+    }
+
+    [Button( "Fight Mode")]
+    public void FightMode()
+    {
+        Scene.Dispatch( new OnFightMode() );
+        State = GameState.FightMode;
+    }
+
+    [Button( "Overtime Build Mode")]
+    public void OvertimeBuildMode()
+    {
+        Scene.Dispatch( new OnGameOvertimeBuild() );
+        State = GameState.OvertimeBuild;
+    }
+
+    [Button( "Overtime Fight Mode")]
+    public void OvertimeFightMode()
+    {
+        Scene.Dispatch( new OnGameOvertimeFight() );
+        State = GameState.OvertimeFight;
+    }
+
+    [Button( "End Game" )]
+    public void EndGame()
+    {
+        Scene.Dispatch( new OnGameEnd() );
+        State = GameState.Ended;
+    }
 }
 
 public sealed class MapLoadingSystem : GameObjectSystem<MapLoadingSystem>
@@ -502,7 +537,7 @@ public sealed class MapLoadingSystem : GameObjectSystem<MapLoadingSystem>
 		var slo = new SceneLoadOptions();
 		slo.SetScene( "scenes/fortwarsmain.scene" );
 		slo.IsAdditive = true;
-		Scene.Load( slo );
+		Scene?.Load( slo );
 	}
 }
 
