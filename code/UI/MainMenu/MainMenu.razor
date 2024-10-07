@@ -8,7 +8,7 @@
 <root>
 	<div class="buttons">
 
-		<div class="button" onclick=@( () => Scene.Load( MainScene ) )> Create Lobby </div>
+		<div class="button" onclick=@( () => ChangeMenuState( MenuState.LobbyCreation ) )> Create Lobby </div>
 
 		<div class="button" onclick=@( () => ChangeMenuState( MenuState.Lobbies ))> Lobbies </div>
 		@* Leaderboards if yall want it *@
@@ -84,9 +84,8 @@
 			break;
 
 		case MenuState.LobbyCreation:
-			@* TODO *@
 			<div class="lobby-creation">
-
+				<MapSelector />
 			</div>
 			break;
 

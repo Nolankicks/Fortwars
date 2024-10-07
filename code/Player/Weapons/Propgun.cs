@@ -14,7 +14,6 @@ public sealed class Propgun : Item
 			return;
 
 		var popup = new Popup();
-
 		popup.Title = $"Press {Input.GetButtonOrigin( "menu" )?.ToUpper()} to open the propgun menu";
 		popup.Time = 8;
 

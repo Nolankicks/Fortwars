@@ -1,0 +1,11 @@
+{
+  "MapName": "Easter",
+  "MapDescription": "",
+  "FourTeams": false,
+  "Scene": "scenes/easter.scene",
+  "Thumb": "textures/easter.vtex",
+  "Author": "Ape Tavern",
+  "__references": [],
+  "IsValid": true,
+  "__version": 0
+}

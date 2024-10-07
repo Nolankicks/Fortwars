@@ -43,7 +43,12 @@ MainMenu
             border-radius: 4px;
 
 
-            background-color: $primary;
+            background-color: $button-secondary;
+            color: $button-secondary-fg;
+
+            border-width: 2px;
+            border-color: $primary;
+            border-radius: 4px;
             align-items: center;
             justify-content: center;
 
@@ -84,6 +89,12 @@ MainMenu
         width: 600px;
 
         background-color: $primary;
+        
+        color: $button-secondary-fg;
+
+        border-width: 2px;
+        border-color: $primary;
+
         justify-content: flex-start;
         align-items: center;
 
@@ -332,8 +343,8 @@ MainMenu
 
     .about
     {
-        width: 700px;
-        height: 600px;
+        width: 800px;
+        height: 700px;
         background-color: $primary;
         flex-direction: column;
         border-radius: 4px;
@@ -354,5 +365,13 @@ MainMenu
             justify-content: center;
             flex-shrink: 0;
         }
+    }
+
+    .lobby-creation
+    {
+        width: 700px;
+        height: 600px;
+        align-items: center;
+        justify-content: center;
     }
 }
