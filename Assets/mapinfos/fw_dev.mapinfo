@@ -1,9 +1,9 @@
 {
-  "MapName": "fw_easter",
-  "MapDescription": "",
+  "MapName": "fw_dev",
+  "MapDescription": null,
   "FourTeams": false,
-  "Scene": "scenes/easter.scene",
-  "Thumb": "textures/easter.vtex",
+  "Scene": "scenes/fortwars_dev.scene",
+  "Thumb": null,
   "Author": "Ape Tavern",
   "Hidden": false,
   "__references": [],

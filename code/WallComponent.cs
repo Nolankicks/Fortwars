@@ -3,7 +3,7 @@ using Sandbox.Events;
 
 public sealed class WallComponent : Component, IGameEventHandler<OnBuildMode>, IGameEventHandler<OnFightMode>,
 IGameEventHandler<OnGameOvertimeBuild>, IGameEventHandler<OnGameEnd>, IGameEventHandler<OnGameOvertimeFight>,
-IGameEventHandler<OnGameWaiting>
+IGameEventHandler<OnGameWaiting>, Component.ExecuteInEditor
 {
     void IGameEventHandler<OnBuildMode>.OnGameEvent( OnBuildMode eventArgs )
     {
@@ -35,9 +35,21 @@ IGameEventHandler<OnGameWaiting>
         ToggleEnable( false );
     }
 
+	protected override void OnFixedUpdate()
+	{
+		if ( Scene.IsEditor && GameObject.NetworkMode != NetworkMode.Object )
+		{
+			GameObject.NetworkMode = NetworkMode.Object;
+			Log.Info( "NetworkMode set to Object" );
+		}
+	}
+
 	[Broadcast]
     public void ToggleEnable( bool enable )
     {
+		if ( Scene.IsEditor )
+			return;
+
         foreach ( var c in Components.GetAll() )
         {
             if ( c is WallComponent )

@@ -209,6 +209,9 @@ IGameEventHandler<OnGameOvertimeBuild>, IGameEventHandler<OnGameOvertimeFight>
 
 		var player = PlayerPrefab.Clone( SpawnTransform );
 
+		if ( player.Components.TryGet<PlayerController>( out var p ) )
+			p.SetWorld( SpawnTransform );
+
 		if ( player.Components.TryGet<CitizenAnimationHelper>( out var animHelper, FindMode.EnabledInSelfAndChildren ) && animHelper.Target.IsValid() )
 		{
 			var clothing = new ClothingContainer();

@@ -1,0 +1,376 @@
+{
+  "__guid": "f215fd15-a2b5-4e91-921e-1700956e53a1",
+  "GameObjects": [
+    {
+      "__guid": "cfef0074-2310-4c4a-a7db-5e3ec251da68",
+      "Flags": 0,
+      "Name": "Map",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.MapInstance",
+          "__guid": "8e8c95a1-66f2-4312-aa1e-5ed95e0055df",
+          "__version": 1,
+          "EnableCollision": true,
+          "MapName": "apetavern.fw_dev",
+          "NoOrigin": false,
+          "OnMapLoaded": null,
+          "OnMapUnloaded": null,
+          "UseMapFromLaunch": false
+        }
+      ],
+      "Children": []
+    },
+    {
+      "__guid": "2286b293-12bb-44a0-9245-62a425967146",
+      "Flags": 0,
+      "Name": "Blue Spawns",
+      "Enabled": true,
+      "Children": [
+        {
+          "__guid": "710ccbb7-ffd7-4318-946f-aab9399bb1ad",
+          "Flags": 0,
+          "Name": "Spawn",
+          "Position": "-0.0007469647,2100.001,-384",
+          "Rotation": "0,0,0.7071069,-0.7071066",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "TeamSpawnPoint",
+              "__guid": "e4afdd6d-e07f-4806-9248-f86ac6a1aaca",
+              "Team": "Blue"
+            }
+          ]
+        },
+        {
+          "__guid": "be02c05e-48de-4397-9f6a-5fd0e8830dde",
+          "Flags": 0,
+          "Name": "Spawn",
+          "Position": "47.99962,2100,-384",
+          "Rotation": "0,0,0.7071069,-0.7071066",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "TeamSpawnPoint",
+              "__guid": "db8acf8b-1f44-4484-a24b-0e12b7a36cf1",
+              "Team": "Blue"
+            }
+          ]
+        },
+        {
+          "__guid": "972267bc-f0be-4033-93a0-e7183fd7166f",
+          "Flags": 0,
+          "Name": "Spawn",
+          "Position": "95.99962,2099.999,-384",
+          "Rotation": "0,0,0.7071069,-0.7071066",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "TeamSpawnPoint",
+              "__guid": "e1c0dcc6-8fc5-4b0c-9f86-2da4d1457011",
+              "Team": "Blue"
+            }
+          ]
+        },
+        {
+          "__guid": "fa743aba-478f-49c7-9b81-86f22d63d6ee",
+          "Flags": 0,
+          "Name": "Spawn",
+          "Position": "-48.00037,2100,-384",
+          "Rotation": "0,0,0.7071069,-0.7071066",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "TeamSpawnPoint",
+              "__guid": "cdc2f00c-cc31-4b41-a452-d4903d12e2b3",
+              "Team": "Blue"
+            }
+          ]
+        },
+        {
+          "__guid": "8b8a65b6-2582-44cb-8f0a-41d470645404",
+          "Flags": 0,
+          "Name": "Spawn",
+          "Position": "-96.00037,2100,-384",
+          "Rotation": "0,0,0.7071069,-0.7071066",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "TeamSpawnPoint",
+              "__guid": "9241e8d8-dcae-4840-a6ad-3440a8aadeea",
+              "Team": "Blue"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "__guid": "816c8296-ebc6-4086-a275-959ea296cc6b",
+      "Flags": 0,
+      "Name": "Red Spawns",
+      "Enabled": true,
+      "Children": [
+        {
+          "__guid": "a1522e85-fdd2-4ba1-ba00-040ca2bcb02f",
+          "Flags": 0,
+          "Name": "Spawn",
+          "Position": "-0.0000007156632,-2084,-384",
+          "Rotation": "0,0,0.7071067,0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "TeamSpawnPoint",
+              "__guid": "37efda89-f78c-434b-b2da-67d9d17088fb",
+              "Team": "Red"
+            }
+          ]
+        },
+        {
+          "__guid": "0056b499-8170-41cd-891f-ace2d6a736f8",
+          "Flags": 0,
+          "Name": "Spawn",
+          "Position": "-48.00037,-2083.999,-384",
+          "Rotation": "0,0,0.7071067,0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "TeamSpawnPoint",
+              "__guid": "c3f62895-18b5-4406-ae2a-b5fadc3b0ec9",
+              "Team": "Red"
+            }
+          ]
+        },
+        {
+          "__guid": "802c85ff-4dc7-446c-ba28-7f4390d959f8",
+          "Flags": 0,
+          "Name": "Spawn",
+          "Position": "-96.00037,-2083.998,-384",
+          "Rotation": "0,0,0.7071067,0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "TeamSpawnPoint",
+              "__guid": "d063fa15-7be8-4b0d-b4cd-a926509aefb7",
+              "Team": "Red"
+            }
+          ]
+        },
+        {
+          "__guid": "91a66a80-1967-4471-9b24-d24c7603b26b",
+          "Flags": 0,
+          "Name": "Spawn",
+          "Position": "47.99962,-2083.999,-384",
+          "Rotation": "0,0,0.7071067,0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "TeamSpawnPoint",
+              "__guid": "b6db12fb-076d-4fe4-8097-6e293f3b25c8",
+              "Team": "Red"
+            }
+          ]
+        },
+        {
+          "__guid": "595feb48-2c68-461b-a003-c9f84ae4c6be",
+          "Flags": 0,
+          "Name": "Spawn",
+          "Position": "95.99962,-2083.999,-384",
+          "Rotation": "0,0,0.7071067,0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "TeamSpawnPoint",
+              "__guid": "5390cb24-a407-4fbe-bf18-a7875f31217e",
+              "Team": "Red"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "__guid": "631a8eb0-fc7a-422d-a08c-5da41b4e64ff",
+      "Flags": 0,
+      "Name": "Wall",
+      "Position": "-314,0,-159.9993",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "Components": [
+        {
+          "__type": "Sandbox.MeshComponent",
+          "__guid": "6aed20ea-2138-4842-bb28-25281c228421",
+          "Collision": "Mesh",
+          "Color": "1,1,1,1",
+          "HideInGame": false,
+          "IsTrigger": false,
+          "Mesh": {
+            "Topology": "H4sIAAAAAAAACl2Qiw6CUAxDh1flgg/wAfr/X2pP0iWLJA25W9t16xHxFc4C30E4\u002Bt2FWbgKd2Ew4NTvIZxcb9ZH4b5db\u002Bb9z/oUzVh8m7lPc9FOzjRYQ8ZXyXxxXvrw4e72wvtWdoEPdzMXj8We9OHDXcvO7EqdN396eKaeLHjkLciePeYxi4z0mMFtMisablFvRXZ2Tj158KQOF78f9WSROMQBAAA=",
+            "Positions": [
+              "-6982,-32,3871.999",
+              "7482,-32,3871.999",
+              "7482,32,3871.999",
+              "-6982,32,3871.999",
+              "-6982,32,-224.0007",
+              "7482,32,-224.0007",
+              "7482,-32,-224.0007",
+              "-6982,-32,-224.0007"
+            ],
+            "TextureCoord": [
+              "3.190476,1",
+              "-2.190476,-1.860466",
+              "3.190476,0",
+              "0,-1.860466",
+              "-2.190476,0",
+              "0,0",
+              "-2.190476,1",
+              "0,-1.860466",
+              "3.190476,0",
+              "1,1",
+              "3.190476,1",
+              "1,1.11628",
+              "-2.190476,1",
+              "3.190476,1.11628",
+              "-2.190476,0",
+              "1,1.11628",
+              "1,-1.860466",
+              "-2.190476,1.11628",
+              "0,1.11628",
+              "1,0",
+              "0,1.11628",
+              "3.190476,-1.860466",
+              "1,-1.860466",
+              "0,1"
+            ],
+            "TextureUAxis": [
+              "1,0,0",
+              "1,0,-0",
+              "0,-1,0",
+              "0,1,0",
+              "-1,0,0",
+              "1,-0,0"
+            ],
+            "TextureVAxis": [
+              "0,-1,0",
+              "0,-1,0",
+              "0,0,-1",
+              "-0,0,-1",
+              "0,0,-1",
+              "-0,0,-1"
+            ],
+            "TextureScale": [
+              "672.0001,16",
+              "672.0001,16",
+              "16,343.9998",
+              "16,343.9998",
+              "3616,1024",
+              "672.0001,343.9998"
+            ],
+            "TextureOffset": [
+              "2.095238,2",
+              "2.095238,2",
+              "2,3.34884",
+              "2,3.34884",
+              "1.982301,3.625",
+              "2.09524,3.34884"
+            ],
+            "MaterialIndex": [
+              1,
+              1,
+              1,
+              1,
+              1,
+              1
+            ],
+            "EdgeFlags": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "Materials": [
+              "materials/dev/reflectivity_30.vmat",
+              "materials/glass/glass_c.vmat"
+            ]
+          },
+          "SmoothingAngle": 40,
+          "Static": true
+        },
+        {
+          "__type": "WallComponent",
+          "__guid": "297b746a-1aa1-4f98-8cfb-ad781a973d71"
+        }
+      ]
+    },
+    {
+      "__guid": "08f12558-e4bb-48a9-b4ab-71804d1d2492",
+      "Flags": 0,
+      "Name": "Kill Trigger",
+      "Position": "0,0,-1408",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "Components": [
+        {
+          "__type": "DamageTrigger",
+          "__guid": "85ec2ccd-1848-4dff-95b1-a51c77ee9c06",
+          "Damage": 1000,
+          "DamageAlways": true
+        },
+        {
+          "__type": "Sandbox.BoxCollider",
+          "__guid": "1faf062c-356f-42f7-a25b-c7d91226a171",
+          "Center": "0,0,0",
+          "IsTrigger": true,
+          "Scale": "10000,10000,500",
+          "Static": false
+        }
+      ]
+    }
+  ],
+  "SceneProperties": {
+    "FixedUpdateFrequency": 50,
+    "MaxFixedUpdates": 5,
+    "NetworkFrequency": 30,
+    "NetworkInterpolation": true,
+    "PhysicsSubSteps": 1,
+    "ThreadedAnimation": true,
+    "TimeScale": 1,
+    "UseFixedUpdate": true,
+    "NavMesh": {
+      "Enabled": false,
+      "IncludeStaticBodies": true,
+      "IncludeKeyframedBodies": true,
+      "EditorAutoUpdate": true,
+      "AgentHeight": 64,
+      "AgentRadius": 16,
+      "AgentStepSize": 18,
+      "AgentMaxSlope": 40,
+      "ExcludedBodies": "",
+      "IncludedBodies": ""
+    }
+  },
+  "Title": "fortwars_dev",
+  "Description": "",
+  "ResourceVersion": 1,
+  "__references": [],
+  "IsValid": true,
+  "__version": 1
+}
