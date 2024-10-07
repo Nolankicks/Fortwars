@@ -4,7 +4,9 @@ using System;
 
 public record OnItemEquipped() : IGameEvent;
 
-public sealed class Inventory : Component
+public sealed class Inventory : Component, IGameEventHandler<OnBuildMode>, IGameEventHandler<OnFightMode>,
+IGameEventHandler<OnGameEnd>, IGameEventHandler<OnGameOvertimeBuild>,
+IGameEventHandler<OnGameOvertimeFight>
 {
 	[Property] public List<WeaponData> StartingWeapons { get; set; } = new();
 
@@ -464,5 +466,49 @@ public sealed class Inventory : Component
 				}
 			}
 		}
+	}
+
+	void IGameEventHandler<OnBuildMode>.OnGameEvent( OnBuildMode eventArgs )
+	{
+		ClearSelectedClass();
+		ClearAll();
+		AddItem( ResourceLibrary.GetAll<WeaponData>().FirstOrDefault( x => x.ResourceName == "propgun" ) );
+		AddItem( ResourceLibrary.GetAll<WeaponData>().FirstOrDefault( x => x.ResourceName == "physgun" ) );
+	}
+
+	void IGameEventHandler<OnFightMode>.OnGameEvent( OnFightMode eventArgs )
+	{
+		ClearAll();
+		AddItem( ResourceLibrary.GetAll<WeaponData>().FirstOrDefault( x => x.ResourceName == "gravgun" ) );
+		AddSelectedClass();
+	}
+
+	[Authority]
+	public void AddSelectedClass()
+	{
+		if ( SelectedClass is not null )
+		{
+			AddItem( SelectedClass.WeaponData );
+		}
+	}
+
+	void IGameEventHandler<OnGameEnd>.OnGameEvent( OnGameEnd eventArgs )
+	{
+		ClearSelectedClass();
+		ClearAll();
+	}
+
+	void IGameEventHandler<OnGameOvertimeBuild>.OnGameEvent( OnGameOvertimeBuild eventArgs )
+	{
+		ClearAll();
+		AddItem( ResourceLibrary.GetAll<WeaponData>().FirstOrDefault( x => x.ResourceName == "propgun" ) );
+		AddItem( ResourceLibrary.GetAll<WeaponData>().FirstOrDefault( x => x.ResourceName == "physgun" ) );
+	}
+
+	void IGameEventHandler<OnGameOvertimeFight>.OnGameEvent( OnGameOvertimeFight eventArgs )
+	{
+		ClearAll();
+		AddItem( ResourceLibrary.GetAll<WeaponData>().FirstOrDefault( x => x.ResourceName == "gravgun" ) );
+		AddSelectedClass();
 	}
 }

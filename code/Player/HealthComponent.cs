@@ -8,31 +8,31 @@ public record GlobalDamageEvent( int Amount, GameObject Attacker, GameObject Pla
 
 public sealed class HealthComponent : Component
 {
-    [Property, Sync] public int Health { get; set; } = 100;
-    [Property] public int MaxHealth { get; set; } = 100;
-    [Property, Sync] public bool IsDead { get; set; } = false;
+	[Property, Sync] public int Health { get; set; } = 100;
+	[Property] public int MaxHealth { get; set; } = 100;
+	[Property, Sync] public bool IsDead { get; set; } = false;
 
-    [Authority]
-    public void TakeDamage( GameObject Attacker, int damage = 1, Vector3 HitPos = default, Vector3 normal = default )
-    {
-        if ( IsDead )
-            return;
+	[Authority]
+	public void TakeDamage( GameObject Attacker, int damage = 1, Vector3 HitPos = default, Vector3 normal = default )
+	{
+		if ( IsDead )
+			return;
 
-        var health = Health - damage;
+		var health = Health - damage;
 
-        if ( health <= 0 )
-            Health = 0;
-        else
-            Health = health;
+		if ( health <= 0 )
+			Health = 0;
+		else
+			Health = health;
 
-        if ( Health <= 0 )
-        {
-            IsDead = true;
-            GameObject.Dispatch( new DeathEvent( Attacker, GameObject, HitPos, normal ) );
-        }
+		if ( Health <= 0 )
+		{
+			IsDead = true;
+			GameObject.Dispatch( new DeathEvent( Attacker, GameObject, HitPos, normal ) );
+		}
 
-        GameObject.Dispatch( new DamageEvent( damage, Attacker, GameObject, HitPos, normal ) );
-    }
+		GameObject.Dispatch( new DamageEvent( damage, Attacker, GameObject, HitPos, normal ) );
+	}
 
 	[Button]
 	public void TestDamage()
@@ -47,9 +47,9 @@ public sealed class HealthComponent : Component
 	}
 
 	[Broadcast]
-    public void ResetHealth()
-    {
-        Health = MaxHealth;
-        IsDead = false;
-    }
+	public void ResetHealth()
+	{
+		Health = MaxHealth;
+		IsDead = false;
+	}
 }

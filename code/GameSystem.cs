@@ -276,15 +276,6 @@ IGameEventHandler<OnGameOvertimeBuild>, IGameEventHandler<OnGameOvertimeFight>
 
 		Scene.GetAll<HealthComponent>()?.ToList()?.ForEach( x => x.ResetHealth() );
 
-		Scene.GetAll<Inventory>()?.ToList()?.ForEach( x =>
-		{
-			x.ClearSelectedClass();
-			x.ClearAll();
-			x.AddItem( ResourceLibrary.GetAll<WeaponData>().FirstOrDefault( x => x.ResourceName == "propgun" ) );
-			x.AddItem( ResourceLibrary.GetAll<WeaponData>().FirstOrDefault( x => x.ResourceName == "physgun" ) );
-			//x.OpenClassSelect();
-		} );
-
 		Log.Info( "Build Mode" );
 
 		var text = Game.Random.FromList( BuildModePopups );
@@ -302,17 +293,6 @@ IGameEventHandler<OnGameOvertimeBuild>, IGameEventHandler<OnGameOvertimeFight>
 
 		Scene.GetAll<HealthComponent>()?.ToList()?.ForEach( x => x.ResetHealth() );
 
-		Scene.GetAll<Inventory>()?.ToList()?.ForEach( x =>
-		{
-			x.ClearAll();
-			x.AddItem( ResourceLibrary.GetAll<WeaponData>().FirstOrDefault( x => x.ResourceName == "gravgun" ) );
-
-			if ( x.SelectedClass is not null )
-			{
-				x.AddItem( x.SelectedClass.WeaponData );
-			}
-		} );
-
 		var text = Game.Random.FromList( FightModePopups );
 
 		PopupHolder.BroadcastPopup( text, 5 );
@@ -328,21 +308,11 @@ IGameEventHandler<OnGameOvertimeBuild>, IGameEventHandler<OnGameOvertimeFight>
 
 		OnTeamWon( GetWinningTeam() );
 
-		Scene.GetAll<Inventory>()?.ToList()?.ForEach( x => x.ClearAll() );
-
 		Scene.GetAll<PlayerController>()?.ToList()?.ForEach( x => x.ResetStats() );
 
-		Log.Info( $"{GetWinningTeam()} won" );
+		Scene.GetAll<HealthComponent>()?.ToList()?.ForEach( x => x.ResetHealth() );
 
 		PopupHolder.BroadcastPopup( $"{GetWinningTeam()} won", 5 );
-
-		Scene.GetAll<Inventory>()?.ToList()?.ForEach( x =>
-		{
-			x.ClearAll();
-			x.ClearSelectedClass();
-		} );
-
-		Scene.GetAll<HealthComponent>()?.ToList()?.ForEach( x => x.ResetHealth() );
 
 		DeleteClassSelect();
 
@@ -393,13 +363,6 @@ IGameEventHandler<OnGameOvertimeBuild>, IGameEventHandler<OnGameOvertimeFight>
 
 		Scene.GetAll<HealthComponent>()?.ToList()?.ForEach( x => x.ResetHealth() );
 
-		Scene.GetAll<Inventory>()?.ToList()?.ForEach( x =>
-		{
-			x.ClearAll();
-			x.AddItem( ResourceLibrary.GetAll<WeaponData>().FirstOrDefault( x => x.ResourceName == "propgun" ) );
-			x.AddItem( ResourceLibrary.GetAll<WeaponData>().FirstOrDefault( x => x.ResourceName == "physgun" ) );
-		} );
-
 		PopupHolder.BroadcastPopup( "Get ready for overtime, build now!", 5 );
 	}
 
@@ -410,15 +373,6 @@ IGameEventHandler<OnGameOvertimeBuild>, IGameEventHandler<OnGameOvertimeFight>
 		Log.Info( "Overtime Fight" );
 
 		Scene.GetAll<HealthComponent>()?.ToList()?.ForEach( x => x.ResetHealth() );
-
-		Scene.GetAll<Inventory>()?.ToList()?.ForEach( x =>
-		{
-			x.ClearAll();
-			x.AddItem( ResourceLibrary.GetAll<WeaponData>().FirstOrDefault( x => x.ResourceName == "gravgun" ) );
-
-			if ( x.SelectedClass is not null )
-				x.AddItem( x.SelectedClass.WeaponData );
-		} );
 
 		PopupHolder.BroadcastPopup( "Get ready for overtime, fight now!", 5 );
 	}
