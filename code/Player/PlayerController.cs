@@ -1,9 +1,5 @@
-using System;
-using Sandbox;
 using Sandbox.Citizen;
 using Sandbox.Events;
-using Sandbox.Services;
-using Sandbox.Utility;
 
 
 public record PlayerDeath( PlayerController Player ) : IGameEvent;
@@ -121,9 +117,6 @@ public sealed class PlayerController : Component, IGameEventHandler<DamageEvent>
 	{
 		if ( !IsCrouching )
 			return true;
-
-		if ( lastUngrounded < 0.2f )
-			return false;
 
 		var tr = Scene.Trace.Ray( shrimpleCharacterController.WorldPosition, shrimpleCharacterController.WorldPosition + Vector3.Up * 64 )
 			.IgnoreGameObject( GameObject )
