@@ -88,8 +88,11 @@ public sealed class Propgun : Item
 				ObjectPos = tr.EndPosition;
 			}
 
-			ObjectPos = ObjectPos.SnapToGrid( 15, true, true, false );
 
+
+			ObjectPos = ObjectPos.SnapToGrid( 16, true, true, !tr.Hit );
+
+			bool CanPlace = tr.Hit && tr.Distance > 32.0f && ObjectPos.Distance( GameObject.Root.WorldPosition ) > 32.0f;
 
 			var gizmo = Gizmo.Draw.Model( Prop.ResourcePath );
 			gizmo.ColorTint = Color.White.WithAlpha( 0.5f );
@@ -97,7 +100,7 @@ public sealed class Propgun : Item
 			gizmo.Position = ObjectPos;
 
 
-			if ( !tr.Hit )
+			if ( !CanPlace )
 			{
 				gizmo.ColorTint = Color.Red.WithAlpha( 0.5f );
 			}
@@ -125,7 +128,7 @@ public sealed class Propgun : Item
 			}
 
 
-			if ( tr.Hit && Input.Pressed( "attack1" ) )
+			if ( CanPlace && Input.Pressed( "attack1" ) )
 			{
 				var currentTeam = player.TeamComponent?.Team;
 
@@ -162,7 +165,7 @@ public sealed class Propgun : Item
 
 				renderer.Model = Prop;
 
-				gb.WorldPosition = ObjectPos.SnapToGrid( 15 );
+				gb.WorldPosition = ObjectPos;
 				gb.WorldRotation = PropRotation.SnapToGrid( 15 );
 
 				var fortWarsProp = gb.Components.Create<FortwarsProp>();
