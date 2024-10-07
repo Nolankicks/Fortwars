@@ -74,7 +74,9 @@
             "Model": "models/weapons/sbox_pistol_usp/v_usp.vmdl",
             "Morphs": {},
             "Parameters": {
-              "bools": {},
+              "bools": {
+                "b_twohanded": true
+              },
               "ints": {},
               "floats": {},
               "vectors": {},
