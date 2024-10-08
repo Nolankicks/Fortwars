@@ -1518,6 +1518,7 @@
       "Name": "Door01",
       "Position": "0,0,128.0005",
       "Enabled": true,
+      "NetworkMode": 1,
       "Components": [
         {
           "__type": "Sandbox.MeshComponent",
@@ -1650,6 +1651,7 @@
       "Name": "Door01 (1)",
       "Position": "768,0,256",
       "Enabled": true,
+      "NetworkMode": 1,
       "Components": [
         {
           "__type": "Sandbox.MeshComponent",

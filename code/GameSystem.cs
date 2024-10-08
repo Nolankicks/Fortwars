@@ -14,6 +14,8 @@ public record OnOnGameEnd() : IGameEvent;
 public record OnGameEnd() : IGameEvent;
 public record OnTeamWin( Team team ) : IGameEvent;
 
+public record OnRoundSwitch( GameSystem.GameState state ) : IGameEvent;
+
 public sealed class GameSystem : Component, Component.INetworkListener,
 IGameEventHandler<OnBuildMode>, IGameEventHandler<OnGameEnd>, IGameEventHandler<OnGameWaiting>, IGameEventHandler<OnFightMode>,
 IGameEventHandler<OnGameOvertimeBuild>, IGameEventHandler<OnGameOvertimeFight>
@@ -285,10 +287,12 @@ IGameEventHandler<OnGameOvertimeBuild>, IGameEventHandler<OnGameOvertimeFight>
 			x.ClearAll();
 			x.AddItem( ResourceLibrary.GetAll<WeaponData>().FirstOrDefault( x => x.ResourceName == "propgun" ) );
 			x.AddItem( ResourceLibrary.GetAll<WeaponData>().FirstOrDefault( x => x.ResourceName == "physgun" ) );
-			//x.OpenClassSelect();
+			x.OpenClassSelect();
 		} );
 
 		Log.Info( "Build Mode" );
+
+		BroadcastChangeState( GameState.BuildMode );
 
 		var text = Game.Random.FromList( BuildModePopups );
 
@@ -317,6 +321,8 @@ IGameEventHandler<OnGameOvertimeBuild>, IGameEventHandler<OnGameOvertimeFight>
 		} );
 
 		var text = Game.Random.FromList( FightModePopups );
+
+		BroadcastChangeState( GameState.FightMode );
 
 		PopupHolder.BroadcastPopup( text, 5 );
 	}
@@ -348,6 +354,8 @@ IGameEventHandler<OnGameOvertimeBuild>, IGameEventHandler<OnGameOvertimeFight>
 		Scene.GetAll<HealthComponent>()?.ToList()?.ForEach( x => x.ResetHealth() );
 
 		DeleteClassSelect();
+
+		BroadcastChangeState( GameState.Ended );
 
 		RedTimeHeld = InitRedTimeHeld;
 		BlueTimeHeld = InitBlueTimeHeld;
@@ -386,6 +394,8 @@ IGameEventHandler<OnGameOvertimeBuild>, IGameEventHandler<OnGameOvertimeFight>
 		Scene.GetAll<HealthComponent>()?.ToList()?.ForEach( x => x.ResetHealth() );
 
 		Scene.GetAll<TeamComponent>()?.ToList()?.ForEach( x => x.SetTeam( Team.None ) );
+
+		BroadcastChangeState( GameState.Waiting );
 	}
 
 	[After<OnFightMode>, After<OnGameOvertimeFight>]
@@ -402,6 +412,8 @@ IGameEventHandler<OnGameOvertimeBuild>, IGameEventHandler<OnGameOvertimeFight>
 			x.AddItem( ResourceLibrary.GetAll<WeaponData>().FirstOrDefault( x => x.ResourceName == "propgun" ) );
 			x.AddItem( ResourceLibrary.GetAll<WeaponData>().FirstOrDefault( x => x.ResourceName == "physgun" ) );
 		} );
+
+		BroadcastChangeState( GameState.OvertimeBuild );
 
 		PopupHolder.BroadcastPopup( "Get ready for overtime, build now!", 5 );
 	}
@@ -422,6 +434,8 @@ IGameEventHandler<OnGameOvertimeBuild>, IGameEventHandler<OnGameOvertimeFight>
 			if ( x.SelectedClass is not null )
 				x.AddItem( x.SelectedClass.WeaponData );
 		} );
+
+		BroadcastChangeState( GameState.OvertimeFight );
 
 		PopupHolder.BroadcastPopup( "Get ready for overtime, fight now!", 5 );
 	}
@@ -495,6 +509,12 @@ IGameEventHandler<OnGameOvertimeBuild>, IGameEventHandler<OnGameOvertimeFight>
 	public void AddKill()
 	{
 		TotalKills++;
+	}
+
+	[Broadcast]
+	public void BroadcastChangeState( GameState state )
+	{
+		Scene.Dispatch( new OnRoundSwitch( state ) );
 	}
 
 	public List<string> FightModePopups = new()

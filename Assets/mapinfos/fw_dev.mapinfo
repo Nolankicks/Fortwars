@@ -3,7 +3,7 @@
   "MapDescription": null,
   "FourTeams": false,
   "Scene": "scenes/fortwars_dev.scene",
-  "Thumb": null,
+  "Thumb": "textures/fw_dev.vtex",
   "Author": "Ape Tavern",
   "Hidden": false,
   "__references": [],
