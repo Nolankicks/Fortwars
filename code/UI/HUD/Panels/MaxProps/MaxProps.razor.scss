@@ -1,0 +1,54 @@
+$primary: #1a1a1a;
+
+MaxProps
+{
+    width: 100%;
+    align-items: center;
+    font-size: 32px;
+
+    height: 60px;
+
+    .text {
+        padding: 4px 32px;
+        border-radius: 4 0 0 4;
+        justify-content: center;
+        align-items: center;
+        font-size: 20px;
+        font-weight: bold;
+
+        background-color: $primary;
+        width: 60%;
+        height: 100%;
+        flex-shrink: 0;
+
+        &.red {
+            background-color: #ff0000;
+        }
+
+        &.green {
+            background-color: #00ff00;
+        }
+
+        &.blue {
+            background-color: #0000ff;
+        }
+
+        &.yellow {
+            background-color: #ffff00;
+        }
+    }
+
+    .number {
+        width: 40%;
+        padding: 4px 12px;
+        border-radius: 0 4 4 0;
+        font-size: 30px;
+        font-weight: bold;
+        align-items: center;
+        justify-content: space-evenly;
+        height: 100%;
+        flex-shrink: 0;
+
+        background-color: $primary;
+    }
+}

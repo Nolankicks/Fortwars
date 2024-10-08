@@ -57,33 +57,10 @@
 
 		<div style="position: absolute; width: 300px; top: 12; left: 12; flex-direction: column;">
 			<TeamProgress />
-
-            @if ( gs.State == GameSystem.GameState.BuildMode || gs.State == GameSystem.GameState.OvertimeBuild )
-            {
-                var localTeam = player.TeamComponent;
-
-                if ( !localTeam.IsValid() )
-                    return;
-
-                switch ( localTeam.Team )
-                {
-                    case Team.Red:
-                        <div style="width: 100%; align-items: center; font-size: 32px;">Props left: @(gs.MaxProps - gs.RedProps.Count())</div>
-                        break;
-                    case Team.Blue:
-                        <div>Props left: @(gs.MaxProps - gs.BlueProps?.Count())</div>
-                        break;
-                    case Team.Green:
-                        <div>Props left: @(gs.MaxProps - gs.GreenProps?.Count())</div>
-                        break;
-                    case Team.Yellow:
-                        <div>Props left: @(gs.MaxProps - gs.YellowProps?.Count())</div>
-                        break;
-                }
-            }
 		</div>
 
 		<div class="healthholder">
+		<MaxProps />
 		<div class="health">
 			<div class="team" style="background-color: @GetColor().Hex;">@player.TeamComponent?.Team</div>
 			<div class="number">

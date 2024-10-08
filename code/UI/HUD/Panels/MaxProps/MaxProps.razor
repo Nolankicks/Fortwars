@@ -1,0 +1,54 @@
+@using Sandbox;
+@using Sandbox.UI;
+@using System;
+@attribute [StyleSheet]
+@inherits Panel
+
+<root>
+	@{
+		var gs = GameSystem.Instance;
+		var player = PlayerController.Local;
+
+		if ( !gs.IsValid() || !player.IsValid() )
+			return;
+	}
+
+			@if ( gs.State == GameSystem.GameState.BuildMode || gs.State == GameSystem.GameState.OvertimeBuild )
+            {
+                var localTeam = player.TeamComponent;
+
+                if ( !localTeam.IsValid() )
+                    return;
+
+                switch ( localTeam.Team )
+                {
+                    case Team.Red:
+							<div class="text red">Props Left</div>
+							<div class="number">@(gs.MaxProps - gs.RedProps.Count())</div>
+                        break;
+                    case Team.Blue:
+							<div class="text blue">Props Left</div>
+							<div class="number">@(gs.MaxProps - gs.BlueProps.Count())</div>
+                        break;
+                    case Team.Green:
+							<div class="text green">Props Left</div>
+							<div class="number">@(gs.MaxProps - gs.GreenProps?.Count())</div>
+                        break;
+                    case Team.Yellow:
+							<div class="text yellow">Props Left</div>
+							<div class="number">@(gs.MaxProps - gs.YellowProps?.Count())</div>
+                        break;
+                }
+            }
+
+</root>
+
+@code
+{
+	protected override int BuildHash()
+	{
+		var gs = GameSystem.Instance;
+
+		return System.HashCode.Combine( gs?.MaxProps, gs?.RedProps?.Count(), gs?.BlueProps?.Count(), gs?.GreenProps?.Count(), gs?.YellowProps?.Count(), gs?.State );
+	}
+}
