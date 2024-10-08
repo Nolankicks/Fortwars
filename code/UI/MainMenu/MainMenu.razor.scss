@@ -371,7 +371,10 @@ MainMenu
     {
         width: 800px;
         height: 700px;
-        background-color: $primary;
+        background-color: $secondary;
+        border-color: $primary;
+        border-width: 2px;
+        color: $button-secondary-fg;
         flex-direction: column;
         border-radius: 4px;
 
@@ -396,7 +399,7 @@ MainMenu
     .lobby-creation
     {
         width: 700px;
-        height: 600px;
+        height: 700px;
         align-items: center;
         justify-content: center;
     }

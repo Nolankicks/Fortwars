@@ -1,0 +1,12 @@
+{
+  "MapName": "fw_basin",
+  "MapDescription": null,
+  "FourTeams": false,
+  "Scene": "scenes/fw_basin.scene",
+  "Thumb": "textures/fw_basin.vtex",
+  "Author": "Ape Tavern",
+  "Hidden": false,
+  "__references": [],
+  "IsValid": true,
+  "__version": 0
+}

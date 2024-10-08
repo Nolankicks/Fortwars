@@ -1,0 +1,1133 @@
+{
+  "__guid": "04ad8640-c515-4a52-9095-de6df2cabbaa",
+  "GameObjects": [
+    {
+      "__guid": "d08a9cdc-b2fd-40ca-889e-6f27e66b960c",
+      "Flags": 0,
+      "Name": "Map",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.MapInstance",
+          "__guid": "4f66bf37-ab35-42e4-9f0b-d154c3e13f38",
+          "__version": 1,
+          "EnableCollision": true,
+          "MapName": "apetavern.fw_basin",
+          "NoOrigin": false,
+          "OnMapLoaded": null,
+          "OnMapUnloaded": null,
+          "UseMapFromLaunch": false
+        }
+      ],
+      "Children": []
+    },
+    {
+      "__guid": "7c783c17-37e1-4c03-804b-23184ea5e360",
+      "Flags": 2048,
+      "Name": "Camera",
+      "Tags": "maincamera",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.CameraComponent",
+          "__guid": "8292157b-92c8-4d14-872b-80352e77eef9",
+          "BackgroundColor": "0.33333,0.46275,0.52157,1",
+          "ClearFlags": "All",
+          "FieldOfView": 60,
+          "IsMainCamera": true,
+          "Orthographic": false,
+          "OrthographicHeight": 1204,
+          "Priority": 1,
+          "RenderExcludeTags": "",
+          "RenderTags": "",
+          "TargetEye": "None",
+          "Viewport": "0,0,1,1",
+          "ZFar": 10000,
+          "ZNear": 10
+        }
+      ]
+    },
+    {
+      "__guid": "0be1f601-53c1-4739-bbd6-4514f56a9ace",
+      "Flags": 0,
+      "Name": "Box",
+      "Position": "0,-144,576.0035",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "Components": [
+        {
+          "__type": "Sandbox.MeshComponent",
+          "__guid": "bf49e818-282d-4bda-a5dd-34c53d6c732b",
+          "Collision": "Mesh",
+          "Color": "1,1,1,1",
+          "HideInGame": false,
+          "IsTrigger": false,
+          "Mesh": {
+            "Topology": "H4sIAAAAAAAACl2Qiw6CUAxDh1flgg/wAfr/X2pP0iWLJA25W9t16xHxFc4C30E4\u002Bt2FWbgKd2Ew4NTvIZxcb9ZH4b5db\u002Bb9z/oUzVh8m7lPc9FOzjRYQ8ZXyXxxXvrw4e72wvtWdoEPdzMXj8We9OHDXcvO7EqdN396eKaeLHjkLciePeYxi4z0mMFtMisablFvRXZ2Tj158KQOF78f9WSROMQBAAA=",
+            "Positions": [
+              "-32.00216,-6063.999,3360",
+              "31.998,-6063.999,3360",
+              "32.00221,6352,3360",
+              "-31.99795,6352,3360",
+              "-31.99795,6352,-3360",
+              "32.00221,6352,-3360",
+              "31.998,-6063.999,-3360",
+              "-32.00216,-6063.999,-3360"
+            ],
+            "TextureCoord": [
+              "0.9999342,1",
+              "0,0",
+              "1,0",
+              "0,0",
+              "0.00006571412,0",
+              "0,0",
+              "0,1",
+              "0,0",
+              "1,0",
+              "1,1",
+              "0.9999342,1",
+              "1,1",
+              "0,1",
+              "1,1",
+              "0.00006571412,0",
+              "1,1",
+              "1,0",
+              "0,1",
+              "0,1",
+              "1,0",
+              "0,1",
+              "1,0",
+              "1,0",
+              "0,1"
+            ],
+            "TextureUAxis": [
+              "1,0,0",
+              "1,0,-0",
+              "0,-1,0",
+              "0,1,0",
+              "-1,0,0",
+              "1,-0,0"
+            ],
+            "TextureVAxis": [
+              "0,-1,0",
+              "0,-1,0",
+              "0,0,-1",
+              "-0,0,-1",
+              "0,0,-1",
+              "-0,0,-1"
+            ],
+            "TextureScale": [
+              "0.1250085,24.25",
+              "0.1250085,24.25",
+              "24.25,13.125",
+              "24.25,13.125",
+              "0.1250003,13.125",
+              "0.1250003,13.125"
+            ],
+            "TextureOffset": [
+              "255.9998,256",
+              "255.9998,256",
+              "256,299.886",
+              "256,299.886",
+              "256.017,299.886",
+              "256.0166,299.886"
+            ],
+            "MaterialIndex": [
+              1,
+              1,
+              1,
+              1,
+              1,
+              1
+            ],
+            "EdgeFlags": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "Materials": [
+              "materials/dev/reflectivity_30.vmat",
+              "materials/glass/glass_c.vmat"
+            ]
+          },
+          "SmoothingAngle": 40,
+          "Static": false
+        },
+        {
+          "__type": "WallComponent",
+          "__guid": "2f71bc6b-c6d0-41ad-98d3-ba0ace6241e4"
+        }
+      ]
+    },
+    {
+      "__guid": "c5a5824a-d856-479a-8e1a-3fbedd47cd82",
+      "Flags": 0,
+      "Name": "Red Spawns",
+      "Rotation": "-0,0,1,-0.00000004371139",
+      "Enabled": true,
+      "Children": [
+        {
+          "__guid": "307163cd-34fd-4d8d-9bae-558f26e8cc58",
+          "Flags": 0,
+          "Name": "Spawn",
+          "Position": "2752,0,320",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "TeamSpawnPoint",
+              "__guid": "ae65eb45-0226-43c0-881d-97b0496f73bc",
+              "Team": "Red"
+            }
+          ]
+        },
+        {
+          "__guid": "ab0472ab-f15e-43c0-aff9-24e34c643624",
+          "Flags": 0,
+          "Name": "Spawn",
+          "Position": "2720,0,320",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "TeamSpawnPoint",
+              "__guid": "286626a5-d277-4a73-88d5-6979d319d67b",
+              "Team": "Red"
+            }
+          ]
+        },
+        {
+          "__guid": "1ca3df90-6c99-455a-974c-6f6142a09c44",
+          "Flags": 0,
+          "Name": "Spawn",
+          "Position": "2688,0,320",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "TeamSpawnPoint",
+              "__guid": "f8535342-7f1b-44ce-afd4-4d69ab352d1e",
+              "Team": "Red"
+            }
+          ]
+        },
+        {
+          "__guid": "4fd62402-5f00-4071-a519-865ab0891f4f",
+          "Flags": 0,
+          "Name": "Spawn",
+          "Position": "2656,0,320",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "TeamSpawnPoint",
+              "__guid": "33e854fd-de47-4748-bbdc-78ec46e3d094",
+              "Team": "Red"
+            }
+          ]
+        },
+        {
+          "__guid": "f937c205-f994-4c5d-aa61-274362ea0c2a",
+          "Flags": 0,
+          "Name": "Spawn",
+          "Position": "2624,0,320",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "TeamSpawnPoint",
+              "__guid": "dee3f9bc-8deb-47be-a4cd-6982d12d1643",
+              "Team": "Red"
+            }
+          ]
+        },
+        {
+          "__guid": "6d2c5f27-d169-413d-a7eb-7ab5e0a453da",
+          "Flags": 0,
+          "Name": "Spawn",
+          "Position": "2592,0,320",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "TeamSpawnPoint",
+              "__guid": "5f26aa2c-b39e-43d0-b1f6-c9b89e94dfb9",
+              "Team": "Red"
+            }
+          ]
+        },
+        {
+          "__guid": "50c894ce-e03a-4bc3-9202-453aca936ec0",
+          "Flags": 0,
+          "Name": "Spawn",
+          "Position": "2752,64,320",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "TeamSpawnPoint",
+              "__guid": "aa226d3f-626b-4d34-96d9-242eb1db0c02",
+              "Team": "Red"
+            }
+          ]
+        },
+        {
+          "__guid": "96bf1608-7254-4ff7-8b62-d30f3f4b9edd",
+          "Flags": 0,
+          "Name": "Spawn",
+          "Position": "2720,64,320",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "TeamSpawnPoint",
+              "__guid": "b87f1cfd-a143-4167-b057-65e08974f345",
+              "Team": "Red"
+            }
+          ]
+        },
+        {
+          "__guid": "f0f3c8e0-e9e3-4eba-8663-d9071ff26f3a",
+          "Flags": 0,
+          "Name": "Spawn",
+          "Position": "2688,64,320",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "TeamSpawnPoint",
+              "__guid": "6726eb99-d334-44c2-8109-c67d9055a049",
+              "Team": "Red"
+            }
+          ]
+        },
+        {
+          "__guid": "4bd52c1f-5953-4223-bd40-97d33c24c6be",
+          "Flags": 0,
+          "Name": "Spawn",
+          "Position": "2656,64,320",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "TeamSpawnPoint",
+              "__guid": "ee5f906c-e8e0-49e8-8bdc-74da58e795a8",
+              "Team": "Red"
+            }
+          ]
+        },
+        {
+          "__guid": "0f18378f-b799-4ae7-8c76-f4d3613adc39",
+          "Flags": 0,
+          "Name": "Spawn",
+          "Position": "2624,64,320",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "TeamSpawnPoint",
+              "__guid": "79a9aa5c-75bf-48d7-b1db-2ffc9461818a",
+              "Team": "Red"
+            }
+          ]
+        },
+        {
+          "__guid": "8dbdb389-b074-4174-b4a9-7e20bcf1980c",
+          "Flags": 0,
+          "Name": "Spawn",
+          "Position": "2592,64,320",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "TeamSpawnPoint",
+              "__guid": "231450ac-0888-45bd-8c10-22ef6c2d6642",
+              "Team": "Red"
+            }
+          ]
+        },
+        {
+          "__guid": "753eb394-77b5-4e52-81f3-05f8da078b8a",
+          "Flags": 0,
+          "Name": "Spawn",
+          "Position": "2752,128,320",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "TeamSpawnPoint",
+              "__guid": "47a49af3-3992-4313-b6cb-423b6ac31545",
+              "Team": "Red"
+            }
+          ]
+        },
+        {
+          "__guid": "f3a8fb04-ce0e-4d88-b0f1-79761cb19d4f",
+          "Flags": 0,
+          "Name": "Spawn",
+          "Position": "2720,128,320",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "TeamSpawnPoint",
+              "__guid": "4d375b60-3e23-4fb4-a8cb-5f751ef49d83",
+              "Team": "Red"
+            }
+          ]
+        },
+        {
+          "__guid": "9ef5a851-ba8a-4f50-9dbe-7bd28f2dd637",
+          "Flags": 0,
+          "Name": "Spawn",
+          "Position": "2688,128,320",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "TeamSpawnPoint",
+              "__guid": "762abed5-dd01-4b54-b101-701f29bc9437",
+              "Team": "Red"
+            }
+          ]
+        },
+        {
+          "__guid": "7d0859ae-b712-4a7a-906f-88ca44609daa",
+          "Flags": 0,
+          "Name": "Spawn",
+          "Position": "2656,128,320",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "TeamSpawnPoint",
+              "__guid": "13c15621-5d5a-4c14-bce9-83d633da560e",
+              "Team": "Red"
+            }
+          ]
+        },
+        {
+          "__guid": "e8359f18-f4c4-4ed4-bbc3-c62de4939d2e",
+          "Flags": 0,
+          "Name": "Spawn",
+          "Position": "2624,128,320",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "TeamSpawnPoint",
+              "__guid": "09c571c2-24c9-4888-a5cf-3166def51772",
+              "Team": "Red"
+            }
+          ]
+        },
+        {
+          "__guid": "7612e33a-7e28-4c34-a60d-2524ebe7d981",
+          "Flags": 0,
+          "Name": "Spawn",
+          "Position": "2592,128,320",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "TeamSpawnPoint",
+              "__guid": "f1c9fa5f-6d16-40e8-bb9c-7115b2badc7b",
+              "Team": "Red"
+            }
+          ]
+        },
+        {
+          "__guid": "b62cae8b-8461-49b2-987e-97b830e17bf5",
+          "Flags": 0,
+          "Name": "Spawn",
+          "Position": "2752,-64,320",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "TeamSpawnPoint",
+              "__guid": "f89714ce-004e-4468-8794-757ac09b2d6c",
+              "Team": "Red"
+            }
+          ]
+        },
+        {
+          "__guid": "360af721-204b-4862-82a7-9dc66f3ebced",
+          "Flags": 0,
+          "Name": "Spawn",
+          "Position": "2720,-64,320",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "TeamSpawnPoint",
+              "__guid": "8761ed4a-d4bd-49df-a979-9c26bb98cfae",
+              "Team": "Red"
+            }
+          ]
+        },
+        {
+          "__guid": "ca7ce392-c7d2-48e5-a3d7-8a2cfc5a54d3",
+          "Flags": 0,
+          "Name": "Spawn",
+          "Position": "2688,-64,320",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "TeamSpawnPoint",
+              "__guid": "adff9e3b-fe19-4e78-a374-366f99d30561",
+              "Team": "Red"
+            }
+          ]
+        },
+        {
+          "__guid": "84fd3bf8-c2e2-464b-b0e5-50199962ea4b",
+          "Flags": 0,
+          "Name": "Spawn",
+          "Position": "2656,-64,320",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "TeamSpawnPoint",
+              "__guid": "8aab8f64-2ed9-4006-837c-4d830bc00057",
+              "Team": "Red"
+            }
+          ]
+        },
+        {
+          "__guid": "8e8cf665-63e6-43b3-8ffb-75f36a27082f",
+          "Flags": 0,
+          "Name": "Spawn",
+          "Position": "2624,-64,320",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "TeamSpawnPoint",
+              "__guid": "0f02e9af-7261-4ca4-9edb-30442ebb1cc3",
+              "Team": "Red"
+            }
+          ]
+        },
+        {
+          "__guid": "630c1264-d1ed-4896-8d6e-d4339239b17b",
+          "Flags": 0,
+          "Name": "Spawn",
+          "Position": "2592,-64,320",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "TeamSpawnPoint",
+              "__guid": "6a1e4d68-193d-476f-945d-08db0b642bd2",
+              "Team": "Red"
+            }
+          ]
+        },
+        {
+          "__guid": "f4d24a14-90d9-4223-8eda-0d615bcbdb97",
+          "Flags": 0,
+          "Name": "Spawn",
+          "Position": "2752,-128,320",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "TeamSpawnPoint",
+              "__guid": "38fe0b01-be5b-47b4-85e7-353a25f00184",
+              "Team": "Red"
+            }
+          ]
+        },
+        {
+          "__guid": "44821295-f8fd-4740-b680-dc53dbfdc047",
+          "Flags": 0,
+          "Name": "Spawn",
+          "Position": "2720,-128,320",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "TeamSpawnPoint",
+              "__guid": "ef6a98b9-32a9-4809-b076-a82f4a07ec5c",
+              "Team": "Red"
+            }
+          ]
+        },
+        {
+          "__guid": "4f383f29-07d0-4584-ba47-d0d62d106e67",
+          "Flags": 0,
+          "Name": "Spawn",
+          "Position": "2688,-128,320",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "TeamSpawnPoint",
+              "__guid": "e8ab9ed4-6a3a-40a3-a6f7-81661d91746b",
+              "Team": "Red"
+            }
+          ]
+        },
+        {
+          "__guid": "1b4e9db1-188c-4469-a2d3-5bb788c20317",
+          "Flags": 0,
+          "Name": "Spawn",
+          "Position": "2656,-128,320",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "TeamSpawnPoint",
+              "__guid": "bc75871b-b9a6-40a1-9f58-010c6efb65ad",
+              "Team": "Red"
+            }
+          ]
+        },
+        {
+          "__guid": "8f588b5b-d216-419d-819b-40b09075fea7",
+          "Flags": 0,
+          "Name": "Spawn",
+          "Position": "2624,-128,320",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "TeamSpawnPoint",
+              "__guid": "a8f5f4ed-b2f6-4982-8ebf-8c5355cbcf6b",
+              "Team": "Red"
+            }
+          ]
+        },
+        {
+          "__guid": "7fe2eab5-ab48-4f91-8493-4cb7c143ee93",
+          "Flags": 0,
+          "Name": "Spawn",
+          "Position": "2592,-128,320",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "TeamSpawnPoint",
+              "__guid": "2018a8cf-fd69-454b-b974-b88c91a6036f",
+              "Team": "Red"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "__guid": "86c62565-6689-4ddf-a073-fc601ea008e8",
+      "Flags": 0,
+      "Name": "Blue Spawns",
+      "Enabled": true,
+      "Children": [
+        {
+          "__guid": "5f9b8a45-5efd-4c4a-baf9-159b79f635ee",
+          "Flags": 0,
+          "Name": "Spawn",
+          "Position": "2752,0,320",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "TeamSpawnPoint",
+              "__guid": "0258eb54-0f86-410d-af98-02dd42cbe1b7",
+              "Team": "Blue"
+            }
+          ]
+        },
+        {
+          "__guid": "6419c808-c549-4aa8-b9e5-ac392cd71a95",
+          "Flags": 0,
+          "Name": "Spawn",
+          "Position": "2720,0,320",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "TeamSpawnPoint",
+              "__guid": "279c5a27-3991-4d5f-b32c-8a6695c700ef",
+              "Team": "Blue"
+            }
+          ]
+        },
+        {
+          "__guid": "d84ad581-ae51-4c91-8c91-3889697068ce",
+          "Flags": 0,
+          "Name": "Spawn",
+          "Position": "2688,0,320",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "TeamSpawnPoint",
+              "__guid": "d0665d57-8417-439c-a288-82c050ceec77",
+              "Team": "Blue"
+            }
+          ]
+        },
+        {
+          "__guid": "5613b945-b157-48e4-8358-d65c25e02b54",
+          "Flags": 0,
+          "Name": "Spawn",
+          "Position": "2656,0,320",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "TeamSpawnPoint",
+              "__guid": "90e78876-1a2b-4208-a343-658e3ea868a3",
+              "Team": "Blue"
+            }
+          ]
+        },
+        {
+          "__guid": "c17cc092-f00b-4f6c-8623-176c8793d684",
+          "Flags": 0,
+          "Name": "Spawn",
+          "Position": "2624,0,320",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "TeamSpawnPoint",
+              "__guid": "5f0a13fb-4c8f-4e00-b924-1f61a1746c1b",
+              "Team": "Blue"
+            }
+          ]
+        },
+        {
+          "__guid": "23931356-4ed9-45a3-94dc-8c57d0b68bf9",
+          "Flags": 0,
+          "Name": "Spawn",
+          "Position": "2592,0,320",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "TeamSpawnPoint",
+              "__guid": "566afc39-6bfd-451f-b074-bfb7243ff1fa",
+              "Team": "Blue"
+            }
+          ]
+        },
+        {
+          "__guid": "25702328-bc8e-4186-9420-996ea713c564",
+          "Flags": 0,
+          "Name": "Spawn",
+          "Position": "2752,64,320",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "TeamSpawnPoint",
+              "__guid": "f6337b9b-3eb4-495d-9c89-04ba6f1e3044",
+              "Team": "Blue"
+            }
+          ]
+        },
+        {
+          "__guid": "5974c2e2-a59a-473b-9494-42662d81dc9b",
+          "Flags": 0,
+          "Name": "Spawn",
+          "Position": "2720,64,320",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "TeamSpawnPoint",
+              "__guid": "e9758cbc-484b-460f-a0d6-90c7e1c72772",
+              "Team": "Blue"
+            }
+          ]
+        },
+        {
+          "__guid": "4bf3fc29-2404-4485-b2ce-ae27acfead00",
+          "Flags": 0,
+          "Name": "Spawn",
+          "Position": "2688,64,320",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "TeamSpawnPoint",
+              "__guid": "07c0b964-3867-4e11-b714-45213511a5d4",
+              "Team": "Blue"
+            }
+          ]
+        },
+        {
+          "__guid": "21dc4a3a-b802-42f1-9427-f9600a6f81d7",
+          "Flags": 0,
+          "Name": "Spawn",
+          "Position": "2656,64,320",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "TeamSpawnPoint",
+              "__guid": "aa5e4c26-9852-4ae0-b4f2-8beeaab4fc5e",
+              "Team": "Blue"
+            }
+          ]
+        },
+        {
+          "__guid": "f2c7ff2c-13ec-4e4a-84b8-3ef2960ea4b0",
+          "Flags": 0,
+          "Name": "Spawn",
+          "Position": "2624,64,320",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "TeamSpawnPoint",
+              "__guid": "351ecb0c-82c0-4263-b22d-fe6e190c306c",
+              "Team": "Blue"
+            }
+          ]
+        },
+        {
+          "__guid": "a6258738-8767-4dd9-a70c-8ba42e7b28eb",
+          "Flags": 0,
+          "Name": "Spawn",
+          "Position": "2592,64,320",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "TeamSpawnPoint",
+              "__guid": "a89acabf-3e2d-4c87-a4fb-ff7a514f4b3f",
+              "Team": "Blue"
+            }
+          ]
+        },
+        {
+          "__guid": "01ec364c-5aaf-4c0f-a8eb-3ced25704d14",
+          "Flags": 0,
+          "Name": "Spawn",
+          "Position": "2752,128,320",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "TeamSpawnPoint",
+              "__guid": "834dbd68-3c39-4a70-b4bb-86884ba57630",
+              "Team": "Blue"
+            }
+          ]
+        },
+        {
+          "__guid": "2617edaa-3f37-477c-814e-84910f6020ec",
+          "Flags": 0,
+          "Name": "Spawn",
+          "Position": "2720,128,320",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "TeamSpawnPoint",
+              "__guid": "96ed3c17-648f-4d9d-8636-234ef900242d",
+              "Team": "Blue"
+            }
+          ]
+        },
+        {
+          "__guid": "9b15b983-21dc-4cf6-8250-a85e2639ed92",
+          "Flags": 0,
+          "Name": "Spawn",
+          "Position": "2688,128,320",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "TeamSpawnPoint",
+              "__guid": "f7912d29-4b1b-4187-b14b-690608459256",
+              "Team": "Blue"
+            }
+          ]
+        },
+        {
+          "__guid": "8cec4d6e-4759-40fd-883b-9d18b6d1b412",
+          "Flags": 0,
+          "Name": "Spawn",
+          "Position": "2656,128,320",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "TeamSpawnPoint",
+              "__guid": "73947958-645b-4d5d-bfa7-1d79f3347ab1",
+              "Team": "Blue"
+            }
+          ]
+        },
+        {
+          "__guid": "a72dc0a4-a919-4a8a-becd-9337ba8e632d",
+          "Flags": 0,
+          "Name": "Spawn",
+          "Position": "2624,128,320",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "TeamSpawnPoint",
+              "__guid": "8c8f14b6-e64f-42ef-91a8-5ed596e1c009",
+              "Team": "Blue"
+            }
+          ]
+        },
+        {
+          "__guid": "6baef035-b101-4e78-9bd3-b92d2ab92a3e",
+          "Flags": 0,
+          "Name": "Spawn",
+          "Position": "2592,128,320",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "TeamSpawnPoint",
+              "__guid": "ff184d08-bfd8-4be3-be9e-e2c67c4dfad8",
+              "Team": "Blue"
+            }
+          ]
+        },
+        {
+          "__guid": "47010169-0c1d-4a00-bde0-db25e191fa6f",
+          "Flags": 0,
+          "Name": "Spawn",
+          "Position": "2752,-64,320",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "TeamSpawnPoint",
+              "__guid": "d047b98d-520c-4c37-9570-caa5bc8d272e",
+              "Team": "Blue"
+            }
+          ]
+        },
+        {
+          "__guid": "b879edf5-1af4-448a-8a7f-b6d519f05ba7",
+          "Flags": 0,
+          "Name": "Spawn",
+          "Position": "2720,-64,320",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "TeamSpawnPoint",
+              "__guid": "7813a9cd-1056-4c83-a887-e9a94741b67c",
+              "Team": "Blue"
+            }
+          ]
+        },
+        {
+          "__guid": "0286f0dd-0762-4072-8681-e5bbc6a5a431",
+          "Flags": 0,
+          "Name": "Spawn",
+          "Position": "2688,-64,320",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "TeamSpawnPoint",
+              "__guid": "4f75a846-a718-42d8-b441-4053d3db80ef",
+              "Team": "Blue"
+            }
+          ]
+        },
+        {
+          "__guid": "d06480a4-dc19-40bc-99c4-832eb4555095",
+          "Flags": 0,
+          "Name": "Spawn",
+          "Position": "2656,-64,320",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "TeamSpawnPoint",
+              "__guid": "b57e0dc1-a7f7-449b-8a6d-e8f5fd261630",
+              "Team": "Blue"
+            }
+          ]
+        },
+        {
+          "__guid": "a2fe8af6-2333-4a49-af40-2153152f4977",
+          "Flags": 0,
+          "Name": "Spawn",
+          "Position": "2624,-64,320",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "TeamSpawnPoint",
+              "__guid": "e5f9f554-8aea-4305-92b4-72b38bee4563",
+              "Team": "Blue"
+            }
+          ]
+        },
+        {
+          "__guid": "767289da-ccdf-40ea-a956-066b8702876e",
+          "Flags": 0,
+          "Name": "Spawn",
+          "Position": "2592,-64,320",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "TeamSpawnPoint",
+              "__guid": "15317f39-4ab0-4268-b945-62ed9825d531",
+              "Team": "Blue"
+            }
+          ]
+        },
+        {
+          "__guid": "0b85d2ec-ee7b-4988-a01c-5b6d40db58d8",
+          "Flags": 0,
+          "Name": "Spawn",
+          "Position": "2752,-128,320",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "TeamSpawnPoint",
+              "__guid": "922e69c2-4a39-4290-87a1-29c4f330672c",
+              "Team": "Blue"
+            }
+          ]
+        },
+        {
+          "__guid": "188cb21e-2adf-4dbe-b749-d294d4ac29e1",
+          "Flags": 0,
+          "Name": "Spawn",
+          "Position": "2720,-128,320",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "TeamSpawnPoint",
+              "__guid": "c1caa11f-ecb1-4b25-92cc-8b64df8d47a0",
+              "Team": "Blue"
+            }
+          ]
+        },
+        {
+          "__guid": "5ac6936c-7a5f-409a-8548-9bd784046557",
+          "Flags": 0,
+          "Name": "Spawn",
+          "Position": "2688,-128,320",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "TeamSpawnPoint",
+              "__guid": "21fdef0e-1223-4b14-87f8-4845240b8627",
+              "Team": "Blue"
+            }
+          ]
+        },
+        {
+          "__guid": "8d036422-8e92-4dfa-b5a4-d23007dd4ff0",
+          "Flags": 0,
+          "Name": "Spawn",
+          "Position": "2656,-128,320",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "TeamSpawnPoint",
+              "__guid": "130c2224-fa2b-465d-8891-6c76ec151dbb",
+              "Team": "Blue"
+            }
+          ]
+        },
+        {
+          "__guid": "b8ac9ae2-d81e-4d80-ba01-d8fbe81b267f",
+          "Flags": 0,
+          "Name": "Spawn",
+          "Position": "2624,-128,320",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "TeamSpawnPoint",
+              "__guid": "2b95dc7b-ff6f-48c2-8213-f0ea9d9fcec8",
+              "Team": "Blue"
+            }
+          ]
+        },
+        {
+          "__guid": "b8717839-ec06-4fea-a7f2-1ca2cd0dabd6",
+          "Flags": 0,
+          "Name": "Spawn",
+          "Position": "2592,-128,320",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "TeamSpawnPoint",
+              "__guid": "2ea98b53-2131-43c9-b86e-90c94a7dba95",
+              "Team": "Blue"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "__guid": "355b16f2-bbf3-4cc5-be96-3e893520e413",
+      "Flags": 0,
+      "Name": "Death Trigger",
+      "Position": "0,0,-3040",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "Components": [
+        {
+          "__type": "DeathTrigger",
+          "__guid": "b8c12265-6153-484b-9b39-d3effbd4e6b4"
+        },
+        {
+          "__type": "Sandbox.BoxCollider",
+          "__guid": "6f3f09f5-c5a6-4cd8-9df7-f8cd1165898c",
+          "Center": "0,0,0",
+          "IsTrigger": false,
+          "Scale": "50000,50000,50",
+          "Static": false
+        }
+      ]
+    },
+    {
+      "__guid": "aa6c7cd8-306f-4d1b-93ba-bf5c4c1c9e31",
+      "Flags": 0,
+      "Name": "Point Light",
+      "Position": "2752,0,416",
+      "Tags": "light_point,light",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.PointLight",
+          "__guid": "a358a42d-5397-4816-ac91-176d58f41080",
+          "Attenuation": 0.4,
+          "FogMode": "Enabled",
+          "FogStrength": 1,
+          "LightColor": "0.35922,0.81483,0.95349,1",
+          "Radius": 500,
+          "Shadows": true
+        }
+      ]
+    },
+    {
+      "__guid": "d87db1a4-530c-4a39-8e2a-9f223b171f28",
+      "Flags": 0,
+      "Name": "Point Light (1)",
+      "Position": "-2752,0,416",
+      "Tags": "light_point,light",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.PointLight",
+          "__guid": "d938497a-fe6e-4f64-88bc-eeba99851127",
+          "Attenuation": 0.4,
+          "FogMode": "Enabled",
+          "FogStrength": 1,
+          "LightColor": "1,0.8186,0.8186,1",
+          "Radius": 500,
+          "Shadows": true
+        }
+      ]
+    }
+  ],
+  "SceneProperties": {
+    "FixedUpdateFrequency": 50,
+    "MaxFixedUpdates": 5,
+    "NetworkFrequency": 30,
+    "NetworkInterpolation": true,
+    "PhysicsSubSteps": 1,
+    "ThreadedAnimation": true,
+    "TimeScale": 1,
+    "UseFixedUpdate": true,
+    "NavMesh": {
+      "Enabled": false,
+      "IncludeStaticBodies": true,
+      "IncludeKeyframedBodies": true,
+      "EditorAutoUpdate": true,
+      "AgentHeight": 64,
+      "AgentRadius": 16,
+      "AgentStepSize": 18,
+      "AgentMaxSlope": 40,
+      "ExcludedBodies": "",
+      "IncludedBodies": ""
+    }
+  },
+  "Title": "fw_basin",
+  "Description": "",
+  "ResourceVersion": 1,
+  "__references": [
+    "facepunch.glass_c#70691"
+  ],
+  "IsValid": true,
+  "__version": 1
+}

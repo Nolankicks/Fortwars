@@ -7,7 +7,7 @@ public sealed class DeathTrigger : Component, Component.ITriggerListener
 	{
 		if ( other.GameObject.Components.TryGet<HealthComponent>( out var health, FindMode.EverythingInSelfAndParent ) )
 		{
-			health.TakeDamage( GameObject, 100 );
+			health.TakeDamage( GameObject, 1000 );
 		}
 	}
 }
