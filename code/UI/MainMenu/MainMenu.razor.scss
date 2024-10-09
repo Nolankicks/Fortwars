@@ -71,6 +71,7 @@ MainMenu
     .title
     {
         position: absolute;
+        transition: all 1s ease-in-out;
         top: 32px;
         left: 32px;
 
@@ -79,6 +80,12 @@ MainMenu
         gap: 12px;
 
         color: white;
+        font-weight: bolder;
+
+        &:intro
+        {
+            transform: translateX(-115%);
+        }
     }
 
     .lobbies

@@ -5,8 +5,8 @@
       "__guid": "0e9966b0-db00-4497-b185-6fc9dbbebe34",
       "Flags": 0,
       "Name": "Camera",
-      "Position": "-848.9972,-840.764,306.8735",
-      "Rotation": "-0.0499502,0.1205905,0.3794095,0.9159757",
+      "Position": "416.5758,449.3122,298.2926",
+      "Rotation": "0,0,-0.5,0.8660254",
       "Tags": "maincamera",
       "Enabled": true,
       "Components": [
@@ -26,6 +26,35 @@
           "Viewport": "0,0,1,1",
           "ZFar": 10000,
           "ZNear": 10
+        },
+        {
+          "__type": "Sandbox.DepthOfField",
+          "__guid": "6c8e5f26-0427-4f22-b5ce-387801c16b7f",
+          "BackBlur": true,
+          "BlurSize": 100,
+          "FocalDistance": 260.37,
+          "FrontBlur": true
+        },
+        {
+          "__type": "Sandbox.AmbientOcclusion",
+          "__guid": "9e936376-dc8e-47e3-8b98-819cae335975",
+          "FalloffDistance": 1,
+          "Intensity": 8,
+          "Quality": "High",
+          "Radius": 32
+        },
+        {
+          "__type": "Sandbox.Tonemapping",
+          "__guid": "7d61b0e8-36ab-4920-81b8-0b15a6e592ce",
+          "__version": 1,
+          "AutoExposureEnabled": true,
+          "ExposureBias": 2,
+          "ExposureCompensation": 0.2,
+          "ExposureMethod": "RGB",
+          "MaximumExposure": 2.65,
+          "MinimumExposure": 1.7,
+          "Mode": "Legacy",
+          "Rate": 8.57
         }
       ]
     },
@@ -62,7 +91,7 @@
           "__guid": "0c5adb45-2667-4261-a3b5-de030b6087c6",
           "__version": 1,
           "EnableCollision": true,
-          "MapName": "facepunch.flatgrass",
+          "MapName": "apetavern.fw_easter",
           "NoOrigin": false,
           "OnMapLoaded": null,
           "OnMapUnloaded": null,
@@ -70,6 +99,82 @@
         }
       ],
       "Children": []
+    },
+    {
+      "__guid": "80e86607-ff68-4bb4-9f72-a6452c142e39",
+      "Flags": 0,
+      "Name": "wooden_crate",
+      "Position": "551.1438,260.7858,256.1369",
+      "Rotation": "-0.00009304551,-0.00006306887,0.2781919,0.9605256",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.Prop",
+          "__guid": "8d485181-f5b1-440c-9014-fe97245e56c0",
+          "BodyGroups": 18446744073709551615,
+          "Health": 50,
+          "IsStatic": false,
+          "Model": "models/sbox_props/wooden_crate/wooden_crate.vmdl",
+          "StartAsleep": false,
+          "Tint": "1,1,1,1"
+        }
+      ]
+    },
+    {
+      "__guid": "5891eb19-6143-447b-a6fb-a94a7b0e44f1",
+      "Flags": 0,
+      "Name": "wooden_crate (1)",
+      "Position": "488.7776,268.7951,256.1241",
+      "Rotation": "0.0000009571913,-0.0000005477925,0.1042443,0.9945517",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.Prop",
+          "__guid": "34b3856c-8a3f-4973-bf5c-cfda9cac420c",
+          "BodyGroups": 18446744073709551615,
+          "Health": 50,
+          "IsStatic": false,
+          "Model": "models/sbox_props/wooden_crate/wooden_crate.vmdl",
+          "StartAsleep": false,
+          "Tint": "1,1,1,1"
+        }
+      ]
+    },
+    {
+      "__guid": "7a001fcd-72c8-4c37-9a37-915dfd8b8225",
+      "Flags": 0,
+      "Name": "rollermine",
+      "Position": "538.3549,303.4157,271.8685",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.Prop",
+          "__guid": "f7ea8e2c-d1a4-4b87-b849-629ae1f5f5ae",
+          "BodyGroups": 18446744073709551615,
+          "Health": 0,
+          "IsStatic": false,
+          "Model": "models/rollermine.vmdl",
+          "StartAsleep": false,
+          "Tint": "1,1,1,1"
+        }
+      ]
+    },
+    {
+      "__guid": "99e978ae-8110-4bf7-b257-4933f56048be",
+      "Flags": 0,
+      "Name": "Ambience",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.SoundscapeTrigger",
+          "__guid": "963c67e9-b523-4910-8a62-203274c7a820",
+          "BoxSize": "50,50,50",
+          "Radius": 500,
+          "Soundscape": "soundscapes/field/field_day_breeze_01a.sndscape",
+          "StayActiveOnExit": true,
+          "Type": "Point"
+        }
+      ]
     }
   ],
   "SceneProperties": {
@@ -97,7 +202,11 @@
   "Title": "dead4leftmenurewrite",
   "Description": "",
   "ResourceVersion": 1,
-  "__references": [],
+  "__references": [
+    "facepunch.wooden_crate#29138",
+    "igrium.rollermine-model#19481",
+    "rust.field_day_breeze_01a#43855"
+  ],
   "IsValid": true,
   "__version": 1
 }
