@@ -106,7 +106,7 @@ MainMenu
         color: $button-secondary-fg;
 
         border-width: 2px;
-        border-color: $primary;
+        border-color: $secondary;
 
         justify-content: flex-start;
         align-items: center;
@@ -116,6 +116,14 @@ MainMenu
         border-radius: 4px;
 
         flex-direction: column;
+
+        transition: all 0.2s;
+
+
+        &:intro
+        {
+            opacity: 0;
+        }
 
         >.header
         {
@@ -383,7 +391,7 @@ MainMenu
     .about
     {
         width: 800px;
-        height: 700px;
+        max-height: 700px;
         background-color: $secondary;
         border-color: $primary;
         border-width: 2px;
@@ -400,6 +408,13 @@ MainMenu
         overflow-x: hidden;
         align-items: flex-start;
         justify-content: center;
+        transition: all 0.2s;
+
+
+        &:intro
+        {
+            opacity: 0;
+        }
 
         >label
         {
