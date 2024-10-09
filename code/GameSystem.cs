@@ -63,7 +63,7 @@ IGameEventHandler<OnGameOvertimeBuild>, IGameEventHandler<OnGameOvertimeFight>
 	public bool CountUp => State == GameState.Waiting;
 
 	[Sync] public int Overtimes { get; set; } = 0;
-	[Property, Sync, Category( "Game Data" )] public List<string> MountedIndents { get; set; } = new();
+	//[Property, Sync, Category( "Game Data" )] public List<string> MountedIndents { get; set; } = new();
 	[Property, Category( "Lobby Settings" ), InlineEditor] public LobbySettings LobbySettings { get; set; } = new();
 
 	[Property, Category( "Game Config" )] public Dictionary<string, int> ClassicIndents { get; set; } = new();

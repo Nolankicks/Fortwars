@@ -123,7 +123,6 @@
             "ClassicModels": true
           },
           "MaxProps": 50,
-          "MountedIndents": [],
           "PlayerPrefab": {
             "_type": "gameobject",
             "prefab": "prefabs/playerdead4left.prefab"

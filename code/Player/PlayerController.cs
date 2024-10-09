@@ -65,7 +65,7 @@ public sealed class PlayerController : Component, IGameEventHandler<DamageEvent>
 		if ( !gs.IsValid() )
 			return;
 
-		MountAllAssets( gs.MountedIndents );
+		//MountAllAssets( gs.MountedIndents );
 	}
 
 
@@ -485,7 +485,7 @@ public sealed class PlayerController : Component, IGameEventHandler<DamageEvent>
 		go.Enabled = enable;
 	}
 
-	[Broadcast]
+    /*[Broadcast]
 	public async void MountAllAssets( List<string> indents )
 	{
 		foreach ( var asset in indents )
@@ -499,7 +499,7 @@ public sealed class PlayerController : Component, IGameEventHandler<DamageEvent>
 		}
 
 		Log.Info( "Mounted all assets" );
-	}
+	}/*/
 
 	[Authority]
 	public void SetSpeed( int walkSpeed, int runSpeed )
