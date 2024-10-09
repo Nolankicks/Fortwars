@@ -116,10 +116,8 @@
           "FightTime": 240,
           "FourTeams": false,
           "GreenTimeHeld": 60,
-          "LoadLobbySettings": false,
+          "LoadLobbySettings": true,
           "LobbySettings": {
-            "BuildTime": 150,
-            "FightTime": 300,
             "ClassicModels": true
           },
           "MaxProps": 50,

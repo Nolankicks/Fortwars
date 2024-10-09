@@ -112,8 +112,6 @@ IGameEventHandler<OnGameOvertimeBuild>, IGameEventHandler<OnGameOvertimeFight>
 
 			if ( LoadLobbySettings && lobbySettings is not null )
 			{
-				BuildTime = lobbySettings.BuildTime;
-				FightTime = lobbySettings.FightTime;
 				ClassicModels = lobbySettings.ClassicModels;
 			}
 

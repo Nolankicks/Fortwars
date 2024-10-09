@@ -1,0 +1,143 @@
+@using Sandbox;
+@using Sandbox.UI;
+@using System.Threading.Tasks;
+@using System.Text.Json;
+@using System;
+@inherits Panel
+@attribute [StyleSheet]
+
+<root>
+	<div class="container">
+		@if ( SelectedMap is not null )
+		{
+			<div class="thumb">
+				<div class="img" style="background-image: url( @SelectedMap?.Thumb?.ResourcePath )"></div>
+			</div>
+
+			<div class="title">@SelectedMap?.MapName</div>
+			<div class="author">By: @SelectedMap?.Author</div>
+
+			@if ( !string.IsNullOrWhiteSpace( SelectedMap?.MapDescription ) )
+			{
+				<div class="description">
+					<div>@SelectedMap?.MapDescription</div>
+				</div>
+			}
+			else
+			{
+				<div style="height: 100%; width: 100%; margin: 12px;"></div>
+			}
+
+			<div class="settings">
+				<div class="setting">
+					<div class="label">Classic Props</div>
+					<SwitchControl Value:bind="@ClassicModels" />
+				</div>
+			</div>
+
+			<div class="play-button"  onclick=@( () => LoadMapInfo( SelectedMap ) )>Play</div>
+		}
+		else if ( SelectedPackage is not null )
+		{
+			<div class="thumb">
+				<div class="img" style="background-image: url( @SelectedPackage?.Thumb )"></div>
+			</div>
+
+			<div class="title">@SelectedPackage?.Title</div>
+			<div class="author">By: @SelectedPackage?.Org.Title</div>
+
+			@if ( !string.IsNullOrWhiteSpace( SelectedPackage?.Summary ) )
+			{
+				<div class="description">
+					<div>@SelectedPackage.Summary</div>
+				</div>
+			}
+			else
+			{
+				<div style="height: 100%; width: 100%; margin: 12px;"></div>
+			}
+
+			<div class="settings">
+				<div class="setting">
+					<div class="label">Classic Props</div>
+					<SwitchControl Value:bind="@ClassicModels" />
+				</div>
+			</div>
+
+			<div class="play-button" onclick=@( () => LoadPackage() )>Play</div>
+		}
+	</div>
+</root>
+
+@code
+{
+	public Package SelectedPackage { get; set; }
+	public MapInfo SelectedMap { get; set; }
+	[Change( nameof( OnValueMapChange ) )] private bool ClassicModels { get; set; }
+
+	public async void LoadPackage()
+	{
+		if ( SelectedPackage is null )
+			return;
+
+		Log.Info( $"Loading package {SelectedPackage.FullIdent}" );
+
+		//I have to fetch it again?
+		var pkg = await Package.Fetch( SelectedPackage.FullIdent, false );
+
+		if ( pkg is null )
+			return;
+
+		await pkg.MountAsync();
+
+		var sceneFile = pkg.GetMeta<SceneFile>( "PrimaryAsset" );
+
+		if ( sceneFile is null )
+			return;
+		
+		Scene.Load( sceneFile );
+	}
+
+	protected override void OnAfterTreeRender( bool firstTime )
+	{
+		if ( firstTime )
+		{
+			if ( FileSystem.Data?.FileExists( "lobbysettings.json" ) ?? false )
+			{
+				var lobbySettings = LobbySettings.Load();
+
+				if ( lobbySettings is not null )
+				{
+					ClassicModels = lobbySettings.ClassicModels;
+				}
+			}
+		}
+	}
+
+	public void LoadMapInfo( MapInfo map )
+	{
+		if ( map is null )
+			return;
+
+		var scene = map.Scene;
+
+		if ( scene is null )
+			return;
+
+		Scene?.Load( scene );
+	}
+
+	void OnValueMapChange()
+	{
+		var lobbySettings = new LobbySettings { ClassicModels = ClassicModels };
+
+		Log.Info( JsonSerializer.Serialize( lobbySettings ) );
+
+		LobbySettings.Save( lobbySettings );
+	}
+
+	protected override int BuildHash()
+	{
+		return System.HashCode.Combine( SelectedPackage, SelectedMap, ClassicModels );
+	}
+}

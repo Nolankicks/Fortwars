@@ -1,0 +1,208 @@
+$primary: #1a1a1a;
+$secondary: #242424;
+$tertiary: #fdc418;
+
+$button-primary: #ffffff !default;
+$button-primary-fg: #ffffff !default;
+$button-secondary: #282828 !default;
+$button-secondary-fg: #dadada !default;
+$button-size: 45px;
+
+
+LobbySettingsPanel
+{
+    position: relative;
+    width: 400px;
+    height: 100%;
+    background-color: $secondary;
+    border-color: $primary;
+    border-width: 2px;
+    flex-shrink: 0;
+    z-index: -1;
+
+    transition: transform 0.5s ease-in-out;
+
+    border-radius: 0 4 4 0;
+    padding: 12px;
+
+    &:intro
+    {
+        transform: translateX(-100%);
+    }
+
+    &:outro
+    {
+        transform: translateX(-100%);
+    }
+    
+    .container
+    {
+        width: 100%;
+        height: 100%;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        padding: 8px;
+        background-color: $secondary;
+
+        
+        >.title
+        {
+            font-size: 32px;
+            color: $button-secondary-fg;
+            min-height: 42px;
+            width: 100%;
+
+            align-items: center;
+            justify-content: center;
+        }
+
+        >.author
+        {
+            font-size: 24px;
+            color: $button-secondary-fg;
+
+            min-height: 42px;
+            width: 100%;
+
+            align-items: center;
+            justify-content: center;
+        }
+
+        >.thumb
+        {
+            position: relative;
+    
+            width: 256px;
+            height: 256px;
+            font-size: 24px;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            margin-bottom: 12px;
+            flex-shrink: 0;
+    
+            background-color: $button-secondary;
+            color: $button-secondary-fg;
+    
+            border-width: 2px;
+            border-color: $primary;
+            border-radius: 4px;
+    
+            flex-direction: column;
+    
+            transition: all 0.2s;
+    
+            >.img
+            {
+                width: 95%;
+                height: 95%;
+                border-radius: 4px;
+                background-size: cover;
+            }
+        }
+
+        .description
+        {
+            position: relative;
+            font-size: 14px;
+            color: $button-secondary-fg;
+            width: 100%;
+            height: 100%;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 1;
+            margin: 12px;
+            
+            >div
+            {
+                height: 100%;
+                width: 100%;
+                overflow-y: scroll;
+                overflow-x: hidden;
+                background-color: $primary;
+                border-radius: 4px;
+                padding: 8px;
+                border-width: 2px;
+                border-color: $button-secondary;
+            }
+        }
+
+        .settings
+        {
+            width: 100%;
+            height: 100%;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            
+            background-color: $primary;
+            border-radius: 4px;
+            padding: 8px;
+            border-width: 2px;
+            border-color: $button-secondary;
+            flex-shrink: 1;
+
+           margin: 12px;
+           margin-top: 0;
+
+            overflow-y: scroll;
+            overflow-x: hidden;
+
+            color: $button-secondary-fg;
+
+            >.setting
+            {
+                width: 100%;
+                align-items: center;
+                justify-content: space-between;
+                background-color: $secondary;
+                border-radius: 4px;
+                padding: 8px;
+                
+                >SwitchControl
+                {
+                    align-items: center;
+                    justify-content: flex-end;
+                }
+            }
+        }
+
+        >.play-button
+        {
+            width: 100%;
+            height: 100%;
+            flex-shrink: 1;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-end;
+
+            background-color: rgb(80, 200, 120);
+            color: $button-primary-fg;
+            font-size: 24px;
+            width: 100%;
+            height: $button-size;
+            align-items: center;
+            justify-content: center;
+            border-radius: 4px;
+            cursor: pointer;
+            flex-shrink: 0;
+
+            transition: background-color 0.2s;
+
+            &:hover
+            {
+                background-color: rgb(56, 187, 154);
+
+                sound-in: ui.button.over;
+            }
+
+            &:active
+            {
+                background-color: rgb(56, 135, 187);
+
+                sound-in: ui.button.press;
+            }
+        }
+    }
+}

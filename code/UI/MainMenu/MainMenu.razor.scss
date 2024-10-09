@@ -74,7 +74,7 @@ MainMenu
         }
     }
 
-    .title
+    >.title
     {
         position: absolute;
         transition: all 1s ease-in-out;
@@ -429,6 +429,6 @@ MainMenu
         width: 700px;
         height: 700px;
         align-items: center;
-        justify-content: center;
+        justify-content: flex-start;
     }
 }

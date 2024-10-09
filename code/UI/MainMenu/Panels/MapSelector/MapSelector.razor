@@ -52,7 +52,7 @@
 					{
 						foreach ( var map in CustomMaps )
 						{
-							<div class="map" onclick=@( () => LoadPackage( map ) )>
+							<div class="map" onclick=@( () => SelectMap( map ) )>
 								<img class="img" src=@map?.Thumb>
 								<div class="chip">
 									<p>@map.Title</p>
@@ -89,9 +89,18 @@
 	TextEntry Search;
 	public string Query { get; set; } = "";
 
+	public Package SelectedPackage { get; set; }
+	public LobbySettingsPanel LobbySettingsPanel;
+
 	public void ChangeMapType( MapType mapType )
 	{
 		SelectedMapType = mapType;
+
+		if ( LobbySettingsPanel is not null )
+		{
+			LobbySettingsPanel.Delete();
+			LobbySettingsPanel = null;
+		}
 
 		StateHasChanged();
 	}
@@ -129,32 +138,45 @@
 			FirstTime = false;
 	}
 
-	public async void LoadPackage( Package package )
+	public void SelectMap( Package package )
 	{
-		//I have to fetch it again?
-		var pkg = await Package.Fetch( package.FullIdent, false );
-
-		if ( pkg is null )
+		if ( package is null )
 			return;
 
-		await pkg.MountAsync();
+		SelectedPackage = package;
 
-		var sceneFile = pkg.GetMeta<SceneFile>( "PrimaryAsset" );
+		if ( LobbySettingsPanel is null )
+		{
+			LobbySettingsPanel = new LobbySettingsPanel();
 
-		if ( sceneFile is null )
-			return;
-		
-		Scene.Load( sceneFile );
+			LobbySettingsPanel.SelectedPackage = SelectedPackage;
+
+			Parent?.AddChild( LobbySettingsPanel );
+		}
+		else
+		{
+			LobbySettingsPanel.SelectedPackage = SelectedPackage;
+		}
 	}
 
 	public void LoadMapInfo( MapInfo mapInfo )
 	{
-		var scene = mapInfo.Scene;
-
-		if ( scene is null )
+		if ( mapInfo is null )
 			return;
-		
-		Scene.Load( scene );
+
+		if ( LobbySettingsPanel is null )
+		{
+			LobbySettingsPanel = new LobbySettingsPanel();
+
+			LobbySettingsPanel.SelectedMap = mapInfo;
+
+			Parent?.AddChild( LobbySettingsPanel );
+		}
+		else
+		{
+			LobbySettingsPanel.SelectedMap = mapInfo;
+			LobbySettingsPanel.StateHasChanged();
+		}
 	}
 
 	protected override int BuildHash()

@@ -3,8 +3,6 @@ using Sandbox;
 
 public sealed class LobbySettings
 {
-	public int BuildTime { get; set; } = 300;
-	public int FightTime { get; set; } = 300;
 	public bool ClassicModels { get; set; } = false;
 
 	public static void Save( LobbySettings settings )
@@ -16,7 +14,7 @@ public sealed class LobbySettings
 
 	public static LobbySettings Load()
 	{
-		if ( !FileSystem.Data.FileExists( "lobbysettings.json" ) )
+		if ( !FileSystem.Data?.FileExists( "lobbysettings.json" ) ?? false )
 			return new LobbySettings();
 
 		var json = FileSystem.Data.ReadAllText( "lobbysettings.json" );
