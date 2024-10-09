@@ -33,6 +33,12 @@ MainMenu
 
         flex-direction: column;
         gap: 16px;
+        transition: all 1s ease-in-out;
+
+        &:intro
+        {
+            transform: translateX(-115%);
+        }
 
         .button
         {
