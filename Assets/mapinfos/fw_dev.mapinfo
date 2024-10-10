@@ -1,6 +1,6 @@
 {
   "MapName": "fw_dev",
-  "MapDescription": null,
+  "MapDescription": "High up in the air aren\u0027t we?",
   "FourTeams": false,
   "Scene": "scenes/fortwars_dev.scene",
   "Thumb": "textures/fw_dev.vtex",

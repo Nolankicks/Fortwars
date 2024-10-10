@@ -23,6 +23,11 @@ MapSelector
     flex-shrink: 0;
     z-index: 1;
 
+    &.full
+    {
+        border-radius: 4px;
+    }
+
     transition: opacity 0.5s ease-in-out;
 
     &:intro

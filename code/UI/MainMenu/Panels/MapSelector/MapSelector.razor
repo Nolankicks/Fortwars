@@ -5,7 +5,7 @@
 @inherits Panel
 @attribute [StyleSheet]
 
-<root>
+<root class=@( Parent?.ChildrenOfType<LobbySettingsPanel>().Any() ?? false ? "" : "full" )>
 	<div class="tabs">
 		<div class="tab @IsActive( MapType.Official )" onclick=@( () => ChangeMapType( MapType.Official ) )>Official Maps</div>
 		<div class="tab @IsActive( MapType.Custom )" onclick=@( () => ChangeMapType( MapType.Custom ) )>Custom Maps</div>
@@ -26,7 +26,6 @@
 						<div class="chip">
 							<p>@map?.MapName</p>
 							<p>By: @map?.Author</p>
-							<p>@map?.MapDescription</p>
 							<p>@( map.FourTeams ? "Four Teams" : "Two Teams")</p>
 						</div>
 					</div>
@@ -94,13 +93,13 @@
 
 	public void ChangeMapType( MapType mapType )
 	{
-		SelectedMapType = mapType;
-
-		if ( LobbySettingsPanel is not null )
+		if ( LobbySettingsPanel is not null && mapType != SelectedMapType )
 		{
 			LobbySettingsPanel.Delete();
 			LobbySettingsPanel = null;
 		}
+
+		SelectedMapType = mapType;
 
 		StateHasChanged();
 	}
@@ -181,6 +180,6 @@
 
 	protected override int BuildHash()
 	{
-		return HashCode.Combine( SelectedMapType );
+		return HashCode.Combine( SelectedMapType, Parent?.ChildrenOfType<LobbySettingsPanel>().Any() );
 	}
 }

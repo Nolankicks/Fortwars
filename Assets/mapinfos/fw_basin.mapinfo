@@ -1,6 +1,6 @@
 {
   "MapName": "fw_basin",
-  "MapDescription": null,
+  "MapDescription": "Fight for the center!",
   "FourTeams": false,
   "Scene": "scenes/fw_basin.scene",
   "Thumb": "textures/fw_basin.vtex",

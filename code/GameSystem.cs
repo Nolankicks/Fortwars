@@ -579,7 +579,7 @@ public sealed class MapData : Component
 	[Property] public bool FourTeams { get; set; } = false;
 }
 
-[GameResource( "Map Info", "mapinfo", "Info about the map", Icon ="explore" )]
+[GameResource( "Map Info", "mapinfo", "Info about the map", Icon = "explore" )]
 public sealed class MapInfo : GameResource
 {
 	public string MapName { get; set; }

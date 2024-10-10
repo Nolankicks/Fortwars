@@ -67,6 +67,8 @@ LobbySettingsPanel
 
             align-items: center;
             justify-content: center;
+
+            margin-bottom: 12px;
         }
 
         >.thumb
@@ -143,8 +145,8 @@ LobbySettingsPanel
             border-color: $button-secondary;
             flex-shrink: 1;
 
-           margin: 12px;
-           margin-top: 0;
+            margin: 12px;
+            margin-top: 0;
 
             overflow-y: scroll;
             overflow-x: hidden;

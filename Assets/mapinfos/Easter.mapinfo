@@ -1,6 +1,6 @@
 {
   "MapName": "fw_easter",
-  "MapDescription": "",
+  "MapDescription": "Blast from the past",
   "FourTeams": false,
   "Scene": "scenes/easter.scene",
   "Thumb": "textures/easter.vtex",
