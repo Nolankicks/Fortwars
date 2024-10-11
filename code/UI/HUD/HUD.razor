@@ -63,7 +63,7 @@
 		<MaxProps />
 		<div class="health">
 			<div class="team" style="background-color: @GetColor().Hex;">@player.TeamComponent?.Team</div>
-			<div class="number">
+			<div class="number" @ref="HealthPanel">
 				✚<div>@player.HealthComponent?.Health</div>
 				</div>
 		</div>
@@ -79,12 +79,15 @@
 
 @code
 {
+	public Panel HealthPanel { get; set; }
 	public bool ShowScoreboard => Input.Down( "score" );
 
 	void IGameEventHandler<PlayerDamage>.OnGameEvent( PlayerDamage eventArgs )
 	{
-		Panel.FlashClass( "damage", 1f );
-		Log.Info( $"Player took damage" );
+		if ( HealthPanel.IsValid() )
+		{
+			HealthPanel.FlashClass( "hit", 0.5f );
+		}
 	}
 
 	public string GetStateText( GameSystem.GameState gameState )
