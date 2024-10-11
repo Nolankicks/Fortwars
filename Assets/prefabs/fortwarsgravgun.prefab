@@ -20,7 +20,7 @@
         "__guid": "bbfcf281-9442-4b60-9682-99138896ae4c",
         "HoldType": "Pistol",
         "MaxAmmo": 30,
-        "Offset": "0,0,0",
+        "Offset": "2.872807,0.2954723,-2.225528",
         "UsesAmmo": false,
         "WorldModel": "models/weapons/sbox_pistol_usp/w_usp.vmdl"
       },
@@ -37,6 +37,13 @@
         "CreateBoneObjects": false,
         "Model": "models/first_person/first_person_arms.vmdl",
         "Morphs": {},
+        "Parameters": {
+          "bools": {},
+          "ints": {},
+          "floats": {},
+          "vectors": {},
+          "rotations": {}
+        },
         "RenderOptions": {
           "GameLayer": false,
           "OverlayLayer": true,
@@ -63,6 +70,13 @@
             "MaterialOverride": "materials/dev/primary_white_emissive.vmat",
             "Model": "models/weapons/sbox_pistol_usp/v_usp.vmdl",
             "Morphs": {},
+            "Parameters": {
+              "bools": {},
+              "ints": {},
+              "floats": {},
+              "vectors": {},
+              "rotations": {}
+            },
             "RenderOptions": {
               "GameLayer": false,
               "OverlayLayer": true,
@@ -87,6 +101,5 @@
     "facepunch.v_usp#64712",
     "facepunch.w_usp#17493"
   ],
-  "IsValid": true,
   "__version": 1
 }

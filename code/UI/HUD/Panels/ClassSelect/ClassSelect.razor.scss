@@ -17,7 +17,7 @@ ClassSelect {
 
     padding: 16px;
 
-    background-color: #1a1a1a;
+    background-color: $primary;
     opacity: 0.99;
     color: #c8c8c8;
     font-family: Poppins;
@@ -25,6 +25,18 @@ ClassSelect {
     font-size: 13px;
 
     border-radius: 4px;
+
+    transition: opacity 0.2s;
+
+    &:intro
+    {
+        opacity: 0;
+    }
+
+    &:outro
+    {
+        opacity: 0;
+    }
 
     .main {
         width: 100%;
@@ -63,7 +75,7 @@ ClassSelect {
         font-size: 42px;
         align-items: flex-start;
         justify-content: center;
-        color: white;
+        color: $button-secondary-fg;
         padding: 16px;
         font-family: Poppins;
 
@@ -117,6 +129,12 @@ ClassSelect {
         transition: color 0.15s ease-out;
         transition: background-color 0.15s ease-out;
         background-color: $secondary;
+        
+        color: $button-secondary-fg;
+        opacity: 1;
+
+        border-width: 2px;
+        border-color: $primary;
 
         border-radius: 4px;
 
@@ -156,11 +174,13 @@ ClassSelect {
 
         &:hover {
             background-color: $button-secondary;
+            sound-in: ui.button.over;
         }
 
         &:active
         {
             background-color: $secondary;
+            sound-in: ui.button.press;
         }
     }
 }

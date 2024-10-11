@@ -21,7 +21,7 @@
         "HoldType": "Pistol",
         "MaxAmmo": 30,
         "MustBeUp": true,
-        "Offset": "0,0,0",
+        "Offset": "2.872807,0.2954723,-2.225528",
         "Prop": "models/sbox_props/wooden_crate/wooden_crate.vmdl",
         "PropIdent": "facepunch.wooden_crate",
         "UsesAmmo": false,
@@ -107,6 +107,5 @@
     "facepunch.w_usp#17493",
     "facepunch.wooden_crate#29138"
   ],
-  "IsValid": true,
   "__version": 1
 }

@@ -1,0 +1,83 @@
+$primary: #1a1a1a;
+$secondary: #242424;
+$tertiary: #fdc418;
+
+$button-primary: #ffffff !default;
+$button-primary-fg: #ffffff !default;
+$button-secondary: #282828 !default;
+$button-secondary-fg: #dadada !default;
+$button-size: 45px;
+
+AboutPanel
+{
+    position: absolute;
+    color: white;
+    right: 12px;
+    font-family: Poppins;
+    width: 500px;
+    background-color: $primary;
+    flex-direction: column;
+
+    border-radius: 4px;
+
+    background-color: $button-secondary;
+    color: $button-secondary-fg;
+
+    border-width: 2px;
+    border-color: $primary;
+    border-radius: 4px;
+
+    padding: 54px;
+    border-radius: 4px;
+    pointer-events: all;
+    gap: 21px;
+    font-size: 26px;
+    align-items: flex-start;
+    justify-content: center;
+
+    transition: transform 0.5s ease-in-out;
+
+    &:intro
+    {
+        transform: translateX( 105% );
+    }
+
+    &:outro
+    {
+        transform: translateX( 105% );
+    }
+
+    >label
+    {
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+    }
+    
+    >.close
+    {
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        align-items: center;
+        justify-content: center;
+        font-family: Material Icons;
+        background-color: $secondary;
+        width: 32px;
+        height: 32px;
+
+        font-size: 32px;
+
+        cursor: pointer;
+        border-radius: 4px;
+
+        &:hover {
+            background-color: $button-secondary;
+        }
+
+        &:active
+        {
+            background-color: $secondary;
+        }
+    }
+}

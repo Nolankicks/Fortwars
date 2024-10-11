@@ -1,0 +1,36 @@
+@using Sandbox;
+@using Sandbox.UI;
+@using System.Threading.Tasks;
+@using System;
+@inherits Panel
+@attribute [StyleSheet]
+
+<root>
+	<label>
+		Fortwars is a fps game mode that consists of teams fighting for control of the ball while building forts out of
+		props to provide cover.
+	</label>
+
+	<label>
+		Climb the scoreboard by killing enemies, retrieve the ball for your team, and destroy thosebases to win the
+		game!
+	</label>
+
+	<label>
+		Build mode: 2 min
+	</label>
+
+	<label>
+		Fight mode: 4 min
+	</label>
+
+	<label>
+		Ball time held to win: 1 min
+	</label>
+
+	<div class="close" onclick=@( () => Delete() )>close</div>
+</root>
+
+@code
+{
+}
