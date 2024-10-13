@@ -469,12 +469,20 @@ public sealed class PlayerController : Component, IGameEventHandler<DamageEvent>
 
 			TeleportToTeamSpawnPoint();
 
+			if ( Components.TryGet<NameTag>( out var tag, FindMode.EnabledInSelfAndChildren ) )
+			{
+				BroadcastEnable( tag.GameObject, false );
+			}
+
 			Invoke( 2, () =>
 			{
 				Inventory.CanSwitch = true;
 				Inventory.ChangeItem( Inventory.Index, Inventory?.Items );
 
 				BroadcastEnable( target.GameObject, true );
+
+				if ( tag.IsValid() )
+					BroadcastEnable( tag.GameObject, true );
 
 				IsRespawning = false;
 

@@ -161,6 +161,16 @@ public class Gravgun : Item, IGameEventHandler<DeathEvent>
 	{
 		if ( !HeldBody.IsValid() ) return;
 
+		var heldObject = HeldBody.GetGameObject();
+
+		if ( heldObject.IsValid() && heldObject.Network.Owner != GameObject.Network.Owner )
+		{
+			GrabEnd( false );
+			Log.Info( "Owner mismatch" );
+
+			return;
+		}
+
 		var velocity = HeldBody.Velocity;
 		Vector3.SmoothDamp( HeldBody.Position, HoldPosition, ref velocity, 0.075f, Time.Delta );
 		HeldBody.Velocity = velocity;
@@ -243,17 +253,21 @@ public class Gravgun : Item, IGameEventHandler<DeathEvent>
 		}
 	}
 
-	void GrabEnd()
+	void GrabEnd( bool setGrabber = true )
 	{
 		if ( !GrabbedObject.IsValid() ) return;
 
-		if ( GrabbedObject.Components.TryGet<RollerMine>( out var rollerMine, FindMode.EverythingInSelfAndParent ) )
-			rollerMine.SetGrabbed( false );
 
-		if ( GrabbedObject.Components.TryGet<FortwarsProp>( out var prop ) )
-			prop.SetGrabber( null );
+		if ( setGrabber )
+		{
+			if ( GrabbedObject.Components.TryGet<RollerMine>( out var rollerMine, FindMode.EverythingInSelfAndParent ) )
+				rollerMine.SetGrabbed( false );
 
-		Physgun.RemoveTag( GrabbedObject, GrabbedTag );
+			if ( GrabbedObject.Components.TryGet<FortwarsProp>( out var prop ) )
+				prop.SetGrabber( null );
+
+			Physgun.RemoveTag( GrabbedObject, GrabbedTag );
+		}
 
 		GrabbedObject = null;
 		HeldBody = null;

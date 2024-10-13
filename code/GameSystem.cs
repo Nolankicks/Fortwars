@@ -285,7 +285,7 @@ IGameEventHandler<OnGameOvertimeBuild>, IGameEventHandler<OnGameOvertimeFight>
 			x.ClearAll();
 			x.AddItem( ResourceLibrary.GetAll<WeaponData>().FirstOrDefault( x => x.ResourceName == "propgun" ) );
 			x.AddItem( ResourceLibrary.GetAll<WeaponData>().FirstOrDefault( x => x.ResourceName == "physgun" ) );
-			x.OpenClassSelect();
+			//x.OpenClassSelect();
 		} );
 
 		Log.Info( "Build Mode" );
@@ -312,10 +312,12 @@ IGameEventHandler<OnGameOvertimeBuild>, IGameEventHandler<OnGameOvertimeFight>
 			x.ClearAll();
 			x.AddItem( ResourceLibrary.GetAll<WeaponData>().FirstOrDefault( x => x.ResourceName == "gravgun" ) );
 
-			if ( x.SelectedClass is not null )
+			/*if ( x.SelectedClass is not null )
 			{
 				x.AddItem( x.SelectedClass.WeaponData );
-			}
+			}*/
+
+			x.OpenClassSelect();
 		} );
 
 		var text = Game.Random.FromList( FightModePopups );

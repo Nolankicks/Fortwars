@@ -3,7 +3,7 @@ using Sandbox;
 
 public sealed class LobbySettings
 {
-	public bool ClassicModels { get; set; } = false;
+	public bool ClassicModels { get; set; } = true;
 
 	public static void Save( LobbySettings settings )
 	{
