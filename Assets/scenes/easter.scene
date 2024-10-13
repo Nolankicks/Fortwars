@@ -1244,6 +1244,8 @@
       "Tags": "light,light_point,rollermine",
       "Enabled": true,
       "NetworkMode": 1,
+      "NetworkOrphaned": 3,
+      "OwnerTransfer": 0,
       "__Prefab": "prefabs/rollermine.prefab",
       "__PrefabVariables": {}
     },
@@ -1666,20 +1668,20 @@
               "-0,0,-1"
             ],
             "TextureScale": [
-              "0.25,0.25",
-              "0.25,0.25",
-              "0.25,0.25",
-              "0.25,0.25",
-              "0.25,0.25",
-              "0.25,0.25"
+              "0.5,0.5",
+              "0.5,0.5",
+              "0.5,0.5",
+              "0.5,0.5",
+              "0.5,0.5",
+              "0.5,0.5"
             ],
             "TextureOffset": [
-              "224,479.9996",
-              "224,479.9996",
-              "479.9996,160",
-              "32.00037,160",
-              "288,160",
-              "224,160"
+              "112,239.9998",
+              "112,239.9998",
+              "239.9998,80",
+              "16.00015,80",
+              "144,80",
+              "112,80"
             ],
             "MaterialIndex": [
               1,
@@ -1725,7 +1727,8 @@
         },
         {
           "__type": "DeathTrigger",
-          "__guid": "3b02b578-785b-41b2-b84d-22ed9b2e72eb"
+          "__guid": "3b02b578-785b-41b2-b84d-22ed9b2e72eb",
+          "TeleportBall": false
         }
       ]
     },
@@ -1858,7 +1861,8 @@
         },
         {
           "__type": "DeathTrigger",
-          "__guid": "96458318-40be-462b-a94d-4e7faf2030d9"
+          "__guid": "96458318-40be-462b-a94d-4e7faf2030d9",
+          "TeleportBall": false
         }
       ]
     }

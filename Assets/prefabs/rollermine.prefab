@@ -6,6 +6,7 @@
     "Tags": "rollermine,light_point,light",
     "Enabled": true,
     "NetworkMode": 1,
+    "NetworkOrphaned": 3,
     "OwnerTransfer": 0,
     "Components": [
       {

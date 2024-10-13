@@ -1783,9 +1783,11 @@
       "Flags": 0,
       "Name": "rollermine",
       "Position": "0,0,15.99998",
-      "Tags": "rollermine,light_point,light",
+      "Tags": "light,light_point,rollermine",
       "Enabled": true,
       "NetworkMode": 1,
+      "NetworkOrphaned": 3,
+      "OwnerTransfer": 0,
       "__Prefab": "prefabs/rollermine.prefab",
       "__PrefabVariables": {}
     },
@@ -2460,6 +2462,5 @@
   "Description": "",
   "ResourceVersion": 1,
   "__references": [],
-  "IsValid": true,
   "__version": 1
 }

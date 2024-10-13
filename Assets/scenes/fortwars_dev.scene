@@ -268,7 +268,7 @@
               "268.1904,256",
               "268.1904,256",
               "256,428.6514",
-              "256,428.6511",
+              "256,428.651",
               "253.7345,464",
               "268.1907,428.6512"
             ],
@@ -351,6 +351,8 @@
       "Tags": "rollermine,light_point,light",
       "Enabled": true,
       "NetworkMode": 1,
+      "NetworkOrphaned": 3,
+      "OwnerTransfer": 0,
       "__Prefab": "prefabs/rollermine.prefab",
       "__PrefabVariables": {}
     }
