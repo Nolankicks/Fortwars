@@ -467,8 +467,7 @@ public sealed class PlayerController : Component, IGameEventHandler<DamageEvent>
 
 			DeathPos = target.WorldPosition;
 
-			if ( TeamComponent.IsValid() )
-				TeamComponent.ResetToSpawnPoint();
+			TeleportToTeamSpawnPoint();
 
 			Invoke( 2, () =>
 			{
