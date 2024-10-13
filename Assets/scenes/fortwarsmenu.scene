@@ -156,6 +156,50 @@
           "Model": "models/rollermine.vmdl",
           "StartAsleep": false,
           "Tint": "0.32682,1,0.22326,1"
+        },
+        {
+          "__type": "Sandbox.TrailRenderer",
+          "__guid": "de1bc7e9-a6c8-4248-ae88-e6c3c740281d",
+          "BlendMode": "Normal",
+          "CastShadows": false,
+          "Color": {
+            "color": [
+              {
+                "t": 0.5,
+                "c": "0,1,1,1"
+              }
+            ],
+            "alpha": []
+          },
+          "Face": "Camera",
+          "LifeTime": 0.2,
+          "MaxPoints": 64,
+          "Opaque": true,
+          "PointDistance": 8,
+          "RenderOptions": {
+            "GameLayer": true,
+            "OverlayLayer": false,
+            "BloomLayer": false,
+            "AfterUILayer": false
+          },
+          "Texturing": {
+            "WorldSpace": true,
+            "UnitsPerTexture": 10,
+            "Scale": 1
+          },
+          "Width": [
+            {
+              "x": 0.67410713,
+              "y": 1
+            },
+            {
+              "x": 1,
+              "y": 0.021276595,
+              "in": 3.684211,
+              "out": -3.684211
+            }
+          ],
+          "Wireframe": false
         }
       ]
     },
@@ -175,6 +219,50 @@
           "Model": "models/rollermine.vmdl",
           "StartAsleep": false,
           "Tint": "1,0.01395,0.3262,1"
+        },
+        {
+          "__type": "Sandbox.TrailRenderer",
+          "__guid": "280d2cd0-917f-4768-b1bc-34952e44c372",
+          "BlendMode": "Normal",
+          "CastShadows": false,
+          "Color": {
+            "color": [
+              {
+                "t": 0.5,
+                "c": "0,1,1,1"
+              }
+            ],
+            "alpha": []
+          },
+          "Face": "Camera",
+          "LifeTime": 0.2,
+          "MaxPoints": 64,
+          "Opaque": true,
+          "PointDistance": 8,
+          "RenderOptions": {
+            "GameLayer": true,
+            "OverlayLayer": false,
+            "BloomLayer": false,
+            "AfterUILayer": false
+          },
+          "Texturing": {
+            "WorldSpace": true,
+            "UnitsPerTexture": 10,
+            "Scale": 1
+          },
+          "Width": [
+            {
+              "x": 0.67410713,
+              "y": 1
+            },
+            {
+              "x": 1,
+              "y": 0.021276595,
+              "in": 3.684211,
+              "out": -3.684211
+            }
+          ],
+          "Wireframe": false
         }
       ]
     },
@@ -194,6 +282,50 @@
           "Model": "models/rollermine.vmdl",
           "StartAsleep": false,
           "Tint": "1,0.13953,0.13953,1"
+        },
+        {
+          "__type": "Sandbox.TrailRenderer",
+          "__guid": "ad4d324e-c288-4f34-bd7f-ddf476dc4a5d",
+          "BlendMode": "Normal",
+          "CastShadows": false,
+          "Color": {
+            "color": [
+              {
+                "t": 0.5,
+                "c": "0,1,1,1"
+              }
+            ],
+            "alpha": []
+          },
+          "Face": "Camera",
+          "LifeTime": 0.2,
+          "MaxPoints": 64,
+          "Opaque": true,
+          "PointDistance": 8,
+          "RenderOptions": {
+            "GameLayer": true,
+            "OverlayLayer": false,
+            "BloomLayer": false,
+            "AfterUILayer": false
+          },
+          "Texturing": {
+            "WorldSpace": true,
+            "UnitsPerTexture": 10,
+            "Scale": 1
+          },
+          "Width": [
+            {
+              "x": 0.67410713,
+              "y": 1
+            },
+            {
+              "x": 1,
+              "y": 0.021276595,
+              "in": 3.684211,
+              "out": -3.684211
+            }
+          ],
+          "Wireframe": false
         }
       ]
     },
@@ -213,6 +345,50 @@
           "Model": "models/rollermine.vmdl",
           "StartAsleep": false,
           "Tint": "1,1,1,1"
+        },
+        {
+          "__type": "Sandbox.TrailRenderer",
+          "__guid": "972a75e4-b33e-40bb-a9e1-9406f9f68b2e",
+          "BlendMode": "Normal",
+          "CastShadows": false,
+          "Color": {
+            "color": [
+              {
+                "t": 0.5,
+                "c": "0,1,1,1"
+              }
+            ],
+            "alpha": []
+          },
+          "Face": "Camera",
+          "LifeTime": 0.2,
+          "MaxPoints": 64,
+          "Opaque": true,
+          "PointDistance": 8,
+          "RenderOptions": {
+            "GameLayer": true,
+            "OverlayLayer": false,
+            "BloomLayer": false,
+            "AfterUILayer": false
+          },
+          "Texturing": {
+            "WorldSpace": true,
+            "UnitsPerTexture": 10,
+            "Scale": 1
+          },
+          "Width": [
+            {
+              "x": 0.67410713,
+              "y": 1
+            },
+            {
+              "x": 1,
+              "y": 0.021276595,
+              "in": 3.684211,
+              "out": -3.684211
+            }
+          ],
+          "Wireframe": false
         }
       ]
     },
@@ -232,6 +408,50 @@
           "Model": "models/rollermine.vmdl",
           "StartAsleep": false,
           "Tint": "1,0.43426,0.17209,1"
+        },
+        {
+          "__type": "Sandbox.TrailRenderer",
+          "__guid": "5bb31fc0-5dca-4944-8dd8-dff9cb3ad6e4",
+          "BlendMode": "Normal",
+          "CastShadows": false,
+          "Color": {
+            "color": [
+              {
+                "t": 0.5,
+                "c": "0,1,1,1"
+              }
+            ],
+            "alpha": []
+          },
+          "Face": "Camera",
+          "LifeTime": 0.2,
+          "MaxPoints": 64,
+          "Opaque": true,
+          "PointDistance": 8,
+          "RenderOptions": {
+            "GameLayer": true,
+            "OverlayLayer": false,
+            "BloomLayer": false,
+            "AfterUILayer": false
+          },
+          "Texturing": {
+            "WorldSpace": true,
+            "UnitsPerTexture": 10,
+            "Scale": 1
+          },
+          "Width": [
+            {
+              "x": 0.67410713,
+              "y": 1
+            },
+            {
+              "x": 1,
+              "y": 0.021276595,
+              "in": 3.684211,
+              "out": -3.684211
+            }
+          ],
+          "Wireframe": false
         }
       ]
     },
