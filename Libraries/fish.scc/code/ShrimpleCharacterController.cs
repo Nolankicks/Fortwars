@@ -130,6 +130,14 @@ public class ShrimpleCharacterController : Component
     public bool IgnoreZWhenZero { get; set; } = true;
 
     /// <summary>
+    /// Tolerance from a 90° surface before it's considered a wall (Ex. Tolerance 1 = Between 89° and 91° can be a wall, 0.1 = 89.9° to 90.1°)
+    /// </summary>
+    [Group("Movement")]
+    [Property]
+    [Range(0f, 10f, 0.1f, false)]
+    public float WallTolerance { get; set; } = 1f;
+
+    /// <summary>
     /// Stick the MoveHelper to the ground (IsOnGround will default to false if disabled)
     /// </summary>
     [ToggleGroup("GroundStickEnabled")]
@@ -176,12 +184,26 @@ public class ShrimpleCharacterController : Component
     public float StepDepth { get; set; } = 2f;
 
     /// <summary>
+    /// Tolerance from a 90° surface before it's considered a valid step (Ex. Tolerance 1 = Between 89° and 91° can be a step, 0.1 = 89.9° to 90.1°)
+    /// </summary>
+    [Group("StepsEnabled")]
+    [Property]
+    [Range(0f, 10f, 0.1f, false)]
+    public float StepTolerance { get; set; } = 1f;
+
+    /// <summary>
+    /// Enable to ability to walk on a surface that's too steep if it's equal or smaller than a step (+1 Trace call when on steep terrain)
+    /// </summary>
+    [Group("StepsEnabled")]
+    [Property]
+    public bool PseudoStepsEnabled { get; set; } = true;
+
+    /// <summary>
     /// Instead of colliding with these tags the MoveHelper will be pushed away (Make sure the tags are in IgnoreTags as well!)
     /// </summary>
     [ToggleGroup("PushEnabled")]
     [Property]
     public bool PushEnabled { get; set; } = false;
-
 
     [Sync]
     Dictionary<string, float> _pushTagsWeight { get; set; } = new Dictionary<string, float>() { { "player", 1f } };
@@ -254,7 +276,6 @@ public class ShrimpleCharacterController : Component
     /// </summary>
     [Sync] public bool IsOnGround { get; set; }
 
-    /// <summary>
     /// The current ground normal you're standing on (Always Vector3.Zero if IsOnGround false)
     /// </summary>
     public Vector3 GroundNormal { get; private set; } = Vector3.Zero;
@@ -311,6 +332,8 @@ public class ShrimpleCharacterController : Component
     private BBox _shrunkenBounds;
     private string[] _pushTags;
     private Vector3 _lastVelocity;
+    private float _stepAngle;
+
     /// <summary>
     /// If another MoveHelper moved at the same time and they're stuck, let this one know that the other already unstuck for us
     /// </summary>
@@ -506,7 +529,7 @@ public class ShrimpleCharacterController : Component
                 var isGrounded = IsOnGround && groundTrace.Hit; // Was already on the ground and still is, this helps stick when going down stairs
 
                 IsOnGround = hasLanded || isGrounded;
-                IsSlipping = IsOnGround && GroundAngle > MaxGroundAngle;
+                IsSlipping = IsOnGround && (GroundAngle > MaxGroundAngle && (!PseudoStepsEnabled || _stepAngle > MaxGroundAngle));
 
                 if (IsSlipping && !gravityPass && velocity.z > 0f)
                     velocity = velocity.WithZ(0f); // If we're slipping ignore any extra velocity we had
@@ -540,11 +563,10 @@ public class ShrimpleCharacterController : Component
 
             var leftover = velocity - travelled; // How much leftover velocity still needs to be simulated
             var angle = Vector3.GetAngle(Vector3.Up, travelTrace.Normal);
-
             if (toTravel >= SkinWidth && travelTrace.Distance < SkinWidth)
                 travelled = Vector3.Zero;
 
-            if (angle <= MaxGroundAngle) // Terrain we can walk on
+            void ComputeWalk()
             {
                 if (gravityPass || !IsOnGround)
                     leftover = Vector3.VectorPlaneProject(leftover, travelTrace.Normal); // Don't project the vertical velocity after landing else it boosts your horizontal velocity
@@ -554,28 +576,50 @@ public class ShrimpleCharacterController : Component
                 IsPushingAgainstWall = false;
                 WallObject = null;
             }
+
+            if (angle <= MaxGroundAngle) // Terrain we can walk on
+            {
+                ComputeWalk();
+            }
             else
             {
                 var climbedStair = false;
 
-                if (angle >= 89f && angle <= 91f) // Check for steps
-                {
+                if (angle >= 90f - WallTolerance && angle <= 90f + WallTolerance) // Check for walls
                     IsPushingAgainstWall = true; // We're pushing against a wall
 
-                    if (IsOnGround) // Stairs VVV
-                    {
-                        var stepHorizontal = velocity.WithZ(0f).Normal * StepDepth; // How far in front we're looking for steps
-                        var stepVertical = Vector3.Up * StepHeight; // How high we're looking for steps
-                        var stepTrace = BuildTrace(_shrunkenBounds, travelTrace.EndPosition + stepHorizontal + stepVertical, travelTrace.EndPosition + stepHorizontal);
+                if (StepsEnabled)
+                {
+                    var isStep = angle >= 90f - StepTolerance && angle <= 90f + StepTolerance;
 
-                        if (!stepTrace.StartedSolid && stepTrace.Hit) // We found a step!
+                    if (isStep || PseudoStepsEnabled) // Check for steps
+                    {
+                        if (IsOnGround) // Stairs VVV
                         {
-                            var stepDistance = stepTrace.EndPosition - travelTrace.EndPosition;
-                            var stepTravelled = Vector3.Up * stepDistance;
-                            position += stepTravelled; // Offset our position by the height of the step climbed
-                            IsPushingAgainstWall = false; // Nevermind, we're not against a wall, we climbed a step!
-                            WallObject = null;
-                            climbedStair = true;
+                            var stepHorizontal = velocity.WithZ(0f).Normal * StepDepth; // How far in front we're looking for steps
+                            var stepVertical = Vector3.Up * StepHeight; // How high we're looking for steps
+                            var stepTrace = BuildTrace(_shrunkenBounds, travelTrace.EndPosition + stepHorizontal + stepVertical, travelTrace.EndPosition + stepHorizontal);
+                            _stepAngle = Vector3.GetAngle(Vector3.Up, stepTrace.Normal);
+
+                            if (!stepTrace.StartedSolid && stepTrace.Hit) // We found a step!
+                            {
+                                if (isStep)
+                                {
+                                    var stepDistance = stepTrace.EndPosition - travelTrace.EndPosition;
+                                    var stepTravelled = Vector3.Up * stepDistance;
+                                    position += stepTravelled; // Offset our position by the height of the step climbed
+                                    climbedStair = true;
+
+                                    IsPushingAgainstWall = false; // Nevermind, we're not against a wall, we climbed a step!
+                                    WallObject = null;
+                                }
+                                else
+                                {
+                                    ComputeWalk();
+                                }
+                            }
+                            else
+                                _stepAngle = 90f;
                         }
                     }
                 }
@@ -590,6 +634,7 @@ public class ShrimpleCharacterController : Component
 
                     WallObject = travelTrace.GameObject;
                     WallNormal = travelTrace.Normal;
+                    _stepAngle = 90f;
                 }
                 else
                 {
