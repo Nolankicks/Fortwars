@@ -254,7 +254,7 @@ public sealed class PlayerController : Component, IGameEventHandler<DamageEvent>
 		{
 			var lookRot = EyeAngles.ToRotation();
 
-			Scene.Camera.WorldPosition = Eye.WorldPosition + lookRot.Backward * 200;
+			Scene.Camera.WorldPosition = DeathPos + Vector3.Up * 64 + lookRot.Backward * 200;
 			Scene.Camera.WorldRotation = lookRot;
 
 			return;
@@ -395,6 +395,8 @@ public sealed class PlayerController : Component, IGameEventHandler<DamageEvent>
 		SetWorld( spawn.Transform.World );
 	}
 
+	public Vector3 DeathPos { get; set; }
+
 	void IGameEventHandler<DeathEvent>.OnGameEvent( DeathEvent eventArgs )
 	{
 		var pc = eventArgs.Attacker?.Root?.Components?.Get<PlayerController>();
@@ -463,10 +465,13 @@ public sealed class PlayerController : Component, IGameEventHandler<DamageEvent>
 
 			IsRespawning = true;
 
+			DeathPos = target.WorldPosition;
+
+			if ( TeamComponent.IsValid() )
+				TeamComponent.ResetToSpawnPoint();
+
 			Invoke( 2, () =>
 			{
-				TeleportToTeamSpawnPoint();
-
 				Inventory.CanSwitch = true;
 				Inventory.ChangeItem( Inventory.Index, Inventory?.Items );
 

@@ -166,6 +166,15 @@ public sealed class Weapon : Item, IGameEventHandler<OnReloadEvent>
 			return;
 		}
 
+		// Shitty hack
+		if ( tr.GameObject.Components.TryGet<PlayerController>( out var player, FindMode.EverythingInSelfAndParent ) )
+			BroadcastFireEffects( WorldPosition, 0, 0 );
+		else
+			BroadcastFireEffects( WorldPosition, tr.HitPosition, tr.Normal, true );
+
+		if ( tr.GameObject.Root.Components.TryGet<RollerMine>( out var r ) )
+			return;
+
 		if ( tr.GameObject.Components.TryGet<TeamComponent>( out var team, FindMode.EverythingInSelfAndParent ) && local.TeamComponent.IsValid()
 			&& local.TeamComponent.IsFriendly( team ) )
 		{
@@ -198,12 +207,6 @@ public sealed class Weapon : Item, IGameEventHandler<OnReloadEvent>
 		}
 
 		SubtractAmmo();
-
-		// Shitty hack
-		if ( tr.GameObject.Components.TryGet<PlayerController>( out var player, FindMode.EverythingInSelfAndParent ) )
-			BroadcastFireEffects( WorldPosition, 0, 0 );
-		else
-			BroadcastFireEffects( WorldPosition, tr.HitPosition, tr.Normal, true );
 	}
 
 	[Broadcast]
