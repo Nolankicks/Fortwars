@@ -2434,6 +2434,289 @@
           "Static": false
         }
       ]
+    },
+    {
+      "__guid": "a2c7ffe4-3275-4ce0-a9b5-cf1bd047b406",
+      "Flags": 0,
+      "Name": "Death Trigger",
+      "Position": "0,0,-1627.711",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.MeshComponent",
+          "__guid": "45d25997-34b1-40e7-a5ff-2def9792d5fc",
+          "Collision": "Mesh",
+          "Color": "1,1,1,1",
+          "HideInGame": true,
+          "IsTrigger": true,
+          "Mesh": {
+            "Topology": "H4sIAAAAAAAACl2Qiw6CUAxDh1flgg/wAfr/X2pP0iWLJA25W9t16xHxFc4C30E4\u002Bt2FWbgKd2Ew4NTvIZxcb9ZH4b5db\u002Bb9z/oUzVh8m7lPc9FOzjRYQ8ZXyXxxXvrw4e72wvtWdoEPdzMXj8We9OHDXcvO7EqdN396eKaeLHjkLciePeYxi4z0mMFtMisablFvRXZ2Tj158KQOF78f9WSROMQBAAA=",
+            "Positions": [
+              "-17960.17,-18865.21,64",
+              "17960.17,-18865.21,64",
+              "17960.17,18865.21,64",
+              "-17960.17,18865.21,64",
+              "-17960.17,18865.21,-1836.431",
+              "17960.17,18865.21,-1836.431",
+              "17960.17,-18865.21,-1836.431",
+              "-17960.17,-18865.21,-1836.431"
+            ],
+            "TextureCoord": [
+              "292.6276,256.7689",
+              "-268.6276,31",
+              "292.6276,-332.7689",
+              "-254.7689,31",
+              "-268.6276,-332.7689",
+              "-290.6276,31",
+              "-268.6276,256.7689",
+              "-332.7689,31",
+              "292.6276,-332.7689",
+              "270.6276,60.69424",
+              "292.6276,256.7689",
+              "334.7689,60.69424",
+              "-268.6276,256.7689",
+              "292.6276,60.69424",
+              "-268.6276,-332.7689",
+              "256.7689,60.69424",
+              "256.7689,31",
+              "-268.6276,60.69424",
+              "-332.7689,60.69424",
+              "270.6276,31",
+              "-254.7689,60.69424",
+              "292.6276,31",
+              "334.7689,31",
+              "-290.6276,60.69424"
+            ],
+            "TextureUAxis": [
+              "1,0,0",
+              "1,0,-0",
+              "0,-1,0",
+              "0,1,0",
+              "-1,0,0",
+              "1,-0,0"
+            ],
+            "TextureVAxis": [
+              "0,-1,0",
+              "0,-1,0",
+              "0,0,-1",
+              "-0,0,-1",
+              "0,0,-1",
+              "-0,0,-1"
+            ],
+            "TextureScale": [
+              "0.25,0.25",
+              "0.25,0.25",
+              "0.25,0.25",
+              "0.25,0.25",
+              "0.25,0.25",
+              "0.25,0.25"
+            ],
+            "TextureOffset": [
+              "0,0",
+              "0,0",
+              "0,145.1553",
+              "0,145.1558",
+              "0,145.1553",
+              "0,145.1558"
+            ],
+            "MaterialIndex": [
+              1,
+              1,
+              1,
+              1,
+              1,
+              1
+            ],
+            "EdgeFlags": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "Materials": [
+              "materials/dev/reflectivity_30.vmat",
+              "materials/tools/toolstrigger.vmat"
+            ]
+          },
+          "SmoothingAngle": 40,
+          "Static": true
+        },
+        {
+          "__type": "DeathTrigger",
+          "__guid": "14e6472b-128d-4212-97dd-880fb904966f",
+          "TeleportBall": true
+        }
+      ]
+    },
+    {
+      "__guid": "7cfb580f-26e9-40cb-a350-70662354f169",
+      "Flags": 0,
+      "Name": "Water",
+      "Position": "0,0,-605.4902",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.MeshComponent",
+          "__guid": "99b231d9-31c4-49fa-8b50-d9a8d87bffed",
+          "Collision": "None",
+          "Color": "1,1,1,1",
+          "HideInGame": false,
+          "IsTrigger": false,
+          "Mesh": {
+            "Topology": "H4sIAAAAAAAACl2Qiw6CUAxDh1flgg/wAfr/X2pP0iWLJA25W9t16xHxFc4C30E4\u002Bt2FWbgKd2Ew4NTvIZxcb9ZH4b5db\u002Bb9z/oUzVh8m7lPc9FOzjRYQ8ZXyXxxXvrw4e72wvtWdoEPdzMXj8We9OHDXcvO7EqdN396eKaeLHjkLciePeYxi4z0mMFtMisablFvRXZ2Tj158KQOF78f9WSROMQBAAA=",
+            "Positions": [
+              "-17960.17,-18865.21,64",
+              "17960.17,-18865.21,64",
+              "17960.17,18865.21,64",
+              "-17960.17,18865.21,64",
+              "-17960.17,18865.21,-6192.674",
+              "17960.17,18865.21,-6192.674",
+              "17960.17,-18865.21,-6192.674",
+              "-17960.17,-18865.21,-6192.674"
+            ],
+            "TextureCoord": [
+              "280.6276,294.7689",
+              "-280.6276,9",
+              "280.6276,-294.7689",
+              "-294.7689,9",
+              "-280.6276,-294.7689",
+              "-280.6276,9.000001",
+              "-280.6276,294.7689",
+              "-294.7689,9.000001",
+              "280.6276,-294.7689",
+              "280.6276,106.7606",
+              "280.6276,294.7689",
+              "294.7689,106.7606",
+              "-280.6276,294.7689",
+              "280.6276,106.7606",
+              "-280.6276,-294.7689",
+              "294.7689,106.7606",
+              "294.7689,9.000001",
+              "-280.6276,106.7606",
+              "-294.7689,106.7606",
+              "280.6276,9.000001",
+              "-294.7689,106.7606",
+              "280.6276,9",
+              "294.7689,9",
+              "-280.6276,106.7606"
+            ],
+            "TextureUAxis": [
+              "1,0,0",
+              "1,0,-0",
+              "0,-1,0",
+              "0,1,0",
+              "-1,0,0",
+              "1,-0,0"
+            ],
+            "TextureVAxis": [
+              "0,-1,0",
+              "0,-1,0",
+              "0,0,-1",
+              "-0,0,-1",
+              "0,0,-1",
+              "-0,0,-1"
+            ],
+            "TextureScale": [
+              "0.2500001,0.25",
+              "0.2500001,0.25",
+              "0.25,0.25",
+              "0.25,0.25",
+              "0.2500001,0.25",
+              "0.2500001,0.25"
+            ],
+            "TextureOffset": [
+              "0,0",
+              "0,0",
+              "0,138.0391",
+              "0,138.0388",
+              "0,138.0391",
+              "0,138.0388"
+            ],
+            "MaterialIndex": [
+              2,
+              2,
+              2,
+              2,
+              2,
+              2
+            ],
+            "EdgeFlags": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "Materials": [
+              "materials/dev/reflectivity_30.vmat",
+              "materials/tools/toolstrigger.vmat",
+              "materials/lake_water.vmat"
+            ]
+          },
+          "SmoothingAngle": 40,
+          "Static": true
+        }
+      ]
+    },
+    {
+      "__guid": "f10a2315-3787-4ddb-b728-4a12b52be558",
+      "Flags": 0,
+      "Name": "Fog",
+      "Position": "94.31947,-232.9045,-1690.949",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.CubemapFog",
+          "__guid": "c1a33f6c-3dd9-4e55-a091-d9d11d6c9bcf",
+          "Blur": 0.5,
+          "EndDistance": 4096,
+          "FalloffExponent": 1,
+          "HeightExponent": 2,
+          "HeightStart": 2000,
+          "HeightWidth": 0,
+          "StartDistance": 2496,
+          "Tint": "1,1,1,1"
+        }
+      ]
     }
   ],
   "SceneProperties": {
@@ -2461,6 +2744,8 @@
   "Title": "fortwars_harbor",
   "Description": "",
   "ResourceVersion": 1,
-  "__references": [],
+  "__references": [
+    "nolankicks.lake_water#65330"
+  ],
   "__version": 1
 }

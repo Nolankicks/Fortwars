@@ -111,6 +111,9 @@ public class Gravgun : Item, IGameEventHandler<DeathEvent>
 		{
 			var tr = GravGunTrace.Run();
 
+			if ( tr.GameObject?.Components?.TryGet<MapInstance>( out var mapInstance, FindMode.EverythingInSelfAndParent ) ?? false )
+				return;
+
 			if ( tr.Body.IsValid() )
 			{
 				if ( tr.Body.BodyType == PhysicsBodyType.Static )
@@ -139,6 +142,9 @@ public class Gravgun : Item, IGameEventHandler<DeathEvent>
 
 			var tr = GravGunTrace.Run();
 
+			if ( tr.GameObject?.Components?.TryGet<MapInstance>( out var mapInstance, FindMode.EverythingInSelfAndParent ) ?? false )
+				return;
+			
 			if ( tr.Body.IsValid() )
 			{
 				GrabInit( tr.GameObject, tr.Body, player.Eye.WorldPosition + player.Eye.WorldRotation.Forward * HoldDistance, player.EyeAngles );

@@ -2,7 +2,7 @@ using Sandbox.Citizen;
 using Sandbox.Events;
 
 
-public record PlayerDeath( PlayerController Player ) : IGameEvent;
+public record PlayerDeath( PlayerController Player, GameObject Attacker ) : IGameEvent;
 
 public record PlayerDamage( PlayerController Player, DamageEvent DamageEvent ) : IGameEvent;
 
@@ -331,9 +331,9 @@ public sealed class PlayerController : Component, IGameEventHandler<DamageEvent>
 	}
 
 	[Broadcast]
-	public void BroadcastDeathMessage()
+	public void BroadcastDeathMessage( GameObject attacker )
 	{
-		Scene.Dispatch( new PlayerDeath( this ) );
+		Scene.Dispatch( new PlayerDeath( this, attacker ) );
 	}
 
 	void IGameEventHandler<PlayerReset>.OnGameEvent( PlayerReset eventArgs )
@@ -409,7 +409,7 @@ public sealed class PlayerController : Component, IGameEventHandler<DamageEvent>
 
 		AddDeaths( 1 );
 
-		BroadcastDeathMessage();
+		BroadcastDeathMessage( eventArgs.Attacker );
 
 		Log.Info( "Player Death" );
 

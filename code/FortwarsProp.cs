@@ -36,7 +36,7 @@ public sealed class FortwarsProp : Component, Component.ICollisionListener, IGam
 				if ( player?.Network.OwnerId == Grabber?.Network.OwnerId && player.Network.OwnerId != Guid.Empty && Grabber.Network.OwnerId != Guid.Empty && Grabber.IsValid() )
 					return;
 
-				player?.TakeDamage( GameObject, (int)dmg, WorldPosition );
+				player?.TakeDamage( null, (int)dmg, WorldPosition );
 			}
 		}
 	}

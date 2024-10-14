@@ -115,11 +115,11 @@
 		if ( eventArgs.Player.Network.Owner is null )
 			return;
 
-		BroadcastPlayerDeath( eventArgs.Player );
+		BroadcastPlayerDeath( eventArgs.Player, eventArgs.Attacker );
 	}
 
 	[Broadcast]
-	public void BroadcastPlayerDeath( PlayerController player )
+	public void BroadcastPlayerDeath( PlayerController player, GameObject attacker )
 	{
 		if ( IsProxy || player is null )
 			return;
@@ -127,6 +127,10 @@
 		if ( player.Network.Owner is null )
 			return;
 
-		AddSystemText( $"{player.Network.Owner?.DisplayName} was killed", "💀" );
+		var name = attacker?.Network.Owner?.DisplayName;
+
+		var attackerName = string.IsNullOrWhiteSpace( name ) ? "" : $" by {name}";
+
+		AddSystemText( $"{player.Network.Owner?.DisplayName} was killed {attackerName}", "💀" );
 	}
 }

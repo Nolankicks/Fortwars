@@ -80,18 +80,6 @@
           "Intensity": 8,
           "Quality": "High",
           "Radius": 32
-        },
-        {
-          "__type": "Sandbox.CubemapFog",
-          "__guid": "c1a33f6c-3dd9-4e55-a091-d9d11d6c9bcf",
-          "Blur": 0.5,
-          "EndDistance": 4096,
-          "FalloffExponent": 1,
-          "HeightExponent": 2,
-          "HeightStart": 2000,
-          "HeightWidth": 0,
-          "StartDistance": 2496,
-          "Tint": "1,1,1,1"
         }
       ]
     },
@@ -214,6 +202,5 @@
   "Description": "",
   "ResourceVersion": 1,
   "__references": [],
-  "IsValid": true,
   "__version": 1
 }

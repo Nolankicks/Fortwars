@@ -11,7 +11,7 @@ public sealed class DeathTrigger : Component, Component.ITriggerListener
 
 		if ( other.GameObject.Components.TryGet<HealthComponent>( out var health, FindMode.EverythingInSelfAndParent ) )
 		{
-			health.TakeDamage( GameObject, health.Health );
+			health.TakeDamage( null, health.Health );
 		}
 
 		if ( other.GameObject.Components.TryGet<RollerMine>( out var mine ) && TeleportBall )
