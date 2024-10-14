@@ -324,7 +324,7 @@ public sealed class PlayerController : Component, IGameEventHandler<DamageEvent>
 	{
 		Kills += amount;
 
-		//Increment deaths stat
+		//Increment kills stat
 		Stats.Increment( "kills_new", 1 );
 	}
 
