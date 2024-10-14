@@ -1,5 +1,6 @@
 using Sandbox.Citizen;
 using Sandbox.Events;
+using Sandbox.Services;
 
 
 public record PlayerDeath( PlayerController Player, GameObject Attacker ) : IGameEvent;
@@ -322,12 +323,18 @@ public sealed class PlayerController : Component, IGameEventHandler<DamageEvent>
 	public void AddKills( int amount )
 	{
 		Kills += amount;
+
+		//Increment deaths stat
+		Stats.Increment( "kills_new", 1 );
 	}
 
 	[Authority]
 	public void AddDeaths( int amount )
 	{
 		Deaths += amount;
+
+		//Increment deaths stat
+		Stats.Increment( "deaths_new", 1 );
 	}
 
 	[Broadcast]
@@ -401,18 +408,21 @@ public sealed class PlayerController : Component, IGameEventHandler<DamageEvent>
 	{
 		var pc = eventArgs.Attacker?.Root?.Components?.Get<PlayerController>();
 
+		//Make sure we are only calling this
 		if ( IsProxy )
 			return;
-
+		
 		if ( Inventory.IsValid() )
 			Inventory.ResetAmmo();
 
 		AddDeaths( 1 );
 
+		//Broadcast death message
 		BroadcastDeathMessage( eventArgs.Attacker );
 
 		Log.Info( "Player Death" );
 
+		//Add kills to attacker
 		if ( pc.IsValid() )
 			pc.AddKills( 1 );
 
