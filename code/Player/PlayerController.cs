@@ -391,15 +391,20 @@ public sealed class PlayerController : Component, IGameEventHandler<DamageEvent>
 	[Authority]
 	public void TeleportToTeamSpawnPoint( bool changeEyeAngles = true )
 	{
-		var spawns = Scene.GetAll<TeamSpawnPoint>()?.Where( x => x.Team == TeamComponent.Team ).ToList();
+		List<TeamSpawnPoint> Spawns;
 
-		if ( spawns is null || spawns.Count == 0 )
+		if ( TeamComponent.Team == Team.None )
+			Spawns = Scene.GetAll<TeamSpawnPoint>()?.ToList();
+		else
+			Spawns = Scene.GetAll<TeamSpawnPoint>()?.Where( x => x.Team == TeamComponent.Team )?.ToList();
+
+		if ( Spawns is null || Spawns?.Count == 0 )
 		{
 			SetWorld( RespawnPoint, changeEyeAngles );
 			return;
 		}
 
-		var spawn = Game.Random.FromList( spawns );
+		var spawn = Game.Random.FromList( Spawns );
 
 		SetWorld( spawn.Transform.World, changeEyeAngles );
 	}
