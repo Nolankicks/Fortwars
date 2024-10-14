@@ -13,7 +13,7 @@ public sealed class Destoryer : Component
 
 	protected override void OnUpdate()
 	{
-		if ( DestroyTime && Networking.IsHost )
+		if ( DestroyTime && !IsProxy )
 		{
 			GameObject.Destroy();
 		}
