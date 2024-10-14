@@ -50,5 +50,12 @@ MaxProps
         flex-shrink: 0;
 
         background-color: $primary;
+
+        transition: background-color 0.1s ease-out;
+
+        &.hit
+        {
+            background-color: rgb(90, 2, 2);
+        }
     }
 }

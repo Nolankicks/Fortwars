@@ -60,7 +60,7 @@
 		</div>
 
 		<div class="healthholder">
-		<MaxProps />
+		<MaxProps @ref="MaxProps" />
 		<div class="health">
 			<div class="team" style="background-color: @GetColor().Hex;">@player.TeamComponent?.Team</div>
 			<div class="number" @ref="HealthPanel">
@@ -80,6 +80,7 @@
 @code
 {
 	public Panel HealthPanel { get; set; }
+	public Panel MaxProps { get; set; }
 	public bool ShowScoreboard => Input.Down( "score" );
 
 	void IGameEventHandler<PlayerDamage>.OnGameEvent( PlayerDamage eventArgs )
@@ -87,6 +88,19 @@
 		if ( HealthPanel.IsValid() )
 		{
 			HealthPanel.FlashClass( "hit", 0.5f );
+		}
+	}
+
+	public void FlashPropsFailed()
+	{
+		if ( !MaxProps.IsValid() )
+			return;
+
+		MaxProps.FlashClass( "hit", 0.2f );
+		
+		foreach ( var child in MaxProps?.Children )
+		{
+			child.FlashClass( "hit", 0.2f );
 		}
 	}
 

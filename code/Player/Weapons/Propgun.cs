@@ -136,23 +136,37 @@ public sealed class Propgun : Item
 				if ( !gs.IsValid() )
 					return;
 
+				var hud = Scene.GetAll<HUD>()?.FirstOrDefault();
+
 				switch ( currentTeam )
 				{
 					case Team.Red:
 						if ( gs.RedProps.Count() >= gs.MaxProps )
+						{
+							hud?.FlashPropsFailed();
 							return;
+						}
 						break;
 					case Team.Blue:
 						if ( gs.BlueProps.Count() >= gs.MaxProps )
+						{
+							hud?.FlashPropsFailed();
 							return;
+						}
 						break;
 					case Team.Green:
 						if ( gs.GreenProps.Count() >= gs.MaxProps )
+						{
+							hud?.FlashPropsFailed();
 							return;
+						}
 						break;
 					case Team.Yellow:
 						if ( gs.YellowProps.Count() >= gs.MaxProps )
+						{
+							hud?.FlashPropsFailed();
 							return;
+						}
 						break;
 				}
 
