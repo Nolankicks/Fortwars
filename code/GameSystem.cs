@@ -183,7 +183,7 @@ IGameEventHandler<OnGameOvertimeBuild>, IGameEventHandler<OnGameOvertimeFight>
 				{
 					Overtimes++;
 
-					Log.Info( "Overtime" + Overtimes );
+					Log.Info( $"Overtime: {Overtimes}" );
 
 					Scene.Dispatch( new OnGameOvertimeBuild() );
 					State = GameState.OvertimeBuild;
