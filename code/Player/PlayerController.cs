@@ -321,6 +321,9 @@ public sealed class PlayerController : Component, IGameEventHandler<DamageEvent>
 	[Authority]
 	public void AddKills( int amount )
 	{
+		if ( IsProxy )
+			return;
+
 		Kills += amount;
 
 		//Increment kills stat
@@ -330,6 +333,9 @@ public sealed class PlayerController : Component, IGameEventHandler<DamageEvent>
 	[Authority]
 	public void AddDeaths( int amount )
 	{
+		if ( IsProxy )
+			return;
+
 		Deaths += amount;
 
 		//Increment deaths stat
