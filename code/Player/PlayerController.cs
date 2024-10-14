@@ -253,10 +253,9 @@ public sealed class PlayerController : Component, IGameEventHandler<DamageEvent>
 
 		if ( IsRespawning )
 		{
-			var lookRot = EyeAngles.ToRotation();
-
-			Scene.Camera.WorldPosition = DeathPos + Vector3.Up * 64 + lookRot.Backward * 200;
-			Scene.Camera.WorldRotation = lookRot;
+			Scene.Camera.WorldPosition = DeathPos + Vector3.Up * 64 + EyeAngles.ToRotation().Backward * 200;
+			Scene.Camera.WorldRotation = EyeAngles;
+			Scene.Camera.FieldOfView = Preferences.FieldOfView;
 
 			return;
 		}
@@ -366,9 +365,12 @@ public sealed class PlayerController : Component, IGameEventHandler<DamageEvent>
 	}
 
 	[Authority]
-	public void SetWorld( Transform transform )
+	public void SetWorld( Transform transform, bool ChangeAngles = true )
 	{
-		EyeAngles = WorldRotation.Angles();
+		Transform.ClearInterpolation();
+
+		if ( ChangeAngles )
+			EyeAngles = transform.Rotation.Angles();
 
 		Transform.World = transform;
 	}
@@ -387,19 +389,19 @@ public sealed class PlayerController : Component, IGameEventHandler<DamageEvent>
 	}
 
 	[Authority]
-	public void TeleportToTeamSpawnPoint()
+	public void TeleportToTeamSpawnPoint( bool changeEyeAngles = true )
 	{
 		var spawns = Scene.GetAll<TeamSpawnPoint>()?.Where( x => x.Team == TeamComponent.Team ).ToList();
 
 		if ( spawns is null || spawns.Count == 0 )
 		{
-			SetWorld( RespawnPoint );
+			SetWorld( RespawnPoint, changeEyeAngles );
 			return;
 		}
 
 		var spawn = Game.Random.FromList( spawns );
 
-		SetWorld( spawn.Transform.World );
+		SetWorld( spawn.Transform.World, changeEyeAngles );
 	}
 
 	public Vector3 DeathPos { get; set; }
@@ -477,7 +479,7 @@ public sealed class PlayerController : Component, IGameEventHandler<DamageEvent>
 
 			DeathPos = target.WorldPosition;
 
-			TeleportToTeamSpawnPoint();
+			TeleportToTeamSpawnPoint( false );
 
 			if ( Components.TryGet<NameTag>( out var tag, FindMode.EnabledInSelfAndChildren ) )
 			{
@@ -495,6 +497,8 @@ public sealed class PlayerController : Component, IGameEventHandler<DamageEvent>
 					BroadcastEnable( tag.GameObject, true );
 
 				IsRespawning = false;
+
+				EyeAngles = WorldRotation.Angles();
 
 				GameObject.Dispatch( new PlayerReset() );
 			} );
