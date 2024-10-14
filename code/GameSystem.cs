@@ -80,6 +80,8 @@ IGameEventHandler<OnGameOvertimeBuild>, IGameEventHandler<OnGameOvertimeFight>
 
 	[Property, Sync] public int MaxProps { get; set; } = 50;
 
+	public bool IsPlaying => State == GameState.BuildMode || State == GameState.FightMode || State == GameState.OvertimeBuild || State == GameState.OvertimeFight;
+
 	protected override async Task OnLoad()
 	{
 		if ( Networking.IsHost && !Networking.IsActive && StartServer && !Scene.IsEditor )
@@ -92,10 +94,16 @@ IGameEventHandler<OnGameOvertimeBuild>, IGameEventHandler<OnGameOvertimeFight>
 
 	protected override void OnStart()
 	{
+		Log.Info( "Game System Started" );
+
 		Instance = this;
 
 		if ( Networking.IsHost )
 		{
+			//Get this shit loaded
+			if ( Application.IsHeadless )
+				PlayerToStart = 1;
+
 			InitBlueTimeHeld = BlueTimeHeld;
 			InitRedTimeHeld = RedTimeHeld;
 			InitYellowTimeHeld = YellowTimeHeld;
@@ -195,10 +203,22 @@ IGameEventHandler<OnGameOvertimeBuild>, IGameEventHandler<OnGameOvertimeFight>
 			return;
 
 		GameLoop();
+
+		if ( Connection.All.Where( x => x != Connection.Local ).Count() == 0 && IsPlaying && Application.IsHeadless )
+		{
+			State = GameState.Ended;
+			Scene.Dispatch( new OnGameEnd() );
+
+			Log.Info( "All players left, ending game." );
+		}
 	}
 
 	public void OnActive( Connection connection )
 	{
+		//Dedicated servers?
+		if ( Application.IsHeadless && Connection.Local == connection )
+			return;
+
 		connection.CanRefreshObjects = true;
 
 		if ( !PlayerPrefab.IsValid() || !SpawnPlayer )
@@ -556,11 +576,20 @@ IGameEventHandler<OnGameOvertimeBuild>, IGameEventHandler<OnGameOvertimeFight>
 	}
 }
 
-public sealed class MapLoadingSystem : GameObjectSystem<MapLoadingSystem>
+public sealed class MapLoadingSystem : GameObjectSystem<MapLoadingSystem>, ISceneStartup
 {
 	public MapLoadingSystem( Scene scene ) : base( scene )
 	{
 		Listen( Stage.SceneLoaded, 1, OnSceneLoad, "OnSceneLoad" );
+	}
+
+	void ISceneStartup.OnHostInitialize()
+	{
+		Log.Info( "Host Initialized" );
+		Log.Info( $"Application is headless: {Application.IsHeadless}" );
+
+		if ( Application.IsHeadless )
+			Scene.LoadFromFile( "scenes/easter.scene" );
 	}
 
 	void OnSceneLoad()
