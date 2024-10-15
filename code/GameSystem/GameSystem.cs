@@ -16,7 +16,7 @@ public record OnTeamWin( Team team ) : IGameEvent;
 
 public record OnRoundSwitch( GameSystem.GameState state ) : IGameEvent;
 
-public sealed class GameSystem : Component, Component.INetworkListener,
+public sealed partial class GameSystem : Component, Component.INetworkListener,
 IGameEventHandler<OnBuildMode>, IGameEventHandler<OnGameEnd>, IGameEventHandler<OnGameWaiting>, IGameEventHandler<OnFightMode>,
 IGameEventHandler<OnGameOvertimeBuild>, IGameEventHandler<OnGameOvertimeFight>
 {
@@ -100,7 +100,7 @@ IGameEventHandler<OnGameOvertimeBuild>, IGameEventHandler<OnGameOvertimeFight>
 
 		if ( Networking.IsHost )
 		{
-			//Get this shit loaded
+			//Get this shit loaded if we are a dedicated server
 			if ( Application.IsHeadless )
 				PlayerToStart = 1;
 
@@ -111,11 +111,13 @@ IGameEventHandler<OnGameOvertimeBuild>, IGameEventHandler<OnGameOvertimeFight>
 
 			var mapData = Scene.GetAll<MapData>()?.FirstOrDefault();
 
+            //Load our map data from the scene
 			if ( mapData.IsValid() )
 			{
 				FourTeams = mapData.FourTeams;
 			}
-
+            
+            //Load our lobby settings from the file
 			var lobbySettings = LobbySettings.Load();
 
 			if ( LoadLobbySettings && lobbySettings is not null )
@@ -123,6 +125,7 @@ IGameEventHandler<OnGameOvertimeBuild>, IGameEventHandler<OnGameOvertimeFight>
 				ClassicModels = lobbySettings.ClassicModels;
 			}
 
+            //Create our prop helpers
 			foreach ( var prop in Scene.GetAll<Prop>() )
 			{
 				if ( prop.Components.TryGet<FortwarsProp>( out var p ) )
@@ -140,11 +143,30 @@ IGameEventHandler<OnGameOvertimeBuild>, IGameEventHandler<OnGameOvertimeFight>
 		}
 	}
 
+	protected override void OnUpdate()
+	{
+		if ( !Networking.IsHost )
+			return;
+
+		GameLoop();
+        
+        //If we are the dedicated server and all players left, end the game
+		if ( Connection.All.Where( x => x != Connection.Local ).Count() == 0 && IsPlaying && Application.IsHeadless )
+		{
+			State = GameState.Ended;
+			Scene.Dispatch( new OnGameEnd() );
+
+			Log.Info( "All players left, ending game." );
+		}
+	}
+
+    /// <summary> The main game loop </summary>
 	public void GameLoop()
 	{
 		switch ( State )
 		{
 			case GameState.Waiting:
+                //Start the game if we have enough players
 				if ( Scene.GetAll<PlayerController>().Count() >= PlayerToStart && StateSwitch > 5 )
 				{
 					Scene.Dispatch( new OnBuildMode() );
@@ -153,6 +175,7 @@ IGameEventHandler<OnGameOvertimeBuild>, IGameEventHandler<OnGameOvertimeFight>
 				break;
 
 			case GameState.BuildMode:
+                //After build time is over, switch to fight mode
 				if ( StateSwitch > BuildTime )
 				{
 					Scene.Dispatch( new OnFightMode() );
@@ -161,14 +184,17 @@ IGameEventHandler<OnGameOvertimeBuild>, IGameEventHandler<OnGameOvertimeFight>
 				break;
 
 			case GameState.FightMode:
+                //Constantly check for the winning team
 				CheckForWinningTeam();
 
+                //If we don't have one by the end, start overtime
 				if ( GetWinningTeam() == Team.None && StateSwitch > FightTime )
 				{
 					Scene.Dispatch( new OnGameOvertimeBuild() );
 					State = GameState.OvertimeBuild;
 				}
 				break;
+                //Same as above but for overtime
 			case GameState.OvertimeBuild:
 				if ( StateSwitch > BuildTime )
 				{
@@ -197,86 +223,7 @@ IGameEventHandler<OnGameOvertimeBuild>, IGameEventHandler<OnGameOvertimeFight>
 		}
 	}
 
-	protected override void OnUpdate()
-	{
-		if ( !Networking.IsHost )
-			return;
-
-		GameLoop();
-
-		if ( Connection.All.Where( x => x != Connection.Local ).Count() == 0 && IsPlaying && Application.IsHeadless )
-		{
-			State = GameState.Ended;
-			Scene.Dispatch( new OnGameEnd() );
-
-			Log.Info( "All players left, ending game." );
-		}
-	}
-
-	public void OnActive( Connection connection )
-	{
-		//Dedicated servers?
-		if ( Application.IsHeadless && Connection.Local == connection )
-			return;
-
-		connection.CanRefreshObjects = true;
-
-		if ( !PlayerPrefab.IsValid() || !SpawnPlayer )
-			return;
-
-		var spawns = Scene.GetAllComponents<TeamSpawnPoint>().ToList();
-		Transform SpawnTransform = spawns.Count > 0 ? Game.Random.FromList( spawns ).Transform.World : Transform.World;
-
-		var player = PlayerPrefab.Clone( SpawnTransform );
-
-		if ( player.Components.TryGet<PlayerController>( out var p ) )
-			p.SetWorld( SpawnTransform );
-
-		if ( player.Components.TryGet<CitizenAnimationHelper>( out var animHelper, FindMode.EnabledInSelfAndChildren ) && animHelper.Target.IsValid() )
-		{
-			var clothing = new ClothingContainer();
-			clothing.Deserialize( connection.GetUserData( "avatar" ) );
-			clothing.Apply( animHelper.Target );
-		}
-
-		player.NetworkSpawn( connection );
-
-		if ( State != GameState.Waiting && State != GameState.Ended )
-		{
-			if ( player.Components.TryGet<PlayerController>( out var playerController ) )
-			{
-				var teams = FourTeams ? new List<Team> { Team.Red, Team.Blue, Team.Yellow, Team.Green } : new List<Team> { Team.Red, Team.Blue };
-
-				var inv = playerController.Inventory;
-
-				if ( !inv.IsValid() )
-					return;
-
-				playerController.TeamComponent?.SetTeam( Game.Random.FromList( teams ) );
-
-				playerController.TeleportToTeamSpawnPoint();
-
-				if ( State == GameState.BuildMode || State == GameState.OvertimeBuild )
-				{
-					//inv.OpenClassSelect();
-					inv.AddItem( ResourceLibrary.GetAll<WeaponData>().FirstOrDefault( x => x.ResourceName == "propgun" ) );
-					inv.AddItem( ResourceLibrary.GetAll<WeaponData>().FirstOrDefault( x => x.ResourceName == "physgun" ) );
-				}
-				else if ( State == GameState.FightMode || State == GameState.OvertimeFight )
-				{
-					inv.OpenClassSelect();
-
-					playerController.Inventory.AddItem( ResourceLibrary.GetAll<WeaponData>().FirstOrDefault( x => x.ResourceName == "gravgun" ) );
-
-					if ( inv.SelectedClass is not null )
-						inv.AddItem( inv.SelectedClass.WeaponData );
-				}
-			}
-		}
-
-		Scene.Dispatch( new OnPlayerJoin() );
-	}
-
+    /// <summary> Creates random teams for the players </summary>
 	public void SetTeams()
 	{
 		var players = Scene.GetAllComponents<TeamComponent>().ToList();
@@ -290,174 +237,6 @@ IGameEventHandler<OnGameOvertimeBuild>, IGameEventHandler<OnGameOvertimeFight>
 		}
 
 		Scene.GetAll<PlayerController>().ToList().ForEach( x => x.TeleportToTeamSpawnPoint() );
-	}
-
-	[After<OnGameWaiting>, After<OnPlayerJoin>]
-	void IGameEventHandler<OnBuildMode>.OnGameEvent( OnBuildMode eventArgs )
-	{
-		SetTeams();
-
-		Scene.GetAll<HealthComponent>()?.ToList()?.ForEach( x => x.ResetHealth() );
-
-		Scene.GetAll<Inventory>()?.ToList()?.ForEach( x =>
-		{
-			x.ClearSelectedClass();
-			x.ClearAll();
-			x.AddItem( ResourceLibrary.GetAll<WeaponData>().FirstOrDefault( x => x.ResourceName == "propgun" ) );
-			x.AddItem( ResourceLibrary.GetAll<WeaponData>().FirstOrDefault( x => x.ResourceName == "physgun" ) );
-			//x.OpenClassSelect();
-		} );
-
-		Log.Info( "Build Mode" );
-
-		BroadcastChangeState( GameState.BuildMode );
-
-		var text = Game.Random.FromList( BuildModePopups );
-
-		PopupHolder.BroadcastPopup( text, 5 );
-
-		StateSwitch = 0;
-	}
-
-	[After<OnBuildMode>]
-	void IGameEventHandler<OnFightMode>.OnGameEvent( OnFightMode eventArgs )
-	{
-		StateSwitch = 0;
-		Log.Info( "Fight Mode" );
-
-		Scene.GetAll<HealthComponent>()?.ToList()?.ForEach( x => x.ResetHealth() );
-
-		Scene.GetAll<Inventory>()?.ToList()?.ForEach( x =>
-		{
-			x.ClearAll();
-			x.AddItem( ResourceLibrary.GetAll<WeaponData>().FirstOrDefault( x => x.ResourceName == "gravgun" ) );
-
-			/*if ( x.SelectedClass is not null )
-			{
-				x.AddItem( x.SelectedClass.WeaponData );
-			}*/
-
-			x.OpenClassSelect();
-		} );
-
-		var text = Game.Random.FromList( FightModePopups );
-
-		BroadcastChangeState( GameState.FightMode );
-
-		PopupHolder.BroadcastPopup( text, 5 );
-	}
-
-	[After<OnFightMode>, After<OnGameOvertimeFight>]
-	void IGameEventHandler<OnGameEnd>.OnGameEvent( OnGameEnd eventArgs )
-	{
-		StateSwitch = 0;
-		Log.Info( "Game Ended" );
-
-		var winningTeam = GetWinningTeam();
-
-		OnTeamWon( GetWinningTeam() );
-
-		Scene.GetAll<Inventory>()?.ToList()?.ForEach( x => x.ClearAll() );
-
-		Scene.GetAll<PlayerController>()?.ToList()?.ForEach( x => x.ResetStats() );
-
-		Log.Info( $"{GetWinningTeam()} won" );
-
-		PopupHolder.BroadcastPopup( $"{GetWinningTeam()} won", 5 );
-
-		Scene.GetAll<Inventory>()?.ToList()?.ForEach( x =>
-		{
-			x.ClearAll();
-			x.ClearSelectedClass();
-		} );
-
-		Scene.GetAll<HealthComponent>()?.ToList()?.ForEach( x => x.ResetHealth() );
-
-		DeleteClassSelect();
-
-		BroadcastChangeState( GameState.Ended );
-
-		RedTimeHeld = InitRedTimeHeld;
-		BlueTimeHeld = InitBlueTimeHeld;
-		YellowTimeHeld = InitYellowTimeHeld;
-		GreenTimeHeld = InitGreenTimeHeld;
-		Overtimes = 0;
-	}
-
-	[Broadcast]
-	public void DeleteClassSelect()
-	{
-		var hud = Scene.GetAll<HUD>()?.FirstOrDefault();
-
-		if ( hud.IsValid() )
-		{
-			foreach ( var select in hud.Panel.ChildrenOfType<ClassSelect>().ToList() )
-			{
-				select.Delete();
-			}
-		}
-	}
-
-	[Broadcast]
-	public void OnTeamWon( Team team )
-	{
-		Scene.Dispatch( new OnTeamWin( team ) );
-	}
-
-	[After<OnGameEnd>]
-	void IGameEventHandler<OnGameWaiting>.OnGameEvent( OnGameWaiting eventArgs )
-	{
-		StateSwitch = 0;
-		ResetPlayers();
-		Log.Info( "Game Waiting" );
-
-		Scene.GetAll<HealthComponent>()?.ToList()?.ForEach( x => x.ResetHealth() );
-
-		Scene.GetAll<TeamComponent>()?.ToList()?.ForEach( x => x.SetTeam( Team.None ) );
-
-		BroadcastChangeState( GameState.Waiting );
-	}
-
-	[After<OnFightMode>, After<OnGameOvertimeFight>]
-	void IGameEventHandler<OnGameOvertimeBuild>.OnGameEvent( OnGameOvertimeBuild eventArgs )
-	{
-		StateSwitch = 0;
-		Log.Info( "Overtime" );
-
-		Scene.GetAll<HealthComponent>()?.ToList()?.ForEach( x => x.ResetHealth() );
-
-		Scene.GetAll<Inventory>()?.ToList()?.ForEach( x =>
-		{
-			x.ClearAll();
-			x.AddItem( ResourceLibrary.GetAll<WeaponData>().FirstOrDefault( x => x.ResourceName == "propgun" ) );
-			x.AddItem( ResourceLibrary.GetAll<WeaponData>().FirstOrDefault( x => x.ResourceName == "physgun" ) );
-		} );
-
-		BroadcastChangeState( GameState.OvertimeBuild );
-
-		PopupHolder.BroadcastPopup( "Get ready for overtime, build now!", 5 );
-	}
-
-	[After<OnGameOvertimeBuild>]
-	void IGameEventHandler<OnGameOvertimeFight>.OnGameEvent( OnGameOvertimeFight eventArgs )
-	{
-		StateSwitch = 0;
-		Log.Info( "Overtime Fight" );
-
-		Scene.GetAll<HealthComponent>()?.ToList()?.ForEach( x => x.ResetHealth() );
-
-		Scene.GetAll<Inventory>()?.ToList()?.ForEach( x =>
-		{
-			x.ClearAll();
-			x.AddItem( ResourceLibrary.GetAll<WeaponData>().FirstOrDefault( x => x.ResourceName == "gravgun" ) );
-
-			if ( x.SelectedClass is not null )
-				x.AddItem( x.SelectedClass.WeaponData );
-		} );
-
-		BroadcastChangeState( GameState.OvertimeFight );
-
-		PopupHolder.BroadcastPopup( "Get ready for overtime, fight now!", 5 );
 	}
 
 	[Broadcast]
@@ -574,50 +353,4 @@ IGameEventHandler<OnGameOvertimeBuild>, IGameEventHandler<OnGameOvertimeFight>
 		Instance?.Scene.Dispatch( new OnBuildMode() );
 		Instance.State = GameState.BuildMode;
 	}
-}
-
-public sealed class MapLoadingSystem : GameObjectSystem<MapLoadingSystem>, ISceneStartup
-{
-	public MapLoadingSystem( Scene scene ) : base( scene )
-	{
-		Listen( Stage.SceneLoaded, 1, OnSceneLoad, "OnSceneLoad" );
-	}
-
-	void ISceneStartup.OnHostInitialize()
-	{
-		Log.Info( "Host Initialized" );
-
-        //If we are a dedicated server, load a scene
-		if ( Application.IsHeadless )
-			Scene.LoadFromFile( "scenes/easter.scene" );
-	}
-
-	void OnSceneLoad()
-	{
-		if ( Scene.GetAll<GameSystem>().Count() > 0 || Scene.IsEditor || Scene.GetAll<MainMenu>().Count() > 0 )
-			return;
-
-		var slo = new SceneLoadOptions();
-		slo.SetScene( "scenes/fortwarsmain.scene" );
-		slo.IsAdditive = true;
-		Scene.Load( slo );
-	}
-}
-
-[Description( "Lets you set data for the map" )]
-public sealed class MapData : Component
-{
-	[Property] public bool FourTeams { get; set; } = false;
-}
-
-[GameResource( "Map Info", "mapinfo", "Info about the map", Icon = "explore" )]
-public sealed class MapInfo : GameResource
-{
-	public string MapName { get; set; }
-	public string MapDescription { get; set; }
-	public bool FourTeams { get; set; }
-	public SceneFile Scene { get; set; }
-	public Texture Thumb { get; set; }
-	public string Author { get; set; }
-	public bool Hidden { get; set; } = false;
 }
