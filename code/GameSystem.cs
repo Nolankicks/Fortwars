@@ -586,8 +586,8 @@ public sealed class MapLoadingSystem : GameObjectSystem<MapLoadingSystem>, IScen
 	void ISceneStartup.OnHostInitialize()
 	{
 		Log.Info( "Host Initialized" );
-		Log.Info( $"Application is headless: {Application.IsHeadless}" );
 
+        //If we are a dedicated server, load a scene
 		if ( Application.IsHeadless )
 			Scene.LoadFromFile( "scenes/easter.scene" );
 	}
