@@ -15,7 +15,7 @@ Scoreboard {
     padding: 16px;
     gap: 16px;
 
-    border-radius: 4px;
+    border-radius: $border-radius;
 
     transition: opacity 0.2s ease-in-out;
 
@@ -27,7 +27,7 @@ Scoreboard {
         align-items: center;
         justify-content: flex-start;
         padding: 12px;
-        border-radius: 4px;
+        border-radius: $border-radius;
         flex-direction: column;
         border-radius: 4px;
         gap: 16px;
@@ -43,7 +43,7 @@ Scoreboard {
             align-items: center;
             justify-content: center;
 
-            border-radius: 4px;
+            border-radius: $border-radius;
         }
 
         >.holder
@@ -73,8 +73,6 @@ Scoreboard {
                 align-items: center;
                 justify-content: center;
                 font-size: 14px;
-
-                background-color: $primary;
 
                 &.red {
                     background-color: #ff0000;

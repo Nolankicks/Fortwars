@@ -48,11 +48,11 @@ IGameEventHandler<OnGameOvertimeBuild>, IGameEventHandler<OnGameOvertimeFight>
 	[Property, ReadOnly, Sync, Category( "Game State" )] public GameState State { get; set; } = GameState.Waiting;
 	[Sync, InlineEditor, Property, JsonIgnore, Category( "Game State" )] public TimeSince StateSwitch { get; set; } = 0;
 
-	public IEnumerable<TeamComponent> BlueTeam => Scene.GetAll<TeamComponent>().Where( x => x.Team == Team.Blue );
-	public IEnumerable<TeamComponent> RedTeam => Scene.GetAll<TeamComponent>().Where( x => x.Team == Team.Red );
-	public IEnumerable<TeamComponent> YellowTeam => Scene.GetAll<TeamComponent>().Where( x => x.Team == Team.Yellow );
-	public IEnumerable<TeamComponent> GreenTeam => Scene.GetAll<TeamComponent>().Where( x => x.Team == Team.Green );
-	public IEnumerable<TeamComponent> NoneTeam => Scene.GetAll<TeamComponent>().Where( x => x.Team == Team.None );
+	public IEnumerable<TeamComponent> BlueTeam => Scene?.GetAll<TeamComponent>().Where( x => x?.Team == Team.Blue );
+	public IEnumerable<TeamComponent> RedTeam => Scene?.GetAll<TeamComponent>().Where( x => x?.Team == Team.Red );
+	public IEnumerable<TeamComponent> YellowTeam => Scene?.GetAll<TeamComponent>().Where( x => x?.Team == Team.Yellow );
+	public IEnumerable<TeamComponent> GreenTeam => Scene?.GetAll<TeamComponent>().Where( x => x?.Team == Team.Green );
+	public IEnumerable<TeamComponent> NoneTeam => Scene?.GetAll<TeamComponent>().Where( x => x?.Team == Team.None );
 
 	[Property, Sync, Category( "Game Data" )] public float BlueTimeHeld { get; set; } = 5;
 	[Property, Sync, Category( "Game Data" )] public float RedTimeHeld { get; set; } = 5;
