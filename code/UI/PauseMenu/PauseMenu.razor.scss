@@ -53,5 +53,10 @@ PauseMenu
         flex-direction: column;
 
         gap: 12px;
+
+        >button
+        {
+            width: 100%;
+        }
     }
 }

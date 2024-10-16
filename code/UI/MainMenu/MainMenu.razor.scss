@@ -37,6 +37,11 @@ MainMenu
         gap: 16px;
         transition: all 1s ease-in-out;
 
+        >button
+        {
+            width: 100%;
+        }
+
         &:intro
         {
             transform: translateX(-115%);

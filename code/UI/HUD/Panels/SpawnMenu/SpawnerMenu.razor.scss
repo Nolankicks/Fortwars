@@ -47,7 +47,7 @@ SpawnerMenu
 
             &.active
             {
-                background-color: hsl(0, 0%, 20%);
+                background-color: $secondary;
             }
 
             >img
@@ -74,6 +74,10 @@ SpawnerMenu
             background-size: 16px;
             align-items: center;
             justify-content: flex-start;
+            font-size: 21px;
+            width: 36px;
+            align-items: center;
+            justify-content: center;
 
             cursor: pointer;
 
@@ -89,29 +93,6 @@ SpawnerMenu
             align-items: center;
             justify-content: center;
             padding: 8px;
-        }
-    }
-
-   
-    button
-    {
-        border-radius: 4px;
-        padding: 8px;
-        background-color: $secondary;
-        cursor: pointer;
-
-        &:hover
-        {
-            background-color: hsl(0, 0%, 30%);
-            
-            sound-in: ui.button.over;
-        }
-
-        &:active
-        {
-            background-color: hsl(0, 0%, 40%);
-
-            sound-in: ui.button.press;
         }
     }
 
