@@ -13,7 +13,7 @@
 			@if ( playerClass.Hidden )
 				continue;
 
-			<div class="class" onclick=@( () => SelectedClass = playerClass)>@playerClass.ClassName</div>
+			<button class="class" onclick=@( () => SelectedClass = playerClass)>@playerClass.ClassName</button>
 		}
 	</div>
 
@@ -22,7 +22,7 @@
 		{
 			<div class="header">@SelectedClass.ClassName</div>
 			<div class="body">@SelectedClass.ClassDescription</div>
-			<div class="class" onclick=@( () => SelectClass( SelectedClass ) )>Select</div>
+			<button onclick=@( () => SelectClass( SelectedClass ) )>Select</button>
 		}
 	</div>
 	</div>

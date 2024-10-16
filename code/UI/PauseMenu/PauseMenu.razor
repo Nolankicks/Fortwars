@@ -9,13 +9,13 @@
 	</div>
 
 	<div class="buttons">
-		<div class="button" onclick=@( () => Visible = false )> Resume </div>
-		<div class="button" onclick=@( () => Game.Overlay.ShowServerList( new Sandbox.Modals.ServerListConfig( Game.Ident ) ) )> Servers </div>
-		<div class="button" onclick=@( () => Game.Overlay.ShowReviewModal( Package.Fetch( Game.Ident, false )?.Result ) )> Review </div>
-		<div class="button" onclick=@( () => OpenAboutMenu() )> About </div>
-		<div class="button" onclick=@( () => Game.Overlay.ShowSettingsModal() )> Settings </div>
-		<div class="button" onclick=@BackToMenu> Back to Menu </div>
-		<div class="button" onclick=@( () => Game.Close() )> Exit </div>
+		<button onclick=@( () => Visible = false )> Resume </button>
+		<button onclick=@( () => Game.Overlay.ShowServerList( new Sandbox.Modals.ServerListConfig( Game.Ident ) ) )> Servers </button>
+		<button onclick=@( () => Game.Overlay.ShowReviewModal( Package.Fetch( Game.Ident, false )?.Result ) )> Review </button>
+		<button onclick=@( () => OpenAboutMenu() )> About </button>
+		<button onclick=@( () => Game.Overlay.ShowSettingsModal() )> Settings </button>
+		<button onclick=@BackToMenu> Back to Menu </button>
+		<button onclick=@( () => Game.Close() )> Exit </button>
 	</div>
 </root>
 

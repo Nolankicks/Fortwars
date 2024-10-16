@@ -8,14 +8,14 @@
 <root>
 	<div class="buttons">
 
-		<div class="button" onclick=@( () => ChangeMenuState( MenuState.LobbyCreation ) )> Create Lobby </div>
+		<button onclick=@( () => ChangeMenuState( MenuState.LobbyCreation ) )> Create Lobby </button>
 
-		<div class="button" onclick=@( () => ChangeMenuState( MenuState.Lobbies ))> Lobbies </div>
+		<button onclick=@( () => ChangeMenuState( MenuState.Lobbies ))> Lobbies </button>
 		@* Leaderboards if yall want it *@
 		@* <div class="button" onclick=@( () => ChangeMenuState( MenuState.Leaderboards ))> Leaderboards</div> *@
-		<div class="button" onclick=@( () => ChangeMenuState( MenuState.About ) )> About </div>
-		<div class="button" onclick=@( () => Game.Overlay.ShowSettingsModal() )> Settings </div>
-		<div class="button" onclick=@( () => Game.Close() )> Exit </div>
+		<button onclick=@( () => ChangeMenuState( MenuState.About ) )> About </button>
+		<button onclick=@( () => Game.Overlay.ShowSettingsModal() )> Settings </button>
+		<button onclick=@( () => Game.Close() )> Exit </button>
 	</div>
 
 	<div class="title">
@@ -33,20 +33,20 @@
 					
 					@if (Fetching)
 					{
-						<div class="info">Fetching lobbies...</div>
+						<button class="info">Fetching lobbies...</button>
 					}
 					else if (Lobbies.Count == 0)
 					{
-						<div class="info">No lobbies found</div>
+						<button class="info">No lobbies found</button>
 					}
 					else
 					{
 						foreach (var lobby in Lobbies)
 						{
-							<div class="lobby" onclick=@( () => JoinLobby( lobby ) )>
+							<button class="lobby" onclick=@( () => JoinLobby( lobby ) )>
 								<div class="map"> @lobby.Map </div>
 								<div class="members"> @lobby.Members / @lobby.MaxMembers </div>
-							</div>
+							</button>
 						}
 					}
 				</div>

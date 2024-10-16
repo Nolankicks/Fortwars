@@ -97,54 +97,25 @@ ClassSelect {
 
         .button {
             width: 100%;
-            font-size: 42px;
             height: 100px;
-            align-items: center;
-            justify-content: center;
-            font-family: Tahoma;
         }
     }
 
     .class {
         width: 100%;
-        align-items: center;
-        justify-content: center;
         font-family: Poppins;
         font-size: 16px;
         cursor: pointer;
         padding: 5px;
-        color: $button-primary-fg;
-        min-height: $button-size;
+        height: 50px;
         flex-shrink: 0;
-        align-items: center;
         margin-right: 5px;
         transition: color 0.15s ease-out;
         transition: background-color 0.15s ease-out;
-        background-color: $secondary;
-        
-        color: $button-secondary-fg;
+
         opacity: 1;
 
-        border-width: 2px;
-        border-color: $primary;
-
-        border-radius: 4px;
-
         font-size: 24px;
-
-        &:hover {
-            color: $button-secondary-fg;
-            background-color: $button-secondary;
-
-            sound-in: ui.button.over;
-        }
-
-        &:active {
-            color: $button-primary-fg;
-            background-color: $secondary;
-
-            sound-in: ui.button.press;
-        }
     }
 
     .close
