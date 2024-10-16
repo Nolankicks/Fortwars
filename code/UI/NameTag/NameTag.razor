@@ -16,11 +16,11 @@
 
 	public string GetAvatarTexture( Connection connection )
 	{
-		return $"avatar:{connection.SteamId}";
+		return $"avatar:{connection?.SteamId}";
 	}
 
 	/// <summary>
 	/// the hash determines if the system should be rebuilt. If it changes, it will be rebuilt
 	/// </summary>
-	protected override int BuildHash() => System.HashCode.Combine( Network.Owner?.DisplayName );
+	protected override int BuildHash() => System.HashCode.Combine( Network.Owner?.DisplayName, TextColor.Hex );
 }
