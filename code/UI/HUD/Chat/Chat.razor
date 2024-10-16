@@ -61,11 +61,16 @@
 		if ( string.IsNullOrWhiteSpace( text ) )
 			return;
 
-		AddText(text);
+		var color = HUD.GetColor();
+
+		if ( color == "#1a1a1b" )
+			color = Color.White;
+
+		AddText(text, color);
 	}
 
 	[Broadcast]
-	public void AddText(string message)
+	public void AddText(string message, Color color)
 	{
 		message = message.Truncate(300);
 
@@ -75,7 +80,7 @@
 		var author = Rpc.Caller.DisplayName;
 		var steamid = Rpc.Caller.SteamId;
 
-		Entries.Add( new Entry( steamid, author, message, 0.0f, Color.Random ) );
+		Entries.Add( new Entry( steamid, author, message, 0.0f, color ) );
 		StateHasChanged();
 	}
 
@@ -87,7 +92,7 @@
 		if ( string.IsNullOrWhiteSpace(message) )
 			return;
 
-		Entries.Add( new Entry( 0, emoji, message, 0.0f, Color.Random ) );
+		Entries.Add( new Entry( 0, emoji, message, 0.0f, Color.White ) );
 		StateHasChanged();
 	}
 
