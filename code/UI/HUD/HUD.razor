@@ -34,8 +34,6 @@
 		{
 			HealthPanel.NumberPanel?.FlashClass( "hit", 0.5f );
 		}
-
-		Log.Info( $"Damage" );
 	}
 
 	public void FlashPropsFailed()
@@ -73,12 +71,6 @@
 	/// </summary>
 	protected override int BuildHash()
 	{
-		var hash = 0;
-
-		hash += System.HashCode.Combine( ShowScoreboard );
-
-		
-
-		return hash;
+		return System.HashCode.Combine( ShowScoreboard );
 	}
 }
