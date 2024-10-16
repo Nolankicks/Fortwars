@@ -44,8 +44,8 @@
 						foreach (var lobby in Lobbies)
 						{
 							<div class="lobby" onclick=@( () => JoinLobby( lobby ) )>
-								<div> @lobby.Map </div>
-								<div> @lobby.Members / @lobby.MaxMembers </div>
+								<div class="map"> @lobby.Map </div>
+								<div class="members"> @lobby.Members / @lobby.MaxMembers </div>
 							</div>
 						}
 					}
