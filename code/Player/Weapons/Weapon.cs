@@ -257,6 +257,5 @@ public sealed class Weapon : Item, IGameEventHandler<OnReloadEvent>
 public sealed class WeaponData : GameResource
 {
 	public string Name { get; set; }
-	public Texture Icon { get; set; }
 	public GameObject WeaponPrefab { get; set; }
 }
