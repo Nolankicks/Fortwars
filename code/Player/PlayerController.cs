@@ -310,9 +310,7 @@ public sealed class PlayerController : Component, IGameEventHandler<DamageEvent>
 
 	void IGameEventHandler<DamageEvent>.OnGameEvent( DamageEvent eventArgs )
 	{
-		var pc = eventArgs.Attacker?.Root?.Components?.Get<PlayerController>();
-
-		if ( !pc.IsValid() )
+		if ( IsProxy )
 			return;
 
 		Scene.Dispatch( new PlayerDamage( this, eventArgs ) );

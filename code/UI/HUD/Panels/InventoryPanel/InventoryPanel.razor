@@ -1,0 +1,61 @@
+@using Sandbox;
+@using Sandbox.UI;
+@using System;
+@attribute [StyleSheet]
+@inherits Panel
+
+<root>
+	@{
+		var player = PlayerController.Local;
+
+		if ( !player.IsValid() )
+			return;
+	}
+
+	@if ( player.Inventory.ItemsData.Count() > 0)
+	{
+		@for (int i = 0; i < player.Inventory.ItemsData.Count(); i++)
+		{
+			var index = i;
+
+			if ( player.Inventory.ItemsData.Count() <= index )
+				continue;
+
+			var item = player.Inventory.ItemsData.ElementAt( index );
+			var itemGb = player.Inventory.Items.ElementAt( index );
+
+			if ( item is null || !itemGb.IsValid() )
+				continue;
+
+			var itemComponent = itemGb.Components.Get<Item>( true );
+
+			<div class="item @(index == player.Inventory.Index && player.Inventory.CurrentItem.IsValid() ? "active" : "" )">
+				<div class="slot-number" style="background-color: @HUD.GetColor().Hex;">@(index + 1)</div>
+				<div class="slot-text">@item.Name</div>
+
+				@if ( itemComponent.IsValid() && itemComponent.UsesAmmo )
+				{
+					<div class="slot-ammo">@itemComponent?.Ammo / @itemComponent?.MaxAmmo</div>
+				}
+			</div>
+		}
+	}
+</root>
+
+@code
+{
+	protected override int BuildHash()
+	{
+		var currentItem = PlayerController.Local?.Inventory?.CurrentItem;
+
+		int ammo;
+
+		if ( currentItem.IsValid() && ( currentItem?.Components.TryGet<Item>( out var item ) ?? false ) && item.UsesAmmo )
+			ammo = item.Ammo;
+		else
+			ammo = 0;
+
+		return System.HashCode.Combine( PlayerController.Local?.Inventory?.CurrentItem, PlayerController.Local?.Inventory?.Items?.Count(), 
+		PlayerController.Local?.TeamComponent?.Team, ammo );
+	}
+}

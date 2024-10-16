@@ -2,14 +2,17 @@
 
 TeamProgress
 {
-    position: relative;
+    position: absolute; 
+    top: 12;
+    left: 12;
 
-    width: 100%;
-
+    width: 300px;
     flex-direction: column;
     gap: 16px;
     align-items: center;
     justify-content: center;
+
+    padding: 8px;
 
     .team-bar
     {

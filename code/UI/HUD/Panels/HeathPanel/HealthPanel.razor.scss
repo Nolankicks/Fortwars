@@ -1,41 +1,22 @@
 @import "/UI/HUD/HUD.razor.scss";
 
-MaxProps
+HealthPanel
 {
-    width: 100%;
+    width: 300px;
     align-items: center;
-    font-size: 32px;
-
     height: 60px;
 
-    .text {
+    .team {
         padding: 4px 32px;
         border-radius: 4 0 0 4;
         justify-content: center;
         align-items: center;
-        font-size: 20px;
+        font-size: 30px;
         font-weight: bold;
 
         background-color: $primary;
         width: 60%;
         height: 100%;
-        flex-shrink: 0;
-
-        &.red {
-            background-color: #ff0000;
-        }
-
-        &.green {
-            background-color: #00ff00;
-        }
-
-        &.blue {
-            background-color: #0000ff;
-        }
-
-        &.yellow {
-            background-color: #ffff00;
-        }
     }
 
     .number {
@@ -51,7 +32,7 @@ MaxProps
 
         background-color: $primary;
 
-        transition: background-color 0.1s ease-out;
+        transition: background-color 0.2s ease-out;
 
         &.hit
         {

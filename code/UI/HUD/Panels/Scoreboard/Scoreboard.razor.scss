@@ -1,11 +1,4 @@
-$primary: #1a1a1a;
-$secondary: #242424;
-$tertiary: #fdc418;
-
-$button-primary: #ffffff !default;
-$button-primary-fg: #ffffff !default;
-$button-secondary: #282828 !default;
-$button-secondary-fg: #dadada !default;
+@import "/UI/HUD/HUD.razor.scss";
 
 Scoreboard {
     position: absolute;

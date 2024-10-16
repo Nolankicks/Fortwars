@@ -25,13 +25,13 @@ public sealed class HealthComponent : Component
         else
             Health = health;
 
-        if ( Health <= 0 )
+        GameObject.Dispatch( new DamageEvent( damage, Attacker, GameObject, HitPos, normal ) );
+
+		if ( Health <= 0 )
         {
             IsDead = true;
             GameObject.Dispatch( new DeathEvent( Attacker, GameObject, HitPos, normal ) );
         }
-
-        GameObject.Dispatch( new DamageEvent( damage, Attacker, GameObject, HitPos, normal ) );
     }
 
 	[Button]

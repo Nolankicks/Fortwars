@@ -1,12 +1,4 @@
-$primary: #1a1a1a;
-$secondary: #242424;
-$tertiary: #fdc418;
-
-$button-primary: #ffffff !default;
-$button-primary-fg: #ffffff !default;
-$button-secondary: #282828 !default;
-$button-secondary-fg: #dadada !default;
-$button-size: 45px;
+@import "/UI/HUD/HUD.razor.scss";
 
 ClassSelect {
     position: relative;

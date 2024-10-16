@@ -1,0 +1,51 @@
+@import "/UI/HUD/HUD.razor.scss";
+
+Timer
+{
+    position: absolute;
+    top: 12px;
+    
+    font-size: 16px;
+    
+    font-weight: bold;
+
+    min-width: 200px;
+    height: 60px;
+
+    border-radius: 4px;
+    padding: 8px;
+
+    align-items: center;
+    justify-content: center;
+
+
+    .status
+    {
+        min-width: 50px;
+        padding: 16px;
+        height: 100%;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        background-color: $primary;
+        
+        border-radius: 4 0 0 4;
+
+        transition: width 0.1s ease-out;
+    }
+
+    .time
+    {
+        width: 90px;
+        height: 100%;
+        align-items: center;
+        padding: 16px;
+        justify-content: center;
+        background-color: #1e1e1ea2;
+        flex-shrink: 0;
+        
+        border-radius: 0 4 4 0;
+
+        transition: width 0.1s ease-out;
+    }
+}

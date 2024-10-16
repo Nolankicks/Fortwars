@@ -1,0 +1,76 @@
+@using Sandbox;
+@using Sandbox.UI;
+@using System.Threading.Tasks;
+@using System;
+@inherits Panel
+@attribute [StyleSheet]
+
+<root>
+	@{
+		var gs = GameSystem.Instance;
+
+		if ( !gs.IsValid() )
+			return;
+	}
+
+	<div class="status">@GetStateText( gs.State )</div>
+	<div class="time">@FormatedTimer()</div>
+</root>
+
+@code
+{
+	public string GetStateText( GameSystem.GameState gameState )
+	{
+		var gs = GameSystem.Instance;
+
+		if ( !gs.IsValid() )
+			return "Unknown";
+
+		switch ( gameState )
+		{
+			case GameSystem.GameState.Waiting:
+				return "Waiting";
+			case GameSystem.GameState.BuildMode:
+				return "Build Mode";
+			case GameSystem.GameState.FightMode:
+				return "Ongoing";
+			case GameSystem.GameState.Ended:
+				return "Ending";
+			case GameSystem.GameState.OvertimeBuild:
+				return "Overtime Build " + ( gs.Overtimes != 0 ? gs.Overtimes + 1 : "" );
+			case GameSystem.GameState.OvertimeFight:
+				return "Overtime Fight " + ( gs.Overtimes != 0 ? gs.Overtimes + 1 : "" );
+			default:
+				return "Unknown";
+		}
+	}
+
+	public float GetTime()
+	{
+		var gs = Scene.GetAll<GameSystem>().FirstOrDefault();
+
+		if ( gs.IsValid() )
+		{
+			if ( gs.State == GameSystem.GameState.Waiting )
+			{
+				return gs.StateSwitch.Relative;
+			}
+			else
+			{
+				return gs.CurrentTime - gs.StateSwitch.Relative;
+			}
+		}
+
+		return 0;
+	}
+
+	public string FormatedTimer()
+	{
+		return $"{TimeSpan.FromSeconds( GetTime() ):mm\\:ss}";
+	}
+
+	protected override int BuildHash()
+	{
+		return System.HashCode.Combine( GetTime() );
+	}
+}

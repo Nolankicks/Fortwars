@@ -1,0 +1,31 @@
+@using Sandbox;
+@using Sandbox.UI;
+@using System.Threading.Tasks;
+@using System;
+@inherits Panel
+@attribute [StyleSheet]
+
+<root>
+	@{
+		var player = PlayerController.Local;
+
+		if ( !player.IsValid() )
+			return;
+	}
+
+	<div class="team" style="background-color: @HUD.GetColor().Hex;">@player.TeamComponent?.Team</div>
+		<div class="number" @ref="NumberPanel">
+			✚<div>@player.HealthComponent?.Health</div>
+		</div>
+	</div>
+</root>
+
+@code
+{
+	public Panel NumberPanel { get; set; }
+
+	protected override int BuildHash()
+	{
+		return System.HashCode.Combine( PlayerController.Local?.HealthComponent?.Health, PlayerController.Local?.TeamComponent?.Team );
+	}
+}
