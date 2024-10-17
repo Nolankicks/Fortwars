@@ -122,7 +122,8 @@ IGameEventHandler<OnGameOvertimeBuild>, IGameEventHandler<OnGameOvertimeFight>
 
 			if ( LoadLobbySettings && lobbySettings is not null )
 			{
-				ClassicModels = lobbySettings.ClassicModels;
+				ClassicModels = lobbySettings?.ClassicModels ?? true;
+				MaxProps = lobbySettings?.MaxProps ?? 50;
 			}
 
             //Create our prop helpers

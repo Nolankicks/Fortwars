@@ -4,6 +4,7 @@ using Sandbox;
 public sealed class LobbySettings
 {
 	public bool ClassicModels { get; set; } = true;
+	public int MaxProps { get; set; } = 50;
 
 	public static void Save( LobbySettings settings )
 	{

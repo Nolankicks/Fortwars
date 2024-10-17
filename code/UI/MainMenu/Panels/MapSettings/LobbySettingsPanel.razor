@@ -29,10 +29,17 @@
 			}
 
 			<div class="settings">
+
 				<div class="setting">
 					<div class="label">Classic Props</div>
 					<SwitchControl Value:bind="@ClassicModels" />
 				</div>
+
+                <div class="setting">
+					<div class="label">Max Props</div>
+					<SliderControl Value:bind="@MaxProps" max=500 />
+				</div>
+
 			</div>
 
 			<div class="play-button"  onclick=@( () => LoadMapInfo( SelectedMap ) )>Play</div>
@@ -58,10 +65,17 @@
 			}
 
 			<div class="settings">
+
 				<div class="setting">
 					<div class="label">Classic Props</div>
 					<SwitchControl Value:bind="@ClassicModels" />
 				</div>
+				
+				<div class="setting">
+					<div class="label">Max Props</div>
+					<SliderControl Value:bind="@MaxProps" max=500 />
+				</div>
+			
 			</div>
 
 			<div class="play-button" onclick=@( () => LoadPackage() )>Play</div>
@@ -74,6 +88,7 @@
 	public Package SelectedPackage { get; set; }
 	public MapInfo SelectedMap { get; set; }
 	[Change( nameof( OnValueMapChange ) )] private bool ClassicModels { get; set; }
+	[Change( nameof( OnValueMapChange ) )] private int MaxProps { get; set; }
 
 	public async void LoadPackage()
 	{
@@ -129,7 +144,7 @@
 
 	void OnValueMapChange()
 	{
-		var lobbySettings = new LobbySettings { ClassicModels = ClassicModels };
+		var lobbySettings = new LobbySettings { ClassicModels = ClassicModels, MaxProps = MaxProps };
 
 		Log.Info( JsonSerializer.Serialize( lobbySettings ) );
 
