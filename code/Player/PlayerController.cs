@@ -2,22 +2,14 @@ using Sandbox.Citizen;
 using Sandbox.Events;
 using Sandbox.Services;
 
-
-public record PlayerDeath( PlayerController Player, GameObject Attacker ) : IGameEvent;
-
-public record PlayerDamage( PlayerController Player, DamageEvent DamageEvent ) : IGameEvent;
-
-public record PlayerReset() : IGameEvent;
-
-public record JumpEvent() : IGameEvent;
-
-public record OnPlayerJoin() : IGameEvent;
-
-public sealed class PlayerController : Component, IGameEventHandler<DamageEvent>, IGameEventHandler<PlayerReset>, IGameEventHandler<DeathEvent>
+public sealed partial class PlayerController : Component, IGameEventHandler<DamageEvent>, IGameEventHandler<PlayerReset>, IGameEventHandler<DeathEvent>
 {
 	[Property, Category( "Refrences" )] public ShrimpleCharacterController.ShrimpleCharacterController shrimpleCharacterController { get; set; }
 	[Property, Category( "Refrences" ), Sync] public CitizenAnimationHelper AnimHelper { get; set; }
-	public Vector3 WishVelocity { get; set; }
+	[Property, Sync] public int WalkSpeed { get; set; } = 300;
+	[Property, Sync] public int RunSpeed { get; set; } = 450;
+	[Sync, Property] public int StartingWalkSpeed { get; set; } = 300;
+	[Sync, Property] public int StartingRunSpeed { get; set; } = 450;
 	[Sync] public Angles EyeAngles { get; set; }
 	[Property, Category( "Refrences" )] public GameObject Eye { get; set; }
 	[Property, Sync] public ModelRenderer HoldRenderer { get; set; }
@@ -27,7 +19,13 @@ public sealed class PlayerController : Component, IGameEventHandler<DamageEvent>
 	[RequireComponent, Sync] public TeamComponent TeamComponent { get; set; }
 	[Property, Sync] public int Kills { get; set; }
 	[Property, Sync] public int Deaths { get; set; }
+	[Property, Sync] public Transform RespawnPoint { get; set; }
+	public Vector3 DeathPos { get; set; }
+	public bool IsRespawning { get; set; } = false;
+	public Vector3 WishVelocity { get; set; }
 	public bool CanMoveHead = true;
+	public float EyeHeight { get; set; } = 64;
+	public bool IsCrouching { get; set; } = false;
 
 	private static PlayerController _local;
 	public static PlayerController Local
@@ -40,11 +38,13 @@ public sealed class PlayerController : Component, IGameEventHandler<DamageEvent>
 			return _local;
 		}
 	}
-	TimeSince lastUngrounded;
 
-	[Property, Sync] public Transform RespawnPoint { get; set; }
+	private TimeSince lastUngrounded;
 
-	public bool IsRespawning { get; set; } = false;
+	/// <summary>
+	/// How many times we have crouched mid-air. Used to prevent spamming when we adjust the Z pos of the player.
+	/// </summary>
+	private int airCrouchCount;
 
 	protected override void OnStart()
 	{
@@ -69,7 +69,6 @@ public sealed class PlayerController : Component, IGameEventHandler<DamageEvent>
 		//MountAllAssets( gs.MountedIndents );
 	}
 
-
 	[Broadcast]
 	public static void ClearHoldRenderer( ModelRenderer modelRenderer )
 	{
@@ -93,7 +92,7 @@ public sealed class PlayerController : Component, IGameEventHandler<DamageEvent>
 			Move();
 		}
 
-		Anims();
+		UpdateAnimation();
 
 		if ( AnimHelper?.Target.IsValid() ?? false )
 			AnimHelper.Target.WorldRotation = new Angles( 0, EyeAngles.yaw, 0 ).ToRotation();
@@ -104,15 +103,13 @@ public sealed class PlayerController : Component, IGameEventHandler<DamageEvent>
 		if ( !IsProxy )
 		{
 			BuildEyeAngles();
-			CameraPos();
+			PositionCamera();
 			CanMoveHead = true;
 
 			if ( !shrimpleCharacterController.IsValid() )
 				return;
 		}
 	}
-
-	public bool IsCrouching { get; set; } = false;
 
 	bool CanUncrouch()
 	{
@@ -125,8 +122,6 @@ public sealed class PlayerController : Component, IGameEventHandler<DamageEvent>
 
 		return !tr.Hit;
 	}
-
-	public float EyeHeight { get; set; } = 64;
 
 	public void Crouch()
 	{
@@ -143,7 +138,12 @@ public sealed class PlayerController : Component, IGameEventHandler<DamageEvent>
 
 			if ( !shrimpleCharacterController.IsOnGround )
 			{
-				shrimpleCharacterController.WorldPosition += Vector3.Up * 32;
+				if ( airCrouchCount < 1 )
+				{
+					shrimpleCharacterController.WorldPosition += Vector3.Up * 32;
+					airCrouchCount += 1;
+				}
+
 				Transform.ClearInterpolation();
 				EyeHeight -= 32;
 			}
@@ -168,11 +168,6 @@ public sealed class PlayerController : Component, IGameEventHandler<DamageEvent>
 		Deaths = 0;
 	}
 
-	[Property, Sync] public int WalkSpeed { get; set; } = 300;
-	[Property, Sync] public int RunSpeed { get; set; } = 450;
-	[Sync, Property] public int StartingWalkSpeed { get; set; } = 300;
-	[Sync, Property] public int StartingRunSpeed { get; set; } = 450;
-
 	public float GetMoveSpeed()
 	{
 		if ( IsCrouching )
@@ -193,6 +188,10 @@ public sealed class PlayerController : Component, IGameEventHandler<DamageEvent>
 		if ( !shrimpleCharacterController.IsOnGround )
 		{
 			lastUngrounded = 0;
+		}
+		else
+		{
+			airCrouchCount = 0;
 		}
 
 		if ( Input.Pressed( "jump" ) && shrimpleCharacterController.IsOnGround )
@@ -215,7 +214,7 @@ public sealed class PlayerController : Component, IGameEventHandler<DamageEvent>
 		AnimHelper.TriggerJump();
 	}
 
-	public void Anims()
+	public void UpdateAnimation()
 	{
 		if ( !AnimHelper.IsValid() || !shrimpleCharacterController.IsValid() )
 			return;
@@ -246,7 +245,7 @@ public sealed class PlayerController : Component, IGameEventHandler<DamageEvent>
 		Eye.WorldRotation = ee.ToRotation();
 	}
 
-	public void CameraPos()
+	public void PositionCamera()
 	{
 		if ( !Scene?.Camera.IsValid() ?? false || !Eye.IsValid() )
 			return;
@@ -308,14 +307,6 @@ public sealed class PlayerController : Component, IGameEventHandler<DamageEvent>
 			HoldRenderer.RenderType = renderType;
 	}
 
-	void IGameEventHandler<DamageEvent>.OnGameEvent( DamageEvent eventArgs )
-	{
-		if ( IsProxy )
-			return;
-
-		Scene.Dispatch( new PlayerDamage( this, eventArgs ) );
-	}
-
 	[Authority]
 	public void AddKills( int amount )
 	{
@@ -344,17 +335,6 @@ public sealed class PlayerController : Component, IGameEventHandler<DamageEvent>
 	public void BroadcastDeathMessage( GameObject attacker )
 	{
 		Scene.Dispatch( new PlayerDeath( this, attacker ) );
-	}
-
-	void IGameEventHandler<PlayerReset>.OnGameEvent( PlayerReset eventArgs )
-	{
-		if ( IsProxy )
-			return;
-
-		if ( HealthComponent.IsValid() )
-			HealthComponent.ResetHealth();
-
-		Log.Info( "Player Reset" );
 	}
 
 	[Authority]
@@ -413,114 +393,13 @@ public sealed class PlayerController : Component, IGameEventHandler<DamageEvent>
 		SetWorld( spawn.Transform.World, changeEyeAngles );
 	}
 
-	public Vector3 DeathPos { get; set; }
-
-	void IGameEventHandler<DeathEvent>.OnGameEvent( DeathEvent eventArgs )
-	{
-		var pc = eventArgs.Attacker?.Root?.Components?.Get<PlayerController>();
-
-		//Make sure we are only calling this
-		if ( IsProxy )
-			return;
-		
-		if ( Inventory.IsValid() )
-			Inventory.ResetAmmo();
-
-		AddDeaths( 1 );
-
-		//Broadcast death message
-		BroadcastDeathMessage( eventArgs.Attacker );
-
-		Log.Info( "Player Death" );
-
-		//Add kills to attacker
-		if ( pc.IsValid() )
-			pc.AddKills( 1 );
-
-		var gs = GameSystem.Instance;
-
-		if ( gs.IsValid() )
-			gs.AddKill();
-
-		if ( AnimHelper?.Target.IsValid() ?? false )
-		{
-			if ( !Inventory.IsValid() )
-				return;
-
-			Inventory.DisableAll();
-			Inventory.CanSwitch = false;
-
-			var target = AnimHelper.Target;
-
-			var go = new GameObject( true, $"{Network.Owner?.DisplayName}'s ragdoll" );
-			go.Tags.Add( "ragdoll" );
-			go.WorldTransform = target.WorldTransform;
-			go.WorldRotation = target.WorldRotation;
-
-			var ragdollBody = go.Components.Create<SkinnedModelRenderer>();
-			ragdollBody.CopyFrom( target );
-			ragdollBody.UseAnimGraph = false;
-
-			foreach ( var clothing in target.GameObject.Children.SelectMany( x => x.Components.GetAll<SkinnedModelRenderer>() ) )
-			{
-				var newClothing = new GameObject( true, clothing.GameObject.Name );
-				newClothing.Parent = go;
-
-				var clothingRenderer = newClothing.Components.Create<SkinnedModelRenderer>();
-				clothingRenderer.CopyFrom( clothing );
-				clothingRenderer.BoneMergeTarget = ragdollBody;
-			}
-
-			var modelPhys = go.Components.Create<ModelPhysics>();
-			modelPhys.Model = ragdollBody.Model;
-			modelPhys.Renderer = ragdollBody;
-			modelPhys.CopyBonesFrom( target, true );
-
-			go.Components.Create<RagdollComponent>();
-
-			go.Network.SetOwnerTransfer( OwnerTransfer.Takeover );
-
-			go.NetworkSpawn();
-
-			BroadcastEnable( target.GameObject, false );
-
-			IsRespawning = true;
-
-			DeathPos = target.WorldPosition;
-
-			TeleportToTeamSpawnPoint( false );
-
-			if ( Components.TryGet<NameTag>( out var tag, FindMode.EnabledInSelfAndChildren ) )
-			{
-				BroadcastEnable( tag.GameObject, false );
-			}
-
-			Invoke( 2, () =>
-			{
-				Inventory.CanSwitch = true;
-				Inventory.ChangeItem( Inventory.Index, Inventory?.Items );
-
-				BroadcastEnable( target.GameObject, true );
-
-				if ( tag.IsValid() )
-					BroadcastEnable( tag.GameObject, true );
-
-				IsRespawning = false;
-
-				EyeAngles = WorldRotation.Angles();
-
-				GameObject.Dispatch( new PlayerReset() );
-			} );
-		}
-	}
-
 	[Broadcast]
 	public static void BroadcastEnable( GameObject go, bool enable )
 	{
 		go.Enabled = enable;
 	}
 
-    /*[Broadcast]
+	/*[Broadcast]
 	public async void MountAllAssets( List<string> indents )
 	{
 		foreach ( var asset in indents )
