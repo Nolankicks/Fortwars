@@ -129,6 +129,9 @@ public sealed class Propgun : Item
 
 			if ( CanPlace && Input.Pressed( "attack1" ) )
 			{
+				var sound = Sound.Play( "sounds/toolgun/toolgun-fire.sound", WorldPosition );
+				sound.Volume = 0.5f;
+
 				var currentTeam = player.TeamComponent?.Team;
 
 				var gs = GameSystem.Instance;
