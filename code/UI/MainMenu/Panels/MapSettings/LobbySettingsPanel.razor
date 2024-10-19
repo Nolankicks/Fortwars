@@ -123,7 +123,8 @@
 
 				if ( lobbySettings is not null )
 				{
-					ClassicModels = lobbySettings.ClassicModels;
+					ClassicModels = lobbySettings?.ClassicModels ?? true;
+					MaxProps = lobbySettings?.MaxProps ?? 100;
 				}
 			}
 		}
