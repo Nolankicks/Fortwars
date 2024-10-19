@@ -1,4 +1,4 @@
-public sealed class MapLoadingSystem : GameObjectSystem<MapLoadingSystem>, ISceneStartup
+/*public sealed class MapLoadingSystem : GameObjectSystem<MapLoadingSystem>, ISceneStartup
 {
 	public MapLoadingSystem( Scene scene ) : base( scene )
 	{
@@ -26,4 +26,4 @@ public sealed class MapLoadingSystem : GameObjectSystem<MapLoadingSystem>, IScen
 		slo.IsAdditive = true;
 		Scene.Load( slo );
 	}
-}
+}*/

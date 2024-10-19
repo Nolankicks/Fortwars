@@ -8,7 +8,7 @@
 <root class=@( Parent?.ChildrenOfType<LobbySettingsPanel>().Any() ?? false ? "" : "full" )>
 	<div class="tabs">
 		<div class="tab @IsActive( MapType.Official )" onclick=@( () => ChangeMapType( MapType.Official ) )>Official Maps</div>
-		<div class="tab @IsActive( MapType.Custom )" onclick=@( () => ChangeMapType( MapType.Custom ) )>Custom Maps</div>
+		@* <div class="tab @IsActive( MapType.Custom )" onclick=@( () => ChangeMapType( MapType.Custom ) )>Custom Maps</div> *@
 	</div>
 
 	@switch ( SelectedMapType )
