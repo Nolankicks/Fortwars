@@ -4,14 +4,15 @@ using Sandbox.Services;
 
 public sealed partial class PlayerController : Component, IGameEventHandler<DamageEvent>, IGameEventHandler<PlayerReset>, IGameEventHandler<DeathEvent>
 {
-	[Property, Category( "Refrences" )] public ShrimpleCharacterController.ShrimpleCharacterController shrimpleCharacterController { get; set; }
-	[Property, Category( "Refrences" ), Sync] public CitizenAnimationHelper AnimHelper { get; set; }
+	[Property, Category( "References" )] public ShrimpleCharacterController.ShrimpleCharacterController shrimpleCharacterController { get; set; }
+	[Property, Category( "References" ), Sync] public CitizenAnimationHelper AnimHelper { get; set; }
 	[Property, Sync] public int WalkSpeed { get; set; } = 300;
 	[Property, Sync] public int RunSpeed { get; set; } = 450;
 	[Sync, Property] public int StartingWalkSpeed { get; set; } = 300;
 	[Sync, Property] public int StartingRunSpeed { get; set; } = 450;
 	[Sync] public Angles EyeAngles { get; set; }
-	[Property, Category( "Refrences" )] public GameObject Eye { get; set; }
+	[Property, Category( "References" )] public GameObject Eye { get; set; }
+	[Property, Category( "References" )] public CapsuleCollider Hitbox { get; set; }
 	[Property, Sync] public ModelRenderer HoldRenderer { get; set; }
 	[Property, Sync] public Inventory Inventory { get; set; }
 	[RequireComponent, Sync] public HealthComponent HealthComponent { get; set; }
@@ -20,13 +21,12 @@ public sealed partial class PlayerController : Component, IGameEventHandler<Dama
 	[Property, Sync] public int Kills { get; set; }
 	[Property, Sync] public int Deaths { get; set; }
 	[Property, Sync] public Transform RespawnPoint { get; set; }
+	[Sync] public bool IsCrouching { get; set; } = false;
 	public Vector3 DeathPos { get; set; }
 	public bool IsRespawning { get; set; } = false;
 	public Vector3 WishVelocity { get; set; }
 	public bool CanMoveHead = true;
 	public float EyeHeight { get; set; } = 64;
-	public bool IsCrouching { get; set; } = false;
-
 	private static PlayerController _local;
 	public static PlayerController Local
 	{
@@ -91,11 +91,6 @@ public sealed partial class PlayerController : Component, IGameEventHandler<Dama
 			Crouch();
 			Move();
 		}
-
-		UpdateAnimation();
-
-		if ( AnimHelper?.Target.IsValid() ?? false )
-			AnimHelper.Target.WorldRotation = new Angles( 0, EyeAngles.yaw, 0 ).ToRotation();
 	}
 
 	protected override void OnUpdate()
@@ -105,22 +100,11 @@ public sealed partial class PlayerController : Component, IGameEventHandler<Dama
 			BuildEyeAngles();
 			PositionCamera();
 			CanMoveHead = true;
-
-			if ( !shrimpleCharacterController.IsValid() )
-				return;
 		}
-	}
 
-	bool CanUncrouch()
-	{
-		if ( !IsCrouching )
-			return true;
-
-		var tr = Scene.Trace.Ray( shrimpleCharacterController.WorldPosition, shrimpleCharacterController.WorldPosition + Vector3.Up * 64 )
-			.IgnoreGameObject( GameObject )
-			.Run();
-
-		return !tr.Hit;
+		UpdateAnimation();
+		if ( AnimHelper?.Target.IsValid() ?? false )
+			AnimHelper.Target.WorldRotation = new Angles( 0, EyeAngles.yaw, 0 ).ToRotation();
 	}
 
 	public void Crouch()
@@ -151,9 +135,21 @@ public sealed partial class PlayerController : Component, IGameEventHandler<Dama
 			return;
 		}
 
+		bool canUnCrouch()
+		{
+			if ( !IsCrouching )
+				return true;
+
+			var tr = Scene.Trace.Ray( shrimpleCharacterController.WorldPosition, shrimpleCharacterController.WorldPosition + Vector3.Up * 64 )
+				.IgnoreGameObject( GameObject )
+				.Run();
+
+			return !tr.Hit;
+		}
+
 		if ( !wishCrouch )
 		{
-			if ( !CanUncrouch() ) return;
+			if ( !canUnCrouch() ) return;
 
 			shrimpleCharacterController.TraceHeight = 64;
 			IsCrouching = wishCrouch;
@@ -225,6 +221,13 @@ public sealed partial class PlayerController : Component, IGameEventHandler<Dama
 		AnimHelper.WithLook( EyeAngles.Forward * 100, 1, 0.5f, 0.25f );
 
 		AnimHelper.DuckLevel = IsCrouching ? 1 : 0;
+
+		// Match the hitbox size to our animation.
+		// DuckLevel doesn't seem to work during jumping so let's just not bother if we aren't grounded.
+		if ( IsCrouching && shrimpleCharacterController.IsOnGround )
+			Hitbox.End = Hitbox.End.WithZ( 32 );
+		else
+			Hitbox.End = Hitbox.End.WithZ( 56 );
 	}
 
 	public void BuildEyeAngles()
@@ -234,7 +237,6 @@ public sealed partial class PlayerController : Component, IGameEventHandler<Dama
 		{
 			ee += Input.AnalogLook;
 		}
-
 
 		ee.pitch = ee.pitch.Clamp( -89, 89 );
 
