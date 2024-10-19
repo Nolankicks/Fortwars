@@ -1,4 +1,4 @@
-/*public sealed class MapLoadingSystem : GameObjectSystem<MapLoadingSystem>, ISceneStartup
+public sealed class MapLoadingSystem : GameObjectSystem<MapLoadingSystem>, ISceneStartup
 {
 	public MapLoadingSystem( Scene scene ) : base( scene )
 	{
@@ -20,10 +20,7 @@
 		if ( Scene.GetAll<GameSystem>().Count() > 0 || Scene.IsEditor || Scene.GetAll<MainMenu>().Count() > 0 )
 			return;
 
-		//Create an additve scene to load
-		var slo = new SceneLoadOptions();
-		slo.SetScene( "scenes/fortwarsmain.scene" );
-		slo.IsAdditive = true;
-		Scene.Load( slo );
+		var core = GameObject.Clone( ResourceLibrary.Get<PrefabFile>( "prefabs/core.prefab" ) );
+		core.BreakFromPrefab();
 	}
-}*/
+}
