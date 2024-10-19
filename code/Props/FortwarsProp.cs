@@ -2,9 +2,8 @@ using System;
 using Sandbox;
 using Sandbox.Events;
 
-public sealed class FortwarsProp : Component, Component.ICollisionListener, IGameEventHandler<OnGameEnd>
+public sealed class FortwarsProp : Component, Component.ICollisionListener, IGameEventHandler<OnGameEnd>, Component.IDamageable
 {
-	[Property, Sync] public Prop Prop { get; set; }
 	[Property, Sync] public Rigidbody Rigidbody { get; set; }
 	[Property, Sync] public bool Invincible { get; set; } = false;
 	[Property, Sync] public float CollisionThreshold { get; set; } = 1300;
@@ -12,6 +11,7 @@ public sealed class FortwarsProp : Component, Component.ICollisionListener, IGam
 	[Property, Sync] public Team Team { get; set; }
 	[Property, Sync] public PlayerController Grabber { get; set; }
 	[Property, Sync] public bool CanKill { get; set; } = true;
+	[Property, Sync] public float Health { get; set; } = 100;
 
 	public void OnCollisionStart( Collision other )
 	{
@@ -52,20 +52,41 @@ public sealed class FortwarsProp : Component, Component.ICollisionListener, IGam
 	{
 		if ( Invincible )
 			return;
-
-		if ( (Prop?.Health ?? 0) <= 0 ) return;
+		
 		if ( IsProxy ) return;
 
-		Prop.Health -= amount;
-		if ( Prop.Health <= 0 )
+		Health -= amount;
+		if ( Health <= 0 )
 		{
-			Prop.Kill();
+			//Create a new prop
+			var propGo = new GameObject();
+			propGo.WorldTransform = WorldTransform;
+
+			//Create a prop component
+			var prop = propGo.Components.Create<Prop>();
+			prop.Model = Components.Get<ModelRenderer>()?.Model;
+
+			//Spawn our prop
+			propGo.NetworkSpawn();
+
+			//Kill it :(
+			var gibs = prop.CreateGibs();
+			prop.GameObject.Destroy();
+
+			gibs?.ForEach( x => x.GameObject.NetworkSpawn() );
+
+			GameObject.Destroy();
 		}
 	}
 
 	void IGameEventHandler<OnGameEnd>.OnGameEvent( OnGameEnd eventArgs )
 	{
 		DestroyProp();
+	}
+
+	void IDamageable.OnDamage(in Sandbox.DamageInfo damage)
+	{
+		Damage( damage.Damage );
 	}
 
 	[Authority]

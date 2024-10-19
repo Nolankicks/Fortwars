@@ -175,8 +175,13 @@ public sealed class Propgun : Item
 				var gb = new GameObject();
 
 				var renderer = gb.Components.Create<Prop>();
+				var fortWarsProp = gb.Components.Create<FortwarsProp>();
 
 				renderer.Model = Prop;
+				fortWarsProp.Health = renderer.Health;
+
+				if ( fortWarsProp.Health == 0 )
+					fortWarsProp.Invincible = true;
 
 				// Break the prop into individuals so we can check for ModelPhysics later.
 				renderer.Break();
@@ -184,14 +189,11 @@ public sealed class Propgun : Item
 				gb.WorldPosition = ObjectPos;
 				gb.WorldRotation = PropRotation.SnapToGrid( 15 );
 
-				var fortWarsProp = gb.Components.Create<FortwarsProp>();
-
 				var team = player.TeamComponent;
 
 				if ( team.IsValid() )
 					fortWarsProp.Team = team.Team;
 
-				fortWarsProp.Prop = renderer;
 				fortWarsProp.CanKill = false;
 
 				if ( PropIdent is not null && (gs.ClassicIndents?.TryGetValue( PropIdent, out var propHealth ) ?? false) && propHealth > 0 )

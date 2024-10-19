@@ -137,8 +137,13 @@ IGameEventHandler<OnGameOvertimeBuild>, IGameEventHandler<OnGameOvertimeFight>
 				if ( prop.Components.TryGet<Rigidbody>( out var rb ) )
 				{
 					var propHelper = prop.Components.Create<FortwarsProp>();
-					propHelper.Prop = prop;
+					propHelper.Health = prop.Health;
 					propHelper.Rigidbody = rb;
+
+					if ( propHelper.Health == 0 )
+						propHelper.Invincible = true;
+
+					prop.Break();
 				}
 			}
 		}

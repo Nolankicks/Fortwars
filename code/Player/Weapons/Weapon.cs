@@ -197,7 +197,7 @@ public sealed class Weapon : Item, IGameEventHandler<OnReloadEvent>
 		{
 			tr.GameObject.Root.Network.TakeOwnership();
 
-			if ( tr.Body.IsValid() )
+			if ( tr.Body.IsValid() && !tr.GameObject.Root.Components.TryGet<Gib>( out var g, FindMode.EverythingInSelfAndAncestors ) )
 				tr.Body.BodyType = PhysicsBodyType.Static;
 
 			foreach ( var damageable in tr.GameObject.Components.GetAll<IDamageable>() )
