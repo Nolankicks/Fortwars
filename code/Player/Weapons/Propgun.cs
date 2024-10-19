@@ -178,6 +178,9 @@ public sealed class Propgun : Item
 
 				renderer.Model = Prop;
 
+				// Break the prop into individuals so we can check for ModelPhysics later.
+				renderer.Break();
+
 				gb.WorldPosition = ObjectPos;
 				gb.WorldRotation = PropRotation.SnapToGrid( 15 );
 
@@ -203,8 +206,15 @@ public sealed class Propgun : Item
 
 
 				gb.Network.SetOwnerTransfer( OwnerTransfer.Takeover );
-
 				gb.NetworkSpawn();
+
+				// We need to do this for props with ModelPhysics since they start with MotionEnabled on, 
+				// which breaks the positioning for the local client.
+				if ( gb.Components.TryGet<ModelPhysics>( out var mdlPhys, FindMode.EnabledInSelf ) )
+				{
+					mdlPhys.MotionEnabled = false;
+					Invoke( 0.1f, () => mdlPhys.MotionEnabled = true );
+				}
 
 				if ( rb.IsValid() )
 					SetStaticBodyType( rb );
