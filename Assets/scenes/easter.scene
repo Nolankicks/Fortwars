@@ -982,6 +982,7 @@
       "Flags": 0,
       "Name": "BorderWall",
       "Position": "0,0,1040",
+      "Tags": "map",
       "Enabled": true,
       "NetworkMode": 1,
       "NetworkOrphaned": 1,
@@ -1134,68 +1135,6 @@
       ]
     },
     {
-      "__guid": "604c0b83-a479-4d73-a62f-ec80f69493e3",
-      "Flags": 0,
-      "Name": "Cube",
-      "Position": "-410.6657,256,253.9576",
-      "Scale": "1.9,1.9,1.9",
-      "Enabled": true,
-      "Components": [
-        {
-          "__type": "Sandbox.ModelRenderer",
-          "__guid": "6f836160-3187-4f7d-8d25-6bb76ecdaa2d",
-          "BodyGroups": 18446744073709551615,
-          "Model": "models/sbox_props/wooden_crate/wooden_crate.vmdl",
-          "RenderOptions": {
-            "GameLayer": true,
-            "OverlayLayer": false,
-            "BloomLayer": false,
-            "AfterUILayer": false
-          },
-          "RenderType": "On",
-          "Tint": "1,1,1,1"
-        },
-        {
-          "__type": "Sandbox.ModelCollider",
-          "__guid": "acf697fc-0454-4e0d-8a41-5f4144794efc",
-          "IsTrigger": false,
-          "Model": "models/sbox_props/wooden_crate/wooden_crate.vmdl",
-          "Static": false
-        }
-      ]
-    },
-    {
-      "__guid": "9849b79d-3c5e-4826-ac46-a02abf9ccdaf",
-      "Flags": 0,
-      "Name": "Cube (4)",
-      "Position": "411.4991,256,253.9576",
-      "Scale": "1.9,1.9,1.9",
-      "Enabled": true,
-      "Components": [
-        {
-          "__type": "Sandbox.ModelRenderer",
-          "__guid": "03b5a611-8bd7-4087-bbb7-db30c40d5e33",
-          "BodyGroups": 18446744073709551615,
-          "Model": "models/sbox_props/wooden_crate/wooden_crate.vmdl",
-          "RenderOptions": {
-            "GameLayer": true,
-            "OverlayLayer": false,
-            "BloomLayer": false,
-            "AfterUILayer": false
-          },
-          "RenderType": "On",
-          "Tint": "1,1,1,1"
-        },
-        {
-          "__type": "Sandbox.ModelCollider",
-          "__guid": "cbf1af57-6b8f-43a2-aedf-4876cf77e8be",
-          "IsTrigger": false,
-          "Model": "models/sbox_props/wooden_crate/wooden_crate.vmdl",
-          "Static": false
-        }
-      ]
-    },
-    {
       "__guid": "0705c233-1984-4313-ae6c-0c95a96cf491",
       "Flags": 0,
       "Name": "Point Light",
@@ -1295,10 +1234,102 @@
       ]
     },
     {
+      "__guid": "f48c5563-6f68-40db-9f87-89e76b99c1e5",
+      "Flags": 2048,
+      "Name": "Camera",
+      "Position": "-2575.76,1385.163,954.879",
+      "Tags": "maincamera",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.CameraComponent",
+          "__guid": "299e9ada-baca-49e6-88a9-c404379115e8",
+          "BackgroundColor": "0.33333,0.46275,0.52157,1",
+          "ClearFlags": "All",
+          "FieldOfView": 60,
+          "IsMainCamera": true,
+          "Orthographic": false,
+          "OrthographicHeight": 1204,
+          "Priority": 1,
+          "RenderExcludeTags": "",
+          "RenderTags": "",
+          "TargetEye": "None",
+          "Viewport": "0,0,1,1",
+          "ZFar": 10000,
+          "ZNear": 10
+        }
+      ]
+    },
+    {
+      "__guid": "604c0b83-a479-4d73-a62f-ec80f69493e3",
+      "Flags": 0,
+      "Name": "Cube",
+      "Position": "-410.6657,256,253.9576",
+      "Scale": "1.9,1.9,1.9",
+      "Tags": "map",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.ModelRenderer",
+          "__guid": "6f836160-3187-4f7d-8d25-6bb76ecdaa2d",
+          "BodyGroups": 18446744073709551615,
+          "Model": "models/sbox_props/wooden_crate/wooden_crate.vmdl",
+          "RenderOptions": {
+            "GameLayer": true,
+            "OverlayLayer": false,
+            "BloomLayer": false,
+            "AfterUILayer": false
+          },
+          "RenderType": "On",
+          "Tint": "1,1,1,1"
+        },
+        {
+          "__type": "Sandbox.ModelCollider",
+          "__guid": "acf697fc-0454-4e0d-8a41-5f4144794efc",
+          "IsTrigger": false,
+          "Model": "models/sbox_props/wooden_crate/wooden_crate.vmdl",
+          "Static": false
+        }
+      ]
+    },
+    {
+      "__guid": "9849b79d-3c5e-4826-ac46-a02abf9ccdaf",
+      "Flags": 0,
+      "Name": "Cube (4)",
+      "Position": "411.4991,256,253.9576",
+      "Scale": "1.9,1.9,1.9",
+      "Tags": "map",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.ModelRenderer",
+          "__guid": "03b5a611-8bd7-4087-bbb7-db30c40d5e33",
+          "BodyGroups": 18446744073709551615,
+          "Model": "models/sbox_props/wooden_crate/wooden_crate.vmdl",
+          "RenderOptions": {
+            "GameLayer": true,
+            "OverlayLayer": false,
+            "BloomLayer": false,
+            "AfterUILayer": false
+          },
+          "RenderType": "On",
+          "Tint": "1,1,1,1"
+        },
+        {
+          "__type": "Sandbox.ModelCollider",
+          "__guid": "cbf1af57-6b8f-43a2-aedf-4876cf77e8be",
+          "IsTrigger": false,
+          "Model": "models/sbox_props/wooden_crate/wooden_crate.vmdl",
+          "Static": false
+        }
+      ]
+    },
+    {
       "__guid": "2e8a0e8c-e91b-48bc-8b3a-61dc30de190f",
       "Flags": 0,
       "Name": "Grass",
       "Position": "-832,-512,64",
+      "Tags": "map",
       "Enabled": true,
       "Components": [
         {
@@ -1428,6 +1459,7 @@
       "Flags": 0,
       "Name": "Grass (1)",
       "Position": "832,-512,64",
+      "Tags": "map",
       "Enabled": true,
       "Components": [
         {
@@ -1552,36 +1584,10 @@
       ]
     },
     {
-      "__guid": "f48c5563-6f68-40db-9f87-89e76b99c1e5",
-      "Flags": 2048,
-      "Name": "Camera",
-      "Position": "-2575.76,1385.163,954.879",
-      "Tags": "maincamera",
-      "Enabled": true,
-      "Components": [
-        {
-          "__type": "Sandbox.CameraComponent",
-          "__guid": "299e9ada-baca-49e6-88a9-c404379115e8",
-          "BackgroundColor": "0.33333,0.46275,0.52157,1",
-          "ClearFlags": "All",
-          "FieldOfView": 60,
-          "IsMainCamera": true,
-          "Orthographic": false,
-          "OrthographicHeight": 1204,
-          "Priority": 1,
-          "RenderExcludeTags": "",
-          "RenderTags": "",
-          "TargetEye": "None",
-          "Viewport": "0,0,1,1",
-          "ZFar": 10000,
-          "ZNear": 10
-        }
-      ]
-    },
-    {
       "__guid": "02a08fe6-6920-44c9-83f9-6ce5311d5952",
       "Flags": 0,
       "Name": "Map",
+      "Tags": "map",
       "Enabled": true,
       "Components": [
         {
@@ -1884,6 +1890,181 @@
           "HeightWidth": 0,
           "StartDistance": 2496,
           "Tint": "1,1,1,1"
+        }
+      ]
+    },
+    {
+      "__guid": "816c7b7d-bdef-4836-9430-2314e9f4706a",
+      "Flags": 0,
+      "Name": "Camera (1)",
+      "Position": "-16.00006,-353.9998,326",
+      "Rotation": "0,0,0.7071067,0.7071068",
+      "Tags": "maincamera",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.CameraComponent",
+          "__guid": "4528795c-b5c6-4e0e-9c54-d2f860ac99bb",
+          "BackgroundColor": "0.33333,0.46275,0.52157,1",
+          "ClearFlags": "All",
+          "FieldOfView": 90,
+          "IsMainCamera": true,
+          "Orthographic": false,
+          "OrthographicHeight": 1204,
+          "Priority": 1,
+          "RenderExcludeTags": "",
+          "RenderTags": "",
+          "TargetEye": "None",
+          "Viewport": "0,0,1,1",
+          "ZFar": 10000,
+          "ZNear": 5
+        },
+        {
+          "__type": "Sandbox.Bloom",
+          "__guid": "4b1095e9-5401-4b40-a53d-27103a4f5206",
+          "BloomColor": {
+            "color": [
+              {
+                "c": "1,1,1,1"
+              },
+              {
+                "t": 1,
+                "c": "1,1,1,1"
+              }
+            ],
+            "alpha": []
+          },
+          "BloomCurve": [
+            {
+              "y": 0.5
+            },
+            {
+              "x": 1,
+              "y": 1
+            }
+          ],
+          "Mode": "Blur",
+          "Strength": 0.15,
+          "Threshold": 0.5,
+          "ThresholdWidth": 0
+        },
+        {
+          "__type": "Sandbox.Highlight",
+          "__guid": "b5c6bdd8-d1af-4f90-acef-cfd73cacc57e"
+        },
+        {
+          "__type": "Sandbox.Tonemapping",
+          "__guid": "c1d0b9c9-70e1-4524-a2b7-b21e0d9a8b74",
+          "__version": 1,
+          "AutoExposureEnabled": true,
+          "ExposureBias": 2,
+          "ExposureCompensation": 0.2,
+          "ExposureMethod": "RGB",
+          "MaximumExposure": 2.65,
+          "MinimumExposure": 1.7,
+          "Mode": "Legacy",
+          "Rate": 8.57
+        },
+        {
+          "__type": "Sandbox.AmbientOcclusion",
+          "__guid": "25a8b357-3bac-4d34-b653-84991ec5e81c",
+          "FalloffDistance": 1,
+          "Intensity": 8,
+          "Quality": "High",
+          "Radius": 32
+        }
+      ]
+    },
+    {
+      "__guid": "07f66dbf-3ee3-4ce0-8413-4cc6ae609157",
+      "Flags": 0,
+      "Name": "Manager",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "Components": [
+        {
+          "__type": "GameSystem",
+          "__guid": "398d9c1f-8395-4b90-a5fa-bd29d263f91d",
+          "BlueTimeHeld": 60,
+          "BuildTime": 120,
+          "ClassicIndents": {
+            "facepunch.wooden_crate": 100,
+            "facepunch.concrete_barrier": 100,
+            "facepunch.pallet": 100
+          },
+          "ClassicModels": true,
+          "FightTime": 240,
+          "FourTeams": false,
+          "GreenTimeHeld": 60,
+          "LoadLobbySettings": true,
+          "LobbySettings": {
+            "ClassicModels": true,
+            "MaxProps": 50
+          },
+          "MaxProps": 50,
+          "PlayerPrefab": {
+            "_type": "gameobject",
+            "prefab": "prefabs/playerdead4left.prefab"
+          },
+          "PlayerToStart": 2,
+          "RedTimeHeld": 60,
+          "SpawnPlayer": true,
+          "StartServer": true,
+          "State": "Waiting",
+          "YellowTimeHeld": 60
+        }
+      ]
+    },
+    {
+      "__guid": "3e0cbcb4-20cb-471d-b8e9-8aa3abf0ec32",
+      "Flags": 0,
+      "Name": "Screen",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.ScreenPanel",
+          "__guid": "0061c9b2-0e91-4261-b9cc-c86034448c2c",
+          "AutoScreenScale": true,
+          "Opacity": 1,
+          "Scale": 1,
+          "ScaleStrategy": "ConsistentHeight",
+          "ZIndex": 100
+        },
+        {
+          "__type": "HUD",
+          "__guid": "205ef563-8d45-4788-a4df-4658c5a122ec"
+        },
+        {
+          "__type": "PauseMenu",
+          "__guid": "245be789-93ce-472a-bf38-be1bdaaef4b8",
+          "MenuScene": "scenes/fortwarsmenu.scene"
+        }
+      ],
+      "Children": [
+        {
+          "__guid": "90ff00a7-7379-42d5-b7a7-9d6109ec70c2",
+          "Flags": 0,
+          "Name": "Chat",
+          "Enabled": true,
+          "NetworkMode": 1,
+          "Components": [
+            {
+              "__type": "Chat",
+              "__guid": "042d775f-18b4-451e-96b1-776dcf7d6bb2"
+            }
+          ]
+        },
+        {
+          "__guid": "d4824ab2-ff9d-428d-ac4e-a2280aeeccf2",
+          "Flags": 0,
+          "Name": "Popup",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "PopupHolder",
+              "__guid": "f57bef84-ce35-4c77-8f2a-0fe2f742ad88"
+            }
+          ]
         }
       ]
     }

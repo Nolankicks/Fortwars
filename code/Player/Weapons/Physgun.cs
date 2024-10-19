@@ -79,14 +79,14 @@ public class Physgun : Item
 		var tr = Scene.Trace.Ray( Scene.Camera.ScreenNormalToRay( 0.5f ), 1000 )
 			.UseHitboxes()
 			.IgnoreGameObjectHierarchy( GameObject.Root )
-			.WithoutTags( "player", "trigger" )
+			.WithoutTags( "player", "trigger", "map" )
 			.Run();
 
 		if ( !tr.Hit || !tr.Body.IsValid() ) return;
 
 		var rootObject = tr.GameObject;
 		if ( !rootObject.IsValid() ) return;
-		if ( rootObject.Tags.Has( "map" ) ) return;
+		if ( rootObject.Tags.Has( "map" ) || rootObject.Parent.Tags.Has( "map" ) ) return;
 
 		Log.Info( $"Unfreezing {rootObject}" );
 
@@ -165,8 +165,6 @@ public class Physgun : Item
 
 		GrabbedPosition = body.Transform.PointToLocal( tr.EndPosition );
 		GrabbedBone = body.GroupIndex;
-
-		Log.Info( tr.GameObject );
 	}
 
 	[Broadcast]
