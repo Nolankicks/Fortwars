@@ -8,7 +8,7 @@
 <root>
 	<InventoryPanel />
 
-	<div class="crosshair"></div>
+	<div style="opacity: @( ShowCrosshair ? "0.3" : "0");" class="crosshair"></div>
 
 	<TeamProgress />
 
@@ -27,6 +27,13 @@
 	public Panel MaxProps { get; set; }
 	public HealthPanel HealthPanel { get; set; }
 	public bool ShowScoreboard => Input.Down( "score" );
+	public bool ShowCrosshair { get; set; } = true;
+	public static HUD Instance { get; set; }
+
+	protected override void OnStart()
+	{
+		Instance = this;
+	}
 
 	void IGameEventHandler<PlayerDamage>.OnGameEvent( PlayerDamage eventArgs )
 	{
@@ -71,6 +78,6 @@
 	/// </summary>
 	protected override int BuildHash()
 	{
-		return System.HashCode.Combine( ShowScoreboard );
+		return System.HashCode.Combine( ShowScoreboard, ShowCrosshair );
 	}
 }

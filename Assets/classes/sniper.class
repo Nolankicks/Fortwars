@@ -1,0 +1,12 @@
+{
+  "WeaponData": "weapondatas/sniper.weapons",
+  "ClassName": "Sniper",
+  "ClassDescription": null,
+  "ClassIcon": null,
+  "WalkSpeed": 300,
+  "RunSpeed": 450,
+  "Health": 100,
+  "Hidden": true,
+  "__references": [],
+  "__version": 0
+}

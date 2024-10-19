@@ -40,6 +40,8 @@ HUD {
         opacity: 0.3;
         width: 4px;
         height: 4px;
+
+        transition: all 0.2s linear;
     }
 
     .healthholder 

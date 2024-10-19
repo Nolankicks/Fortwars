@@ -1,0 +1,9 @@
+{
+  "Name": "Sniper",
+  "WeaponPrefab": {
+    "_type": "gameobject",
+    "prefab": "prefabs/sniper.prefab"
+  },
+  "__references": [],
+  "__version": 0
+}

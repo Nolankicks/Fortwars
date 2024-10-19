@@ -68,7 +68,7 @@ public class Item : Component, IGameEventHandler<OnItemEquipped>
 	}
 }
 
-public sealed class Weapon : Item, IGameEventHandler<OnReloadEvent>
+public class Weapon : Item, IGameEventHandler<OnReloadEvent>
 {
 	[Property] public float FireRate { get; set; } = 0.1f;
 	[Property] public float ReloadDelay { get; set; } = 1f;
@@ -83,6 +83,8 @@ public sealed class Weapon : Item, IGameEventHandler<OnReloadEvent>
 	[Property] public string AttackAnimName { get; set; } = "b_attack";
 	[Property] public string ReloadAnimName { get; set; } = "b_reload";
 	[Property] public bool IsShotgun { get; set; } = false;
+    public virtual bool CanFire => true;
+	[Property] public bool Automatic { get; set; } = true;
 
 	public override void OnEquip( OnItemEquipped onItemEquipped )
 	{
@@ -100,7 +102,7 @@ public sealed class Weapon : Item, IGameEventHandler<OnReloadEvent>
 		if ( IsProxy || equipTime < 0.2f )
 			return;
 
-		if ( (Input.Pressed( "attack1" ) || Input.Down( "attack1" ) && lastFired > FireRate) && CanUse() && reloadTime > ReloadDelay )
+		if ( (Input.Pressed( "attack1" ) || (Input.Down( "attack1" ) && Automatic) && lastFired > FireRate) && CanUse() && reloadTime > ReloadDelay && CanFire )
 		{
 			for ( var i = 0; i < TraceTimes; i++ )
 				Shoot();

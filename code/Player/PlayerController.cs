@@ -27,6 +27,7 @@ public sealed partial class PlayerController : Component, IGameEventHandler<Dama
 	public Vector3 WishVelocity { get; set; }
 	public bool CanMoveHead = true;
 	public float EyeHeight { get; set; } = 64;
+	public bool SetFov { get; set; } = true;
 	private static PlayerController _local;
 	public static PlayerController Local
 	{
@@ -256,7 +257,9 @@ public sealed partial class PlayerController : Component, IGameEventHandler<Dama
 		{
 			Scene.Camera.WorldPosition = DeathPos + Vector3.Up * 64 + EyeAngles.ToRotation().Backward * 200;
 			Scene.Camera.WorldRotation = EyeAngles;
-			Scene.Camera.FieldOfView = Preferences.FieldOfView;
+
+			if ( SetFov )
+				Scene.Camera.FieldOfView = Preferences.FieldOfView;
 
 			return;
 		}

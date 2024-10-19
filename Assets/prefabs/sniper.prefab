@@ -1,0 +1,104 @@
+{
+  "RootObject": {
+    "__guid": "132bd3cc-7112-414e-82ed-24e030459c23",
+    "Flags": 0,
+    "Name": "sniper",
+    "Enabled": true,
+    "Components": [
+      {
+        "__type": "Sandbox.SkinnedModelRenderer",
+        "__guid": "888f432f-7801-45e3-9285-2fe583ebb230",
+        "BodyGroups": 1299,
+        "CreateBoneObjects": false,
+        "Model": "models/weapons/sbox_sniper_m700/v_m700.vmdl",
+        "Morphs": {},
+        "Parameters": {
+          "bools": {},
+          "ints": {},
+          "floats": {},
+          "vectors": {},
+          "rotations": {}
+        },
+        "RenderOptions": {
+          "GameLayer": false,
+          "OverlayLayer": true,
+          "BloomLayer": false,
+          "AfterUILayer": false
+        },
+        "RenderType": "On",
+        "Tint": "1,1,1,1",
+        "UseAnimGraph": true
+      },
+      {
+        "__type": "Facepunch.ScopeWeaponComponent",
+        "__guid": "2077eade-48b2-401d-aba4-9c0a530681c7",
+        "AngleOffsetScale": 0.01,
+        "AttackAnimName": "b_attack",
+        "Automatic": false,
+        "Damage": 10,
+        "FireRate": 0.1,
+        "HoldType": "None",
+        "IsShotgun": false,
+        "MaxAmmo": 30,
+        "Offset": "0,0,0",
+        "Range": 5000,
+        "ReloadAnimName": "b_reload",
+        "ReloadDelay": 1,
+        "ScopeOverlay": "materials/scope.vmat",
+        "Spread": 0.03,
+        "TraceTimes": 1,
+        "UsesAmmo": true
+      }
+    ],
+    "Children": [
+      {
+        "__guid": "cb9e328d-9647-4503-93cf-4c03439f0c8a",
+        "Flags": 0,
+        "Name": "arms",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.SkinnedModelRenderer",
+            "__guid": "0a251be0-ea1c-4316-acfd-2968cb18dc03",
+            "BodyGroups": 21,
+            "BoneMergeTarget": {
+              "_type": "component",
+              "component_id": "888f432f-7801-45e3-9285-2fe583ebb230",
+              "go": "132bd3cc-7112-414e-82ed-24e030459c23",
+              "component_type": "SkinnedModelRenderer"
+            },
+            "CreateBoneObjects": false,
+            "Model": "models/first_person/first_person_arms.vmdl",
+            "Morphs": {},
+            "Parameters": {
+              "bools": {},
+              "ints": {},
+              "floats": {},
+              "vectors": {},
+              "rotations": {}
+            },
+            "RenderOptions": {
+              "GameLayer": true,
+              "OverlayLayer": false,
+              "BloomLayer": false,
+              "AfterUILayer": false
+            },
+            "RenderType": "On",
+            "Tint": "1,1,1,1",
+            "UseAnimGraph": true
+          }
+        ]
+      }
+    ],
+    "__variables": []
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "DontBreakAsTemplate": false,
+  "ResourceVersion": 1,
+  "__references": [
+    "facepunch.v_m700#68039"
+  ],
+  "__version": 1
+}
