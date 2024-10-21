@@ -35,7 +35,7 @@ public class Gravgun : Item, IGameEventHandler<DeathEvent>
 
 	SceneTrace GravGunTrace => Scene.Trace.Ray( new Ray( PlayerController.Local.Eye.WorldPosition, PlayerController.Local.EyeAngles.Forward ), 350f )
 			.IgnoreGameObjectHierarchy( GameObject.Root )
-			.WithoutTags( "trigger", "player", "map" );
+			.WithoutTags( FW.Tags.Trigger, FW.Tags.Player, FW.Tags.Map );
 
 	protected override void OnUpdate()
 	{
@@ -77,7 +77,7 @@ public class Gravgun : Item, IGameEventHandler<DeathEvent>
 		else
 		{
 			CanPickup = tr.Body.IsValid() && tr.Body.BodyType == PhysicsBodyType.Dynamic && tr.GameObject.Components.TryGet<RollerMine>( out var p )
-			&& !tr.GameObject.Root.Tags.HasAny( "map", "player" );
+			&& !tr.GameObject.Root.Tags.HasAny( FW.Tags.Player, FW.Tags.Map );
 			if ( CanPickup ) timeSinceLastCanPickup = 0f;
 		}
 
@@ -144,7 +144,7 @@ public class Gravgun : Item, IGameEventHandler<DeathEvent>
 
 			if ( tr.GameObject?.Components?.TryGet<MapInstance>( out var mapInstance, FindMode.EverythingInSelfAndParent ) ?? false )
 				return;
-			
+
 			if ( tr.Body.IsValid() )
 			{
 				GrabInit( tr.GameObject, tr.Body, player.Eye.WorldPosition + player.Eye.WorldRotation.Forward * HoldDistance, player.EyeAngles );
@@ -194,7 +194,7 @@ public class Gravgun : Item, IGameEventHandler<DeathEvent>
 		if ( !heldBodyGb.IsValid() || !local.IsValid() || !gs.IsValid() )
 			return;
 
-		if ( !heldBodyGb.Tags.Has( "rollermine" ) )
+		if ( !heldBodyGb.Tags.Has( FW.Tags.Rollermine ) )
 			return;
 
 		var teamComponent = local.TeamComponent;

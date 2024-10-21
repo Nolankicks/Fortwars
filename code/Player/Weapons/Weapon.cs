@@ -83,7 +83,7 @@ public class Weapon : Item, IGameEventHandler<OnReloadEvent>
 	[Property] public string AttackAnimName { get; set; } = "b_attack";
 	[Property] public string ReloadAnimName { get; set; } = "b_reload";
 	[Property] public bool IsShotgun { get; set; } = false;
-    public virtual bool CanFire => true;
+	public virtual bool CanFire => true;
 	[Property] public bool Automatic { get; set; } = true;
 
 	public override void OnEquip( OnItemEquipped onItemEquipped )
@@ -195,7 +195,7 @@ public class Weapon : Item, IGameEventHandler<OnReloadEvent>
 		damage.Position = tr.HitPosition;
 		damage.Shape = tr.Shape;
 
-		if ( !tr.GameObject.Root.Components.TryGet<PlayerController>( out var p, FindMode.EverythingInSelfAndParent ) && !tr.GameObject.Tags.Has( "ragdoll" ) )
+		if ( !tr.GameObject.Root.Components.TryGet<PlayerController>( out var p, FindMode.EverythingInSelfAndParent ) && !tr.GameObject.Tags.Has( FW.Tags.Ragdoll ) )
 		{
 			tr.GameObject.Root.Network.TakeOwnership();
 

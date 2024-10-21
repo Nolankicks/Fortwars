@@ -303,7 +303,7 @@ public sealed partial class PlayerController : Component, IGameEventHandler<Dama
 		if ( target.IsValid() )
 			target.RenderType = renderType;
 
-		foreach ( var model in Components.GetAll<ModelRenderer>().Where( x => x.Tags.Has( "clothing" ) ) )
+		foreach ( var model in Components.GetAll<ModelRenderer>().Where( x => x.Tags.Has( FW.Tags.Clothing ) ) )
 		{
 			model.RenderType = renderType;
 		}

@@ -1,5 +1,6 @@
 
 using System;
+using Sandbox.Events;
 
 public class Physgun : Item
 {
@@ -79,36 +80,34 @@ public class Physgun : Item
 		var tr = Scene.Trace.Ray( Scene.Camera.ScreenNormalToRay( 0.5f ), 1000 )
 			.UseHitboxes()
 			.IgnoreGameObjectHierarchy( GameObject.Root )
-			.WithoutTags( "player", "trigger", "map" )
+			.WithoutTags( FW.Tags.Player, FW.Tags.Trigger, FW.Tags.Map )
 			.Run();
 
-		if ( !tr.Hit || !tr.Body.IsValid() ) return;
+		if ( !tr.Hit || !tr.Body.IsValid() )
+			return;
 
-		var rootObject = tr.GameObject;
-		if ( !rootObject.IsValid() ) return;
-		if ( rootObject.Tags.Has( "map" ) || rootObject.Parent.Tags.Has( "map" ) ) return;
+		var go = tr.GameObject;
+		if ( go.Tags.Has( FW.Tags.Map ) || go.Parent.Tags.Has( FW.Tags.Map ) )
+			return;
 
-		Log.Info( $"Unfreezing {rootObject}" );
+		Log.Info( $"Unfreezing {go}" );
 
 		var physicsGroup = tr.Body.PhysicsGroup;
 
 		if ( tr.Body.IsValid() )
 			tr.Body.BodyType = PhysicsBodyType.Dynamic;
 
-		if ( physicsGroup == null ) return;
+		if ( physicsGroup == null )
+			return;
 
-
-		rootObject.Network.SetOwnerTransfer( OwnerTransfer.Takeover );
-		rootObject.Root.Network.TakeOwnership();
+		go.Network.SetOwnerTransfer( OwnerTransfer.Takeover );
+		go.Root.Network.TakeOwnership();
 
 		Log.Info( $"Unfreezing {physicsGroup.BodyCount} bodies" );
 
 		for ( int i = 0; i < physicsGroup.BodyCount; i++ )
 		{
 			var body = physicsGroup.GetBody( i );
-
-			Log.Info( $"Unfreezing {body}" );
-			if ( !body.IsValid() ) continue;
 
 			if ( body.BodyType != PhysicsBodyType.Dynamic )
 			{
@@ -122,30 +121,22 @@ public class Physgun : Item
 		var tr = Scene.Trace.Ray( eyePos, eyePos + eyeDir * MaxTargetDistance )
 			.UseHitboxes()
 			.IgnoreGameObjectHierarchy( GameObject.Root )
-			.WithoutTags( "player", "trigger" )
+			.WithoutTags( FW.Tags.Player, FW.Tags.Trigger, FW.Tags.Map, FW.Tags.Ragdoll )
 			.Run();
 
-		if ( !tr.Hit || !tr.GameObject.IsValid() || tr.GameObject.Tags.Has( "map" ) || tr.StartedSolid || tr.GameObject.Tags.Has( "ragdoll" ) ) return;
+		if ( !tr.Hit || !tr.GameObject.IsValid() || tr.StartedSolid )
+			return;
 
 		var rootObject = tr.GameObject.Root;
-		var body = tr.Body;
 
-		if ( !body.IsValid() )
-		{
-			if ( rootObject.IsValid() )
-			{
-				var rigidbody = rootObject.Components.Get<Rigidbody>( FindMode.EverythingInSelfAndDescendants );
-				if ( rigidbody.IsValid() )
-				{
-					body = rigidbody.PhysicsBody;
-				}
-			}
-		}
+		if ( !tr.GameObject.Components.TryGet<Rigidbody>( out var rigidbody, FindMode.EverythingInSelfAndAncestors ) )
+			return;
 
-		if ( !body.IsValid() ) return;
+		var body = rigidbody.PhysicsBody;
 
-		// Don't move keyframed unless it's a player
-		if ( body.BodyType == PhysicsBodyType.Keyframed && !rootObject.Tags.Has( "player" ) || rootObject.Components.TryGet<WallComponent>( out var w, FindMode.EverythingInSelfAndParent ) || tr.GameObject.Components.TryGet<MapCollider>( out var m, FindMode.EverythingInSelfAndParent ) ) return;
+		// Don't move keyframed objects and ignore the Wall
+		if ( body.BodyType == PhysicsBodyType.Keyframed || tr.GameObject.Components.TryGet<MapCollider>( out _, FindMode.EverythingInSelfAndAncestors ) )
+			return;
 
 		// Unfreeze
 		if ( body.BodyType != PhysicsBodyType.Dynamic )
@@ -238,6 +229,8 @@ public class Physgun : Item
 
 		HeldBody.Sleeping = false;
 		HeldBody.AutoSleep = false;
+
+		Scene.Dispatch( new OnPhysgunGrabChange( true ) );
 	}
 
 	private void GrabEnd()
@@ -260,6 +253,7 @@ public class Physgun : Item
 		RemoveTag( GrabbedObject, "grabbed" );
 
 		GrabbedObject = null;
+		Scene.Dispatch( new OnPhysgunGrabChange( false ) );
 	}
 
 	void PhysicsStep()

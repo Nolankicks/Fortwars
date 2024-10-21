@@ -60,7 +60,7 @@ public class ScopeWeaponComponent : Weapon
 
 	protected virtual bool CanAim()
 	{
-		if ( Tags.Has( "reloading" ) ) return false;
+		if ( Tags.Has( FW.Tags.Reloading ) ) return false;
 
 		return true;
 	}
