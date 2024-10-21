@@ -2,7 +2,7 @@ using Sandbox.Citizen;
 using Sandbox.Events;
 using Sandbox.Services;
 
-public sealed partial class PlayerController : Component, IGameEventHandler<DamageEvent>, IGameEventHandler<PlayerReset>, IGameEventHandler<DeathEvent>
+public sealed partial class PlayerController : Component, IGameEventHandler<DamageEvent>, IGameEventHandler<PlayerReset>, IGameEventHandler<DeathEvent>, IGameEventHandler<OnPhysgunGrabChange>
 {
 	[Property, Category( "References" )] public ShrimpleCharacterController.ShrimpleCharacterController shrimpleCharacterController { get; set; }
 	[Property, Category( "References" ), Sync] public CitizenAnimationHelper AnimHelper { get; set; }

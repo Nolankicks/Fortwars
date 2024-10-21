@@ -17,7 +17,7 @@ public sealed class Inventory : Component
 	[Property, Sync] public WeaponData CurrentWeaponData { get; set; }
 
 	[Sync] public PlayerClass SelectedClass { get; set; }
-	public bool CanSwitch { get; set; } = true;
+	public bool CanScrollSwitch { get; set; } = true;
 
 	[Button]
 	public void SwapItemsButton()
@@ -101,7 +101,7 @@ public sealed class Inventory : Component
 		if ( Items?.Count() == 0 || Items is null )
 			return;
 
-		if ( Input.MouseWheel.y != 0 && CanSwitch )
+		if ( Input.MouseWheel.y != 0 && CanScrollSwitch )
 		{
 			var local = PlayerController.Local;
 

@@ -1,14 +1,11 @@
 using Sandbox.Events;
 
 public record PlayerDeath( PlayerController Player, GameObject Attacker ) : IGameEvent;
-
 public record PlayerDamage( PlayerController Player, DamageEvent DamageEvent ) : IGameEvent;
-
 public record PlayerReset() : IGameEvent;
-
 public record JumpEvent() : IGameEvent;
-
 public record OnPlayerJoin() : IGameEvent;
+public record OnPhysgunGrabChange( bool isCurrentlyGrabbing ) : IGameEvent;
 
 partial class PlayerController
 {
@@ -64,12 +61,12 @@ partial class PlayerController
 				return;
 
 			Inventory.DisableAll();
-			Inventory.CanSwitch = false;
+			Inventory.CanScrollSwitch = false;
 
 			var target = AnimHelper.Target;
 
 			var go = new GameObject( true, $"{Network.Owner?.DisplayName}'s ragdoll" );
-			go.Tags.Add( "ragdoll" );
+			go.Tags.Add( FW.Tags.Ragdoll );
 			go.WorldTransform = target.WorldTransform;
 			go.WorldRotation = target.WorldRotation;
 
@@ -113,7 +110,7 @@ partial class PlayerController
 
 			Invoke( 2, () =>
 			{
-				Inventory.CanSwitch = true;
+				Inventory.CanScrollSwitch = true;
 				Inventory.ChangeItem( Inventory.Index, Inventory?.Items );
 
 				BroadcastEnable( target.GameObject, true );
@@ -128,5 +125,13 @@ partial class PlayerController
 				GameObject.Dispatch( new PlayerReset() );
 			} );
 		}
+	}
+
+	void IGameEventHandler<OnPhysgunGrabChange>.OnGameEvent( OnPhysgunGrabChange eventArgs )
+	{
+		if ( IsProxy )
+			return;
+
+		Inventory.CanScrollSwitch = !eventArgs.isCurrentlyGrabbing;
 	}
 }
