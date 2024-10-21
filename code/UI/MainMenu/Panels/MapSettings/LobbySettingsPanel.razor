@@ -14,8 +14,25 @@
 				<div class="img" style="background-image: url( @SelectedMap?.Thumb?.ResourcePath )"></div>
 			</div>
 
-			<div class="title">@SelectedMap?.MapName</div>
-			<div class="author">By: @SelectedMap?.Author</div>
+			var pkg = GetPackage( SelectedMap.PackageIndent ).Result;
+
+			@if ( !string.IsNullOrWhiteSpace( SelectedMap.PackageIndent ) )
+			{
+				<div class="title link" onclick=@( () => Game.Overlay.ShowPackageModal( SelectedMap.PackageIndent ) )>@SelectedMap?.MapName</div>
+			}
+			else
+			{
+				<div class="title">@SelectedMap?.MapName</div>
+			}
+
+			@if ( !string.IsNullOrWhiteSpace( SelectedMap.PackageIndent ) && pkg is not null )
+			{				
+				<div class="author link" onclick=@( () => Game.Overlay.ShowOrganizationModal( pkg?.Org ) )>By: @SelectedMap?.Author</div>
+			}
+			else
+			{
+				<div class="author">By: @SelectedMap?.Author</div>
+			}
 
 			@if ( !string.IsNullOrWhiteSpace( SelectedMap?.MapDescription ) )
 			{
@@ -50,8 +67,8 @@
 				<div class="img" style="background-image: url( @SelectedPackage?.Thumb )"></div>
 			</div>
 
-			<div class="title">@SelectedPackage?.Title</div>
-			<div class="author">By: @SelectedPackage?.Org.Title</div>
+			<div class="title link" onclick=@( () => Game.Overlay.ShowPackageModal( SelectedPackage?.FullIdent ) )>@SelectedPackage?.Title</div>
+			<div class="author link" onclick=@( () => Game.Overlay.ShowOrganizationModal( SelectedPackage?.Org ) )>By: @SelectedPackage?.Org.Title</div>
 
 			@if ( !string.IsNullOrWhiteSpace( SelectedPackage?.Summary ) )
 			{
@@ -111,6 +128,16 @@
 			return;
 		
 		Scene.Load( sceneFile );
+	}
+
+	public async Task<Package> GetPackage( string ident )
+	{
+		var pkg = await Package.Fetch( ident, false );
+
+		if ( pkg is null )
+			return null;
+
+		return pkg;
 	}
 
 	protected override void OnAfterTreeRender( bool firstTime )

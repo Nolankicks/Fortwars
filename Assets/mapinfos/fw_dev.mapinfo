@@ -5,8 +5,8 @@
   "Scene": "scenes/fortwars_dev.scene",
   "Thumb": "textures/fw_dev.vtex",
   "Author": "Ape Tavern",
+  "PackageIndent": "apetavern.fw_dev",
   "Hidden": false,
   "__references": [],
-  "IsValid": true,
   "__version": 0
 }

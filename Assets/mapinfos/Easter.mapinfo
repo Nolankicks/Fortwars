@@ -5,8 +5,8 @@
   "Scene": "scenes/easter.scene",
   "Thumb": "textures/easter.vtex",
   "Author": "Ape Tavern",
+  "PackageIndent": "apetavern.fw_easter",
   "Hidden": false,
   "__references": [],
-  "IsValid": true,
   "__version": 0
 }

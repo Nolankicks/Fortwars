@@ -55,6 +55,24 @@ LobbySettingsPanel
 
             align-items: center;
             justify-content: center;
+
+            &.link
+            {
+                cursor: pointer;
+                transition: all 0.2s;
+
+                &:hover
+                {
+                    color: $tertiary;
+
+                    sound-in: ui.button.over;
+                }
+
+                &:active
+                {
+                    sound-in: ui.button.press;
+                }
+            }
         }
 
         >.author
@@ -69,6 +87,24 @@ LobbySettingsPanel
             justify-content: center;
 
             margin-bottom: 12px;
+
+            &.link
+            {
+                cursor: pointer;
+                transition: all 0.2s;
+
+                &:hover
+                {
+                    color: $tertiary;
+
+                    sound-in: ui.button.over;
+                }
+
+                &:active
+                {
+                    sound-in: ui.button.press;
+                }
+            }
         }
 
         >.thumb

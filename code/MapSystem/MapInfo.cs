@@ -8,5 +8,6 @@ public sealed class MapInfo : GameResource
 	public SceneFile Scene { get; set; }
 	public Texture Thumb { get; set; }
 	public string Author { get; set; }
+	public string PackageIndent { get; set; }
 	public bool Hidden { get; set; } = false;
 }
