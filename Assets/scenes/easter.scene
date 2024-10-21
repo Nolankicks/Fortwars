@@ -1,5 +1,5 @@
 {
-  "__guid": "049feced-9b0e-4e4e-9baf-ee1f0c7c689c",
+  "__guid": "a64741a1-bbf8-4991-b8b7-6ccd26dd5571",
   "GameObjects": [
     {
       "__guid": "b8dc7b42-36f4-4014-9174-e6cea2d4339c",
@@ -982,6 +982,7 @@
       "Flags": 0,
       "Name": "BorderWall",
       "Position": "0,0,1040",
+      "Tags": "map",
       "Enabled": true,
       "NetworkMode": 1,
       "NetworkOrphaned": 1,
@@ -1108,7 +1109,8 @@
           },
           "SmoothingAngle": 40,
           "Static": true,
-          "Surface": "surfaces/glass.pane.surface"
+          "Surface": "surfaces/glass.pane.surface",
+          "SurfaceVelocity": "0,0,0"
         },
         {
           "__type": "Sandbox.Rigidbody",
@@ -1139,6 +1141,7 @@
       "Name": "Cube",
       "Position": "-410.6657,256,253.9576",
       "Scale": "1.9,1.9,1.9",
+      "Tags": "map",
       "Enabled": true,
       "Components": [
         {
@@ -1160,7 +1163,8 @@
           "__guid": "acf697fc-0454-4e0d-8a41-5f4144794efc",
           "IsTrigger": false,
           "Model": "models/sbox_props/wooden_crate/wooden_crate.vmdl",
-          "Static": false
+          "Static": false,
+          "SurfaceVelocity": "0,0,0"
         }
       ]
     },
@@ -1170,6 +1174,7 @@
       "Name": "Cube (4)",
       "Position": "411.4991,256,253.9576",
       "Scale": "1.9,1.9,1.9",
+      "Tags": "map",
       "Enabled": true,
       "Components": [
         {
@@ -1191,7 +1196,8 @@
           "__guid": "cbf1af57-6b8f-43a2-aedf-4876cf77e8be",
           "IsTrigger": false,
           "Model": "models/sbox_props/wooden_crate/wooden_crate.vmdl",
-          "Static": false
+          "Static": false,
+          "SurfaceVelocity": "0,0,0"
         }
       ]
     },
@@ -1299,6 +1305,7 @@
       "Flags": 0,
       "Name": "Grass",
       "Position": "-832,-512,64",
+      "Tags": "map",
       "Enabled": true,
       "Components": [
         {
@@ -1419,7 +1426,8 @@
             ]
           },
           "SmoothingAngle": 40,
-          "Static": true
+          "Static": true,
+          "SurfaceVelocity": "0,0,0"
         }
       ]
     },
@@ -1428,6 +1436,7 @@
       "Flags": 0,
       "Name": "Grass (1)",
       "Position": "832,-512,64",
+      "Tags": "map",
       "Enabled": true,
       "Components": [
         {
@@ -1547,7 +1556,8 @@
             ]
           },
           "SmoothingAngle": 40,
-          "Static": true
+          "Static": true,
+          "SurfaceVelocity": "0,0,0"
         }
       ]
     },
@@ -1582,6 +1592,7 @@
       "__guid": "02a08fe6-6920-44c9-83f9-6ce5311d5952",
       "Flags": 0,
       "Name": "Map",
+      "Tags": "map",
       "Enabled": true,
       "Components": [
         {
@@ -1723,7 +1734,8 @@
             ]
           },
           "SmoothingAngle": 40,
-          "Static": true
+          "Static": true,
+          "SurfaceVelocity": "0,0,0"
         },
         {
           "__type": "DeathTrigger",
@@ -1857,7 +1869,8 @@
             ]
           },
           "SmoothingAngle": 40,
-          "Static": true
+          "Static": true,
+          "SurfaceVelocity": "0,0,0"
         },
         {
           "__type": "DeathTrigger",

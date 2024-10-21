@@ -5,6 +5,7 @@
       "__guid": "d08a9cdc-b2fd-40ca-889e-6f27e66b960c",
       "Flags": 0,
       "Name": "Map",
+      "Tags": "map",
       "Enabled": true,
       "Components": [
         {
@@ -50,8 +51,9 @@
     {
       "__guid": "0be1f601-53c1-4739-bbd6-4514f56a9ace",
       "Flags": 0,
-      "Name": "Box",
+      "Name": "Wall",
       "Position": "0,-144,576.0035",
+      "Tags": "map",
       "Enabled": true,
       "NetworkMode": 1,
       "Components": [
@@ -172,7 +174,8 @@
             ]
           },
           "SmoothingAngle": 40,
-          "Static": true
+          "Static": true,
+          "SurfaceVelocity": "0,0,0"
         },
         {
           "__type": "WallComponent",
@@ -1042,6 +1045,7 @@
       "Flags": 0,
       "Name": "Death Trigger",
       "Position": "0,0,-3040",
+      "Tags": "trigger",
       "Enabled": true,
       "NetworkMode": 1,
       "Components": [
@@ -1056,7 +1060,8 @@
           "Center": "0,0,0",
           "IsTrigger": false,
           "Scale": "50000,50000,50",
-          "Static": false
+          "Static": false,
+          "SurfaceVelocity": "0,0,0"
         }
       ]
     },

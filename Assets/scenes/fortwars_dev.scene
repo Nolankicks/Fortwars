@@ -5,6 +5,7 @@
       "__guid": "cfef0074-2310-4c4a-a7db-5e3ec251da68",
       "Flags": 0,
       "Name": "Map",
+      "Tags": "map",
       "Enabled": true,
       "Components": [
         {
@@ -192,6 +193,7 @@
       "Flags": 0,
       "Name": "Wall",
       "Position": "-314,0,-159.9993",
+      "Tags": "map",
       "Enabled": true,
       "NetworkMode": 1,
       "Components": [
@@ -312,7 +314,8 @@
             ]
           },
           "SmoothingAngle": 40,
-          "Static": true
+          "Static": true,
+          "SurfaceVelocity": "0,0,0"
         },
         {
           "__type": "WallComponent",
@@ -325,6 +328,7 @@
       "Flags": 0,
       "Name": "Kill Trigger",
       "Position": "0,0,-1408",
+      "Tags": "trigger",
       "Enabled": true,
       "NetworkMode": 1,
       "Components": [
@@ -339,7 +343,8 @@
           "Center": "0,0,0",
           "IsTrigger": true,
           "Scale": "10000,10000,500",
-          "Static": false
+          "Static": false,
+          "SurfaceVelocity": "0,0,0"
         }
       ]
     },
