@@ -121,7 +121,7 @@ public class Physgun : Item
 		var tr = Scene.Trace.Ray( eyePos, eyePos + eyeDir * MaxTargetDistance )
 			.UseHitboxes()
 			.IgnoreGameObjectHierarchy( GameObject.Root )
-			.WithoutTags( FW.Tags.Player, FW.Tags.Trigger, FW.Tags.Map, FW.Tags.Ragdoll )
+			.WithoutTags( FW.Tags.Player, FW.Tags.Trigger )
 			.Run();
 
 		if ( !tr.Hit || !tr.GameObject.IsValid() || tr.StartedSolid )
