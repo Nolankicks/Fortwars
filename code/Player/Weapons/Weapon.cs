@@ -145,6 +145,8 @@ public class Weapon : Item, IGameEventHandler<OnReloadEvent>
 
 	public void Shoot()
 	{
+		SubtractAmmo();
+
 		var local = PlayerController.Local;
 
 		var cam = Scene.Camera;
@@ -207,8 +209,6 @@ public class Weapon : Item, IGameEventHandler<OnReloadEvent>
 				damageable.OnDamage( damage );
 			}
 		}
-
-		SubtractAmmo();
 	}
 
 	[Broadcast]
