@@ -5,8 +5,8 @@
   "Scene": "scenes/fortwars_harbor.scene",
   "Thumb": "textures/fw_cliffside.vtex",
   "Author": "k8woz",
-  "Hidden": true,
+  "PackageIndent": null,
+  "Hidden": false,
   "__references": [],
-  "IsValid": true,
   "__version": 0
 }
