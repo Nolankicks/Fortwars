@@ -243,6 +243,18 @@
 		//FetchLeaderboard();
 	}
 
+    protected override void OnUpdate()
+    {
+        if ( HeldBody.IsValid() )
+        {
+            var tr = Scene.Trace.Ray( Scene.Camera.ScreenPixelToRay( Mouse.Position ), DistanceBetweenObjects )
+                .WithoutTags( "held" )
+                .Run();
+
+            HeldBody.SmoothMove( tr.EndPosition, 0.5f, Time.Delta );
+        }
+    }
+
 	public bool IsSorted(SortBy sortBy)
 	{
 		return CurrentSortBy == sortBy;
@@ -267,6 +279,33 @@
 
 		CurrentState = state;
 	}
+
+    public PhysicsBody HeldBody { get; set; }
+
+    protected override void OnMouseDown( MousePanelEvent mousePanelEvent )
+    {
+        var tr = Scene.Trace.Ray( Scene.Camera.ScreenPixelToRay( Mouse.Position ), 500 )
+            .Run();
+        
+        if ( tr.Body.IsValid() )
+        {
+            HeldBody = tr.Body;
+            HeldBody?.GetGameObject()?.Tags.Add( "held" );
+            DistanceBetweenObjects = Scene.Camera.WorldPosition.Distance( HeldBody.Position );
+        }
+    }
+
+    public float DistanceBetweenObjects { get; set; }
+
+    protected override void OnMouseUp( MousePanelEvent mousePanelEvent )
+    {
+        if ( HeldBody.IsValid() )
+        {
+            HeldBody?.GetGameObject()?.Tags.Remove( "held" );
+        }
+
+        HeldBody = null;
+    }
 
 	/// <summary>
 	/// the hash determines if the system should be rebuilt. If it changes, it will be rebuilt

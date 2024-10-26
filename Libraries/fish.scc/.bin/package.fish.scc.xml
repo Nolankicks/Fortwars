@@ -74,6 +74,11 @@
             Tolerance from a 90° surface before it's considered a wall (Ex. Tolerance 1 = Between 89° and 91° can be a wall, 0.1 = 89.9° to 90.1°)
             </summary>
         </member>
+        <member name="P:ShrimpleCharacterController.ShrimpleCharacterController.GripFactorReduction">
+            <summary>
+            Player feels like it's gripping walls too much? Try more Grip Factor Reduction!
+            </summary>
+        </member>
         <member name="P:ShrimpleCharacterController.ShrimpleCharacterController.GroundStickEnabled">
             <summary>
             Stick the MoveHelper to the ground (IsOnGround will default to false if disabled)

@@ -2,10 +2,25 @@
   "__guid": "e3ae6ec4-9049-4167-ab3e-575275964aea",
   "GameObjects": [
     {
+      "__guid": "963029ea-761e-41ec-9f19-79c242d144fb",
+      "Flags": 0,
+      "Name": "Scene Information",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.SceneInformation",
+          "__guid": "96db79d6-6f4a-4b3b-bf2a-59017508ca11",
+          "Description": "",
+          "SceneTags": "",
+          "Title": "dead4leftmenurewrite"
+        }
+      ]
+    },
+    {
       "__guid": "0e9966b0-db00-4497-b185-6fc9dbbebe34",
       "Flags": 0,
       "Name": "Camera",
-      "Position": "416.5758,449.3122,298.2926",
+      "Position": "376.7062,501.5297,298.2925",
       "Rotation": "0,0,-0.5,0.8660254",
       "Tags": "maincamera",
       "Enabled": true,
@@ -26,14 +41,6 @@
           "Viewport": "0,0,1,1",
           "ZFar": 10000,
           "ZNear": 10
-        },
-        {
-          "__type": "Sandbox.DepthOfField",
-          "__guid": "6c8e5f26-0427-4f22-b5ce-387801c16b7f",
-          "BackBlur": true,
-          "BlurSize": 100,
-          "FocalDistance": 260.37,
-          "FrontBlur": true
         },
         {
           "__type": "Sandbox.AmbientOcclusion",
@@ -121,6 +128,26 @@
       ]
     },
     {
+      "__guid": "6062f7ab-4a6e-4ed9-9936-7fe157603ff7",
+      "Flags": 0,
+      "Name": "wooden_crate (4)",
+      "Position": "569.264,297.8272,256.1341",
+      "Rotation": "-0.00009304551,-0.00006306887,0.2781919,0.9605256",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.Prop",
+          "__guid": "f13f0f1e-8020-474a-ab7f-8ae5597bd442",
+          "BodyGroups": 18446744073709551615,
+          "Health": 50,
+          "IsStatic": false,
+          "Model": "models/sbox_props/wooden_crate/wooden_crate.vmdl",
+          "StartAsleep": false,
+          "Tint": "1,1,1,1"
+        }
+      ]
+    },
+    {
       "__guid": "5891eb19-6143-447b-a6fb-a94a7b0e44f1",
       "Flags": 0,
       "Name": "wooden_crate (1)",
@@ -131,6 +158,46 @@
         {
           "__type": "Sandbox.Prop",
           "__guid": "34b3856c-8a3f-4973-bf5c-cfda9cac420c",
+          "BodyGroups": 18446744073709551615,
+          "Health": 50,
+          "IsStatic": false,
+          "Model": "models/sbox_props/wooden_crate/wooden_crate.vmdl",
+          "StartAsleep": false,
+          "Tint": "1,1,1,1"
+        }
+      ]
+    },
+    {
+      "__guid": "deac009c-480e-4320-bb99-54e91060b0cc",
+      "Flags": 0,
+      "Name": "wooden_crate (2)",
+      "Position": "440.146,258.4872,256.124",
+      "Rotation": "0.0000009571913,-0.0000005477925,0.1042443,0.9945517",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.Prop",
+          "__guid": "9cb78c6d-9385-448d-baec-547a8f9325b2",
+          "BodyGroups": 18446744073709551615,
+          "Health": 50,
+          "IsStatic": false,
+          "Model": "models/sbox_props/wooden_crate/wooden_crate.vmdl",
+          "StartAsleep": false,
+          "Tint": "1,1,1,1"
+        }
+      ]
+    },
+    {
+      "__guid": "8f0bf487-3dbd-4c47-8b9d-997a790faad6",
+      "Flags": 0,
+      "Name": "wooden_crate (3)",
+      "Position": "440.1459,258.4871,319.0486",
+      "Rotation": "0.0000009571913,-0.0000005477925,0.1042443,0.9945517",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.Prop",
+          "__guid": "08d699de-aac8-4a23-833d-83976a6fd659",
           "BodyGroups": 18446744073709551615,
           "Health": 50,
           "IsStatic": false,
@@ -173,7 +240,7 @@
           },
           "Face": "Camera",
           "LifeTime": 0.2,
-          "MaxPoints": 64,
+          "MaxPoints": 128,
           "Opaque": true,
           "PointDistance": 8,
           "RenderOptions": {
@@ -236,7 +303,7 @@
           },
           "Face": "Camera",
           "LifeTime": 0.2,
-          "MaxPoints": 64,
+          "MaxPoints": 128,
           "Opaque": true,
           "PointDistance": 8,
           "RenderOptions": {
@@ -299,7 +366,7 @@
           },
           "Face": "Camera",
           "LifeTime": 0.2,
-          "MaxPoints": 64,
+          "MaxPoints": 128,
           "Opaque": true,
           "PointDistance": 8,
           "RenderOptions": {
@@ -362,7 +429,7 @@
           },
           "Face": "Camera",
           "LifeTime": 0.2,
-          "MaxPoints": 64,
+          "MaxPoints": 128,
           "Opaque": true,
           "PointDistance": 8,
           "RenderOptions": {
@@ -425,7 +492,7 @@
           },
           "Face": "Camera",
           "LifeTime": 0.2,
-          "MaxPoints": 64,
+          "MaxPoints": 128,
           "Opaque": true,
           "PointDistance": 8,
           "RenderOptions": {
@@ -482,6 +549,9 @@
     "ThreadedAnimation": true,
     "TimeScale": 1,
     "UseFixedUpdate": true,
+    "Metadata": {
+      "Title": "dead4leftmenurewrite"
+    },
     "NavMesh": {
       "Enabled": false,
       "IncludeStaticBodies": true,
@@ -495,13 +565,13 @@
       "IncludedBodies": ""
     }
   },
+  "ResourceVersion": 2,
   "Title": "dead4leftmenurewrite",
-  "Description": "",
-  "ResourceVersion": 1,
+  "Description": null,
   "__references": [
     "facepunch.wooden_crate#29138",
     "igrium.rollermine-model#19481",
     "rust.field_day_breeze_01a#43855"
   ],
-  "__version": 1
+  "__version": 2
 }
