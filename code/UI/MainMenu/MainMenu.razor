@@ -287,6 +287,23 @@
         var tr = Scene.Trace.Ray( Scene.Camera.ScreenPixelToRay( Mouse.Position ), 500 )
             .Run();
 
+		if ( mousePanelEvent.MouseButton == MouseButtons.Middle )
+		{
+			var go = new GameObject();
+			go.WorldPosition = tr.EndPosition;
+			go.WorldRotation = Rotation.LookAt( Scene.Camera.WorldPosition.WithZ( 0 ) - tr.EndPosition.WithZ( 0 ) );
+			
+			var renderer = go.Components.Create<Prop>();
+			renderer.Model = Model.Load( "models/citizen/citizen.vmdl" );
+			
+			var clothes = new ClothingContainer();
+			clothes.Deserialize( Connection.Local.GetUserData( "avatar" ) );
+			clothes.Apply( renderer.Components?.Get<SkinnedModelRenderer>() );
+		}
+
+		if ( tr.GameObject?.Root?.Components?.TryGet<MapInstance>( out var m, FindMode.EverythingInSelfAndAncestors ) ?? false )
+			return;
+
 		if ( mousePanelEvent.MouseButton == MouseButtons.Left && tr.Hit )
 		{
         	if ( tr.Body.IsValid() )
