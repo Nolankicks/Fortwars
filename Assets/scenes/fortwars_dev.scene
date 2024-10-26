@@ -2,6 +2,21 @@
   "__guid": "f215fd15-a2b5-4e91-921e-1700956e53a1",
   "GameObjects": [
     {
+      "__guid": "8e1a861a-9c0e-4f84-aa73-82b3b90b360a",
+      "Flags": 0,
+      "Name": "Scene Information",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.SceneInformation",
+          "__guid": "65b87855-e89c-447e-b1ef-cf9b08415213",
+          "Description": "",
+          "SceneTags": "",
+          "Title": "fortwars_dev"
+        }
+      ]
+    },
+    {
       "__guid": "cfef0074-2310-4c4a-a7db-5e3ec251da68",
       "Flags": 0,
       "Name": "Map",
@@ -371,6 +386,9 @@
     "ThreadedAnimation": true,
     "TimeScale": 1,
     "UseFixedUpdate": true,
+    "Metadata": {
+      "Title": "fortwars_dev"
+    },
     "NavMesh": {
       "Enabled": false,
       "IncludeStaticBodies": true,
@@ -384,11 +402,11 @@
       "IncludedBodies": ""
     }
   },
+  "ResourceVersion": 2,
   "Title": "fortwars_dev",
-  "Description": "",
-  "ResourceVersion": 1,
+  "Description": null,
   "__references": [
     "facepunch.glass_c#70691"
   ],
-  "__version": 1
+  "__version": 2
 }

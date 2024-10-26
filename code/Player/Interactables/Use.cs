@@ -3,7 +3,7 @@ using Sandbox.Events;
 
 public sealed class Use : Component, IGameEventHandler<DeathEvent>, IGameEventHandler<OnRoundSwitch>
 {
-	[Property] public IPressable pressable { get; set; }
+	public IPressable pressable { get; set; }
 
 	protected override void OnUpdate()
 	{

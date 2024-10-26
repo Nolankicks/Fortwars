@@ -2,6 +2,21 @@
   "__guid": "a64741a1-bbf8-4991-b8b7-6ccd26dd5571",
   "GameObjects": [
     {
+      "__guid": "81da00ed-d60f-413e-820e-3c5702bb534f",
+      "Flags": 0,
+      "Name": "Scene Information",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.SceneInformation",
+          "__guid": "6ef5871a-c448-402d-9a22-929145f02b18",
+          "Description": "",
+          "SceneTags": "",
+          "Title": "easter"
+        }
+      ]
+    },
+    {
       "__guid": "b8dc7b42-36f4-4014-9174-e6cea2d4339c",
       "Flags": 0,
       "Name": "Red Spawns",
@@ -1910,6 +1925,9 @@
     "ThreadedAnimation": true,
     "TimeScale": 1,
     "UseFixedUpdate": true,
+    "Metadata": {
+      "Title": "easter"
+    },
     "NavMesh": {
       "Enabled": false,
       "IncludeStaticBodies": true,
@@ -1923,9 +1941,9 @@
       "IncludedBodies": ""
     }
   },
+  "ResourceVersion": 2,
   "Title": "easter",
-  "Description": "",
-  "ResourceVersion": 1,
+  "Description": null,
   "__references": [
     "eurorp.door01_right_01#12553",
     "facepunch.floor_grass_wetdirt_blend_a#18652",
@@ -1934,5 +1952,5 @@
     "facepunch.wooden_crate#29138",
     "rust.field_day_breeze_01a#43855"
   ],
-  "__version": 1
+  "__version": 2
 }

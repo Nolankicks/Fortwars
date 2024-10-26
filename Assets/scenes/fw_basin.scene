@@ -2,6 +2,21 @@
   "__guid": "04ad8640-c515-4a52-9095-de6df2cabbaa",
   "GameObjects": [
     {
+      "__guid": "ead4e658-dc23-4580-b062-7a59563ac10e",
+      "Flags": 0,
+      "Name": "Scene Information",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.SceneInformation",
+          "__guid": "9324a166-727e-4e6c-8a05-5eeb1919f795",
+          "Description": "",
+          "SceneTags": "",
+          "Title": "fw_basin"
+        }
+      ]
+    },
+    {
       "__guid": "d08a9cdc-b2fd-40ca-889e-6f27e66b960c",
       "Flags": 0,
       "Name": "Map",
@@ -1128,6 +1143,9 @@
     "ThreadedAnimation": true,
     "TimeScale": 1,
     "UseFixedUpdate": true,
+    "Metadata": {
+      "Title": "fw_basin"
+    },
     "NavMesh": {
       "Enabled": false,
       "IncludeStaticBodies": true,
@@ -1141,11 +1159,11 @@
       "IncludedBodies": ""
     }
   },
+  "ResourceVersion": 2,
   "Title": "fw_basin",
-  "Description": "",
-  "ResourceVersion": 1,
+  "Description": null,
   "__references": [
     "facepunch.glass_c#70691"
   ],
-  "__version": 1
+  "__version": 2
 }
