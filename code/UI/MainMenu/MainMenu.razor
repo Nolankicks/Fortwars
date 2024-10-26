@@ -286,12 +286,49 @@
     {
         var tr = Scene.Trace.Ray( Scene.Camera.ScreenPixelToRay( Mouse.Position ), 500 )
             .Run();
-        
-        if ( tr.Body.IsValid() )
+
+		if ( mousePanelEvent.MouseButton == MouseButtons.Left && tr.Hit )
+		{
+        	if ( tr.Body.IsValid() )
+        	{
+            	HeldBody = tr.Body;
+                HeldBody.BodyType = PhysicsBodyType.Dynamic;
+            	HeldBody?.GetGameObject()?.Tags.Add( "held" );
+            	DistanceBetweenObjects = Scene.Camera.WorldPosition.Distance( HeldBody.Position );
+
+                if ( tr.GameObject.Root.Components.TryGet<SkinnedModelRenderer>( out var r, FindMode.EnabledInSelfAndDescendants ) )
+                {
+                    r.Set( "b_open", true );
+                }
+        	}
+		}
+        else if ( mousePanelEvent.MouseButton == MouseButtons.Right && tr.Hit && !HeldBody.IsValid() )
         {
-            HeldBody = tr.Body;
-            HeldBody?.GetGameObject()?.Tags.Add( "held" );
-            DistanceBetweenObjects = Scene.Camera.WorldPosition.Distance( HeldBody.Position );
+            var damage = new DamageInfo( 25, GameObject, GameObject, tr.Hitbox );
+		    damage.Position = tr.HitPosition;
+		    damage.Shape = tr.Shape;
+
+            foreach ( var damageable in tr.GameObject.Components.GetAll<IDamageable>() )
+		    {
+			    damageable.OnDamage( damage );
+		    }
+
+            if ( tr.Body.IsValid() )
+		    {
+                tr.Body.BodyType = PhysicsBodyType.Dynamic;
+			    tr.Body.ApplyImpulseAt( tr.HitPosition, tr.Direction * 200.0f * tr.Body.Mass.Clamp( 0, 200 ) );
+		    }
+        }
+        else if ( mousePanelEvent.MouseButton == MouseButtons.Right && HeldBody.IsValid() )
+        {
+            HeldBody?.GetGameObject()?.Tags.Remove( "held" );
+
+            if ( HeldBody?.GetGameObject()?.Root.Components.TryGet<SkinnedModelRenderer>( out var r, FindMode.EnabledInSelfAndDescendants ) ?? false)
+            {
+                r.Set( "b_open", false );
+            }
+
+            HeldBody.BodyType = PhysicsBodyType.Static;
         }
     }
 
@@ -299,12 +336,20 @@
 
     protected override void OnMouseUp( MousePanelEvent mousePanelEvent )
     {
-        if ( HeldBody.IsValid() )
-        {
-            HeldBody?.GetGameObject()?.Tags.Remove( "held" );
-        }
+		if ( mousePanelEvent.MouseButton == MouseButtons.Left )
+		{
+			if ( HeldBody.IsValid() )
+        	{
+            	HeldBody?.GetGameObject()?.Tags.Remove( "held" );
 
-        HeldBody = null;
+                if ( HeldBody?.GetGameObject()?.Root.Components.TryGet<SkinnedModelRenderer>( out var r, FindMode.EnabledInSelfAndDescendants ) ?? false)
+                {
+                    r.Set( "b_open", false );
+                }
+        	}
+
+        	HeldBody = null;
+		}
     }
 
 	/// <summary>

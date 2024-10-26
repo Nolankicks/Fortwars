@@ -128,6 +128,26 @@
       ]
     },
     {
+      "__guid": "2018e020-9950-4074-9278-37620e634d1f",
+      "Flags": 0,
+      "Name": "wooden_crate (5)",
+      "Position": "605.7158,260.1906,256.1458",
+      "Rotation": "-0.0001061985,-0.0000368379,0.517315,0.8557951",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.Prop",
+          "__guid": "c7d3a032-4006-4ca9-a276-c89ff1a3f20b",
+          "BodyGroups": 18446744073709551615,
+          "Health": 50,
+          "IsStatic": false,
+          "Model": "models/sbox_props/wooden_crate/wooden_crate.vmdl",
+          "StartAsleep": false,
+          "Tint": "1,1,1,1"
+        }
+      ]
+    },
+    {
       "__guid": "6062f7ab-4a6e-4ed9-9936-7fe157603ff7",
       "Flags": 0,
       "Name": "wooden_crate (4)",
@@ -278,6 +298,50 @@
       "Enabled": true,
       "Components": [
         {
+          "__type": "Sandbox.TrailRenderer",
+          "__guid": "280d2cd0-917f-4768-b1bc-34952e44c372",
+          "BlendMode": "Normal",
+          "CastShadows": false,
+          "Color": {
+            "color": [
+              {
+                "t": 0.5,
+                "c": "0,1,1,1"
+              }
+            ],
+            "alpha": []
+          },
+          "Face": "Camera",
+          "LifeTime": 0.2,
+          "MaxPoints": 420,
+          "Opaque": true,
+          "PointDistance": 2,
+          "RenderOptions": {
+            "GameLayer": true,
+            "OverlayLayer": false,
+            "BloomLayer": false,
+            "AfterUILayer": false
+          },
+          "Texturing": {
+            "WorldSpace": true,
+            "UnitsPerTexture": 10,
+            "Scale": 1
+          },
+          "Width": [
+            {
+              "x": 0.67410713,
+              "y": 1
+            },
+            {
+              "x": 1,
+              "y": 0.021276595,
+              "in": 3.684211,
+              "out": -3.684211
+            }
+          ],
+          "Wireframe": false
+        },
+        {
           "__type": "Sandbox.Prop",
           "__guid": "e42371f3-9b7c-4cf4-a6f5-02a09301ef2c",
           "BodyGroups": 18446744073709551615,
@@ -286,10 +350,29 @@
           "Model": "models/rollermine.vmdl",
           "StartAsleep": false,
           "Tint": "1,0.01395,0.3262,1"
+        }
+      ]
+    },
+    {
+      "__guid": "7abb3c1a-c4c1-4d4a-8e96-205e60337731",
+      "Flags": 0,
+      "Name": "rollermine (5)",
+      "Position": "463.4892,292.6838,397.944",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.Prop",
+          "__guid": "eaec697c-768f-4096-8408-e3a2ffd304e5",
+          "BodyGroups": 18446744073709551615,
+          "Health": 0,
+          "IsStatic": false,
+          "Model": "models/rollermine.vmdl",
+          "StartAsleep": false,
+          "Tint": "0.58333,0,1,1"
         },
         {
           "__type": "Sandbox.TrailRenderer",
-          "__guid": "280d2cd0-917f-4768-b1bc-34952e44c372",
+          "__guid": "ee30d3c7-52c3-408a-b081-de34422e809c",
           "BlendMode": "Normal",
           "CastShadows": false,
           "Color": {
