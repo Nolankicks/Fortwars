@@ -20,6 +20,7 @@
       "__guid": "c24cdc36-7f7b-461a-80da-2f1a95e6614d",
       "Flags": 0,
       "Name": "Map",
+      "Tags": "map",
       "Enabled": true,
       "Components": [
         {
@@ -497,7 +498,7 @@
       "__guid": "4ecf6cda-52c2-4767-9bb9-f43e840e5f33",
       "Flags": 0,
       "Name": "Barriers",
-      "Tags": "no_build",
+      "Tags": "no_build,map",
       "Enabled": true,
       "Children": [
         {
@@ -1540,6 +1541,7 @@
       "Flags": 0,
       "Name": "Door01",
       "Position": "0,0,128.0005",
+      "Tags": "map",
       "Enabled": true,
       "NetworkMode": 1,
       "Components": [
@@ -1674,6 +1676,7 @@
       "Flags": 0,
       "Name": "Door01 (1)",
       "Position": "768,0,256",
+      "Tags": "map",
       "Enabled": true,
       "NetworkMode": 1,
       "Components": [
@@ -1821,7 +1824,7 @@
       "Flags": 0,
       "Name": "Box",
       "Position": "896,-976,256.0139",
-      "Tags": "red",
+      "Tags": "red,map",
       "Enabled": true,
       "Components": [
         {
@@ -1951,7 +1954,7 @@
       "Flags": 0,
       "Name": "Box (2)",
       "Position": "896,1096,256.0139",
-      "Tags": "red",
+      "Tags": "red,map",
       "Enabled": true,
       "Components": [
         {
@@ -2081,7 +2084,7 @@
       "Flags": 0,
       "Name": "Box (1)",
       "Position": "896,-1120,256.0139",
-      "Tags": "blue",
+      "Tags": "blue,map",
       "Enabled": true,
       "Components": [
         {
@@ -2211,7 +2214,7 @@
       "Flags": 0,
       "Name": "Box (3)",
       "Position": "896,952,256.0139",
-      "Tags": "blue",
+      "Tags": "blue,map",
       "Enabled": true,
       "Components": [
         {
@@ -2341,7 +2344,7 @@
       "Flags": 0,
       "Name": "Cube",
       "Position": "928,1280,160",
-      "Tags": "red",
+      "Tags": "red,map",
       "Enabled": true,
       "Components": [
         {
@@ -2374,7 +2377,7 @@
       "Flags": 0,
       "Name": "Cube (3)",
       "Position": "928,-496,160",
-      "Tags": "red",
+      "Tags": "red,map",
       "Enabled": true,
       "Components": [
         {
@@ -2407,7 +2410,7 @@
       "Flags": 0,
       "Name": "Cube (1)",
       "Position": "928,1376,160",
-      "Tags": "blue",
+      "Tags": "blue,map",
       "Enabled": true,
       "Components": [
         {
@@ -2440,7 +2443,7 @@
       "Flags": 0,
       "Name": "Cube (2)",
       "Position": "928,-400,160",
-      "Tags": "blue",
+      "Tags": "blue,map",
       "Enabled": true,
       "Components": [
         {
@@ -2473,6 +2476,7 @@
       "Flags": 0,
       "Name": "Death Trigger",
       "Position": "0,0,-1627.711",
+      "Tags": "map",
       "Enabled": true,
       "Components": [
         {
@@ -2607,6 +2611,7 @@
       "Flags": 0,
       "Name": "Water",
       "Position": "0,0,-605.4902",
+      "Tags": "map",
       "Enabled": true,
       "Components": [
         {
@@ -2758,6 +2763,7 @@
       "Flags": 0,
       "Name": "Box",
       "Position": "-1008.783,1847.397,64",
+      "Tags": "map",
       "Enabled": true,
       "Components": [
         {
@@ -2887,6 +2893,7 @@
       "Flags": 0,
       "Name": "Box",
       "Position": "-1016,-1848,64.00006",
+      "Tags": "map",
       "Enabled": true,
       "Components": [
         {

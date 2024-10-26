@@ -1153,7 +1153,7 @@
     {
       "__guid": "604c0b83-a479-4d73-a62f-ec80f69493e3",
       "Flags": 0,
-      "Name": "Cube",
+      "Name": "Crate",
       "Position": "-410.6657,256,253.9576",
       "Scale": "1.9,1.9,1.9",
       "Tags": "map",
@@ -1186,7 +1186,7 @@
     {
       "__guid": "9849b79d-3c5e-4826-ac46-a02abf9ccdaf",
       "Flags": 0,
-      "Name": "Cube (4)",
+      "Name": "Crate",
       "Position": "411.4991,256,253.9576",
       "Scale": "1.9,1.9,1.9",
       "Tags": "map",
@@ -1269,34 +1269,6 @@
       "OwnerTransfer": 0,
       "__Prefab": "prefabs/rollermine.prefab",
       "__PrefabVariables": {}
-    },
-    {
-      "__guid": "b284b1c8-013e-4a31-a937-46768ba7dd75",
-      "Flags": 0,
-      "Name": "probe",
-      "Position": "-773.7429,168.0918,63.9747",
-      "Enabled": true,
-      "Components": [
-        {
-          "__type": "Sandbox.EnvmapProbe",
-          "__guid": "813b3958-b6e8-47d3-a6af-633b8e0c0cbe",
-          "Bounds": {
-            "Mins": "-512,-512,-512",
-            "Maxs": "512,512,512"
-          },
-          "DelayBetweenUpdates": 0.1,
-          "Feathering": 0.25,
-          "FrameInterval": 5,
-          "MaxDistance": 512,
-          "MultiBounce": true,
-          "Projection": "Box",
-          "RenderDynamically": true,
-          "TintColor": "1,1,1,1",
-          "UpdateStrategy": "OnEnabled",
-          "ZFar": 4096,
-          "ZNear": 16
-        }
-      ]
     },
     {
       "__guid": "6cf7b4f7-f66c-43f4-a5cc-07a08e9f4037",
@@ -1898,7 +1870,6 @@
       "__guid": "c3c0387e-d68e-4950-a965-3174c88842da",
       "Flags": 0,
       "Name": "Fog",
-      "Position": "-3462.933,-1543.073,1036.2",
       "Enabled": true,
       "Components": [
         {
