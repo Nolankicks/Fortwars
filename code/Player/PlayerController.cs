@@ -4,23 +4,32 @@ using Sandbox.Services;
 
 public sealed partial class PlayerController : Component, IGameEventHandler<DamageEvent>, IGameEventHandler<PlayerReset>, IGameEventHandler<DeathEvent>, IGameEventHandler<OnPhysgunGrabChange>
 {
+	//Refrences
 	[Property, Category( "References" )] public ShrimpleCharacterController.ShrimpleCharacterController shrimpleCharacterController { get; set; }
 	[Property, Category( "References" ), Sync] public CitizenAnimationHelper AnimHelper { get; set; }
-	[Property, Sync] public int WalkSpeed { get; set; } = 300;
-	[Property, Sync] public int RunSpeed { get; set; } = 450;
-	[Sync, Property] public int StartingWalkSpeed { get; set; } = 300;
-	[Sync, Property] public int StartingRunSpeed { get; set; } = 450;
-	[Sync] public Angles EyeAngles { get; set; }
 	[Property, Category( "References" )] public GameObject Eye { get; set; }
 	[Property, Category( "References" )] public CapsuleCollider Hitbox { get; set; }
-	[Property, Sync] public ModelRenderer HoldRenderer { get; set; }
-	[Property, Sync] public Inventory Inventory { get; set; }
+	[Property, Sync, Category( "References" )] public ModelRenderer HoldRenderer { get; set; }
+	[Property, Sync, Category( "References" )] public Inventory Inventory { get; set; }
+
+	//Stats
+	[Property, Sync, Category( "Stats" )] public int WalkSpeed { get; set; } = 300;
+	[Property, Sync, Category( "Stats" )] public int RunSpeed { get; set; } = 450;
+	[Property, Sync, Category( "Stats" ), ReadOnly] public int Kills { get; set; }
+	[Property, Sync, Category( "Stats" ), ReadOnly] public int Deaths { get; set; }
+
+	//Saved properties
+	[Sync] public int StartingWalkSpeed { get; set; } = 300;
+	[Sync] public int StartingRunSpeed { get; set; } = 450;
+
+	[Sync] public Angles EyeAngles { get; set; }
+
+	//Required components
 	[RequireComponent, Sync] public HealthComponent HealthComponent { get; set; }
-	[Sync, Change( nameof( OnHoldTypeChanged ) )] public CitizenAnimationHelper.HoldTypes HoldType { get; set; }
 	[RequireComponent, Sync] public TeamComponent TeamComponent { get; set; }
-	[Property, Sync] public int Kills { get; set; }
-	[Property, Sync] public int Deaths { get; set; }
-	[Property, Sync] public Transform RespawnPoint { get; set; }
+
+	[Sync, Change( nameof( OnHoldTypeChanged ) )] public CitizenAnimationHelper.HoldTypes HoldType { get; set; }
+	[Sync] public Transform RespawnPoint { get; set; }
 	[Sync] public bool IsCrouching { get; set; } = false;
 	public Vector3 DeathPos { get; set; }
 	public bool IsRespawning { get; set; } = false;
@@ -61,13 +70,6 @@ public sealed partial class PlayerController : Component, IGameEventHandler<Dama
 		StartingRunSpeed = RunSpeed;
 
 		RespawnPoint = Transform.World;
-
-		var gs = Scene.GetAll<GameSystem>()?.FirstOrDefault();
-
-		if ( !gs.IsValid() )
-			return;
-
-		//MountAllAssets( gs.MountedIndents );
 	}
 
 	[Broadcast]
@@ -403,22 +405,6 @@ public sealed partial class PlayerController : Component, IGameEventHandler<Dama
 	{
 		go.Enabled = enable;
 	}
-
-	/*[Broadcast]
-	public async void MountAllAssets( List<string> indents )
-	{
-		foreach ( var asset in indents )
-		{
-			var package = await Package.Fetch( asset, false );
-
-			if ( package is null )
-				return;
-
-			await package.MountAsync();
-		}
-
-		Log.Info( "Mounted all assets" );
-	}/*/
 
 	[Authority]
 	public void SetSpeed( int walkSpeed, int runSpeed )

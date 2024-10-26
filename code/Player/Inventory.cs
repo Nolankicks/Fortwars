@@ -6,20 +6,15 @@ public record OnItemEquipped() : IGameEvent;
 
 public sealed class Inventory : Component
 {
-	[Property] public List<WeaponData> StartingWeapons { get; set; } = new();
-
-	[Property, Sync] public List<GameObject> Items { get; set; } = new();
-	[Property, Sync] public List<WeaponData> ItemsData { get; set; } = new();
-
-	[Property, Sync] public int Index { get; set; } = 0;
-
-	[Property, Sync] public GameObject CurrentItem { get; set; }
-	[Property, Sync] public WeaponData CurrentWeaponData { get; set; }
-
+	[Property, Sync, Category( "Lists" )] public List<GameObject> Items { get; set; } = new();
+	[Property, Sync, Category( "Lists" )] public List<WeaponData> ItemsData { get; set; } = new();
+	[Property, Sync, Category( "Current Item" )] public int Index { get; set; } = 0;
+	[Property, Sync, Category( "Current Item" )] public GameObject CurrentItem { get; set; }
+	[Property, Sync, Category( "Current Item" )] public WeaponData CurrentWeaponData { get; set; }
 	[Sync] public PlayerClass SelectedClass { get; set; }
 	public bool CanScrollSwitch { get; set; } = true;
 
-	[Button]
+	[Button, Category( "Buttons" )]
 	public void SwapItemsButton()
 	{
 		SwapItems( 2, 1 );
@@ -138,7 +133,7 @@ public sealed class Inventory : Component
 		ItemsData.Clear();
 	}
 
-	[Button]
+	[Button, Category( "Buttons" )]
 	public void AddItemButton()
 	{
 		AddItem( ItemsData[0] );
@@ -209,13 +204,13 @@ public sealed class Inventory : Component
 		ItemsData.Insert( index, item );
 	}
 
-	[Button]
+	[Button, Category( "Buttons" )]
 	public void AddItemAtButton()
 	{
 		AddItemAt( ItemsData[1], 0 );
 	}
 
-	[Button]
+	[Button, Category( "Buttons" )]
 	public void RemoveItemButton()
 	{
 		RemoveItem( Items[0] );
@@ -307,7 +302,7 @@ public sealed class Inventory : Component
 		CurrentItem.Dispatch( new OnItemEquipped() );
 	}
 
-	[Button, Authority]
+	[Button, Authority, Category( "Buttons" )]
 	public void DisableAll()
 	{
 		foreach ( var item in Items )

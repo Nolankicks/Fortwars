@@ -63,8 +63,9 @@ IGameEventHandler<OnGameOvertimeBuild>, IGameEventHandler<OnGameOvertimeFight>
 	public bool CountUp => State == GameState.Waiting;
 
 	[Sync] public int Overtimes { get; set; } = 0;
-	//[Property, Sync, Category( "Game Data" )] public List<string> MountedIndents { get; set; } = new();
+	
 	[Property, Category( "Lobby Settings" ), InlineEditor] public LobbySettings LobbySettings { get; set; } = new();
+	[Property, Sync, Category( "LobbySettings")] public int MaxProps { get; set; } = 50;
 
 	[Property, Category( "Game Config" )] public Dictionary<string, int> ClassicIndents { get; set; } = new();
 
@@ -77,8 +78,6 @@ IGameEventHandler<OnGameOvertimeBuild>, IGameEventHandler<OnGameOvertimeFight>
 	public IEnumerable<FortwarsProp> BlueProps => Scene?.GetAll<FortwarsProp>().Where( x => x.Team == Team.Blue );
 	public IEnumerable<FortwarsProp> YellowProps => Scene?.GetAll<FortwarsProp>().Where( x => x.Team == Team.Yellow );
 	public IEnumerable<FortwarsProp> GreenProps => Scene?.GetAll<FortwarsProp>().Where( x => x.Team == Team.Green );
-
-	[Property, Sync] public int MaxProps { get; set; } = 50;
 
 	public bool IsPlaying => State == GameState.BuildMode || State == GameState.FightMode || State == GameState.OvertimeBuild || State == GameState.OvertimeFight;
 
