@@ -182,8 +182,15 @@ public sealed class Propgun : Item
 
 		if ( CanPlace && Input.Pressed( "attack1" ) )
 		{
-			var sound = Sound.Play( "sounds/toolgun/toolgun-fire.sound", WorldPosition );
-			sound.Volume = 0.5f;
+			var file = Cloud.SoundEvent( "mdlresrc.toolgunshoot" );
+
+			if ( file.IsValid() )
+			{
+				var sound = Sound.Play( file, WorldPosition );
+
+				if ( sound.IsValid() )
+					sound.Volume = 0.5f;
+			}
 
 			if ( !PlayerController.Local.TeamComponent.IsValid() )
 				return;
@@ -251,8 +258,15 @@ public sealed class Propgun : Item
 
 		if ( CanPlace && Input.Pressed( "attack1" ) )
 		{
-			var sound = Sound.Play( "sounds/toolgun/toolgun-fire.sound", WorldPosition );
-			sound.Volume = 0.5f;
+			var file = Cloud.SoundEvent( "mdlresrc.toolgunshoot" );
+
+			if ( file.IsValid() )
+			{
+				var sound = Sound.Play( file, WorldPosition );
+
+				if ( sound.IsValid() )
+					sound.Volume = 0.5f;
+			}
 
 			if ( !player.TeamComponent.IsValid() )
 				return;
