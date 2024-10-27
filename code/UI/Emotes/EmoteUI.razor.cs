@@ -36,6 +36,8 @@ public partial class EmoteUI : PanelComponent
 		{
 			var go = GameObject.Clone( "prefabs/WorldEmote.prefab" );
 			go.WorldPosition = player.WorldPosition + Vector3.Up * 96.0f;
+
+			go.Components.Get<SpriteRenderer>( FindMode.InDescendants ).Texture = emote.Icon;
 		}
 	}
 }

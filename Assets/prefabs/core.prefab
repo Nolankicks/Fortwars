@@ -191,6 +191,18 @@
                   {
                     "Name": "Happy",
                     "Icon": "textures/emotes/emote_facehappy.vtex"
+                  },
+                  {
+                    "Name": "Angry",
+                    "Icon": "textures/emotes/emote_faceangry.vtex"
+                  },
+                  {
+                    "Name": "Alert",
+                    "Icon": "textures/emotes/emote_alert.vtex"
+                  },
+                  {
+                    "Name": "Laugh",
+                    "Icon": "textures/emotes/emote_laugh.vtex"
                   }
                 ],
                 "MyStringValue": "Hello World!"
