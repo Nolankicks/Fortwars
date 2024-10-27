@@ -1,6 +1,3 @@
-
-using System;
-using System.Threading.Tasks;
 using Sandbox.Events;
 
 public class Gravgun : Item, IGameEventHandler<DeathEvent>
@@ -37,6 +34,8 @@ public class Gravgun : Item, IGameEventHandler<DeathEvent>
 			.IgnoreGameObjectHierarchy( GameObject.Root )
 			.WithoutTags( FW.Tags.Trigger, FW.Tags.Player, FW.Tags.Map );
 
+
+	[Property] ParticleEmitter GravGunParticles { get; set; }
 	protected override void OnUpdate()
 	{
 		if ( IsProxy )
@@ -62,6 +61,10 @@ public class Gravgun : Item, IGameEventHandler<DeathEvent>
 
 		GrabMove( player.Eye.WorldPosition, player.EyeAngles.Forward, player.Eye.WorldRotation );
 		PhysicsStep();
+
+
+		GravGunParticles.Enabled = GrabbedObject.IsValid();
+
 	}
 
 	protected override void OnFixedUpdate()
