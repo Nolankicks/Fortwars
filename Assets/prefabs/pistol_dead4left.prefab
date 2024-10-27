@@ -13,7 +13,7 @@
         "Automatic": true,
         "Damage": 25,
         "FireRate": 1,
-        "FireSound": "sounds/toolgun/toolgun-fire.sound",
+        "FireSound": "audio/pistol.fire.sound",
         "HoldType": "Pistol",
         "IsShotgun": false,
         "MaxAmmo": 17,
@@ -135,8 +135,7 @@
   "ResourceVersion": 1,
   "__references": [
     "facepunch.v_usp#64712",
-    "facepunch.w_usp#17493",
-    "mdlresrc.toolgunshoot#10038"
+    "facepunch.w_usp#17493"
   ],
   "__version": 1
 }

@@ -13,7 +13,7 @@
         "Automatic": true,
         "Damage": 20,
         "FireRate": 0.5,
-        "FireSound": "sounds/toolgun/toolgun-fire.sound",
+        "FireSound": "audio/shotgun.fire.sound",
         "HoldType": "Shotgun",
         "IsShotgun": true,
         "MaxAmmo": 4,
@@ -133,8 +133,7 @@
   "ResourceVersion": 1,
   "__references": [
     "facepunch.v_spaghellim4#64353",
-    "facepunch.w_spaghellim4#58057",
-    "mdlresrc.toolgunshoot#10038"
+    "facepunch.w_spaghellim4#58057"
   ],
   "__version": 1
 }
