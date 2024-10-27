@@ -8,7 +8,7 @@ public sealed class Propgun : Item
 	public Angles PropRotation { get; set; }
 	[Property] bool MustBeUp { get; set; } = false;
 	[Property] public bool UsingMouseInput { get; set; } = false;
-
+	[Property] public SoundEvent ShootSound { get; set; }
 	[RequireComponent] Viewmodel VModel { get; set; }
 
 	protected override void OnStart()
@@ -182,11 +182,9 @@ public sealed class Propgun : Item
 
 		if ( CanPlace && Input.Pressed( "attack1" ) )
 		{
-			var file = Cloud.SoundEvent( "mdlresrc.toolgunshoot" );
-
-			if ( file.IsValid() )
+			if ( ShootSound.IsValid() )
 			{
-				var sound = Sound.Play( file, WorldPosition );
+				var sound = Sound.Play( ShootSound, WorldPosition );
 
 				if ( sound.IsValid() )
 					sound.Volume = 0.5f;
@@ -258,11 +256,9 @@ public sealed class Propgun : Item
 
 		if ( CanPlace && Input.Pressed( "attack1" ) )
 		{
-			var file = Cloud.SoundEvent( "mdlresrc.toolgunshoot" );
-
-			if ( file.IsValid() )
+			if ( ShootSound.IsValid() )
 			{
-				var sound = Sound.Play( file, WorldPosition );
+				var sound = Sound.Play( ShootSound, WorldPosition );
 
 				if ( sound.IsValid() )
 					sound.Volume = 0.5f;

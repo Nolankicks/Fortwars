@@ -18,13 +18,16 @@
       {
         "__type": "Propgun",
         "__guid": "0cedd94d-76f3-4c31-82dc-14ddcd516f68",
+        "AmmoPerShot": 1,
         "HoldType": "Pistol",
         "MaxAmmo": 30,
         "MustBeUp": true,
         "Offset": "2.872807,0.2954723,-2.225528",
         "Prop": "models/sbox_props/wooden_crate/wooden_crate.vmdl",
         "PropIdent": "facepunch.wooden_crate",
+        "ShootSound": "audio/propplace.mp3.sound",
         "UsesAmmo": false,
+        "UsingMouseInput": false,
         "WorldModel": "models/weapons/sbox_pistol_usp/w_usp.vmdl"
       },
       {
@@ -95,7 +98,30 @@
         ]
       }
     ],
-    "__variables": []
+    "__variables": [],
+    "__properties": {
+      "FixedUpdateFrequency": 50,
+      "MaxFixedUpdates": 5,
+      "NetworkFrequency": 30,
+      "NetworkInterpolation": true,
+      "PhysicsSubSteps": 1,
+      "ThreadedAnimation": true,
+      "TimeScale": 1,
+      "UseFixedUpdate": true,
+      "Metadata": {},
+      "NavMesh": {
+        "Enabled": false,
+        "IncludeStaticBodies": true,
+        "IncludeKeyframedBodies": true,
+        "EditorAutoUpdate": true,
+        "AgentHeight": 64,
+        "AgentRadius": 16,
+        "AgentStepSize": 18,
+        "AgentMaxSlope": 40,
+        "ExcludedBodies": "",
+        "IncludedBodies": ""
+      }
+    }
   },
   "ShowInMenu": false,
   "MenuPath": null,
