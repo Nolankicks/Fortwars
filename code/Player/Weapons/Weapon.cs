@@ -206,6 +206,8 @@ public class Weapon : Item, IGameEventHandler<OnReloadEvent>
 			health.TakeDamage( local.GameObject, Damage, tr.EndPosition, tr.Normal );
 
 			SpawnParticleEffect( Cloud.ParticleSystem( "bolt.impactflesh" ), tr.EndPosition );
+
+			Sound.Play( "hitmarker" );
 		}
 
 		var damage = new DamageInfo( Damage, GameObject, GameObject, tr.Hitbox );

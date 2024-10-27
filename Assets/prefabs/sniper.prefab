@@ -12,7 +12,7 @@
         "AngleOffsetScale": 0.01,
         "AttackAnimName": "b_attack",
         "Automatic": false,
-        "Damage": 10,
+        "Damage": 70,
         "FireRate": 1,
         "FireSound": "audio/rifle.fire.sound",
         "HoldType": "Rifle",

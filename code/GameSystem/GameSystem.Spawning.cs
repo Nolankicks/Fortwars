@@ -44,7 +44,20 @@ public partial class GameSystem
 				if ( !inv.IsValid() )
 					return;
 
-				playerController.TeamComponent?.SetTeam( Game.Random.FromList( teams ) );
+				if ( !FourTeams )
+				{
+					var redPlayers = Scene.GetAllComponents<TeamComponent>().Where( x => x.Team == Team.Red ).Count();
+					var bluePlayers = Scene.GetAllComponents<TeamComponent>().Where( x => x.Team == Team.Blue ).Count();
+					if ( redPlayers > bluePlayers )
+						playerController.TeamComponent?.SetTeam( Team.Blue );
+					else
+						playerController.TeamComponent?.SetTeam( Team.Red );
+
+				}
+				else
+				{
+					playerController.TeamComponent?.SetTeam( Game.Random.FromList( teams ) );
+				}
 
 				playerController.TeleportToTeamSpawnPoint();
 
