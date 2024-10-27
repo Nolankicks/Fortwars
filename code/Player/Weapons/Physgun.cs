@@ -24,8 +24,14 @@ public class Physgun : Item
 
 	[Sync] public int GrabbedBone { get; set; }
 	[Sync] public Vector3 GrabbedPosition { get; set; }
-
 	[Sync] public GameObject GrabbedObject { get; set; }
+
+	public bool MouseInput { get; set; } = false;
+
+	public PhysicsBody MouseBody { get; set; }
+	public float DistanceBetweenMouseObject { get; set; }
+	public Rotation StartingBodyRotation { get; set; }
+
 	protected override void OnUpdate()
 	{
 		if ( IsProxy )
@@ -34,6 +40,83 @@ public class Physgun : Item
 		var Player = PlayerController.Local;
 
 		if ( !Player.IsValid() ) return;
+
+		if ( Input.Pressed( "mouseprop" ) )
+		{
+			MouseInput = !MouseInput;
+
+			Mouse.Visible = MouseInput;
+		}
+
+		// Rotate the viewmodel around
+		if ( MouseInput )
+		{
+			WorldRotation = Rotation.Lerp( WorldRotation, Rotation.LookAt( Scene.Camera.ScreenPixelToRay( Mouse.Position ).Forward ), Time.Delta * 20.0f );
+		}
+		else
+		{
+			LocalRotation = Rotation.Identity;
+		}
+
+		if ( MouseInput )
+		{
+			var tr = Scene.Trace.Ray( Scene.Camera.ScreenPixelToRay( Mouse.Position ), 1000 )
+				.IgnoreGameObjectHierarchy( GameObject.Root )
+				.WithoutTags( FW.Tags.Player, FW.Tags.Trigger, FW.Tags.Map, "held" )
+				.Run();
+
+			if ( Input.Pressed( "attack1" ) )
+			{
+				if ( tr.Body.IsValid() )
+				{
+					var go = tr.Body.GetGameObject();
+					StartingBodyRotation = tr.Body.Rotation;
+
+					if ( go.IsValid() )
+					{
+						go.Network.TakeOwnership();
+
+						AddTag( go, "held" );
+					}
+
+					DistanceBetweenMouseObject = tr.Distance;
+
+					MouseBody = tr.Body;
+					MouseBody.BodyType = PhysicsBodyType.Dynamic;
+				}
+			}
+
+			if ( Input.Released( "attack1" ) )
+			{
+				if ( MouseBody.IsValid() )
+				{
+					MouseBody.BodyType = PhysicsBodyType.Static;
+
+					var go = MouseBody.GetGameObject();
+
+					if ( go.IsValid() )
+					{
+						go.Network.DropOwnership();
+
+						RemoveTag( go, "held" );
+					}
+				}
+
+				MouseBody = null;
+			}
+
+			if ( MouseBody.IsValid() )
+			{
+				var GrabTrace = Scene.Trace.Ray( Scene.Camera.ScreenPixelToRay( Mouse.Position ), DistanceBetweenMouseObject )
+					.WithoutTags( "held", FW.Tags.Player, FW.Tags.Trigger, FW.Tags.Map )
+					.Run();
+
+				MouseBody.SmoothMove( GrabTrace.EndPosition, 0.5f, Time.Delta );
+				MouseBody.Rotation = StartingBodyRotation;
+			}
+
+			return;
+		}
 
 		var eyePos = Player.Eye.WorldPosition;
 		var eyeDir = Player.EyeAngles.Forward;
@@ -313,5 +396,16 @@ public class Physgun : Item
 		localRot = eye.Inverse * localRot;
 
 		HeldRotation = localRot * HeldRotation;
+	}
+
+	protected override void OnDisabled()
+	{
+		if ( IsProxy )
+			return;
+
+		GrabEnd();
+
+		MouseInput = false;
+		Mouse.Visible = false;
 	}
 }
