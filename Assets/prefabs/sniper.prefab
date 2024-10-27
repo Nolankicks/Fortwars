@@ -61,7 +61,7 @@
               "BloomLayer": false,
               "AfterUILayer": false
             },
-            "RenderType": "On",
+            "RenderType": "Off",
             "Tint": "1,1,1,1",
             "UseAnimGraph": true
           },
@@ -846,7 +846,7 @@
                   "BloomLayer": false,
                   "AfterUILayer": false
                 },
-                "RenderType": "On",
+                "RenderType": "Off",
                 "Tint": "1,1,1,1",
                 "UseAnimGraph": true
               },
