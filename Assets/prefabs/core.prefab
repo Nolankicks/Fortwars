@@ -154,6 +154,40 @@
         ],
         "Children": [
           {
+            "__guid": "20958d1c-4a1a-43f9-b30d-c45ab8608127",
+            "Flags": 0,
+            "Name": "Emote",
+            "Enabled": true,
+            "Components": [
+              {
+                "__type": "EmoteUI",
+                "__guid": "25f09a36-943a-4157-96ce-9ddaba60b191",
+                "ChatEmotes": [
+                  {
+                    "Name": "Happy",
+                    "Icon": "textures/emotes/emote_facehappy.vtex",
+                    "ChatMessage": ":)"
+                  },
+                  {
+                    "Name": "Angry",
+                    "Icon": "textures/emotes/emote_faceangry.vtex",
+                    "ChatMessage": "\u003E:("
+                  },
+                  {
+                    "Name": "Alert",
+                    "Icon": "textures/emotes/emote_alert.vtex",
+                    "ChatMessage": "!!!"
+                  },
+                  {
+                    "Name": "Laugh",
+                    "Icon": "textures/emotes/emote_laugh.vtex",
+                    "ChatMessage": "XD"
+                  }
+                ]
+              }
+            ]
+          },
+          {
             "__guid": "bf52124b-0cae-407c-9394-0ac8d638d6bc",
             "Flags": 0,
             "Name": "Chat",
@@ -175,37 +209,6 @@
               {
                 "__type": "PopupHolder",
                 "__guid": "654d225e-d44a-4c09-bfa2-67244aa0b124"
-              }
-            ]
-          },
-          {
-            "__guid": "20958d1c-4a1a-43f9-b30d-c45ab8608127",
-            "Flags": 0,
-            "Name": "Emote",
-            "Enabled": true,
-            "Components": [
-              {
-                "__type": "EmoteUI",
-                "__guid": "25f09a36-943a-4157-96ce-9ddaba60b191",
-                "ChatEmotes": [
-                  {
-                    "Name": "Happy",
-                    "Icon": "textures/emotes/emote_facehappy.vtex"
-                  },
-                  {
-                    "Name": "Angry",
-                    "Icon": "textures/emotes/emote_faceangry.vtex"
-                  },
-                  {
-                    "Name": "Alert",
-                    "Icon": "textures/emotes/emote_alert.vtex"
-                  },
-                  {
-                    "Name": "Laugh",
-                    "Icon": "textures/emotes/emote_laugh.vtex"
-                  }
-                ],
-                "MyStringValue": "Hello World!"
               }
             ]
           }
