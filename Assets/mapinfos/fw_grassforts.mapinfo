@@ -7,6 +7,7 @@
   "Author": "Ape Tavern",
   "PackageIndent": "https://sbox.game/apetavern/fw_grassforts",
   "Hidden": false,
+  "Order": 4,
   "__references": [],
   "__version": 0
 }

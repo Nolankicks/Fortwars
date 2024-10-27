@@ -7,6 +7,7 @@
   "Author": "Ape Tavern",
   "PackageIndent": "apetavern.fw_basin",
   "Hidden": false,
+  "Order": 3,
   "__references": [],
   "__version": 0
 }

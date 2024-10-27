@@ -16,7 +16,7 @@
 		case MapType.Official:
 			<div class="maps">
 				<div class="holder">
-				@foreach ( var map in ResourceLibrary.GetAll<MapInfo>() )
+				@foreach ( var map in ResourceLibrary.GetAll<MapInfo>().OrderBy( x => x.Order ) )
 				{
                     if ( map.Hidden )
                         continue;

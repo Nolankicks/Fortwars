@@ -10,4 +10,5 @@ public sealed class MapInfo : GameResource
 	public string Author { get; set; }
 	public string PackageIndent { get; set; }
 	public bool Hidden { get; set; } = false;
+	public int Order { get; set; } = 0;
 }
