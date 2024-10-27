@@ -6,20 +6,24 @@ public record OnReloadEvent() : IGameEvent;
 
 public class Item : Component, IGameEventHandler<OnItemEquipped>
 {
-	[Property, Sync, Category( "Base Item" )] public CitizenAnimationHelper.HoldTypes HoldType { get; set; }
-	[Property, Category( "Base Item" )] public Model WorldModel { get; set; }
-	[Property, Sync, Category( "Base Item" )] public Vector3 Offset { get; set; }
+	[Property, Sync, Feature( "Base Item" )] public CitizenAnimationHelper.HoldTypes HoldType { get; set; }
+	[Property, Feature( "Base Item" )] public Model WorldModel { get; set; }
+	[Property, Sync, Feature( "Base Item" )] public Vector3 Offset { get; set; }
 	public int Ammo { get; set; }
-	[Property, ShowIf( "UsesAmmo", true ), Category( "Base Item" )] public int MaxAmmo { get; set; } = 30;
-	[Property, Category( "Base Item" )] public bool UsesAmmo { get; set; } = true;
+
+	[Property, Feature( "Base Item" )] public bool UsesAmmo { get; set; } = true;
+
+	[Property, ShowIf( "UsesAmmo", true ), Feature( "Base Item" )] public int MaxAmmo { get; set; } = 30;
+
+	[Property, ShowIf( "UsesAmmo", true ), Feature( "Base Item" )] public int AmmoPerShot { get; set; } = 1;
 
 	[Authority]
-	public void SubtractAmmo( int amount = 1 )
+	public void SubtractAmmo()
 	{
 		if ( !UsesAmmo || Ammo <= 0 )
 			return;
 
-		Ammo -= amount;
+		Ammo -= AmmoPerShot;
 	}
 
 	public bool CanUse()
@@ -107,6 +111,8 @@ public class Weapon : Item, IGameEventHandler<OnReloadEvent>
 			for ( var i = 0; i < TraceTimes; i++ )
 				Shoot();
 
+			SubtractAmmo();
+
 			var local = PlayerController.Local;
 
 			if ( local.IsValid() )
@@ -145,8 +151,6 @@ public class Weapon : Item, IGameEventHandler<OnReloadEvent>
 
 	public void Shoot()
 	{
-		SubtractAmmo();
-
 		var local = PlayerController.Local;
 
 		var cam = Scene.Camera;

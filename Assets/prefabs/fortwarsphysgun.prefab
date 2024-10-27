@@ -19,6 +19,12 @@
         "__type": "Physgun",
         "__guid": "310b6a92-94d6-4c64-9bdd-c082fb7fc75a",
         "HoldType": "Pistol",
+        "LineRenderer": {
+          "_type": "component",
+          "component_id": "dcb16679-9c55-42bf-965c-79fc8572b367",
+          "go": "c8814bc0-fc4a-48cf-8c91-0c900b0191ef",
+          "component_type": "LineRenderer"
+        },
         "MaxAmmo": 30,
         "Offset": "0,0,0",
         "UsesAmmo": false,
@@ -37,6 +43,13 @@
         "CreateBoneObjects": false,
         "Model": "models/first_person/first_person_arms.vmdl",
         "Morphs": {},
+        "Parameters": {
+          "bools": {},
+          "ints": {},
+          "floats": {},
+          "vectors": {},
+          "rotations": {}
+        },
         "RenderOptions": {
           "GameLayer": false,
           "OverlayLayer": true,
@@ -63,6 +76,13 @@
             "MaterialOverride": "materials/dev/primary_white_emissive.vmat",
             "Model": "models/weapons/sbox_pistol_usp/v_usp.vmdl",
             "Morphs": {},
+            "Parameters": {
+              "bools": {},
+              "ints": {},
+              "floats": {},
+              "vectors": {},
+              "rotations": {}
+            },
             "RenderOptions": {
               "GameLayer": false,
               "OverlayLayer": true,
@@ -74,9 +94,94 @@
             "UseAnimGraph": true
           }
         ]
+      },
+      {
+        "__guid": "c8814bc0-fc4a-48cf-8c91-0c900b0191ef",
+        "Flags": 4096,
+        "Name": "LineRenderer",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.LineRenderer",
+            "__guid": "dcb16679-9c55-42bf-965c-79fc8572b367",
+            "CastShadows": false,
+            "Color": {
+              "color": [
+                {
+                  "c": "0.66047,0.88682,1,1"
+                },
+                {
+                  "t": 0.28418803,
+                  "c": "0,0.66667,1,1"
+                },
+                {
+                  "t": 0.6495727,
+                  "c": "0.41395,0.50186,1,1"
+                },
+                {
+                  "t": 0.8803419,
+                  "c": "0,0.66667,1,1"
+                }
+              ],
+              "alpha": []
+            },
+            "EndCap": "None",
+            "Face": "Camera",
+            "Opaque": true,
+            "Points": [
+              null
+            ],
+            "RenderOptions": {
+              "GameLayer": true,
+              "OverlayLayer": false,
+              "BloomLayer": false,
+              "AfterUILayer": false
+            },
+            "SplineBias": 0,
+            "SplineContinuity": 0,
+            "SplineInterpolation": 0,
+            "SplineTension": 0,
+            "StartCap": "None",
+            "UseVectorPoints": false,
+            "VectorPoints": [
+              "0,0,0",
+              "0,0,10"
+            ],
+            "Width": [
+              {
+                "x": 0.5,
+                "y": 1
+              }
+            ],
+            "Wireframe": false
+          }
+        ]
       }
     ],
-    "__variables": []
+    "__variables": [],
+    "__properties": {
+      "FixedUpdateFrequency": 50,
+      "MaxFixedUpdates": 5,
+      "NetworkFrequency": 30,
+      "NetworkInterpolation": true,
+      "PhysicsSubSteps": 1,
+      "ThreadedAnimation": true,
+      "TimeScale": 1,
+      "UseFixedUpdate": true,
+      "Metadata": {},
+      "NavMesh": {
+        "Enabled": false,
+        "IncludeStaticBodies": true,
+        "IncludeKeyframedBodies": true,
+        "EditorAutoUpdate": true,
+        "AgentHeight": 64,
+        "AgentRadius": 16,
+        "AgentStepSize": 18,
+        "AgentMaxSlope": 40,
+        "ExcludedBodies": "",
+        "IncludedBodies": ""
+      }
+    }
   },
   "ShowInMenu": false,
   "MenuPath": null,
@@ -87,6 +192,5 @@
     "facepunch.v_usp#64712",
     "facepunch.w_usp#17493"
   ],
-  "IsValid": true,
   "__version": 1
 }

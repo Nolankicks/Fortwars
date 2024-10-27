@@ -1,6 +1,6 @@
 
-using System;
 using Sandbox.Events;
+using System;
 
 public class Physgun : Item
 {
@@ -26,7 +26,6 @@ public class Physgun : Item
 	[Sync] public Vector3 GrabbedPosition { get; set; }
 
 	[Sync] public GameObject GrabbedObject { get; set; }
-
 	protected override void OnUpdate()
 	{
 		if ( IsProxy )
