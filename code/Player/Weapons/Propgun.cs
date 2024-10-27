@@ -182,7 +182,7 @@ public sealed class Propgun : Item
 
 		if ( CanPlace && Input.Pressed( "attack1" ) )
 		{
-			if ( ShootSound.IsValid() )
+			if ( ShootSound is not null )
 			{
 				var sound = Sound.Play( ShootSound, WorldPosition );
 
@@ -256,7 +256,7 @@ public sealed class Propgun : Item
 
 		if ( CanPlace && Input.Pressed( "attack1" ) )
 		{
-			if ( ShootSound.IsValid() )
+			if ( ShootSound is not null )
 			{
 				var sound = Sound.Play( ShootSound, WorldPosition );
 

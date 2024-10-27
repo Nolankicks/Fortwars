@@ -233,9 +233,7 @@ public class Weapon : Item, IGameEventHandler<OnReloadEvent>
 	{
 		if ( FireSound is not null )
 		{
-			var sound = Sound.Play( FireSound, pos );
-			if ( !sound.IsValid() )
-				return;
+			Sound.Play( FireSound, pos );
 		}
 
 		if ( !hit )
