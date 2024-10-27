@@ -52,15 +52,9 @@
           "__guid": "3128e215-bc23-4c0a-9d1a-27e932d727aa",
           "FogMode": "Enabled",
           "FogStrength": 1,
-          "LightColor": "0.62326,0.36043,0.13045,1",
+          "LightColor": "0.87163,0.57209,1,1",
           "Shadows": true,
           "SkyColor": "0.38605,0.38605,0.38605,0"
-        },
-        {
-          "__type": "Sandbox.AmbientLight",
-          "__guid": "45ec84a6-f432-4f42-bbd7-2d38311194dc",
-          "__enabled": false,
-          "Color": "0.07907,0.07907,0.07907,1"
         }
       ]
     },
@@ -1628,8 +1622,8 @@
               0,
               0,
               0,
-              1,
-              1
+              2,
+              2
             ],
             "EdgeFlags": [
               0,
@@ -1659,7 +1653,8 @@
             ],
             "Materials": [
               "materials/dev/reflectivity_30.vmat",
-              "materials/tools/toolsplayerclip.vmat"
+              "materials/tools/toolsplayerclip.vmat",
+              "materials/fortwars/barrier_neutral.vmat"
             ]
           },
           "SmoothingAngle": 40,
@@ -1702,29 +1697,29 @@
             ],
             "TextureCoord": [
               "1,0.75",
-              "-1,-0.9999998",
+              "5,-3",
               "1,-0.75",
               "-0.75,-0.9999998",
               "-1,-0.75",
-              "-1,-0.9999998",
+              "-7,-3",
               "-1,0.75",
               "-0.75,-0.9999998",
               "1,-0.75",
-              "1,0.9999998",
+              "-5,-1",
               "1,0.75",
               "0.75,0.9999998",
               "-1,0.75",
-              "1,0.9999998",
+              "7,-1",
               "-1,-0.75",
               "0.75,0.9999998",
               "0.75,-0.9999998",
-              "-1,0.9999998",
+              "5,-1",
               "-0.75,0.9999998",
-              "1,-0.9999998",
+              "-5,-3",
               "-0.75,0.9999998",
-              "1,-0.9999998",
+              "7,-3",
               "0.75,-0.9999998",
-              "-1,0.9999998"
+              "-7,-1"
             ],
             "TextureUAxis": [
               "1,0,0",
@@ -1732,7 +1727,7 @@
               "0,-1,0",
               "0,1,0",
               "-1,0,0",
-              "1,-0,0"
+              "1,0,0"
             ],
             "TextureVAxis": [
               "0,-1,0",
@@ -1740,31 +1735,31 @@
               "0,0,-1",
               "-0,0,-1",
               "0,0,-1",
-              "-0,0,-1"
+              "0,0,-1"
             ],
             "TextureScale": [
               "0.25,0.25",
               "0.25,0.25",
               "0.25,0.25",
               "0.25,0.25",
-              "0.5,0.5000001",
-              "0.5,0.5000001"
+              "0.25,0.25",
+              "0.25,0.25"
             ],
             "TextureOffset": [
               "0,0",
               "0,0",
               "0,0.002075195",
               "511.9999,512",
-              "0,255.9999",
-              "0,255.9999"
+              "0,0",
+              "0,0"
             ],
             "MaterialIndex": [
               0,
               0,
               0,
               0,
-              1,
-              1
+              2,
+              2
             ],
             "EdgeFlags": [
               0,
@@ -1794,7 +1789,8 @@
             ],
             "Materials": [
               "materials/dev/reflectivity_30.vmat",
-              "materials/tools/toolsplayerclip.vmat"
+              "materials/tools/toolsplayerclip.vmat",
+              "materials/fortwars/barrier_neutral.vmat"
             ]
           },
           "SmoothingAngle": 40,
@@ -1906,12 +1902,12 @@
               "48,239.9998"
             ],
             "MaterialIndex": [
-              1,
-              1,
-              1,
-              1,
-              1,
-              1
+              2,
+              2,
+              2,
+              2,
+              2,
+              2
             ],
             "EdgeFlags": [
               0,
@@ -1941,7 +1937,8 @@
             ],
             "Materials": [
               "materials/dev/reflectivity_30.vmat",
-              "materials/dev/primary_red.vmat"
+              "materials/dev/primary_red.vmat",
+              "materials/fortwars/barrier_red.vmat"
             ]
           },
           "SmoothingAngle": 40,
@@ -2036,12 +2033,12 @@
               "48,239.9998"
             ],
             "MaterialIndex": [
-              1,
-              1,
-              1,
-              1,
-              1,
-              1
+              2,
+              2,
+              2,
+              2,
+              2,
+              2
             ],
             "EdgeFlags": [
               0,
@@ -2071,7 +2068,8 @@
             ],
             "Materials": [
               "materials/dev/reflectivity_30.vmat",
-              "materials/dev/primary_blue.vmat"
+              "materials/dev/primary_blue.vmat",
+              "materials/fortwars/barrier_blue.vmat"
             ]
           },
           "SmoothingAngle": 40,
