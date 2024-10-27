@@ -22,7 +22,7 @@
         "ReloadAnimName": "b_reload",
         "ReloadDelay": 1,
         "ScopeOverlay": "materials/scope.vmat",
-        "Spread": 0.03,
+        "Spread": 0,
         "TraceTimes": 1,
         "UsesAmmo": true,
         "VModel": {

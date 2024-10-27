@@ -6,8 +6,6 @@ namespace Facepunch;
 public class ScopeWeaponComponent : Weapon
 {
 	[Property] public Material ScopeOverlay { get; set; }
-	[Property] public SoundEvent ZoomSound { get; set; }
-	[Property] public SoundEvent UnzoomSound { get; set; }
 
 	IDisposable renderHook;
 
