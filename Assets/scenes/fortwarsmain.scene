@@ -85,7 +85,7 @@
           "ExposureMethod": "RGB",
           "MaximumExposure": 2.65,
           "MinimumExposure": 1.7,
-          "Mode": "Legacy",
+          "Mode": "ACES",
           "Rate": 8.57
         },
         {
