@@ -16,7 +16,7 @@
         "FireRate": 1,
         "FireSound": "audio/rifle.fire.sound",
         "HoldType": "Rifle",
-        "MaxAmmo": 5,
+        "MaxAmmo": 8,
         "Offset": "0,0,0",
         "Range": 5000,
         "ReloadAnimName": "b_reload",

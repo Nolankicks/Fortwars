@@ -10,9 +10,10 @@
         {
           "__type": "Sandbox.SceneInformation",
           "__guid": "6ef5871a-c448-402d-9a22-929145f02b18",
+          "Author": "Ape Tavern",
           "Description": "",
           "SceneTags": "",
-          "Title": "easter"
+          "Title": "Easter"
         }
       ]
     },
@@ -2123,6 +2124,66 @@
           "SurfaceVelocity": "0,0,0"
         }
       ]
+    },
+    {
+      "__guid": "d0a38c2d-09e4-4688-9e28-88b5ca3daa4c",
+      "Flags": 0,
+      "Name": "Spawn",
+      "Position": "-736,697.7566,384",
+      "Rotation": "0,0,-0.5775297,0.8163697",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "TeamSpawnPoint",
+          "__guid": "ecb0631b-2e47-4bd2-8d86-a2abde73e0f1",
+          "Team": "None"
+        }
+      ]
+    },
+    {
+      "__guid": "9c6f6680-5dde-48a6-af0a-37c3278910c7",
+      "Flags": 0,
+      "Name": "Spawn (1)",
+      "Position": "-168,704,416",
+      "Rotation": "0,0,-0.845979,0.5332162",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "TeamSpawnPoint",
+          "__guid": "680becdd-d815-435f-b248-ed8845137827",
+          "Team": "None"
+        }
+      ]
+    },
+    {
+      "__guid": "23137694-ff20-4922-b0a1-b2e9ea90fb05",
+      "Flags": 0,
+      "Name": "Spawn (2)",
+      "Position": "704,736,384",
+      "Rotation": "0,0,-0.845979,0.5332162",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "TeamSpawnPoint",
+          "__guid": "9ab05305-e947-47ca-97ab-2b69c328016b",
+          "Team": "None"
+        }
+      ]
+    },
+    {
+      "__guid": "949d85c7-0a52-42aa-b68e-7c6f0c96a1b5",
+      "Flags": 0,
+      "Name": "Spawn (3)",
+      "Position": "824,568,384",
+      "Rotation": "0,0,-0.845979,0.5332162",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "TeamSpawnPoint",
+          "__guid": "793631aa-9474-4a08-b6ca-ea2fa750f7e3",
+          "Team": "None"
+        }
+      ]
     }
   ],
   "SceneProperties": {
@@ -2135,7 +2196,8 @@
     "TimeScale": 1,
     "UseFixedUpdate": true,
     "Metadata": {
-      "Title": "easter"
+      "Title": "Easter",
+      "Author": "Ape Tavern"
     },
     "NavMesh": {
       "Enabled": false,
@@ -2151,7 +2213,7 @@
     }
   },
   "ResourceVersion": 2,
-  "Title": "easter",
+  "Title": "Easter",
   "Description": null,
   "__references": [
     "eurorp.door01_right_01#12553",

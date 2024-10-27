@@ -15,7 +15,7 @@ public partial class GameSystem
 		if ( !PlayerPrefab.IsValid() || !SpawnPlayer )
 			return;
 
-		var spawns = Scene.GetAllComponents<TeamSpawnPoint>().ToList();
+		var spawns = Scene.GetAllComponents<TeamSpawnPoint>().Where( x => x.Team == Team.None ).ToList();
 		Transform SpawnTransform = spawns.Count > 0 ? Game.Random.FromList( spawns ).Transform.World : Transform.World;
 
 		var player = PlayerPrefab.Clone( SpawnTransform );
@@ -32,7 +32,7 @@ public partial class GameSystem
 
 		player.NetworkSpawn( connection );
 
-        //Handel joining mid game
+		//Handle joining mid game
 		if ( State != GameState.Waiting && State != GameState.Ended )
 		{
 			if ( player.Components.TryGet<PlayerController>( out var playerController ) )
@@ -66,7 +66,7 @@ public partial class GameSystem
 			}
 		}
 
-        //Event callback
+		//Event callback
 		Scene.Dispatch( new OnPlayerJoin() );
 	}
 }

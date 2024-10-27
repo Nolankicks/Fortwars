@@ -1,0 +1,24 @@
+{
+  "RootObject": {
+    "__guid": "a495691f-907b-4f2c-b70a-495388cf6020",
+    "Flags": 0,
+    "Name": "BlueSpawn",
+    "Position": "-640.0001,607.9995,15",
+    "Rotation": "0,0,-0.7071067,0.7071068",
+    "Enabled": true,
+    "Components": [
+      {
+        "__type": "TeamSpawnPoint",
+        "__guid": "d56cc436-69fd-4b83-9070-0f813121f954",
+        "Team": "Blue"
+      }
+    ]
+  },
+  "ShowInMenu": false,
+  "MenuPath": "Fortwars/Spawn",
+  "MenuIcon": null,
+  "DontBreakAsTemplate": false,
+  "ResourceVersion": 1,
+  "__references": [],
+  "__version": 1
+}
