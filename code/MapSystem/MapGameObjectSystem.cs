@@ -9,7 +9,7 @@ public sealed class MapLoadingSystem : GameObjectSystem<MapLoadingSystem>, IScen
 	{
 		Log.Info( "Host Initialized" );
 
-        //If we are a dedicated server, load a scene
+		//If we are a dedicated server, load a scene
 		if ( Application.IsHeadless )
 			Scene.LoadFromFile( "scenes/easter.scene" );
 	}
@@ -22,5 +22,7 @@ public sealed class MapLoadingSystem : GameObjectSystem<MapLoadingSystem>, IScen
 
 		var core = GameObject.Clone( ResourceLibrary.Get<PrefabFile>( "prefabs/core.prefab" ) );
 		core.BreakFromPrefab();
+
+
 	}
 }

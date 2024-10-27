@@ -6,28 +6,41 @@
     "Enabled": true,
     "Components": [
       {
-        "__type": "Sandbox.SpriteRenderer",
-        "__guid": "35bb51ec-5398-4f7c-8158-26fe6ab1099e",
-        "Additive": false,
-        "CastShadows": true,
-        "Color": "1,1,1,1",
-        "DepthFeather": 0,
-        "FlipHorizontal": false,
-        "FlipVertical": false,
-        "FogStrength": 1,
-        "Lighting": true,
-        "Opaque": false,
-        "RenderOptions": {
-          "GameLayer": true,
-          "OverlayLayer": false,
-          "BloomLayer": false,
-          "AfterUILayer": false
-        },
-        "Size": "10,10",
-        "Texture": "textures/emotes/emote_facehappy.vtex"
+        "__type": "WorldEmote",
+        "__guid": "6eef546b-613c-4929-a286-c2a5656de14c"
       }
     ],
-    "Children": [],
+    "Children": [
+      {
+        "__guid": "282eec26-3219-4bce-aa0e-6c446a2203a1",
+        "Flags": 0,
+        "Name": "Object",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.SpriteRenderer",
+            "__guid": "35bb51ec-5398-4f7c-8158-26fe6ab1099e",
+            "Additive": false,
+            "CastShadows": false,
+            "Color": "1,1,1,1",
+            "DepthFeather": 0,
+            "FlipHorizontal": false,
+            "FlipVertical": false,
+            "FogStrength": 1,
+            "Lighting": false,
+            "Opaque": false,
+            "RenderOptions": {
+              "GameLayer": true,
+              "OverlayLayer": false,
+              "BloomLayer": false,
+              "AfterUILayer": false
+            },
+            "Size": "32,32",
+            "Texture": "textures/emotes/emote_facehappy.vtex"
+          }
+        ]
+      }
+    ],
     "__variables": [],
     "__properties": {
       "FixedUpdateFrequency": 50,

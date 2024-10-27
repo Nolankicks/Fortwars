@@ -21,22 +21,21 @@ public partial class EmoteUI : PanelComponent
 
 			if ( Input.Pressed( "Slot" + (i + 1).ToString() ) )
 			{
-				Log.Info( "test" );
+				DoEmote( PlayerController.Local, i );
 			}
 		}
 	}
 
-	void DoEmote( EmoteDefinition emote )
+	[Broadcast]
+	void DoEmote( PlayerController player, int index )
 	{
+		var emote = ChatEmotes[index];
 		Log.Info( $"Emote: {emote.Name}" );
-		var localPlayer = PlayerController.Local;
 
-		if ( localPlayer.IsValid() )
+		if ( player.IsValid() )
 		{
 			var go = GameObject.Clone( "prefabs/WorldEmote.prefab" );
-			go.WorldPosition = localPlayer.WorldPosition + Vector3.Up * 64.0f;
-
-			go.NetworkSpawn();
+			go.WorldPosition = player.WorldPosition + Vector3.Up * 96.0f;
 		}
 	}
 }
