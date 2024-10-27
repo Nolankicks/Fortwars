@@ -59,6 +59,8 @@ public class Item : Component, IGameEventHandler<OnItemEquipped>
 		player.HoldType = HoldType;
 
 		BroadcastEquip( player );
+
+		Sound.Play( "weapon.deploy", player.WorldPosition );
 	}
 
 	[Broadcast]
