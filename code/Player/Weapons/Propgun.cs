@@ -103,7 +103,7 @@ public sealed class Propgun : Item
 		// Rotate the viewmodel around
 		if ( UsingMouseInput )
 		{
-			WorldRotation = Rotation.LookAt( Scene.Camera.ScreenPixelToRay( Mouse.Position ).Forward );
+			WorldRotation = Rotation.Lerp( WorldRotation, Rotation.LookAt( Scene.Camera.ScreenPixelToRay( Mouse.Position ).Forward ), Time.Delta * 20.0f );
 		}
 		else
 		{
