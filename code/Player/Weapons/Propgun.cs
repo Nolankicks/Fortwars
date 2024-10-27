@@ -9,6 +9,8 @@ public sealed class Propgun : Item
 	[Property] bool MustBeUp { get; set; } = false;
 	[Property] public bool UsingMouseInput { get; set; } = false;
 
+	[RequireComponent] Viewmodel VModel { get; set; }
+
 	protected override void OnStart()
 	{
 		if ( IsProxy || !FirstTime )
@@ -96,6 +98,16 @@ public sealed class Propgun : Item
 			{
 				PlaceProp();
 			}
+		}
+
+		// Rotate the viewmodel around
+		if ( UsingMouseInput )
+		{
+			WorldRotation = Rotation.LookAt( Scene.Camera.ScreenPixelToRay( Mouse.Position ).Forward );
+		}
+		else
+		{
+			LocalRotation = Rotation.Identity;
 		}
 	}
 

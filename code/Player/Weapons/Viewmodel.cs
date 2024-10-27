@@ -1,4 +1,3 @@
-using Sandbox;
 using Sandbox.Events;
 
 public sealed class Viewmodel : Component, IGameEventHandler<JumpEvent>, IGameEventHandler<WeaponAnimEvent>
@@ -28,7 +27,7 @@ public sealed class Viewmodel : Component, IGameEventHandler<JumpEvent>, IGameEv
 	{
 		if ( GameObject.Parent.IsProxy )
 			return;
-		
+
 		ApplyInertia();
 
 		var local = PlayerController.Local;
@@ -62,7 +61,7 @@ public sealed class Viewmodel : Component, IGameEventHandler<JumpEvent>, IGameEv
 		yawInertia = Angles.NormalizeAngle( yaw - lastYaw );
 		lastPitch = pitch;
 		lastYaw = yaw;
-		
+
 		Renderer.Set( "aim_yaw_inertia", yawInertia * 2 );
 		Renderer.Set( "aim_pitch_inertia", pitchInertia * 2 );
 		Renderer.Set( "move_bob", controller.Velocity.Length.Remap( 0, 300, 0, 1, true ) );
