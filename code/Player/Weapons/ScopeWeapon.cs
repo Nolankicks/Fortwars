@@ -11,7 +11,7 @@ public class ScopeWeaponComponent : Weapon
 
 	IDisposable renderHook;
 
-	public override bool CanFire => IsZooming;
+	public override bool CanFire => true;
 	public bool IsZooming => Input.Down( "attack2" );
 	private float BlurLerp { get; set; } = 1.0f;
 
