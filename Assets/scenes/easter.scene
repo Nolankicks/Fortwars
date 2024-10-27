@@ -1890,7 +1890,7 @@
     {
       "__guid": "3bfd2439-c8a1-44a1-a85d-f8f0b986f4b2",
       "Flags": 0,
-      "Name": "Box",
+      "Name": "Blue Barrier",
       "Position": "-768,232,64.00027",
       "Tags": "map,blue,no_build",
       "Enabled": true,
@@ -2019,7 +2019,7 @@
     {
       "__guid": "f5d2cd2a-8eb2-4810-8e54-dc0bf761cbbc",
       "Flags": 0,
-      "Name": "Box",
+      "Name": "Red Barrier",
       "Position": "768,228,64",
       "Tags": "red,no_build",
       "Enabled": true,

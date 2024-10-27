@@ -1,0 +1,10 @@
+@using Sandbox;
+@using Sandbox.UI;
+@inherits PanelComponent
+
+<root>
+    @foreach(var emote in ChatEmotes) {
+        <div class="title">@emote.Name</div>
+    }
+</root>
+

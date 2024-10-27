@@ -188,6 +188,29 @@
               "__guid": "0a3e2b1e-40df-4d09-805b-112f6c099b51"
             }
           ]
+        },
+        {
+          "__guid": "2d661130-ecb3-4d92-acf6-38f650d1b98d",
+          "Flags": 0,
+          "Name": "EmoteBar",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "EmoteUI",
+              "__guid": "cf91fe37-d584-4f39-b7d8-b935874a7367",
+              "ChatEmotes": [
+                {
+                  "Name": "Happy",
+                  "Icon": "textures/emotes/emote_facehappy.vtex"
+                },
+                {
+                  "Name": "Angry",
+                  "Icon": "textures/emotes/emote_faceangry.vtex"
+                }
+              ],
+              "MyStringValue": "Hello World!"
+            }
+          ]
         }
       ]
     }
