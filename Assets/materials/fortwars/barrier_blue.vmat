@@ -4,6 +4,7 @@ Layer0
 {
 	shader "shaders/barrier.shader"
 
+	g_vBackgroundtint "[0.552941 0.925490 1.000000 1.000000]"
 	g_vTint "[0.000000 0.529412 1.000000 1.000000]"
 	Texture_ps_0 "shaders/barrier_tex.png"
 
@@ -11,6 +12,5 @@ Layer0
 	g_bFogEnabled "1"
 
 	//---- Translucent ----
-	g_flAlphaTestReference "0.500"
-	g_flAntiAliasedEdgeStrength "1.000"
+	g_flOpacityScale "1.000"
 }

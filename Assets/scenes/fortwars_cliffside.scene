@@ -1861,7 +1861,7 @@
       "Flags": 0,
       "Name": "Door01",
       "Position": "0,0,128.0005",
-      "Tags": "map",
+      "Tags": "map,no_build",
       "Enabled": true,
       "NetworkMode": 1,
       "Components": [
@@ -1997,7 +1997,7 @@
       "Flags": 0,
       "Name": "Door01 (1)",
       "Position": "768,0,256",
-      "Tags": "map",
+      "Tags": "map,no_build",
       "Enabled": true,
       "NetworkMode": 1,
       "Components": [
@@ -2146,7 +2146,7 @@
       "Flags": 0,
       "Name": "RedspawnBarrier",
       "Position": "628,1368,188",
-      "Tags": "red,map",
+      "Tags": "red,map,no_build",
       "Enabled": true,
       "Components": [
         {
@@ -2275,9 +2275,9 @@
     {
       "__guid": "f0dd7784-262e-4216-b2ba-8f651f7a69e2",
       "Flags": 0,
-      "Name": "Box (3)",
+      "Name": "BluespawnBarrier",
       "Position": "628,-1368,188",
-      "Tags": "blue,map",
+      "Tags": "blue,map,no_build",
       "Enabled": true,
       "Components": [
         {
@@ -2399,72 +2399,6 @@
           },
           "SmoothingAngle": 40,
           "Static": true,
-          "SurfaceVelocity": "0,0,0"
-        }
-      ]
-    },
-    {
-      "__guid": "38e0e8a7-a24a-4120-aebc-9de71ab630e3",
-      "Flags": 0,
-      "Name": "Cube (3)",
-      "Position": "928,-496,160",
-      "Tags": "red,map",
-      "Enabled": true,
-      "Components": [
-        {
-          "__type": "Sandbox.ModelRenderer",
-          "__guid": "3b3cea8c-944c-40df-8d81-7ef0aee9c85a",
-          "BodyGroups": 18446744073709551615,
-          "Model": "models/dev/box.vmdl",
-          "RenderOptions": {
-            "GameLayer": true,
-            "OverlayLayer": false,
-            "BloomLayer": false,
-            "AfterUILayer": false
-          },
-          "RenderType": "On",
-          "Tint": "1,1,1,1"
-        },
-        {
-          "__type": "Sandbox.BoxCollider",
-          "__guid": "d0898250-c5ea-4d9f-a756-0fc1d79dc6c8",
-          "Center": "0,0,0",
-          "IsTrigger": false,
-          "Scale": "50,50,50",
-          "Static": false,
-          "SurfaceVelocity": "0,0,0"
-        }
-      ]
-    },
-    {
-      "__guid": "b35f5238-a7d6-4e51-9314-8ababa278a92",
-      "Flags": 0,
-      "Name": "Cube (2)",
-      "Position": "928,-400,160",
-      "Tags": "blue,map",
-      "Enabled": true,
-      "Components": [
-        {
-          "__type": "Sandbox.ModelRenderer",
-          "__guid": "b7270036-0a13-440d-a6db-682fa60b52ac",
-          "BodyGroups": 18446744073709551615,
-          "Model": "models/dev/box.vmdl",
-          "RenderOptions": {
-            "GameLayer": true,
-            "OverlayLayer": false,
-            "BloomLayer": false,
-            "AfterUILayer": false
-          },
-          "RenderType": "On",
-          "Tint": "1,1,1,1"
-        },
-        {
-          "__type": "Sandbox.BoxCollider",
-          "__guid": "bcd74c28-a6bb-4597-bcf3-1c6858ff1079",
-          "Center": "0,0,0",
-          "IsTrigger": false,
-          "Scale": "50,50,50",
-          "Static": false,
           "SurfaceVelocity": "0,0,0"
         }
       ]

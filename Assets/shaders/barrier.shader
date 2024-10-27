@@ -21,10 +21,10 @@ MODES
 COMMON
 {
 	#ifndef S_ALPHA_TEST
-	#define S_ALPHA_TEST 1
+	#define S_ALPHA_TEST 0
 	#endif
 	#ifndef S_TRANSLUCENT
-	#define S_TRANSLUCENT 0
+	#define S_TRANSLUCENT 1
 	#endif
 	
 	#include "common/shared.hlsl"
@@ -77,6 +77,7 @@ PS
 	CreateInputTexture2D( Texture_ps_0, Srgb, 8, "None", "_color", ",0/,0/0", Default4( 1.00, 1.00, 1.00, 1.00 ) );
 	Texture2D g_tTexture_ps_0 < Channel( RGBA, Box( Texture_ps_0 ), Srgb ); OutputFormat( DXT5 ); SrgbRead( True ); >;
 	float4 g_vTint < UiType( Color ); UiGroup( ",0/,0/0" ); Default4( 1.00, 1.00, 1.00, 1.00 ); >;
+	float4 g_vBackgroundtint < UiType( Color ); UiGroup( ",0/,0/0" ); Default4( 0.30, 0.30, 0.30, 1.00 ); >;
 	
 	float4 MainPs( PixelInput i ) : SV_Target0
 	{
@@ -98,11 +99,17 @@ PS
 		float2 l_4 = l_2 + l_3;
 		float4 l_5 = Tex2DS( g_tTexture_ps_0, g_sSampler0, l_4 );
 		float4 l_6 = l_0 * l_5;
+		float4 l_7 = g_vBackgroundtint;
+		float4 l_8 = l_6 + l_7;
+		float l_9 = l_5.r * -1;
+		float l_10 = l_9 + 1;
+		float l_11 = l_10 * 0.29999998;
+		float l_12 = l_5.r + l_11;
 		
-		m.Albedo = l_6.xyz;
+		m.Albedo = l_8.xyz;
 		m.Emission = l_6.xyz;
-		m.Opacity = l_5.x;
-		m.Roughness = 0;
+		m.Opacity = l_12;
+		m.Roughness = 1;
 		m.Metalness = 0;
 		m.AmbientOcclusion = 1;
 		
