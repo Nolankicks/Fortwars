@@ -23,29 +23,48 @@ HUD {
     font-family: Poppins;
     color: white;
 
-    >.score {
+    > .score {
         position: absolute;
         top: 32px;
         left: 32px;
-
         font-size: 42px;
-
         color: white;
     }
 
     .crosshair {
         position: absolute;
         border-radius: 50%;
-        background-color: white;
-        opacity: 0.3;
-        width: 4px;
-        height: 4px;
-
+        opacity: 1;
+        width: 64px;
+        height: 64px;
         transition: all 0.2s linear;
+
+        img {
+            width: 100%;
+            height: 100%;
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
     }
 
-    .healthholder 
-    {
+    .hitMarker {
+        position: absolute;
+        border-radius: 50%;
+        opacity: 1;
+        width: 64px;
+        height: 64px;
+        transition: all 0.2s linear;
+        image-rendering: nearest-neighbour;
+
+        img {
+            width: 100%;
+            height: 100%;
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+    }
+
+    .healthholder {
         position: absolute;
         bottom: 12px;
         left: 12px;
@@ -54,14 +73,12 @@ HUD {
         width: 300px;
     }
 
-    .about
-    {
+    .about {
         width: 700px;
         height: 600px;
         background-color: $primary;
         flex-direction: column;
         border-radius: $border-radius;
-
         padding: 24px;
         pointer-events: all;
         gap: 21px;
@@ -71,8 +88,7 @@ HUD {
         align-items: flex-start;
         justify-content: center;
 
-        >label
-        {
+        > label {
             align-items: center;
             justify-content: center;
             flex-shrink: 0;

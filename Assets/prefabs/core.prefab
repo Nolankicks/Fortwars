@@ -144,7 +144,8 @@
           },
           {
             "__type": "HUD",
-            "__guid": "9f2de297-1b36-475f-a258-f8adb383e300"
+            "__guid": "9f2de297-1b36-475f-a258-f8adb383e300",
+            "Crosshair": "textures/ui/crosshair01.vtex"
           },
           {
             "__type": "PauseMenu",

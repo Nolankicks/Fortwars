@@ -8,7 +8,8 @@
 <root>
 	<InventoryPanel />
 
-	<div style="opacity: @( ShowCrosshair ? "0.3" : "0");" class="crosshair"></div>
+	<div style="opacity: @( ShowCrosshair ? "1" : "0");" class="crosshair"><img src="textures/ui/Crosshair01.png"/></div>
+
 
 	<TeamProgress />
 
@@ -24,11 +25,13 @@
 
 @code
 {
-	public Panel MaxProps { get; set; }
-	public HealthPanel HealthPanel { get; set; }
-	public bool ShowScoreboard => Input.Down( "score" );
-	public bool ShowCrosshair { get; set; } = true;
-	public static HUD Instance { get; set; }
+    public Panel MaxProps { get; set; }
+    public HealthPanel HealthPanel { get; set; }
+    public bool ShowScoreboard => Input.Down( "score" );
+    public bool ShowCrosshair { get; set; } = true;
+    public static HUD Instance { get; set; }
+
+    [Property] Texture Crosshair { get; set; }
 
 	protected override void OnStart()
 	{
