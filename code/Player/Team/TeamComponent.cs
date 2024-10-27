@@ -17,7 +17,6 @@ public sealed class TeamComponent : Component, IGameEventHandler<OnBuildMode>,
 	[Broadcast]
 	public void SetTeam( Team team )
 	{
-		Log.Info( "test" );
 		Team = team;
 
 		var controller = Components.Get<PlayerController>();
