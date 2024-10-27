@@ -388,10 +388,8 @@ public sealed partial class PlayerController : Component, IGameEventHandler<Dama
 	{
 		List<TeamSpawnPoint> Spawns;
 
-		if ( TeamComponent.Team == Team.None )
-			Spawns = Scene.GetAll<TeamSpawnPoint>()?.ToList();
-		else
-			Spawns = Scene.GetAll<TeamSpawnPoint>()?.Where( x => x.Team == TeamComponent.Team )?.ToList();
+
+		Spawns = Scene.GetAll<TeamSpawnPoint>()?.Where( x => x.Team == TeamComponent.Team )?.ToList();
 
 		if ( Spawns is null || Spawns?.Count == 0 )
 		{
