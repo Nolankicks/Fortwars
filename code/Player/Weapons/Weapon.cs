@@ -17,6 +17,8 @@ public class Item : Component, IGameEventHandler<OnItemEquipped>
 
 	[Property, ShowIf( "UsesAmmo", true ), Feature( "Base Item" )] public int AmmoPerShot { get; set; } = 1;
 
+	[Property] public Viewmodel VModel { get; set; }
+
 	[Authority]
 	public void SubtractAmmo()
 	{
@@ -88,7 +90,6 @@ public class Weapon : Item, IGameEventHandler<OnReloadEvent>
 	[Property] public SoundEvent FireSound { get; set; }
 	[Property] public string AttackAnimName { get; set; } = "b_attack";
 	[Property] public string ReloadAnimName { get; set; } = "b_reload";
-	[Property] public bool IsShotgun { get; set; } = false;
 	public virtual bool CanFire => true;
 	[Property] public bool Automatic { get; set; } = true;
 

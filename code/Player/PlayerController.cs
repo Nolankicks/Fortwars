@@ -56,6 +56,8 @@ public sealed partial class PlayerController : Component, IGameEventHandler<Dama
 	/// </summary>
 	private int airCrouchCount;
 
+	public float OverrideFOV = 0;
+
 	protected override void OnStart()
 	{
 		if ( !AnimHelper.IsValid() )
@@ -261,7 +263,7 @@ public sealed partial class PlayerController : Component, IGameEventHandler<Dama
 			Scene.Camera.WorldRotation = EyeAngles;
 
 			if ( SetFov )
-				Scene.Camera.FieldOfView = Preferences.FieldOfView;
+				Scene.Camera.FieldOfView = OverrideFOV == 0 ? Preferences.FieldOfView : OverrideFOV;
 
 			return;
 		}
@@ -284,7 +286,7 @@ public sealed partial class PlayerController : Component, IGameEventHandler<Dama
 		Eye.WorldPosition = targetCameraPos;
 		camera.WorldPosition = targetCameraPos;
 		camera.WorldRotation = EyeAngles;
-		camera.FieldOfView = Preferences.FieldOfView;
+		camera.FieldOfView = OverrideFOV == 0 ? Preferences.FieldOfView : OverrideFOV;
 	}
 
 	[Broadcast]

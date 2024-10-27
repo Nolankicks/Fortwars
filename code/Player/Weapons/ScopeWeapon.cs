@@ -2,7 +2,7 @@ using System;
 
 namespace Facepunch;
 
-[Title( "2D Scope" ), Group( "Weapon Components" )]
+[Title( "Scoped Weapon" ), Group( "Weapon Components" )]
 public class ScopeWeaponComponent : Weapon
 {
 	[Property] public Material ScopeOverlay { get; set; }
@@ -11,13 +11,13 @@ public class ScopeWeaponComponent : Weapon
 
 	IDisposable renderHook;
 
-	public override bool CanFire => true;
-	public bool IsZooming => Input.Down( "attack2" );
 	private float BlurLerp { get; set; } = 1.0f;
 
 	private Angles LastAngles;
 	private Angles AnglesLerp;
 	[Property] private float AngleOffsetScale { get; set; } = 0.01f;
+
+	public bool IsZooming = false;
 
 	protected void StartZoom()
 	{
@@ -28,6 +28,10 @@ public class ScopeWeaponComponent : Weapon
 
 		if ( ScopeOverlay is not null )
 			renderHook = camera.AddHookAfterTransparent( "Scope", 100, RenderEffect );
+
+		VModel.Renderer.GameObject.Enabled = false;
+
+		IsZooming = true;
 	}
 
 	protected void EndZoom()
@@ -36,6 +40,10 @@ public class ScopeWeaponComponent : Weapon
 
 		AnglesLerp = new Angles();
 		BlurLerp = 1.0f;
+		VModel.Renderer.Set( "b_deploy_skip", true );
+		VModel.Renderer.GameObject.Enabled = true;
+
+		IsZooming = false;
 	}
 
 	public override void OnEquip( OnItemEquipped onItemEquipped )
@@ -78,6 +86,8 @@ public class ScopeWeaponComponent : Weapon
 			player.SetFov = false;
 
 		EndZoom();
+
+		VModel.Renderer.Set( "b_deploy_skip", false );
 		base.OnDisabled();
 	}
 
@@ -97,7 +107,7 @@ public class ScopeWeaponComponent : Weapon
 		var hud = HUD.Instance;
 
 		if ( hud.IsValid() )
-			hud.ShowCrosshair = !IsZooming;
+			hud.ShowCrosshair = false;
 
 		if ( Input.Down( "attack2" ) )
 		{
@@ -108,23 +118,20 @@ public class ScopeWeaponComponent : Weapon
 			EndZoom();
 		}
 
-		if ( !IsZooming )
-			return;
 
-		var camera = Scene.Camera;
-		if ( !camera.IsValid() )
-			return;
+		var targetFov = IsZooming ? 45 : 0;
 
-		var targetFov = IsZooming ? 45 : Preferences.FieldOfView;
+		var localPlayer = PlayerController.Local;
+		localPlayer.OverrideFOV = targetFov;
 
-		camera.FieldOfView = targetFov;
-
-		if ( !CanAim() )
+		if ( IsZooming && !CanAim() )
 		{
 			EndZoom();
 		}
 
+		if ( IsZooming )
 		{
+
 			var cc = PlayerController.Local?.shrimpleCharacterController;
 
 			float velocity = cc.Velocity.Length / 25.0f;
