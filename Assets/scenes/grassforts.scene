@@ -1802,6 +1802,21 @@
       ]
     },
     {
+      "__guid": "5f224c5c-ec60-4663-916b-85b552f4cb13",
+      "Flags": 0,
+      "Name": "None Spawn (5)",
+      "Position": "3328,0,128",
+      "Rotation": "0,0,-1,0",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "TeamSpawnPoint",
+          "__guid": "ff45861c-2beb-4c1b-9636-444c8c9932a8",
+          "Team": "None"
+        }
+      ]
+    },
+    {
       "__guid": "a1ccc25b-63bc-48dc-acf8-c717234aa0ab",
       "Flags": 0,
       "Name": "None Spawn (3)",
@@ -1827,6 +1842,20 @@
         {
           "__type": "TeamSpawnPoint",
           "__guid": "9d547669-8e60-4475-9061-0fde55e36110",
+          "Team": "None"
+        }
+      ]
+    },
+    {
+      "__guid": "59b6c576-6f9d-412c-bb3e-61d2db96f008",
+      "Flags": 0,
+      "Name": "None Spawn (4)",
+      "Position": "-256,0,128",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "TeamSpawnPoint",
+          "__guid": "5b7ac490-f027-4d10-a2d5-cf0b47b2f13a",
           "Team": "None"
         }
       ]
