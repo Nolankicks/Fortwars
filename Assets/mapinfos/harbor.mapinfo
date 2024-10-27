@@ -1,8 +1,8 @@
 {
-  "MapName": "fw_cliffside",
-  "MapDescription": "",
+  "MapName": "Cliffside",
+  "MapDescription": "A timeless war on the edge of the cliff",
   "FourTeams": false,
-  "Scene": "scenes/fortwars_harbor.scene",
+  "Scene": "scenes/fortwars_cliffside.scene",
   "Thumb": "textures/fw_cliffside.vtex",
   "Author": "k8woz",
   "PackageIndent": null,
