@@ -58,6 +58,8 @@ public sealed partial class PlayerController : Component, IGameEventHandler<Dama
 
 	public float OverrideFOV = 0;
 
+	public float SpeedMult { get; set; } = 1.0f;
+
 	protected override void OnStart()
 	{
 		if ( !AnimHelper.IsValid() )
@@ -174,7 +176,7 @@ public sealed partial class PlayerController : Component, IGameEventHandler<Dama
 		if ( IsCrouching )
 			return 100;
 
-		return Input.Down( "run" ) ? RunSpeed : WalkSpeed;
+		return (Input.Down( "run" ) ? RunSpeed : WalkSpeed) * SpeedMult;
 	}
 
 	public void Move()

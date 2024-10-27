@@ -3,10 +3,10 @@
   "ClassName": "Sniper",
   "ClassDescription": null,
   "ClassIcon": null,
-  "WalkSpeed": 300,
-  "RunSpeed": 450,
+  "WalkSpeed": 200,
+  "RunSpeed": 250,
   "Health": 100,
-  "Hidden": true,
+  "Hidden": false,
   "__references": [],
   "__version": 0
 }

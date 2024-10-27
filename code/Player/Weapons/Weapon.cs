@@ -93,6 +93,14 @@ public class Weapon : Item, IGameEventHandler<OnReloadEvent>
 	public virtual bool CanFire => true;
 	[Property] public bool Automatic { get; set; } = true;
 
+	public enum FireTypes
+	{
+		F_SEMIAUTO,
+		F_AUTOMATIC
+	}
+
+	[Property] FireTypes FireType { get; set; } = FireTypes.F_SEMIAUTO;
+
 	public override void OnEquip( OnItemEquipped onItemEquipped )
 	{
 		if ( IsProxy )
@@ -109,7 +117,7 @@ public class Weapon : Item, IGameEventHandler<OnReloadEvent>
 		if ( IsProxy || equipTime < 0.2f )
 			return;
 
-		if ( (Input.Pressed( "attack1" ) || (Input.Down( "attack1" ) && Automatic) && lastFired > FireRate) && CanUse() && reloadTime > ReloadDelay && CanFire )
+		if ( (CheckFireInput() && lastFired > FireRate) && CanUse() && reloadTime > ReloadDelay && CanFire )
 		{
 			for ( var i = 0; i < TraceTimes; i++ )
 				Shoot();
@@ -259,6 +267,16 @@ public class Weapon : Item, IGameEventHandler<OnReloadEvent>
 			return;
 
 		GameObject.Dispatch( new WeaponAnimEvent( "b_reload", false ) );
+	}
+
+	bool CheckFireInput()
+	{
+		if ( FireType == FireTypes.F_SEMIAUTO )
+			return Input.Pressed( "attack1" );
+		if ( FireType == FireTypes.F_AUTOMATIC )
+			return Input.Down( "attack1" );
+
+		return false;
 	}
 }
 

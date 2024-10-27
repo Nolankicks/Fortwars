@@ -32,6 +32,8 @@ public class ScopeWeaponComponent : Weapon
 		VModel.Renderer.GameObject.Enabled = false;
 
 		IsZooming = true;
+
+		PlayerController.Local.SpeedMult = 0.25f;
 	}
 
 	protected void EndZoom()
@@ -44,6 +46,8 @@ public class ScopeWeaponComponent : Weapon
 		VModel.Renderer.GameObject.Enabled = true;
 
 		IsZooming = false;
+
+		PlayerController.Local.SpeedMult = 1;
 	}
 
 	public override void OnEquip( OnItemEquipped onItemEquipped )
