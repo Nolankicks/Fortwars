@@ -1,0 +1,12 @@
+{
+  "MapName": "fw_grassforts",
+  "MapDescription": "Forts in grass",
+  "FourTeams": false,
+  "Scene": "scenes/grassforts.scene",
+  "Thumb": "textures/grassforts.vtex",
+  "Author": "Ape Tavern",
+  "PackageIndent": "https://sbox.game/apetavern/fw_grassforts",
+  "Hidden": false,
+  "__references": [],
+  "__version": 0
+}

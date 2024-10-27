@@ -1,0 +1,20 @@
+{
+  "publish": {
+    "Enabled": true,
+    "ProjectConfig": {
+      "Title": "Red Barrier",
+      "Type": "material",
+      "Org": "nolankicks",
+      "Ident": "barrier_red",
+      "Schema": 0,
+      "IncludeSourceFiles": false,
+      "Resources": null,
+      "PackageReferences": null,
+      "EditorReferences": null,
+      "IsWhitelistDisabled": false,
+      "Metadata": {
+        "SingleAssetSource": "materials/fortwars/barrier_red.vmat"
+      }
+    }
+  }
+}

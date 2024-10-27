@@ -1,0 +1,20 @@
+{
+  "publish": {
+    "Enabled": true,
+    "ProjectConfig": {
+      "Title": "Blue Barrier",
+      "Type": "material",
+      "Org": "nolankicks",
+      "Ident": "barrier_blue",
+      "Schema": 0,
+      "IncludeSourceFiles": false,
+      "Resources": null,
+      "PackageReferences": null,
+      "EditorReferences": null,
+      "IsWhitelistDisabled": false,
+      "Metadata": {
+        "SingleAssetSource": "materials/fortwars/barrier_blue.vmat"
+      }
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "publish": {
+    "Enabled": true,
+    "ProjectConfig": {
+      "Title": "Neutral Barrier",
+      "Type": "material",
+      "Org": "nolankicks",
+      "Ident": "barrier_neutral",
+      "Schema": 0,
+      "IncludeSourceFiles": false,
+      "Resources": null,
+      "PackageReferences": null,
+      "EditorReferences": null,
+      "IsWhitelistDisabled": false,
+      "Metadata": {
+        "SingleAssetSource": "materials/fortwars/barrier_neutral.vmat"
+      }
+    }
+  }
+}
