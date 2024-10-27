@@ -8,7 +8,9 @@
       {
         "__type": "Weapon",
         "__guid": "c70f2e72-21da-4b83-9aa2-15f71bdde72f",
+        "AmmoPerShot": 1,
         "AttackAnimName": "b_attack",
+        "Automatic": true,
         "Damage": 25,
         "FireRate": 1,
         "FireSound": "sounds/toolgun/toolgun-fire.sound",
@@ -37,6 +39,13 @@
         "CreateBoneObjects": false,
         "Model": "models/first_person/first_person_arms.vmdl",
         "Morphs": {},
+        "Parameters": {
+          "bools": {},
+          "ints": {},
+          "floats": {},
+          "vectors": {},
+          "rotations": {}
+        },
         "RenderOptions": {
           "GameLayer": false,
           "OverlayLayer": true,
@@ -72,6 +81,15 @@
             "CreateBoneObjects": false,
             "Model": "models/weapons/sbox_pistol_usp/v_usp.vmdl",
             "Morphs": {},
+            "Parameters": {
+              "bools": {
+                "b_twohanded": true
+              },
+              "ints": {},
+              "floats": {},
+              "vectors": {},
+              "rotations": {}
+            },
             "RenderOptions": {
               "GameLayer": false,
               "OverlayLayer": true,
@@ -85,7 +103,30 @@
         ]
       }
     ],
-    "__variables": []
+    "__variables": [],
+    "__properties": {
+      "FixedUpdateFrequency": 50,
+      "MaxFixedUpdates": 5,
+      "NetworkFrequency": 30,
+      "NetworkInterpolation": true,
+      "PhysicsSubSteps": 1,
+      "ThreadedAnimation": true,
+      "TimeScale": 1,
+      "UseFixedUpdate": true,
+      "Metadata": {},
+      "NavMesh": {
+        "Enabled": false,
+        "IncludeStaticBodies": true,
+        "IncludeKeyframedBodies": true,
+        "EditorAutoUpdate": true,
+        "AgentHeight": 64,
+        "AgentRadius": 16,
+        "AgentStepSize": 18,
+        "AgentMaxSlope": 40,
+        "ExcludedBodies": "",
+        "IncludedBodies": ""
+      }
+    }
   },
   "ShowInMenu": false,
   "MenuPath": null,
@@ -97,6 +138,5 @@
     "facepunch.w_usp#17493",
     "mdlresrc.toolgunshoot#10038"
   ],
-  "IsValid": true,
   "__version": 1
 }
