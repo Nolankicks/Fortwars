@@ -1,4 +1,3 @@
-using Sandbox.Citizen;
 using Sandbox.Events;
 using System;
 using System.Text.Json;
@@ -54,20 +53,20 @@ IGameEventHandler<OnGameOvertimeBuild>, IGameEventHandler<OnGameOvertimeFight>
 	public IEnumerable<TeamComponent> GreenTeam => Scene?.GetAll<TeamComponent>().Where( x => x?.Team == Team.Green );
 	public IEnumerable<TeamComponent> NoneTeam => Scene?.GetAll<TeamComponent>().Where( x => x?.Team == Team.None );
 
-	[Property, Sync, Category( "Game Data" )] public float BlueTimeHeld { get; set; } = 5;
-	[Property, Sync, Category( "Game Data" )] public float RedTimeHeld { get; set; } = 5;
-	[Property, Sync, Category( "Game Data" )] public float YellowTimeHeld { get; set; } = 5;
-	[Property, Sync, Category( "Game Data" )] public float GreenTimeHeld { get; set; } = 5;
+	[Property, Sync, Feature( "Game Data" )] public float BlueTimeHeld { get; set; } = 5;
+	[Property, Sync, Feature( "Game Data" )] public float RedTimeHeld { get; set; } = 5;
+	[Property, Sync, Feature( "Game Data" )] public float YellowTimeHeld { get; set; } = 5;
+	[Property, Sync, Feature( "Game Data" )] public float GreenTimeHeld { get; set; } = 5;
 	public static GameSystem Instance { get; set; }
 
 	public bool CountUp => State == GameState.Waiting;
 
 	[Sync] public int Overtimes { get; set; } = 0;
-	
-	[Property, Category( "Lobby Settings" ), InlineEditor] public LobbySettings LobbySettings { get; set; } = new();
-	[Property, Sync, Category( "LobbySettings")] public int MaxProps { get; set; } = 50;
 
-	[Property, Category( "Game Config" )] public Dictionary<string, int> ClassicIndents { get; set; } = new();
+	[Property, Feature( "Lobby Settings" ), InlineEditor] public LobbySettings LobbySettings { get; set; } = new();
+	[Property, Sync, Feature( "Lobby Settings" )] public int MaxProps { get; set; } = 50;
+
+	[Property, Feature( "Spawning" )] public Dictionary<string, int> ClassicIndents { get; set; } = new();
 
 	[Sync] public float InitBlueTimeHeld { get; set; } = 5;
 	[Sync] public float InitRedTimeHeld { get; set; } = 5;
@@ -110,13 +109,13 @@ IGameEventHandler<OnGameOvertimeBuild>, IGameEventHandler<OnGameOvertimeFight>
 
 			var mapData = Scene.GetAll<MapData>()?.FirstOrDefault();
 
-            //Load our map data from the scene
+			//Load our map data from the scene
 			if ( mapData.IsValid() )
 			{
 				FourTeams = mapData.FourTeams;
 			}
-            
-            //Load our lobby settings from the file
+
+			//Load our lobby settings from the file
 			var lobbySettings = LobbySettings.Load();
 
 			if ( LoadLobbySettings && lobbySettings is not null )
@@ -125,7 +124,7 @@ IGameEventHandler<OnGameOvertimeBuild>, IGameEventHandler<OnGameOvertimeFight>
 				MaxProps = lobbySettings?.MaxProps ?? 50;
 			}
 
-            //Create our prop helpers
+			//Create our prop helpers
 			foreach ( var prop in Scene.GetAll<Prop>() )
 			{
 				if ( prop.Components.TryGet<FortwarsProp>( out var p ) )
@@ -154,8 +153,8 @@ IGameEventHandler<OnGameOvertimeBuild>, IGameEventHandler<OnGameOvertimeFight>
 			return;
 
 		GameLoop();
-        
-        //If we are the dedicated server and all players left, end the game
+
+		//If we are the dedicated server and all players left, end the game
 		if ( Connection.All.Where( x => x != Connection.Local ).Count() == 0 && IsPlaying && Application.IsHeadless )
 		{
 			State = GameState.Ended;
@@ -165,13 +164,13 @@ IGameEventHandler<OnGameOvertimeBuild>, IGameEventHandler<OnGameOvertimeFight>
 		}
 	}
 
-    /// <summary> The main game loop </summary>
+	/// <summary> The main game loop </summary>
 	public void GameLoop()
 	{
 		switch ( State )
 		{
 			case GameState.Waiting:
-                //Start the game if we have enough players
+				//Start the game if we have enough players
 				if ( Scene.GetAll<PlayerController>().Count() >= PlayerToStart && StateSwitch > 5 )
 				{
 					Scene.Dispatch( new OnBuildMode() );
@@ -180,7 +179,7 @@ IGameEventHandler<OnGameOvertimeBuild>, IGameEventHandler<OnGameOvertimeFight>
 				break;
 
 			case GameState.BuildMode:
-                //After build time is over, switch to fight mode
+				//After build time is over, switch to fight mode
 				if ( StateSwitch > BuildTime )
 				{
 					Scene.Dispatch( new OnFightMode() );
@@ -189,17 +188,17 @@ IGameEventHandler<OnGameOvertimeBuild>, IGameEventHandler<OnGameOvertimeFight>
 				break;
 
 			case GameState.FightMode:
-                //Constantly check for the winning team
+				//Constantly check for the winning team
 				CheckForWinningTeam();
 
-                //If we don't have one by the end, start overtime
+				//If we don't have one by the end, start overtime
 				if ( GetWinningTeam() == Team.None && StateSwitch > FightTime )
 				{
 					Scene.Dispatch( new OnGameOvertimeBuild() );
 					State = GameState.OvertimeBuild;
 				}
 				break;
-                //Same as above but for overtime
+			//Same as above but for overtime
 			case GameState.OvertimeBuild:
 				if ( StateSwitch > BuildTime )
 				{
@@ -228,7 +227,7 @@ IGameEventHandler<OnGameOvertimeBuild>, IGameEventHandler<OnGameOvertimeFight>
 		}
 	}
 
-    /// <summary> Creates random teams for the players </summary>
+	/// <summary> Creates random teams for the players </summary>
 	public void SetTeams()
 	{
 		var players = Scene.GetAllComponents<TeamComponent>().ToList();
@@ -342,7 +341,7 @@ IGameEventHandler<OnGameOvertimeBuild>, IGameEventHandler<OnGameOvertimeFight>
 		"We shape our forts; thereafter they shape us.",
 	};
 
-	[Button( "Save Lobby Settings" ), Category( "Lobby Settings" )]
+	[Button( "Save Lobby Settings" ), Feature( "Lobby Settings" )]
 	public void SaveLobbySettings()
 	{
 		LobbySettings.Save( LobbySettings );
