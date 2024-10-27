@@ -2545,6 +2545,7 @@
       "Position": "0,0,-1627.711",
       "Tags": "map",
       "Enabled": true,
+      "NetworkMode": 1,
       "Components": [
         {
           "__type": "Sandbox.MeshComponent",

@@ -344,7 +344,7 @@
       "Flags": 0,
       "Name": "Kill Trigger",
       "Position": "0,0,-1408",
-      "Tags": "trigger",
+      "Tags": "trigger,map",
       "Enabled": true,
       "NetworkMode": 1,
       "Components": [
@@ -433,19 +433,19 @@
             ],
             "TextureUAxis": [
               "1,0,0",
-              "1,0,0",
+              "1,0,-0",
               "0,-1,0",
               "0,1,0",
               "-1,0,0",
-              "1,0,0"
+              "1,-0,0"
             ],
             "TextureVAxis": [
               "0,-1,0",
               "0,-1,0",
               "0,0,-1",
+              "-0,0,-1",
               "0,0,-1",
-              "0,0,-1",
-              "0,0,-1"
+              "-0,0,-1"
             ],
             "TextureScale": [
               "0.25,0.25",
@@ -503,7 +503,7 @@
             ]
           },
           "SmoothingAngle": 40,
-          "Static": false,
+          "Static": true,
           "SurfaceVelocity": "0,0,0"
         }
       ]

@@ -1061,14 +1061,14 @@
       "Flags": 0,
       "Name": "Death Trigger",
       "Position": "0,0,-3040",
-      "Tags": "trigger",
+      "Tags": "trigger,map",
       "Enabled": true,
       "NetworkMode": 1,
       "Components": [
         {
           "__type": "DeathTrigger",
           "__guid": "b8c12265-6153-484b-9b39-d3effbd4e6b4",
-          "TeleportBall": false
+          "TeleportBall": true
         },
         {
           "__type": "Sandbox.BoxCollider",

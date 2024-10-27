@@ -1859,6 +1859,43 @@
           "Team": "None"
         }
       ]
+    },
+    {
+      "__guid": "0dcce58e-2d10-494a-9845-fe3303a13199",
+      "Flags": 0,
+      "Name": "rollermine",
+      "Position": "1472,0,224",
+      "Tags": "light,light_point,rollermine",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "NetworkOrphaned": 3,
+      "OwnerTransfer": 0,
+      "__Prefab": "prefabs/rollermine.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "fad8a6db-a7af-4654-b458-735c61eba960",
+      "Flags": 0,
+      "Name": "Kill Trigger",
+      "Position": "1504,0,-1280",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "Components": [
+        {
+          "__type": "DeathTrigger",
+          "__guid": "11ac3ae6-43d3-41f3-893c-95c63a68c28f",
+          "TeleportBall": true
+        },
+        {
+          "__type": "Sandbox.BoxCollider",
+          "__guid": "3443d8c0-2e3a-4f68-b028-3eadd7848e4a",
+          "Center": "0,0,0",
+          "IsTrigger": true,
+          "Scale": "50000,50000,32",
+          "Static": false,
+          "SurfaceVelocity": "0,0,0"
+        }
+      ]
     }
   ],
   "SceneProperties": {
