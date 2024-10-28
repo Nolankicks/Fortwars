@@ -225,6 +225,15 @@
             If another MoveHelper moved at the same time and they're stuck, let this one know that the other already unstuck for us
             </summary>
         </member>
+        <member name="M:ShrimpleCharacterController.ShrimpleCharacterController.BuildTrace(BBox,Vector3,Vector3)">
+            <summary>
+            Casts the current bounds from to and returns the scene trace result
+            </summary>
+            <param name="bounds"></param>
+            <param name="from"></param>
+            <param name="to"></param>
+            <returns></returns>
+        </member>
         <member name="M:ShrimpleCharacterController.ShrimpleCharacterController.Punch(Vector3@)">
             <summary>
             Detach the MoveHelper from the ground and launch it somewhere (Units per second)
