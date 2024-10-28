@@ -179,7 +179,7 @@ LobbySettingsPanel
             padding: 8px;
             border-width: 2px;
             border-color: $button-secondary;
-            flex-shrink: 1;
+            flex-shrink: 0.9;
 
             margin: 12px;
             margin-top: 0;
@@ -197,6 +197,7 @@ LobbySettingsPanel
                 justify-content: space-between;
                 background-color: $secondary;
                 border-radius: 4px;
+                height: 52px;
                 padding: 8px;
                 flex-shrink: 0;
                 
