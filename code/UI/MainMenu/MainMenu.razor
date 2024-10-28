@@ -340,7 +340,7 @@
         {
             HeldBody?.GetGameObject()?.Tags.Remove( "held" );
 
-            if ( HeldBody?.GetGameObject()?.Root.Components.TryGet<SkinnedModelRenderer>( out var r, FindMode.EnabledInSelfAndDescendants ) ?? false)
+            if ( HeldBody?.GetGameObject()?.Root.Components.TryGet<SkinnedModelRenderer>( out var r, FindMode.EnabledInSelfAndDescendants ) ?? false )
             {
                 r.Set( "b_open", false );
             }
