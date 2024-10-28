@@ -91,7 +91,6 @@ public class Weapon : Item, IGameEventHandler<OnReloadEvent>
 	[Property] public string AttackAnimName { get; set; } = "b_attack";
 	[Property] public string ReloadAnimName { get; set; } = "b_reload";
 	public virtual bool CanFire => true;
-	[Property] public bool Automatic { get; set; } = true;
 
 	public enum FireTypes
 	{
