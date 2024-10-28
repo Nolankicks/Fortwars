@@ -8,6 +8,7 @@ IGameEventHandler<OnGameWaiting>
 	[Sync] public Transform StartingTransform { get; set; }
 	[Sync] public bool IsGrabbed { get; set; } = false;
 	[Property, Sync] public SkinnedModelRenderer Renderer { get; set; }
+	[Property, Sync] public Gravgun Grabber { get; set; }
 
 	protected override void OnStart()
 	{
@@ -24,6 +25,8 @@ IGameEventHandler<OnGameWaiting>
 			rb.AngularVelocity = Vector3.Zero;
 		}
 
+		Grabber?.GrabEnd();
+
 		Transform.ClearInterpolation();
 
 		Transform.World = StartingTransform;
@@ -31,8 +34,7 @@ IGameEventHandler<OnGameWaiting>
 
 	protected override void OnUpdate()
 	{
-		if ( Renderer.IsValid() )
-			Renderer.Set( "b_open", IsGrabbed );
+		Renderer?.Set( "b_open", IsGrabbed );
 	}
 
 	void IGameEventHandler<OnGameEnd>.OnGameEvent( OnGameEnd eventArgs )
@@ -66,8 +68,9 @@ IGameEventHandler<OnGameWaiting>
 	}
 
 	[Broadcast]
-	public void SetGrabbed( bool isGrabbed )
+	public void SetGrabbed( Gravgun gravgun, bool isGrabbed )
 	{
 		IsGrabbed = isGrabbed;
+		Grabber = gravgun;
 	}
 }

@@ -1868,6 +1868,139 @@
       ]
     },
     {
+      "__guid": "8a013b4a-155d-4ba9-8ff2-361a8c202e2e",
+      "Flags": 0,
+      "Name": "Blue Barrier Trigger",
+      "Position": "-768,232,64.00027",
+      "Tags": "map,blue,no_build,trigger",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.MeshComponent",
+          "__guid": "70c7c439-08b0-4d5c-9a5f-ca7bef00fb97",
+          "Collision": "Mesh",
+          "Color": "1,1,1,1",
+          "HideInGame": true,
+          "IsTrigger": true,
+          "Mesh": {
+            "Topology": "H4sIAAAAAAAACl2Qiw6CUAxDh1flgg/wAfr/X2pP0iWLJA25W9t16xHxFc4C30E4\u002Bt2FWbgKd2Ew4NTvIZxcb9ZH4b5db\u002Bb9z/oUzVh8m7lPc9FOzjRYQ8ZXyXxxXvrw4e72wvtWdoEPdzMXj8We9OHDXcvO7EqdN396eKaeLHjkLciePeYxi4z0mMFtMisablFvRXZ2Tj158KQOF78f9WSROMQBAAA=",
+            "Positions": [
+              "-64,-8,64",
+              "64,-8,64",
+              "64,8,64",
+              "-64,8,64",
+              "-64,8,-64",
+              "64,8,-64",
+              "64,-8,-64",
+              "-64,-8,-64"
+            ],
+            "TextureCoord": [
+              "0.5,0.0625",
+              "-0.5,-0.5",
+              "0.5,-0.0625",
+              "-0.0625,-0.5",
+              "-0.5,-0.0625",
+              "-0.5,-0.5",
+              "-0.5,0.0625",
+              "-0.0625,-0.5",
+              "0.5,-0.0625",
+              "0.5,0.5",
+              "0.5,0.0625",
+              "0.0625,0.5",
+              "-0.5,0.0625",
+              "0.5,0.5",
+              "-0.5,-0.0625",
+              "0.0625,0.5",
+              "0.0625,-0.5",
+              "-0.5,0.5",
+              "-0.0625,0.5",
+              "0.5,-0.5",
+              "-0.0625,0.5",
+              "0.5,-0.5",
+              "0.0625,-0.5",
+              "-0.5,0.5"
+            ],
+            "TextureUAxis": [
+              "1,0,0",
+              "1,0,-0",
+              "0,-1,0",
+              "0,1,0",
+              "-1,0,0",
+              "1,-0,0"
+            ],
+            "TextureVAxis": [
+              "0,-1,0",
+              "0,-1,0",
+              "0,0,-1",
+              "-0,0,-1",
+              "0,0,-1",
+              "-0,0,-1"
+            ],
+            "TextureScale": [
+              "0.25,0.25",
+              "0.25,0.25",
+              "0.25,0.25",
+              "0.25,0.25",
+              "0.25,0.25",
+              "0.25,0.25"
+            ],
+            "TextureOffset": [
+              "0,416",
+              "0,416",
+              "416,256.0011",
+              "96,256.0011",
+              "0,256.0011",
+              "0,256.0011"
+            ],
+            "MaterialIndex": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "EdgeFlags": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "Materials": [
+              "materials/fortwars/barrier_blue.vmat"
+            ]
+          },
+          "SmoothingAngle": 40,
+          "Static": true,
+          "SurfaceVelocity": "0,0,0"
+        },
+        {
+          "__type": "SpawnWallTrigger",
+          "__guid": "30a567af-9559-4ccf-b24d-6dd58bbd26c4"
+        }
+      ]
+    },
+    {
       "__guid": "3bfd2439-c8a1-44a1-a85d-f8f0b986f4b2",
       "Flags": 0,
       "Name": "Blue Barrier",
@@ -1997,6 +2130,139 @@
       ]
     },
     {
+      "__guid": "bdad1f39-b4ce-4d21-b77b-1184724679af",
+      "Flags": 0,
+      "Name": "Red Barrier Trigger",
+      "Position": "768,228,64",
+      "Tags": "red,no_build,trigger",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.MeshComponent",
+          "__guid": "85d89f22-eaaf-47be-9b72-1e1741d472d7",
+          "Collision": "Mesh",
+          "Color": "1,1,1,1",
+          "HideInGame": true,
+          "IsTrigger": true,
+          "Mesh": {
+            "Topology": "H4sIAAAAAAAACl2Qiw6CUAxDh1flgg/wAfr/X2pP0iWLJA25W9t16xHxFc4C30E4\u002Bt2FWbgKd2Ew4NTvIZxcb9ZH4b5db\u002Bb9z/oUzVh8m7lPc9FOzjRYQ8ZXyXxxXvrw4e72wvtWdoEPdzMXj8We9OHDXcvO7EqdN396eKaeLHjkLciePeYxi4z0mMFtMisablFvRXZ2Tj158KQOF78f9WSROMQBAAA=",
+            "Positions": [
+              "-64,-12,64",
+              "64,-12,64",
+              "64,12,64",
+              "-64,12,64",
+              "-64,12,-64",
+              "64,12,-64",
+              "64,-12,-64",
+              "-64,-12,-64"
+            ],
+            "TextureCoord": [
+              "0.5,0.09375",
+              "-0.5,-0.5",
+              "0.5,-0.09375",
+              "-0.09375,-0.5",
+              "-0.5,-0.09375",
+              "-0.5,-0.5",
+              "-0.5,0.09375",
+              "-0.09375,-0.5",
+              "0.5,-0.09375",
+              "0.5,0.5",
+              "0.5,0.09375",
+              "0.09375,0.5",
+              "-0.5,0.09375",
+              "0.5,0.5",
+              "-0.5,-0.09375",
+              "0.09375,0.5",
+              "0.09375,-0.5",
+              "-0.5,0.5",
+              "-0.09375,0.5",
+              "0.5,-0.5",
+              "-0.09375,0.5",
+              "0.5,-0.5",
+              "0.09375,-0.5",
+              "-0.5,0.5"
+            ],
+            "TextureUAxis": [
+              "1,0,0",
+              "1,0,-0",
+              "0,-1,0",
+              "0,1,0",
+              "-1,0,0",
+              "1,-0,0"
+            ],
+            "TextureVAxis": [
+              "0,-1,0",
+              "0,-1,0",
+              "0,0,-1",
+              "-0,0,-1",
+              "0,0,-1",
+              "-0,0,-1"
+            ],
+            "TextureScale": [
+              "0.25,0.25",
+              "0.25,0.25",
+              "0.25,0.25",
+              "0.25,0.25",
+              "0.25,0.25",
+              "0.25,0.25"
+            ],
+            "TextureOffset": [
+              "0,400",
+              "0,400",
+              "400,256",
+              "112,256",
+              "0,256",
+              "0,256"
+            ],
+            "MaterialIndex": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "EdgeFlags": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "Materials": [
+              "materials/fortwars/barrier_red.vmat"
+            ]
+          },
+          "SmoothingAngle": 40,
+          "Static": true,
+          "SurfaceVelocity": "0,0,0"
+        },
+        {
+          "__type": "SpawnWallTrigger",
+          "__guid": "41debe58-3bf1-4342-855c-7dda6fe491af"
+        }
+      ]
+    },
+    {
       "__guid": "f5d2cd2a-8eb2-4810-8e54-dc0bf761cbbc",
       "Flags": 0,
       "Name": "Red Barrier",
@@ -2007,6 +2273,135 @@
         {
           "__type": "Sandbox.MeshComponent",
           "__guid": "7d57d734-6270-49ea-ba38-821009493b77",
+          "Collision": "Mesh",
+          "Color": "1,1,1,1",
+          "HideInGame": false,
+          "IsTrigger": false,
+          "Mesh": {
+            "Topology": "H4sIAAAAAAAACl2Qiw6CUAxDh1flgg/wAfr/X2pP0iWLJA25W9t16xHxFc4C30E4\u002Bt2FWbgKd2Ew4NTvIZxcb9ZH4b5db\u002Bb9z/oUzVh8m7lPc9FOzjRYQ8ZXyXxxXvrw4e72wvtWdoEPdzMXj8We9OHDXcvO7EqdN396eKaeLHjkLciePeYxi4z0mMFtMisablFvRXZ2Tj158KQOF78f9WSROMQBAAA=",
+            "Positions": [
+              "-64,-12,64",
+              "64,-12,64",
+              "64,12,64",
+              "-64,12,64",
+              "-64,12,-64",
+              "64,12,-64",
+              "64,-12,-64",
+              "-64,-12,-64"
+            ],
+            "TextureCoord": [
+              "0.5,0.09375",
+              "-0.5,-0.5",
+              "0.5,-0.09375",
+              "-0.09375,-0.5",
+              "-0.5,-0.09375",
+              "-0.5,-0.5",
+              "-0.5,0.09375",
+              "-0.09375,-0.5",
+              "0.5,-0.09375",
+              "0.5,0.5",
+              "0.5,0.09375",
+              "0.09375,0.5",
+              "-0.5,0.09375",
+              "0.5,0.5",
+              "-0.5,-0.09375",
+              "0.09375,0.5",
+              "0.09375,-0.5",
+              "-0.5,0.5",
+              "-0.09375,0.5",
+              "0.5,-0.5",
+              "-0.09375,0.5",
+              "0.5,-0.5",
+              "0.09375,-0.5",
+              "-0.5,0.5"
+            ],
+            "TextureUAxis": [
+              "1,0,0",
+              "1,0,-0",
+              "0,-1,0",
+              "0,1,0",
+              "-1,0,0",
+              "1,-0,0"
+            ],
+            "TextureVAxis": [
+              "0,-1,0",
+              "0,-1,0",
+              "0,0,-1",
+              "-0,0,-1",
+              "0,0,-1",
+              "-0,0,-1"
+            ],
+            "TextureScale": [
+              "0.25,0.25",
+              "0.25,0.25",
+              "0.25,0.25",
+              "0.25,0.25",
+              "0.25,0.25",
+              "0.25,0.25"
+            ],
+            "TextureOffset": [
+              "0,400",
+              "0,400",
+              "400,256",
+              "112,256",
+              "0,256",
+              "0,256"
+            ],
+            "MaterialIndex": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "EdgeFlags": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "Materials": [
+              "materials/fortwars/barrier_red.vmat"
+            ]
+          },
+          "SmoothingAngle": 40,
+          "Static": true,
+          "SurfaceVelocity": "0,0,0"
+        }
+      ]
+    },
+    {
+      "__guid": "c2b32175-92f8-445e-ac32-70b64b96b4cc",
+      "Flags": 0,
+      "Name": "Red Barrier (1)",
+      "Position": "768,228,64",
+      "Tags": "red,no_build",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.MeshComponent",
+          "__guid": "3b3f0d45-9328-4c64-b136-18f7c185d414",
           "Collision": "Mesh",
           "Color": "1,1,1,1",
           "HideInGame": false,

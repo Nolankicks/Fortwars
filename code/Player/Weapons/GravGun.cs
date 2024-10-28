@@ -239,7 +239,7 @@ public class Gravgun : Item, IGameEventHandler<DeathEvent>
 			prop.SetGrabber( local );
 
 		if ( gameObject.Components.TryGet<RollerMine>( out var rollerMine, FindMode.EverythingInSelfAndParent ) )
-			rollerMine.SetGrabbed( true );
+			rollerMine.SetGrabbed( this, true );
 	}
 
 	void IGameEventHandler<DeathEvent>.OnGameEvent( DeathEvent eventArgs )
@@ -262,7 +262,8 @@ public class Gravgun : Item, IGameEventHandler<DeathEvent>
 		}
 	}
 
-	void GrabEnd( bool setGrabber = true )
+	[Authority]
+	public void GrabEnd( bool setGrabber = true )
 	{
 		if ( !GrabbedObject.IsValid() ) return;
 
@@ -270,7 +271,7 @@ public class Gravgun : Item, IGameEventHandler<DeathEvent>
 		if ( setGrabber )
 		{
 			if ( GrabbedObject.Components.TryGet<RollerMine>( out var rollerMine, FindMode.EverythingInSelfAndParent ) )
-				rollerMine.SetGrabbed( false );
+				rollerMine.SetGrabbed( null, false );
 
 			if ( GrabbedObject.Components.TryGet<FortwarsProp>( out var prop ) )
 				prop.SetGrabber( null );
