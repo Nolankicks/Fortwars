@@ -265,7 +265,7 @@ public sealed partial class PlayerController : Component, IGameEventHandler<Dama
 		{
 			var ragdollPos = Ragdoll.IsValid() ? Ragdoll.WorldPosition : DeathPos;
 
-			Scene.Camera.WorldPosition = ragdollPos + Vector3.Up * 64 + EyeAngles.ToRotation().Backward * 200;
+			Scene.Camera.WorldPosition = ragdollPos + EyeAngles.ToRotation().Backward * 250;
 			Scene.Camera.WorldRotation = EyeAngles;
 
 			if ( SetFov )
