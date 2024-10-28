@@ -98,10 +98,6 @@ IGameEventHandler<OnGameOvertimeBuild>, IGameEventHandler<OnGameOvertimeFight>
 
 		if ( Networking.IsHost )
 		{
-			//Get this shit loaded if we are a dedicated server
-			if ( Application.IsHeadless )
-				PlayerToStart = 1;
-
 			InitBlueTimeHeld = BlueTimeHeld;
 			InitRedTimeHeld = RedTimeHeld;
 			InitYellowTimeHeld = YellowTimeHeld;

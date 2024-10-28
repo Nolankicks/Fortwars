@@ -6,10 +6,6 @@ public partial class GameSystem
 {
 	public void OnActive( Connection connection )
 	{
-		//Don't spawn the player if we are the dedicated server
-		if ( Application.IsHeadless && Connection.Local == connection )
-			return;
-
 		connection.CanRefreshObjects = true;
 
 		if ( !PlayerPrefab.IsValid() || !SpawnPlayer )

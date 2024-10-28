@@ -24,6 +24,7 @@
     "CsProjName": "",
     "StartupScene": "scenes/fortwarsmenu.scene",
     "LaunchMode": "Normal",
-    "ControlModes": {}
+    "ControlModes": {},
+    "DedicatedServerStartupScene": "scenes/easter.scene"
   }
 }
