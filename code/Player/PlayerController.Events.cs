@@ -89,6 +89,9 @@ partial class PlayerController
 			modelPhys.Renderer = ragdollBody;
 			modelPhys.CopyBonesFrom( target, true );
 
+			if ( shrimpleCharacterController.IsValid() )
+				modelPhys.PhysicsGroup.AddVelocity( shrimpleCharacterController.Velocity );
+
 			go.Components.Create<RagdollComponent>();
 
 			go.Network.SetOwnerTransfer( OwnerTransfer.Takeover );
@@ -108,6 +111,8 @@ partial class PlayerController
 				BroadcastEnable( tag.GameObject, false );
 			}
 
+			Ragdoll = go;
+
 			Invoke( 2, () =>
 			{
 				Inventory.CanScrollSwitch = true;
@@ -123,6 +128,8 @@ partial class PlayerController
 				EyeAngles = WorldRotation.Angles();
 
 				GameObject.Dispatch( new PlayerReset() );
+
+				Ragdoll = null;
 			} );
 		}
 	}

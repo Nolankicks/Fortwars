@@ -254,6 +254,8 @@ public sealed partial class PlayerController : Component, IGameEventHandler<Dama
 		Eye.WorldRotation = ee.ToRotation();
 	}
 
+	public GameObject Ragdoll { get; set; }
+
 	public void PositionCamera()
 	{
 		if ( !Scene?.Camera.IsValid() ?? false || !Eye.IsValid() )
@@ -261,7 +263,9 @@ public sealed partial class PlayerController : Component, IGameEventHandler<Dama
 
 		if ( IsRespawning )
 		{
-			Scene.Camera.WorldPosition = DeathPos + Vector3.Up * 64 + EyeAngles.ToRotation().Backward * 200;
+			var ragdollPos = Ragdoll.IsValid() ? Ragdoll.WorldPosition : DeathPos;
+
+			Scene.Camera.WorldPosition = ragdollPos + Vector3.Up * 64 + EyeAngles.ToRotation().Backward * 200;
 			Scene.Camera.WorldRotation = EyeAngles;
 
 			if ( SetFov )
