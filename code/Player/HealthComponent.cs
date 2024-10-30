@@ -13,7 +13,7 @@ public sealed class HealthComponent : Component
     [Property, Sync] public bool IsDead { get; set; } = false;
 
     [Authority]
-    public void TakeDamage( GameObject Attacker, int damage = 1, Vector3 HitPos = default, Vector3 normal = default )
+    public void TakeDamage( GameObject Attacker, int damage = 10, Vector3 HitPos = default, Vector3 normal = default )
     {
         if ( IsDead )
             return;
@@ -37,7 +37,7 @@ public sealed class HealthComponent : Component
 	[Button]
 	public void TestDamage()
 	{
-		TakeDamage( GameObject, 10 );
+		TakeDamage( GameObject );
 	}
 
 	[Broadcast]
