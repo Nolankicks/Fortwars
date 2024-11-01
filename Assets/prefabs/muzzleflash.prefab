@@ -210,7 +210,6 @@
         "Flags": 0,
         "Name": "Smoke",
         "Position": "2.014441,0,0",
-        "Enabled": true,
         "Components": [
           {
             "__type": "Sandbox.ParticleEffect",
