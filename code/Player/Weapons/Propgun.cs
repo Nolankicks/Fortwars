@@ -82,8 +82,6 @@ public sealed class Propgun : Item
 
 			panel.Propgun = this;
 
-			panel.Position = hud.Panel.Box.Rect.Center - new Vector2( 100, 100 );
-
 			if ( hud.IsValid() && hud.Panel?.ChildrenOfType<SpawnerMenu>()?.Count() == 0 )
 				hud.Panel.AddChild( panel );
 		}
@@ -329,10 +327,11 @@ public sealed class Propgun : Item
 		var fortWarsProp = gb.Components.Create<FortwarsProp>();
 
 		renderer.Model = Prop;
-		fortWarsProp.Health = renderer.Health;
 
-		if ( fortWarsProp.Health == 0 )
-			fortWarsProp.Invincible = true;
+		if ( renderer.Health == 0 )
+			renderer.Health = 100;
+		
+		fortWarsProp.Health = renderer.Health;
 
 		// Break the prop into individuals so we can check for ModelPhysics later.
 		renderer.Break();
@@ -344,9 +343,6 @@ public sealed class Propgun : Item
 			fortWarsProp.Team = team.Team;
 
 		fortWarsProp.CanKill = false;
-
-		if ( PropIdent is not null && (gs.ClassicIndents?.TryGetValue( PropIdent, out var propHealth ) ?? false) && propHealth > 0 )
-			renderer.Health = propHealth;
 
 		if ( gb.Components.TryGet<Rigidbody>( out var rb, FindMode.EverythingInSelfAndParent ) )
 		{

@@ -106,7 +106,9 @@
             "ClassicIndents": {
               "facepunch.wooden_crate": 100,
               "facepunch.concrete_barrier": 100,
-              "facepunch.pallet": 100
+              "facepunch.pallet": 100,
+              "facepunch.plywood_stack": 100,
+              "facepunch.weapon_crate_stacka": 0
             },
             "ClassicModels": true,
             "FightTime": 240,

@@ -1,6 +1,5 @@
-@import "/XGUI/FunctionStyles/FunctionStyles.scss";
+
 @import "/UI/HUD/HUD.razor.scss";
-$window-close-button: url("XGUI/Resources/icon_close.png");
 
 SpawnerMenu
 {
@@ -10,109 +9,51 @@ SpawnerMenu
     pointer-events: all;
     border-radius: $border-radius;
 
-    .main
+    position: relative;
+
+    width: 850px;
+    height: 500px;
+    padding: 6px;
+
+    >.title
     {
         width: 100%;
-        height: 100%;
-        padding: 16px;
+        height: 50px;
+        font-size: 42px;
+        background-color: $secondary;
     }
-    
-    .models
+
+    >.models
     {
-        padding: 16px;
         width: 100%;
         height: 100%;
-        overflow-y: scroll;
-        overflow-x: hidden;
         flex-direction: row;
         flex-wrap: wrap;
+        padding: 6px;
+        justify-content: flex-start;
         align-items: center;
-        justify-content: center;
-        gap: 4px;
 
-        >.model
+        overflow-x: hidden;
+        overflow-y: scroll;
+
+        >button
         {
-            align-items: center;
-            justify-content: center;
-            padding: 6px;
-            width: 150px;
-            height: 150px;
-
-            .icon
-            {
-                width: 100%;
-                height: 100%;
-                color: white;
-            }
-
-            &.active
-            {
-                background-color: $secondary;
-            }
+            width: 200px;
+            height: 200px;
+            flex-grow: 1;
+            flex-shrink: 1;
 
             >img
             {
-                width: 100%;
-                height: 100%;
+                width: 95%;
+                height: 95%;
             }
-        }
-    }
 
-    .TitleBar
-    {
-        //align-items: center;
-        margin-bottom: 8px;
-        background-color: hsl(0, 0%, 20%);
-        border-radius: 4px;
-        height: 36px;
-
-        .CloseButton
-        {
-            height: 100%;
-            background-color: hsl(0, 0%, 20%);
-            border-radius: 4px;
-            background-size: 16px;
-            align-items: center;
-            justify-content: flex-start;
-            font-size: 21px;
-            width: 36px;
-            align-items: center;
-            justify-content: center;
-
-            cursor: pointer;
-
-            &:hover
+            &:last-child
             {
-                background-color: hsl(0, 0%, 30%);
+                flex-grow: 0;
+                flex-shrink: 0;
             }
         }
-
-        .TitleLabel
-        {
-            height: 100%;
-            align-items: center;
-            justify-content: center;
-            padding: 8px;
-        }
-    }
-
-    .TextEntry {
-        padding: 5px;
-        height: 42px;
-        border-radius: $border-radius;
-        font-size: 18px;
-        margin: 14px;
-        align-items: center;
-
-
-        .content-label,
-	    .prefix-label,
-	    .suffix-label,
-	    .placeholder
-	    {
-            padding:0px;    
-        }
-
-        background-color: hsl(0, 0%, 20%);
     }
 }
