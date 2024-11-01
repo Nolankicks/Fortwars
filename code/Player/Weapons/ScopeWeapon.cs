@@ -31,7 +31,7 @@ public class ScopeWeaponComponent : Weapon
 
 		IsZooming = true;
 
-		PlayerController.Local.SpeedMult = 0.25f;
+		FWPlayerController.Local.SpeedMult = 0.25f;
 	}
 
 	protected void EndZoom()
@@ -45,14 +45,14 @@ public class ScopeWeaponComponent : Weapon
 
 		IsZooming = false;
 
-		PlayerController.Local.SpeedMult = 1;
+		FWPlayerController.Local.SpeedMult = 1;
 	}
 
 	public override void OnEquip( OnItemEquipped onItemEquipped )
 	{
 		base.OnEquip( onItemEquipped );
 
-		var player = PlayerController.Local;
+		var player = FWPlayerController.Local;
 
 		if ( !IsProxy && player.IsValid() )
 			player.SetFov = false;
@@ -82,7 +82,7 @@ public class ScopeWeaponComponent : Weapon
 		if ( hud.IsValid() )
 			hud.ShowCrosshair = true;
 
-		var player = PlayerController.Local;
+		var player = FWPlayerController.Local;
 
 		if ( !IsProxy && player.IsValid() )
 			player.SetFov = false;
@@ -123,7 +123,7 @@ public class ScopeWeaponComponent : Weapon
 
 		var targetFov = IsZooming ? 45 : 0;
 
-		var localPlayer = PlayerController.Local;
+		var localPlayer = FWPlayerController.Local;
 		localPlayer.OverrideFOV = targetFov;
 
 		if ( IsZooming && !CanAim() )
@@ -134,7 +134,7 @@ public class ScopeWeaponComponent : Weapon
 		if ( IsZooming )
 		{
 
-			var cc = PlayerController.Local?.shrimpleCharacterController;
+			var cc = FWPlayerController.Local?.shrimpleCharacterController;
 
 			float velocity = cc.Velocity.Length / 25.0f;
 			float blur = 1.0f / (velocity + 1.0f);
@@ -148,7 +148,7 @@ public class ScopeWeaponComponent : Weapon
 			else
 				BlurLerp = BlurLerp.LerpTo( blur, Time.Delta * 10.0f );
 
-			var angles = PlayerController.Local.EyeAngles;
+			var angles = FWPlayerController.Local.EyeAngles;
 			var delta = angles - LastAngles;
 
 			AnglesLerp = AnglesLerp.LerpTo( delta, Time.Delta * 10.0f );

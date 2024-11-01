@@ -1,13 +1,13 @@
 using Sandbox.Events;
 
-public record PlayerDeath( PlayerController Player, GameObject Attacker ) : IGameEvent;
-public record PlayerDamage( PlayerController Player, DamageEvent DamageEvent ) : IGameEvent;
+public record PlayerDeath( FWPlayerController Player, GameObject Attacker ) : IGameEvent;
+public record PlayerDamage( FWPlayerController Player, DamageEvent DamageEvent ) : IGameEvent;
 public record PlayerReset() : IGameEvent;
 public record JumpEvent() : IGameEvent;
 public record OnPlayerJoin() : IGameEvent;
 public record OnPhysgunGrabChange( bool isCurrentlyGrabbing ) : IGameEvent;
 
-partial class PlayerController
+partial class FWPlayerController
 {
 	void IGameEventHandler<PlayerReset>.OnGameEvent( PlayerReset eventArgs )
 	{
@@ -30,7 +30,7 @@ partial class PlayerController
 
 	void IGameEventHandler<DeathEvent>.OnGameEvent( DeathEvent eventArgs )
 	{
-		var pc = eventArgs.Attacker?.Root?.Components?.Get<PlayerController>();
+		var pc = eventArgs.Attacker?.Root?.Components?.Get<FWPlayerController>();
 
 		//Make sure we are only calling this
 		if ( IsProxy )

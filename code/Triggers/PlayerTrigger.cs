@@ -4,7 +4,7 @@ using Sandbox.Utility.Svg;
 
 public sealed class PlayerTrigger : Component, Component.ITriggerListener
 {
-	public delegate void TriggerAction( PlayerController Player );
+	public delegate void TriggerAction( FWPlayerController Player );
 
 	[Property] public TriggerAction OnEnter { get; set; }
 	[Property] public TriggerAction OnExit { get; set; }
@@ -14,7 +14,7 @@ public sealed class PlayerTrigger : Component, Component.ITriggerListener
 
 	public void OnTriggerEnter( Collider other )
 	{
-		if ( other.GameObject.Components.TryGet<PlayerController>( out var player, FindMode.EverythingInSelfAndParent ) )
+		if ( other.GameObject.Components.TryGet<FWPlayerController>( out var player, FindMode.EverythingInSelfAndParent ) )
 		{
 			OnEnter?.Invoke( player );
 			OnEnterRPC( player );
@@ -23,7 +23,7 @@ public sealed class PlayerTrigger : Component, Component.ITriggerListener
 
 	public void OnTriggerExit( Collider other )
 	{
-		if ( other.GameObject.Components.TryGet<PlayerController>( out var player, FindMode.EverythingInSelfAndParent ) )
+		if ( other.GameObject.Components.TryGet<FWPlayerController>( out var player, FindMode.EverythingInSelfAndParent ) )
 		{
 			OnExit?.Invoke( player );
 			OnExitRPC( player );
@@ -31,13 +31,13 @@ public sealed class PlayerTrigger : Component, Component.ITriggerListener
 	}
 
 	[Broadcast]
-	public void OnEnterRPC( PlayerController player )
+	public void OnEnterRPC( FWPlayerController player )
 	{
 		OnEnterBroadcast?.Invoke( player );
 	}
 
 	[Broadcast]
-	public void OnExitRPC( PlayerController player )
+	public void OnExitRPC( FWPlayerController player )
 	{
 		OnExitBroadcast?.Invoke( player );
 	}

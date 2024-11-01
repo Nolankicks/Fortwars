@@ -7,7 +7,7 @@
 
 <root>
 	@{
-		var player = PlayerController.Local;
+        var player = FWPlayerController.Local;
 
 		if ( !player.IsValid() )
 			return;
@@ -26,6 +26,6 @@
 
 	protected override int BuildHash()
 	{
-		return System.HashCode.Combine( PlayerController.Local?.HealthComponent?.Health, PlayerController.Local?.TeamComponent?.Team );
+		return System.HashCode.Combine( FWPlayerController.Local?.HealthComponent?.Health, FWPlayerController.Local?.TeamComponent?.Team );
 	}
 }

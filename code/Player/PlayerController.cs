@@ -2,7 +2,8 @@ using Sandbox.Citizen;
 using Sandbox.Events;
 using Sandbox.Services;
 
-public sealed partial class PlayerController : Component, IGameEventHandler<DamageEvent>, IGameEventHandler<PlayerReset>, 
+[Title( "FW - Player Controller" )]
+public sealed partial class FWPlayerController : Component, IGameEventHandler<DamageEvent>, IGameEventHandler<PlayerReset>,
 IGameEventHandler<DeathEvent>, IGameEventHandler<OnPhysgunGrabChange>
 {
 	//Refrences
@@ -38,13 +39,13 @@ IGameEventHandler<DeathEvent>, IGameEventHandler<OnPhysgunGrabChange>
 	public bool CanMoveHead = true;
 	public float EyeHeight { get; set; } = 64;
 	public bool SetFov { get; set; } = true;
-	private static PlayerController _local;
-	public static PlayerController Local
+	private static FWPlayerController _local;
+	public static FWPlayerController Local
 	{
 		get
 		{
 			if ( !_local.IsValid() )
-				_local = Game.ActiveScene.GetAllComponents<PlayerController>().FirstOrDefault( x => !x.IsProxy );
+				_local = Game.ActiveScene.GetAllComponents<FWPlayerController>().FirstOrDefault( x => !x.IsProxy );
 
 			return _local;
 		}
@@ -291,9 +292,9 @@ IGameEventHandler<DeathEvent>, IGameEventHandler<OnPhysgunGrabChange>
 		}
 
 		Eye.WorldPosition = targetCameraPos;
-		camera.WorldPosition = targetCameraPos;
-		camera.WorldRotation = EyeAngles;
-		camera.FieldOfView = OverrideFOV == 0 ? Preferences.FieldOfView : OverrideFOV;
+		//camera.WorldPosition = targetCameraPos;
+		//camera.WorldRotation = EyeAngles;
+		//camera.FieldOfView = OverrideFOV == 0 ? Preferences.FieldOfView : OverrideFOV;
 	}
 
 	[Broadcast]

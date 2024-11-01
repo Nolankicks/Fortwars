@@ -28,7 +28,7 @@
 
 			if ( Input.Pressed( "Slot" + (i + 1).ToString() ) )
 			{
-				DoEmote( PlayerController.Local, i );
+				DoEmote( FWPlayerController.Local, i );
 				Scene.GetAllComponents<Chat>().First().AddText( emote.ChatMessage, HUD.GetColor() );
 				IsActive = false;
 			}
@@ -36,7 +36,7 @@
 	}
 
 	[Broadcast]
-	void DoEmote( PlayerController player, int index )
+	void DoEmote( FWPlayerController player, int index )
 	{
 		var emote = ChatEmotes[index];
 		Log.Info( $"Emote: {emote.Name}" );

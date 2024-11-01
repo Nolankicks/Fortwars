@@ -12,6 +12,10 @@
         "AttackAnimName": "b_attack",
         "Damage": 8,
         "FireRate": 0.065,
+        "FireShake": {
+          "Duration": 0.05,
+          "Rotation": -0.1
+        },
         "FireSound": "audio/smg.fire.sound",
         "FireType": "F_AUTOMATIC",
         "HoldType": "Rifle",

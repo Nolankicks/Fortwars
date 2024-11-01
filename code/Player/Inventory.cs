@@ -82,7 +82,7 @@ public sealed class Inventory : Component
 				return;
 
 			var gs = GameSystem.Instance;
-			var local = PlayerController.Local;
+			var local = FWPlayerController.Local;
 
 			if ( !gs.IsValid() || !local.IsValid() )
 				return;
@@ -98,7 +98,7 @@ public sealed class Inventory : Component
 
 		if ( Input.MouseWheel.y != 0 && CanScrollSwitch )
 		{
-			var local = PlayerController.Local;
+			var local = FWPlayerController.Local;
 
 			if ( !local.IsValid() || (!local?.CanMoveHead ?? false) )
 				return;
@@ -153,7 +153,7 @@ public sealed class Inventory : Component
 
 		var clone = item.WeaponPrefab.Clone();
 
-		var local = PlayerController.Local;
+		var local = FWPlayerController.Local;
 
 		if ( !clone.IsValid() || !local.IsValid() || (!local?.Eye.IsValid() ?? false) )
 			return;
@@ -189,7 +189,7 @@ public sealed class Inventory : Component
 
 		var clone = item.WeaponPrefab.Clone();
 
-		var local = PlayerController.Local;
+		var local = FWPlayerController.Local;
 
 		if ( !clone.IsValid() || !local.IsValid() || (!local?.Eye.IsValid() ?? false) )
 			return;
@@ -239,7 +239,7 @@ public sealed class Inventory : Component
 			ChangeItem( 0, Items );
 		}
 
-		var player = PlayerController.Local;
+		var player = FWPlayerController.Local;
 
 		if ( !player.IsValid() )
 			return;
@@ -252,7 +252,7 @@ public sealed class Inventory : Component
 			player.HoldType = CitizenAnimationHelper.HoldTypes.None;
 
 			if ( player.HoldRenderer.IsValid() )
-				PlayerController.ClearHoldRenderer( player.HoldRenderer );
+				FWPlayerController.ClearHoldRenderer( player.HoldRenderer );
 		}
 	}
 
@@ -319,7 +319,7 @@ public sealed class Inventory : Component
 	[Authority]
 	public void ClearSelectedClass()
 	{
-		var local = PlayerController.Local;
+		var local = FWPlayerController.Local;
 
 		if ( local.IsValid() )
 		{
@@ -420,7 +420,7 @@ public sealed class Inventory : Component
 
 		SelectedClass = playerClass;
 
-		var local = PlayerController.Local;
+		var local = FWPlayerController.Local;
 
 		if ( local.IsValid() && playerClass is not null )
 		{
@@ -439,7 +439,7 @@ public sealed class Inventory : Component
 	[Authority]
 	public void ResetAmmo()
 	{
-		var local = PlayerController.Local;
+		var local = FWPlayerController.Local;
 
 		if ( !local.IsValid() )
 			return;

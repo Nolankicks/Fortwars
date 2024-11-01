@@ -71,7 +71,7 @@ public partial class GameSystem
 
 		Scene.GetAll<Inventory>()?.ToList()?.ForEach( x => x.ClearAll() );
 
-		Scene.GetAll<PlayerController>()?.ToList()?.ForEach( x => x.ResetStats() );
+		Scene.GetAll<FWPlayerController>()?.ToList()?.ForEach( x => x.ResetStats() );
 
 		Log.Info( $"{GetWinningTeam()} won" );
 

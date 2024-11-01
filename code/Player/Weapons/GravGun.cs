@@ -30,7 +30,7 @@ public class Gravgun : Item, IGameEventHandler<DeathEvent>
 	PhysicsBody HeldBody = null;
 	[Sync] public GameObject GrabbedObject { get; set; }
 
-	SceneTrace GravGunTrace => Scene.Trace.Ray( new Ray( PlayerController.Local.Eye.WorldPosition, PlayerController.Local.EyeAngles.Forward ), 350f )
+	SceneTrace GravGunTrace => Scene.Trace.Ray( new Ray( FWPlayerController.Local.Eye.WorldPosition, FWPlayerController.Local.EyeAngles.Forward ), 350f )
 			.IgnoreGameObjectHierarchy( GameObject.Root )
 			.WithoutTags( FW.Tags.Trigger, FW.Tags.Player, FW.Tags.Map );
 
@@ -41,7 +41,7 @@ public class Gravgun : Item, IGameEventHandler<DeathEvent>
 		if ( IsProxy )
 			return;
 
-		var player = PlayerController.Local;
+		var player = FWPlayerController.Local;
 
 		if ( !player.IsValid() )
 			return;
@@ -125,7 +125,7 @@ public class Gravgun : Item, IGameEventHandler<DeathEvent>
 				tr.GameObject.Network.SetOwnerTransfer( OwnerTransfer.Takeover );
 
 				tr.GameObject.Network.TakeOwnership();
-				tr.Body.Velocity += PlayerController.Local.EyeAngles.Forward * ThrowForce;
+				tr.Body.Velocity += FWPlayerController.Local.EyeAngles.Forward * ThrowForce;
 			}
 		}
 		else
@@ -138,7 +138,7 @@ public class Gravgun : Item, IGameEventHandler<DeathEvent>
 	{
 		if ( CanPickup )
 		{
-			var player = PlayerController.Local;
+			var player = FWPlayerController.Local;
 
 			if ( !player.IsValid() )
 				return;
@@ -190,7 +190,7 @@ public class Gravgun : Item, IGameEventHandler<DeathEvent>
 
 		var heldBodyGb = HeldBody.GetGameObject();
 
-		var local = PlayerController.Local;
+		var local = FWPlayerController.Local;
 
 		var gs = Scene.GetAll<GameSystem>()?.FirstOrDefault();
 
@@ -233,7 +233,7 @@ public class Gravgun : Item, IGameEventHandler<DeathEvent>
 		HeldBody.Sleeping = false;
 		HeldBody.AutoSleep = false;
 
-		var local = PlayerController.Local;
+		var local = FWPlayerController.Local;
 
 		if ( gameObject.Components.TryGet<FortwarsProp>( out var prop ) && local.IsValid() )
 			prop.SetGrabber( local );

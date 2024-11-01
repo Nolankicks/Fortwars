@@ -6,7 +6,7 @@
 
 <root>
 	@{
-		var player = PlayerController.Local;
+		var player = FWPlayerController.Local;
 
 		if ( !player.IsValid() )
 			return;
@@ -46,7 +46,7 @@
 {
 	protected override int BuildHash()
 	{
-		var currentItem = PlayerController.Local?.Inventory?.CurrentItem;
+		var currentItem = FWPlayerController.Local?.Inventory?.CurrentItem;
 
 		int ammo;
 
@@ -55,7 +55,7 @@
 		else
 			ammo = 0;
 
-		return System.HashCode.Combine( PlayerController.Local?.Inventory?.CurrentItem, PlayerController.Local?.Inventory?.Items?.Count(), 
-		PlayerController.Local?.TeamComponent?.Team, ammo );
+		return System.HashCode.Combine( FWPlayerController.Local?.Inventory?.CurrentItem, FWPlayerController.Local?.Inventory?.Items?.Count(), 
+		FWPlayerController.Local?.TeamComponent?.Team, ammo );
 	}
 }

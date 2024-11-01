@@ -19,7 +19,7 @@ public sealed class TeamComponent : Component, IGameEventHandler<OnBuildMode>,
 	{
 		Team = team;
 
-		var controller = Components.Get<PlayerController>();
+		var controller = Components.Get<FWPlayerController>();
 		var nameTag = Components.Get<NameTag>( FindMode.EverythingInSelfAndChildren );
 
 		if ( controller.IsValid() )
@@ -111,7 +111,7 @@ public sealed class TeamComponent : Component, IGameEventHandler<OnBuildMode>,
 		if ( !spawn.IsValid() )
 			return;
 
-		if ( GameObject.Components.TryGet<PlayerController>( out var player ) )
+		if ( GameObject.Components.TryGet<FWPlayerController>( out var player ) )
 		{
 			player.SetWorld( spawn.Transform.World );
 		}

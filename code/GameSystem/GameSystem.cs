@@ -167,7 +167,7 @@ IGameEventHandler<OnGameOvertimeBuild>, IGameEventHandler<OnGameOvertimeFight>
 		{
 			case GameState.Waiting:
 				//Start the game if we have enough players
-				if ( Scene.GetAll<PlayerController>().Count() >= PlayerToStart && StateSwitch > 5 )
+				if ( Scene.GetAll<FWPlayerController>().Count() >= PlayerToStart && StateSwitch > 5 )
 				{
 					Scene.Dispatch( new OnBuildMode() );
 					State = GameState.BuildMode;
@@ -236,7 +236,7 @@ IGameEventHandler<OnGameOvertimeBuild>, IGameEventHandler<OnGameOvertimeFight>
 			players[i].SetTeam( teams[i % teams.Count] );
 		}
 
-		Scene.GetAll<PlayerController>().ToList().ForEach( x => x.TeleportToTeamSpawnPoint() );
+		Scene.GetAll<FWPlayerController>().ToList().ForEach( x => x.TeleportToTeamSpawnPoint() );
 	}
 
 	[Broadcast]

@@ -30,7 +30,7 @@ public sealed class Viewmodel : Component, IGameEventHandler<JumpEvent>, IGameEv
 
 		ApplyInertia();
 
-		var local = PlayerController.Local;
+		var local = FWPlayerController.Local;
 
 		if ( !local.IsValid() || !Renderer.IsValid() && !local.shrimpleCharacterController.IsValid() )
 			return;
@@ -41,7 +41,7 @@ public sealed class Viewmodel : Component, IGameEventHandler<JumpEvent>, IGameEv
 	void ApplyInertia()
 	{
 		var camera = Scene.GetAllComponents<CameraComponent>().FirstOrDefault( x => !x.IsProxy );
-		var controller = PlayerController.Local?.shrimpleCharacterController;
+		var controller = FWPlayerController.Local?.shrimpleCharacterController;
 
 		if ( !camera.IsValid() || !Renderer.IsValid() || !controller.IsValid() )
 			return;

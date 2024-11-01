@@ -55,7 +55,7 @@ public class Item : Component, IGameEventHandler<OnItemEquipped>
 	{
 		OnEquip( eventArgs );
 
-		var player = PlayerController.Local;
+		var player = FWPlayerController.Local;
 
 		if ( IsProxy || !player.IsValid() )
 			return;
@@ -68,10 +68,11 @@ public class Item : Component, IGameEventHandler<OnItemEquipped>
 	}
 
 	[Broadcast]
-	public void BroadcastEquip( PlayerController local )
+	public void BroadcastEquip( FWPlayerController local )
 	{
 		if ( !local.IsValid() )
 			return;
+
 
 		local.HoldRenderer.Model = WorldModel;
 		local.HoldRenderer.LocalPosition = Offset;
@@ -92,6 +93,9 @@ public class Weapon : Item, IGameEventHandler<OnReloadEvent>
 	[Property] public SoundEvent FireSound { get; set; }
 	[Property] public string AttackAnimName { get; set; } = "b_attack";
 	[Property] public string ReloadAnimName { get; set; } = "b_reload";
+
+	[Property] ScreenShake FireShake { get; set; }
+
 	public virtual bool CanFire => true;
 
 	private SceneTraceResult[] Traces;
@@ -129,12 +133,15 @@ public class Weapon : Item, IGameEventHandler<OnReloadEvent>
 
 			SubtractAmmo();
 
-			var local = PlayerController.Local;
+			var local = FWPlayerController.Local;
 
 			if ( local.IsValid() )
 			{
 				local.BroadcastAttack();
 			}
+
+			CameraController.Instance.ShakeScreen( FireShake );
+
 			BroadcastShootEffects( Traces );
 			CreateMuzzleFlash();
 
@@ -161,7 +168,7 @@ public class Weapon : Item, IGameEventHandler<OnReloadEvent>
 
 	public void Shoot( int index = 0 )
 	{
-		var local = PlayerController.Local;
+		var local = FWPlayerController.Local;
 
 		var cam = Scene.Camera;
 
@@ -191,7 +198,7 @@ public class Weapon : Item, IGameEventHandler<OnReloadEvent>
 		damage.Position = tr.HitPosition;
 		damage.Shape = tr.Shape;
 
-		if ( !tr.GameObject.Root.Components.TryGet<PlayerController>( out var p, FindMode.EverythingInSelfAndParent ) && !tr.GameObject.Tags.Has( FW.Tags.Ragdoll ) )
+		if ( !tr.GameObject.Root.Components.TryGet<FWPlayerController>( out var p, FindMode.EverythingInSelfAndParent ) && !tr.GameObject.Tags.Has( FW.Tags.Ragdoll ) )
 		{
 			tr.GameObject.Root.Network.TakeOwnership();
 
@@ -226,7 +233,7 @@ public class Weapon : Item, IGameEventHandler<OnReloadEvent>
 		{
 			foreach ( var trace in traces )
 			{
-				if ( trace.Hit && !trace.GameObject.Components.TryGet<PlayerController>( out var player )
+				if ( trace.Hit && !trace.GameObject.Components.TryGet<FWPlayerController>( out var player )
 					&& !trace.GameObject.Components.TryGet<RollerMine>( out var mine ) )
 				{
 					var decal = GameObject.Clone( "prefabs/bulletdecal.prefab", new CloneConfig { Parent = Scene.Root, StartEnabled = true } );

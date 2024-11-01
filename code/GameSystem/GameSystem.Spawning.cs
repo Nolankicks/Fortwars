@@ -16,7 +16,7 @@ public partial class GameSystem
 
 		var player = PlayerPrefab.Clone( SpawnTransform );
 
-		if ( player.Components.TryGet<PlayerController>( out var p ) )
+		if ( player.Components.TryGet<FWPlayerController>( out var p ) )
 			p.SetWorld( SpawnTransform );
 
 		if ( player.Components.TryGet<CitizenAnimationHelper>( out var animHelper, FindMode.EnabledInSelfAndChildren ) && animHelper.Target.IsValid() )
@@ -31,7 +31,7 @@ public partial class GameSystem
 		//Handle joining mid game
 		if ( State != GameState.Waiting && State != GameState.Ended )
 		{
-			if ( player.Components.TryGet<PlayerController>( out var playerController ) )
+			if ( player.Components.TryGet<FWPlayerController>( out var playerController ) )
 			{
 				var teams = FourTeams ? new List<Team> { Team.Red, Team.Blue, Team.Yellow, Team.Green } : new List<Team> { Team.Red, Team.Blue };
 

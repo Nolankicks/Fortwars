@@ -84,6 +84,10 @@
             "Intensity": 16,
             "Quality": "High",
             "Radius": 32
+          },
+          {
+            "__type": "CameraController",
+            "__guid": "06d61181-65c4-48d3-90b0-e036eb64976b"
           }
         ]
       },

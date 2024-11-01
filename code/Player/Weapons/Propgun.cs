@@ -124,7 +124,7 @@ public sealed class Propgun : Item
 
 		PropRotation = Rotation.Identity;
 
-		var pc = PlayerController.Local;
+		var pc = FWPlayerController.Local;
 
 		if ( pc.IsValid() )
 			pc.CanMoveHead = true;
@@ -190,7 +190,7 @@ public sealed class Propgun : Item
 					sound.Volume = 0.5f;
 			}
 
-			if ( !PlayerController.Local.TeamComponent.IsValid() )
+			if ( !FWPlayerController.Local.TeamComponent.IsValid() )
 				return;
 
 			SpawnProp( pos );
@@ -199,7 +199,7 @@ public sealed class Propgun : Item
 
 	public void PlaceProp()
 	{
-		var player = PlayerController.Local;
+		var player = FWPlayerController.Local;
 
 		if ( !player.IsValid() )
 			return;
@@ -273,7 +273,7 @@ public sealed class Propgun : Item
 
 	public void SpawnProp( Vector3 ObjectPos )
 	{
-		var player = PlayerController.Local;
+		var player = FWPlayerController.Local;
 
 		if ( !player.IsValid() )
 			return;

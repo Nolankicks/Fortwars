@@ -37,7 +37,7 @@ public class Physgun : Item
 		if ( IsProxy )
 			return;
 
-		var Player = PlayerController.Local;
+		var Player = FWPlayerController.Local;
 
 		if ( !Player.IsValid() ) return;
 
@@ -260,7 +260,7 @@ public class Physgun : Item
 
 	void UpdateGrab( Vector3 eyePos, Rotation eyeRot, Vector3 eyeDir, bool wantsToFreeze )
 	{
-		var Player = PlayerController.Local;
+		var Player = FWPlayerController.Local;
 
 		if ( !Player.IsValid() ) return;
 
@@ -380,7 +380,7 @@ public class Physgun : Item
 	{
 		bool rotating = Input.Down( "use" );
 		bool snapping = false;
-		var player = PlayerController.Local;
+		var player = FWPlayerController.Local;
 
 		if ( !player.IsValid() )
 			return;

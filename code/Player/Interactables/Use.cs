@@ -12,7 +12,7 @@ public sealed class Use : Component, IGameEventHandler<DeathEvent>, IGameEventHa
 
 		if ( Input.Pressed( "use" ) )
 		{
-			var local = PlayerController.Local;
+			var local = FWPlayerController.Local;
 
 			if ( !local.IsValid() )
 				return;
