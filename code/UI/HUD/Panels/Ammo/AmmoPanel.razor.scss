@@ -1,0 +1,21 @@
+﻿@import "/UI/HUD/HUD.razor.scss";
+
+AmmoPanel {
+    position: absolute;
+    right: 5%;
+    bottom: 5%;
+    font-size: 40px;
+    width: 15%;
+    height: 10%;
+
+
+    .holder {
+        justify-content: center;
+        align-items: center;
+        background-color: $primary;
+        padding: 4px 32px;
+        width:100%;
+        height: 100%;
+        border-radius: 4px;
+    }
+}
