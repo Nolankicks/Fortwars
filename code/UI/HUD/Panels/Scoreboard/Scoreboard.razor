@@ -115,6 +115,6 @@
 	{
 		var gs = GameSystem.Instance;
 
-		return HashCode.Combine( gs?.BlueTeam?.Count(), gs?.RedTeam?.Count(), gs?.NoneTeam.Count(), gs.TotalKills );
+		return HashCode.Combine( gs?.BlueTeam?.Count(), gs?.RedTeam?.Count(), gs?.NoneTeam?.Count(), gs?.TotalKills );
 	}
 }
