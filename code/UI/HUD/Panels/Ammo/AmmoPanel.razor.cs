@@ -6,7 +6,16 @@ public partial class AmmoPanel : Panel
 
 	public override void Tick()
 	{
-		var inv = FWPlayerController.Local.Inventory;
+        var local = FWPlayerController.Local;
+
+        if ( !local.IsValid() )
+            return;
+
+		var inv = local.Inventory;
+
+        if ( !inv.IsValid() )
+            return;
+        
 		if ( inv.CurrentItem.IsValid() )
 		{
 			weapon = inv.CurrentItem.Components.Get<Item>();
@@ -15,14 +24,6 @@ public partial class AmmoPanel : Panel
 
 	protected override int BuildHash()
 	{
-		var hash = new HashCode();
-		var inv = FWPlayerController.Local.Inventory;
-		hash.Add( weapon );
-		if ( inv.CurrentItem.Components.TryGet<Item>( out var item ) )
-		{
-			hash.Add( item.Ammo );
-			hash.Add( item.UsesAmmo );
-		}
-		return hash.ToHashCode();
+        return HashCode.Combine( weapon?.Ammo, weapon?.UsesAmmo );
 	}
 }
