@@ -1,5 +1,7 @@
 public sealed class Tracer : Component
 {
+	private float Speed { get; set; } = 2000.0f;
+
 	protected override void OnStart()
 	{
 		base.OnStart();
@@ -8,6 +10,6 @@ public sealed class Tracer : Component
 
 	protected override void OnUpdate()
 	{
-		WorldPosition += WorldRotation.Forward * 1000.0f * Time.Delta;
+		WorldPosition += WorldRotation.Forward * Speed * Time.Delta;
 	}
 }

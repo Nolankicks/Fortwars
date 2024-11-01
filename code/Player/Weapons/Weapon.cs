@@ -136,6 +136,7 @@ public class Weapon : Item, IGameEventHandler<OnReloadEvent>
 				local.BroadcastAttack();
 			}
 			BroadcastShootEffects( Traces );
+			CreateMuzzleFlash();
 
 			GameObject.Dispatch( new WeaponAnimEvent( AttackAnimName, true ) );
 
@@ -285,6 +286,16 @@ public class Weapon : Item, IGameEventHandler<OnReloadEvent>
 		else { tracer.WorldPosition = TracerPoint.WorldPosition; }
 		tracer.WorldRotation = Rotation.LookAt( Normal );
 		tracer.WorldScale = 1.0f;
+	}
+
+	void CreateMuzzleFlash()
+	{
+		if ( !TracerPoint.IsValid() )
+			return;
+
+		var flash = GameObject.Clone( "prefabs/muzzleflash.prefab", new CloneConfig { Parent = TracerPoint, StartEnabled = true } );
+		flash.WorldRotation = TracerPoint.WorldRotation;
+		flash.WorldScale = Vector3.One * 0.25f;
 	}
 }
 
