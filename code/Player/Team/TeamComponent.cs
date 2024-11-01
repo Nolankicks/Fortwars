@@ -13,6 +13,7 @@ public sealed class TeamComponent : Component, IGameEventHandler<OnBuildMode>,
 	IGameEventHandler<OnFightMode>, IGameEventHandler<OnGameOvertimeBuild>, IGameEventHandler<OnGameOvertimeFight>
 {
 	[Property, Sync] public Team Team { get; set; } = Team.None;
+	[Property, Sync] public FWPlayerController Player { get; set; }
 
 	[Broadcast]
 	public void SetTeam( Team team )

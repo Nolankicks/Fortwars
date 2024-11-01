@@ -9,111 +9,100 @@
 		var gs = GameSystem.Instance;
 
 		if (!gs.IsValid()) return;
+
+		var blueTeam = gs.BlueTeam;
+		var redTeam = gs.RedTeam;
+		var noneTeam = gs.NoneTeam;
+
+		var meta = Scene.GetAll<SceneInformation>()?.FirstOrDefault();
 	}
 
-	<div class="team-column blue">
+	<div class="map-meta">
+		@if ( meta.IsValid() )
+		{
+			<div class="info">
+				<div class="name">@meta.Title</div>
 
-		<div class="title">Blue</div>
-
-		<div class="holder">
-			@foreach ( var player in gs.BlueTeam )
-			{
-			var controller = player?.Components?.Get<FWPlayerController>();
-
-			if ( !controller.IsValid() )
-				return;
-
-			<div class="player blue">
-				<div class="name blue">@player?.GameObject?.Network.Owner?.DisplayName</div>
-				<div class="score">@controller.Kills / @controller.Deaths</div>
-			</div>
-			}
-		</div>
-	</div>
-
-	<div class="team-column red">
-
-		<div class="title">Red</div>
-
-		<div class="holder">
-			@foreach ( var player in gs.RedTeam )
-			{
-			var controller = player?.Components?.Get<FWPlayerController>();
-
-			if ( !controller.IsValid() )
-				return;
-
-			<div class="player red">
-				<div class="name red">@player?.GameObject?.Network.Owner?.DisplayName</div>
-				<div class="score">@controller.Kills / @controller.Deaths</div>
-			</div>
-			}
-		</div>
-	</div>
-
-	@if ( gs.NoneTeam.Count() > 0 )
-	{
-		<div class="team-column none">
-			
-			<div class="title">None</div>
-
-			<div class="holder">
-				@foreach ( var player in gs.NoneTeam )
+				@if ( !string.IsNullOrEmpty( meta.Author ))
 				{
-				var controller = player?.Components?.Get<FWPlayerController>();
-
-				if ( !controller.IsValid() )
-					return;
-
-				<div class="player">
-					<div class="name none" style="width: 100%;">@controller.GameObject?.Network.Owner?.DisplayName</div>
-				</div>
+					<div class="author">By @meta.Author</div>
 				}
 			</div>
-		</div>
-	}
+		}
 
-	@if ( !gs.FourTeams )
-		return;
-
-	<div class="team-column yellow">
-
-		<div class="title">Yellow</div>
-
-		<div class="holder">
-			@foreach ( var player in gs.YellowTeam )
-			{
-			var controller = player?.Components?.Get<FWPlayerController>();
-
-				if ( !controller.IsValid() )
-					return;
-
-			<div class="player yellow">
-				<div class="name yellow">@player?.GameObject?.Network.Owner?.DisplayName</div>
-				<div class="score">@controller.Kills / @controller.Deaths</div>
-			</div>
-			}
-		</div>
+		<div class="players">Players: @Connection.All?.Count()</div>
 	</div>
 
-	<div class="team-column green">
+	<div class="body">
 
-		<div class="title">Green</div>
+		@if ( blueTeam.Any() && blueTeam is not null )
+		{
+				<div class="team">
 
-		<div class="holder">
-			@foreach ( var player in gs.GreenTeam )
-			{
-			var controller = player?.Components?.Get<FWPlayerController>();
+				<div class="team-name">
+					<div class="text">Blue Team</div>
+					<div class="underline"></div>
+				</div>
 
-				if ( !controller.IsValid() )
-					return;
-
-			<div class="player green">
-				<div class="name green">@player?.GameObject?.Network.Owner?.DisplayName</div>
-				<div class="score">@controller.Kills / @controller.Deaths</div>
+				@foreach ( var player in blueTeam )
+				{
+					<div class="player">
+						<div class="player-info">
+						<div class="name">@player.Network.Owner?.DisplayName</div>
+						<div class="avatar" style="background-image: url( avatar:@player.Network.Owner?.SteamId)"></div>
+					</div>
+					<div class="stats">
+						<div class="kills">@player?.Player.Kills / @player?.Player.Deaths</div>
+					</div>
+					</div>
+				}
 			</div>
-			}
-		</div>
+
+		} 
+
+		@if ( redTeam.Any() && redTeam is not null )
+		{
+			<div class="team">
+			<div class="team-name">
+				<div class="text">Red Team</div>
+				<div class="underline"></div>
+			</div>
+
+			@foreach ( var player in redTeam )
+			{
+				<div class="player">
+					<div class="player-info">
+						<div class="name">@player.Network.Owner?.DisplayName</div>
+						<div class="avatar" style="background-image: url( avatar:@player.Network.Owner?.SteamId)"></div>
+					</div>
+					<div class="stats">
+						<div class="kills">@player?.Player.Kills / @player?.Player.Deaths</div>
+					</div>
+				</div>
+			}	
+			</div>
+		}
+
+		@if ( noneTeam.Any() && noneTeam is not null )
+		{
+			<div class="team">
+			<div class="team-name">
+				<div class="text">None</div>
+				<div class="underline"></div>
+			</div>
+
+			@foreach ( var player in noneTeam )
+			{
+				<div class="player">
+					<div class="player-info">
+						<div class="name">@player.Network.Owner?.DisplayName</div>
+						<div class="avatar" style="background-image: url( avatar:@player.Network.Owner?.SteamId)"></div>
+					</div>
+				</div>
+			}	
+			</div>
+		}
+		
 	</div>
 </root>
 
@@ -123,6 +112,6 @@
 	{
 		var gs = GameSystem.Instance;
 
-		return HashCode.Combine( gs?.BlueTeam?.Count(), gs?.RedTeam?.Count(), gs?.YellowTeam?.Count(), gs?.GreenTeam?.Count(), gs?.NoneTeam?.Count(), gs?.FourTeams, gs?.TotalKills );
+		return HashCode.Combine( gs?.BlueTeam?.Count(), gs?.RedTeam?.Count(), gs?.NoneTeam.Count(), gs.TotalKills );
 	}
 }
