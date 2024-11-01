@@ -2487,6 +2487,22 @@
           "SurfaceVelocity": "0,0,0"
         }
       ]
+    },
+    {
+      "__guid": "baf74951-4118-48b0-bcc5-389aa08f3639",
+      "Flags": 0,
+      "Name": "Scene Info",
+      "Position": "1535.953,213.784,210.2981",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.SceneInformation",
+          "__guid": "0336e9f7-8713-4f17-b9d9-149bf0f4d0b1",
+          "Author": "Ape Tavern",
+          "SceneTags": "",
+          "Title": "Grassforts"
+        }
+      ]
     }
   ],
   "SceneProperties": {
@@ -2498,7 +2514,10 @@
     "ThreadedAnimation": true,
     "TimeScale": 1,
     "UseFixedUpdate": true,
-    "Metadata": {},
+    "Metadata": {
+      "Title": "Grassforts",
+      "Author": "Ape Tavern"
+    },
     "NavMesh": {
       "Enabled": false,
       "IncludeStaticBodies": true,
@@ -2513,7 +2532,7 @@
     }
   },
   "ResourceVersion": 2,
-  "Title": null,
+  "Title": "Grassforts",
   "Description": null,
   "__references": [],
   "__version": 2

@@ -10,9 +10,11 @@
         {
           "__type": "Sandbox.SceneInformation",
           "__guid": "65b87855-e89c-447e-b1ef-cf9b08415213",
+          "Author": "Ape Tavern",
           "Description": "",
+          "Group": "",
           "SceneTags": "",
-          "Title": "fortwars_dev"
+          "Title": "Fortwars Dev"
         }
       ]
     },
@@ -1018,7 +1020,8 @@
     "TimeScale": 1,
     "UseFixedUpdate": true,
     "Metadata": {
-      "Title": "fortwars_dev"
+      "Title": "Fortwars Dev",
+      "Author": "Ape Tavern"
     },
     "NavMesh": {
       "Enabled": false,
@@ -1034,7 +1037,7 @@
     }
   },
   "ResourceVersion": 2,
-  "Title": "fortwars_dev",
+  "Title": "Fortwars Dev",
   "Description": null,
   "__references": [
     "facepunch.glass_c#70691"

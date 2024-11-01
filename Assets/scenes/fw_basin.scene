@@ -10,9 +10,10 @@
         {
           "__type": "Sandbox.SceneInformation",
           "__guid": "9324a166-727e-4e6c-8a05-5eeb1919f795",
+          "Author": "Ape Tavern",
           "Description": "",
           "SceneTags": "",
-          "Title": "fw_basin"
+          "Title": "Basin"
         }
       ]
     },
@@ -1261,7 +1262,8 @@
     "TimeScale": 1,
     "UseFixedUpdate": true,
     "Metadata": {
-      "Title": "fw_basin"
+      "Title": "Basin",
+      "Author": "Ape Tavern"
     },
     "NavMesh": {
       "Enabled": false,
@@ -1277,7 +1279,7 @@
     }
   },
   "ResourceVersion": 2,
-  "Title": "fw_basin",
+  "Title": "Basin",
   "Description": null,
   "__references": [
     "facepunch.glass_c#70691"
