@@ -17,7 +17,9 @@
 		var meta = Scene.GetAll<SceneInformation>()?.FirstOrDefault();
 	}
 
-	<div class="map-meta">
+	@if ( meta.IsValid() )
+	{
+		<div class="map-meta">
 		@if ( meta.IsValid() )
 		{
 			<div class="info">
@@ -32,6 +34,7 @@
 
 		<div class="players">Players: @Connection.All?.Count()</div>
 	</div>
+	}
 
 	<div class="body">
 
