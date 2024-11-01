@@ -30,11 +30,11 @@ Popup {
 
     &:intro
     {
-        transform: translateX(100%);
+        transform: translateX(-100%);
     }
 
     &:outro
     {
-        transform: translateX(100%);
+        transform: translateX(-100%);
     }
 }
