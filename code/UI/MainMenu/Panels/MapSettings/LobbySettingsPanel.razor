@@ -104,8 +104,8 @@
 {
 	public Package SelectedPackage { get; set; }
 	public MapInfo SelectedMap { get; set; }
-	[Change( nameof( OnValueMapChange ) )] private bool ClassicModels { get; set; }
-	[Change( nameof( OnValueMapChange ) )] private int MaxProps { get; set; }
+	[Change( nameof( OnValueMapChange ) )] private bool ClassicModels { get; set; } = true;
+	[Change( nameof( OnValueMapChange ) )] private int MaxProps { get; set; } = 100;
 
 	public async void LoadPackage()
 	{
@@ -138,23 +138,6 @@
 			return null;
 
 		return pkg;
-	}
-
-	protected override void OnAfterTreeRender( bool firstTime )
-	{
-		if ( firstTime )
-		{
-			if ( FileSystem.Data?.FileExists( "lobbysettings.json" ) ?? false )
-			{
-				var lobbySettings = LobbySettings.Load();
-
-				if ( lobbySettings is not null )
-				{
-					ClassicModels = lobbySettings?.ClassicModels ?? true;
-					MaxProps = lobbySettings?.MaxProps ?? 100;
-				}
-			}
-		}
 	}
 
 	public void LoadMapInfo( MapInfo map )
