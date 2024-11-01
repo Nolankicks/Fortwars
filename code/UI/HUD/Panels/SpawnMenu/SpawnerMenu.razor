@@ -34,12 +34,11 @@
 		{
 			foreach ( var model in Models )
 			{
-				<button class="model" onclick=@( () =>
+				<button class="model" style="background-image: url(@model?.Thumb);" onclick=@( () =>
 				{
 					LoadModel( model.FullIdent, Propgun );
 					Delete();
 				} )>
-					<img src=@model?.Thumb/>
 				</button>
 			}
 		}

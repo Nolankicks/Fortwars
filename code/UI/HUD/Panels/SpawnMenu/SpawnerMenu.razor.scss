@@ -11,9 +11,10 @@ SpawnerMenu
 
     position: relative;
 
-    width: 850px;
+    width: 820px;
     height: 500px;
     padding: 6px;
+    justify-content: center;
 
     >.title
     {
@@ -29,7 +30,6 @@ SpawnerMenu
         height: 100%;
         flex-direction: row;
         flex-wrap: wrap;
-        padding: 6px;
         justify-content: flex-start;
         align-items: center;
 
@@ -38,22 +38,11 @@ SpawnerMenu
 
         >button
         {
-            width: 200px;
+            width: 201px;
             height: 200px;
-            flex-grow: 1;
-            flex-shrink: 1;
 
-            >img
-            {
-                width: 95%;
-                height: 95%;
-            }
-
-            &:last-child
-            {
-                flex-grow: 0;
-                flex-shrink: 0;
-            }
+            background-position: center;
+            background-size: cover;
         }
     }
 }
