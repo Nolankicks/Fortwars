@@ -18,18 +18,26 @@ MainMenu
     {
         position: absolute;
         bottom: 32px;
-        left: 32px;
+        left: 64px;
         width: 500px;
+        display:flex;
         align-items: center;
-        justify-content: center;
+        justify-content: flex-start;
 
         flex-direction: column;
         gap: 16px;
         transition: all 1s ease-in-out;
 
-        >button
-        {
-            width: 100%;
+        >button {
+            left:0%;
+        }
+
+        .big {
+            width:100%;
+        }
+
+        .small {
+            width:75%;
         }
 
         &:intro
@@ -42,14 +50,16 @@ MainMenu
     {
         position: absolute;
         transition: all 1s ease-in-out;
-        top: 16px;
-        left: 32px;
+        top: 64px;
+        left: 64px;
 
-        font-size: 82px;
+        font-size: 128px;
         text-shadow: 4px 4px 6px black;
 
         color: white;
         font-weight: bolder;
+        text-stroke: 8px black;
+        transform: rotate(-5deg);
 
         &:intro
         {

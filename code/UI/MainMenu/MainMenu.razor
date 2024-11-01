@@ -8,14 +8,14 @@
 <root>
 	<div class="buttons">
 
-		<button onclick=@( () => ChangeMenuState( MenuState.LobbyCreation ) )> Create Lobby </button>
+		<button onclick=@( () => ChangeMenuState( MenuState.LobbyCreation ) ) class="big"> Create Lobby </button>
 
-		<button onclick=@( () => ChangeMenuState( MenuState.Lobbies ))> Lobbies </button>
+        <button onclick=@( () => ChangeMenuState( MenuState.Lobbies )) class="big"> Lobbies </button>
 		@* Leaderboards if yall want it *@
 		@* <div class="button" onclick=@( () => ChangeMenuState( MenuState.Leaderboards ))> Leaderboards</div> *@
-		<button onclick=@( () => ChangeMenuState( MenuState.About ) )> About </button>
-		<button onclick=@( () => Game.Overlay.ShowSettingsModal() )> Settings </button>
-		<button onclick=@( () => Game.Close() )> Exit </button>
+        <button onclick=@( () => ChangeMenuState( MenuState.About ) ) class="small"> About </button>
+        <button onclick=@( () => Game.Overlay.ShowSettingsModal() ) class="small"> Settings </button>
+        <button onclick=@( () => Game.Close() ) class="small"> Exit </button>
 	</div>
 
 	<div class="title">
