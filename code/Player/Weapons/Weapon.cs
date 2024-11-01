@@ -136,21 +136,12 @@ public class Weapon : Item, IGameEventHandler<OnReloadEvent>
 		}
 		else if ( (Input.Pressed( "attack1" ) || Input.Down( "attack1" ) && lastFired > FireRate) && Ammo <= 0 && reloadTime > ReloadDelay )
 		{
-			GameObject.Dispatch( new WeaponAnimEvent( "b_attack_dry", true ) );
+			TriggerReload();
 		}
 
 		if ( Input.Pressed( "reload" ) && reloadTime > ReloadDelay && Ammo != MaxAmmo )
 		{
-			reloadTime = 0;
-
-			GameObject.Dispatch( new WeaponAnimEvent( "b_reload", true ) );
-
-			Invoke( ReloadDelay, () =>
-			{
-				Reload();
-				GameObject.Dispatch( new WeaponAnimEvent( ReloadAnimName, true ) );
-				GameObject.Dispatch( new WeaponAnimEvent( "b_empty", false ) );
-			} );
+			TriggerReload();
 		}
 
 		if ( Ammo <= 0 )
@@ -225,6 +216,20 @@ public class Weapon : Item, IGameEventHandler<OnReloadEvent>
 				damageable.OnDamage( damage );
 			}
 		}
+	}
+
+	public void TriggerReload()
+	{
+		reloadTime = 0;
+
+		GameObject.Dispatch( new WeaponAnimEvent( "b_reload", true ) );
+
+		Invoke( ReloadDelay, () =>
+		{
+			Reload();
+			GameObject.Dispatch( new WeaponAnimEvent( ReloadAnimName, true ) );
+			GameObject.Dispatch( new WeaponAnimEvent( "b_empty", false ) );
+		} );
 	}
 
 	[Broadcast]
