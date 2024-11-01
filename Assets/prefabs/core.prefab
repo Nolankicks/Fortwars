@@ -87,7 +87,7 @@
           },
           {
             "__type": "CameraController",
-            "__guid": "06d61181-65c4-48d3-90b0-e036eb64976b"
+            "__guid": "a87fedec-7022-4732-bff4-a219c75b66e3"
           }
         ]
       },
@@ -149,7 +149,7 @@
           {
             "__type": "HUD",
             "__guid": "9f2de297-1b36-475f-a258-f8adb383e300",
-            "Crosshair": "textures/ui/crosshair01.vtex"
+            "Crosshair": "textures/crosshairs/crosshair137.png"
           },
           {
             "__type": "PauseMenu",

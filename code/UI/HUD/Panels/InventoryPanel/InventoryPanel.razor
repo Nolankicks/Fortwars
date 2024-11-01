@@ -32,11 +32,6 @@
 			<div class="item @(index == player.Inventory.Index && player.Inventory.CurrentItem.IsValid() ? "active" : "" )">
 				<div class="slot-number" style="background-color: @HUD.GetColor().Hex;">@(index + 1)</div>
 				<div class="slot-text">@item.Name</div>
-
-				@if ( itemComponent.IsValid() && itemComponent.UsesAmmo )
-				{
-					<div class="slot-ammo">@itemComponent?.Ammo / @itemComponent?.MaxAmmo</div>
-				}
 			</div>
 		}
 	}

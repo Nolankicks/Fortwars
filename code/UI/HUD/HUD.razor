@@ -8,7 +8,7 @@
 <root>
 	<InventoryPanel />
 
-	<div style="opacity: @( ShowCrosshair ? "1" : "0");" class="crosshair"><img src="textures/ui/Crosshair01.png"/></div>
+	<div style="opacity: @( ShowCrosshair ? "1" : "0");" class="crosshair"><img src=@(Crosshair)/></div>
 
 
 	<TeamProgress />
@@ -31,7 +31,7 @@
     public bool ShowCrosshair { get; set; } = true;
     public static HUD Instance { get; set; }
 
-    [Property] Texture Crosshair { get; set; }
+    [Property, ImageAssetPath] string Crosshair { get; set; }
 
 	protected override void OnStart()
 	{
