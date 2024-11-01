@@ -78,12 +78,16 @@ public sealed class Propgun : Item
 		{
 			var hud = Scene.GetAll<HUD>()?.FirstOrDefault();
 
+			Mouse.Visible = false;
+			UsingMouseInput = false;
+
 			var panel = new SpawnerMenu();
 
 			panel.Propgun = this;
 
 			if ( hud.IsValid() && hud.Panel?.ChildrenOfType<SpawnerMenu>()?.Count() == 0 )
 				hud.Panel.AddChild( panel );
+			else ( hud?.Panel?.ChildrenOfType<SpawnerMenu>()?.FirstOrDefault() )?.Delete();
 		}
 
 		if ( Prop is not null )
