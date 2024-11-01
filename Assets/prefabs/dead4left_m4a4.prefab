@@ -13,7 +13,7 @@
         "Damage": 15,
         "FireRate": 0.08,
         "FireSound": "audio/rifle.fire.sound",
-        "FireType": "F_SEMIAUTO",
+        "FireType": "F_AUTOMATIC",
         "HoldType": "Rifle",
         "MaxAmmo": 30,
         "Offset": "2.883967,0.1033601,-4.295026",
