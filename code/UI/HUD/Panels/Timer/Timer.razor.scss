@@ -23,18 +23,45 @@ Timer {
         border-radius: 4 4 0 0;
         transition: width 0.1s ease-out;
         background-color: rgb(77, 77, 77, 0.61);
+
+        //@ScoutWozniak feel free to remove this
+        text-shadow: 2px 2px 4px black;
     }
 
     .time {
         width: 100%;
         height: 50%;
         align-items: center;
-        padding: 16px;
         justify-content: center;
-        background-color: $primary;
+        background-color: rgb(77, 77, 77, 0.61);
         flex-shrink: 0;
         border-radius: 4 4 4 4;
         transition: width 0.1s ease-out;
         font-size: 24px;
+
+        .text
+        {
+            position: absolute;
+            
+            //@ScoutWozniak feel free to remove this
+            text-shadow: 2px 2px 4px black;
+        }
+
+        .fill-holder
+        {
+            position: relative;
+            height: 100%;
+            width: 100%;
+            justify-content: flex-start;
+        }
+
+        .fill
+        {
+            position: relative;
+            height: 100%;
+            width: 100%;
+            background-color: $primary;
+            border-radius: 4 4 4 4;
+        }
     }
 }

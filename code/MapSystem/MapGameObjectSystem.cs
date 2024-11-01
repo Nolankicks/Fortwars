@@ -22,7 +22,5 @@ public sealed class MapLoadingSystem : GameObjectSystem<MapLoadingSystem>, IScen
 
 		var core = GameObject.Clone( ResourceLibrary.Get<PrefabFile>( "prefabs/core.prefab" ) );
 		core.BreakFromPrefab();
-
-
 	}
 }

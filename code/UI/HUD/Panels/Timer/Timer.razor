@@ -14,7 +14,12 @@
 	}
 
 	<div class="status">@GetStateText( gs.State )</div>
-	<div class="time">@FormatedTimer()</div>
+	<div class="time">
+		<div class="fill-holder">
+			<div class="fill" style="width: @(TimeFraction() * 100)%;"></div>
+		</div>
+		<div class="text">@FormatedTimer()</div>
+	</div>
 </root>
 
 @code
@@ -42,6 +47,23 @@
 				return "Overtime Fight " + ( gs.Overtimes != 0 ? gs.Overtimes + 1 : "" );
 			default:
 				return "Unknown";
+		}
+	}
+
+	public float TimeFraction()
+	{
+		var gs = GameSystem.Instance;
+
+		if ( !gs.IsValid() )
+			return 1;
+
+		if ( gs.State == GameSystem.GameState.Waiting )
+		{
+			return 1;
+		}
+		else
+		{
+			return (gs.CurrentTime - gs.StateSwitch.Relative) / gs.CurrentTime;
 		}
 	}
 
