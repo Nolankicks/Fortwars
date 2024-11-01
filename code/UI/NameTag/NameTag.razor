@@ -12,7 +12,30 @@
 
 @code
 {
-	public Color TextColor { get; set; } = Color.White;
+	[Sync] public Color TextColor { get; set; } = Color.White;
+
+	[Broadcast]
+	public void SetTeam( Team team )
+	{
+		switch ( team )
+		{
+			case Team.Red:
+				TextColor = Color.Red;
+				break;
+			case Team.Blue:
+				TextColor = Color.Cyan;
+				break;
+			case Team.Green:
+				TextColor = Color.Green;
+				break;
+			case Team.Yellow:
+				TextColor = Color.Yellow;
+				break;
+			case Team.None:
+				TextColor = Color.White;
+				break;
+		}
+	}
 
 	public string GetAvatarTexture( Connection connection )
 	{

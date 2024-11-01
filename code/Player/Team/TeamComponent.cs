@@ -20,7 +20,7 @@ public sealed class TeamComponent : Component, IGameEventHandler<OnBuildMode>,
 		Team = team;
 
 		var controller = Components.Get<PlayerController>();
-		//var charc = Components.Get<ShrimpleWalker>();
+		var nameTag = Components.Get<NameTag>( FindMode.EverythingInSelfAndChildren );
 
 		if ( controller.IsValid() )
 		{
@@ -48,6 +48,11 @@ public sealed class TeamComponent : Component, IGameEventHandler<OnBuildMode>,
 				controller.Tags.Add( col.ToLower() );
 				controller?.shrimpleCharacterController?.IgnoreTags?.Add( col.ToLower() );
 			}
+		}
+
+		if ( nameTag.IsValid() )
+		{
+			nameTag.SetTeam( team );
 		}
 	}
 
