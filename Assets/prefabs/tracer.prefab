@@ -1,0 +1,65 @@
+{
+  "RootObject": {
+    "__guid": "a9885ce9-a8df-442c-90f9-c232e22f8fa5",
+    "Flags": 0,
+    "Name": "Tracer",
+    "Position": "777.8669,-456,360",
+    "Enabled": true,
+    "Components": [
+      {
+        "__type": "Sandbox.TrailRenderer",
+        "__guid": "c98e3018-b98f-4000-a975-de772bf6d3ea",
+        "BlendMode": "Normal",
+        "CastShadows": false,
+        "Color": {
+          "color": [
+            {
+              "t": 0.3525641,
+              "c": "1,0.35814,0.16279,1"
+            },
+            {
+              "t": 1,
+              "c": "1,1,1,1"
+            }
+          ],
+          "alpha": []
+        },
+        "Face": "Camera",
+        "LifeTime": 0.5,
+        "MaxPoints": 16,
+        "Opaque": true,
+        "PointDistance": 4,
+        "RenderOptions": {
+          "GameLayer": true,
+          "OverlayLayer": false,
+          "BloomLayer": false,
+          "AfterUILayer": false
+        },
+        "Texturing": {
+          "WorldSpace": true,
+          "UnitsPerTexture": 10,
+          "Scale": 1
+        },
+        "Width": {
+          "rangey": "0,2",
+          "frames": [
+            {
+              "y": 1
+            },
+            {
+              "x": 1
+            }
+          ]
+        },
+        "Wireframe": false
+      }
+    ]
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "DontBreakAsTemplate": false,
+  "ResourceVersion": 1,
+  "__references": [],
+  "__version": 1
+}

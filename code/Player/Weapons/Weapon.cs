@@ -92,6 +92,8 @@ public class Weapon : Item, IGameEventHandler<OnReloadEvent>
 	[Property] public string ReloadAnimName { get; set; } = "b_reload";
 	public virtual bool CanFire => true;
 
+	private SceneTraceResult[] Traces;
+
 	public enum FireTypes
 	{
 		F_SEMIAUTO,
@@ -116,10 +118,12 @@ public class Weapon : Item, IGameEventHandler<OnReloadEvent>
 		if ( IsProxy || equipTime < 0.2f )
 			return;
 
+		Traces = new SceneTraceResult[TraceTimes];
+
 		if ( (CheckFireInput() && lastFired > FireRate) && CanUse() && reloadTime > ReloadDelay && CanFire )
 		{
 			for ( var i = 0; i < TraceTimes; i++ )
-				Shoot();
+				Shoot( i );
 
 			SubtractAmmo();
 
@@ -129,11 +133,13 @@ public class Weapon : Item, IGameEventHandler<OnReloadEvent>
 			{
 				local.BroadcastAttack();
 			}
+			BroadcastShootEffects( Traces );
 
 			GameObject.Dispatch( new WeaponAnimEvent( AttackAnimName, true ) );
 
 			lastFired = 0;
 		}
+
 		else if ( (Input.Pressed( "attack1" ) || Input.Down( "attack1" ) && lastFired > FireRate) && Ammo <= 0 && reloadTime > ReloadDelay )
 		{
 			TriggerReload();
@@ -150,7 +156,7 @@ public class Weapon : Item, IGameEventHandler<OnReloadEvent>
 		}
 	}
 
-	public void Shoot()
+	public void Shoot( int index = 0 )
 	{
 		var local = PlayerController.Local;
 
@@ -167,29 +173,7 @@ public class Weapon : Item, IGameEventHandler<OnReloadEvent>
 			.IgnoreGameObjectHierarchy( local.GameObject )
 			.Run();
 
-		// local.EyeAngles += new Angles( Game.Random.Float( -1, 1 ), Game.Random.Float( -1, 1 ), 0 );
-
-		if ( !tr.Hit )
-		{
-			BroadcastFireEffects( WorldPosition, Vector3.Zero, Vector3.Zero );
-			return;
-		}
-
-		// Shitty hack
-		if ( tr.GameObject.Components.TryGet<PlayerController>( out var player, FindMode.EverythingInSelfAndParent ) )
-			BroadcastFireEffects( WorldPosition, 0, 0 );
-		else
-			BroadcastFireEffects( WorldPosition, tr.HitPosition, tr.Normal, true );
-
-		if ( tr.GameObject.Root.Components.TryGet<RollerMine>( out var r ) )
-			return;
-
-		if ( tr.GameObject.Components.TryGet<TeamComponent>( out var team, FindMode.EverythingInSelfAndParent ) && local.TeamComponent.IsValid()
-			&& local.TeamComponent.IsFriendly( team ) )
-		{
-			BroadcastFireEffects( WorldPosition, Vector3.Zero, Vector3.Zero );
-			return;
-		}
+		Traces[index] = tr;
 
 		if ( tr.GameObject.Components.TryGet<HealthComponent>( out var health, FindMode.EverythingInSelfAndParent ) )
 		{
@@ -235,19 +219,44 @@ public class Weapon : Item, IGameEventHandler<OnReloadEvent>
 	[Broadcast]
 	public void BroadcastFireEffects( Vector3 pos, Vector3 hitPos, Vector3 normal, bool hit = false )
 	{
+		//if ( FireSound is not null )
+		//{
+		//	Sound.Play( FireSound, pos );
+		//}
+
+		//if ( !hit )
+		//	return;
+
+		//var decal = GameObject.Clone( "prefabs/bulletdecal.prefab", new CloneConfig { Parent = Scene.Root, StartEnabled = true } );
+		//decal.WorldPosition = hitPos + normal;
+		//decal.WorldRotation = Rotation.LookAt( -normal );
+		//decal.WorldScale = 1.0f;
+
+	}
+
+	[Broadcast]
+	public void BroadcastShootEffects( SceneTraceResult[] traces )
+	{
+		if ( traces.Any() )
+		{
+			foreach ( var trace in traces )
+			{
+				Log.Info( trace.Hit );
+				if ( trace.Hit && !trace.GameObject.Components.TryGet<PlayerController>( out var player )
+					&& !trace.GameObject.Components.TryGet<RollerMine>( out var mine ) )
+				{
+					var decal = GameObject.Clone( "prefabs/bulletdecal.prefab", new CloneConfig { Parent = Scene.Root, StartEnabled = true } );
+					decal.WorldPosition = trace.HitPosition + trace.Normal;
+					decal.WorldRotation = Rotation.LookAt( -trace.Normal );
+					decal.WorldScale = 1.0f;
+
+				}
+			}
+		}
 		if ( FireSound is not null )
 		{
-			Sound.Play( FireSound, pos );
+			Sound.Play( FireSound, WorldPosition );
 		}
-
-		if ( !hit )
-			return;
-
-		var decal = GameObject.Clone( "prefabs/bulletdecal.prefab", new CloneConfig { Parent = Scene.Root, StartEnabled = true } );
-		decal.WorldPosition = hitPos + normal;
-		decal.WorldRotation = Rotation.LookAt( -normal );
-		decal.WorldScale = 1.0f;
-
 	}
 
 	public static void SpawnParticleEffect( ParticleSystem system, Vector3 pos )
