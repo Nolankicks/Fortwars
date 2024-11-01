@@ -295,7 +295,6 @@ public class Weapon : Item, IGameEventHandler<OnReloadEvent>
 
 		var flash = GameObject.Clone( "prefabs/muzzleflash.prefab", new CloneConfig { Parent = TracerPoint, StartEnabled = true } );
 		flash.WorldRotation = TracerPoint.WorldRotation;
-		flash.WorldScale = Vector3.One * 0.25f;
 	}
 }
 

@@ -102,7 +102,7 @@
         "Scale": {
           "Type": "CurveRange",
           "CurveA": {
-            "rangey": "0,0.2",
+            "rangey": "0,0.1",
             "frames": [
               {
                 "in": -3.8500006,
@@ -123,7 +123,7 @@
             ]
           },
           "CurveB": {
-            "rangey": "0,0.2",
+            "rangey": "0,0.1",
             "frames": [
               {},
               {
@@ -182,8 +182,8 @@
           "AfterUILayer": false
         },
         "RotationOffset": 0,
-        "Scale": 1,
-        "Shadows": true,
+        "Scale": 0.1,
+        "Shadows": false,
         "SortMode": "Unsorted",
         "Texture": "materials/particles/shapes/sharp2.vtex"
       },
@@ -572,7 +572,7 @@
             "Scale": {
               "Type": "CurveRange",
               "CurveA": {
-                "rangey": "0,13",
+                "rangey": "0,8",
                 "frames": [
                   {
                     "y": 0.0035714814,
@@ -592,7 +592,7 @@
                 ]
               },
               "CurveB": {
-                "rangey": "0,13",
+                "rangey": "0,8",
                 "frames": [
                   {},
                   {
