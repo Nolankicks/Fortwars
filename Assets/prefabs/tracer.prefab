@@ -2,8 +2,7 @@
   "RootObject": {
     "__guid": "a9885ce9-a8df-442c-90f9-c232e22f8fa5",
     "Flags": 0,
-    "Name": "Tracer",
-    "Position": "777.8669,-456,360",
+    "Name": "tracer",
     "Enabled": true,
     "Components": [
       {
@@ -52,8 +51,37 @@
           ]
         },
         "Wireframe": false
+      },
+      {
+        "__type": "Tracer",
+        "__guid": "bade0ce1-b0cd-4f3f-868a-1c481e650bc4"
       }
-    ]
+    ],
+    "Children": [],
+    "__variables": [],
+    "__properties": {
+      "FixedUpdateFrequency": 50,
+      "MaxFixedUpdates": 5,
+      "NetworkFrequency": 30,
+      "NetworkInterpolation": true,
+      "PhysicsSubSteps": 1,
+      "ThreadedAnimation": true,
+      "TimeScale": 1,
+      "UseFixedUpdate": true,
+      "Metadata": {},
+      "NavMesh": {
+        "Enabled": false,
+        "IncludeStaticBodies": true,
+        "IncludeKeyframedBodies": true,
+        "EditorAutoUpdate": true,
+        "AgentHeight": 64,
+        "AgentRadius": 16,
+        "AgentStepSize": 18,
+        "AgentMaxSlope": 40,
+        "ExcludedBodies": "",
+        "IncludedBodies": ""
+      }
+    }
   },
   "ShowInMenu": false,
   "MenuPath": null,

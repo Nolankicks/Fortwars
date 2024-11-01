@@ -19,6 +19,8 @@ public class Item : Component, IGameEventHandler<OnItemEquipped>
 
 	[Property] public Viewmodel VModel { get; set; }
 
+	[Property] public GameObject TracerPoint { get; set; }
+
 	[Authority]
 	public void SubtractAmmo()
 	{
@@ -217,31 +219,12 @@ public class Weapon : Item, IGameEventHandler<OnReloadEvent>
 	}
 
 	[Broadcast]
-	public void BroadcastFireEffects( Vector3 pos, Vector3 hitPos, Vector3 normal, bool hit = false )
-	{
-		//if ( FireSound is not null )
-		//{
-		//	Sound.Play( FireSound, pos );
-		//}
-
-		//if ( !hit )
-		//	return;
-
-		//var decal = GameObject.Clone( "prefabs/bulletdecal.prefab", new CloneConfig { Parent = Scene.Root, StartEnabled = true } );
-		//decal.WorldPosition = hitPos + normal;
-		//decal.WorldRotation = Rotation.LookAt( -normal );
-		//decal.WorldScale = 1.0f;
-
-	}
-
-	[Broadcast]
 	public void BroadcastShootEffects( SceneTraceResult[] traces )
 	{
 		if ( traces.Any() )
 		{
 			foreach ( var trace in traces )
 			{
-				Log.Info( trace.Hit );
 				if ( trace.Hit && !trace.GameObject.Components.TryGet<PlayerController>( out var player )
 					&& !trace.GameObject.Components.TryGet<RollerMine>( out var mine ) )
 				{
@@ -249,8 +232,10 @@ public class Weapon : Item, IGameEventHandler<OnReloadEvent>
 					decal.WorldPosition = trace.HitPosition + trace.Normal;
 					decal.WorldRotation = Rotation.LookAt( -trace.Normal );
 					decal.WorldScale = 1.0f;
-
 				}
+				CreateTracer( trace.StartPosition, trace.Direction );
+
+
 			}
 		}
 		if ( FireSound is not null )
@@ -290,6 +275,16 @@ public class Weapon : Item, IGameEventHandler<OnReloadEvent>
 			return Input.Down( "attack1" );
 
 		return false;
+	}
+
+	void CreateTracer( Vector3 StartPos, Vector3 Normal )
+	{
+
+		var tracer = GameObject.Clone( "prefabs/tracer.prefab", new CloneConfig { Parent = Scene.Root, StartEnabled = true } );
+		if ( IsProxy ) { tracer.WorldPosition = StartPos; }
+		else { tracer.WorldPosition = TracerPoint.WorldPosition; }
+		tracer.WorldRotation = Rotation.LookAt( Normal );
+		tracer.WorldScale = 1.0f;
 	}
 }
 
