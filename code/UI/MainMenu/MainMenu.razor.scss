@@ -42,12 +42,11 @@ MainMenu
     {
         position: absolute;
         transition: all 1s ease-in-out;
-        top: 32px;
+        top: 16px;
         left: 32px;
 
-        font-size: 64px;
-
-        gap: 12px;
+        font-size: 82px;
+        text-shadow: 4px 4px 6px black;
 
         color: white;
         font-weight: bolder;
