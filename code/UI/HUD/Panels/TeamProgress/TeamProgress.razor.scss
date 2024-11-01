@@ -1,77 +1,65 @@
 @import "/UI/HUD/HUD.razor.scss";
 
-TeamProgress
-{
-    position: absolute; 
-    top: 12;
-    left: 12;
-
-    width: 300px;
-    flex-direction: column;
+TeamProgress {
+    position: absolute;
+    bottom: 2%;
+    right: 50%;
+    width: 600px;
+    height: 5%;
+    flex-direction: row;
     gap: 16px;
     align-items: center;
     justify-content: center;
-
     padding: 8px;
+    transform: translate(50%);
 
-    .team-bar
-    {
-        height: 30px;
+
+    .team-bar {
+        height: 100%;
         width: 100%;
-
         border-radius: $border-radius;
         align-items: center;
         justify-content: center;
         background-color: $secondary;
+        filter: drop-shadow( 0 0 10px rgba( black, 0.7 ) );
+        border: 2px black;
 
-        .bar
-        {
+        .bar {
             height: 100%;
             width: 60%;
-
             border-radius: 4 0 0 4;
 
-            .fill
-            {
+            .fill {
                 height: 100%;
                 width: 100%;
-
                 border-radius: 4 0 0 4;
 
-                &.blue
-                {
-                    background-color: blue;
+                &.blue {
+                    background-color: #0D92F4;
                 }
 
-                &.red
-                {
-                    background-color: red;
+                &.red {
+                    background-color: #C62E2E;
                 }
 
-                &.green
-                {
+                &.green {
                     background-color: green;
                 }
 
-                &.yellow
-                {
+                &.yellow {
                     background-color: yellow;
                 }
             }
         }
 
-        .time
-        {
+        .time {
             height: 100%;
             width: 40%;
             flex-shrink: 0;
-            
             background-color: $primary;
             align-items: center;
             justify-content: center;
-
             border-radius: 0 4 4 0;
-
             font-size: 20px;
             font-weight: bold;
         }

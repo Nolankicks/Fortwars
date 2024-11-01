@@ -10,6 +10,8 @@
 	<div class="container">
 		@if ( SelectedMap is not null )
 		{
+            <div class="background"/>
+
 			<div class="thumb">
 				<div class="img" style="background-image: url( @SelectedMap?.Thumb?.ResourcePath )"></div>
 			</div>
@@ -63,6 +65,8 @@
 		}
 		else if ( SelectedPackage is not null )
 		{
+            <div class="background" />
+
 			<div class="thumb">
 				<div class="img" style="background-image: url( @SelectedPackage?.Thumb )"></div>
 			</div>

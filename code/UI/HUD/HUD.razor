@@ -59,14 +59,16 @@
 		}
 	}
 
+    // Pallete located here: https://colorhunt.co/palette/0d92f477cdfff95454c62e2e
+
 	public static Color GetColor()
 	{
 		switch ( FWPlayerController.Local?.TeamComponent?.Team )
 		{
 			case Team.Red:
-				return Color.Red;
+                return new Color(198, 46, 46);
 			case Team.Blue:
-				return Color.Blue;
+                return new Color(13, 146, 244);
 			case Team.Green:
 				return Color.Green;
 			case Team.Yellow:

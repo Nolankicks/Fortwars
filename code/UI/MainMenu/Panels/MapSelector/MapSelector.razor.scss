@@ -8,8 +8,7 @@ $button-secondary: #282828 !default;
 $button-secondary-fg: #dadada !default;
 $button-size: 45px;
 
-MapSelector
-{
+MapSelector {
     position: relative;
     width: 100%;
     height: 100%;
@@ -23,20 +22,17 @@ MapSelector
     flex-shrink: 0;
     z-index: 1;
 
-    &.full
-    {
+    &.full {
         border-radius: 4px;
     }
 
     transition: opacity 0.5s ease-in-out;
 
-    &:intro
-    {
+    &:intro {
         opacity: 0;
     }
 
-    .tabs
-    {
+    .tabs {
         width: 100%;
         height: 75px;
         align-items: center;
@@ -44,8 +40,7 @@ MapSelector
         padding: 4px;
         flex-shrink: 0;
 
-        .tab
-        {
+        .tab {
             width: 100%;
             height: 100%;
             font-size: 24px;
@@ -53,111 +48,85 @@ MapSelector
             justify-content: center;
             background-color: $button-secondary;
             color: $button-secondary-fg;
-
             border-width: 2px;
             border-color: $primary;
             border-radius: 4px;
 
-            &.active
-            {
+            &.active {
                 background-color: hsl(0, 0%, 20%);
             }
 
-            &:hover
-            {
+            &:hover {
                 background-color: hsl(0, 0%, 18%);
                 sound-in: ui.button.over;
                 cursor: pointer;
             }
 
-            &:active
-            {
+            &:active {
                 background-color: hsl(0, 0%, 15%);
                 sound-in: ui.button.press;
             }
         }
     }
 
-    .search-bar
-    {
+    .search-bar {
         width: 95%;
-        
         height: 75px;
-
         font-size: 24px;
-
         margin: 14px;
 
-        TextEntry
-        {
+        TextEntry {
             align-items: center;
             justify-content: center;
-
             flex-grow: 1;
-
             height: 100%;
-
             background-color: $secondary;
             border-radius: 4px;
         }
     }
 
-    >.maps
-    {
+    > .maps {
         width: 100%;
         height: 100%;
-
         flex-direction: column;
         padding: 12px;
 
-        >.notice
-        {
+        > .notice {
             width: 100%;
             height: 100px;
             font-size: 18px;
             align-items: center;
             justify-content: center;
             color: rgb(233, 94, 94);
-
             background-color: hsl(0, 0%, 11%);
             border-color: hsl(0, 0%, 15%);
             border-width: 6;
             border-radius: 4px;
-
             margin-bottom: 12px;
         }
 
-        >.holder
-        {
+        > .holder {
             width: 100%;
             height: 100%;
-
             padding: 21px;
-
             flex-direction: row;
             flex-wrap: wrap;
-
             overflow-y: scroll;
             overflow-x: hidden;
-            
             align-items: flex-start;
             justify-content: center;
             gap: 12px;
 
-            .info
-            {
+            .info {
                 width: 100%;
                 height: 100%;
                 font-size: 42px;
-
                 align-items: center;
                 justify-content: center;
             }
 
-            >.map
-            {
+            > .map {
                 position: relative;
-
                 width: 256px;
                 height: 256px;
                 font-size: 24px;
@@ -166,28 +135,22 @@ MapSelector
                 gap: 16px;
                 margin-bottom: 12px;
                 flex-shrink: 0;
-
                 background-color: $button-secondary;
                 color: $button-secondary-fg;
-    
                 border-width: 2px;
                 border-color: $primary;
                 border-radius: 4px;
-
                 flex-direction: column;
-
                 transition: all 0.2s;
 
-                .img
-                {
+                .img {
                     width: 95%;
                     height: 95%;
                     border-radius: 4px;
                     background-size: cover;
                 }
 
-                .chip
-                {
+                .chip {
                     position: absolute;
                     bottom: 0;
                     font-size: 18px;
@@ -197,47 +160,36 @@ MapSelector
                     margin: 12px;
                     border-radius: 12px;
                     flex-direction: column;
-                    
                     padding: 12px;
-
                     align-items: center;
                     justify-content: center;
-
                     z-index: 100;
-
                     background-color: $button-secondary;
                     border-color: $primary;
                     border-width: 4;
-
                     gap: 2px;
 
-                    >p
-                    {
+                    > p {
                         font-size: 14px;
-                        
                         text-align: center;
                     }
                 }
 
-                &:hover
-                {
+                &:hover {
                     background-color: hsl(0, 0%, 20%);
                     sound-in: ui.button.over;
                     cursor: pointer;
 
-                    .chip
-                    {
+                    .chip {
                         background-color: hsl(0, 0%, 20%);
                     }
 
-                    .img
-                    {
+                    .img {
                         filter: brightness(0.8);
                     }
                 }
 
-                &:active
-                {
+                &:active {
                     background-color: hsl(0, 0%, 15%);
                     sound-in: ui.button.press;
                 }

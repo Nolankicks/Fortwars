@@ -1,43 +1,36 @@
-Chat
-{
+Chat {
 	position: absolute;
-
-	left: 12px;
+	left: 2%;
 	bottom: 300px;
 	width: 600px;
-    height: 400px;
-    
+	height: 400px;
 	justify-content: center;
 	align-items: center;
 	font-weight: bolder;
-
 	flex-direction: column;
 	align-items: stretch;
-	font-size: 17px;
+	font-size: 20px;
 	font-family: Poppins;
 	gap: 10px;
 
-	.output
-	{
+	.output {
 		flex-grow: 1;
 		flex-direction: column;
 		justify-content: flex-end;
 		align-items: stretch;
 		gap: 6px;
-        height: 75%;
+		height: 75%;
+		overflow-x: hidden;
+		overflow-y: scroll;
 
-        overflow-x: hidden;
-        overflow-y: scroll;
-
-		.chat_entry
-		{
+		.chat_entry {
 			padding: 2px;
 			gap: 10px;
 			align-items: center;
-            flex-shrink: 0;
+			flex-shrink: 0;
+			filter: drop-shadow( 0 0 10px rgba( black, 0.7 ) );
 
-			.avatar
-			{
+			.avatar {
 				width: 32px;
 				height: 32px;
 				background-position: center;
@@ -45,41 +38,34 @@ Chat
 				border-radius: 4px;
 			}
 
-			.author
-			{
+			.author {
 				white-space: nowrap;
 				flex-shrink: 0;
 			}
 
-			.message
-			{
+			.message {
 				color: #fff;
 			}
 		}
 	}
 
-	.input
-	{
-        height: 15%;
-
+	.input {
+		height: 15%;
 		color: white;
 
-		.textentry
-		{
+		.textentry {
 			align-items: flex-start;
 			white-space: normal;
 		}
 	}
 
-	&.open
-	{
-		.input
-		{
+	&.open {
+		.input {
 			background-color: hsl(0, 0%, 11%);
-            border-color: hsl(0, 0%, 15%);
-            border-width: 6;
+			border-color: hsl(0, 0%, 15%);
+			border-width: 6;
 		}
 
-        pointer-events: all;
+		pointer-events: all;
 	}
 }

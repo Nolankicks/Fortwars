@@ -3,10 +3,10 @@
 InventoryPanel
 {
     position: absolute;
-    right: 12px;
-    padding-bottom: 12px;
+    right: 2%;
+    bottom: 5%;
 
-    width: 300px;
+    width: 20%;
     height: 100%;
 
     flex-direction: column;
@@ -38,6 +38,7 @@ InventoryPanel
             flex-grow: 1;
             align-items: center;
             justify-content: center;
+            text-align:center;
         }
         
         .slot-ammo

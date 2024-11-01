@@ -65,11 +65,12 @@ HUD {
 
     .healthholder {
         position: absolute;
-        bottom: 12px;
-        left: 12px;
+        bottom: 5%;
+        left: 2%;
         flex-direction: column;
         gap: 16px;
-        width: 300px;
+        width: 25%;
+        filter: drop-shadow( 0 0 10px rgba( black, 0.7 ) );
     }
 
     .about {
