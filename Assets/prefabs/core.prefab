@@ -120,7 +120,7 @@
             "MaxProps": 50,
             "PlayerPrefab": {
               "_type": "gameobject",
-              "prefab": "prefabs/playerdead4left.prefab"
+              "prefab": "prefabs/player.prefab"
             },
             "PlayerToStart": 2,
             "RedTimeHeld": 60,
