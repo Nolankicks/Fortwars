@@ -126,7 +126,7 @@ public class Weapon : Item, IGameEventHandler<OnReloadEvent>
 
 		Traces = new SceneTraceResult[TraceTimes];
 
-		if ( (CheckFireInput() && lastFired > FireRate) && CanUse() && reloadTime > ReloadDelay && CanFire )
+		if ( (CheckFireInput() && lastFired > FireRate) && CanUse() && reloadTime > ReloadDelay && CanFire && !IsReloading )
 		{
 			for ( var i = 0; i < TraceTimes; i++ )
 				Shoot( i );
@@ -215,17 +215,25 @@ public class Weapon : Item, IGameEventHandler<OnReloadEvent>
 		}
 	}
 
+	public bool IsReloading { get; set; }
+
 	public void TriggerReload()
 	{
-		reloadTime = 0;
+		if ( IsReloading )
+			return;
 
-		GameObject.Dispatch( new WeaponAnimEvent( "b_reload", true ) );
+		IsReloading = true;
+
+		reloadTime = ReloadDelay;
+
+		GameObject.Dispatch( new WeaponAnimEvent( ReloadAnimName, true ) );
 
 		Invoke( ReloadDelay, () =>
 		{
 			Reload();
-			GameObject.Dispatch( new WeaponAnimEvent( ReloadAnimName, true ) );
+			GameObject.Dispatch( new WeaponAnimEvent( ReloadAnimName, false ) );
 			GameObject.Dispatch( new WeaponAnimEvent( "b_empty", false ) );
+			IsReloading = false;
 		} );
 	}
 
