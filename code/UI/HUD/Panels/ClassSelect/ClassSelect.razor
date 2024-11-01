@@ -13,7 +13,7 @@
 			@if ( playerClass.Hidden )
 				continue;
 
-			<button class="class" onclick=@( () => SelectedClass = playerClass)>@playerClass.ClassName</button>
+			<button class="class @( SelectedClass == playerClass ? "active" : "")" onclick=@( () => SelectedClass = playerClass)>@playerClass.ClassName</button>
 		}
 	</div>
 
@@ -34,7 +34,7 @@
 {
 	public Inventory Inventory { get; set; }
 
-	public PlayerClass SelectedClass { get; set; }
+	public PlayerClass SelectedClass { get; set; } = ResourceLibrary.GetAll<PlayerClass>()?.FirstOrDefault( x => !x.Hidden );
 
 	public static bool FirstTimeClosing { get; set; } = true;
 	

@@ -60,6 +60,14 @@ ClassSelect {
        
     }
 
+    button
+    {
+        &.active
+        {
+            background-color: #343434;
+        }
+    }
+
     .description {
         flex-direction: row;
         width: 100%;
