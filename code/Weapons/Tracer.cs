@@ -1,6 +1,6 @@
 public sealed class Tracer : Component
 {
-	private float Speed { get; set; } = 3000.0f;
+	private float Speed { get; set; } = 4000.0f;
 
 	protected override void OnStart()
 	{

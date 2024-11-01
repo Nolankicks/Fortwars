@@ -7,6 +7,7 @@ public sealed class CameraController : Component
 
 	public static CameraController Instance { get; set; }
 
+	public float FOVMult { get; set; } = 1.0f;
 
 	protected override void OnEnabled()
 	{
@@ -27,7 +28,7 @@ public sealed class CameraController : Component
 			Scene.Camera.WorldRotation = player.EyeAngles;
 
 			if ( player.SetFov )
-				Scene.Camera.FieldOfView = player.OverrideFOV == 0 ? Preferences.FieldOfView : player.OverrideFOV;
+				Scene.Camera.FieldOfView = (player.OverrideFOV == 0 ? Preferences.FieldOfView : player.OverrideFOV) * FOVMult;
 
 			return;
 		}
@@ -35,7 +36,7 @@ public sealed class CameraController : Component
 		WorldPosition = player.Eye.WorldPosition;
 		WorldRotation = player.Eye.WorldRotation.Angles() + AngleOffset;
 
-		Scene.Camera.FieldOfView = player.OverrideFOV == 0 ? Preferences.FieldOfView : player.OverrideFOV;
+		Scene.Camera.FieldOfView = (player.OverrideFOV == 0 ? Preferences.FieldOfView : player.OverrideFOV) * FOVMult;
 	}
 
 	// Credits to SWP for screen shake code

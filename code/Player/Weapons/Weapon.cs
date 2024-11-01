@@ -94,7 +94,7 @@ public class Weapon : Item, IGameEventHandler<OnReloadEvent>
 	[Property] public string AttackAnimName { get; set; } = "b_attack";
 	[Property] public string ReloadAnimName { get; set; } = "b_reload";
 
-	[Property] ScreenShake FireShake { get; set; }
+	[Property] public ScreenShake FireShake { get; set; }
 
 	public virtual bool CanFire => true;
 

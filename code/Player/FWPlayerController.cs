@@ -234,9 +234,9 @@ IGameEventHandler<DeathEvent>, IGameEventHandler<OnPhysgunGrabChange>
 		// Match the hitbox size to our animation.
 		// DuckLevel doesn't seem to work during jumping so let's just not bother if we aren't grounded.
 		if ( IsCrouching && shrimpleCharacterController.IsOnGround )
-			Hitbox.End = Hitbox.End.WithZ( 32 );
+			Hitbox.End = Vector3.Up * 32.0f;
 		else
-			Hitbox.End = Hitbox.End.WithZ( 56 );
+			Hitbox.End = Vector3.Up * 56.0f;
 	}
 
 	public void BuildEyeAngles()
