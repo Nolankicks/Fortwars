@@ -22,6 +22,7 @@ InventoryPanel {
         transition: opacity 0.1s ease-out;
         transition: height 0.1s ease-in;
         transition: transform 0.1s ease-in;
+        border-radius: 4px;
 
         .slot-number {
             height: 100%;
@@ -31,6 +32,7 @@ InventoryPanel {
             align-items: center;
             justify-content: center;
             font-weight: bold;
+            border-radius: 4px 0 0 4px;
         }
 
         .slot-text {
