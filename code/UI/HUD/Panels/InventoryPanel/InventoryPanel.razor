@@ -14,6 +14,8 @@
 
 	@if ( player.Inventory.ItemsData.Count() > 0)
 	{
+        <AmmoPanel/>  
+
 		@for (int i = 0; i < player.Inventory.ItemsData.Count(); i++)
 		{
 			var index = i;
@@ -34,6 +36,8 @@
 				<div class="slot-text">@item.Name</div>
 			</div>
 		}
+
+        
 	}
 </root>
 

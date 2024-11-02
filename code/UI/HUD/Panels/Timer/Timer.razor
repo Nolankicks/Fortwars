@@ -15,9 +15,7 @@
 
 	<div class="status">@GetStateText( gs.State )</div>
 	<div class="time">
-		<div class="fill-holder">
-            <div class="fill" style="width: @(TimeFraction() * 100)%;background-color: @HUD.GetColor().Hex;"></div>
-		</div>
+
 		<div class="text">@FormatedTimer()</div>
 	</div>
 </root>

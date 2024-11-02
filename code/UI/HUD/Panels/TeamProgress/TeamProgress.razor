@@ -22,17 +22,18 @@
 	}
 
     <div class="team-bar blue-bar">
-		<div class="bar">
-			<div class="fill blue" style="width: @(gs.BlueTimeHeld / blue * 100)%;"></div>
+        <div class="bar" style="">
+            <div class="fill blue" style=" border-radius: 4 0 0 4; width: @(gs.BlueTimeHeld / blue * 100)%;"></div>
 		</div>
-		<div class="time">@FormatTime(gs.BlueTimeHeld)</div>
+        <div class="time" style="border-radius: 0 4 4 0;">@FormatTime(gs.BlueTimeHeld)</div>
 	</div>
 
     <div class="team-bar red-bar">
-		<div class="bar">
-			<div class="fill red" style="width: @(gs.RedTimeHeld / red * 100)%;"></div>
+        <div class="time" style="border-radius: 4 0 0 4;">@FormatTime(gs.RedTimeHeld)</div>
+        <div class="bar">
+            <div class="fill red" style=" border-radius: 0 4 4 0; width: @(gs.RedTimeHeld / red * 100)%;"></div>
 		</div>
-		<div class="time">@FormatTime(gs.RedTimeHeld)</div>
+		
 	</div>
 
 	@if ( !gs.FourTeams )
