@@ -1,10 +1,10 @@
 @import "/UI/HUD/HUD.razor.scss";
 
-HealthPanel
-{
-    width: 600px;
+HealthPanel {
+    width: 100%;
     align-items: center;
-    height: 80px;
+    height: 100%;
+    filter: drop-shadow( 0 0 10px rgba( black, 0.7 ) );
 
     .team {
         padding: 4px 32px;
@@ -13,14 +13,13 @@ HealthPanel
         align-items: center;
         font-size: 30px;
         font-weight: bold;
-
         background-color: $primary;
         width: 60%;
         height: 100%;
     }
 
     .number {
-        width: 40%;
+        width: 100%;
         padding: 4px 12px;
         border-radius: 4 4 4 4;
         font-size: 40px;
@@ -29,13 +28,10 @@ HealthPanel
         justify-content: space-evenly;
         height: 100%;
         flex-shrink: 0;
-
         background-color: $primary;
-
         transition: background-color 0.2s ease-out;
 
-        &.hit
-        {
+        &.hit {
             background-color: rgb(90, 2, 2);
         }
     }
