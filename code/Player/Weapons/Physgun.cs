@@ -32,6 +32,9 @@ public class Physgun : Item
 	public float DistanceBetweenMouseObject { get; set; }
 	public Rotation StartingBodyRotation { get; set; }
 
+	[Property] LineRenderer PhysLine { get; set; }
+	[Property] GameObject EndLineObject { get; set; }
+
 	protected override void OnUpdate()
 	{
 		if ( IsProxy )
@@ -152,6 +155,8 @@ public class Physgun : Item
 		}
 
 		PhysicsStep();
+
+		UpdateLine();
 	}
 
 	private void TryUnfreeze()
@@ -334,6 +339,9 @@ public class Physgun : Item
 
 		RemoveTag( GrabbedObject, "grabbed" );
 
+		if ( GrabbedObject.IsValid() )
+			GrabbedObject.Components.Get<HighlightOutline>().Destroy();
+
 		GrabbedObject = null;
 		Scene.Dispatch( new OnPhysgunGrabChange( false ) );
 	}
@@ -407,5 +415,17 @@ public class Physgun : Item
 
 		MouseInput = false;
 		Mouse.Visible = false;
+	}
+
+	void UpdateLine()
+	{
+		if ( GrabbedObject.IsValid() )
+		{
+			PhysLine.Enabled = true;
+			EndLineObject.WorldPosition = GrabbedObject.GetBounds().Center;
+			GrabbedObject.Components.GetOrCreate<HighlightOutline>();
+		}
+		else
+			PhysLine.Enabled = false;
 	}
 }
