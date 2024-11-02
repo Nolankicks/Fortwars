@@ -20,27 +20,27 @@
 	@if ( meta.IsValid() )
 	{
 		<div class="map-meta">
-		@if ( meta.IsValid() )
-		{
-			<div class="info">
-				<div class="name">@meta.Title</div>
+			@if ( meta.IsValid() )
+			{
+				<div class="info">
+					<div class="name">@meta.Title</div>
 
-				@if ( !string.IsNullOrEmpty( meta.Author ))
-				{
-					<div class="author">By @meta.Author</div>
-				}
-			</div>
-		}
+					@if ( !string.IsNullOrEmpty( meta.Author ))
+					{
+						<div class="author">By @meta.Author</div>
+					}
+				</div>
+			}
 
-		<div class="players">Players: @Connection.All?.Count()</div>
-	</div>
+			<div class="players">Players: @Connection.All?.Count()</div>
+		</div>
 	}
 
 	<div class="body">
 
 		@if ( blueTeam.Any() && blueTeam is not null )
 		{
-				<div class="team">
+			<div class="team">
 
 				<div class="team-name">
 					<div class="text">Blue Team</div>
@@ -51,12 +51,12 @@
 				{
 					<div class="player">
 						<div class="player-info">
-						<div class="name">@player.Network.Owner?.DisplayName</div>
-						<div class="avatar" style="background-image: url( avatar:@player.Network.Owner?.SteamId)"></div>
-					</div>
-					<div class="stats">
-						<div class="kills">@player?.Player.Kills / @player?.Player.Deaths</div>
-					</div>
+							<div class="name">@player.Network.Owner?.DisplayName</div>
+							<div class="avatar" style="background-image: url( avatar:@player.Network.Owner?.SteamId)"></div>
+						</div>
+						<div class="stats">
+							<div class="kills">@player?.Player.Kills / @player?.Player.Deaths</div>
+						</div>
 					</div>
 				}
 			</div>
@@ -66,55 +66,61 @@
 		@if ( redTeam.Any() && redTeam is not null )
 		{
 			<div class="team">
-			<div class="team-name">
-				<div class="text">Red Team</div>
-				<div class="underline"></div>
-			</div>
-
-			@foreach ( var player in redTeam )
-			{
-				<div class="player">
-					<div class="player-info">
-						<div class="name">@player.Network.Owner?.DisplayName</div>
-						<div class="avatar" style="background-image: url( avatar:@player.Network.Owner?.SteamId)"></div>
-					</div>
-					<div class="stats">
-						<div class="kills">@player?.Player.Kills / @player?.Player.Deaths</div>
-					</div>
+				<div class="team-name">
+					<div class="text">Red Team</div>
+					<div class="underline"></div>
 				</div>
-			}	
+
+				@foreach ( var player in redTeam )
+				{
+					<div class="player">
+						<div class="player-info">
+							<div class="name">@player.Network.Owner?.DisplayName</div>
+							<div class="avatar" style="background-image: url( avatar:@player.Network.Owner?.SteamId)"></div>
+						</div>
+						<div class="stats">
+							<div class="kills">@player?.Player.Kills / @player?.Player.Deaths</div>
+						</div>
+					</div>
+				}	
 			</div>
 		}
 
 		@if ( noneTeam.Any() && noneTeam is not null )
 		{
 			<div class="team">
-			<div class="team-name">
-				<div class="text">None</div>
-				<div class="underline"></div>
-			</div>
-
-			@foreach ( var player in noneTeam )
-			{
-				<div class="player">
-					<div class="player-info">
-						<div class="name">@player.Network.Owner?.DisplayName</div>
-						<div class="avatar" style="background-image: url( avatar:@player.Network.Owner?.SteamId)"></div>
-					</div>
+				<div class="team-name">
+					<div class="text">None</div>
+					<div class="underline"></div>
 				</div>
-			}	
+
+				@foreach ( var player in noneTeam )
+				{
+					<div class="player">
+						<div class="player-info">
+							<div class="name">@player.Network.Owner?.DisplayName</div>
+							<div class="avatar" style="background-image: url( avatar:@player.Network.Owner?.SteamId)"></div>
+						</div>
+					</div>
+				}	
 			</div>
 		}
-		
+
 	</div>
 </root>
 
 @code
 {
+
+	public Scoreboard()
+	{
+		BindClass("active", () => Input.Down("score"));
+	}
+
 	protected override int BuildHash()
 	{
 		var gs = GameSystem.Instance;
 
-		return HashCode.Combine( gs?.BlueTeam?.Count(), gs?.RedTeam?.Count(), gs?.NoneTeam?.Count(), gs?.TotalKills );
+		return HashCode.Combine(gs?.BlueTeam?.Count(), gs?.RedTeam?.Count(), gs?.NoneTeam?.Count(), gs?.TotalKills);
 	}
 }
