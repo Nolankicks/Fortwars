@@ -20,7 +20,7 @@ public sealed class CameraController : Component
 
 		var player = FWPlayerController.Local;
 
-		if ( !player.IsValid() )
+		if ( !player.IsValid() || !Scene.Camera.IsValid() )
 			return;
 
 		if ( player.IsRespawning )
