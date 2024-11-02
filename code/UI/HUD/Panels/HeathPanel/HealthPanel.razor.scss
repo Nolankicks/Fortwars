@@ -2,13 +2,13 @@
 
 HealthPanel
 {
-    width: 100%;
+    width: 600px;
     align-items: center;
-    height: 60px;
+    height: 80px;
 
     .team {
         padding: 4px 32px;
-        border-radius: 4 0 0 4;
+        border-radius: 4 4 4 4;
         justify-content: center;
         align-items: center;
         font-size: 30px;
@@ -22,8 +22,8 @@ HealthPanel
     .number {
         width: 40%;
         padding: 4px 12px;
-        border-radius: 0 4 4 0;
-        font-size: 30px;
+        border-radius: 4 4 4 4;
+        font-size: 40px;
         font-weight: bold;
         align-items: center;
         justify-content: space-evenly;

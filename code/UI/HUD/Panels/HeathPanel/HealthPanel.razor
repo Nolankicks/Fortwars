@@ -12,12 +12,9 @@
 		if ( !player.IsValid() )
 			return;
 	}
-
-	<div class="team" style="background-color: @HUD.GetColor().Hex;">@player.TeamComponent?.Team</div>
-		<div class="number" @ref="NumberPanel">
-			✚<div>@player.HealthComponent?.Health</div>
-		</div>
-	</div>
+    <div class="number" style="background-color: @HUD.GetColor().Hex;" @ref="NumberPanel">
+        ✚<div>@player.HealthComponent?.Health</div>
+    </div>
 </root>
 
 @code

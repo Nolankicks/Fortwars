@@ -7,7 +7,7 @@
         if (weapon == null || weapon.UsesAmmo == false)
             return;
     }
-    <div class="holder">
+    <div class="holder" style="background-color: @HUD.GetColor().Hex;">
     <label>@(weapon.Ammo)</label>
     <label> / @(weapon.MaxAmmo)</label>
     </div>
