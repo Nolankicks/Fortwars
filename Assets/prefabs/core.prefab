@@ -119,6 +119,9 @@
               "ClassicModels": true,
               "MaxProps": 50
             },
+            "LocalClassics": [
+              "models/blocks/64cube.vmdl"
+            ],
             "MaxProps": 50,
             "PlayerPrefab": {
               "_type": "gameobject",

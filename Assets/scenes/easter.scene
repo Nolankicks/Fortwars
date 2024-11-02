@@ -2604,6 +2604,121 @@
           "TeleportBall": true
         }
       ]
+    },
+    {
+      "__guid": "f90e05bb-d1d9-45cb-9979-ba4debd1a0a5",
+      "Flags": 0,
+      "Name": "dev_shop",
+      "Position": "-1336,-552,304",
+      "Rotation": "0,0,-0.7071067,0.7071068",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.ModelRenderer",
+          "__guid": "97c738ad-fa38-45b6-b556-d61b71830d85",
+          "BodyGroups": 18446744073709551615,
+          "Model": "models/dev_shop.vmdl",
+          "RenderOptions": {
+            "GameLayer": true,
+            "OverlayLayer": false,
+            "BloomLayer": false,
+            "AfterUILayer": false
+          },
+          "RenderType": "On",
+          "Tint": "1,1,1,1"
+        },
+        {
+          "__type": "Sandbox.ModelCollider",
+          "__guid": "bcaeaf28-b2cf-4e86-851c-086e63d1cf67",
+          "IsTrigger": false,
+          "Model": "models/dev_shop.vmdl",
+          "Static": false,
+          "SurfaceVelocity": "0,0,0"
+        }
+      ],
+      "Children": [
+        {
+          "__guid": "4477f2ad-1807-4f21-9d91-ebab4eb50e22",
+          "Flags": 0,
+          "Name": "Terry",
+          "Position": "-23.99999,32,-40",
+          "Rotation": "0,0,0.7071067,0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.SkinnedModelRenderer",
+              "__guid": "53e51368-1109-44ed-8fb5-f82855339770",
+              "BodyGroups": 341,
+              "CreateBoneObjects": false,
+              "Model": "models/citizen/citizen.vmdl",
+              "Morphs": {},
+              "Parameters": {
+                "bools": {},
+                "ints": {
+                  "sit": 1
+                },
+                "floats": {},
+                "vectors": {},
+                "rotations": {}
+              },
+              "RenderOptions": {
+                "GameLayer": true,
+                "OverlayLayer": false,
+                "BloomLayer": false,
+                "AfterUILayer": false
+              },
+              "RenderType": "On",
+              "Tint": "1,1,1,1",
+              "UseAnimGraph": true
+            }
+          ]
+        },
+        {
+          "__guid": "c810f2e1-b1f8-406b-9f2f-149ffbdc95ae",
+          "Flags": 0,
+          "Name": "Chair",
+          "Position": "-25.0053,22.50733,-40.65158",
+          "Scale": "0.4813083,0.4813083,0.4813083",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.ModelRenderer",
+              "__guid": "ded674e5-f165-4f10-95c3-ad3ff1a880fa",
+              "BodyGroups": 18446744073709551615,
+              "Model": "models/blocks/64cube.vmdl",
+              "RenderOptions": {
+                "GameLayer": true,
+                "OverlayLayer": false,
+                "BloomLayer": false,
+                "AfterUILayer": false
+              },
+              "RenderType": "On",
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "24842280-d55a-4c25-baee-a9ed90313cc0",
+          "Flags": 0,
+          "Name": "Point Light",
+          "Position": "-21.89733,48.49731,25.60028",
+          "Rotation": "0,0,0.7071067,0.7071068",
+          "Tags": "light_point,light",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.PointLight",
+              "__guid": "43997397-f22b-4e9a-b326-97ff34ff6c5b",
+              "Attenuation": 1,
+              "FogMode": "Enabled",
+              "FogStrength": 1,
+              "LightColor": "0.50233,0.50233,1,1",
+              "Radius": 400,
+              "Shadows": true
+            }
+          ]
+        }
+      ]
     }
   ],
   "SceneProperties": {
