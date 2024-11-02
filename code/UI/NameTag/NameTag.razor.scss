@@ -1,5 +1,4 @@
-NameTag
-{
+NameTag {
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -9,17 +8,15 @@ NameTag
 	align-items: center;
 	font-weight: bold;
 	border-radius: 20px;
-    gap: 16px;
+	gap: 16px;
 
-	.title
-	{
+	.title {
 		font-size: 42px;
-		font-family: Poppins;
+		font-family: 'IBM Plex Mono';
 		color: #fff;
 	}
 
-    img
-    {
-        border-radius: 12px;
-    }
+	img {
+		border-radius: 12px;
+	}
 }
