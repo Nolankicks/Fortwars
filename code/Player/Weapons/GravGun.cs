@@ -240,6 +240,8 @@ public class Gravgun : Item, IGameEventHandler<DeathEvent>
 
 		if ( gameObject.Components.TryGet<RollerMine>( out var rollerMine, FindMode.EverythingInSelfAndParent ) )
 			rollerMine.SetGrabbed( this, true );
+
+		GameObject.Dispatch<WeaponAnimEvent>( new( "b_empty", true ) );
 	}
 
 	void IGameEventHandler<DeathEvent>.OnGameEvent( DeathEvent eventArgs )
@@ -281,5 +283,7 @@ public class Gravgun : Item, IGameEventHandler<DeathEvent>
 
 		GrabbedObject = null;
 		HeldBody = null;
+
+		GameObject.Dispatch<WeaponAnimEvent>( new( "b_empty", false ) );
 	}
 }
