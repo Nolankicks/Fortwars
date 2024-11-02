@@ -3,6 +3,7 @@
     "__guid": "a9885ce9-a8df-442c-90f9-c232e22f8fa5",
     "Flags": 0,
     "Name": "tracer",
+    "Tags": "light_point,light",
     "Enabled": true,
     "Components": [
       {
@@ -26,7 +27,7 @@
         "Face": "Camera",
         "LifeTime": 0.5,
         "MaxPoints": 16,
-        "Opaque": true,
+        "Opaque": false,
         "PointDistance": 4,
         "RenderOptions": {
           "GameLayer": true,
@@ -48,6 +49,10 @@
             {
               "x": 0.16666667,
               "y": 1
+            },
+            {
+              "x": 0.7559524,
+              "y": 0.9337838
             },
             {
               "x": 1
