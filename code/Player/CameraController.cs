@@ -20,6 +20,9 @@ public sealed class CameraController : Component
 
 		var player = FWPlayerController.Local;
 
+		if ( !player.IsValid() )
+			return;
+
 		if ( player.IsRespawning )
 		{
 			var ragdollPos = player.Ragdoll.IsValid() ? player.Ragdoll.WorldPosition : player.DeathPos;
