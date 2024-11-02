@@ -93,7 +93,7 @@ PS
 		m.Transmission = 0;
 		
 		float4 l_0 = g_vTint;
-		float2 l_1 = float2( 0.5, 0.5 );
+		float2 l_1 = float2( 0.15, 0.15 );
 		float2 l_2 = float2( g_flTime, g_flTime ) * l_1;
 		float2 l_3 = i.vTextureCoords.xy * float2( 1, 1 );
 		float2 l_4 = l_2 + l_3;

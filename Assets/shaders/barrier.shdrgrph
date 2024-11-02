@@ -75,7 +75,7 @@
       "_class": "Float2",
       "Min": "0,0",
       "Max": "1,1",
-      "Value": "0.5,0.5",
+      "Value": "0.15,0.15",
       "Name": "",
       "IsAttribute": false,
       "UI": {},
