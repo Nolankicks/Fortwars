@@ -269,7 +269,6 @@ public class Gravgun : Item, IGameEventHandler<DeathEvent>
 	{
 		if ( !GrabbedObject.IsValid() ) return;
 
-
 		if ( setGrabber )
 		{
 			if ( GrabbedObject.Components.TryGet<RollerMine>( out var rollerMine, FindMode.EverythingInSelfAndParent ) )
