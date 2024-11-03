@@ -12,6 +12,7 @@ Chat {
 	font-size: 20px;
 	font-family: 'IBM Plex Mono';
 	gap: 10px;
+	
 
 	.output {
 		flex-grow: 1;
@@ -36,15 +37,18 @@ Chat {
 				background-position: center;
 				background-size: cover;
 				border-radius: 4px;
+				
 			}
 
 			.author {
 				white-space: nowrap;
 				flex-shrink: 0;
+				text-shadow: 2px 2px 4px black;
 			}
 
 			.message {
 				color: #fff;
+				text-shadow: 2px 2px 4px black;
 			}
 		}
 	}
