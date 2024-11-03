@@ -1,0 +1,9 @@
+{
+  "DisplayName": "64x64 Box",
+  "Model": "models/blocks/64cube.vmdl",
+  "Cost": 10,
+  "Max": 100,
+  "Icon": "textures/propicons/tempicon.png",
+  "__references": [],
+  "__version": 0
+}
