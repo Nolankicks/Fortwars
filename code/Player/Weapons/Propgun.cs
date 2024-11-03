@@ -87,19 +87,13 @@ public sealed class Propgun : Item
 
 			if ( hud.IsValid() && hud.Panel?.ChildrenOfType<SpawnerMenu>()?.Count() == 0 )
 				hud.Panel.AddChild( panel );
-			else ( hud?.Panel?.ChildrenOfType<SpawnerMenu>()?.FirstOrDefault() )?.Delete();
+			else (hud?.Panel?.ChildrenOfType<SpawnerMenu>()?.FirstOrDefault())?.Delete();
 		}
 
 		if ( Prop is not null )
 		{
-			if ( UsingMouseInput )
-			{
-				PlacePropMouse();
-			}
-			else
-			{
-				PlaceProp();
-			}
+			PlaceProp();
+
 		}
 
 		// Rotate the viewmodel around
@@ -143,61 +137,61 @@ public sealed class Propgun : Item
 		UsingMouseInput = false;
 	}
 
-	public void PlacePropMouse()
-	{
-		var camera = Scene.Camera;
+	//public void PlacePropMouse()
+	//{
+	//	var camera = Scene.Camera;
 
-		if ( !camera.IsValid() )
-			return;
+	//	if ( !camera.IsValid() )
+	//		return;
 
-		var tr = Scene.Trace
-			.Box( Prop.Bounds.Rotate( PropRotation ) * 0.75f, Scene.Camera.ScreenPixelToRay( Mouse.Position ), 200f )
-			.IgnoreGameObjectHierarchy( GameObject.Root )
-			.Run();
+	//	var tr = Scene.Trace
 
-		bool CanPlace = tr.Hit && tr.Distance > 32.0f && tr.EndPosition.Distance( GameObject.Root.WorldPosition ) > 32.0f && !tr.GameObject.Tags.Has( FW.Tags.NoBuild );
+	//		.IgnoreGameObjectHierarchy( GameObject.Root )
+	//		.Run();
 
-		var pos = tr.EndPosition.SnapToGrid( 16, true, true, !(tr.Hit && tr.Normal == Vector3.Up) );
+	//	bool CanPlace = tr.Hit && tr.Distance > 32.0f && tr.EndPosition.Distance( GameObject.Root.WorldPosition ) > 32.0f && !tr.GameObject.Tags.Has( FW.Tags.NoBuild );
 
-		var gizmo = Gizmo.Draw.Model( Prop.ResourcePath );
-		gizmo.ColorTint = Color.White.WithAlpha( 0.5f );
-		gizmo.Rotation = PropRotation.SnapToGrid( 15 );
-		gizmo.Position = pos;
+	//	var pos = tr.EndPosition.SnapToGrid( 16, true, true, !(tr.Hit && tr.Normal == Vector3.Up) );
 
-		if ( !CanPlace )
-		{
-			gizmo.ColorTint = Color.Red.WithAlpha( 0.5f );
-		}
+	//	var gizmo = Gizmo.Draw.Model( Prop.ResourcePath );
+	//	gizmo.ColorTint = Color.White.WithAlpha( 0.5f );
+	//	gizmo.Rotation = PropRotation.SnapToGrid( 15 );
+	//	gizmo.Position = pos;
 
-		if ( tr.Hit && Input.Pressed( "destroy" ) && (tr.GameObject?.Root?.Components.TryGet<FortwarsProp>( out var prop, FindMode.EverythingInSelfAndDescendants ) ?? false) )
-		{
-			if ( prop.Invincible )
-				return;
+	//	if ( !CanPlace )
+	//	{
+	//		gizmo.ColorTint = Color.Red.WithAlpha( 0.5f );
+	//	}
 
-			tr.GameObject?.Root?.Destroy();
-		}
+	//	if ( tr.Hit && Input.Pressed( "destroy" ) && (tr.GameObject?.Root?.Components.TryGet<FortwarsProp>( out var prop, FindMode.EverythingInSelfAndDescendants ) ?? false) )
+	//	{
+	//		if ( prop.Invincible )
+	//			return;
 
-		if ( Input.Pressed( "reload" ) )
-		{
-			PropRotation = Rotation.Identity;
-		}
+	//		tr.GameObject?.Root?.Destroy();
+	//	}
 
-		if ( CanPlace && Input.Pressed( "attack1" ) )
-		{
-			if ( ShootSound is not null )
-			{
-				var sound = Sound.Play( ShootSound, WorldPosition );
+	//	if ( Input.Pressed( "reload" ) )
+	//	{
+	//		PropRotation = Rotation.Identity;
+	//	}
 
-				if ( sound.IsValid() )
-					sound.Volume = 0.5f;
-			}
+	//	if ( CanPlace && Input.Pressed( "attack1" ) )
+	//	{
+	//		if ( ShootSound is not null )
+	//		{
+	//			var sound = Sound.Play( ShootSound, WorldPosition );
 
-			if ( !FWPlayerController.Local.TeamComponent.IsValid() )
-				return;
+	//			if ( sound.IsValid() )
+	//				sound.Volume = 0.5f;
+	//		}
 
-			SpawnProp( pos );
-		}
-	}
+	//		if ( !FWPlayerController.Local.TeamComponent.IsValid() )
+	//			return;
+
+	//		SpawnProp( pos );
+	//	}
+	//}
 
 	public void PlaceProp()
 	{
@@ -208,10 +202,18 @@ public sealed class Propgun : Item
 
 		Vector3 ObjectPos = player.Eye.WorldPosition + player.Eye.WorldRotation.Forward * 100.0f;
 
-		var tr = Scene.Trace
-			.Box( Prop.Bounds.Rotate( PropRotation ) * 0.75f, player.Eye.WorldPosition, player.Eye.WorldPosition + player.Eye.WorldRotation.Forward * 200.0f )
-			.IgnoreGameObjectHierarchy( GameObject.Root )
-			.Run();
+		var trace = Scene.Trace;
+
+		if ( UsingMouseInput )
+		{
+			trace.Box( Prop.Bounds.Rotate( PropRotation ) * 0.75f, Scene.Camera.ScreenPixelToRay( Mouse.Position ), 200f );
+		}
+		else
+		{
+			trace.Box( Prop.Bounds.Rotate( PropRotation ) * 0.75f, player.Eye.WorldPosition, player.Eye.WorldPosition + player.Eye.WorldRotation.Forward * 200.0f );
+		}
+
+		var tr = trace.IgnoreGameObjectHierarchy( GameObject.Root ).Run();
 
 		if ( tr.Hit )
 		{
@@ -334,7 +336,7 @@ public sealed class Propgun : Item
 
 		if ( renderer.Health == 0 )
 			renderer.Health = 100;
-		
+
 		fortWarsProp.Health = renderer.Health;
 
 		// Break the prop into individuals so we can check for ModelPhysics later.
