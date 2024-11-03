@@ -35,7 +35,8 @@
           "OnMapUnloaded": null,
           "UseMapFromLaunch": false
         }
-      ]
+      ],
+      "Children": []
     },
     {
       "__guid": "2a8367ba-795f-4039-8f5e-58aa1c67475d",
