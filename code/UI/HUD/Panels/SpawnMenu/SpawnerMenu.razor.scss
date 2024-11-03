@@ -1,50 +1,53 @@
 
 @import "/UI/HUD/HUD.razor.scss";
 
-SpawnerMenu
-{
+SpawnerMenu {
     background-color: $primary;
     flex-direction: column;
-
     pointer-events: all;
     border-radius: $border-radius;
-
     position: relative;
-
     width: 820px;
     height: 500px;
     padding: 6px;
     justify-content: center;
 
-    >.title
-    {
+    > .title {
         width: 100%;
         height: 50px;
         font-size: 42px;
         background-color: $secondary;
     }
 
-    >.models
-    {
+    > .models {
         width: 100%;
         height: 100%;
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: flex-start;
         align-items: center;
-
         overflow-x: hidden;
         overflow-y: scroll;
 
-        >button
-        {
+        > .model-container {
             width: 201px;
             height: 200px;
-
             background-position: center;
             background-size: cover;
             font-weight: bold;
-            color:black;
+            color: black;
+            flex-direction: column;
+            justify-content:center;
+            align-items:center;
+            
+            color:white;
+            font-size: 18px;
+
+            > button {
+                width: 100%;
+                height: 100%;
+                background-size: cover;
+            }
         }
     }
 }

@@ -34,13 +34,16 @@
 		{
             foreach( var prop in AllProps)
             {
-                <button class="model" style="background-image: url(@prop?.Icon);" onclick=@( () =>
-				{
-					SetProp(prop);
-					Delete();
-				} )>
-                @(prop.DisplayName)
-                </button>
+                <div class="model-container">
+                    <button class="model" style="background-image: url(@prop?.Icon);" onclick=@( () =>
+                    {
+                        SetProp(prop);
+                        Delete();
+                    } )>
+                    
+                    </button>
+                            <label>@(prop.DisplayName)</label>
+                </div>
             }
         }
 	</div>
