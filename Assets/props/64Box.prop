@@ -1,5 +1,5 @@
 {
-  "DisplayName": "64x64 Box",
+  "DisplayName": "L Box",
   "Model": "models/blocks/64cube.vmdl",
   "Cost": 10,
   "Max": 100,
