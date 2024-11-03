@@ -350,10 +350,15 @@ IGameEventHandler<OnGameOvertimeBuild>, IGameEventHandler<OnGameOvertimeFight>
 	}
 
 	[ConCmd( "skip_wait" )]
-	public static void SkipWait()
+	public static void SkipWait( int mode )
 	{
 		Instance?.Scene.Dispatch( new OnBuildMode() );
-		Instance?.Scene.Dispatch( new OnFightMode() );
-		Instance.State = GameState.FightMode;
+		if ( mode == 1 )
+		{
+			Instance?.Scene.Dispatch( new OnFightMode() );
+			Instance.State = GameState.FightMode;
+			return;
+		}
+		Instance.State = GameState.BuildMode;
 	}
 }

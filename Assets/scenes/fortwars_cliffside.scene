@@ -43,7 +43,7 @@
       "Flags": 0,
       "Name": "Sun",
       "Position": "-1098.606,-330.1522,428.6853",
-      "Rotation": "0.4933082,-0.01204696,-0.5873975,0.6414566",
+      "Rotation": "0.4332409,0.2362211,-0.1879729,0.8492165",
       "Tags": "light_directional,light",
       "Enabled": true,
       "Components": [
@@ -52,9 +52,14 @@
           "__guid": "3128e215-bc23-4c0a-9d1a-27e932d727aa",
           "FogMode": "Enabled",
           "FogStrength": 1,
-          "LightColor": "0.87163,0.57209,1,1",
+          "LightColor": "4.06,3.24706,2.87033,1",
           "Shadows": true,
           "SkyColor": "0.38605,0.38605,0.38605,0"
+        },
+        {
+          "__type": "Sandbox.AmbientLight",
+          "__guid": "24f1cba6-5569-4b5e-a9d0-86c79a8e6ef6",
+          "Color": "1,0.76744,0.93411,1"
         }
       ]
     },
@@ -76,7 +81,35 @@
         {
           "__type": "Sandbox.EnvmapProbe",
           "__guid": "eff54963-8d49-4962-9934-020133881c07",
-          "__enabled": false,
+          "Bounds": {
+            "Mins": "-512,-512,-512",
+            "Maxs": "512,512,512"
+          },
+          "DelayBetweenUpdates": 0.1,
+          "Feathering": 0.25,
+          "FrameInterval": 5,
+          "MaxDistance": 512,
+          "MultiBounce": true,
+          "Projection": "Sphere",
+          "RenderDynamically": true,
+          "TintColor": "1,1,1,1",
+          "UpdateStrategy": "OnEnabled",
+          "ZFar": 4096,
+          "ZNear": 16
+        }
+      ]
+    },
+    {
+      "__guid": "863ca47c-c528-4ba2-8628-b1e73553e556",
+      "Flags": 0,
+      "Name": "Probe01",
+      "Position": "103.5303,640,412.5275",
+      "Tags": "skybox",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.EnvmapProbe",
+          "__guid": "07a3a660-e46d-47e3-8a04-376d55da6a8d",
           "Bounds": {
             "Mins": "-512,-512,-512",
             "Maxs": "512,512,512"
