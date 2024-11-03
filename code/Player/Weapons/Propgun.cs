@@ -10,8 +10,6 @@ public sealed class Propgun : Item
 	[Property] bool MustBeUp { get; set; } = false;
 	[Property] public bool UsingMouseInput { get; set; } = false;
 	[Property] public SoundEvent ShootSound { get; set; }
-	[RequireComponent] Viewmodel VModel { get; set; }
-
 	[Property] public PropResource CurrentProp { get; set; }
 
 	protected override void OnStart()
@@ -27,13 +25,13 @@ public sealed class Propgun : Item
 		if ( IsProxy )
 			return;
 
-		//if ( Input.Pressed( "mouseprop" ) )
-		//{
-		//	Mouse.Visible = !Mouse.Visible;
-		//	UsingMouseInput = !UsingMouseInput;
+		if ( Input.Pressed( "mouseprop" ) )
+		{
+			Mouse.Visible = !Mouse.Visible;
+			UsingMouseInput = !UsingMouseInput;
 
-		//	PropRotation = Rotation.Identity;
-		//}
+			PropRotation = Rotation.Identity;
+		}
 
 		if ( Input.Pressed( "menu" ) )
 		{
@@ -53,7 +51,7 @@ public sealed class Propgun : Item
 
 		if ( CurrentProp is not null )
 		{
-			PlaceProp();
+			HandleProp();
 		}
 
 		// Rotate the viewmodel around
@@ -97,27 +95,21 @@ public sealed class Propgun : Item
 		UsingMouseInput = false;
 	}
 
-	public void PlaceProp()
+	public void HandleProp()
 	{
 		var player = FWPlayerController.Local;
 		if ( !player.IsValid() )
 			return;
 
-		Vector3 ObjectPos = player.Eye.WorldPosition + player.Eye.WorldRotation.Forward * 400.0f;
+		Vector3 ObjectPos;
+		if ( UsingMouseInput )
+			ObjectPos = Scene.Camera.WorldPosition + Scene.Camera.ScreenPixelToRay( Mouse.Position ).Forward * 200.0f;
+		else
+			ObjectPos = player.Eye.WorldPosition + player.Eye.WorldRotation.Forward * 400.0f;
 
 		var model = CurrentProp.Model;
-		var trace = Scene.Trace.Size( model.Bounds.Rotate( PropRotation ) * 0.75f );
 
-		if ( UsingMouseInput )
-		{
-			trace.Ray( Scene.Camera.ScreenPixelToRay( Mouse.Position ).Forward, 200.0f );
-		}
-		else
-		{
-			trace.Ray( player.Eye.WorldPosition, ObjectPos );
-		}
-
-		var tr = trace.IgnoreGameObjectHierarchy( GameObject.Root ).Run();
+		var tr = Scene.Trace.Size( model.Bounds.Rotate( PropRotation ) ).Ray( player.Eye.WorldPosition, ObjectPos ).IgnoreGameObjectHierarchy( GameObject.Root ).Run();
 
 		if ( tr.Hit )
 		{
