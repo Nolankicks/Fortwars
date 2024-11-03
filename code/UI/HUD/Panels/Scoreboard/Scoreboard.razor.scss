@@ -3,7 +3,7 @@
 Scoreboard {
     position: absolute;
     z-index: 500;
-    pointer-events: all;
+    pointer-events: none;
     width: 1000px;
     height: 800px;
     align-items: flex-start;
@@ -17,11 +17,17 @@ Scoreboard {
     transition: opacity 0.2s ease-in-out;
     flex-direction: row;
 
-    background-color: rgba( $primary, 0.99 );
+    background-color: rgba($primary, 0.99);
     flex-direction: column;
 
-    .map-meta
-    {
+    opacity: 0;
+
+    &.active {
+        opacity: 1;
+        pointer-events: all;
+    }
+
+    .map-meta {
         width: 100%;
         height: 100px;
         background-color: $secondary;
@@ -36,25 +42,21 @@ Scoreboard {
 
         flex-shrink: 0;
 
-        >.info
-        {
+        > .info {
             height: 100%;
             flex-direction: column;
             width: 100%;
 
-            >.name
-            {
+            > .name {
                 font-size: 38px;
             }
 
-            >.author
-            {
+            > .author {
                 font-size: 24px;
             }
         }
 
-        >.players
-        {
+        > .players {
             width: 100%;
             height: 100%;
             justify-content: flex-end;
@@ -63,13 +65,11 @@ Scoreboard {
         }
     }
 
-    .body
-    {
+    .body {
         width: 100%;
         height: 100%;
 
-        >.team
-        {
+        > .team {
             width: 100%;
 
             flex-direction: column;
@@ -80,8 +80,7 @@ Scoreboard {
             overflow-y: scroll;
             overflow-x: hidden;
 
-            >.team-name
-            {
+            > .team-name {
                 width: 100%;
                 height: 75px;
                 font-size: 42px;
@@ -93,22 +92,19 @@ Scoreboard {
                 font-weight: bolder;
                 flex-direction: column;
 
-                >.text
-                {
+                > .text {
                     margin-bottom: 32px;
                     text-shadow: 2px 2px 4px black;
                 }
 
-                >.underline
-                {
+                > .underline {
                     width: 100%;
                     height: 4px;
                     background-color: white;
                 }
             }
 
-            >.player
-            {
+            > .player {
                 height: 75px;
                 align-items: center;
                 background-color: $secondary;
@@ -116,34 +112,29 @@ Scoreboard {
                 border-radius: $border-radius;
                 flex-shrink: 0;
 
-                >.player-info
-                {
+                > .player-info {
                     width: 100%;
                     align-items: center;
                     justify-content: center;
 
-                    >.name
-                    {
+                    > .name {
                         font-size: 32px;
                         margin-right: 16px;
                     }
-    
-                    >.avatar
-                    {
+
+                    > .avatar {
                         width: auto;
                         height: 100%;
                         border-radius: 6px;
-    
+
                         aspect-ratio: 1/1;
-                        
-    
+
                         background-position: center;
                         background-size: cover;
                     }
                 }
 
-                >.stats
-                {
+                > .stats {
                     width: 100%;
                     align-items: center;
                     justify-content: center;

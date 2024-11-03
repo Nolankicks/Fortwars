@@ -8,12 +8,7 @@
 <root>
 	<InventoryPanel />
 
-    
-    
-    
-
 	<div style="opacity: @( ShowCrosshair ? "1" : "0");" class="crosshair"><img src=@(Crosshair)/></div>
-
 
 	<TeamProgress />
     <MaxProps @ref="MaxProps" />
@@ -21,7 +16,7 @@
 		<HealthPanel @ref="HealthPanel" />
 	</div>
 
-	<Scoreboard style="opacity: @( ShowScoreboard ? "1" : "0");" />
+	<Scoreboard/>
 
 	<Timer />
 </root>
@@ -30,7 +25,6 @@
 {
     public Panel MaxProps { get; set; }
     public HealthPanel HealthPanel { get; set; }
-    public bool ShowScoreboard => Input.Down( "score" );
     public bool ShowCrosshair { get; set; } = true;
     public static HUD Instance { get; set; }
 
@@ -86,6 +80,6 @@
 	/// </summary>
 	protected override int BuildHash()
 	{
-		return System.HashCode.Combine( ShowScoreboard, ShowCrosshair );
+		return System.HashCode.Combine( ShowCrosshair );
 	}
 }
