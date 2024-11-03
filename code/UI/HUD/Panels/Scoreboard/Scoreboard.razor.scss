@@ -110,30 +110,33 @@ Scoreboard {
                 background-color: $secondary;
                 padding: 12px;
                 border-radius: $border-radius;
+                justify-content: center;
                 flex-shrink: 0;
-
+            
                 > .player-info {
                     width: 100%;
                     align-items: center;
                     justify-content: center;
-
+            
                     > .name {
-                        font-size: 32px;
-                        margin-right: 16px;
+                        font-size: 20px;
+                        text-overflow: ellipsis;
+                    
+                        padding: 12px;
                     }
-
+            
                     > .avatar {
                         width: auto;
                         height: 100%;
                         border-radius: 6px;
-
+            
                         aspect-ratio: 1/1;
-
+            
                         background-position: center;
                         background-size: cover;
                     }
                 }
-
+            
                 > .stats {
                     width: 100%;
                     align-items: center;
