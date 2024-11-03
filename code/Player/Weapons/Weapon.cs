@@ -286,6 +286,14 @@ public class Weapon : Item, IGameEventHandler<OnReloadEvent>
 		GameObject.Dispatch( new WeaponAnimEvent( "b_reload", false ) );
 	}
 
+	protected override void OnDisabled()
+	{
+		if ( IsProxy )
+			return;
+		
+		IsReloading = false;
+	}
+
 	bool CheckFireInput()
 	{
 		if ( FireType == FireTypes.F_SEMIAUTO )
