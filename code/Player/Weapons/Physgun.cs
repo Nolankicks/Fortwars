@@ -32,8 +32,12 @@ public class Physgun : Item
 	public float DistanceBetweenMouseObject { get; set; }
 	public Rotation StartingBodyRotation { get; set; }
 
-	[Property] LineRenderer PhysLine { get; set; }
-	[Property] GameObject EndLineObject { get; set; }
+	[Property, Category( "Effects" )] LineRenderer PhysLine { get; set; }
+	[Property, Category( "Effects" )] GameObject EndLineObject { get; set; }
+
+	[Property, Category( "Effects" )] ParticleEffect LineParticles { get; set; }
+
+	[Property, Category( "Effects" )] ParticleBoxEmitter Emitter { get; set; }
 
 	protected override void OnUpdate()
 	{
@@ -156,7 +160,7 @@ public class Physgun : Item
 
 		PhysicsStep();
 
-		UpdateLine();
+		UpdateEffects();
 	}
 
 	private void TryUnfreeze()
@@ -417,15 +421,22 @@ public class Physgun : Item
 		Mouse.Visible = false;
 	}
 
-	void UpdateLine()
+	void UpdateEffects()
 	{
 		if ( GrabbedObject.IsValid() )
 		{
 			PhysLine.Enabled = true;
 			EndLineObject.WorldPosition = GrabbedObject.GetBounds().Center;
 			GrabbedObject.Components.GetOrCreate<HighlightOutline>();
+			//LineParticles.Enabled = true;
+			//LineParticles.WorldPosition = TracerPoint.WorldPosition.MoveTowards( GrabbedPosition, 0.5f );
+			////Emitter.Size = Emitter.Size.WithX( GrabbedPosition.Distance( TracerPoint.WorldPosition ) );
+			////Emitter.WorldRotation = Rotation.LookAt( TracerPoint.WorldPosition - GrabbedPosition );
 		}
 		else
+		{
+			LineParticles.Enabled = false;
 			PhysLine.Enabled = false;
+		}
 	}
 }
