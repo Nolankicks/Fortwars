@@ -6,7 +6,7 @@
   "Thumb": "textures/fw_cliffside.vtex",
   "Author": "k8woz",
   "PackageIndent": null,
-  "Hidden": false,
+  "Hidden": true,
   "Order": 1,
   "__references": [],
   "__version": 0
