@@ -148,7 +148,7 @@ public sealed class Propgun : Item
 		Vector3 ObjectPos = player.Eye.WorldPosition + player.Eye.WorldRotation.Forward * 400.0f;
 
 		var model = CurrentProp.Model;
-		var trace = Scene.Trace.Size( model.Bounds.Rotate( PropRotation ) );
+		var trace = Scene.Trace.Size( model.Bounds.Rotate( PropRotation ) * 0.75f );
 
 		if ( UsingMouseInput )
 		{
