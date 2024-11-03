@@ -939,7 +939,7 @@
       "Flags": 0,
       "Name": "Blue barrier",
       "Position": "2880,-784,192.0033",
-      "Tags": "red,no_build,map",
+      "Tags": "no_build,map,blue",
       "Enabled": true,
       "Components": [
         {
@@ -1327,7 +1327,7 @@
       "Flags": 0,
       "Name": "Blue barrier",
       "Position": "2880,784,192.0033",
-      "Tags": "red,no_build,map",
+      "Tags": "blue,no_build,map",
       "Enabled": true,
       "Components": [
         {
