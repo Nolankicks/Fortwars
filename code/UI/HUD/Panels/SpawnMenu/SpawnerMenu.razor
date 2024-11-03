@@ -15,16 +15,16 @@
 	}
 
 	<div class="models">
-		@if ( Models is null )
+		@if (  AllProps is null )
 			return;
 
-		@if ( Models.Count() == 0 && !FirstTime )
+		@if ( AllProps.Count() == 0 && !FirstTime )
 		{
 			<div class="empty">
 				No models found
 			</div>
 		}
-		else if ( Models.Count() == 0 && FirstTime )
+		else if ( AllProps.Count() == 0 && FirstTime )
 		{
 			<div class="empty">
 				Loading models...
@@ -32,106 +32,51 @@
 		}
 		else
 		{
-			foreach ( var model in Models )
-			{
-				<button class="model" style="background-image: url(@model?.Thumb);" onclick=@( () =>
+            foreach( var prop in AllProps)
+            {
+                <button class="model" style="background-image: url(@prop?.Icon);" onclick=@( () =>
 				{
-					LoadModel( model.FullIdent, Propgun );
+					SetProp(prop);
 					Delete();
 				} )>
-				</button>
-			}
-		}
+                @(prop.DisplayName)
+                </button>
+            }
+        }
 	</div>
-
-	@if ( gs.ClassicModels )
-		return;
-	
-	<TextEntry @ref="Search" placeholder="Search..." onsubmit=@FetchModels />
 </root>
 
 @code
 {
-	public Propgun Propgun { get; set; }
+    public Propgun Propgun { get; set; }
 
-	public Package.FindResult Packages { get; set; }
+    public Package.FindResult Packages { get; set; }
 
-	public List<Package> Models { get; set; } = new();
+    public List<Package> Models { get; set; } = new();
 
-	public bool FirstTime { get; set; } = true;
+    public bool FirstTime { get; set; } = true;
 
-	TextEntry Search;
+    TextEntry Search;
+
+    private List<PropResource> AllProps {get; set; }
 
 
-	protected override void OnAfterTreeRender( bool firstTime )
-	{
-		base.OnAfterTreeRender( firstTime );
+    protected override void OnAfterTreeRender( bool firstTime )
+    {
+        base.OnAfterTreeRender( firstTime );
 
-		if ( !firstTime )
-			return;
+        if ( !firstTime )
+            return;
 
-		FetchModels();
-	}
+        AllProps = ResourceLibrary.GetAll<PropResource>().ToList();
+    }
 
-	public async void FetchModels()
-	{
-		Log.Info( $"Fetching models: {Search?.Text}" );
 
-		var gs = GameSystem.Instance;
+    public void SetProp(PropResource prop)
+    {
 
-		if ( !gs.IsValid() )
-			return;
-
-		List<Package> packages = new();
-
-		if ( gs.ClassicModels )
-		{
-			foreach ( var value in gs.ClassicIndents )
-			{
-				var package = await Package.Fetch( value.Key, false );
-
-				if ( package is null )
-					continue;
-
-				packages.Add( package );
-			}
-		}
-		else
-		{
-			var packageList = await Package.FindAsync( $"type:model sort:popular {Search?.Text}", 201 );
-
-			if ( packageList is not null )
-				packages = packageList.Packages?.ToList();
-		}
-
-		if ( packages is null )
-			return;
-
-		Models = packages;
-
-		FirstTime = false;
-
-		StateHasChanged();
-	}
-
-	[Broadcast]
-	public static async void LoadModel( string indent, Propgun propgun )
-	{
-		var package = await Package.Fetch( indent, false );
-
-		if ( package is null )
-			return;
-
-		var mounted = await package.MountAsync();
-
-		var model = package.GetMeta<Model>( "PrimaryAsset" );
-
-		if ( propgun.IsValid() && propgun.Network.IsOwner && model is not null )
-		{
-			propgun.Prop = model;
-			propgun.PropIdent = indent;
-		}
-	}
+        Propgun.CurrentProp = prop;
+    }
 
 	protected override int BuildHash()
 	{

@@ -1,4 +1,5 @@
 using Sandbox.Events;
+using System.Threading.Tasks;
 
 public sealed class Propgun : Item
 {
@@ -17,49 +18,7 @@ public sealed class Propgun : Item
 	{
 		if ( IsProxy || !FirstTime )
 			return;
-
-		var popup = new Popup();
-		popup.Title = $"Press {Input.GetButtonOrigin( "menu" )?.ToUpper()} to open the propgun menu";
-		popup.Time = 8;
-
-		PopupHolder.AddPopup( popup );
-
-		Invoke( 2, () =>
-		{
-			var destroy = new Popup();
-			destroy.Title = $"Press {Input.GetButtonOrigin( "destroy" )?.ToUpper()} to destroy the prop you're looking at";
-			destroy.Time = 8;
-
-			PopupHolder.AddPopup( destroy );
-		} );
-
-		Invoke( 4, () =>
-		{
-			var reload = new Popup();
-			reload.Title = $"Press {Input.GetButtonOrigin( "attack2" )?.ToUpper()} to change the prop's rotation";
-			reload.Time = 8;
-
-			PopupHolder.AddPopup( reload );
-		} );
-
-		Invoke( 6, () =>
-		{
-			var attack1 = new Popup();
-			attack1.Title = $"Press {Input.GetButtonOrigin( "reload" )?.ToUpper()} to reset the rotation";
-			attack1.Time = 8;
-
-			PopupHolder.AddPopup( attack1 );
-		} );
-
-		//Invoke( 8, () =>
-		//{
-		//	var attack2 = new Popup();
-		//	attack2.Title = $"Press {Input.GetButtonOrigin( "mouseprop" )?.ToUpper()} to toggle mouse input";
-		//	attack2.Time = 8;
-
-		//	PopupHolder.AddPopup( attack2 );
-		//} );
-
+		_ = DisplayControls();
 		FirstTime = false;
 	}
 
@@ -92,10 +51,9 @@ public sealed class Propgun : Item
 			else (hud?.Panel?.ChildrenOfType<SpawnerMenu>()?.FirstOrDefault())?.Delete();
 		}
 
-		if ( Prop is not null )
+		if ( CurrentProp is not null )
 		{
 			PlaceProp();
-
 		}
 
 		// Rotate the viewmodel around
@@ -316,5 +274,29 @@ public sealed class Propgun : Item
 
 		if ( rb.IsValid() )
 			SetStaticBodyType( rb );
+	}
+
+	private async Task DisplayControls()
+	{
+		float delay = 2.0f;
+		List<string> messages = new List<string>()
+		{
+			$"Press {Input.GetButtonOrigin( "menu" )?.ToUpper()} to open the propgun menu",
+			$"Press {Input.GetButtonOrigin( "destroy" )?.ToUpper()} to destroy the prop you're looking at",
+			$"Press {Input.GetButtonOrigin( "attack2" )?.ToUpper()} to change the prop's rotation",
+			$"Press {Input.GetButtonOrigin( "reload" )?.ToUpper()} to reset the rotation",
+			//$"Press {Input.GetButtonOrigin( "mouseprop" )?.ToUpper()} to toggle mouse input"
+		};
+
+		foreach ( var message in messages )
+		{
+			var popup = new Popup();
+			popup.Title = message;
+			popup.Time = 8;
+
+			PopupHolder.AddPopup( popup );
+
+			await Task.DelaySeconds( delay );
+		}
 	}
 }
