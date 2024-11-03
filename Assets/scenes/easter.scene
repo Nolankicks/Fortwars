@@ -2611,7 +2611,6 @@
       "Name": "dev_shop",
       "Position": "-1336,-552,304",
       "Rotation": "0,0,-0.7071067,0.7071068",
-      "Enabled": true,
       "Components": [
         {
           "__type": "Sandbox.ModelRenderer",
