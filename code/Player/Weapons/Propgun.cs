@@ -51,14 +51,14 @@ public sealed class Propgun : Item
 			PopupHolder.AddPopup( attack1 );
 		} );
 
-		Invoke( 8, () =>
-		{
-			var attack2 = new Popup();
-			attack2.Title = $"Press {Input.GetButtonOrigin( "mouseprop" )?.ToUpper()} to toggle mouse input";
-			attack2.Time = 8;
+		//Invoke( 8, () =>
+		//{
+		//	var attack2 = new Popup();
+		//	attack2.Title = $"Press {Input.GetButtonOrigin( "mouseprop" )?.ToUpper()} to toggle mouse input";
+		//	attack2.Time = 8;
 
-			PopupHolder.AddPopup( attack2 );
-		} );
+		//	PopupHolder.AddPopup( attack2 );
+		//} );
 
 		FirstTime = false;
 	}
@@ -68,13 +68,13 @@ public sealed class Propgun : Item
 		if ( IsProxy )
 			return;
 
-		if ( Input.Pressed( "mouseprop" ) )
-		{
-			Mouse.Visible = !Mouse.Visible;
-			UsingMouseInput = !UsingMouseInput;
+		//if ( Input.Pressed( "mouseprop" ) )
+		//{
+		//	Mouse.Visible = !Mouse.Visible;
+		//	UsingMouseInput = !UsingMouseInput;
 
-			PropRotation = Rotation.Identity;
-		}
+		//	PropRotation = Rotation.Identity;
+		//}
 
 		if ( Input.Pressed( "menu" ) )
 		{
@@ -152,7 +152,7 @@ public sealed class Propgun : Item
 
 		if ( UsingMouseInput )
 		{
-			trace.FromTo( Scene.Camera.WorldPosition, Scene.Camera.ScreenPixelToRay( Mouse.Position ).Forward * 200.0f );
+			trace.Ray( Scene.Camera.ScreenPixelToRay( Mouse.Position ).Forward, 200.0f );
 		}
 		else
 		{
