@@ -11,6 +11,8 @@ public sealed class Propgun : Item
 	[Property] public SoundEvent ShootSound { get; set; }
 	[RequireComponent] Viewmodel VModel { get; set; }
 
+	[Property] public PropResource CurrentProp { get; set; }
+
 	protected override void OnStart()
 	{
 		if ( IsProxy || !FirstTime )
@@ -137,94 +139,38 @@ public sealed class Propgun : Item
 		UsingMouseInput = false;
 	}
 
-	//public void PlacePropMouse()
-	//{
-	//	var camera = Scene.Camera;
-
-	//	if ( !camera.IsValid() )
-	//		return;
-
-	//	var tr = Scene.Trace
-
-	//		.IgnoreGameObjectHierarchy( GameObject.Root )
-	//		.Run();
-
-	//	bool CanPlace = tr.Hit && tr.Distance > 32.0f && tr.EndPosition.Distance( GameObject.Root.WorldPosition ) > 32.0f && !tr.GameObject.Tags.Has( FW.Tags.NoBuild );
-
-	//	var pos = tr.EndPosition.SnapToGrid( 16, true, true, !(tr.Hit && tr.Normal == Vector3.Up) );
-
-	//	var gizmo = Gizmo.Draw.Model( Prop.ResourcePath );
-	//	gizmo.ColorTint = Color.White.WithAlpha( 0.5f );
-	//	gizmo.Rotation = PropRotation.SnapToGrid( 15 );
-	//	gizmo.Position = pos;
-
-	//	if ( !CanPlace )
-	//	{
-	//		gizmo.ColorTint = Color.Red.WithAlpha( 0.5f );
-	//	}
-
-	//	if ( tr.Hit && Input.Pressed( "destroy" ) && (tr.GameObject?.Root?.Components.TryGet<FortwarsProp>( out var prop, FindMode.EverythingInSelfAndDescendants ) ?? false) )
-	//	{
-	//		if ( prop.Invincible )
-	//			return;
-
-	//		tr.GameObject?.Root?.Destroy();
-	//	}
-
-	//	if ( Input.Pressed( "reload" ) )
-	//	{
-	//		PropRotation = Rotation.Identity;
-	//	}
-
-	//	if ( CanPlace && Input.Pressed( "attack1" ) )
-	//	{
-	//		if ( ShootSound is not null )
-	//		{
-	//			var sound = Sound.Play( ShootSound, WorldPosition );
-
-	//			if ( sound.IsValid() )
-	//				sound.Volume = 0.5f;
-	//		}
-
-	//		if ( !FWPlayerController.Local.TeamComponent.IsValid() )
-	//			return;
-
-	//		SpawnProp( pos );
-	//	}
-	//}
-
 	public void PlaceProp()
 	{
 		var player = FWPlayerController.Local;
-
 		if ( !player.IsValid() )
 			return;
 
-		Vector3 ObjectPos = player.Eye.WorldPosition + player.Eye.WorldRotation.Forward * 100.0f;
+		Vector3 ObjectPos = player.Eye.WorldPosition + player.Eye.WorldRotation.Forward * 400.0f;
 
-		var trace = Scene.Trace;
+		var model = CurrentProp.Model;
+		var trace = Scene.Trace.Size( model.Bounds );
 
 		if ( UsingMouseInput )
 		{
-			trace.Box( Prop.Bounds.Rotate( PropRotation ) * 0.75f, Scene.Camera.ScreenPixelToRay( Mouse.Position ), 200f );
+			trace.FromTo( Scene.Camera.WorldPosition, Scene.Camera.ScreenPixelToRay( Mouse.Position ).Forward * 200.0f );
 		}
 		else
 		{
-			trace.Box( Prop.Bounds.Rotate( PropRotation ) * 0.75f, player.Eye.WorldPosition, player.Eye.WorldPosition + player.Eye.WorldRotation.Forward * 200.0f );
+			trace.Ray( player.Eye.WorldPosition, ObjectPos );
 		}
 
 		var tr = trace.IgnoreGameObjectHierarchy( GameObject.Root ).Run();
 
 		if ( tr.Hit )
 		{
-			ObjectPos = tr.EndPosition;
+			ObjectPos = tr.HitPosition;
 		}
 
-		ObjectPos = ObjectPos.SnapToGrid( 16, true, true, !(tr.Hit && tr.Normal == Vector3.Up) );
+		//ObjectPos = ObjectPos.SnapToGrid( 16, true, true, !(tr.Hit && tr.Normal == Vector3.Up) );
 
 		bool CanPlace = tr.Hit && tr.Distance > 32.0f && ObjectPos.Distance( GameObject.Root.WorldPosition ) > 32.0f && !tr.GameObject.Tags.Has( FW.Tags.NoBuild );
 
-		var gizmo = Gizmo.Draw.Model( Prop.ResourcePath );
+		var gizmo = Gizmo.Draw.Model( model.ResourcePath );
 		gizmo.ColorTint = Color.White.WithAlpha( 0.5f );
 		gizmo.Rotation = PropRotation.SnapToGrid( 15 );
 		gizmo.Position = ObjectPos;
@@ -332,7 +278,7 @@ public sealed class Propgun : Item
 		var renderer = gb.Components.Create<Prop>();
 		var fortWarsProp = gb.Components.Create<FortwarsProp>();
 
-		renderer.Model = Prop;
+		renderer.Model = CurrentProp.Model;
 
 		if ( renderer.Health == 0 )
 			renderer.Health = 100;

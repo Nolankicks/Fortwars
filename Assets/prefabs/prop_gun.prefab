@@ -19,6 +19,7 @@
         "__type": "Propgun",
         "__guid": "0cedd94d-76f3-4c31-82dc-14ddcd516f68",
         "AmmoPerShot": 1,
+        "CurrentProp": "props/64box.prop",
         "HoldType": "Pistol",
         "MaxAmmo": 30,
         "MustBeUp": true,
