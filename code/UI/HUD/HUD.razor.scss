@@ -69,9 +69,10 @@ HUD {
         left: 5%;
         flex-direction: column;
         gap: 16px;
-        width: 15%;
-        height: 10%;
+        width: 10%;
+        height: 8%;
         filter: drop-shadow( 0 0 10px rgba( black, 0.7 ) );
+        transform: rotate(-1deg);
     }
 
     .about {

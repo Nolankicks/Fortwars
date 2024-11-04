@@ -47,10 +47,12 @@
 				children = 
 				[
 					{
-						_class = "PhysicsMeshFromRender"
+						_class = "PhysicsHullFromRender"
 						parent_bone = ""
 						surface_prop = "default"
 						collision_tags = "solid"
+						faceMergeAngle = 20.0
+						maxHullVertices = 32
 					},
 				]
 			},

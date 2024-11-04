@@ -98,14 +98,13 @@ public sealed class Inventory : Component
 
 		if ( Input.MouseWheel.y != 0 && CanScrollSwitch )
 		{
-			var local = FWPlayerController.Local;
-
-			if ( !local.IsValid() || (!local?.CanMoveHead ?? false) )
-				return;
-
-			Index = (Index - Math.Sign( Input.MouseWheel.y )) % Items.Count();
-			ChangeItem( Index, Items );
+			NextWeapon( Math.Sign( Input.MouseWheel.y ) );
 		}
+
+		/*if ( Input.Pressed( "Slot1" ) )
+		{
+			NextWeapon( 1 );
+		}*/
 
 		if ( Index < 0 )
 		{
@@ -139,8 +138,18 @@ public sealed class Inventory : Component
 		AddItem( ItemsData[0] );
 	}
 
+	void NextWeapon( int dir )
+	{
+		var local = FWPlayerController.Local;
+		if ( !local.IsValid() || (!local?.CanMoveHead ?? false) )
+			return;
+
+		Index = (Index - dir) % Items.Count();
+		ChangeItem( Index, Items );
+	}
+
 	[Authority]
-	public void AddItem( WeaponData item )
+	public void AddItem( WeaponData item, bool insert = false, int spot = 0 )
 	{
 		if ( IsProxy || item is null )
 			return;
@@ -164,8 +173,16 @@ public sealed class Inventory : Component
 
 		clone.NetworkSpawn( false, Network.Owner );
 
-		Items.Add( clone );
-		ItemsData.Add( item );
+		if ( !insert )
+		{
+			Items.Add( clone );
+			ItemsData.Add( item );
+		}
+		else
+		{
+			Items.Insert( spot, clone );
+			ItemsData.Insert( spot, item );
+		}
 
 		if ( Items.Count() == 1 )
 		{
@@ -411,11 +428,13 @@ public sealed class Inventory : Component
 		if ( playerClass is null )
 			return;
 
-		if ( SelectedClass is not null && gs.State == GameSystem.GameState.FightMode || gs.State == GameSystem.GameState.OvertimeFight )
+		if ( SelectedClass is not null && (gs.State == GameSystem.GameState.FightMode || gs.State == GameSystem.GameState.OvertimeFight) )
 		{
 			ClearAll();
 
-			AddItem( ResourceLibrary.GetAll<WeaponData>().FirstOrDefault( x => x.ResourceName == "gravgun" ) );
+			AddItem( ResourceLibrary.GetAll<WeaponData>().FirstOrDefault( x => x.ResourceName == "gravgun" ), true, 0 );
+
+			ChangeItem( 0, Items );
 		}
 
 		SelectedClass = playerClass;
@@ -430,12 +449,13 @@ public sealed class Inventory : Component
 
 		if ( gs.State == GameSystem.GameState.FightMode || gs.State == GameSystem.GameState.OvertimeFight )
 		{
-			AddItem( playerClass.WeaponData );
+			AddItem( playerClass.WeaponData, true, 0 );
+
+			ChangeItem( 0, Items );
 
 			Log.Info( "Added weapon" );
 		}
 	}
-
 	[Authority]
 	public void ResetAmmo()
 	{
@@ -459,5 +479,15 @@ public sealed class Inventory : Component
 				}
 			}
 		}
+	}
+
+	public WeaponData GetOtherWeapon()
+	{
+		if ( Items.Count() < 2 )
+			return null;
+
+		int index = Items.IndexOf( CurrentItem ) == 0 ? 1 : 0;
+
+		return ItemsData[index];
 	}
 }

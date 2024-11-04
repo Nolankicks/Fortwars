@@ -1,115 +1,96 @@
 @import "/UI/HUD/HUD.razor.scss";
 
-MainMenu
-{
-	position: absolute;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	justify-content: center;
-	align-items: center;
-	font-weight: 700;
+MainMenu {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
     pointer-events: all;
     font-family: 'IBM Plex Mono';
     color: white;
 
-	.buttons
-    {
+    .buttons {
         position: absolute;
         bottom: 32px;
         left: 64px;
         width: 500px;
-        display:flex;
-        align-items: center;
+        display: flex;
+        align-items: flex-start;
         justify-content: flex-start;
-
         flex-direction: column;
         gap: 16px;
         transition: all 1s ease-in-out;
 
-        >button {
-            left:0%;
+
+        > button {
+            left: 0%;
+            text-align: left;
         }
 
         .big {
-            width:100%;
+            width: 100%;
         }
 
         .small {
-            width:75%;
+            width: 75%;
         }
 
-        &:intro
-        {
+        &:intro {
             transform: translateX(-115%);
         }
     }
 
-    >.title
-    {
+    > .title {
         position: absolute;
         transition: all 1s ease-in-out;
         top: 64px;
         left: 64px;
-
         font-size: 128px;
         text-shadow: 4px 4px 6px black;
-
         color: white;
         font-weight: bolder;
         text-stroke: 8px black;
         transform: rotate(-5deg);
 
-        &:intro
-        {
+        &:intro {
             transform: translateX(-115%);
         }
     }
 
-    .lobbies
-    {
+    .lobbies {
         position: absolute;
         right: 32px;
         height: 95%;
         width: 600px;
-
         background-color: $primary;
-        
         color: $button-secondary-fg;
-
         border-width: 2px;
         border-color: $secondary;
-
         justify-content: flex-start;
         align-items: center;
-
         padding: 16px;
-
         border-radius: $border-radius;
-
         flex-direction: column;
-
         transition: all 0.2s;
 
 
-        &:intro
-        {
+        &:intro {
             opacity: 0;
         }
 
-        >.header
-        {
+        > .header {
             width: 100%;
             height: 100px;
             font-size: 42px;
-
             align-items: center;
             justify-content: center;
         }
 
-        .lobby-holder
-        {
+        .lobby-holder {
             width: 100%;
             height: 100%;
             gap: 16px;
@@ -122,8 +103,7 @@ MainMenu
             overflow-y: scroll;
             overflow-x: hidden;
 
-            .info
-            {
+            .info {
                 width: 100%;
                 height: 100px;
                 font-size: 42px;
@@ -131,15 +111,13 @@ MainMenu
                 justify-content: center;
             }
 
-            .lobby
-            {
+            .lobby {
                 width: 100%;
                 height: 100px;
                 font-size: 32px;
                 flex-shrink: 0;
                 background-color: $button-secondary;
                 color: $button-secondary-fg;
-    
                 border-width: 2px;
                 border-color: $primary;
                 border-radius: $border-radius;
@@ -147,33 +125,28 @@ MainMenu
                 justify-content: center;
                 gap: 16px;
 
-                >.members
-                {
+                > .members {
                     min-width: 200px;
                     height: 100%;
                     align-items: center;
                     justify-content: center;
                 }
 
-                >.map
-                {
+                > .map {
                     align-items: center;
                     justify-content: center;
                     width: 100%;
                     height: 100%;
-
                     text-overflow: ellipsis;
                 }
 
-                &:hover
-                {
+                &:hover {
                     background-color: hsl(0, 0%, 20%);
                     sound-in: ui.button.over;
                     cursor: pointer;
                 }
 
-                &:active
-                {
+                &:active {
                     background-color: hsl(0, 0%, 15%);
                     sound-in: ui.button.press;
                     cursor: pointer;
@@ -182,35 +155,28 @@ MainMenu
         }
     }
 
-    .leaderboard
-    {
+    .leaderboard {
         position: absolute;
         right: 32px;
         height: 95%;
         width: 600px;
-
         background-color: hsl(0, 0%, 11%);
         border-color: hsl(0, 0%, 15%);
         border-width: 6;
         justify-content: flex-start;
         align-items: center;
-
         padding: 16px;
-
         flex-direction: column;
 
-        >.header
-        {
+        > .header {
             width: 100%;
             height: 100px;
             font-size: 42px;
-
             align-items: center;
             justify-content: center;
         }
 
-        .leaderboard-holder
-        {
+        .leaderboard-holder {
             width: 100%;
             height: 100%;
             gap: 16px;
@@ -224,8 +190,7 @@ MainMenu
             overflow-y: scroll;
             overflow-x: hidden;
 
-            .info
-            {
+            .info {
                 width: 100%;
                 height: 100px;
                 font-size: 42px;
@@ -233,8 +198,7 @@ MainMenu
                 justify-content: center;
             }
 
-            .entry
-            {
+            .entry {
                 width: 100%;
                 height: 100px;
                 font-size: 42px;
@@ -247,13 +211,11 @@ MainMenu
                 gap: 16px;
                 padding: 12px;
 
-                &.me
-                {
+                &.me {
                     background-color: hsl(0, 0%, 19%);
                 }
 
-                .name
-                {
+                .name {
                     flex-grow: 1;
                     height: 100%;
                     font-size: 32px;
@@ -262,15 +224,13 @@ MainMenu
                     text-overflow: clip;
                 }
 
-                &:hover
-                {
+                &:hover {
                     background-color: hsl(0, 0%, 20%);
                     sound-in: ui.button.over;
                     cursor: pointer;
                 }
 
-                &:active
-                {
+                &:active {
                     background-color: hsl(0, 0%, 15%);
                     sound-in: ui.button.press;
                     cursor: pointer;
@@ -278,8 +238,7 @@ MainMenu
             }
         }
 
-        .sort
-        {
+        .sort {
             width: 100%;
             height: 100px;
             font-size: 42px;
@@ -288,8 +247,7 @@ MainMenu
             gap: 16px;
             margin: 12px;
 
-            .button
-            {
+            .button {
                 width: 100%;
                 font-size: 42px;
                 height: 100px;
@@ -299,25 +257,22 @@ MainMenu
                 align-items: center;
                 justify-content: center;
 
-                &:hover
-                {
+                &:hover {
                     background-color: hsl(0, 0%, 20%);
                     sound-in: ui.button.over;
                     cursor: pointer;
                 }
 
-                &:active
-                {
+                &:active {
                     background-color: hsl(0, 0%, 15%);
                     sound-in: ui.button.press;
                     cursor: pointer;
                 }
+            }
         }
     }
-    }
 
-    .about
-    {
+    .about {
         width: 800px;
         max-height: 700px;
         background-color: $secondary;
@@ -326,7 +281,6 @@ MainMenu
         color: $button-secondary-fg;
         flex-direction: column;
         border-radius: $border-radius;
-
         padding: 24px;
         pointer-events: all;
         gap: 21px;
@@ -338,21 +292,18 @@ MainMenu
         transition: all 0.2s;
 
 
-        &:intro
-        {
+        &:intro {
             opacity: 0;
         }
 
-        >label
-        {
+        > label {
             align-items: center;
             justify-content: center;
             flex-shrink: 0;
         }
     }
 
-    .lobby-creation
-    {
+    .lobby-creation {
         width: 700px;
         height: 700px;
         align-items: center;

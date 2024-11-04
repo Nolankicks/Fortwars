@@ -1,6 +1,5 @@
-using System;
-using Sandbox;
 using Sandbox.Events;
+using System;
 
 public sealed class FortwarsProp : Component, Component.ICollisionListener, IGameEventHandler<OnGameEnd>, Component.IDamageable
 {
@@ -12,6 +11,8 @@ public sealed class FortwarsProp : Component, Component.ICollisionListener, IGam
 	[Property, Sync] public FWPlayerController Grabber { get; set; }
 	[Property, Sync] public bool CanKill { get; set; } = true;
 	[Property, Sync] public float Health { get; set; } = 100;
+
+	[Property, Sync] public PropResource Resource { get; set; }
 
 	public void OnCollisionStart( Collision other )
 	{
@@ -57,7 +58,7 @@ public sealed class FortwarsProp : Component, Component.ICollisionListener, IGam
 	{
 		if ( Invincible )
 			return;
-		
+
 		if ( IsProxy ) return;
 
 		Health -= amount;
@@ -89,7 +90,7 @@ public sealed class FortwarsProp : Component, Component.ICollisionListener, IGam
 		DestroyProp();
 	}
 
-	void IDamageable.OnDamage(in Sandbox.DamageInfo damage)
+	void IDamageable.OnDamage( in Sandbox.DamageInfo damage )
 	{
 		Damage( damage.Damage );
 	}

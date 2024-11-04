@@ -1,5 +1,3 @@
-using System;
-
 public sealed class CameraController : Component
 {
 	public Angles AngleOffset { get; set; }
@@ -9,6 +7,13 @@ public sealed class CameraController : Component
 
 	public float FOVMult { get; set; } = 1.0f;
 
+	private Rotation CurrentRotation { get; set; }
+	private Rotation TargetRotation { get; set; }
+
+	[Property] private Vector3 Recoil { get; set; }
+	[Property] private float Snappiness { get; set; }
+	[Property] private float ReturnSpeed { get; set; }
+
 	protected override void OnEnabled()
 	{
 		Instance = this;
@@ -16,8 +21,6 @@ public sealed class CameraController : Component
 
 	protected override void OnPreRender()
 	{
-		HandleScreenShake();
-
 		var player = FWPlayerController.Local;
 
 		if ( !player.IsValid() || !Scene.Camera.IsValid() )
@@ -36,42 +39,23 @@ public sealed class CameraController : Component
 			return;
 		}
 
+		UpdateRecoil();
+
 		WorldPosition = player.Eye.WorldPosition;
 		WorldRotation = player.Eye.WorldRotation.Angles() + AngleOffset;
 
 		Scene.Camera.FieldOfView = (player.OverrideFOV == 0 ? Preferences.FieldOfView : player.OverrideFOV) * FOVMult;
 	}
 
-	// Credits to SWP for screen shake code
-	// https://github.com/timmybo5/simple-weapon-base/blob/master/code/swb_player/PlayerBase.ScreenShake.cs
-
-	ScreenShake lastScreenShake;
-	RealTimeSince timeSinceShake;
-	float nextShake;
-
-	public void ShakeScreen( ScreenShake screenShake )
+	void UpdateRecoil()
 	{
-		lastScreenShake = screenShake;
-		timeSinceShake = 0;
-		nextShake = 0;
+		TargetRotation = Rotation.Lerp( TargetRotation, Rotation.Identity, ReturnSpeed * Time.Delta );
+		CurrentRotation = Rotation.Slerp( CurrentRotation, TargetRotation, Snappiness * Time.Delta );
+		AngleOffset = CurrentRotation;
 	}
 
-	public void HandleScreenShake()
+	public void RecoilFire( Vector3 recoil )
 	{
-		if ( timeSinceShake < lastScreenShake?.Duration && timeSinceShake > nextShake )
-		{
-			var random = new Random();
-			var randomPos = new Vector3( random.Float( 0, lastScreenShake.Size ), random.Float( 0, lastScreenShake.Size ), random.Float( 0, lastScreenShake.Size ) );
-			var randomRot = new Angles( random.Float( 0, lastScreenShake.Rotation ), random.Float( 0, lastScreenShake.Rotation ), 0 );
-
-			AngleOffset += randomRot;
-			PosOffset += randomPos;
-			nextShake = timeSinceShake + lastScreenShake.Delay;
-		}
-		else
-		{
-			AngleOffset = Rotation.Identity;
-			PosOffset = Vector3.Zero;
-		}
+		TargetRotation += new Angles( recoil.x, Game.Random.Float( -recoil.y, recoil.y ), Game.Random.Float( -recoil.z, recoil.z ) ).ToRotation();
 	}
 }

@@ -1,11 +1,9 @@
 {
   "Name": "Gravgun",
-  "Icon": null,
   "WeaponPrefab": {
     "_type": "gameobject",
-    "prefab": "prefabs/fortwarsgravgun.prefab"
+    "prefab": "prefabs/weapons/fortwarsgravgun.prefab"
   },
   "__references": [],
-  "IsValid": true,
   "__version": 0
 }

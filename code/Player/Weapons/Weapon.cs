@@ -11,11 +11,11 @@ public class Item : Component, IGameEventHandler<OnItemEquipped>
 	[Property, Sync, Feature( "Base Item" )] public Vector3 Offset { get; set; }
 	public int Ammo { get; set; }
 
-	[Property, Feature( "Base Item" )] public bool UsesAmmo { get; set; } = true;
+	[Property, FeatureEnabled( "Ammo" )] public bool UsesAmmo { get; set; } = true;
 
-	[Property, ShowIf( "UsesAmmo", true ), Feature( "Base Item" )] public int MaxAmmo { get; set; } = 30;
+	[Property, Feature( "Ammo" )] public int MaxAmmo { get; set; } = 30;
 
-	[Property, ShowIf( "UsesAmmo", true ), Feature( "Base Item" )] public int AmmoPerShot { get; set; } = 1;
+	[Property, Feature( "Ammo" )] public int AmmoPerShot { get; set; } = 1;
 
 	[Property] public Viewmodel VModel { get; set; }
 
@@ -94,11 +94,18 @@ public class Weapon : Item, IGameEventHandler<OnReloadEvent>
 	[Property] public string AttackAnimName { get; set; } = "b_attack";
 	[Property] public string ReloadAnimName { get; set; } = "b_reload";
 
-	[Property] public ScreenShake FireShake { get; set; }
+	[Property, FeatureEnabled( "Recoil" )] public bool UsesRecoil { get; set; }
+	[Property, Feature( "Recoil" )] public Vector3 RecoilValues { get; set; }
 
 	public virtual bool CanFire => true;
 
 	private SceneTraceResult[] Traces;
+
+	[Property, FeatureEnabled( "Casing" )] public bool HasBulletCasing { get; set; }
+	[Property, Feature( "Casing" )] public Model CasingModel { get; set; }
+	[Property, Feature( "Casing" )] public GameObject EjectionPoint { get; set; }
+
+
 
 	public enum FireTypes
 	{
@@ -140,10 +147,11 @@ public class Weapon : Item, IGameEventHandler<OnReloadEvent>
 				local.BroadcastAttack();
 			}
 
-			CameraController.Instance.ShakeScreen( FireShake );
+			CameraController.Instance.RecoilFire( RecoilValues );
 
 			BroadcastShootEffects( Traces );
 			CreateMuzzleFlash();
+			EjectCasing();
 
 			GameObject.Dispatch( new WeaponAnimEvent( AttackAnimName, true ) );
 
@@ -217,6 +225,8 @@ public class Weapon : Item, IGameEventHandler<OnReloadEvent>
 				damageable.OnDamage( damage );
 			}
 		}
+
+
 	}
 
 	public bool IsReloading { get; set; }
@@ -251,7 +261,7 @@ public class Weapon : Item, IGameEventHandler<OnReloadEvent>
 				if ( trace.Hit && !trace.GameObject.Components.TryGet<FWPlayerController>( out var player )
 					&& !trace.GameObject.Components.TryGet<RollerMine>( out var mine ) )
 				{
-					var decal = GameObject.Clone( "prefabs/bulletdecal.prefab", new CloneConfig { Parent = Scene.Root, StartEnabled = true } );
+					var decal = GameObject.Clone( "prefabs/effects/bulletdecal.prefab", new CloneConfig { Parent = Scene.Root, StartEnabled = true } );
 					decal.WorldPosition = trace.HitPosition + trace.Normal;
 					decal.WorldRotation = Rotation.LookAt( -trace.Normal );
 					decal.WorldScale = 1.0f;
@@ -294,7 +304,7 @@ public class Weapon : Item, IGameEventHandler<OnReloadEvent>
 	{
 		if ( IsProxy )
 			return;
-		
+
 		IsReloading = false;
 	}
 
@@ -311,7 +321,7 @@ public class Weapon : Item, IGameEventHandler<OnReloadEvent>
 	void CreateTracer( Vector3 StartPos, Vector3 Normal )
 	{
 
-		var tracer = GameObject.Clone( "prefabs/tracer.prefab", new CloneConfig { Parent = Scene.Root, StartEnabled = true } );
+		var tracer = GameObject.Clone( "prefabs/effects/tracer.prefab", new CloneConfig { Parent = Scene.Root, StartEnabled = true } );
 		if ( IsProxy ) { tracer.WorldPosition = StartPos; }
 		else { tracer.WorldPosition = TracerPoint.WorldPosition; }
 		tracer.WorldRotation = Rotation.LookAt( Normal );
@@ -323,8 +333,24 @@ public class Weapon : Item, IGameEventHandler<OnReloadEvent>
 		if ( !TracerPoint.IsValid() )
 			return;
 
-		var flash = GameObject.Clone( "prefabs/muzzleflash.prefab", new CloneConfig { Parent = TracerPoint, StartEnabled = true } );
+		var flash = GameObject.Clone( "prefabs/effects/muzzleflash.prefab", new CloneConfig { Parent = TracerPoint, StartEnabled = true } );
 		flash.WorldRotation = TracerPoint.WorldRotation;
+	}
+
+	void EjectCasing()
+	{
+		var local = FWPlayerController.Local;
+
+		if ( !HasBulletCasing || !local.IsValid() || !EjectionPoint.IsValid() )
+			return;
+
+		var casing = GameObject.Clone( "prefabs/effects/bulletcasing.prefab", new CloneConfig { StartEnabled = true } );
+
+		casing.WorldPosition = EjectionPoint.WorldPosition;
+		casing.Components.Get<ModelRenderer>().Model = CasingModel;
+
+		var rb = casing.Components.Get<Rigidbody>();
+		rb.ApplyForce( EjectionPoint.WorldRotation.Up * 10.0f + EjectionPoint.WorldRotation.Forward * 500.0f + local.shrimpleCharacterController.Velocity );
 	}
 }
 

@@ -67,9 +67,6 @@ IGameEventHandler<OnGameOvertimeBuild>, IGameEventHandler<OnGameOvertimeFight>
 	[Property, Feature( "Lobby Settings" ), InlineEditor] public LobbySettings LobbySettings { get; set; } = new();
 	[Property, Sync, Feature( "Lobby Settings" )] public int MaxProps { get; set; } = 50;
 
-	[Property, Feature( "Spawning" )] public Dictionary<string, int> ClassicIndents { get; set; } = new();
-
-	[Property, Feature( "Spawning" )] public List<Model> LocalClassics { get; set; } = new();
 
 	[Sync] public float InitBlueTimeHeld { get; set; } = 5;
 	[Sync] public float InitRedTimeHeld { get; set; } = 5;

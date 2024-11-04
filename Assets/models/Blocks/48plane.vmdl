@@ -23,7 +23,7 @@
 				[
 					{
 						_class = "RenderMeshFile"
-						filename = "models/blocks/64cube.fbx"
+						filename = "models/blocks/48plane.fbx"
 						import_translation = [ 0.0, 0.0, 0.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
 						import_scale = 1.0
@@ -36,7 +36,7 @@
 							exclude_by_default = true
 							exception_list = 
 							[
-								"mesh_3",
+								"mesh_5",
 							]
 						}
 					},
