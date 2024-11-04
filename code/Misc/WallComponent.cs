@@ -34,7 +34,7 @@ IGameEventHandler<OnGameWaiting>, Component.ExecuteInEditor
 		ToggleEnable( false );
 	}
 
-	protected override void OnFixedUpdate()
+	protected override void OnEnabled()
 	{
 		if ( Scene.IsEditor && GameObject.NetworkMode != NetworkMode.Object )
 		{
