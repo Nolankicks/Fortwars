@@ -21,7 +21,6 @@ Exports/*
 *.*_c
 !*.shader_c
 *.los
-*.vpk
 
 *launchSettings.json
 *.sln
