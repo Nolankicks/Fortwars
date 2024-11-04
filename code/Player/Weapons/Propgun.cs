@@ -169,7 +169,7 @@ public sealed class Propgun : Item
 			gizmo.ColorTint = Color.Red.WithAlpha( 0.5f );
 		}
 
-		if ( tr.Hit && Input.Pressed( "destroy" ) && (tr.GameObject?.Root?.Components.TryGet<FortwarsProp>( out var prop, FindMode.EverythingInSelfAndDescendants ) ?? false) )
+		if ( tr.Hit && Input.Pressed( "destroy" ) && tr.GameObject.Components.TryGet<FortwarsProp>( out var prop, FindMode.EverythingInSelfAndParent ) && tr.GameObject.IsValid() )
 		{
 			if ( prop.Invincible )
 				return;
