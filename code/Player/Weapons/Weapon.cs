@@ -247,7 +247,7 @@ public class Weapon : Item, IGameEventHandler<OnReloadEvent>
 				if ( trace.Hit && !trace.GameObject.Components.TryGet<FWPlayerController>( out var player )
 					&& !trace.GameObject.Components.TryGet<RollerMine>( out var mine ) )
 				{
-					var decal = GameObject.Clone( "prefabs/bulletdecal.prefab", new CloneConfig { Parent = Scene.Root, StartEnabled = true } );
+					var decal = GameObject.Clone( "prefabs/effects/bulletdecal.prefab", new CloneConfig { Parent = Scene.Root, StartEnabled = true } );
 					decal.WorldPosition = trace.HitPosition + trace.Normal;
 					decal.WorldRotation = Rotation.LookAt( -trace.Normal );
 					decal.WorldScale = 1.0f;
@@ -290,7 +290,7 @@ public class Weapon : Item, IGameEventHandler<OnReloadEvent>
 	{
 		if ( IsProxy )
 			return;
-		
+
 		IsReloading = false;
 	}
 
@@ -307,7 +307,7 @@ public class Weapon : Item, IGameEventHandler<OnReloadEvent>
 	void CreateTracer( Vector3 StartPos, Vector3 Normal )
 	{
 
-		var tracer = GameObject.Clone( "prefabs/tracer.prefab", new CloneConfig { Parent = Scene.Root, StartEnabled = true } );
+		var tracer = GameObject.Clone( "prefabs/effects/tracer.prefab", new CloneConfig { Parent = Scene.Root, StartEnabled = true } );
 		if ( IsProxy ) { tracer.WorldPosition = StartPos; }
 		else { tracer.WorldPosition = TracerPoint.WorldPosition; }
 		tracer.WorldRotation = Rotation.LookAt( Normal );
@@ -319,7 +319,7 @@ public class Weapon : Item, IGameEventHandler<OnReloadEvent>
 		if ( !TracerPoint.IsValid() )
 			return;
 
-		var flash = GameObject.Clone( "prefabs/muzzleflash.prefab", new CloneConfig { Parent = TracerPoint, StartEnabled = true } );
+		var flash = GameObject.Clone( "prefabs/effects/muzzleflash.prefab", new CloneConfig { Parent = TracerPoint, StartEnabled = true } );
 		flash.WorldRotation = TracerPoint.WorldRotation;
 	}
 }
