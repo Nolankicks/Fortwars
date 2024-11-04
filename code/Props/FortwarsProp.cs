@@ -12,6 +12,8 @@ public sealed class FortwarsProp : Component, Component.ICollisionListener, IGam
 	[Property, Sync] public bool CanKill { get; set; } = true;
 	[Property, Sync] public float Health { get; set; } = 100;
 
+	[Property, Sync] public PropResource Resource { get; set; }
+
 	public void OnCollisionStart( Collision other )
 	{
 		if ( IsProxy || !Rigidbody.IsValid() ) return;

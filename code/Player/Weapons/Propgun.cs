@@ -1,7 +1,14 @@
 using Sandbox.Events;
+using System.Threading.Tasks;
 
 public sealed class Propgun : Item
 {
+	enum Modes
+	{
+		P_PLACE,
+		P_MOVE
+	}
+
 	[Property] public Model Prop { get; set; }
 	[Property] public string PropIdent { get; set; }
 	public static bool FirstTime { get; set; } = true;
@@ -9,55 +16,19 @@ public sealed class Propgun : Item
 	[Property] bool MustBeUp { get; set; } = false;
 	[Property] public bool UsingMouseInput { get; set; } = false;
 	[Property] public SoundEvent ShootSound { get; set; }
-	[RequireComponent] Viewmodel VModel { get; set; }
+	[Property] public PropResource CurrentProp { get; set; }
+
+	public bool HoldingObject { get; set; } = false;
+
+	public GameObject HeldObject { get; set; }
+
+	private Modes Mode { get; set; } = Modes.P_PLACE;
 
 	protected override void OnStart()
 	{
 		if ( IsProxy || !FirstTime )
 			return;
-
-		var popup = new Popup();
-		popup.Title = $"Press {Input.GetButtonOrigin( "menu" )?.ToUpper()} to open the propgun menu";
-		popup.Time = 8;
-
-		PopupHolder.AddPopup( popup );
-
-		Invoke( 2, () =>
-		{
-			var destroy = new Popup();
-			destroy.Title = $"Press {Input.GetButtonOrigin( "destroy" )?.ToUpper()} to destroy the prop you're looking at";
-			destroy.Time = 8;
-
-			PopupHolder.AddPopup( destroy );
-		} );
-
-		Invoke( 4, () =>
-		{
-			var reload = new Popup();
-			reload.Title = $"Press {Input.GetButtonOrigin( "attack2" )?.ToUpper()} to change the prop's rotation";
-			reload.Time = 8;
-
-			PopupHolder.AddPopup( reload );
-		} );
-
-		Invoke( 6, () =>
-		{
-			var attack1 = new Popup();
-			attack1.Title = $"Press {Input.GetButtonOrigin( "reload" )?.ToUpper()} to reset the rotation";
-			attack1.Time = 8;
-
-			PopupHolder.AddPopup( attack1 );
-		} );
-
-		Invoke( 8, () =>
-		{
-			var attack2 = new Popup();
-			attack2.Title = $"Press {Input.GetButtonOrigin( "mouseprop" )?.ToUpper()} to toggle mouse input";
-			attack2.Time = 8;
-
-			PopupHolder.AddPopup( attack2 );
-		} );
-
+		_ = DisplayControls();
 		FirstTime = false;
 	}
 
@@ -65,6 +36,11 @@ public sealed class Propgun : Item
 	{
 		if ( IsProxy )
 			return;
+
+		if ( Input.Pressed( "attack2" ) )
+		{
+			SwitchModes();
+		}
 
 		if ( Input.Pressed( "mouseprop" ) )
 		{
@@ -74,7 +50,7 @@ public sealed class Propgun : Item
 			PropRotation = Rotation.Identity;
 		}
 
-		if ( Input.Pressed( "menu" ) )
+		if ( Input.Pressed( "menu" ) && !HoldingObject )
 		{
 			var hud = Scene.GetAll<HUD>()?.FirstOrDefault();
 
@@ -87,19 +63,7 @@ public sealed class Propgun : Item
 
 			if ( hud.IsValid() && hud.Panel?.ChildrenOfType<SpawnerMenu>()?.Count() == 0 )
 				hud.Panel.AddChild( panel );
-			else ( hud?.Panel?.ChildrenOfType<SpawnerMenu>()?.FirstOrDefault() )?.Delete();
-		}
-
-		if ( Prop is not null )
-		{
-			if ( UsingMouseInput )
-			{
-				PlacePropMouse();
-			}
-			else
-			{
-				PlaceProp();
-			}
+			else (hud?.Panel?.ChildrenOfType<SpawnerMenu>()?.FirstOrDefault())?.Delete();
 		}
 
 		// Rotate the viewmodel around
@@ -111,7 +75,36 @@ public sealed class Propgun : Item
 		{
 			LocalRotation = Rotation.Identity;
 		}
+
+		if ( Mode == Modes.P_MOVE && !HoldingObject )
+		{
+			if ( Input.Pressed( "attack1" ) )
+			{
+				var player = FWPlayerController.Local;
+				if ( !player.IsValid() )
+					return;
+
+				var tr = Scene.Trace.Ray( player.Eye.WorldPosition, player.Eye.WorldPosition + player.Eye.WorldRotation.Forward * 400.0f ).WithoutTags( FW.Tags.NoBuild, FW.Tags.Player ).Run();
+				if ( tr.Hit && tr.GameObject.Components.TryGet<FortwarsProp>( out var fwProp ) )
+				{
+					if ( fwProp.Resource == null )
+						return;
+					HoldingObject = true;
+					var res = fwProp.Resource;
+					CurrentProp = res;
+					HeldObject = tr.GameObject;
+					tr.Component.Enabled = false;
+				}
+			}
+			return;
+		}
+
+		if ( (Mode == Modes.P_PLACE && CurrentProp is not null) || (Mode == Modes.P_MOVE && HeldObject.IsValid()) )
+		{
+			HandleProp();
+		}
 	}
+
 
 	[Broadcast]
 	public void SetStaticBodyType( Rigidbody rb )
@@ -143,97 +136,34 @@ public sealed class Propgun : Item
 		UsingMouseInput = false;
 	}
 
-	public void PlacePropMouse()
-	{
-		var camera = Scene.Camera;
-
-		if ( !camera.IsValid() )
-			return;
-
-		var tr = Scene.Trace
-			.Box( Prop.Bounds.Rotate( PropRotation ) * 0.75f, Scene.Camera.ScreenPixelToRay( Mouse.Position ), 200f )
-			.IgnoreGameObjectHierarchy( GameObject.Root )
-			.Run();
-
-		bool CanPlace = tr.Hit && tr.Distance > 32.0f && tr.EndPosition.Distance( GameObject.Root.WorldPosition ) > 32.0f && !tr.GameObject.Tags.Has( FW.Tags.NoBuild );
-
-		var pos = tr.EndPosition.SnapToGrid( 16, true, true, !(tr.Hit && tr.Normal == Vector3.Up) );
-
-		var gizmo = Gizmo.Draw.Model( Prop.ResourcePath );
-		gizmo.ColorTint = Color.White.WithAlpha( 0.5f );
-		gizmo.Rotation = PropRotation.SnapToGrid( 15 );
-		gizmo.Position = pos;
-
-		if ( !CanPlace )
-		{
-			gizmo.ColorTint = Color.Red.WithAlpha( 0.5f );
-		}
-
-		if ( tr.Hit && Input.Pressed( "destroy" ) && tr.GameObject.Components.TryGet<FortwarsProp>( out var prop, FindMode.EverythingInSelfAndParent ) && tr.GameObject.IsValid() )
-		{
-			if ( prop.Invincible )
-				return;
-
-			tr.GameObject?.Root?.Destroy();
-		}
-
-		if ( Input.Pressed( "reload" ) )
-		{
-			PropRotation = Rotation.Identity;
-		}
-
-		if ( CanPlace && Input.Pressed( "attack1" ) )
-		{
-			if ( ShootSound is not null )
-			{
-				var sound = Sound.Play( ShootSound, WorldPosition );
-
-				if ( sound.IsValid() )
-					sound.Volume = 0.5f;
-			}
-
-			if ( !FWPlayerController.Local.TeamComponent.IsValid() )
-				return;
-
-			SpawnProp( pos );
-		}
-	}
-
-	public void PlaceProp()
+	public void HandleProp()
 	{
 		var player = FWPlayerController.Local;
-
 		if ( !player.IsValid() )
 			return;
 
-		Vector3 ObjectPos = player.Eye.WorldPosition + player.Eye.WorldRotation.Forward * 100.0f;
+		Vector3 ObjectPos;
+		if ( UsingMouseInput )
+			ObjectPos = Scene.Camera.WorldPosition + Scene.Camera.ScreenPixelToRay( Mouse.Position ).Forward * 200.0f;
+		else
+			ObjectPos = player.Eye.WorldPosition + player.Eye.WorldRotation.Forward * 400.0f;
 
-		var tr = Scene.Trace
-			.Box( Prop.Bounds.Rotate( PropRotation ) * 0.75f, player.Eye.WorldPosition, player.Eye.WorldPosition + player.Eye.WorldRotation.Forward * 200.0f )
-			.IgnoreGameObjectHierarchy( GameObject.Root )
-			.Run();
+		var model = CurrentProp.Model;
+
+		var tr = Scene.Trace.Size( model.Bounds.Rotate( PropRotation ) ).Ray( player.Eye.WorldPosition, ObjectPos ).IgnoreGameObjectHierarchy( GameObject.Root ).Run();
 
 		if ( tr.Hit )
 		{
-			ObjectPos = tr.EndPosition;
+			ObjectPos = tr.HitPosition;
 		}
 
-		ObjectPos = ObjectPos.SnapToGrid( 16, true, true, !(tr.Hit && tr.Normal == Vector3.Up) );
+		//ObjectPos = ObjectPos.SnapToGrid( 16, true, true, !(tr.Hit && tr.Normal == Vector3.Up) );
 
 		bool CanPlace = tr.Hit && tr.Distance > 32.0f && ObjectPos.Distance( GameObject.Root.WorldPosition ) > 32.0f && !tr.GameObject.Tags.Has( FW.Tags.NoBuild );
 
-		var gizmo = Gizmo.Draw.Model( Prop.ResourcePath );
-		gizmo.ColorTint = Color.White.WithAlpha( 0.5f );
-		gizmo.Rotation = PropRotation.SnapToGrid( 15 );
-		gizmo.Position = ObjectPos;
+		ShowPropPreview( ObjectPos, CurrentProp, CanPlace );
 
-
-		if ( !CanPlace )
-		{
-			gizmo.ColorTint = Color.Red.WithAlpha( 0.5f );
-		}
-
-		player.CanMoveHead = !Input.Down( "attack2" );
+		player.CanMoveHead = !Input.Down( "RotateProp" );
 
 		if ( tr.Hit && Input.Pressed( "destroy" ) && (tr.GameObject?.Root?.Components.TryGet<FortwarsProp>( out var prop, FindMode.EverythingInSelfAndDescendants ) ?? false) )
 		{
@@ -243,7 +173,7 @@ public sealed class Propgun : Item
 			tr.GameObject?.Root?.Destroy();
 		}
 
-		if ( Input.Down( "attack2" ) )
+		if ( Input.Down( "RotateProp" ) )
 		{
 			var rot = Input.AnalogLook.WithRoll( 0 );
 
@@ -269,7 +199,26 @@ public sealed class Propgun : Item
 			if ( !player.TeamComponent.IsValid() )
 				return;
 
-			SpawnProp( ObjectPos );
+
+			if ( HeldObject is null )
+			{
+				SpawnProp( ObjectPos );
+			}
+			else
+			{
+				HeldObject.WorldPosition = ObjectPos;
+				HeldObject.WorldRotation = PropRotation;
+				var rb = HeldObject.Components.Get<Rigidbody>( FindMode.EverythingInSelf );
+				rb.Enabled = true;
+				SetStaticBodyType( rb );
+				HeldObject.Network.Refresh();
+
+
+				HeldObject = null;
+				HoldingObject = false;
+			}
+
+
 		}
 	}
 
@@ -330,12 +279,12 @@ public sealed class Propgun : Item
 		var renderer = gb.Components.Create<Prop>();
 		var fortWarsProp = gb.Components.Create<FortwarsProp>();
 
-		renderer.Model = Prop;
+		renderer.Model = CurrentProp.Model;
 
 		if ( renderer.Health == 0 )
 			renderer.Health = 100;
-		
 		fortWarsProp.Health = renderer.Health;
+
 
 		// Break the prop into individuals so we can check for ModelPhysics later.
 		renderer.Break();
@@ -347,6 +296,7 @@ public sealed class Propgun : Item
 			fortWarsProp.Team = team.Team;
 
 		fortWarsProp.CanKill = false;
+		fortWarsProp.Resource = CurrentProp;
 
 		if ( gb.Components.TryGet<Rigidbody>( out var rb, FindMode.EverythingInSelfAndParent ) )
 		{
@@ -366,7 +316,64 @@ public sealed class Propgun : Item
 			Invoke( 0.1f, () => mdlPhys.MotionEnabled = true );
 		}
 
+		Log.Info( CurrentProp );
+
 		if ( rb.IsValid() )
 			SetStaticBodyType( rb );
+
+		//HoldingObject = false;
+	}
+
+	void ShowPropPreview( Vector3 pos, PropResource prop, bool canPlace )
+	{
+		var gizmo = Gizmo.Draw.Model( prop.Model.ResourcePath );
+		gizmo.ColorTint = Color.White.WithAlpha( 0.5f );
+		gizmo.Rotation = PropRotation.SnapToGrid( 15 );
+		gizmo.Position = pos;
+
+		if ( !canPlace )
+		{
+			gizmo.ColorTint = Color.Red.WithAlpha( 0.5f );
+		}
+	}
+
+	private async Task DisplayControls()
+	{
+		float delay = 2.0f;
+		List<string> messages = new List<string>()
+		{
+			$"Press {Input.GetButtonOrigin( "menu" )?.ToUpper()} to open the propgun menu",
+			$"Press {Input.GetButtonOrigin( "destroy" )?.ToUpper()} to destroy the prop you're looking at",
+			$"Press {Input.GetButtonOrigin( "attack2" )?.ToUpper()} to change the prop's rotation",
+			$"Press {Input.GetButtonOrigin( "reload" )?.ToUpper()} to reset the rotation",
+			//$"Press {Input.GetButtonOrigin( "mouseprop" )?.ToUpper()} to toggle mouse input"
+		};
+
+		foreach ( var message in messages )
+		{
+			var popup = new Popup();
+			popup.Title = message;
+			popup.Time = 8;
+
+			PopupHolder.AddPopup( popup );
+
+			await Task.DelaySeconds( delay );
+		}
+	}
+
+	void SwitchModes()
+	{
+		if ( Mode == Modes.P_PLACE )
+			Mode = Modes.P_MOVE;
+		else
+			Mode = Modes.P_PLACE;
+	}
+
+	public string GetModeString()
+	{
+		if ( Mode == Modes.P_PLACE )
+			return "Place";
+		else
+			return "Move";
 	}
 }

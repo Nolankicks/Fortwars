@@ -1,0 +1,9 @@
+{
+  "DisplayName": "L Plane",
+  "Model": "models/blocks/64plane.vmdl",
+  "Cost": 15,
+  "Max": 100,
+  "Icon": "textures/propicons/tempicon.png",
+  "__references": [],
+  "__version": 0
+}

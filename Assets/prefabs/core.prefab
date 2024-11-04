@@ -106,13 +106,6 @@
             "__guid": "c2b69b60-c9c1-4a84-866a-a00f287f6fdc",
             "BlueTimeHeld": 60,
             "BuildTime": 120,
-            "ClassicIndents": {
-              "facepunch.wooden_crate": 100,
-              "facepunch.concrete_barrier": 100,
-              "facepunch.pallet": 100,
-              "facepunch.plywood_stack": 100,
-              "facepunch.weapon_crate_stacka": 0
-            },
             "ClassicModels": true,
             "FightTime": 240,
             "FourTeams": false,
@@ -122,7 +115,6 @@
               "ClassicModels": true,
               "MaxProps": 50
             },
-            "LocalClassics": [],
             "MaxProps": 50,
             "PlayerPrefab": {
               "_type": "gameobject",
