@@ -12,6 +12,8 @@ public sealed class Propgun : Item
 	[Property] public SoundEvent ShootSound { get; set; }
 	[Property] public PropResource CurrentProp { get; set; }
 
+	public bool HoldingObject { get; set; } = false;
+
 	protected override void OnStart()
 	{
 		if ( IsProxy || !FirstTime )
