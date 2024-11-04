@@ -52,6 +52,7 @@ IGameEventHandler<DeathEvent>, IGameEventHandler<OnPhysgunGrabChange>
 	}
 
 	private TimeSince lastUngrounded;
+	private bool LastOnGround = true;
 
 	/// <summary>
 	/// How many times we have crouched mid-air. Used to prevent spamming when we adjust the Z pos of the player.
@@ -99,6 +100,11 @@ IGameEventHandler<DeathEvent>, IGameEventHandler<OnPhysgunGrabChange>
 		{
 			Crouch();
 			Move();
+
+			if ( shrimpleCharacterController.IsOnGround && !LastOnGround )
+				CameraController.Instance.RecoilFire( new Vector3( 5, 0, 0 ) );
+
+			LastOnGround = shrimpleCharacterController.IsOnGround;
 		}
 	}
 
@@ -203,6 +209,7 @@ IGameEventHandler<DeathEvent>, IGameEventHandler<OnPhysgunGrabChange>
 		{
 			shrimpleCharacterController.Punch( Vector3.Up * 350 );
 			GameObject.Dispatch( new JumpEvent() );
+			CameraController.Instance.RecoilFire( new Vector3( 10, 0, 0 ) );
 		}
 
 		shrimpleCharacterController.WishVelocity = WishVelocity;
