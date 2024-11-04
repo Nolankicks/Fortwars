@@ -45,6 +45,11 @@ public sealed class FortwarsProp : Component, Component.ICollisionListener, IGam
 	{
 		if ( Networking.IsHost )
 			Network.SetOwnerTransfer( OwnerTransfer.Takeover );
+
+		if ( IsProxy && !Invincible && Rigidbody.IsValid() && Rigidbody.PhysicsBody.IsValid() )
+		{
+			Rigidbody.PhysicsBody.BodyType = PhysicsBodyType.Static;
+		}
 	}
 
 	[Broadcast]

@@ -188,6 +188,10 @@ public class Weapon : Item, IGameEventHandler<OnReloadEvent>
 		if ( !tr.GameObject.IsValid() || !tr.Hit )
 			return;
 
+		//Make sure we don't freeze the rollermine
+		if ( tr.GameObject.Components.TryGet<RollerMine>( out var m, FindMode.EverythingInSelfAndParent ) )
+			return;
+
 		if ( tr.GameObject.Components.TryGet<HealthComponent>( out var health, FindMode.EverythingInSelfAndParent ) )
 		{
 			health.TakeDamage( local.GameObject, Damage, tr.EndPosition, tr.Normal );

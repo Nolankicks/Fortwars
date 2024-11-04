@@ -21,7 +21,12 @@
 		@if ( SelectedClass is not null )
 		{
 			<div class="header">@SelectedClass.ClassName</div>
-			<div class="body">@SelectedClass.ClassDescription</div>
+			<div class="body">
+				<div>Health: @SelectedClass.Health</div>
+				<div>@(GetSpeedMutliplyer(300, SelectedClass.WalkSpeed)) Walk Speed</div>
+				<div>@(GetSpeedMutliplyer(450, SelectedClass.RunSpeed)) Run Speed</div>
+				<div>@SelectedClass.ClassDescription</div>
+			</div>
 			<button onclick=@( () => SelectClass( SelectedClass ) )>Select</button>
 		}
 	</div>
@@ -37,7 +42,14 @@
 	public PlayerClass SelectedClass { get; set; } = ResourceLibrary.GetAll<PlayerClass>()?.FirstOrDefault( x => !x.Hidden );
 
 	public static bool FirstTimeClosing { get; set; } = true;
-	
+
+
+	public string GetSpeedMutliplyer( float playerSpeed, float speed )
+	{
+		var percent = ((playerSpeed / speed) * 100 ) / 100;
+
+		return $"{Math.Round( percent, 1 )}x";
+	}
 
 	public void SelectClass( PlayerClass playerClass )
 	{
