@@ -69,7 +69,7 @@ public sealed class Viewmodel : Component, IGameEventHandler<JumpEvent>, IGameEv
 
 	protected override void OnDisabled()
 	{
-		if ( IsProxy )
+		if ( GameObject.Parent.IsProxy )
 			return;
 		
 		if ( Renderer.IsValid() )
