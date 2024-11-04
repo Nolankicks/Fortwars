@@ -11,11 +11,11 @@ public class Item : Component, IGameEventHandler<OnItemEquipped>
 	[Property, Sync, Feature( "Base Item" )] public Vector3 Offset { get; set; }
 	public int Ammo { get; set; }
 
-	[Property, Feature( "Base Item" )] public bool UsesAmmo { get; set; } = true;
+	[Property, FeatureEnabled( "Ammo" )] public bool UsesAmmo { get; set; } = true;
 
-	[Property, ShowIf( "UsesAmmo", true ), Feature( "Base Item" )] public int MaxAmmo { get; set; } = 30;
+	[Property, Feature( "Ammo" )] public int MaxAmmo { get; set; } = 30;
 
-	[Property, ShowIf( "UsesAmmo", true ), Feature( "Base Item" )] public int AmmoPerShot { get; set; } = 1;
+	[Property, Feature( "Ammo" )] public int AmmoPerShot { get; set; } = 1;
 
 	[Property] public Viewmodel VModel { get; set; }
 
