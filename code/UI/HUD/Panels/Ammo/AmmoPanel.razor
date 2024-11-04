@@ -4,11 +4,20 @@
 
 <root>
     @{
-        if (weapon == null || weapon.UsesAmmo == false)
+        if (!Item.IsValid() || Item.UsesAmmo == false)
             return;
     }
     <div class="holder" style="background-color: @HUD.GetColor().Hex;">
-    <label>@(weapon.Ammo)</label>
-    <label> / @(weapon.MaxAmmo)</label>
+    <label>@(Item.Ammo)</label>
+    <label> / @(Item.MaxAmmo)</label>
     </div>
 </root>
+
+@code{
+	public Item Item { get; set; }
+
+	protected override int BuildHash()
+	{
+        return System.HashCode.Combine( Item?.Ammo, Item?.UsesAmmo );
+	}
+}

@@ -164,7 +164,7 @@ public partial class GameSystem
 			x.AddItem( ResourceLibrary.GetAll<WeaponData>().FirstOrDefault( x => x.ResourceName == "gravgun" ) );
 
 			if ( x.SelectedClass is not null )
-				x.AddItem( x.SelectedClass.WeaponData );
+				x.AddItem( x.SelectedClass.WeaponData, true );
 		} );
 
 		BroadcastChangeState( GameState.OvertimeFight );
