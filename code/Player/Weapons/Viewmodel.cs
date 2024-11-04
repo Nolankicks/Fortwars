@@ -67,6 +67,19 @@ public sealed class Viewmodel : Component, IGameEventHandler<JumpEvent>, IGameEv
 		Renderer.Set( "move_bob", controller.Velocity.Length.Remap( 0, 300, 0, 1, true ) );
 	}
 
+	protected override void OnDisabled()
+	{
+		if ( GameObject.Parent.IsProxy )
+			return;
+		
+		if ( Renderer.IsValid() )
+		{
+			Renderer.Set( "b_attack", false );
+			Renderer.Set( "b_reload", false );
+			Renderer.Set( "b_jump", false );
+		}
+	}
+
 	void IGameEventHandler<JumpEvent>.OnGameEvent( JumpEvent eventArgs )
 	{
 		if ( GameObject.Parent.IsProxy )
