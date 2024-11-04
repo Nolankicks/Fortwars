@@ -2494,22 +2494,6 @@
           "OverrideMassCenter": false,
           "RigidbodyFlags": 0,
           "StartAsleep": false
-        },
-        {
-          "__type": "FortwarsProp",
-          "__guid": "eeddf93f-274e-40a1-9353-1aa6538b01c7",
-          "CanKill": true,
-          "CollisionThreshold": 1300,
-          "Divisor": 20,
-          "Health": 100,
-          "Invincible": true,
-          "Rigidbody": {
-            "_type": "component",
-            "component_id": "6be40d50-7d40-4a37-8c3d-86225bbaaacf",
-            "go": "bc8b20e7-c702-4c71-b4e4-9f977e2ff4b2",
-            "component_type": "Rigidbody"
-          },
-          "Team": "Red"
         }
       ]
     }

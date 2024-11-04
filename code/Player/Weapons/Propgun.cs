@@ -87,6 +87,8 @@ public sealed class Propgun : Item
 				var tr = Scene.Trace.Ray( player.Eye.WorldPosition, player.Eye.WorldPosition + player.Eye.WorldRotation.Forward * 400.0f ).WithoutTags( FW.Tags.NoBuild, FW.Tags.Player ).Run();
 				if ( tr.Hit && tr.GameObject.Components.TryGet<FortwarsProp>( out var fwProp ) )
 				{
+					if ( fwProp.Resource == null )
+						return;
 					HoldingObject = true;
 					var res = fwProp.Resource;
 					CurrentProp = res;
