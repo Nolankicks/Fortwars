@@ -3,6 +3,12 @@ using System.Threading.Tasks;
 
 public sealed class Propgun : Item
 {
+	enum Modes
+	{
+		P_PLACE,
+		P_MOVE
+	}
+
 	[Property] public Model Prop { get; set; }
 	[Property] public string PropIdent { get; set; }
 	public static bool FirstTime { get; set; } = true;
@@ -13,6 +19,10 @@ public sealed class Propgun : Item
 	[Property] public PropResource CurrentProp { get; set; }
 
 	public bool HoldingObject { get; set; } = false;
+
+	public GameObject HeldObject { get; set; }
+
+	private Modes Mode { get; set; } = Modes.P_PLACE;
 
 	protected override void OnStart()
 	{
@@ -27,6 +37,11 @@ public sealed class Propgun : Item
 		if ( IsProxy )
 			return;
 
+		if ( Input.Pressed( "attack2" ) )
+		{
+			SwitchModes();
+		}
+
 		if ( Input.Pressed( "mouseprop" ) )
 		{
 			Mouse.Visible = !Mouse.Visible;
@@ -35,7 +50,7 @@ public sealed class Propgun : Item
 			PropRotation = Rotation.Identity;
 		}
 
-		if ( Input.Pressed( "menu" ) )
+		if ( Input.Pressed( "menu" ) && !HoldingObject )
 		{
 			var hud = Scene.GetAll<HUD>()?.FirstOrDefault();
 
@@ -51,11 +66,6 @@ public sealed class Propgun : Item
 			else (hud?.Panel?.ChildrenOfType<SpawnerMenu>()?.FirstOrDefault())?.Delete();
 		}
 
-		if ( CurrentProp is not null )
-		{
-			HandleProp();
-		}
-
 		// Rotate the viewmodel around
 		if ( UsingMouseInput )
 		{
@@ -65,7 +75,34 @@ public sealed class Propgun : Item
 		{
 			LocalRotation = Rotation.Identity;
 		}
+
+		if ( Mode == Modes.P_MOVE && !HoldingObject )
+		{
+			if ( Input.Pressed( "attack1" ) )
+			{
+				var player = FWPlayerController.Local;
+				if ( !player.IsValid() )
+					return;
+
+				var tr = Scene.Trace.Ray( player.Eye.WorldPosition, player.Eye.WorldPosition + player.Eye.WorldRotation.Forward * 400.0f ).WithoutTags( FW.Tags.NoBuild, FW.Tags.Player ).Run();
+				if ( tr.Hit && tr.GameObject.Components.TryGet<FortwarsProp>( out var fwProp ) )
+				{
+					HoldingObject = true;
+					var res = fwProp.Resource;
+					CurrentProp = res;
+					HeldObject = tr.GameObject;
+					tr.Component.Enabled = false;
+				}
+			}
+			return;
+		}
+
+		if ( (Mode == Modes.P_PLACE && CurrentProp is not null) || (Mode == Modes.P_MOVE && HeldObject.IsValid()) )
+		{
+			HandleProp();
+		}
 	}
+
 
 	[Broadcast]
 	public void SetStaticBodyType( Rigidbody rb )
@@ -122,18 +159,9 @@ public sealed class Propgun : Item
 
 		bool CanPlace = tr.Hit && tr.Distance > 32.0f && ObjectPos.Distance( GameObject.Root.WorldPosition ) > 32.0f && !tr.GameObject.Tags.Has( FW.Tags.NoBuild );
 
-		var gizmo = Gizmo.Draw.Model( model.ResourcePath );
-		gizmo.ColorTint = Color.White.WithAlpha( 0.5f );
-		gizmo.Rotation = PropRotation.SnapToGrid( 15 );
-		gizmo.Position = ObjectPos;
+		ShowPropPreview( ObjectPos, CurrentProp, CanPlace );
 
-
-		if ( !CanPlace )
-		{
-			gizmo.ColorTint = Color.Red.WithAlpha( 0.5f );
-		}
-
-		player.CanMoveHead = !Input.Down( "attack2" );
+		player.CanMoveHead = !Input.Down( "RotateProp" );
 
 		if ( tr.Hit && Input.Pressed( "destroy" ) && (tr.GameObject?.Root?.Components.TryGet<FortwarsProp>( out var prop, FindMode.EverythingInSelfAndDescendants ) ?? false) )
 		{
@@ -143,7 +171,7 @@ public sealed class Propgun : Item
 			tr.GameObject?.Root?.Destroy();
 		}
 
-		if ( Input.Down( "attack2" ) )
+		if ( Input.Down( "RotateProp" ) )
 		{
 			var rot = Input.AnalogLook.WithRoll( 0 );
 
@@ -169,7 +197,26 @@ public sealed class Propgun : Item
 			if ( !player.TeamComponent.IsValid() )
 				return;
 
-			SpawnProp( ObjectPos );
+
+			if ( HeldObject is null )
+			{
+				SpawnProp( ObjectPos );
+			}
+			else
+			{
+				HeldObject.WorldPosition = ObjectPos;
+				HeldObject.WorldRotation = PropRotation;
+				var rb = HeldObject.Components.Get<Rigidbody>( FindMode.EverythingInSelf );
+				rb.Enabled = true;
+				SetStaticBodyType( rb );
+				HeldObject.Network.Refresh();
+
+
+				HeldObject = null;
+				HoldingObject = false;
+			}
+
+
 		}
 	}
 
@@ -234,8 +281,8 @@ public sealed class Propgun : Item
 
 		if ( renderer.Health == 0 )
 			renderer.Health = 100;
-
 		fortWarsProp.Health = renderer.Health;
+
 
 		// Break the prop into individuals so we can check for ModelPhysics later.
 		renderer.Break();
@@ -247,6 +294,7 @@ public sealed class Propgun : Item
 			fortWarsProp.Team = team.Team;
 
 		fortWarsProp.CanKill = false;
+		fortWarsProp.Resource = CurrentProp;
 
 		if ( gb.Components.TryGet<Rigidbody>( out var rb, FindMode.EverythingInSelfAndParent ) )
 		{
@@ -266,8 +314,25 @@ public sealed class Propgun : Item
 			Invoke( 0.1f, () => mdlPhys.MotionEnabled = true );
 		}
 
+		Log.Info( CurrentProp );
+
 		if ( rb.IsValid() )
 			SetStaticBodyType( rb );
+
+		//HoldingObject = false;
+	}
+
+	void ShowPropPreview( Vector3 pos, PropResource prop, bool canPlace )
+	{
+		var gizmo = Gizmo.Draw.Model( prop.Model.ResourcePath );
+		gizmo.ColorTint = Color.White.WithAlpha( 0.5f );
+		gizmo.Rotation = PropRotation.SnapToGrid( 15 );
+		gizmo.Position = pos;
+
+		if ( !canPlace )
+		{
+			gizmo.ColorTint = Color.Red.WithAlpha( 0.5f );
+		}
 	}
 
 	private async Task DisplayControls()
@@ -292,5 +357,13 @@ public sealed class Propgun : Item
 
 			await Task.DelaySeconds( delay );
 		}
+	}
+
+	void SwitchModes()
+	{
+		if ( Mode == Modes.P_PLACE )
+			Mode = Modes.P_MOVE;
+		else
+			Mode = Modes.P_PLACE;
 	}
 }
