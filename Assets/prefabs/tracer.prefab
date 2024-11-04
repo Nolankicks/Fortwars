@@ -63,7 +63,8 @@
       },
       {
         "__type": "Tracer",
-        "__guid": "bade0ce1-b0cd-4f3f-868a-1c481e650bc4"
+        "__guid": "bade0ce1-b0cd-4f3f-868a-1c481e650bc4",
+        "Speed": 5000
       }
     ],
     "Children": [],
