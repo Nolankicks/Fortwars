@@ -339,7 +339,9 @@ public class Weapon : Item, IGameEventHandler<OnReloadEvent>
 
 	void EjectCasing()
 	{
-		if ( !HasBulletCasing || !EjectionPoint.IsValid() )
+		var local = FWPlayerController.Local;
+
+		if ( !HasBulletCasing || !local.IsValid() || !EjectionPoint.IsValid() )
 			return;
 
 		var casing = GameObject.Clone( "prefabs/effects/bulletcasing.prefab", new CloneConfig { StartEnabled = true } );
@@ -348,7 +350,7 @@ public class Weapon : Item, IGameEventHandler<OnReloadEvent>
 		casing.Components.Get<ModelRenderer>().Model = CasingModel;
 
 		var rb = casing.Components.Get<Rigidbody>();
-		rb.ApplyForce( EjectionPoint.WorldRotation.Up * 10.0f + EjectionPoint.WorldRotation.Forward * 20.0f );
+		rb.ApplyForce( EjectionPoint.WorldRotation.Up * 10.0f + EjectionPoint.WorldRotation.Forward * 500.0f + local.shrimpleCharacterController.Velocity );
 	}
 }
 
