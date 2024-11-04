@@ -348,7 +348,7 @@ IGameEventHandler<OnGameOvertimeBuild>, IGameEventHandler<OnGameOvertimeFight>
 	}
 
 	[ConCmd( "skip_wait" )]
-	public static void SkipWait( int mode )
+	public static void SkipWait()
 	{
 		if ( !Networking.IsHost )
 			return;
