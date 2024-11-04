@@ -36,7 +36,7 @@ IGameEventHandler<OnGameWaiting>, Component.ExecuteInEditor
 
 	protected override void OnEnabled()
 	{
-		if ( Scene.IsEditor && GameObject.NetworkMode != NetworkMode.Object )
+		if ( GameObject.NetworkMode != NetworkMode.Object )
 		{
 			GameObject.NetworkMode = NetworkMode.Object;
 			Log.Info( "NetworkMode set to Object" );
