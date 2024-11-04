@@ -32,40 +32,10 @@ public class Gravgun : Item, IGameEventHandler<DeathEvent>
 
 	SceneTrace GravGunTrace => Scene.Trace.Ray( new Ray( FWPlayerController.Local.Eye.WorldPosition, FWPlayerController.Local.EyeAngles.Forward ), 350f )
 			.IgnoreGameObjectHierarchy( GameObject.Root )
-			.WithoutTags( FW.Tags.Trigger, FW.Tags.Player, FW.Tags.Map );
+			.WithoutTags( FW.Tags.Trigger, FW.Tags.Player );
 
 
 	[Property] ParticleEmitter GravGunParticles { get; set; }
-	protected override void OnUpdate()
-	{
-		if ( IsProxy )
-			return;
-
-		var player = FWPlayerController.Local;
-
-		if ( !player.IsValid() )
-			return;
-
-		if ( Input.Pressed( "attack1" ) )
-		{
-			PrimaryUse();
-
-			GameObject.Dispatch( new WeaponAnimEvent( "b_attack", true ) );
-		}
-		else if ( Input.Pressed( "attack2" ) )
-		{
-			SecondaryUse();
-
-			GameObject.Dispatch( new WeaponAnimEvent( "b_attack", true ) );
-		}
-
-		GrabMove( player.Eye.WorldPosition, player.EyeAngles.Forward, player.Eye.WorldRotation );
-		PhysicsStep();
-
-
-		GravGunParticles.Enabled = GrabbedObject.IsValid();
-
-	}
 
 	protected override void OnFixedUpdate()
 	{
@@ -95,6 +65,30 @@ public class Gravgun : Item, IGameEventHandler<DeathEvent>
 				CouldPickup = false;
 			}
 		}
+
+		var player = FWPlayerController.Local;
+
+		if ( !player.IsValid() )
+			return;
+
+		if ( Input.Pressed( "attack1" ) )
+		{
+			PrimaryUse();
+
+			GameObject.Dispatch( new WeaponAnimEvent( "b_attack", true ) );
+		}
+		else if ( Input.Pressed( "attack2" ) )
+		{
+			SecondaryUse();
+
+			GameObject.Dispatch( new WeaponAnimEvent( "b_attack", true ) );
+		}
+
+		GrabMove( player.Eye.WorldPosition, player.EyeAngles.Forward, player.Eye.WorldRotation );
+		PhysicsStep();
+
+
+		GravGunParticles.Enabled = GrabbedObject.IsValid();
 	}
 
 	protected override void OnDisabled()
@@ -145,7 +139,12 @@ public class Gravgun : Item, IGameEventHandler<DeathEvent>
 
 			var tr = GravGunTrace.Run();
 
-			if ( tr.GameObject?.Components?.TryGet<MapInstance>( out var mapInstance, FindMode.EverythingInSelfAndParent ) ?? false )
+			//if ( tr.GameObject?.Components?.TryGet<MapInstance>( out var mapInstance, FindMode.EverythingInSelfAndParent ) ?? false )
+			//	return;
+
+
+
+			if ( tr.GameObject.Tags.Has( FW.Tags.Map ) && !tr.GameObject.Tags.Has( FW.Tags.Rollermine ) )
 				return;
 
 			if ( tr.Body.IsValid() )

@@ -2269,6 +2269,186 @@
           ]
         }
       ]
+    },
+    {
+      "__guid": "093c013a-f495-45d4-9718-5062cb7b194f",
+      "Flags": 0,
+      "Name": "Rollermine",
+      "Position": "944,1272,168",
+      "Tags": "light,light_point,rollermine",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "NetworkOrphaned": 3,
+      "OwnerTransfer": 0,
+      "Components": [
+        {
+          "__type": "Sandbox.SkinnedModelRenderer",
+          "__guid": "e2fdabdb-5da5-4fc0-a41d-ad0cc0e556ae",
+          "BodyGroups": 18446744073709551615,
+          "CreateBoneObjects": false,
+          "Model": "models/rollermine.vmdl",
+          "Morphs": {},
+          "Parameters": {
+            "bools": {},
+            "ints": {},
+            "floats": {},
+            "vectors": {},
+            "rotations": {}
+          },
+          "RenderOptions": {
+            "GameLayer": true,
+            "OverlayLayer": false,
+            "BloomLayer": false,
+            "AfterUILayer": false
+          },
+          "RenderType": "On",
+          "Tint": "1,1,1,1",
+          "UseAnimGraph": true
+        },
+        {
+          "__type": "Sandbox.ModelCollider",
+          "__guid": "a75a134a-c173-4443-a9c3-91fa15aa2d7a",
+          "IsTrigger": false,
+          "Model": "models/rollermine.vmdl",
+          "Static": false,
+          "SurfaceVelocity": "0,0,0"
+        },
+        {
+          "__type": "Sandbox.Rigidbody",
+          "__guid": "48067f08-f3a4-47bd-88e6-a86f8efdd838",
+          "AngularDamping": 0,
+          "Gravity": true,
+          "LinearDamping": 0,
+          "Locking": {},
+          "MassCenterOverride": "0,0,0",
+          "MassOverride": 0,
+          "MotionEnabled": true,
+          "OverrideMassCenter": false,
+          "RigidbodyFlags": 0,
+          "StartAsleep": false
+        },
+        {
+          "__type": "RollerMine",
+          "__guid": "f95aee5b-3b9c-4a1b-8318-3b85df7200d5",
+          "Renderer": {
+            "_type": "component",
+            "component_id": "e2fdabdb-5da5-4fc0-a41d-ad0cc0e556ae",
+            "go": "093c013a-f495-45d4-9718-5062cb7b194f",
+            "component_type": "SkinnedModelRenderer"
+          }
+        },
+        {
+          "__type": "FortwarsProp",
+          "__guid": "566ef52d-30cc-4158-ab7e-695a02064c95",
+          "CanKill": true,
+          "CollisionThreshold": 100,
+          "Divisor": 20,
+          "Health": 100,
+          "Invincible": true,
+          "Rigidbody": {
+            "_type": "component",
+            "component_id": "48067f08-f3a4-47bd-88e6-a86f8efdd838",
+            "go": "093c013a-f495-45d4-9718-5062cb7b194f",
+            "component_type": "Rigidbody"
+          },
+          "Team": "None"
+        },
+        {
+          "__type": "Sandbox.HighlightOutline",
+          "__guid": "87db2a51-4420-42d8-9c2b-0b317df57c6a",
+          "Color": "0.4,0.93,1,1",
+          "InsideColor": "0,0,0,0",
+          "InsideObscuredColor": "0.1921,0.47846,0.51628,0.23",
+          "ObscuredColor": "0.4,0.93,1,0.36",
+          "Width": 0.54999995
+        },
+        {
+          "__type": "Sandbox.TrailRenderer",
+          "__guid": "3b067b22-5999-49a1-9035-0df1031f1189",
+          "BlendMode": "Normal",
+          "CastShadows": false,
+          "Color": {
+            "color": [
+              {
+                "t": 0.5,
+                "c": "0,1,1,1"
+              }
+            ],
+            "alpha": []
+          },
+          "Face": "Camera",
+          "LifeTime": 0.2,
+          "MaxPoints": 64,
+          "Opaque": true,
+          "PointDistance": 8,
+          "RenderOptions": {
+            "GameLayer": true,
+            "OverlayLayer": false,
+            "BloomLayer": false,
+            "AfterUILayer": false
+          },
+          "Texturing": {
+            "WorldSpace": true,
+            "UnitsPerTexture": 10,
+            "Scale": 1
+          },
+          "Width": [
+            {
+              "x": 0.67410713,
+              "y": 1
+            },
+            {
+              "x": 1,
+              "y": 0.021276595,
+              "in": 3.684211,
+              "out": -3.684211
+            }
+          ],
+          "Wireframe": false
+        },
+        {
+          "__type": "Sandbox.PointLight",
+          "__guid": "07ba4e09-837d-42b9-bc89-c53a318991fc",
+          "Attenuation": 10,
+          "FogMode": "Enabled",
+          "FogStrength": 1,
+          "LightColor": "0.13953,0.79922,1,1",
+          "Radius": 30,
+          "Shadows": false
+        }
+      ],
+      "Children": [
+        {
+          "__guid": "97be2b07-466d-4153-a5fd-233936c5cbf8",
+          "Flags": 2048,
+          "Name": "Camera",
+          "Tags": "maincamera",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.CameraComponent",
+              "__guid": "d372c564-1d9b-4e23-9d99-c7d75824395d",
+              "BackgroundColor": "0.33333,0.46275,0.52157,1",
+              "ClearFlags": "All",
+              "FieldOfView": 60,
+              "IsMainCamera": true,
+              "Orthographic": false,
+              "OrthographicHeight": 1204,
+              "Priority": 1,
+              "RenderExcludeTags": "",
+              "RenderTags": "",
+              "TargetEye": "None",
+              "Viewport": "0,0,1,1",
+              "ZFar": 10000,
+              "ZNear": 10
+            },
+            {
+              "__type": "Sandbox.Highlight",
+              "__guid": "96d3651e-e697-4241-b6dc-19c4e1125ca6"
+            }
+          ]
+        }
+      ]
     }
   ],
   "SceneProperties": {
@@ -2301,6 +2481,7 @@
   "Title": "Cliffside",
   "Description": null,
   "__references": [
+    "igrium.rollermine-model#19481",
     "nolankicks.lake_water#65330"
   ],
   "__version": 2
