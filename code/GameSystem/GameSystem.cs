@@ -1,4 +1,5 @@
 using Sandbox.Events;
+using Sandbox.Utility;
 using System;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -352,8 +353,40 @@ IGameEventHandler<OnGameOvertimeBuild>, IGameEventHandler<OnGameOvertimeFight>
 	[ConCmd( "skip_wait" )]
 	public static void SkipWait()
 	{
-		Instance?.Scene.Dispatch( new OnBuildMode() );
-		Instance?.Scene.Dispatch( new OnFightMode() );
-		Instance.State = GameState.FightMode;
+		if ( !Networking.IsHost )
+			return;
+
+		var gs = Instance;
+
+		if ( !gs.IsValid() )
+			return;
+
+		switch ( gs.State )
+		{
+			case GameState.Waiting:
+				Instance?.Scene.Dispatch( new OnBuildMode() );
+				Instance.State = GameState.BuildMode;
+				break;
+			case GameState.BuildMode:
+				Instance?.Scene.Dispatch( new OnFightMode() );
+				Instance.State = GameState.FightMode;
+				break;
+			case GameState.FightMode:
+				Instance?.Scene.Dispatch( new OnGameEnd() );
+				Instance.State = GameState.Ended;
+				break;
+			case GameState.OvertimeBuild:
+				Instance?.Scene.Dispatch( new OnGameOvertimeFight() );
+				Instance.State = GameState.OvertimeFight;
+				break;
+			case GameState.OvertimeFight:
+				Instance?.Scene.Dispatch( new OnGameOvertimeBuild() );
+				Instance.State = GameState.OvertimeBuild;
+				break;
+			case GameState.Ended:
+				Instance?.Scene.Dispatch( new OnBuildMode() );
+				Instance.State = GameState.BuildMode;
+				break;
+		}
 	}
 }
