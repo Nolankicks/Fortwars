@@ -2274,7 +2274,7 @@
       "__guid": "093c013a-f495-45d4-9718-5062cb7b194f",
       "Flags": 0,
       "Name": "Rollermine",
-      "Position": "944,1272,168",
+      "Position": "0,0,16",
       "Tags": "light,light_point,rollermine",
       "Enabled": true,
       "NetworkMode": 1,
@@ -2447,6 +2447,69 @@
               "__guid": "96d3651e-e697-4241-b6dc-19c4e1125ca6"
             }
           ]
+        }
+      ]
+    },
+    {
+      "__guid": "bc8b20e7-c702-4c71-b4e4-9f977e2ff4b2",
+      "Flags": 0,
+      "Name": "Cube",
+      "Position": "896,1209.434,160",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "Components": [
+        {
+          "__type": "Sandbox.ModelRenderer",
+          "__guid": "2ad21cc0-6788-4290-af15-6d73dada54f9",
+          "BodyGroups": 18446744073709551615,
+          "Model": "models/dev/box.vmdl",
+          "RenderOptions": {
+            "GameLayer": true,
+            "OverlayLayer": false,
+            "BloomLayer": false,
+            "AfterUILayer": false
+          },
+          "RenderType": "On",
+          "Tint": "1,1,1,1"
+        },
+        {
+          "__type": "Sandbox.BoxCollider",
+          "__guid": "c7088ba9-652b-41d2-b0bc-21214a4da83b",
+          "Center": "0,0,0",
+          "IsTrigger": false,
+          "Scale": "50,50,50",
+          "Static": false,
+          "SurfaceVelocity": "0,0,0"
+        },
+        {
+          "__type": "Sandbox.Rigidbody",
+          "__guid": "6be40d50-7d40-4a37-8c3d-86225bbaaacf",
+          "AngularDamping": 0,
+          "Gravity": true,
+          "LinearDamping": 0,
+          "Locking": {},
+          "MassCenterOverride": "0,0,0",
+          "MassOverride": 0,
+          "MotionEnabled": true,
+          "OverrideMassCenter": false,
+          "RigidbodyFlags": 0,
+          "StartAsleep": false
+        },
+        {
+          "__type": "FortwarsProp",
+          "__guid": "eeddf93f-274e-40a1-9353-1aa6538b01c7",
+          "CanKill": true,
+          "CollisionThreshold": 1300,
+          "Divisor": 20,
+          "Health": 100,
+          "Invincible": true,
+          "Rigidbody": {
+            "_type": "component",
+            "component_id": "6be40d50-7d40-4a37-8c3d-86225bbaaacf",
+            "go": "bc8b20e7-c702-4c71-b4e4-9f977e2ff4b2",
+            "component_type": "Rigidbody"
+          },
+          "Team": "Red"
         }
       ]
     }

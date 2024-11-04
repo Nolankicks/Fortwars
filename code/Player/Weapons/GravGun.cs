@@ -84,10 +84,11 @@ public class Gravgun : Item, IGameEventHandler<DeathEvent>
 			GameObject.Dispatch( new WeaponAnimEvent( "b_attack", true ) );
 		}
 
+		// Actually moving the prop
 		GrabMove( player.Eye.WorldPosition, player.EyeAngles.Forward, player.Eye.WorldRotation );
 		PhysicsStep();
 
-
+		// Visuals
 		GravGunParticles.Enabled = GrabbedObject.IsValid();
 	}
 
@@ -130,7 +131,7 @@ public class Gravgun : Item, IGameEventHandler<DeathEvent>
 
 	void SecondaryUse()
 	{
-		if ( CanPickup )
+		if ( !GrabbedObject.IsValid() )
 		{
 			var player = FWPlayerController.Local;
 
@@ -139,10 +140,11 @@ public class Gravgun : Item, IGameEventHandler<DeathEvent>
 
 			var tr = GravGunTrace.Run();
 
-			//if ( tr.GameObject?.Components?.TryGet<MapInstance>( out var mapInstance, FindMode.EverythingInSelfAndParent ) ?? false )
+			if ( !tr.Hit )
+				return;
+
+			//if ( !tr.GameObject.Components.TryGet<MapInstance>( out var m, FindMode.EverythingInSelfAndParent ) )
 			//	return;
-
-
 
 			if ( tr.GameObject.Tags.Has( FW.Tags.Map ) && !tr.GameObject.Tags.Has( FW.Tags.Rollermine ) )
 				return;
@@ -171,13 +173,13 @@ public class Gravgun : Item, IGameEventHandler<DeathEvent>
 
 		var heldObject = HeldBody.GetGameObject();
 
-		if ( heldObject.IsValid() && heldObject.Network.Owner != GameObject.Network.Owner )
-		{
-			GrabEnd( false );
-			Log.Info( "Owner mismatch" );
+		//if ( heldObject.IsValid() && heldObject.Network.Owner != GameObject.Network.Owner )
+		//{
+		//	GrabEnd( false );
+		//	Log.Info( "Owner mismatch" );
 
-			return;
-		}
+		//	return;
+		//}
 
 		var velocity = HeldBody.Velocity;
 		Vector3.SmoothDamp( HeldBody.Position, HoldPosition, ref velocity, 0.075f, Time.Delta );
