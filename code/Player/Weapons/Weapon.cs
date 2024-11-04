@@ -94,11 +94,14 @@ public class Weapon : Item, IGameEventHandler<OnReloadEvent>
 	[Property] public string AttackAnimName { get; set; } = "b_attack";
 	[Property] public string ReloadAnimName { get; set; } = "b_reload";
 
-	[Property] public ScreenShake FireShake { get; set; }
+	[Property, FeatureEnabled( "Recoil" )] public bool UsesRecoil { get; set; }
+	[Property, Feature( "Recoil" )] public Vector3 RecoilValues { get; set; }
 
 	public virtual bool CanFire => true;
 
 	private SceneTraceResult[] Traces;
+
+
 
 	public enum FireTypes
 	{
@@ -140,7 +143,7 @@ public class Weapon : Item, IGameEventHandler<OnReloadEvent>
 				local.BroadcastAttack();
 			}
 
-			CameraController.Instance.ShakeScreen( FireShake );
+			CameraController.Instance.RecoilFire( RecoilValues );
 
 			BroadcastShootEffects( Traces );
 			CreateMuzzleFlash();

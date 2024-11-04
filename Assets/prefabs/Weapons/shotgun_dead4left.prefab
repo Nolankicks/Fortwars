@@ -18,6 +18,7 @@
         "MaxAmmo": 4,
         "Offset": "6.846531,0.005981312,-5.724832",
         "Range": 500,
+        "RecoilValues": "-10,5,2",
         "ReloadAnimName": "b_reload",
         "ReloadDelay": 5.25,
         "Spread": 0.07,
@@ -27,6 +28,7 @@
         },
         "TraceTimes": 5,
         "UsesAmmo": true,
+        "UsesRecoil": true,
         "VModel": {
           "_type": "component",
           "component_id": "5e2b8a6b-2343-431e-807a-3da650ea1a0a",

@@ -12,16 +12,13 @@
         "AttackAnimName": "b_attack",
         "Damage": 8,
         "FireRate": 0.065,
-        "FireShake": {
-          "Duration": 0.05,
-          "Rotation": -0.1
-        },
         "FireSound": "audio/smg.fire.sound",
         "FireType": "F_AUTOMATIC",
         "HoldType": "Rifle",
         "MaxAmmo": 30,
         "Offset": "2.012506,-1.151374,-4.363367",
         "Range": 50000,
+        "RecoilValues": "-4,3,0.35",
         "ReloadAnimName": "b_reload",
         "ReloadDelay": 1.8,
         "Spread": 0.06,
@@ -31,6 +28,7 @@
         },
         "TraceTimes": 1,
         "UsesAmmo": true,
+        "UsesRecoil": true,
         "VModel": {
           "_type": "component",
           "component_id": "fb6d4f07-1994-43d5-bb43-64fdea1cea19",
