@@ -460,4 +460,14 @@ public sealed class Inventory : Component
 			}
 		}
 	}
+
+	public WeaponData GetOtherWeapon()
+	{
+		if ( Items.Count() < 2 )
+			return null;
+
+		int index = Items.IndexOf( CurrentItem ) == 0 ? 1 : 0;
+
+		return ItemsData[index];
+	}
 }

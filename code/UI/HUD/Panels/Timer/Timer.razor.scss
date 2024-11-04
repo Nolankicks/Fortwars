@@ -8,7 +8,7 @@ Timer {
     width: 500px;
     height: 90px;
     border-radius: $border-radius;
-    flex-direction:column;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     filter: drop-shadow( 0 0 10px rgba( black, 0.7 ) );
@@ -22,8 +22,7 @@ Timer {
         flex-shrink: 0;
         border-radius: 4 4 0 0;
         transition: width 0.1s ease-out;
-        background-color: rgb(77, 77, 77, 0.61);
-
+        background-color: $primary;
         //@ScoutWozniak feel free to remove this
         text-shadow: 2px 2px 4px black;
     }
@@ -33,30 +32,26 @@ Timer {
         height: 50%;
         align-items: center;
         justify-content: center;
-        background-color: rgb(77, 77, 77, 0.61);
+        background-color: $primary;
         flex-shrink: 0;
         border-radius: 0 0 4 4;
         transition: width 0.1s ease-out;
         font-size: 24px;
 
-        .text
-        {
+        .text {
             position: absolute;
-            
             //@ScoutWozniak feel free to remove this
             text-shadow: 2px 2px 4px black;
         }
 
-        .fill-holder
-        {
+        .fill-holder {
             position: relative;
             height: 100%;
             width: 100%;
             justify-content: center;
         }
 
-        .fill
-        {
+        .fill {
             position: relative;
             height: 100%;
             width: 100%;

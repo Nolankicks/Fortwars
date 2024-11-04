@@ -1,10 +1,9 @@
 ﻿@import "/UI/HUD/HUD.razor.scss";
 
 AmmoPanel {
-    font-size: 40px;
-    width: 70%;
-    height: 5%;
-    filter: drop-shadow( 0 0 10px rgba( black, 0.7 ) );
+    font-size: 20px;
+    width:50%;
+    height:100%;
 
 
     .holder {
@@ -14,6 +13,5 @@ AmmoPanel {
         padding: 4px 32px;
         width: 100%;
         height: 100%;
-        border-radius: 4px;
     }
 }

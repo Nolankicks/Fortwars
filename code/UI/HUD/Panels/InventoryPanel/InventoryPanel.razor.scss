@@ -22,7 +22,6 @@ InventoryPanel {
         transition: opacity 0.1s ease-out;
         transition: height 0.1s ease-in;
         transition: transform 0.1s ease-in;
-        border-radius: 4px;
 
         .slot-number {
             height: 100%;
@@ -32,7 +31,6 @@ InventoryPanel {
             align-items: center;
             justify-content: center;
             font-weight: bold;
-            border-radius: 4px 0 0 4px;
         }
 
         .slot-text {
@@ -52,25 +50,6 @@ InventoryPanel {
 
         &.active {
             opacity: 1;
-            transform:translate(-5px);
-        }
-
-        &:first-child {
-            border-top-left-radius: $border-radius;
-            border-top-right-radius: $border-radius;
-
-            .slot-number {
-                border-top-left-radius: $border-radius;
-            }
-        }
-
-        &:last-child {
-            border-bottom-left-radius: $border-radius;
-            border-bottom-right-radius: $border-radius;
-
-            .slot-number {
-                border-bottom-left-radius: $border-radius;
-            }
         }
 
         &:outro,

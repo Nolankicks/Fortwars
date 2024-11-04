@@ -6,39 +6,57 @@
 
 <root>
 	@{
-		var player = FWPlayerController.Local;
+        var player = FWPlayerController.Local;
 
-		if ( !player.IsValid() )
-			return;
-	}
+        if ( !player.IsValid() )
+            return;
+
+        var otherItem = player.Inventory.GetOtherWeapon();
+    }
 
 	@if ( player.Inventory.ItemsData.Count() > 0)
 	{
-        <AmmoPanel/>  
 
-		@for (int i = 0; i < player.Inventory.ItemsData.Count(); i++)
-		{
-			var index = i;
+		// @for (int i = 0; i < player.Inventory.ItemsData.Count(); i++)
+		// {
+		// 	var index = i;
 
-			if ( player.Inventory.ItemsData.Count() <= index )
-				continue;
+		// 	if ( player.Inventory.ItemsData.Count() <= index )
+		// 		continue;
 
-			var item = player.Inventory.ItemsData.ElementAt( index );
-			var itemGb = player.Inventory.Items.ElementAt( index );
+		// 	var item = player.Inventory.ItemsData.ElementAt( index );
+		// 	var itemGb = player.Inventory.Items.ElementAt( index );
 
-			if ( item is null || !itemGb.IsValid() )
-				continue;
+		// 	if ( item is null || !itemGb.IsValid() )
+		// 		continue;
 
-			var itemComponent = itemGb.Components.Get<Item>( true );
+		// 	var itemComponent = itemGb.Components.Get<Item>( true );
 
-			<div class="item @(index == player.Inventory.Index && player.Inventory.CurrentItem.IsValid() ? "active" : "" )">
-				<div class="slot-number" style="background-color: @HUD.GetColor().Hex;">@(index + 1)</div>
-				<div class="slot-text">@item.Name</div>
-			</div>
-		}
+		// 	<div class="item @(index == player.Inventory.Index && player.Inventory.CurrentItem.IsValid() ? "active" : "" )">
+		// 		<div class="slot-number" style="background-color: @HUD.GetColor().Hex;">@(index + 1)</div>
+		// 		<div class="slot-text">@item.Name</div>
+		// 	</div>
+		// }
 
-        
-	}
+        <div class="item active">
+            <div class="slot-text">@(player.Inventory.CurrentWeaponData.Name)</div>
+            <AmmoPanel/>  
+        </div>
+
+        @if (!otherItem.IsValid())
+        {
+            return;
+        }
+
+        <div class="item">
+            <div class="slot-text">
+                <InputHint Size=@InputGlyphSize.Small @Action=@("Slot1") @ShowAction=@false/>
+
+                @(otherItem.Name)
+            </div>
+            
+        </div>
+    }
 </root>
 
 @code
