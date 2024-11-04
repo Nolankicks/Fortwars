@@ -366,4 +366,12 @@ public sealed class Propgun : Item
 		else
 			Mode = Modes.P_PLACE;
 	}
+
+	public string GetModeString()
+	{
+		if ( Mode == Modes.P_PLACE )
+			return "Place";
+		else
+			return "Move";
+	}
 }
