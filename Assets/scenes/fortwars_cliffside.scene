@@ -2454,7 +2454,7 @@
       "__guid": "bc8b20e7-c702-4c71-b4e4-9f977e2ff4b2",
       "Flags": 0,
       "Name": "Cube",
-      "Position": "696,456,208",
+      "Position": "696,456,136.5835",
       "Enabled": true,
       "NetworkMode": 1,
       "Components": [
