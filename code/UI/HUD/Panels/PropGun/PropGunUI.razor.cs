@@ -19,7 +19,7 @@ public partial class PropGunUI : Panel
 		var pg = GetPropGun();
 		if ( pg.IsValid() )
 		{
-			return pg.CurrentProp.DisplayName;
+			return pg.CurrentProp?.DisplayName;
 		}
 		return "";
 	}
