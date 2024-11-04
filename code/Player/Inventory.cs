@@ -101,10 +101,10 @@ public sealed class Inventory : Component
 			NextWeapon( Math.Sign( Input.MouseWheel.y ) );
 		}
 
-		/*if ( Input.Pressed( "Slot1" ) )
+		if ( Input.Pressed( "SwapWeapon" ) )
 		{
 			NextWeapon( 1 );
-		}*/
+		}
 
 		if ( Index < 0 )
 		{
