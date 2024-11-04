@@ -1,0 +1,88 @@
+{
+  "RootObject": {
+    "__guid": "b7d72405-6e06-4f25-b99e-70f20bb0b18b",
+    "Flags": 0,
+    "Name": "bulletcasing",
+    "Scale": "4,4,4",
+    "Enabled": true,
+    "Components": [
+      {
+        "__type": "Sandbox.Rigidbody",
+        "__guid": "b6d19dc8-39a9-49c9-8b39-e0dcdca9b406",
+        "AngularDamping": 0,
+        "Gravity": true,
+        "LinearDamping": 0,
+        "Locking": {},
+        "MassCenterOverride": "0,0,0",
+        "MassOverride": 0,
+        "MotionEnabled": true,
+        "OverrideMassCenter": false,
+        "RigidbodyFlags": 0,
+        "StartAsleep": false
+      },
+      {
+        "__type": "Sandbox.ModelRenderer",
+        "__guid": "dab90909-8c3f-4d5e-8486-490b0235c8b0",
+        "BodyGroups": 1,
+        "Model": "models/weapons/sbox_ammo/9mm_bullet/9mm_bullet.vmdl",
+        "RenderOptions": {
+          "GameLayer": true,
+          "OverlayLayer": false,
+          "BloomLayer": false,
+          "AfterUILayer": false
+        },
+        "RenderType": "On",
+        "Tint": "1,1,1,1"
+      },
+      {
+        "__type": "Destoryer",
+        "__guid": "4b546e72-8801-4aca-8985-c244aa9dad06",
+        "Time": 5
+      },
+      {
+        "__type": "Sandbox.SphereCollider",
+        "__guid": "42fd744f-4eee-41ca-90a1-c05e9b3a6cf9",
+        "Center": "0,0,0",
+        "IsTrigger": false,
+        "Radius": 0.5,
+        "Static": false,
+        "Surface": "surfaces/metal.weapon.surface",
+        "SurfaceVelocity": "0,0,0"
+      }
+    ],
+    "Children": [],
+    "__variables": [],
+    "__properties": {
+      "FixedUpdateFrequency": 50,
+      "MaxFixedUpdates": 5,
+      "NetworkFrequency": 30,
+      "NetworkInterpolation": true,
+      "PhysicsSubSteps": 1,
+      "ThreadedAnimation": true,
+      "TimeScale": 1,
+      "UseFixedUpdate": true,
+      "Metadata": {},
+      "NavMesh": {
+        "Enabled": false,
+        "IncludeStaticBodies": true,
+        "IncludeKeyframedBodies": true,
+        "EditorAutoUpdate": true,
+        "AgentHeight": 64,
+        "AgentRadius": 16,
+        "AgentStepSize": 18,
+        "AgentMaxSlope": 40,
+        "ExcludedBodies": "",
+        "IncludedBodies": ""
+      }
+    }
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "DontBreakAsTemplate": false,
+  "ResourceVersion": 1,
+  "__references": [
+    "facepunch.9mm_bullet#28861"
+  ],
+  "__version": 1
+}

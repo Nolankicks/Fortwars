@@ -10,10 +10,16 @@
         "__guid": "db0a5184-ee6e-4bd0-a83a-a1c14ef7f60b",
         "AmmoPerShot": 1,
         "AttackAnimName": "b_attack",
+        "CasingModel": "models/weapons/sbox_ammo/12g_shell/12g_shell.vmdl",
         "Damage": 20,
+        "EjectionPoint": {
+          "_type": "gameobject",
+          "go": "0f6b5eb1-d448-465e-ae32-2f9b3fc3fa6a"
+        },
         "FireRate": 0.5,
         "FireSound": "audio/shotgun.fire.sound",
         "FireType": "F_SEMIAUTO",
+        "HasBulletCasing": true,
         "HoldType": "Shotgun",
         "MaxAmmo": 4,
         "Offset": "6.846531,0.005981312,-5.724832",
@@ -219,6 +225,14 @@
                     "Flags": 4,
                     "Name": "muzzle",
                     "Position": "26.127,-0.00002457145,0.3124194",
+                    "Enabled": true
+                  },
+                  {
+                    "__guid": "0f6b5eb1-d448-465e-ae32-2f9b3fc3fa6a",
+                    "Flags": 0,
+                    "Name": "EjectionPoint",
+                    "Position": "5.151433,-1.946238,0.3637347",
+                    "Rotation": "-0.1035534,-0.07945932,-0.7865661,0.6035535",
                     "Enabled": true
                   }
                 ]
@@ -824,6 +838,7 @@
   "DontBreakAsTemplate": false,
   "ResourceVersion": 1,
   "__references": [
+    "facepunch.12g_shell#35374",
     "facepunch.v_spaghellim4#64353",
     "facepunch.w_spaghellim4#58057"
   ],

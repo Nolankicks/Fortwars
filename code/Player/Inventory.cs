@@ -98,13 +98,12 @@ public sealed class Inventory : Component
 
 		if ( Input.MouseWheel.y != 0 && CanScrollSwitch )
 		{
-			var local = FWPlayerController.Local;
+			NextWeapon( Math.Sign( Input.MouseWheel.y ) );
+		}
 
-			if ( !local.IsValid() || (!local?.CanMoveHead ?? false) )
-				return;
-
-			Index = (Index - Math.Sign( Input.MouseWheel.y )) % Items.Count();
-			ChangeItem( Index, Items );
+		if ( Input.Pressed( "Slot1" ) )
+		{
+			NextWeapon( 1 );
 		}
 
 		if ( Index < 0 )
@@ -113,7 +112,7 @@ public sealed class Inventory : Component
 			ChangeItem( Index, Items );
 		}
 
-		KeyboardInputs();
+		//KeyboardInputs();
 	}
 
 	[Authority]
@@ -137,6 +136,16 @@ public sealed class Inventory : Component
 	public void AddItemButton()
 	{
 		AddItem( ItemsData[0] );
+	}
+
+	void NextWeapon( int dir )
+	{
+		var local = FWPlayerController.Local;
+		if ( !local.IsValid() || (!local?.CanMoveHead ?? false) )
+			return;
+
+		Index = (Index - dir) % Items.Count();
+		ChangeItem( Index, Items );
 	}
 
 	[Authority]

@@ -101,6 +101,10 @@ public class Weapon : Item, IGameEventHandler<OnReloadEvent>
 
 	private SceneTraceResult[] Traces;
 
+	[Property, FeatureEnabled( "Casing" )] public bool HasBulletCasing { get; set; }
+	[Property, Feature( "Casing" )] public Model CasingModel { get; set; }
+	[Property, Feature( "Casing" )] public GameObject EjectionPoint { get; set; }
+
 
 
 	public enum FireTypes
@@ -147,6 +151,7 @@ public class Weapon : Item, IGameEventHandler<OnReloadEvent>
 
 			BroadcastShootEffects( Traces );
 			CreateMuzzleFlash();
+			EjectCasing();
 
 			GameObject.Dispatch( new WeaponAnimEvent( AttackAnimName, true ) );
 
@@ -220,6 +225,8 @@ public class Weapon : Item, IGameEventHandler<OnReloadEvent>
 				damageable.OnDamage( damage );
 			}
 		}
+
+
 	}
 
 	public bool IsReloading { get; set; }
@@ -328,6 +335,20 @@ public class Weapon : Item, IGameEventHandler<OnReloadEvent>
 
 		var flash = GameObject.Clone( "prefabs/effects/muzzleflash.prefab", new CloneConfig { Parent = TracerPoint, StartEnabled = true } );
 		flash.WorldRotation = TracerPoint.WorldRotation;
+	}
+
+	void EjectCasing()
+	{
+		if ( !HasBulletCasing || !EjectionPoint.IsValid() )
+			return;
+
+		var casing = GameObject.Clone( "prefabs/effects/bulletcasing.prefab", new CloneConfig { StartEnabled = true } );
+
+		casing.WorldPosition = EjectionPoint.WorldPosition;
+		casing.Components.Get<ModelRenderer>().Model = CasingModel;
+
+		var rb = casing.Components.Get<Rigidbody>();
+		rb.ApplyForce( EjectionPoint.WorldRotation.Up * 10.0f + EjectionPoint.WorldRotation.Forward * 20.0f );
 	}
 }
 
