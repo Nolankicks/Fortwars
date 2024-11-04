@@ -4,8 +4,8 @@ ClassSelect {
     position: relative;
     pointer-events: all;
 
-    width: 800px;
-    height: 500px;
+    width: 900px;
+    height: 600px;
 
     padding: 16px;
 
@@ -98,9 +98,21 @@ ClassSelect {
             overflow-y: scroll;
             font-size: 22px;
             align-items: flex-start;
-            justify-content: center;
-            text-align: center;
+            justify-content: flex-start;
+            flex-direction: column;
             padding: 2px;
+            gap: 8px;
+            margin-bottom: 6px;
+
+            >div
+            {
+                width: 100%;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+
+                flex-shrink: 0;
+            }
         }
 
         .button {
