@@ -10,14 +10,17 @@
     <div class="holder">
         <div class="text">
             <InputHint Size=@InputGlyphSize.Small @Action=@("attack2") @ShowAction=@false/>
-
             <label>Mode: @(GetMode())</label>
-        
         </div>
 
         <div class="text">
             <InputHint Size=@InputGlyphSize.Small @Action=@("menu") @ShowAction=@false/>
             <label>Current Prop: @(GetItemName())</label>
+        </div>
+		
+		 <div class="text">
+            <InputHint Size=@InputGlyphSize.Small @Action=@("ToggleGrid") @ShowAction=@false/>
+            <label>Grid Snap: @(GetPropGun().SnapToGrid)</label>
         </div>
     </div>
 </root>

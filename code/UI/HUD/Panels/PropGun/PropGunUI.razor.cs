@@ -43,6 +43,7 @@ public partial class PropGunUI : Panel
 		hash.Add( GetMode() );
 		hash.Add( GetPropGun() );
 		hash.Add( GetItemName() );
+		hash.Add( GetPropGun()?.SnapToGrid );
 		return hash.ToHashCode();
 	}
 }

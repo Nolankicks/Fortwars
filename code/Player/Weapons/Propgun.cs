@@ -24,6 +24,8 @@ public sealed class Propgun : Item
 
 	private Modes Mode { get; set; } = Modes.P_PLACE;
 
+	public bool SnapToGrid { get; set; } = true;
+
 	protected override void OnStart()
 	{
 		if ( IsProxy || !FirstTime )
@@ -40,6 +42,11 @@ public sealed class Propgun : Item
 		if ( Input.Pressed( "attack2" ) )
 		{
 			SwitchModes();
+		}
+
+		if ( Input.Pressed( "togglegrid" ) )
+		{
+			SnapToGrid = !SnapToGrid;
 		}
 
 		if ( Input.Pressed( "mouseprop" ) )
@@ -161,7 +168,7 @@ public sealed class Propgun : Item
 
 		bool CanPlace = tr.Hit && tr.Distance > 32.0f && ObjectPos.Distance( GameObject.Root.WorldPosition ) > 32.0f && !tr.GameObject.Tags.Has( FW.Tags.NoBuild );
 
-		ShowPropPreview( ObjectPos, CurrentProp, CanPlace );
+		ShowPropPreview( ObjectPos, CurrentProp, CanPlace, tr.Normal, tr.Hit );
 
 		player.CanMoveHead = !Input.Down( "RotateProp" );
 
@@ -202,7 +209,7 @@ public sealed class Propgun : Item
 
 			if ( HeldObject is null )
 			{
-				SpawnProp( ObjectPos );
+				SpawnProp( ObjectPos, tr.Normal, tr.Hit );
 			}
 			else
 			{
@@ -222,7 +229,7 @@ public sealed class Propgun : Item
 		}
 	}
 
-	public void SpawnProp( Vector3 ObjectPos )
+	public void SpawnProp( Vector3 ObjectPos, Vector3 Normal, bool Hit )
 	{
 		var player = FWPlayerController.Local;
 
@@ -289,7 +296,7 @@ public sealed class Propgun : Item
 		// Break the prop into individuals so we can check for ModelPhysics later.
 		renderer.Break();
 
-		gb.WorldPosition = ObjectPos;
+		gb.WorldPosition = SnapToGrid ? ObjectPos.SnapToGrid( 16, true, true, !(Hit && Normal == Vector3.Up) ) : ObjectPos;
 		gb.WorldRotation = PropRotation.SnapToGrid( 15 );
 
 		if ( team.IsValid() )
@@ -324,12 +331,12 @@ public sealed class Propgun : Item
 		//HoldingObject = false;
 	}
 
-	void ShowPropPreview( Vector3 pos, PropResource prop, bool canPlace )
+	void ShowPropPreview( Vector3 pos, PropResource prop, bool canPlace, Vector3 Normal, bool Hit)
 	{
 		var gizmo = Gizmo.Draw.Model( prop.Model.ResourcePath );
 		gizmo.ColorTint = Color.White.WithAlpha( 0.5f );
 		gizmo.Rotation = PropRotation.SnapToGrid( 15 );
-		gizmo.Position = pos;
+		gizmo.Position = SnapToGrid ? pos.SnapToGrid( 16, true, true, !(Hit && Normal == Vector3.Up) ) : pos;
 
 		if ( !canPlace )
 		{
