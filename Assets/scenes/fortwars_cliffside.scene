@@ -2285,6 +2285,7 @@
           "__type": "Sandbox.SkinnedModelRenderer",
           "__guid": "e2fdabdb-5da5-4fc0-a41d-ad0cc0e556ae",
           "BodyGroups": 18446744073709551615,
+          "CreateAttachments": false,
           "CreateBoneObjects": false,
           "Model": "models/rollermine.vmdl",
           "Morphs": {},
@@ -2454,7 +2455,7 @@
       "__guid": "bc8b20e7-c702-4c71-b4e4-9f977e2ff4b2",
       "Flags": 0,
       "Name": "Cube",
-      "Position": "696,456,136.5835",
+      "Position": "696,456,208",
       "Enabled": true,
       "NetworkMode": 1,
       "Components": [
@@ -2462,6 +2463,7 @@
           "__type": "Sandbox.ModelRenderer",
           "__guid": "2ad21cc0-6788-4290-af15-6d73dada54f9",
           "BodyGroups": 18446744073709551615,
+          "CreateAttachments": false,
           "Model": "models/dev/box.vmdl",
           "RenderOptions": {
             "GameLayer": true,

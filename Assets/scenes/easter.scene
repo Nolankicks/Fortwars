@@ -1144,6 +1144,7 @@
           "__type": "Sandbox.ModelRenderer",
           "__guid": "6f836160-3187-4f7d-8d25-6bb76ecdaa2d",
           "BodyGroups": 18446744073709551615,
+          "CreateAttachments": false,
           "Model": "models/sbox_props/wooden_crate/wooden_crate.vmdl",
           "RenderOptions": {
             "GameLayer": true,
@@ -1177,6 +1178,7 @@
           "__type": "Sandbox.ModelRenderer",
           "__guid": "03b5a611-8bd7-4087-bbb7-db30c40d5e33",
           "BodyGroups": 18446744073709551615,
+          "CreateAttachments": false,
           "Model": "models/sbox_props/wooden_crate/wooden_crate.vmdl",
           "RenderOptions": {
             "GameLayer": true,
@@ -2616,6 +2618,7 @@
           "__type": "Sandbox.ModelRenderer",
           "__guid": "97c738ad-fa38-45b6-b556-d61b71830d85",
           "BodyGroups": 18446744073709551615,
+          "CreateAttachments": false,
           "Model": "models/dev_shop.vmdl",
           "RenderOptions": {
             "GameLayer": true,
@@ -2648,6 +2651,7 @@
               "__type": "Sandbox.SkinnedModelRenderer",
               "__guid": "53e51368-1109-44ed-8fb5-f82855339770",
               "BodyGroups": 341,
+              "CreateAttachments": false,
               "CreateBoneObjects": false,
               "Model": "models/citizen/citizen.vmdl",
               "Morphs": {},
@@ -2684,6 +2688,7 @@
               "__type": "Sandbox.ModelRenderer",
               "__guid": "ded674e5-f165-4f10-95c3-ad3ff1a880fa",
               "BodyGroups": 18446744073709551615,
+              "CreateAttachments": false,
               "Model": "models/blocks/64cube.vmdl",
               "RenderOptions": {
                 "GameLayer": true,
