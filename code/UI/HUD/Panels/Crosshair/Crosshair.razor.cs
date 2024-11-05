@@ -107,7 +107,7 @@ public partial class Crosshair : Panel
 
 	int GetGap()
 	{
-		int playerSpeed = (int)(local.shrimpleCharacterController.Velocity.Length * 0.05f);
+		int playerSpeed = (int)(local.shrimpleCharacterController.Velocity.Length * 0.03f);
 
 		if ( !local.shrimpleCharacterController.IsOnGround )
 			playerSpeed += 5;
