@@ -1,0 +1,20 @@
+﻿@import "/UI/HUD/HUD.razor.scss";
+
+
+Settings {
+    width: 75%;
+    height: 75%;
+    background-color: $primary;
+
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+
+    .close-btn {
+        aspect-ratio: 16/9;
+        left: 0%;
+        top: 0%;
+        background-color: red;
+    }
+}

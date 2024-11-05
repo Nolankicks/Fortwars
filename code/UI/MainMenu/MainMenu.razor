@@ -12,9 +12,10 @@
 
         <button onclick=@( () => ChangeMenuState( MenuState.Lobbies )) class="big"> Lobbies </button>
 		@* Leaderboards if yall want it *@
-		@* <div class="button" onclick=@( () => ChangeMenuState( MenuState.Leaderboards ))> Leaderboards</div> *@
+		 @* <div class="button" onclick=@( () => ChangeMenuState( MenuState.Leaderboards ))> Leaderboards</div> *@
         <button onclick=@( () => ChangeMenuState( MenuState.About ) ) class="small"> About </button>
-        <button onclick=@( () => Game.Overlay.ShowSettingsModal() ) class="small"> Settings </button>
+        @* <button onclick=@( () => ChangeMenuState( MenuState.Settings ) ) class="small"> Settings </button> *@
+        <button onclick=@( () => Game.Overlay.ShowSettingsModal()) class="small"> Settings </button>
         <button onclick=@( () => Game.Close() ) class="small"> Exit </button>
 	</div>
 
@@ -90,6 +91,10 @@
 			</div>
 			break;
 
+        case MenuState.Settings:
+                    <Settings />
+            break;
+
 		case MenuState.About:
 			<div class="about">
 					<label>
@@ -125,6 +130,7 @@
 		LobbyCreation,
 		Lobbies,
 		Leaderboards,
+        Settings,
 		None,
 	}
 
