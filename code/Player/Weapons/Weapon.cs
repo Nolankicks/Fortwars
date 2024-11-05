@@ -155,6 +155,8 @@ public class Weapon : Item, IGameEventHandler<OnReloadEvent>
 			CreateMuzzleFlash();
 			EjectCasing();
 
+			Crosshair.Instance.GapAddition += 5;
+
 			GameObject.Dispatch( new WeaponAnimEvent( AttackAnimName, true ) );
 
 			lastFired = 0;

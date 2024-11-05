@@ -11,6 +11,8 @@ public partial class Crosshair : Panel
 		public int Gap { get; set; } = 8;
 		public int BorderThickness { get; set; } = 1;
 
+		public int BorderRadius { get; set; } = 4;
+
 		public Color InnerColor { get; set; } = Color.White;
 		public Color BorderColor { get; set; } = Color.Black;
 
@@ -33,6 +35,10 @@ public partial class Crosshair : Panel
 
 	public const string FilePath = "crosshair.json";
 
+	public float GapAddition { get; set; }
+
+	public float TimeToReturn { get; set; } = 2.0f;
+
 	public Crosshair()
 	{
 		attributes = new RenderAttributes();
@@ -50,6 +56,12 @@ public partial class Crosshair : Panel
 	public static Properties GetActiveConfig()
 	{
 		return FileSystem.Data.ReadJson<Properties>( FilePath ) ?? Instance?.Config ?? new Properties();
+	}
+
+	public override void Tick()
+	{
+		base.Tick();
+		GapAddition = GapAddition.LerpTo( 0, Time.Delta * TimeToReturn );
 	}
 
 	protected override int BuildHash()
@@ -103,11 +115,11 @@ public partial class Crosshair : Panel
 		if ( local.IsCrouching )
 			playerSpeed -= 2;
 
-		return Config.Gap + playerSpeed;
+		return Config.Gap + playerSpeed + (int)GapAddition;
 	}
 
 	void DrawSegment( Rect rect )
 	{
-		Graphics.DrawRoundedRectangle( rect, Config.InnerColor, new Vector4( borderRadius ), new Vector4( borderWidth ), Config.BorderColor );
+		Graphics.DrawRoundedRectangle( rect, Config.InnerColor, new Vector4( Config.BorderRadius ), new Vector4( Config.BorderThickness ), Config.BorderColor );
 	}
 }
