@@ -32,19 +32,7 @@ HUD {
     }
 
     .crosshair {
-        position: absolute;
-        border-radius: 50%;
-        opacity: 1;
-        width: 64px;
-        height: 64px;
-        transition: all 0.2s linear;
-
-        img {
-            width: 100%;
-            height: 100%;
-            background-size: contain;
-            background-repeat: no-repeat;
-        }
+        
     }
 
     .hitMarker {
