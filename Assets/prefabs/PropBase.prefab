@@ -1,5 +1,89 @@
 {
-  "RootObject": null,
+  "RootObject": {
+    "__guid": "1afed2d9-402a-4e72-9f41-e572d840106e",
+    "Flags": 0,
+    "Name": "propbase",
+    "Enabled": true,
+    "Components": [
+      {
+        "__type": "FortwarsProp",
+        "__guid": "816141e4-9fc8-4d0f-8909-f9d477187948",
+        "CanKill": true,
+        "CollisionThreshold": 1300,
+        "Divisor": 20,
+        "Health": 100,
+        "Invincible": false,
+        "Team": "Red"
+      },
+      {
+        "__type": "Sandbox.ModelRenderer",
+        "__guid": "8c000b33-e96d-49db-813b-735475585ad5",
+        "BodyGroups": 18446744073709551615,
+        "CreateAttachments": false,
+        "RenderOptions": {
+          "GameLayer": true,
+          "OverlayLayer": false,
+          "BloomLayer": false,
+          "AfterUILayer": false
+        },
+        "RenderType": "On",
+        "Tint": "1,1,1,1"
+      },
+      {
+        "__type": "Sandbox.ModelCollider",
+        "__guid": "eea84880-f612-446e-9ab8-b4ccc09419c4",
+        "IsTrigger": false,
+        "Static": false,
+        "SurfaceVelocity": "0,0,0"
+      },
+      {
+        "__type": "Sandbox.Rigidbody",
+        "__guid": "fcd82784-06ac-4f19-a860-2e48defc6ce0",
+        "AngularDamping": 0,
+        "Gravity": true,
+        "LinearDamping": 0,
+        "Locking": {},
+        "MassCenterOverride": "0,0,0",
+        "MassOverride": 0,
+        "MotionEnabled": true,
+        "OverrideMassCenter": false,
+        "RigidbodyFlags": 0,
+        "StartAsleep": false
+      }
+    ],
+    "Children": [
+      {
+        "__guid": "e189e66b-50a3-470e-a7a6-4d58aaa77488",
+        "Flags": 0,
+        "Name": "GameObject",
+        "Enabled": true
+      }
+    ],
+    "__variables": [],
+    "__properties": {
+      "FixedUpdateFrequency": 50,
+      "MaxFixedUpdates": 5,
+      "NetworkFrequency": 30,
+      "NetworkInterpolation": true,
+      "PhysicsSubSteps": 1,
+      "ThreadedAnimation": true,
+      "TimeScale": 1,
+      "UseFixedUpdate": true,
+      "Metadata": {},
+      "NavMesh": {
+        "Enabled": false,
+        "IncludeStaticBodies": true,
+        "IncludeKeyframedBodies": true,
+        "EditorAutoUpdate": true,
+        "AgentHeight": 64,
+        "AgentRadius": 16,
+        "AgentStepSize": 18,
+        "AgentMaxSlope": 40,
+        "ExcludedBodies": "",
+        "IncludedBodies": ""
+      }
+    }
+  },
   "ShowInMenu": false,
   "MenuPath": null,
   "MenuIcon": null,

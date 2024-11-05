@@ -248,36 +248,10 @@ public sealed class Propgun : Item
 
 		var hud = Scene.GetAll<HUD>()?.FirstOrDefault();
 
-		switch ( currentTeam )
+		if ( OverTeamPropLimit( currentTeam, hud, gs ) )
 		{
-			case Team.Red:
-				if ( gs.RedProps.Count() >= gs.MaxProps )
-				{
-					hud?.FlashPropsFailed();
-					return;
-				}
-				break;
-			case Team.Blue:
-				if ( gs.BlueProps.Count() >= gs.MaxProps )
-				{
-					hud?.FlashPropsFailed();
-					return;
-				}
-				break;
-			case Team.Green:
-				if ( gs.GreenProps.Count() >= gs.MaxProps )
-				{
-					hud?.FlashPropsFailed();
-					return;
-				}
-				break;
-			case Team.Yellow:
-				if ( gs.YellowProps.Count() >= gs.MaxProps )
-				{
-					hud?.FlashPropsFailed();
-					return;
-				}
-				break;
+			hud?.FlashPropsFailed();
+			return;
 		}
 
 		GameObject.Dispatch( new WeaponAnimEvent( "b_attack", true ) );
@@ -332,7 +306,7 @@ public sealed class Propgun : Item
 		//HoldingObject = false;
 	}
 
-	void ShowPropPreview( Vector3 pos, PropResource prop, bool canPlace, Vector3 Normal, bool Hit)
+	void ShowPropPreview( Vector3 pos, PropResource prop, bool canPlace, Vector3 Normal, bool Hit )
 	{
 		var gizmo = Gizmo.Draw.Model( prop.Model.ResourcePath );
 		gizmo.ColorTint = Color.White.WithAlpha( 0.5f );
@@ -345,6 +319,29 @@ public sealed class Propgun : Item
 		}
 	}
 
+	bool OverTeamPropLimit( Team currentTeam, HUD hud, GameSystem gs )
+	{
+		switch ( currentTeam )
+		{
+			case Team.Red:
+				if ( gs.RedProps.Count() >= gs.MaxProps )
+					return true;
+				break;
+			case Team.Blue:
+				if ( gs.BlueProps.Count() >= gs.MaxProps )
+					return true;
+				break;
+			case Team.Green:
+				if ( gs.GreenProps.Count() >= gs.MaxProps )
+					return true;
+				break;
+			case Team.Yellow:
+				if ( gs.YellowProps.Count() >= gs.MaxProps )
+					return true;
+				break;
+		}
+		return false;
+	}
 	private async Task DisplayControls()
 	{
 		float delay = 2.0f;

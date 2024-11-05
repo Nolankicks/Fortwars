@@ -3,7 +3,7 @@ using System;
 
 public sealed class FortwarsProp : Component, Component.ICollisionListener, IGameEventHandler<OnGameEnd>, Component.IDamageable
 {
-	[Property, Sync] public Rigidbody Rigidbody { get; set; }
+	[RequireComponent, Sync] public Rigidbody Rigidbody { get; set; }
 	[Property, Sync] public bool Invincible { get; set; } = false;
 	[Property, Sync] public float CollisionThreshold { get; set; } = 1300;
 	[Property, Sync] public int Divisor { get; set; } = 20;
@@ -13,6 +13,11 @@ public sealed class FortwarsProp : Component, Component.ICollisionListener, IGam
 	[Property, Sync] public float Health { get; set; } = 100;
 
 	[Property, Sync] public PropResource Resource { get; set; }
+
+	[RequireComponent] ModelRenderer Renderer { get; set; }
+	[RequireComponent] ModelCollider Collider { get; set; }
+
+
 
 	public void OnCollisionStart( Collision other )
 	{
@@ -40,6 +45,11 @@ public sealed class FortwarsProp : Component, Component.ICollisionListener, IGam
 				player?.TakeDamage( null, (int)dmg, WorldPosition );
 			}
 		}
+	}
+
+	public void SetupObject( PropResource prop )
+	{
+		Resource = prop;
 	}
 
 	protected override void OnStart()
