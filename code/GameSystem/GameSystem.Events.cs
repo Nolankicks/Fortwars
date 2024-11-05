@@ -142,7 +142,6 @@ public partial class GameSystem
 		{
 			x.ClearAll();
 			x.AddItem( ResourceLibrary.GetAll<WeaponData>().FirstOrDefault( x => x.ResourceName == "propgun" ) );
-			x.AddItem( ResourceLibrary.GetAll<WeaponData>().FirstOrDefault( x => x.ResourceName == "physgun" ) );
 		} );
 
 		BroadcastChangeState( GameState.OvertimeBuild );
