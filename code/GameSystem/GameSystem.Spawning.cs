@@ -61,7 +61,7 @@ public partial class GameSystem
 				{
 					//inv.OpenClassSelect();
 					inv.AddItem( ResourceLibrary.GetAll<WeaponData>().FirstOrDefault( x => x.ResourceName == "propgun" ) );
-					inv.AddItem( ResourceLibrary.GetAll<WeaponData>().FirstOrDefault( x => x.ResourceName == "physgun" ) );
+					//inv.AddItem( ResourceLibrary.GetAll<WeaponData>().FirstOrDefault( x => x.ResourceName == "physgun" ) );
 				}
 				else if ( State == GameState.FightMode || State == GameState.OvertimeFight )
 				{

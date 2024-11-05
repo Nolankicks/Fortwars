@@ -14,7 +14,7 @@ public partial class GameSystem
 			x.ClearSelectedClass();
 			x.ClearAll();
 			x.AddItem( ResourceLibrary.GetAll<WeaponData>().FirstOrDefault( x => x.ResourceName == "propgun" ) );
-			x.AddItem( ResourceLibrary.GetAll<WeaponData>().FirstOrDefault( x => x.ResourceName == "physgun" ) );
+			//x.AddItem( ResourceLibrary.GetAll<WeaponData>().FirstOrDefault( x => x.ResourceName == "physgun" ) );
 			//x.OpenClassSelect();
 		} );
 
@@ -39,7 +39,7 @@ public partial class GameSystem
 
 		Scene.GetAll<Inventory>()?.ToList()?.ForEach( x =>
 		{
-            //Clear the inventory and give players the grav gun
+			//Clear the inventory and give players the grav gun
 			x.ClearAll();
 			x.AddItem( ResourceLibrary.GetAll<WeaponData>().FirstOrDefault( x => x.ResourceName == "gravgun" ) );
 
@@ -51,11 +51,11 @@ public partial class GameSystem
 			x.OpenClassSelect();
 		} );
 
-        //Broadcast random text from a list
+		//Broadcast random text from a list
 		var text = Game.Random.FromList( FightModePopups );
-        PopupHolder.BroadcastPopup( text, 5 );
+		PopupHolder.BroadcastPopup( text, 5 );
 
-        //Event callback
+		//Event callback
 		BroadcastChangeState( GameState.FightMode );
 	}
 
