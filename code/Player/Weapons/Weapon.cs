@@ -270,6 +270,7 @@ public class Weapon : Item, IGameEventHandler<OnReloadEvent>
 					decal.WorldPosition = trace.HitPosition + trace.Normal;
 					decal.WorldRotation = Rotation.LookAt( -trace.Normal );
 					decal.WorldScale = 1.0f;
+					decal.SetParent( trace.GameObject );
 				}
 				CreateTracer( trace.StartPosition, trace.Direction );
 
