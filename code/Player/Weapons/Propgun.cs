@@ -256,9 +256,18 @@ public sealed class Propgun : Item
 
 		GameObject.Dispatch( new WeaponAnimEvent( "b_attack", true ) );
 
-		var gb = GameObject.Clone( "prefabs/PropBase.prefab" );
+		GameObject gb = null;
+
+		if ( CurrentProp.PrefabOverride.IsValid() )
+		{
+			gb = CurrentProp.PrefabOverride.Clone();
+		}
+		else
+			gb = GameObject.Clone( "prefabs/PropBase.prefab" );
 
 		var fortWarsProp = gb.Components.Get<FortwarsProp>();
+
+
 		fortWarsProp.SetupObject( CurrentProp, team.Team );
 
 

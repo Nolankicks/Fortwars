@@ -1,0 +1,124 @@
+{
+  "RootObject": {
+    "__guid": "9d3f06b2-68de-4dd8-935b-fbda5519f446",
+    "Flags": 0,
+    "Name": "sentrygun",
+    "Position": "0,0,24",
+    "Enabled": true,
+    "Components": [
+      {
+        "__type": "FortwarsProp",
+        "__guid": "4f246c39-1299-434e-8de4-449305e265ac",
+        "CanKill": true,
+        "CollisionThreshold": 1300,
+        "Divisor": 20,
+        "Health": 100,
+        "Invincible": false,
+        "Team": "Red"
+      },
+      {
+        "__type": "Sandbox.Rigidbody",
+        "__guid": "b32562c6-ca02-4715-9e77-86077b49a330",
+        "AngularDamping": 0,
+        "Gravity": true,
+        "LinearDamping": 0,
+        "Locking": {},
+        "MassCenterOverride": "0,0,0",
+        "MassOverride": 0,
+        "MotionEnabled": true,
+        "OverrideMassCenter": false,
+        "RigidbodyFlags": 0,
+        "StartAsleep": false
+      },
+      {
+        "__type": "Sandbox.ModelRenderer",
+        "__guid": "3e8c6502-0dd0-4251-ba3b-b9ddde9d44a9",
+        "BodyGroups": 18446744073709551615,
+        "CreateAttachments": false,
+        "Model": "models/blocks/48cube.vmdl",
+        "RenderOptions": {
+          "GameLayer": true,
+          "OverlayLayer": false,
+          "BloomLayer": false,
+          "AfterUILayer": false
+        },
+        "RenderType": "On",
+        "Tint": "1,0.19535,0.19535,1"
+      },
+      {
+        "__type": "Sandbox.ModelCollider",
+        "__guid": "3cf4732b-b31d-482d-b373-3171bbd28fd9",
+        "IsTrigger": false,
+        "Static": false,
+        "SurfaceVelocity": "0,0,0"
+      },
+      {
+        "__type": "Sandbox.BoxCollider",
+        "__guid": "94660724-d3e2-4686-b143-beedb44b78a3",
+        "Center": "0,0,0",
+        "IsTrigger": false,
+        "Scale": "50,50,50",
+        "Static": false,
+        "SurfaceVelocity": "0,0,0"
+      }
+    ],
+    "Children": [
+      {
+        "__guid": "d251641a-e92c-4e87-bad5-4de55d34a8c1",
+        "Flags": 0,
+        "Name": "sentrygun",
+        "Position": "0,-0.00004225304,52.93711",
+        "Scale": "1.884019,0.398097,0.3656633",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.ModelRenderer",
+            "__guid": "86918ebd-52dd-4430-aaa8-3c4ea9e8857e",
+            "BodyGroups": 18446744073709551615,
+            "CreateAttachments": false,
+            "Model": "models/blocks/48cube.vmdl",
+            "RenderOptions": {
+              "GameLayer": true,
+              "OverlayLayer": false,
+              "BloomLayer": false,
+              "AfterUILayer": false
+            },
+            "RenderType": "On",
+            "Tint": "1,1,1,1"
+          }
+        ]
+      }
+    ],
+    "__variables": [],
+    "__properties": {
+      "FixedUpdateFrequency": 50,
+      "MaxFixedUpdates": 5,
+      "NetworkFrequency": 30,
+      "NetworkInterpolation": true,
+      "PhysicsSubSteps": 1,
+      "ThreadedAnimation": true,
+      "TimeScale": 1,
+      "UseFixedUpdate": true,
+      "Metadata": {},
+      "NavMesh": {
+        "Enabled": false,
+        "IncludeStaticBodies": true,
+        "IncludeKeyframedBodies": true,
+        "EditorAutoUpdate": true,
+        "AgentHeight": 64,
+        "AgentRadius": 16,
+        "AgentStepSize": 18,
+        "AgentMaxSlope": 40,
+        "ExcludedBodies": "",
+        "IncludedBodies": ""
+      }
+    }
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "DontBreakAsTemplate": false,
+  "ResourceVersion": 1,
+  "__references": [],
+  "__version": 1
+}

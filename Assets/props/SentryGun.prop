@@ -1,0 +1,13 @@
+{
+  "DisplayName": "Sentry Gun",
+  "Model": "models/blocks/128plane.vmdl",
+  "Cost": 100,
+  "Max": 3,
+  "Icon": "textures/propicons/tempicon.png",
+  "PrefabOverride": {
+    "_type": "gameobject",
+    "prefab": "prefabs/props/sentrygun.prefab"
+  },
+  "__references": [],
+  "__version": 0
+}

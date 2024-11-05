@@ -50,12 +50,17 @@ public sealed class FortwarsProp : Component, Component.ICollisionListener, IGam
 	public void SetupObject( PropResource prop, Team team )
 	{
 		Resource = prop;
-		Health = 100;
-		Renderer.Model = prop.Model;
-		Collider.Model = prop.Model;
-		CanKill = false;
+
+		if ( !prop.PrefabOverride.IsValid() )
+		{
+			Health = 100;
+			Renderer.Model = prop.Model;
+			Collider.Model = prop.Model;
+			CanKill = false;
+			SetStaticBodyType();
+		}
 		Team = team;
-		SetStaticBodyType();
+
 	}
 
 	protected override void OnStart()
@@ -63,10 +68,10 @@ public sealed class FortwarsProp : Component, Component.ICollisionListener, IGam
 		if ( Networking.IsHost )
 			Network.SetOwnerTransfer( OwnerTransfer.Takeover );
 
-		if ( IsProxy && !Invincible && Rigidbody.IsValid() && Rigidbody.PhysicsBody.IsValid() )
-		{
-			Rigidbody.PhysicsBody.BodyType = PhysicsBodyType.Static;
-		}
+		//if ( IsProxy && !Invincible && Rigidbody.IsValid() && Rigidbody.PhysicsBody.IsValid() )
+		//{
+		Rigidbody.PhysicsBody.BodyType = PhysicsBodyType.Static;
+		//}
 	}
 
 	[Broadcast]

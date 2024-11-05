@@ -279,7 +279,10 @@ public class Weapon : Item, IGameEventHandler<OnReloadEvent>
 		}
 		if ( FireSound is not null )
 		{
-			Sound.Play( FireSound, WorldPosition );
+			var snd = Sound.Play( FireSound, WorldPosition );
+			snd.TargetMixer = Sandbox.Audio.Mixer.FindMixerByName( "game" );
+			if ( TracerPoint.IsValid() )
+				snd.SetParent( TracerPoint );
 		}
 	}
 

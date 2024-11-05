@@ -2723,6 +2723,34 @@
           ]
         }
       ]
+    },
+    {
+      "__guid": "04a18214-5cd5-4fc3-948d-7b755e6cfd33",
+      "Flags": 0,
+      "Name": "DSP",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.DspVolume",
+          "__guid": "72cca08b-bdda-42a7-8571-9ad4131ee539",
+          "Dsp": "outside.small",
+          "Priority": 0,
+          "SceneVolume": {
+            "Type": "Box",
+            "Sphere": {
+              "Radius": 10000
+            },
+            "Box": {
+              "Mins": "-2500,-2500,-2500",
+              "Maxs": "2500,2500,2500"
+            }
+          },
+          "TargetMixer": {
+            "Name": "game",
+            "Id": "00000000-0000-0000-0000-000000000000"
+          }
+        }
+      ]
     }
   ],
   "SceneProperties": {

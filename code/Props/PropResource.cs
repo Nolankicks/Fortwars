@@ -10,4 +10,6 @@ public class PropResource : GameResource
 	public int Max { get; set; }
 
 	[ImageAssetPath] public string Icon { get; set; }
+
+	public GameObject PrefabOverride { get; set; }
 }
