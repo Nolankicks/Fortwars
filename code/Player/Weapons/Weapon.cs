@@ -207,6 +207,11 @@ public class Weapon : Item, IGameEventHandler<OnReloadEvent>
 			SpawnParticleEffect( Cloud.ParticleSystem( "bolt.impactflesh" ), tr.EndPosition );
 
 			Sound.Play( "hitmarker" );
+
+			var hud = HUD.Instance;
+
+			if ( hud.IsValid() )
+				hud.FlashHitMarker();
 		}
 
 		var damage = new DamageInfo( Damage, GameObject, GameObject, tr.Hitbox );

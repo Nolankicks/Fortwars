@@ -147,7 +147,8 @@
           {
             "__type": "HUD",
             "__guid": "9f2de297-1b36-475f-a258-f8adb383e300",
-            "Crosshair": "textures/crosshairs/crosshair010.png"
+            "Crosshair": "textures/crosshairs/crosshair010.png",
+            "HitMarker": "textures/ui/hitmarker.png"
           },
           {
             "__type": "PauseMenu",

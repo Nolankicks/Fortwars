@@ -31,10 +31,14 @@
     public static HUD Instance { get; set; }
 
     [Property, ImageAssetPath] string Crosshair { get; set; }
+	[Property, ImageAssetPath] public string HitMarker { get; set; }
+	[Property] private string lastCrosshair { get; set; }
 
 	protected override void OnStart()
 	{
 		Instance = this;
+
+		lastCrosshair = Crosshair;
 	}
 
 	void IGameEventHandler<PlayerDamage>.OnGameEvent( PlayerDamage eventArgs )
@@ -43,6 +47,16 @@
 		{
 			HealthPanel.NumberPanel?.FlashClass( "hit", 0.5f );
 		}
+	}
+
+	public void FlashHitMarker()
+	{
+		Crosshair = HitMarker;
+
+		Invoke( 0.2f, () =>
+		{
+			Crosshair = lastCrosshair;
+		} );
 	}
 
 	public void FlashPropsFailed()
@@ -82,6 +96,6 @@
 	/// </summary>
 	protected override int BuildHash()
 	{
-		return System.HashCode.Combine( ShowCrosshair );
+		return System.HashCode.Combine( ShowCrosshair, Crosshair );
 	}
 }
