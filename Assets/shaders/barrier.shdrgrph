@@ -76,7 +76,7 @@
       "Min": "0,0",
       "Max": "1,1",
       "Value": "0.15,0.15",
-      "Name": "",
+      "Name": "Scroll Speed",
       "IsAttribute": false,
       "UI": {},
       "Identifier": "5",

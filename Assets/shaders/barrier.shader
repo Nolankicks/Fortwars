@@ -77,6 +77,7 @@ PS
 	CreateInputTexture2D( Texture_ps_0, Srgb, 8, "None", "_color", ",0/,0/0", Default4( 1.00, 1.00, 1.00, 1.00 ) );
 	Texture2D g_tTexture_ps_0 < Channel( RGBA, Box( Texture_ps_0 ), Srgb ); OutputFormat( DXT5 ); SrgbRead( True ); >;
 	float4 g_vTint < UiType( Color ); UiGroup( ",0/,0/0" ); Default4( 1.00, 1.00, 1.00, 1.00 ); >;
+	float2 g_vScrollSpeed < UiGroup( ",0/,0/0" ); Default2( 0.15,0.15 ); Range2( 0,0, 1,1 ); >;
 	float4 g_vBackgroundtint < UiType( Color ); UiGroup( ",0/,0/0" ); Default4( 0.30, 0.30, 0.30, 1.00 ); >;
 	
 	float4 MainPs( PixelInput i ) : SV_Target0
@@ -93,7 +94,7 @@ PS
 		m.Transmission = 0;
 		
 		float4 l_0 = g_vTint;
-		float2 l_1 = float2( 0.15, 0.15 );
+		float2 l_1 = g_vScrollSpeed;
 		float2 l_2 = float2( g_flTime, g_flTime ) * l_1;
 		float2 l_3 = i.vTextureCoords.xy * float2( 1, 1 );
 		float2 l_4 = l_2 + l_3;
