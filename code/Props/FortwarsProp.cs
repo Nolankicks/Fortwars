@@ -47,9 +47,15 @@ public sealed class FortwarsProp : Component, Component.ICollisionListener, IGam
 		}
 	}
 
-	public void SetupObject( PropResource prop )
+	public void SetupObject( PropResource prop, Team team )
 	{
 		Resource = prop;
+		Health = 100;
+		Renderer.Model = prop.Model;
+		Collider.Model = prop.Model;
+		CanKill = false;
+		Team = team;
+		SetStaticBodyType();
 	}
 
 	protected override void OnStart()
@@ -95,6 +101,12 @@ public sealed class FortwarsProp : Component, Component.ICollisionListener, IGam
 		}
 	}
 
+
+	[Broadcast]
+	public void SetStaticBodyType()
+	{
+		Rigidbody.PhysicsBody.BodyType = PhysicsBodyType.Static;
+	}
 	void IGameEventHandler<OnGameEnd>.OnGameEvent( OnGameEnd eventArgs )
 	{
 		DestroyProp();

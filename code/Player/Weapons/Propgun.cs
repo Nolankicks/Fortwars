@@ -256,52 +256,25 @@ public sealed class Propgun : Item
 
 		GameObject.Dispatch( new WeaponAnimEvent( "b_attack", true ) );
 
-		var gb = new GameObject();
+		var gb = GameObject.Clone( "prefabs/PropBase.prefab" );
 
-		var renderer = gb.Components.Create<Prop>();
-		var fortWarsProp = gb.Components.Create<FortwarsProp>();
+		var fortWarsProp = gb.Components.Get<FortwarsProp>();
+		fortWarsProp.SetupObject( CurrentProp, team.Team );
 
-		renderer.Model = CurrentProp.Model;
-
-		if ( renderer.Health == 0 )
-			renderer.Health = 100;
-		fortWarsProp.Health = renderer.Health;
-
-
-		// Break the prop into individuals so we can check for ModelPhysics later.
-		renderer.Break();
 
 		gb.WorldPosition = SnapToGrid ? ObjectPos.SnapToGrid( 16, true, true, !(Hit && Normal == Vector3.Up) ) : ObjectPos;
 		gb.WorldRotation = PropRotation.SnapToGrid( 15 );
 
-		if ( team.IsValid() )
-			fortWarsProp.Team = team.Team;
-
-		fortWarsProp.CanKill = false;
-		fortWarsProp.Resource = CurrentProp;
-
-		if ( gb.Components.TryGet<Rigidbody>( out var rb, FindMode.EverythingInSelfAndParent ) )
-		{
-			fortWarsProp.Rigidbody = rb;
-
-			rb.PhysicsBody.BodyType = PhysicsBodyType.Static;
-		}
-
 		gb.Network.SetOwnerTransfer( OwnerTransfer.Takeover );
 		gb.NetworkSpawn();
 
-		// We need to do this for props with ModelPhysics since they start with MotionEnabled on, 
-		// which breaks the positioning for the local client.
-		if ( gb.Components.TryGet<ModelPhysics>( out var mdlPhys, FindMode.EnabledInSelf ) )
-		{
-			mdlPhys.MotionEnabled = false;
-			Invoke( 0.1f, () => mdlPhys.MotionEnabled = true );
-		}
-
-		Log.Info( CurrentProp );
-
-		if ( rb.IsValid() )
-			SetStaticBodyType( rb );
+		//// We need to do this for props with ModelPhysics since they start with MotionEnabled on, 
+		//// which breaks the positioning for the local client.
+		//if ( gb.Components.TryGet<ModelPhysics>( out var mdlPhys, FindMode.EnabledInSelf ) )
+		//{
+		//	mdlPhys.MotionEnabled = false;
+		//	Invoke( 0.1f, () => mdlPhys.MotionEnabled = true );
+		//}
 
 		//HoldingObject = false;
 	}
