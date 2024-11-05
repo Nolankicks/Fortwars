@@ -1,5 +1,5 @@
 {
-  "Name": "Prop Gun",
+  "Name": "Build Tool",
   "WeaponPrefab": {
     "_type": "gameobject",
     "prefab": "prefabs/weapons/prop_gun.prefab"
