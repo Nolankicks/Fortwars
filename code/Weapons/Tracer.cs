@@ -5,7 +5,7 @@ public sealed class Tracer : Component
 	protected override void OnStart()
 	{
 		base.OnStart();
-		Invoke( 1.0f, DestroyGameObject );
+		Invoke( 0.05f, DestroyGameObject );
 	}
 
 	protected override void OnUpdate()
