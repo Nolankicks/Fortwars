@@ -51,7 +51,7 @@
 					<div>@item.Name</div>
 				</div>
 
-				@if (itemComponent.IsValid())
+				@if (itemComponent.IsValid() && itemComponent.UsesAmmo)
 				{
 					<AmmoPanel Item=@itemComponent />
 				}
