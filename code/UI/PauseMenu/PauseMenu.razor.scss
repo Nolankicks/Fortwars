@@ -13,6 +13,7 @@ PauseMenu
 	font-weight: bold;
     flex-direction: column;
     pointer-events: all;
+    font-family: 'IBM Plex Mono';
 
     transition: opacity 0.2s;
 
@@ -24,7 +25,6 @@ PauseMenu
         align-items: center;
         justify-content: center;
 
-        font-family: Poppins;
         color: white;
         gap: 16px;
         font-size: 72px;
@@ -38,7 +38,6 @@ PauseMenu
         justify-content: center;
 
         color: white;
-        font-family: Poppins;
 
         flex-direction: column;
 
