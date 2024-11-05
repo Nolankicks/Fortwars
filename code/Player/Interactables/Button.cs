@@ -3,7 +3,7 @@ using Sandbox;
 
 public sealed class Button : Component, Component.IPressable
 {
-	public delegate void PressAction( GameObject Presser );
+	public delegate void PressAction( GameObject Presser, FWPlayerController PresserPlayer, HealthComponent PresserHealth );
 
 	[Property] public PressAction OnPress { get; set; }
 	[Property] public PressAction OnPressBroadcast { get; set; }
@@ -18,7 +18,13 @@ public sealed class Button : Component, Component.IPressable
 
 	bool IPressable.Press( IPressable.Event e )
 	{
-		OnPress?.Invoke( e.Source.GameObject );
+		var player = e.Source.GameObject.Components.Get<FWPlayerController>();
+		var health = e.Source.GameObject.Components.Get<HealthComponent>();
+
+		if ( !player.IsValid() || !health.IsValid() )
+			return false;
+
+		OnPress?.Invoke( e.Source.GameObject, player, health );
 		OnPressRPC( e.Source.GameObject );
 
 		return true;
@@ -26,19 +32,37 @@ public sealed class Button : Component, Component.IPressable
 
 	void IPressable.Release( IPressable.Event e )
 	{
-		OnRelease?.Invoke( e.Source?.GameObject );
+		var player = e.Source.GameObject.Components.Get<FWPlayerController>();
+		var health = e.Source.GameObject.Components.Get<HealthComponent>();
+
+		if ( !player.IsValid() || !health.IsValid() )
+			return;
+
+		OnRelease?.Invoke( e.Source?.GameObject, player, health );
 		OnReleaseRPC( e.Source?.GameObject );
 	}
 
 	[Broadcast]
 	public void OnPressRPC( GameObject presser )
 	{
-		OnPressBroadcast?.Invoke( presser );
+		var player = presser.Components.Get<FWPlayerController>();
+		var health = presser.Components.Get<HealthComponent>();
+
+		if ( !player.IsValid() || !health.IsValid() )
+			return;
+
+		OnPressBroadcast?.Invoke( presser, player, health );
 	}
 
 	[Broadcast]
 	public void OnReleaseRPC( GameObject presser )
 	{
-		OnReleaseBroadcast?.Invoke( presser );
+		var player = presser.Components.Get<FWPlayerController>();
+		var health = presser.Components.Get<HealthComponent>();
+
+		if ( !player.IsValid() || !health.IsValid() )
+			return;
+
+		OnReleaseBroadcast?.Invoke( presser, player, health );
 	}
 }
