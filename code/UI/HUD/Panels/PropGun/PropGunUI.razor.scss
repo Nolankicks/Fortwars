@@ -6,6 +6,7 @@ PropGunUI {
     right: 40%;
     left: 40%;
     height: 15%;
+    width: 25%;
 
 
     .holder {
@@ -17,6 +18,7 @@ PropGunUI {
         background-color: $primary;
         font-size: 28px;
         border-radius: 4px 4px 0px 0px;
+        padding: 9px;
     }
 
     .text {
