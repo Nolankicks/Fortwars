@@ -290,7 +290,10 @@ public class Weapon : Item, IGameEventHandler<OnReloadEvent>
 			var snd = Sound.Play( FireSound, WorldPosition );
 			snd.TargetMixer = Sandbox.Audio.Mixer.FindMixerByName( "game" );
 			if ( TracerPoint.IsValid() )
+			{
+				snd.FollowParent = true;
 				snd.SetParent( TracerPoint );
+			}
 		}
 	}
 
@@ -378,28 +381,33 @@ public class Weapon : Item, IGameEventHandler<OnReloadEvent>
 		int ammoToFull = MaxAmmo - Ammo;
 		for ( int i = 0; i < ammoToFull; i++ )
 		{
+
 			if ( Ammo == 0 )
 			{
 				GameObject.Dispatch( new WeaponAnimEvent( "b_reloading_first_shell", true ) );
-				Ammo++;
-				await Task.DelaySeconds( 3f );
+
+				await Task.DelaySeconds( 2.75f );
+				if ( !GameObject.IsValid() )
+				{
+					IsReloading = false;
+					return;
+				}
+				Sound.Play( "shotgun.reload" );
 			}
 			else
 			{
 				GameObject.Dispatch( new WeaponAnimEvent( "b_reloading_shell", true ) );
-				Ammo++;
+				Sound.Play( "shotgun.reload" );
 				await Task.DelaySeconds( 0.5f );
 			}
-
-
-
-
 
 			if ( !GameObject.IsValid() )
 			{
 				IsReloading = false;
 				return;
 			}
+
+			Ammo++;
 
 		}
 
