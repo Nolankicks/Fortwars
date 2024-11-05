@@ -1,5 +1,6 @@
 using Sandbox.Citizen;
 using Sandbox.Events;
+using System.Threading.Tasks;
 
 public record WeaponAnimEvent( string anim, bool value ) : IGameEvent;
 public record OnReloadEvent() : IGameEvent;
@@ -16,6 +17,7 @@ public class Item : Component, IGameEventHandler<OnItemEquipped>
 	[Property, Feature( "Ammo" )] public int MaxAmmo { get; set; } = 30;
 
 	[Property, Feature( "Ammo" )] public int AmmoPerShot { get; set; } = 1;
+	[Property, Feature( "Ammo" )] public bool UseShotgunReload { get; set; } = false;
 
 	[Property] public Viewmodel VModel { get; set; }
 
@@ -241,6 +243,12 @@ public class Weapon : Item, IGameEventHandler<OnReloadEvent>
 		if ( IsReloading )
 			return;
 
+		if ( UseShotgunReload )
+		{
+			_ = ShotgunReload();
+			return;
+		}
+
 		IsReloading = true;
 
 		reloadTime = ReloadDelay;
@@ -360,6 +368,43 @@ public class Weapon : Item, IGameEventHandler<OnReloadEvent>
 
 		var rb = casing.Components.Get<Rigidbody>();
 		rb.ApplyForce( EjectionPoint.WorldRotation.Up * 10.0f + EjectionPoint.WorldRotation.Forward * 500.0f + local.shrimpleCharacterController.Velocity );
+	}
+
+	public async Task ShotgunReload()
+	{
+		IsReloading = true;
+		GameObject.Dispatch( new WeaponAnimEvent( "b_reloading", true ) );
+
+		int ammoToFull = MaxAmmo - Ammo;
+		for ( int i = 0; i < ammoToFull; i++ )
+		{
+			if ( Ammo == 0 )
+			{
+				GameObject.Dispatch( new WeaponAnimEvent( "b_reloading_first_shell", true ) );
+				Ammo++;
+				await Task.DelaySeconds( 3f );
+			}
+			else
+			{
+				GameObject.Dispatch( new WeaponAnimEvent( "b_reloading_shell", true ) );
+				Ammo++;
+				await Task.DelaySeconds( 0.5f );
+			}
+
+
+
+
+
+			if ( !GameObject.IsValid() )
+			{
+				IsReloading = false;
+				return;
+			}
+
+		}
+
+		GameObject.Dispatch( new WeaponAnimEvent( "b_reloading", false ) );
+		IsReloading = false;
 	}
 }
 

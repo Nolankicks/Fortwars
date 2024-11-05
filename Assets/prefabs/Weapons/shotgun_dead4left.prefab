@@ -34,6 +34,7 @@
         },
         "TraceTimes": 5,
         "UsesAmmo": true,
+        "UseShotgunReload": true,
         "UsesRecoil": true,
         "VModel": {
           "_type": "component",
@@ -53,6 +54,7 @@
           "go": "05010af5-08de-47a8-baaf-c91149b77d70",
           "component_type": "SkinnedModelRenderer"
         },
+        "CreateAttachments": false,
         "CreateBoneObjects": false,
         "Model": "models/first_person/first_person_arms.vmdl",
         "Morphs": {},
@@ -95,6 +97,7 @@
             "__type": "Sandbox.SkinnedModelRenderer",
             "__guid": "a7cf544d-a931-468c-942a-5a8e51373720",
             "BodyGroups": 75,
+            "CreateAttachments": false,
             "CreateBoneObjects": true,
             "Model": "models/weapons/sbox_shotgun_spaghellim4/v_spaghellim4.vmdl",
             "Morphs": {},
