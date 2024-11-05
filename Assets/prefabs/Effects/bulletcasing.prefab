@@ -17,13 +17,14 @@
         "MassOverride": 0,
         "MotionEnabled": true,
         "OverrideMassCenter": false,
-        "RigidbodyFlags": 0,
+        "RigidbodyFlags": "DisableCollisionSounds",
         "StartAsleep": false
       },
       {
         "__type": "Sandbox.ModelRenderer",
         "__guid": "dab90909-8c3f-4d5e-8486-490b0235c8b0",
         "BodyGroups": 1,
+        "CreateAttachments": false,
         "Model": "models/weapons/sbox_ammo/9mm_bullet/9mm_bullet.vmdl",
         "RenderOptions": {
           "GameLayer": true,
@@ -46,7 +47,7 @@
         "IsTrigger": false,
         "Radius": 0.5,
         "Static": false,
-        "Surface": "surfaces/metal.weapon.surface",
+        "Surface": "surfaces/bullet.surface",
         "SurfaceVelocity": "0,0,0"
       }
     ],

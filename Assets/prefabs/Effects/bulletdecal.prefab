@@ -18,7 +18,7 @@
           "BloomLayer": false,
           "AfterUILayer": false
         },
-        "Size": "8,8,20",
+        "Size": "8,8,8",
         "TintColor": "1,1,1,1",
         "TriPlanar": false
       },
@@ -33,7 +33,7 @@
         "__guid": "38c54ace-7897-4c5f-b26f-5b843a4f315b",
         "Flags": 2048,
         "Name": "Plane",
-        "Position": "10.09315,0,-0.000001804797",
+        "Position": "0.6976891,0,-0.000001804797",
         "Rotation": "0,-0.7071067,0,0.7071068",
         "Enabled": true,
         "Components": [
@@ -41,6 +41,7 @@
             "__type": "Sandbox.ModelRenderer",
             "__guid": "734795bb-eb8c-4095-aefa-dd89443a1415",
             "BodyGroups": 18446744073709551615,
+            "CreateAttachments": false,
             "Model": "models/dev/plane.vmdl",
             "RenderOptions": {
               "GameLayer": true,

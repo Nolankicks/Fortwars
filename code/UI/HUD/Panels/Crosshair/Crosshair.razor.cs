@@ -3,29 +3,53 @@ using System;
 
 public partial class Crosshair : Panel
 {
-	public bool ShowCrosshair { get; set; } = true;
+	public class Properties
+	{
+		public bool IsDynamic { get; set; } = true;
+		public bool ShowTop { get; set; } = true;
+		public int Length { get; set; } = 16;
+		public int Gap { get; set; } = 8;
+		public int BorderThickness { get; set; } = 1;
 
+		public Color InnerColor { get; set; } = Color.White;
+		public Color BorderColor { get; set; } = Color.Black;
+
+	}
+
+	public bool ShowCrosshair { get; set; } = true;
 	private Material CrosshairMat { get; set; }
 
 	private RenderAttributes attributes { get; set; }
 
-	private float stringLength { get; set; } = 16.0f;
-	private float stringGap { get; set; } = 8.0f;
-
 	private float borderWidth { get; set; } = 1.0f;
 	private float borderRadius { get; set; } = 2.0f;
 
-	public Color ColorTint { get; set; } = Color.White;
+	public Color ColorTint { get; set; } = Color.Red;
 
 	private FWPlayerController local { get; set; }
 
-	protected override void OnAfterTreeRender( bool firstTime )
+	public static Crosshair Instance { get; set; }
+	public Properties Config { get; set; }
+
+	public const string FilePath = "crosshair.json";
+
+	public Crosshair()
 	{
-		base.OnAfterTreeRender( firstTime );
 		attributes = new RenderAttributes();
 		attributes.Set( "Texture", Texture.White );
 
+		Instance = this;
+		Config = GetActiveConfig();
+	}
+
+	protected override void OnAfterTreeRender( bool firstTime )
+	{
 		local = FWPlayerController.Local;
+	}
+
+	public static Properties GetActiveConfig()
+	{
+		return FileSystem.Data.ReadJson<Properties>( FilePath ) ?? Instance?.Config ?? new Properties();
 	}
 
 	protected override int BuildHash()
@@ -42,41 +66,48 @@ public partial class Crosshair : Panel
 		if ( !local.IsValid() )
 			return;
 
-		float playerSpeed = local.shrimpleCharacterController.Velocity.Length * 0.05f;
-
-		if ( !local.shrimpleCharacterController.IsOnGround )
-			playerSpeed += 5.0f;
-
-		if ( local.IsCrouching )
-			playerSpeed -= 2.0f;
-
-
 		var centerRect = Box.RectOuter;
 		DrawSegment( centerRect );
 
 		var rightRect = Box.RectOuter;
-		rightRect.Left += centerRect.Width + stringGap + playerSpeed;
-		rightRect.Width = stringLength;
+		rightRect.Left += centerRect.Width + GetGap();
+		rightRect.Width = Config.Length;
 		DrawSegment( rightRect );
 
 		var leftRect = Box.RectOuter;
-		leftRect.Left -= stringLength + stringGap + playerSpeed;
-		leftRect.Width = stringLength;
+		leftRect.Left -= Config.Length + GetGap();
+		leftRect.Width = Config.Length;
 		DrawSegment( leftRect );
 
-		var topRect = Box.RectOuter;
-		topRect.Top -= stringLength + stringGap + playerSpeed;
-		topRect.Height = stringLength;
-		DrawSegment( topRect );
+		if ( Config.ShowTop )
+		{
+			var topRect = Box.RectOuter;
+			topRect.Top -= Config.Length + GetGap();
+			topRect.Height = Config.Length;
+			DrawSegment( topRect );
+		}
 
 		var bottomRect = Box.RectOuter;
-		bottomRect.Top += centerRect.Height + stringGap + playerSpeed;
-		bottomRect.Height = stringLength;
+		bottomRect.Top += centerRect.Height + GetGap();
+		bottomRect.Height = Config.Length;
 		DrawSegment( bottomRect );
+	}
+
+	int GetGap()
+	{
+		int playerSpeed = (int)(local.shrimpleCharacterController.Velocity.Length * 0.05f);
+
+		if ( !local.shrimpleCharacterController.IsOnGround )
+			playerSpeed += 5;
+
+		if ( local.IsCrouching )
+			playerSpeed -= 2;
+
+		return Config.Gap + playerSpeed;
 	}
 
 	void DrawSegment( Rect rect )
 	{
-		Graphics.DrawRoundedRectangle( rect, ColorTint, new Vector4( borderRadius ), new Vector4( borderWidth ), Color.Black );
+		Graphics.DrawRoundedRectangle( rect, Config.InnerColor, new Vector4( borderRadius ), new Vector4( borderWidth ), Config.BorderColor );
 	}
 }
