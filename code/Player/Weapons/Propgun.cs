@@ -17,6 +17,7 @@ public sealed class Propgun : Item
 	[Property] public bool UsingMouseInput { get; set; } = false;
 	[Property] public SoundEvent ShootSound { get; set; }
 	[Property] public PropResource CurrentProp { get; set; }
+	[Property] public SkinnedModelRenderer WeaponRenderer { get; set; }
 
 	public bool HoldingObject { get; set; } = false;
 
@@ -371,9 +372,20 @@ public sealed class Propgun : Item
 	void SwitchModes()
 	{
 		if ( Mode == Modes.P_PLACE )
+		{
 			Mode = Modes.P_MOVE;
+
+			//Can't use viewmodel in this case since our weapon is not the viewmodels renderer
+			if ( WeaponRenderer.IsValid() )
+				WeaponRenderer.Tint = Color.Cyan;
+		}
 		else
+		{
 			Mode = Modes.P_PLACE;
+
+			if ( WeaponRenderer.IsValid() )
+				WeaponRenderer.Tint = Color.White;
+		}
 	}
 
 	public string GetModeString()
