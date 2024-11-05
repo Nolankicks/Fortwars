@@ -1,5 +1,6 @@
 {
   "DisplayName": "Sentry Gun",
+  "Hidden": true,
   "Model": "models/blocks/128plane.vmdl",
   "Cost": 100,
   "Max": 3,

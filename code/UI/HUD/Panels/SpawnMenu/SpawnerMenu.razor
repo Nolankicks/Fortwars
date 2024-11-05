@@ -68,7 +68,7 @@
         if ( !firstTime )
             return;
 
-        AllProps = ResourceLibrary.GetAll<PropResource>().ToList();
+        AllProps = ResourceLibrary.GetAll<PropResource>().Where(x => !x.Hidden).ToList();
     }
 
     public void SetProp(PropResource prop)

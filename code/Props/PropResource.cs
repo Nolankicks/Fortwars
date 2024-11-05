@@ -3,6 +3,8 @@ public class PropResource : GameResource
 {
 	public string DisplayName { get; set; }
 
+	public bool Hidden { get; set; } = false;
+
 	public Model Model { get; set; }
 
 	public int Cost { get; set; }
