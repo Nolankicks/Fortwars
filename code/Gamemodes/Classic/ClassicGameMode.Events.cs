@@ -1,6 +1,6 @@
 using Sandbox.Events;
 
-public partial class GameSystem
+public partial class ClassicGameMode
 {
 	[After<OnGameWaiting>, After<OnPlayerJoin>]
 	void IGameEventHandler<OnBuildMode>.OnGameEvent( OnBuildMode eventArgs )
@@ -20,19 +20,19 @@ public partial class GameSystem
 
 		Log.Info( "Build Mode" );
 
-		BroadcastChangeState( GameState.BuildMode );
+		BroadcastChangeState( GameSystem.GameState.BuildMode );
 
 		var text = Game.Random.FromList( BuildModePopups );
 
 		PopupHolder.BroadcastPopup( text, 5 );
 
-		StateSwitch = 0;
+		GameSystem.StateSwitch = 0;
 	}
 
 	[After<OnBuildMode>]
 	void IGameEventHandler<OnFightMode>.OnGameEvent( OnFightMode eventArgs )
 	{
-		StateSwitch = 0;
+		GameSystem.StateSwitch = 0;
 		Log.Info( "Fight Mode" );
 
 		Scene.GetAll<HealthComponent>()?.ToList()?.ForEach( x => x.ResetHealth() );
@@ -56,13 +56,13 @@ public partial class GameSystem
 		PopupHolder.BroadcastPopup( text, 5 );
 
 		//Event callback
-		BroadcastChangeState( GameState.FightMode );
+		BroadcastChangeState( GameSystem.GameState.FightMode );
 	}
 
 	[After<OnFightMode>, After<OnGameOvertimeFight>]
 	void IGameEventHandler<OnGameEnd>.OnGameEvent( OnGameEnd eventArgs )
 	{
-		StateSwitch = 0;
+		GameSystem.StateSwitch = 0;
 		Log.Info( "Game Ended" );
 
 		var winningTeam = GetWinningTeam();
@@ -87,13 +87,13 @@ public partial class GameSystem
 
 		DeleteClassSelect();
 
-		BroadcastChangeState( GameState.Ended );
+		BroadcastChangeState( GameSystem.GameState.Ended );
 
-		RedTimeHeld = InitRedTimeHeld;
-		BlueTimeHeld = InitBlueTimeHeld;
-		YellowTimeHeld = InitYellowTimeHeld;
-		GreenTimeHeld = InitGreenTimeHeld;
-		Overtimes = 0;
+		GameSystem.RedTimeHeld = GameSystem.InitRedTimeHeld;
+		GameSystem.BlueTimeHeld = GameSystem.InitBlueTimeHeld;
+		GameSystem.YellowTimeHeld = GameSystem.InitYellowTimeHeld;
+		GameSystem.GreenTimeHeld = GameSystem.InitGreenTimeHeld;
+		GameSystem.Overtimes = 0;
 	}
 
 	[Broadcast]
@@ -119,7 +119,7 @@ public partial class GameSystem
 	[After<OnGameEnd>]
 	void IGameEventHandler<OnGameWaiting>.OnGameEvent( OnGameWaiting eventArgs )
 	{
-		StateSwitch = 0;
+		GameSystem.StateSwitch = 0;
 		ResetPlayers();
 		Log.Info( "Game Waiting" );
 
@@ -127,13 +127,13 @@ public partial class GameSystem
 
 		Scene.GetAll<TeamComponent>()?.ToList()?.ForEach( x => x.SetTeam( Team.None ) );
 
-		BroadcastChangeState( GameState.Waiting );
+		BroadcastChangeState( GameSystem.GameState.Waiting );
 	}
 
 	[After<OnFightMode>, After<OnGameOvertimeFight>]
 	void IGameEventHandler<OnGameOvertimeBuild>.OnGameEvent( OnGameOvertimeBuild eventArgs )
 	{
-		StateSwitch = 0;
+		GameSystem.StateSwitch = 0;
 		Log.Info( "Overtime" );
 
 		Scene.GetAll<HealthComponent>()?.ToList()?.ForEach( x => x.ResetHealth() );
@@ -144,7 +144,7 @@ public partial class GameSystem
 			x.AddItem( ResourceLibrary.GetAll<WeaponData>().FirstOrDefault( x => x.ResourceName == "propgun" ) );
 		} );
 
-		BroadcastChangeState( GameState.OvertimeBuild );
+		BroadcastChangeState( GameSystem.GameState.OvertimeBuild );
 
 		PopupHolder.BroadcastPopup( "Get ready for overtime, build now!", 5 );
 	}
@@ -152,7 +152,7 @@ public partial class GameSystem
 	[After<OnGameOvertimeBuild>]
 	void IGameEventHandler<OnGameOvertimeFight>.OnGameEvent( OnGameOvertimeFight eventArgs )
 	{
-		StateSwitch = 0;
+		GameSystem.StateSwitch = 0;
 		Log.Info( "Overtime Fight" );
 
 		Scene.GetAll<HealthComponent>()?.ToList()?.ForEach( x => x.ResetHealth() );
@@ -166,7 +166,7 @@ public partial class GameSystem
 				x.AddItem( x.SelectedClass.WeaponData, true );
 		} );
 
-		BroadcastChangeState( GameState.OvertimeFight );
+		BroadcastChangeState( GameSystem.GameState.OvertimeFight );
 
 		PopupHolder.BroadcastPopup( "Get ready for overtime, fight now!", 5 );
 	}

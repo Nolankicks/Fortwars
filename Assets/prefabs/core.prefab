@@ -107,6 +107,7 @@
             "BlueTimeHeld": 60,
             "BuildTime": 120,
             "ClassicModels": true,
+            "CurrentGameMode": "gamemodes/classic.mode",
             "FightTime": 240,
             "FourTeams": false,
             "GreenTimeHeld": 60,

@@ -16,9 +16,7 @@ public record OnTeamWin( Team team ) : IGameEvent;
 
 public record OnRoundSwitch( GameSystem.GameState state ) : IGameEvent;
 
-public sealed partial class GameSystem : Component, Component.INetworkListener,
-IGameEventHandler<OnBuildMode>, IGameEventHandler<OnGameEnd>, IGameEventHandler<OnGameWaiting>, IGameEventHandler<OnFightMode>,
-IGameEventHandler<OnGameOvertimeBuild>, IGameEventHandler<OnGameOvertimeFight>
+public sealed partial class GameSystem : Component
 {
 	[Property, Category( "Refrences" )] public GameObject PlayerPrefab { get; set; }
 	[Property, Category( "Game Settings" )] public bool LoadLobbySettings { get; set; } = true;
@@ -80,6 +78,24 @@ IGameEventHandler<OnGameOvertimeBuild>, IGameEventHandler<OnGameOvertimeFight>
 
 	public bool IsPlaying => State == GameState.BuildMode || State == GameState.FightMode || State == GameState.OvertimeBuild || State == GameState.OvertimeFight;
 
+	[Property] public GameModeResource CurrentGameMode { get; set; }
+
+	[Button( "Save Lobby Settings" ), Feature( "Lobby Settings" )]
+	public void SaveLobbySettings()
+	{
+		LobbySettings.Save( LobbySettings );
+
+		Log.Info( $"Saved Lobby Settings as {FileSystem.Data?.ReadAllText( "lobbysettings.json" )}" );
+
+		Log.Info( $"Loaded Lobby Settings as {JsonSerializer.Serialize( LobbySettings.Load() )}" );
+	}
+
+	[Authority]
+	public void AddKill()
+	{
+		TotalKills++;
+	}
+
 	protected override async Task OnLoad()
 	{
 		if ( Networking.IsHost && !Networking.IsActive && StartServer && !Scene.IsEditor )
@@ -88,161 +104,6 @@ IGameEventHandler<OnGameOvertimeBuild>, IGameEventHandler<OnGameOvertimeFight>
 			await Task.DelaySeconds( 0.1f );
 			Networking.CreateLobby();
 		}
-	}
-
-	protected override void OnStart()
-	{
-		Log.Info( "Game System Started" );
-
-		Instance = this;
-
-		if ( Networking.IsHost )
-		{
-			InitBlueTimeHeld = BlueTimeHeld;
-			InitRedTimeHeld = RedTimeHeld;
-			InitYellowTimeHeld = YellowTimeHeld;
-			InitGreenTimeHeld = GreenTimeHeld;
-
-			var mapData = Scene.GetAll<MapData>()?.FirstOrDefault();
-
-			//Load our map data from the scene
-			if ( mapData.IsValid() )
-			{
-				FourTeams = mapData.FourTeams;
-			}
-
-			//Load our lobby settings from the file
-			var lobbySettings = LobbySettings.Load();
-
-			if ( LoadLobbySettings && lobbySettings is not null )
-			{
-				ClassicModels = lobbySettings?.ClassicModels ?? true;
-				MaxProps = lobbySettings?.MaxProps ?? 50;
-			}
-
-			//Create our prop helpers
-			foreach ( var prop in Scene.GetAll<Prop>() )
-			{
-				if ( prop.Components.TryGet<FortwarsProp>( out var p ) )
-					return;
-
-				prop.Network.SetOwnerTransfer( OwnerTransfer.Takeover );
-
-				if ( prop.Components.TryGet<Rigidbody>( out var rb ) )
-				{
-					var propHelper = prop.Components.Create<FortwarsProp>();
-					propHelper.Health = prop.Health;
-					propHelper.Rigidbody = rb;
-
-					if ( propHelper.Health == 0 )
-						propHelper.Invincible = true;
-
-					prop.Break();
-				}
-			}
-		}
-	}
-
-	protected override void OnUpdate()
-	{
-		if ( !Networking.IsHost )
-			return;
-
-		GameLoop();
-
-		//If we are the dedicated server and all players left, end the game
-		if ( Connection.All.Where( x => x != Connection.Local ).Count() == 0 && IsPlaying && Application.IsHeadless )
-		{
-			State = GameState.Ended;
-			Scene.Dispatch( new OnGameEnd() );
-
-			Log.Info( "All players left, ending game." );
-		}
-	}
-
-	/// <summary> The main game loop </summary>
-	public void GameLoop()
-	{
-		switch ( State )
-		{
-			case GameState.Waiting:
-				//Start the game if we have enough players
-				if ( Scene.GetAll<FWPlayerController>().Count() >= PlayerToStart && StateSwitch > 5 )
-				{
-					Scene.Dispatch( new OnBuildMode() );
-					State = GameState.BuildMode;
-				}
-				break;
-
-			case GameState.BuildMode:
-				//After build time is over, switch to fight mode
-				if ( StateSwitch > BuildTime )
-				{
-					Scene.Dispatch( new OnFightMode() );
-					State = GameState.FightMode;
-				}
-				break;
-
-			case GameState.FightMode:
-				//Constantly check for the winning team
-				CheckForWinningTeam();
-
-				//If we don't have one by the end, start overtime
-				if ( GetWinningTeam() == Team.None && StateSwitch > FightTime )
-				{
-					Scene.Dispatch( new OnGameOvertimeBuild() );
-					State = GameState.OvertimeBuild;
-				}
-				break;
-			//Same as above but for overtime
-			case GameState.OvertimeBuild:
-				if ( StateSwitch > BuildTime )
-				{
-					Scene.Dispatch( new OnGameOvertimeFight() );
-					State = GameState.OvertimeFight;
-				}
-				break;
-			case GameState.OvertimeFight:
-				CheckForWinningTeam();
-
-				if ( GetWinningTeam() == Team.None && StateSwitch > FightTime )
-				{
-					Overtimes++;
-
-					Log.Info( $"Overtime: {Overtimes}" );
-
-					Scene.Dispatch( new OnGameOvertimeBuild() );
-					State = GameState.OvertimeBuild;
-				}
-				break;
-
-			case GameState.Ended:
-				Scene.Dispatch( new OnGameWaiting() );
-				State = GameState.Waiting;
-				break;
-		}
-	}
-
-	/// <summary> Creates random teams for the players </summary>
-	public void SetTeams()
-	{
-		var players = Scene.GetAllComponents<TeamComponent>().ToList();
-		var teams = FourTeams ? new List<Team> { Team.Red, Team.Blue, Team.Yellow, Team.Green } : new List<Team> { Team.Red, Team.Blue };
-
-		players = players.OrderBy( x => Game.Random.Next() ).ToList();
-
-		for ( int i = 0; i < players.Count; i++ )
-		{
-			players[i].SetTeam( teams[i % teams.Count] );
-		}
-
-		Scene.GetAll<FWPlayerController>().ToList().ForEach( x => x.TeleportToTeamSpawnPoint() );
-	}
-
-	[Broadcast]
-	public void ResetPlayers()
-	{
-		Scene.Dispatch( new PlayerReset() );
 	}
 
 	[Authority]
@@ -265,125 +126,20 @@ IGameEventHandler<OnGameOvertimeBuild>, IGameEventHandler<OnGameOvertimeFight>
 		}
 	}
 
-	public void CheckForWinningTeam()
+	protected override void OnStart()
 	{
-		var teams = new Dictionary<Team, float>
+		Instance = this;
+
+		if ( CurrentGameMode is not null )
 		{
-			{ Team.Red, RedTimeHeld },
-			{ Team.Blue, BlueTimeHeld },
-			{ Team.Yellow, YellowTimeHeld },
-			{ Team.Green, GreenTimeHeld }
-		};
+			var mode = CurrentGameMode.Prefab.Clone();
 
-		var max = Math.Round( teams.Min( x => x.Value ), 1 );
+			if ( mode.Components.TryGet<GameMode>( out var gm ) )
+			{
+				gm.GameSystem = this;
+			}
 
-		if ( teams.Any( x => x.Value <= 0 ) )
-		{
-			Scene.Dispatch( new OnGameEnd() );
-			State = GameState.Ended;
-		}
-	}
-
-	public Team GetWinningTeam()
-	{
-		var teams = new Dictionary<Team, float>
-		{
-			{ Team.Red, RedTimeHeld },
-			{ Team.Blue, BlueTimeHeld },
-			{ Team.Yellow, YellowTimeHeld },
-			{ Team.Green, GreenTimeHeld }
-		};
-
-		var min = teams.Min( x => x.Value );
-
-		if ( Math.Round( min, 1 ) <= 0 )
-		{
-			return teams.FirstOrDefault( x => x.Value == min ).Key;
-		}
-
-		return Team.None;
-	}
-
-	[Authority]
-	public void AddKill()
-	{
-		TotalKills++;
-	}
-
-	[Broadcast]
-	public void BroadcastChangeState( GameState state )
-	{
-		Scene.Dispatch( new OnRoundSwitch( state ) );
-	}
-
-	public List<string> FightModePopups = new()
-	{
-		"Fight for your right to party!",
-		"Elect your mightiest ball grabber!",
-		"Defend your teams base or die trying!",
-		"First they ignore you, then they laugh at you, then they fight you, then you win!",
-		"The harder you fight, the sweeter the victory!",
-		"Is it a crime, to fight, for what is mine?",
-		"Now I am become Death, the Destroyer of Forts",
-	};
-
-	public List<string> BuildModePopups = new()
-	{
-		"If they tear it down, build it again!",
-		"Fat and heavy wins the race, FORTIFY your base!",
-		"Elect your mightiest constructor of forts!",
-		"Build your fort from the rocks thrown at you or that stood in your way, and it, like you, will have strength untold.",
-		"Fortitude is the marshal of thought, the armor of the will, and the fort of reason.",
-		"We shape our forts; thereafter they shape us.",
-	};
-
-	[Button( "Save Lobby Settings" ), Feature( "Lobby Settings" )]
-	public void SaveLobbySettings()
-	{
-		LobbySettings.Save( LobbySettings );
-
-		Log.Info( $"Saved Lobby Settings as {FileSystem.Data?.ReadAllText( "lobbysettings.json" )}" );
-
-		Log.Info( $"Loaded Lobby Settings as {JsonSerializer.Serialize( LobbySettings.Load() )}" );
-	}
-
-	[ConCmd( "skip_wait" )]
-	public static void SkipWait()
-	{
-		if ( !Networking.IsHost )
-			return;
-
-		var gs = Instance;
-
-		if ( !gs.IsValid() )
-			return;
-
-		switch ( gs.State )
-		{
-			case GameState.Waiting:
-				Instance?.Scene.Dispatch( new OnBuildMode() );
-				Instance.State = GameState.BuildMode;
-				break;
-			case GameState.BuildMode:
-				Instance?.Scene.Dispatch( new OnFightMode() );
-				Instance.State = GameState.FightMode;
-				break;
-			case GameState.FightMode:
-				Instance?.Scene.Dispatch( new OnGameEnd() );
-				Instance.State = GameState.Ended;
-				break;
-			case GameState.OvertimeBuild:
-				Instance?.Scene.Dispatch( new OnGameOvertimeFight() );
-				Instance.State = GameState.OvertimeFight;
-				break;
-			case GameState.OvertimeFight:
-				Instance?.Scene.Dispatch( new OnGameOvertimeBuild() );
-				Instance.State = GameState.OvertimeBuild;
-				break;
-			case GameState.Ended:
-				Instance?.Scene.Dispatch( new OnBuildMode() );
-				Instance.State = GameState.BuildMode;
-				break;
+			mode.NetworkSpawn( null );
 		}
 	}
 }
