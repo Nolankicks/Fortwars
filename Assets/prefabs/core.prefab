@@ -234,6 +234,7 @@
               {
                 "__type": "TeamManager",
                 "__guid": "00cc7c79-2b1b-4a6c-8ad7-5785880f6aa6",
+                "Budget": 1000,
                 "Team": "Red"
               }
             ]
@@ -247,6 +248,7 @@
               {
                 "__type": "TeamManager",
                 "__guid": "1c8c8d94-0606-4623-a098-8be94a19e6b2",
+                "Budget": 1000,
                 "Team": "Blue"
               }
             ]
