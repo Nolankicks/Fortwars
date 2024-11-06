@@ -179,6 +179,7 @@ public sealed class Propgun : Item
 				return;
 
 			tr.GameObject?.Root?.Destroy();
+			TeamManager.GetManager( FWPlayerController.Local.TeamComponent.Team ).Budget += CurrentProp.Cost;
 		}
 
 		if ( Input.Down( "RotateProp" ) )
@@ -248,7 +249,7 @@ public sealed class Propgun : Item
 
 		var hud = Scene.GetAll<HUD>()?.FirstOrDefault();
 
-		if ( OverTeamPropLimit( currentTeam, hud, gs ) )
+		if ( OverTeamPropLimit( currentTeam, CurrentProp.Cost ) )
 		{
 			hud?.FlashPropsFailed();
 			return;
@@ -277,6 +278,8 @@ public sealed class Propgun : Item
 		gb.Network.SetOwnerTransfer( OwnerTransfer.Takeover );
 		gb.NetworkSpawn();
 
+		TeamManager.GetManager( currentTeam ).Budget -= CurrentProp.Cost;
+
 		//// We need to do this for props with ModelPhysics since they start with MotionEnabled on, 
 		//// which breaks the positioning for the local client.
 		//if ( gb.Components.TryGet<ModelPhysics>( out var mdlPhys, FindMode.EnabledInSelf ) )
@@ -301,28 +304,9 @@ public sealed class Propgun : Item
 		}
 	}
 
-	bool OverTeamPropLimit( Team currentTeam, HUD hud, GameSystem gs )
+	bool OverTeamPropLimit( Team currentTeam, float cost )
 	{
-		switch ( currentTeam )
-		{
-			case Team.Red:
-				if ( gs.RedProps.Count() >= gs.MaxProps )
-					return true;
-				break;
-			case Team.Blue:
-				if ( gs.BlueProps.Count() >= gs.MaxProps )
-					return true;
-				break;
-			case Team.Green:
-				if ( gs.GreenProps.Count() >= gs.MaxProps )
-					return true;
-				break;
-			case Team.Yellow:
-				if ( gs.YellowProps.Count() >= gs.MaxProps )
-					return true;
-				break;
-		}
-		return false;
+		return TeamManager.GetManager( currentTeam ).Budget - cost < 0;
 	}
 	private async Task DisplayControls()
 	{

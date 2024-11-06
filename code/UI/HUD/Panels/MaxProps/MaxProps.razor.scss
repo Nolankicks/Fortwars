@@ -17,29 +17,14 @@ MaxProps {
         font-size: 20px;
         font-weight: bold;
         background-color: $primary;
-        width: 60%;
+        width: 40%;
         height: 100%;
         flex-shrink: 0;
-
-        &.red {
-            background-color: #C62E2E;
-        }
-
-        &.green {
-            background-color: #00ff00;
-        }
-
-        &.blue {
-            background-color: #0D92F4;
-        }
-
-        &.yellow {
-            background-color: #ffff00;
-        }
+        font-size:14px;
     }
 
     .number {
-        width: 40%;
+        width: 60%;
         padding: 4px 12px;
         border-radius: 0 4 4 0;
         font-size: 30px;

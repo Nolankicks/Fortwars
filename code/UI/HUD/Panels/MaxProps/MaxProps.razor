@@ -38,6 +38,8 @@
         if (gs.State != GameSystem.GameState.BuildMode && gs.State != GameSystem.GameState.OvertimeBuild)
             return -1;
 
-        return gs.GetBudgetForTeam(localTeam.Team);
+
+
+        return TeamManager.GetManager(localTeam.Team).Budget;
     }
 }
