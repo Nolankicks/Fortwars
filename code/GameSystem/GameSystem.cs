@@ -78,7 +78,8 @@ public sealed partial class GameSystem : Component
 
 	public bool IsPlaying => State == GameState.BuildMode || State == GameState.FightMode || State == GameState.OvertimeBuild || State == GameState.OvertimeFight;
 
-	[Property] public GameModeResource CurrentGameMode { get; set; }
+	[Property] public GameModeResource CurrentGameModeOverride { get; set; }
+	public static GameModeResource CurrentGameMode { get; set; } = ResourceLibrary.Get<GameModeResource>( "gamemodes/classic.mode" );
 
 	[Button( "Save Lobby Settings" ), Feature( "Lobby Settings" )]
 	public void SaveLobbySettings()
@@ -129,6 +130,9 @@ public sealed partial class GameSystem : Component
 	protected override void OnStart()
 	{
 		Instance = this;
+
+		if ( CurrentGameModeOverride is not null )
+			CurrentGameMode = CurrentGameModeOverride;
 
 		if ( CurrentGameMode is not null )
 		{
