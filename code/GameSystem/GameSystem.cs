@@ -131,6 +131,9 @@ public sealed partial class GameSystem : Component
 	{
 		Instance = this;
 
+		if ( IsProxy )
+			return;
+
 		if ( CurrentGameModeOverride is not null )
 			CurrentGameMode = CurrentGameModeOverride;
 
