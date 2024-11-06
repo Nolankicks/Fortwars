@@ -1,5 +1,4 @@
 using Sandbox.Events;
-using Sandbox.Utility;
 using System;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -385,5 +384,21 @@ IGameEventHandler<OnGameOvertimeBuild>, IGameEventHandler<OnGameOvertimeFight>
 				Instance.State = GameState.BuildMode;
 				break;
 		}
+	}
+
+	public int GetBudgetForTeam( Team team )
+	{
+		switch ( team )
+		{
+			case Team.Red:
+				return RedProps.Count();
+			case Team.Blue:
+				return BlueProps.Count();
+			case Team.Yellow:
+				return YellowProps.Count();
+			case Team.Green:
+				return GreenProps.Count();
+		}
+		return -1;
 	}
 }

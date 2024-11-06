@@ -38,23 +38,6 @@
         if (gs.State != GameSystem.GameState.BuildMode && gs.State != GameSystem.GameState.OvertimeBuild)
             return -1;
 
-        switch (localTeam.Team)
-        {
-            case Team.Red:
-
-                return gs.MaxProps - gs.RedProps.Count();
-                break;
-            case Team.Blue:
-                return gs.MaxProps - gs.BlueProps.Count();
-                break;
-            case Team.Green:
-                return gs.MaxProps - gs.GreenProps.Count();
-                break;
-            case Team.Yellow:
-                return gs.MaxProps - gs.YellowProps.Count();
-                break;
-        }
-
-        return -1;
+        return gs.GetBudgetForTeam(localTeam.Team);
     }
 }
