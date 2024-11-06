@@ -18,7 +18,7 @@
           "BloomLayer": false,
           "AfterUILayer": false
         },
-        "Size": "8,8,8",
+        "Size": "4,4,8",
         "TintColor": "1,1,1,1",
         "TriPlanar": false
       },
