@@ -5,50 +5,56 @@
 @inherits Panel
 
 <root>
-	@{
-		var gs = GameSystem.Instance;
-		var player = FWPlayerController.Local;
 
-		if ( !gs.IsValid() || !player.IsValid() )
-			return;
-	}
 
-			@if ( gs.State == GameSystem.GameState.BuildMode || gs.State == GameSystem.GameState.OvertimeBuild )
+			@if ( GetBudgetLeft() != -1 )
             {
-                var localTeam = player.TeamComponent;
+                <div class="text" style="background-color:@(HUD.GetColor().Hex)">Budget</div>
 
-                if ( !localTeam.IsValid() )
-                    return;
-
-                switch ( localTeam.Team )
-                {
-                    case Team.Red:
-							<div class="text red">Props Left</div>
-							<div class="number">@(gs.MaxProps - gs.RedProps.Count())</div>
-                        break;
-                    case Team.Blue:
-							<div class="text blue">Props Left</div>
-							<div class="number">@(gs.MaxProps - gs.BlueProps.Count())</div>
-                        break;
-                    case Team.Green:
-							<div class="text green">Props Left</div>
-							<div class="number">@(gs.MaxProps - gs.GreenProps?.Count())</div>
-                        break;
-                    case Team.Yellow:
-							<div class="text yellow">Props Left</div>
-							<div class="number">@(gs.MaxProps - gs.YellowProps?.Count())</div>
-                        break;
-                }
+                <div class="number"> $ @(GetBudgetLeft())</div>
             }
 
 </root>
 
 @code
 {
-	protected override int BuildHash()
-	{
-		var gs = GameSystem.Instance;
+    protected override int BuildHash()
+    {
+        var gs = GameSystem.Instance;
 
-		return System.HashCode.Combine( gs?.MaxProps, gs?.RedProps?.Count(), gs?.BlueProps?.Count(), gs?.GreenProps?.Count(), gs?.YellowProps?.Count(), gs?.State );
-	}
+        return System.HashCode.Combine( gs?.MaxProps, gs?.RedProps?.Count(), gs?.BlueProps?.Count(), gs?.GreenProps?.Count(), gs?.YellowProps?.Count(), gs?.State );
+    }
+
+    private int GetBudgetLeft()
+    {
+        var gs = GameSystem.Instance;
+        var player = FWPlayerController.Local;
+
+        var localTeam = player.TeamComponent;
+
+        if (!gs.IsValid() || !player.IsValid())
+            return -1;
+
+        if (gs.State != GameSystem.GameState.BuildMode && gs.State != GameSystem.GameState.OvertimeBuild)
+            return -1;
+
+        switch (localTeam.Team)
+        {
+            case Team.Red:
+
+                return gs.MaxProps - gs.RedProps.Count();
+                break;
+            case Team.Blue:
+                return gs.MaxProps - gs.BlueProps.Count();
+                break;
+            case Team.Green:
+                return gs.MaxProps - gs.GreenProps.Count();
+                break;
+            case Team.Yellow:
+                return gs.MaxProps - gs.YellowProps.Count();
+                break;
+        }
+
+        return -1;
+    }
 }
