@@ -7,6 +7,27 @@
 
     <label>Crosshair</label>
 
+	@foreach ( var setting in Attributes)
+	{
+		switch( setting.Type )
+		{
+			case SettingType.Bool:
+				<div>This is a bool</div>
+				<div>@(setting.GetValue<bool>())</div>
+			break;
+
+			case SettingType.Int:
+				<div>This is a int</div>
+				<div>@(setting.GetValue<int>())</div>
+			break;
+
+			case SettingType.Float:
+				<div>This is a float</div>
+				<div>@(setting.GetValue<float>())</div>
+			break;
+		}
+	}
+
     
 
     <button onclick=@(() => Game.Overlay.ShowSettingsModal())>S&box Settings</button>

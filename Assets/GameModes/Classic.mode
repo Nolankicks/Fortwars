@@ -1,0 +1,10 @@
+{
+  "Title": null,
+  "Description": null,
+  "Prefab": {
+    "_type": "gameobject",
+    "prefab": "prefabs/gamemodes/classic.prefab"
+  },
+  "__references": [],
+  "__version": 0
+}
