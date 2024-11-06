@@ -21,7 +21,7 @@
         "FireType": "F_SEMIAUTO",
         "HasBulletCasing": true,
         "HoldType": "Shotgun",
-        "MaxAmmo": 4,
+        "MaxAmmo": 6,
         "Offset": "6.846531,0.005981312,-5.724832",
         "Range": 500,
         "RecoilValues": "-10,5,2",
