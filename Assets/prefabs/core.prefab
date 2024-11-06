@@ -217,6 +217,40 @@
             ]
           }
         ]
+      },
+      {
+        "__guid": "e709a4ec-8f5e-416e-a864-b64df0f5f5a2",
+        "Flags": 0,
+        "Name": "Teams",
+        "Enabled": true,
+        "Children": [
+          {
+            "__guid": "2d479756-cca2-4fcd-873f-97e31f542dd0",
+            "Flags": 0,
+            "Name": "Red",
+            "Enabled": true,
+            "Components": [
+              {
+                "__type": "TeamManager",
+                "__guid": "00cc7c79-2b1b-4a6c-8ad7-5785880f6aa6",
+                "Team": "Red"
+              }
+            ]
+          },
+          {
+            "__guid": "618608ba-f1c1-4368-ae7f-37509df2e313",
+            "Flags": 0,
+            "Name": "Blue",
+            "Enabled": true,
+            "Components": [
+              {
+                "__type": "TeamManager",
+                "__guid": "1c8c8d94-0606-4623-a098-8be94a19e6b2",
+                "Team": "Blue"
+              }
+            ]
+          }
+        ]
       }
     ],
     "__variables": [],

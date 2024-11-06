@@ -64,7 +64,7 @@ IGameEventHandler<OnGameOvertimeBuild>, IGameEventHandler<OnGameOvertimeFight>
 	[Sync] public int Overtimes { get; set; } = 0;
 
 	[Property, Feature( "Lobby Settings" ), InlineEditor] public LobbySettings LobbySettings { get; set; } = new();
-	[Property, Sync, Feature( "Lobby Settings" )] public int MaxProps { get; set; } = 50;
+	[Property, Sync, Feature( "Lobby Settings" )] public int MaxProps { get; set; } = 150;
 
 
 	[Sync] public float InitBlueTimeHeld { get; set; } = 5;
@@ -388,17 +388,6 @@ IGameEventHandler<OnGameOvertimeBuild>, IGameEventHandler<OnGameOvertimeFight>
 
 	public int GetBudgetForTeam( Team team )
 	{
-		switch ( team )
-		{
-			case Team.Red:
-				return RedProps.Count();
-			case Team.Blue:
-				return BlueProps.Count();
-			case Team.Yellow:
-				return YellowProps.Count();
-			case Team.Green:
-				return GreenProps.Count();
-		}
-		return -1;
+		return MaxProps - Scene.GetAll<TeamComponent>().Where( x => x.Team == team ).Count();
 	}
 }

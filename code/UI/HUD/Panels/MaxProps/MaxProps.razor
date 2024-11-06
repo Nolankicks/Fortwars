@@ -22,7 +22,7 @@
     {
         var gs = GameSystem.Instance;
 
-        return System.HashCode.Combine( gs?.MaxProps, gs?.RedProps?.Count(), gs?.BlueProps?.Count(), gs?.GreenProps?.Count(), gs?.YellowProps?.Count(), gs?.State );
+        return System.HashCode.Combine(GetBudgetLeft(), gs.State);
     }
 
     private int GetBudgetLeft()
