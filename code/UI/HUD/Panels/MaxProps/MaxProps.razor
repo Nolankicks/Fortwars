@@ -30,9 +30,9 @@
         var gs = GameSystem.Instance;
         var player = FWPlayerController.Local;
 
-        var localTeam = player.TeamComponent;
+        var localTeam = player?.TeamComponent;
 
-        if (!gs.IsValid() || !player.IsValid())
+        if (!gs.IsValid() || !player.IsValid() || !localTeam.IsValid())
             return -1;
 
         if (gs.State != GameSystem.GameState.BuildMode && gs.State != GameSystem.GameState.OvertimeBuild)
