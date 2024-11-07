@@ -54,3 +54,8 @@ public sealed class GameModeResource : GameResource
 	public bool Hidden { get; set; } = false;
 	public GameModeType Type { get; set; }
 }
+
+public sealed class GameModeObject : Component
+{
+	[Property] public GameModeType Type { get; set; }
+}

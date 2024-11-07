@@ -37,7 +37,7 @@ IGameEventHandler<OnBuildMode>
 	{
 		foreach ( var component in GameObject.Components.GetAll().ToList() )
 		{
-			if ( component is not SpawnObject )
+			if ( component is not SpawnObject && component is not GameModeObject )
 				component.Enabled = enabled;
 		}
 	}

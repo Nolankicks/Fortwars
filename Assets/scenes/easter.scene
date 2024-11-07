@@ -2763,7 +2763,8 @@
       "Components": [
         {
           "__type": "SpawnObject",
-          "__guid": "3be84f45-cf62-4193-a4e6-93333c9aa0f3"
+          "__guid": "3be84f45-cf62-4193-a4e6-93333c9aa0f3",
+          "Team": "Red"
         },
         {
           "__type": "Sandbox.Prop",
@@ -2782,6 +2783,50 @@
           "IsDead": false,
           "MaxHealth": 100,
           "SpawnDamageIndicator": true
+        },
+        {
+          "__type": "GameModeObject",
+          "__guid": "dc66aee9-1ee1-40f0-b945-38b38811abcf",
+          "Type": "RollermineWars"
+        }
+      ]
+    },
+    {
+      "__guid": "01bd15be-2467-4480-805b-6b2243030468",
+      "Flags": 0,
+      "Name": "SpawnObject (1)",
+      "Position": "-773.8713,-223.3391,651.8062",
+      "Scale": "10.9866,10.9866,10.9866",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "Components": [
+        {
+          "__type": "SpawnObject",
+          "__guid": "9402e60c-ef1c-4641-bba8-d04055a92af0",
+          "Team": "Blue"
+        },
+        {
+          "__type": "Sandbox.Prop",
+          "__guid": "1857d139-1984-404c-85ce-430223b57fc2",
+          "BodyGroups": 18446744073709551615,
+          "Health": 0,
+          "IsStatic": true,
+          "Model": "models/rollermine.vmdl",
+          "StartAsleep": false,
+          "Tint": "1,1,1,1"
+        },
+        {
+          "__type": "HealthComponent",
+          "__guid": "aac37479-352e-4466-8e21-98c879fa0525",
+          "Health": 100,
+          "IsDead": false,
+          "MaxHealth": 100,
+          "SpawnDamageIndicator": true
+        },
+        {
+          "__type": "GameModeObject",
+          "__guid": "bca4e500-d3b7-417c-bc96-defcc7aa3a98",
+          "Type": "RollermineWars"
         }
       ]
     }

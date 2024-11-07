@@ -6,7 +6,7 @@
     "prefab": "prefabs/gamemodes/rollerminewars.prefab"
   },
   "Hidden": false,
-  "Type": "CaptureTheFlag",
+  "Type": "RollermineWars",
   "__references": [],
   "__version": 0
 }
