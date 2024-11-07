@@ -174,8 +174,7 @@ IGameEventHandler<OnGameOvertimeBuild>, IGameEventHandler<OnGameOvertimeFight>
 
 		if ( teams.Any( x => x.Value <= 0 ) )
 		{
-			Scene.Dispatch( new OnGameEnd() );
-			GameSystem.State = GameSystem.GameState.Ended;
+			EndGame( teams.FirstOrDefault( x => x.Value == max ).Key );
 		}
 	}
 

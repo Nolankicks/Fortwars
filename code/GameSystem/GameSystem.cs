@@ -83,6 +83,8 @@ public sealed partial class GameSystem : Component
 	public bool IsPlaying => State == GameState.BuildMode || State == GameState.FightMode || State == GameState.OvertimeBuild || State == GameState.OvertimeFight;
 
 	[Property, Sync] public GameModeResource CurrentGameMode { get; set; }
+	[Property, Sync] public GameModeType CurrentGameModeType { get; set; }
+
 
 	[Button( "Save Lobby Settings" ), Feature( "Lobby Settings" )]
 	public void SaveLobbySettings()
@@ -147,6 +149,10 @@ public sealed partial class GameSystem : Component
 			}
 
 			mode.NetworkSpawn( null );
+
+			CurrentGameModeType = CurrentGameMode.Type;
+
+			Scene.GetAll<GameModeObject>()?.Where( x => x.Type != CurrentGameModeType )?.ToList()?.ForEach( x => x?.GameObject?.Destroy() );
 		}
 	}
 }

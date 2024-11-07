@@ -65,15 +65,9 @@ public partial class ClassicGameMode
 		GameSystem.StateSwitch = 0;
 		Log.Info( "Game Ended" );
 
-		var winningTeam = WinningTeam();
-
-		WinGame();
-
 		Scene.GetAll<Inventory>()?.ToList()?.ForEach( x => x.ClearAll() );
 
 		Scene.GetAll<FWPlayerController>()?.ToList()?.ForEach( x => x.ResetStats() );
-
-		Log.Info( $"{WinningTeam()} won" );
 
 		DeleteClassSelect();
 

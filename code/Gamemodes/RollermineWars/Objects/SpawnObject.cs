@@ -19,7 +19,7 @@ IGameEventHandler<OnBuildMode>
 		if ( !gs.IsValid() )
 			return;
 
-		gs.EndGame();
+		gs.EndGame( Team );
 	}
 
 	void IGameEventHandler<OnGameWaiting>.OnGameEvent( OnGameWaiting eventArgs )

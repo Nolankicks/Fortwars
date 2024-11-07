@@ -7,7 +7,7 @@ public class GameMode : Component
 	[Property, ReadOnly, Sync] public GameSystem GameSystem { get; set; }
 
 	[Broadcast]
-	public void EndGame()
+	public void EndGame( Team team = Team.None )
 	{
 		var gs = Scene.GetAll<GameSystem>()?.FirstOrDefault();
 
@@ -15,13 +15,23 @@ public class GameMode : Component
 			return;
 
 		gs.State = GameSystem.GameState.Ended;
+
+		Log.Info( $"Game Ended: {team}" );
+
+		if ( team != Team.None )
+			WinGame( team );
+		else
+			WinGame();
 	}
 
 	public virtual Team WinningTeam() => Team.None;
 
-	public void WinGame()
+	public virtual void WinGame( Team team = Team.None )
 	{
-		PopupHolder.BroadcastPopup( $"{WinningTeam()} won", 5 );
+		if ( team == Team.None )
+			team = WinningTeam();
+
+		PopupHolder.BroadcastPopup( $"{team} won", 5 );
 
 		Scene.GetAll<Inventory>()?.ToList()?.ForEach( x =>
 		{
