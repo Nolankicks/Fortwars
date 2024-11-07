@@ -1,9 +1,9 @@
 {
-  "Title": "Capture the Flag",
+  "Title": "RollermineWars",
   "Description": null,
   "Prefab": {
     "_type": "gameobject",
-    "prefab": "prefabs/gamemodes/capturetheflag.prefab"
+    "prefab": "prefabs/gamemodes/rollerminewars.prefab"
   },
   "Hidden": false,
   "Type": "CaptureTheFlag",

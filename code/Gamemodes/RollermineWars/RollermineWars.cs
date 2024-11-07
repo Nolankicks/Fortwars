@@ -3,7 +3,8 @@ using System;
 using System.Threading.Tasks;
 using Sandbox.Events;
 
-public partial class CaptureTheFlag : GameMode, Component.INetworkListener,
+/// <summary> Bedwars... kinda </summary>
+public partial class RollermineWars : GameMode, Component.INetworkListener,
 IGameEventHandler<OnBuildMode>, IGameEventHandler<OnGameEnd>, IGameEventHandler<OnGameWaiting>, IGameEventHandler<OnFightMode>,
 IGameEventHandler<OnGameOvertimeBuild>, IGameEventHandler<OnGameOvertimeFight>
 {

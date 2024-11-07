@@ -2,12 +2,12 @@
   "RootObject": {
     "__guid": "d9cc662d-ea70-48db-8bbf-dc4127c523e2",
     "Flags": 0,
-    "Name": "capturetheflag",
+    "Name": "rollerminewars",
     "Enabled": true,
     "Components": [
       {
-        "__type": "CaptureTheFlag",
-        "__guid": "d381281f-ed78-493a-a872-89d7105d4c72"
+        "__type": "RollermineWars",
+        "__guid": "1ba5812d-0752-45e9-9074-830463782dbc"
       }
     ],
     "Children": [],

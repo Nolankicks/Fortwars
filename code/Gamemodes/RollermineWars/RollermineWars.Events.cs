@@ -1,6 +1,6 @@
 using Sandbox.Events;
 
-public partial class CaptureTheFlag
+public partial class RollermineWars
 {
 	[After<OnGameWaiting>, After<OnPlayerJoin>]
 	void IGameEventHandler<OnBuildMode>.OnGameEvent( OnBuildMode eventArgs )

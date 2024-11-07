@@ -1,7 +1,7 @@
 using Sandbox.Citizen;
 using Sandbox.Events;
 
-public partial class CaptureTheFlag
+public partial class RollermineWars
 {
 	public void OnActive( Connection connection )
 	{
