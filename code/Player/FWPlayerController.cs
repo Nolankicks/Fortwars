@@ -63,6 +63,8 @@ IGameEventHandler<DeathEvent>, IGameEventHandler<OnPhysgunGrabChange>
 
 	public float SpeedMult { get; set; } = 1.0f;
 
+	public SceneTraceResult ViewTrace => Scene.Trace.Ray( Eye.WorldPosition, Eye.WorldPosition + EyeAngles.Forward * 1000 ).WithoutTags( FW.Tags.NoBuild, FW.Tags.Player ).Run();
+
 	protected override void OnStart()
 	{
 		if ( !AnimHelper.IsValid() )
