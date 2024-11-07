@@ -32,7 +32,8 @@ public class Gravgun : Item, IGameEventHandler<DeathEvent>
 
 	SceneTrace GravGunTrace => Scene.Trace.Ray( new Ray( FWPlayerController.Local.Eye.WorldPosition, FWPlayerController.Local.EyeAngles.Forward ), 350f )
 			.IgnoreGameObjectHierarchy( GameObject.Root )
-			.WithoutTags( FW.Tags.Trigger, FW.Tags.Player );
+			.WithoutTags( FW.Tags.Trigger, FW.Tags.Player )
+			.WithTag( FW.Tags.Rollermine );
 
 
 	[Property] ParticleEmitter GravGunParticles { get; set; }
