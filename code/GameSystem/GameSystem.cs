@@ -11,9 +11,13 @@ public record OnGameOvertimeBuild() : IGameEvent;
 public record OnGameOvertimeFight() : IGameEvent;
 public record OnOnGameEnd() : IGameEvent;
 public record OnGameEnd() : IGameEvent;
-public record OnTeamWin( Team team ) : IGameEvent;
-
 public record OnRoundSwitch( GameSystem.GameState state ) : IGameEvent;
+
+public enum GameModeType
+{
+	Classic,
+	CaptureTheFlag
+}
 
 public sealed partial class GameSystem : Component
 {
@@ -77,7 +81,9 @@ public sealed partial class GameSystem : Component
 
 	public bool IsPlaying => State == GameState.BuildMode || State == GameState.FightMode || State == GameState.OvertimeBuild || State == GameState.OvertimeFight;
 
-	[Property] public GameModeResource CurrentGameMode { get; set; }
+	[Property, Sync] public GameModeResource CurrentGameMode { get; set; }
+	[Property, Sync] public GameModeType CurrentGameModeType { get; set; }
+
 
 	[Button( "Save Lobby Settings" ), Feature( "Lobby Settings" )]
 	public void SaveLobbySettings()
@@ -129,6 +135,9 @@ public sealed partial class GameSystem : Component
 	{
 		Instance = this;
 
+		if ( IsProxy )
+			return;
+
 		if ( CurrentGameMode is not null )
 		{
 			var mode = CurrentGameMode.Prefab.Clone();
@@ -139,6 +148,10 @@ public sealed partial class GameSystem : Component
 			}
 
 			mode.NetworkSpawn( null );
+
+			CurrentGameModeType = CurrentGameMode.Type;
+
+			Scene.GetAll<GameModeObject>()?.Where( x => x.Type != CurrentGameModeType )?.ToList()?.ForEach( x => x?.GameObject?.Destroy() );
 		}
 	}
 

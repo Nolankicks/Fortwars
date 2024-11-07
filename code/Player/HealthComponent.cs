@@ -11,6 +11,7 @@ public sealed class HealthComponent : Component
     [Property, Sync] public int Health { get; set; } = 100;
     [Property] public int MaxHealth { get; set; } = 100;
     [Property, Sync] public bool IsDead { get; set; } = false;
+	[Property, Sync] public bool SpawnDamageIndicator { get; set; } = true;
 
     [Authority]
     public void TakeDamage( GameObject Attacker, int damage = 10, Vector3 HitPos = default, Vector3 normal = default )

@@ -212,13 +212,16 @@ public class Weapon : Item, IGameEventHandler<OnReloadEvent>
 
 			if ( !health.IsDead )
 			{
-				var text = GameObject.Clone( ResourceLibrary.Get<PrefabFile>( "prefabs/effects/textparticle.prefab" ) );
-				text.WorldPosition = tr.HitPosition + tr.Normal * 10;
-				text.WorldRotation = Rotation.LookAt( -cam.WorldRotation.Forward );
-
-				if ( text.Components.TryGet<ParticleTextRenderer>( out var textRenderer ) )
+				if ( health.SpawnDamageIndicator )
 				{
-					textRenderer.Text = new TextRendering.Scope( Damage.ToString(), Color.White, 24 );
+					var text = GameObject.Clone( ResourceLibrary.Get<PrefabFile>( "prefabs/effects/textparticle.prefab" ) );
+					text.WorldPosition = tr.HitPosition + tr.Normal * 10;
+					text.WorldRotation = Rotation.LookAt( -cam.WorldRotation.Forward );
+
+					if ( text.Components.TryGet<ParticleTextRenderer>( out var textRenderer ) )
+					{
+						textRenderer.Text = new TextRendering.Scope( Damage.ToString(), Color.White, 24 );
+					}
 				}
 
 				Sound.Play( "hitmarker" );

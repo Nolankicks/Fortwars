@@ -3,7 +3,8 @@ using System;
 using System.Threading.Tasks;
 using Sandbox.Events;
 
-public partial class ClassicGameMode : GameMode, Component.INetworkListener,
+/// <summary> Bedwars... kinda </summary>
+public partial class RollermineWars : GameMode, Component.INetworkListener,
 IGameEventHandler<OnBuildMode>, IGameEventHandler<OnGameEnd>, IGameEventHandler<OnGameWaiting>, IGameEventHandler<OnFightMode>,
 IGameEventHandler<OnGameOvertimeBuild>, IGameEventHandler<OnGameOvertimeFight>
 {
@@ -99,9 +100,6 @@ IGameEventHandler<OnGameOvertimeBuild>, IGameEventHandler<OnGameOvertimeFight>
 				break;
 
 			case GameSystem.GameState.FightMode:
-				//Constantly check for the winning team
-				CheckForWinningTeam();
-
 				//If we don't have one by the end, start overtime
 				if ( WinningTeam() == Team.None && GameSystem.StateSwitch > GameSystem.FightTime )
 				{
@@ -118,8 +116,6 @@ IGameEventHandler<OnGameOvertimeBuild>, IGameEventHandler<OnGameOvertimeFight>
 				}
 				break;
 			case GameSystem.GameState.OvertimeFight:
-				CheckForWinningTeam();
-
 				if ( WinningTeam() == Team.None && GameSystem.StateSwitch > GameSystem.FightTime )
 				{
 					GameSystem.Overtimes++;
@@ -158,24 +154,6 @@ IGameEventHandler<OnGameOvertimeBuild>, IGameEventHandler<OnGameOvertimeFight>
 	public void ResetPlayers()
 	{
 		Scene.Dispatch( new PlayerReset() );
-	}
-
-	public void CheckForWinningTeam()
-	{
-		var teams = new Dictionary<Team, float>
-		{
-			{ Team.Red, GameSystem.RedTimeHeld },
-			{ Team.Blue, GameSystem.BlueTimeHeld },
-			{ Team.Yellow, GameSystem.YellowTimeHeld },
-			{ Team.Green, GameSystem.GreenTimeHeld }
-		};
-
-		var max = Math.Round( teams.Min( x => x.Value ), 1 );
-
-		if ( teams.Any( x => x.Value <= 0 ) )
-		{
-			EndGame( teams.FirstOrDefault( x => x.Value == max ).Key );
-		}
 	}
 
 	public override Team WinningTeam()
@@ -219,7 +197,7 @@ IGameEventHandler<OnGameOvertimeBuild>, IGameEventHandler<OnGameOvertimeFight>
 		"We shape our forts; thereafter they shape us.",
 	};
 
-
+	
 
 	[ConCmd( "skip_wait" )]
 	public static void SkipWait()

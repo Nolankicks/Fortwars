@@ -1,6 +1,6 @@
 using Sandbox.Events;
 
-public partial class ClassicGameMode
+public partial class RollermineWars
 {
 	[After<OnGameWaiting>, After<OnPlayerJoin>]
 	void IGameEventHandler<OnBuildMode>.OnGameEvent( OnBuildMode eventArgs )
@@ -41,7 +41,6 @@ public partial class ClassicGameMode
 		{
 			//Clear the inventory and give players the grav gun
 			x.ClearAll();
-			x.AddItem( ResourceLibrary.GetAll<WeaponData>().FirstOrDefault( x => x.ResourceName == "gravgun" ) );
 
 			/*if ( x.SelectedClass is not null )
 			{
