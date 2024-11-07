@@ -17,7 +17,7 @@ public record OnRoundSwitch( GameSystem.GameState state ) : IGameEvent;
 public enum GameModeType
 {
 	Classic,
-	CaptureTheFlag
+	RollermineWars
 }
 
 public sealed partial class GameSystem : Component

@@ -51,7 +51,7 @@
 			<div class="time">@FormatTime(gs.YellowTimeHeld)</div>
 		</div>
 	}
-	else if (gs.CurrentGameModeType == GameModeType.CaptureTheFlag)
+	else if (gs.CurrentGameModeType == GameModeType.RollermineWars)
 	{
 		@{
 			var blueBall = Scene.GetAll<SpawnObject>().FirstOrDefault( x => x.Team == Team.Blue );

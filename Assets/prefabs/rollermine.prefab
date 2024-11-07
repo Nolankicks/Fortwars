@@ -13,6 +13,7 @@
         "__type": "Sandbox.SkinnedModelRenderer",
         "__guid": "f8b32643-7800-458e-add2-00f12fea5a3c",
         "BodyGroups": 18446744073709551615,
+        "CreateAttachments": false,
         "CreateBoneObjects": false,
         "Model": "models/rollermine.vmdl",
         "Morphs": {},
@@ -73,12 +74,6 @@
         "Divisor": 20,
         "Health": 100,
         "Invincible": true,
-        "Rigidbody": {
-          "_type": "component",
-          "component_id": "25e96918-402a-43e9-88f4-7fcf220fb16b",
-          "go": "39ef8517-7e7e-45e6-b649-a5a0aa4cdedd",
-          "component_type": "Rigidbody"
-        },
         "Team": "None"
       },
       {
@@ -104,6 +99,7 @@
           ],
           "alpha": []
         },
+        "Emitting": true,
         "Face": "Camera",
         "LifeTime": 0.2,
         "MaxPoints": 64,
@@ -143,6 +139,11 @@
         "LightColor": "0.13953,0.79922,1,1",
         "Radius": 30,
         "Shadows": false
+      },
+      {
+        "__type": "GameModeObject",
+        "__guid": "5a579c74-7ba5-41d0-abd0-0d853b7a7bea",
+        "Type": "Classic"
       }
     ],
     "Children": [

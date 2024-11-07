@@ -2756,7 +2756,7 @@
       "__guid": "3c2aa20c-da2e-4441-ac83-06122ed377b1",
       "Flags": 0,
       "Name": "SpawnObject",
-      "Position": "773.0846,-516.5511,651.8062",
+      "Position": "841.5121,-516.5511,466.9352",
       "Scale": "10.9866,10.9866,10.9866",
       "Enabled": true,
       "NetworkMode": 1,
@@ -2787,7 +2787,7 @@
         {
           "__type": "GameModeObject",
           "__guid": "dc66aee9-1ee1-40f0-b945-38b38811abcf",
-          "Type": "CaptureTheFlag"
+          "Type": "RollermineWars"
         }
       ]
     },
@@ -2826,7 +2826,7 @@
         {
           "__type": "GameModeObject",
           "__guid": "bca4e500-d3b7-417c-bc96-defcc7aa3a98",
-          "Type": "CaptureTheFlag"
+          "Type": "RollermineWars"
         }
       ]
     }
