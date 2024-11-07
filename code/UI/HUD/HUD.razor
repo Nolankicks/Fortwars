@@ -5,6 +5,13 @@
 @inherits PanelComponent
 @implements IGameEventHandler<PlayerDamage>
 
+@{
+	var gs = GameSystem.Instance;
+
+	if ( !gs.IsValid() ) 
+		return;
+}
+
 <root>
 	<InventoryPanel />
 
@@ -13,6 +20,7 @@
 	<Crosshair/>
 
 	<TeamProgress />
+	
     <MaxProps @ref="MaxProps" />
 	<div class="healthholder">
 		<HealthPanel @ref="HealthPanel" />

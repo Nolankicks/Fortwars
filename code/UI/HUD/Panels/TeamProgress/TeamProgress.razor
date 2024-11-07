@@ -9,7 +9,7 @@
 	@{
 		var gs = GameSystem.Instance;
 
-		if ( !gs.IsValid() )
+		if (!gs.IsValid())
 			return;
 
 		var green = gs.InitGreenTimeHeld;
@@ -17,37 +17,78 @@
 		var red = gs.InitRedTimeHeld;
 		var blue = gs.InitBlueTimeHeld;
 
-		if ( gs.State == GameSystem.GameState.Waiting || gs.State == GameSystem.GameState.Ended )
+		if (gs.State == GameSystem.GameState.Waiting || gs.State == GameSystem.GameState.Ended)
 			return;
 	}
 
-    <div class="team-bar blue-bar">
-        <div class="bar" style="">
-            <div class="fill blue" style=" border-radius: 4 0 0 4; width: @(gs.BlueTimeHeld / blue * 100)%;"></div>
+	@if (gs.CurrentGameModeType == GameModeType.Classic)
+	{
+		<div class="team-bar blue-bar">
+			<div class="bar" style="">
+				<div class="fill blue" style=" border-radius: 4 0 0 4; width: @(gs.BlueTimeHeld / blue * 100)%;"></div>
+			</div>
+			<div class="time" style="border-radius: 0 4 4 0;">@FormatTime(gs.BlueTimeHeld)</div>
 		</div>
-        <div class="time" style="border-radius: 0 4 4 0;">@FormatTime(gs.BlueTimeHeld)</div>
-	</div>
 
-    <div class="team-bar red-bar">
-        <div class="time" style="border-radius: 4 0 0 4;">@FormatTime(gs.RedTimeHeld)</div>
-        <div class="bar">
-            <div class="fill red" style=" border-radius: 0 4 4 0; width: @(gs.RedTimeHeld / red * 100)%;"></div>
+		<div class="team-bar red-bar">
+			<div class="time" style="border-radius: 4 0 0 4;">@FormatTime(gs.RedTimeHeld)</div>
+			<div class="bar">
+				<div class="fill red" style=" border-radius: 0 4 4 0; width: @(gs.RedTimeHeld / red * 100)%;"></div>
+			</div>
+
 		</div>
-		
-	</div>
 
-	@if ( !gs.FourTeams )
-		return;
+		@if (!gs.FourTeams)
+			return;
 
-	<div class="team-bar">
-		<div class="bar green" style="width: @(gs.GreenTimeHeld / green * 100)%;"></div>
-		<div class="time">@FormatTime(gs.GreenTimeHeld)</div>
-	</div>
+		<div class="team-bar">
+			<div class="bar green" style="width: @(gs.GreenTimeHeld / green * 100)%;"></div>
+			<div class="time">@FormatTime(gs.GreenTimeHeld)</div>
+		</div>
 
-	<div class="team-bar">
-		<div class="bar yellow" style="width: @(gs.YellowTimeHeld / yellow * 100)%;"></div>
-		<div class="time">@FormatTime(gs.YellowTimeHeld)</div>
-	</div>
+		<div class="team-bar">
+			<div class="bar yellow" style="width: @(gs.YellowTimeHeld / yellow * 100)%;"></div>
+			<div class="time">@FormatTime(gs.YellowTimeHeld)</div>
+		</div>
+	}
+	else if (gs.CurrentGameModeType == GameModeType.CaptureTheFlag)
+	{
+		@{
+			var blueBall = Scene.GetAll<SpawnObject>().FirstOrDefault( x => x.Team == Team.Blue );
+			var redBall = Scene.GetAll<SpawnObject>().FirstOrDefault( x => x.Team == Team.Red );
+
+			if (!blueBall.IsValid() || !redBall.IsValid())
+				return;
+		}
+
+		<div class="team-bar blue-bar">
+			<div class="bar" style="">
+				<div class="fill blue" style=" border-radius: 4 0 0 4; width: @(blueBall.Health?.Health / blueBall.Health?.MaxHealth * 100)%;"></div>
+			</div>
+			<div class="time" style="border-radius: 0 4 4 0;">@blueBall.Health?.Health</div>
+		</div>
+
+		<div class="team-bar red-bar">
+			<div class="time" style="border-radius: 4 0 0 4;">@redBall.Health?.Health</div>
+			<div class="bar">
+				<div class="fill red" style=" border-radius: 0 4 4 0; width: @(redBall.Health?.Health / redBall.Health?.MaxHealth * 100)%;"></div>
+			</div>
+
+		</div>
+
+		@if (!gs.FourTeams)
+			return;
+
+		<div class="team-bar">
+			<div class="bar green" style="width: @(gs.GreenTimeHeld / green * 100)%;"></div>
+			<div class="time">@FormatTime(gs.GreenTimeHeld)</div>
+		</div>
+
+		<div class="team-bar">
+			<div class="bar yellow" style="width: @(gs.YellowTimeHeld / yellow * 100)%;"></div>
+			<div class="time">@FormatTime(gs.YellowTimeHeld)</div>
+		</div>
+	}
 </root>
 
 @code
@@ -56,14 +97,14 @@
 	{
 		var gs = GameSystem.Instance;
 
-		if ( !gs.IsValid() )
+		if (!gs.IsValid())
 			return 0;
 
-		return HashCode.Combine( gs.BlueTimeHeld, 1, gs.RedTimeHeld, 1, gs.GreenTimeHeld, gs.YellowTimeHeld, gs.State );
+		return HashCode.Combine(gs.BlueTimeHeld, 1, gs.RedTimeHeld, 1, gs.GreenTimeHeld, gs.YellowTimeHeld, gs.State, gs.CurrentGameModeType);
 	}
 
-	public string FormatTime( float time )
+	public string FormatTime(float time)
 	{
-		return $"{TimeSpan.FromSeconds( time ):mm\\:ss}";
+		return $"{TimeSpan.FromSeconds(time):mm\\:ss}";
 	}
 }

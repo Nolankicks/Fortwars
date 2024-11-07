@@ -2756,7 +2756,7 @@
       "__guid": "3c2aa20c-da2e-4441-ac83-06122ed377b1",
       "Flags": 0,
       "Name": "SpawnObject",
-      "Position": "773.0846,-223.3391,651.8062",
+      "Position": "773.0846,-516.5511,651.8062",
       "Scale": "10.9866,10.9866,10.9866",
       "Enabled": true,
       "NetworkMode": 1,
@@ -2778,10 +2778,10 @@
         },
         {
           "__type": "HealthComponent",
-          "__guid": "9598f67a-587b-4ee2-b45a-6c03a319e796",
-          "Health": 100,
+          "__guid": "bc54e218-f8a0-4771-8c90-ccbe72b79cf9",
+          "Health": 500,
           "IsDead": false,
-          "MaxHealth": 100,
+          "MaxHealth": 500,
           "SpawnDamageIndicator": true
         },
         {
@@ -2795,7 +2795,7 @@
       "__guid": "01bd15be-2467-4480-805b-6b2243030468",
       "Flags": 0,
       "Name": "SpawnObject (1)",
-      "Position": "-773.8713,-223.3391,651.8062",
+      "Position": "-773.8713,-583.0853,431.7464",
       "Scale": "10.9866,10.9866,10.9866",
       "Enabled": true,
       "NetworkMode": 1,
@@ -2818,9 +2818,9 @@
         {
           "__type": "HealthComponent",
           "__guid": "aac37479-352e-4466-8e21-98c879fa0525",
-          "Health": 100,
+          "Health": 500,
           "IsDead": false,
-          "MaxHealth": 100,
+          "MaxHealth": 500,
           "SpawnDamageIndicator": true
         },
         {
