@@ -75,6 +75,7 @@ public class Item : Component, IGameEventHandler<OnItemEquipped>
 		if ( !local.IsValid() )
 			return;
 
+		local.HoldRenderer.GameObject.Enabled = true;
 
 		local.HoldRenderer.Model = WorldModel;
 		local.HoldRenderer.LocalPosition = Offset;

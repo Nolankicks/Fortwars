@@ -84,8 +84,10 @@ IGameEventHandler<DeathEvent>, IGameEventHandler<OnPhysgunGrabChange>
 	[Broadcast]
 	public static void ClearHoldRenderer( ModelRenderer modelRenderer )
 	{
+		Log.Info( "Clearing hold renderer" );
+
 		if ( modelRenderer.IsValid() )
-			modelRenderer.Model = Cloud.Model( "vidya.model-none" );
+			modelRenderer.GameObject.Enabled = false;
 	}
 
 	private void OnHoldTypeChanged( CitizenAnimationHelper.HoldTypes oldValue, CitizenAnimationHelper.HoldTypes newValue )
