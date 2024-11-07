@@ -6,6 +6,7 @@
     "prefab": "prefabs/gamemodes/capturetheflag.prefab"
   },
   "Hidden": false,
+  "Type": "CaptureTheFlag",
   "__references": [],
   "__version": 0
 }

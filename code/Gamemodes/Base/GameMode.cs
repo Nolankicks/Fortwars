@@ -52,4 +52,5 @@ public sealed class GameModeResource : GameResource
 	[TextArea] public string Description { get; set; }
 	public GameObject Prefab { get; set; }
 	public bool Hidden { get; set; } = false;
+	public GameModeType Type { get; set; }
 }
