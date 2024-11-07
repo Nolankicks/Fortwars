@@ -12,7 +12,6 @@ public record OnGameOvertimeBuild() : IGameEvent;
 public record OnGameOvertimeFight() : IGameEvent;
 public record OnOnGameEnd() : IGameEvent;
 public record OnGameEnd() : IGameEvent;
-public record OnTeamWin( Team team ) : IGameEvent;
 
 public record OnRoundSwitch( GameSystem.GameState state ) : IGameEvent;
 

@@ -103,7 +103,7 @@ IGameEventHandler<OnGameOvertimeBuild>, IGameEventHandler<OnGameOvertimeFight>
 				CheckForWinningTeam();
 
 				//If we don't have one by the end, start overtime
-				if ( GetWinningTeam() == Team.None && GameSystem.StateSwitch > GameSystem.FightTime )
+				if ( WinningTeam() == Team.None && GameSystem.StateSwitch > GameSystem.FightTime )
 				{
 					Scene.Dispatch( new OnGameOvertimeBuild() );
 					GameSystem.State = GameSystem.GameState.OvertimeBuild;
@@ -120,7 +120,7 @@ IGameEventHandler<OnGameOvertimeBuild>, IGameEventHandler<OnGameOvertimeFight>
 			case GameSystem.GameState.OvertimeFight:
 				CheckForWinningTeam();
 
-				if ( GetWinningTeam() == Team.None && GameSystem.StateSwitch > GameSystem.FightTime )
+				if ( WinningTeam() == Team.None && GameSystem.StateSwitch > GameSystem.FightTime )
 				{
 					GameSystem.Overtimes++;
 
@@ -179,7 +179,7 @@ IGameEventHandler<OnGameOvertimeBuild>, IGameEventHandler<OnGameOvertimeFight>
 		}
 	}
 
-	public Team GetWinningTeam()
+	public override Team WinningTeam()
 	{
 		var teams = new Dictionary<Team, float>
 		{
@@ -197,12 +197,6 @@ IGameEventHandler<OnGameOvertimeBuild>, IGameEventHandler<OnGameOvertimeFight>
 		}
 
 		return Team.None;
-	}
-
-	[Broadcast]
-	public void BroadcastChangeState( GameSystem.GameState state )
-	{
-		Scene.Dispatch( new OnRoundSwitch( state ) );
 	}
 
 	public List<string> FightModePopups = new()
@@ -226,7 +220,7 @@ IGameEventHandler<OnGameOvertimeBuild>, IGameEventHandler<OnGameOvertimeFight>
 		"We shape our forts; thereafter they shape us.",
 	};
 
-	
+
 
 	[ConCmd( "skip_wait" )]
 	public static void SkipWait()

@@ -2751,6 +2751,39 @@
           }
         }
       ]
+    },
+    {
+      "__guid": "3c2aa20c-da2e-4441-ac83-06122ed377b1",
+      "Flags": 0,
+      "Name": "SpawnObject",
+      "Position": "773.0846,-223.3391,651.8062",
+      "Scale": "10.9866,10.9866,10.9866",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "Components": [
+        {
+          "__type": "SpawnObject",
+          "__guid": "3be84f45-cf62-4193-a4e6-93333c9aa0f3"
+        },
+        {
+          "__type": "Sandbox.Prop",
+          "__guid": "c014cd81-c762-41cc-9914-491433ac8515",
+          "BodyGroups": 18446744073709551615,
+          "Health": 0,
+          "IsStatic": true,
+          "Model": "models/rollermine.vmdl",
+          "StartAsleep": false,
+          "Tint": "1,1,1,1"
+        },
+        {
+          "__type": "HealthComponent",
+          "__guid": "9598f67a-587b-4ee2-b45a-6c03a319e796",
+          "Health": 100,
+          "IsDead": false,
+          "MaxHealth": 100,
+          "SpawnDamageIndicator": true
+        }
+      ]
     }
   ],
   "SceneProperties": {
@@ -2788,6 +2821,7 @@
     "facepunch.glass_c#70691",
     "facepunch.grass_mud_blend_01a#47043",
     "facepunch.wooden_crate#29138",
+    "igrium.rollermine-model#19481",
     "rust.field_day_breeze_01a#43855"
   ],
   "__version": 2

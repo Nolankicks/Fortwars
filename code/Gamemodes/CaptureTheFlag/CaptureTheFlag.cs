@@ -99,11 +99,8 @@ IGameEventHandler<OnGameOvertimeBuild>, IGameEventHandler<OnGameOvertimeFight>
 				break;
 
 			case GameSystem.GameState.FightMode:
-				//Constantly check for the winning team
-				CheckForWinningTeam();
-
 				//If we don't have one by the end, start overtime
-				if ( GetWinningTeam() == Team.None && GameSystem.StateSwitch > GameSystem.FightTime )
+				if ( WinningTeam() == Team.None && GameSystem.StateSwitch > GameSystem.FightTime )
 				{
 					Scene.Dispatch( new OnGameOvertimeBuild() );
 					GameSystem.State = GameSystem.GameState.OvertimeBuild;
@@ -118,9 +115,7 @@ IGameEventHandler<OnGameOvertimeBuild>, IGameEventHandler<OnGameOvertimeFight>
 				}
 				break;
 			case GameSystem.GameState.OvertimeFight:
-				CheckForWinningTeam();
-
-				if ( GetWinningTeam() == Team.None && GameSystem.StateSwitch > GameSystem.FightTime )
+				if ( WinningTeam() == Team.None && GameSystem.StateSwitch > GameSystem.FightTime )
 				{
 					GameSystem.Overtimes++;
 
@@ -160,26 +155,7 @@ IGameEventHandler<OnGameOvertimeBuild>, IGameEventHandler<OnGameOvertimeFight>
 		Scene.Dispatch( new PlayerReset() );
 	}
 
-	public void CheckForWinningTeam()
-	{
-		var teams = new Dictionary<Team, float>
-		{
-			{ Team.Red, GameSystem.RedTimeHeld },
-			{ Team.Blue, GameSystem.BlueTimeHeld },
-			{ Team.Yellow, GameSystem.YellowTimeHeld },
-			{ Team.Green, GameSystem.GreenTimeHeld }
-		};
-
-		var max = Math.Round( teams.Min( x => x.Value ), 1 );
-
-		if ( teams.Any( x => x.Value <= 0 ) )
-		{
-			Scene.Dispatch( new OnGameEnd() );
-			GameSystem.State = GameSystem.GameState.Ended;
-		}
-	}
-
-	public Team GetWinningTeam()
+	public override Team WinningTeam()
 	{
 		var teams = new Dictionary<Team, float>
 		{
@@ -197,12 +173,6 @@ IGameEventHandler<OnGameOvertimeBuild>, IGameEventHandler<OnGameOvertimeFight>
 		}
 
 		return Team.None;
-	}
-
-	[Broadcast]
-	public void BroadcastChangeState( GameSystem.GameState state )
-	{
-		Scene.Dispatch( new OnRoundSwitch( state ) );
 	}
 
 	public List<string> FightModePopups = new()

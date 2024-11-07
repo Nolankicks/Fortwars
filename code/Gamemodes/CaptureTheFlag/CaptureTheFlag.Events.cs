@@ -64,35 +64,19 @@ public partial class CaptureTheFlag
 		GameSystem.StateSwitch = 0;
 		Log.Info( "Game Ended" );
 
-		var winningTeam = GetWinningTeam();
+		var winningTeam = WinningTeam();
 
-		OnTeamWon( GetWinningTeam() );
+		WinGame();
 
 		Scene.GetAll<Inventory>()?.ToList()?.ForEach( x => x.ClearAll() );
 
 		Scene.GetAll<FWPlayerController>()?.ToList()?.ForEach( x => x.ResetStats() );
 
-		Log.Info( $"{GetWinningTeam()} won" );
-
-		PopupHolder.BroadcastPopup( $"{GetWinningTeam()} won", 5 );
-
-		Scene.GetAll<Inventory>()?.ToList()?.ForEach( x =>
-		{
-			x.ClearAll();
-			x.ClearSelectedClass();
-		} );
-
-		Scene.GetAll<HealthComponent>()?.ToList()?.ForEach( x => x.ResetHealth() );
+		Log.Info( $"{WinningTeam()} won" );
 
 		DeleteClassSelect();
 
 		BroadcastChangeState( GameSystem.GameState.Ended );
-
-		GameSystem.RedTimeHeld = GameSystem.InitRedTimeHeld;
-		GameSystem.BlueTimeHeld = GameSystem.InitBlueTimeHeld;
-		GameSystem.YellowTimeHeld = GameSystem.InitYellowTimeHeld;
-		GameSystem.GreenTimeHeld = GameSystem.InitGreenTimeHeld;
-		GameSystem.Overtimes = 0;
 	}
 
 	[Broadcast]
@@ -107,12 +91,6 @@ public partial class CaptureTheFlag
 				select.Delete();
 			}
 		}
-	}
-
-	[Broadcast]
-	public void OnTeamWon( Team team )
-	{
-		Scene.Dispatch( new OnTeamWin( team ) );
 	}
 
 	[After<OnGameEnd>]
