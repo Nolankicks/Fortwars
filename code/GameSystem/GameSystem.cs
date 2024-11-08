@@ -82,8 +82,10 @@ public sealed partial class GameSystem : Component
 
 	public bool IsPlaying => State == GameState.BuildMode || State == GameState.FightMode || State == GameState.OvertimeBuild || State == GameState.OvertimeFight;
 
-	[Property, Sync] public GameModeResource CurrentGameMode { get; set; }
-	[Property, Sync] public GameModeType CurrentGameModeType { get; set; }
+	[Property, Sync, Category( "Game Mode" )] public GameModeResource CurrentGameMode { get; set; }
+	[Property, Sync, Category( "Game Mode" )] public GameModeType CurrentGameModeType { get; set; }
+	[Property, Category( "Game Mode" )] public bool LoadGameData { get; set; } = true;
+	public static GameModeResource SavedGameMode { get; set; }
 
 
 	[Button( "Save Lobby Settings" ), Feature( "Lobby Settings" )]
@@ -139,6 +141,16 @@ public sealed partial class GameSystem : Component
 		if ( IsProxy )
 			return;
 
+		if ( LoadGameData && SavedGameMode is not null )
+		{
+			CurrentGameMode = SavedGameMode;
+		}
+		else if ( LoadGameData && SavedGameMode is null )
+		{
+			Log.Warning( $"GameMode: {SavedGameMode} not found" );
+		}
+		
+
 		if ( CurrentGameMode is not null )
 		{
 			var mode = CurrentGameMode.Prefab.Clone();
@@ -154,5 +166,10 @@ public sealed partial class GameSystem : Component
 
 			Scene.GetAll<GameModeObject>()?.Where( x => x.Type != CurrentGameModeType )?.ToList()?.ForEach( x => x?.GameObject?.Destroy() );
 		}
+	}
+
+	public static void SetGameMode( GameModeResource mode )
+	{
+		SavedGameMode = mode;
 	}
 }
