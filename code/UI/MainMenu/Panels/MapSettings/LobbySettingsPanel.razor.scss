@@ -47,6 +47,7 @@ LobbySettingsPanel {
             width: 100%;
             align-items: center;
             justify-content: center;
+            flex-shrink: 0;
 
             &.link {
                 cursor: pointer;
