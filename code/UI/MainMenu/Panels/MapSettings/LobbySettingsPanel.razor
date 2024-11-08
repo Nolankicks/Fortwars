@@ -16,23 +16,15 @@
 				<div class="img" style="background-image: url( @SelectedMap?.Thumb?.ResourcePath )"></div>
 			</div>
 
-			var pkg = GetPackage( SelectedMap.PackageIndent ).Result;
-
-			@if ( !string.IsNullOrWhiteSpace( SelectedMap.PackageIndent ) )
+			@if ( !string.IsNullOrWhiteSpace( SelectedMap.PackageIndent ) && GetPackage( SelectedMap.PackageIndent ).Result is not null )
 			{
+				var pkg = GetPackage( SelectedMap.PackageIndent ).Result;
 				<div class="title link" onclick=@( () => Game.Overlay.ShowPackageModal( SelectedMap.PackageIndent ) )>@SelectedMap?.MapName</div>
-			}
-			else
-			{
-				<div class="title">@SelectedMap?.MapName</div>
-			}
-
-			@if ( !string.IsNullOrWhiteSpace( SelectedMap.PackageIndent ) && pkg is not null )
-			{				
 				<div class="author link" onclick=@( () => Game.Overlay.ShowOrganizationModal( pkg?.Org ) )>By: @SelectedMap?.Author</div>
 			}
 			else
 			{
+				<div class="title">@SelectedMap?.MapName</div>
 				<div class="author">By: @SelectedMap?.Author</div>
 			}
 
