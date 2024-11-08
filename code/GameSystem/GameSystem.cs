@@ -134,7 +134,7 @@ public sealed partial class GameSystem : Component
 		}
 	}
 
-	protected override void OnStart()
+	protected override void OnAwake()
 	{
 		Instance = this;
 
@@ -149,7 +149,6 @@ public sealed partial class GameSystem : Component
 		{
 			Log.Warning( $"GameMode: {SavedGameMode} not found" );
 		}
-		
 
 		if ( CurrentGameMode is not null )
 		{
@@ -171,5 +170,7 @@ public sealed partial class GameSystem : Component
 	public static void SetGameMode( GameModeResource mode )
 	{
 		SavedGameMode = mode;
+
+		Log.Info( $"Set GameMode as {mode}" );
 	}
 }

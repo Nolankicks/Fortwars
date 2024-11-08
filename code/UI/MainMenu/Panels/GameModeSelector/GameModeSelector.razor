@@ -1,0 +1,29 @@
+@using Sandbox;
+@using Sandbox.UI;
+@inherits Panel
+
+<root>
+	<DropDown @ref="DropDown" ValueChanged="@OnValueChange" />
+</root>
+
+@code
+{
+	DropDown DropDown;
+
+	protected override void OnAfterTreeRender(bool firstTime)
+	{
+		if (firstTime)
+		{
+			var options = ResourceLibrary.GetAll<GameModeResource>().Where( x => !x.Hidden ).Select( x => new Option() { Title = x.Title, Value = x } ).ToList();
+			DropDown.Options = options;
+			DropDown.Selected = options.FirstOrDefault();
+		}
+
+		base.OnAfterTreeRender(firstTime);
+	}
+
+	void OnValueChange( string value )
+	{
+		GameSystem.SetGameMode( (GameModeResource)DropDown.Selected.Value );
+	}
+}
