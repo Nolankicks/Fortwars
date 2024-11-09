@@ -3,12 +3,14 @@
 @inherits Panel
 
 <root>
-	<DropDown @ref="DropDown" ValueChanged="@OnValueChange" />
+	<DropDown @ref="DropDown" onclick=@OnClick ValueChanged="@OnValueChange" />
 </root>
 
 @code
 {
 	DropDown DropDown;
+
+	public bool IsDropDownOpen { get; set; } = false;
 
 	protected override void OnAfterTreeRender(bool firstTime)
 	{
@@ -25,5 +27,18 @@
 	void OnValueChange( string value )
 	{
 		GameSystem.SetGameMode( (GameModeResource)DropDown.Selected.Value );
+	}
+
+	void OnClick()
+	{
+		if ( IsDropDownOpen )
+		{
+			Sandbox.UI.Popup.CloseAll();
+			IsDropDownOpen = false;
+		}
+		else
+		{
+			IsDropDownOpen = true;
+		}
 	}
 }
