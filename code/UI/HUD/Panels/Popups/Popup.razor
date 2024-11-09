@@ -24,4 +24,25 @@
 			Invoke( 1f, () => Delete() );
 		}	
 	}
+
+	[ActionGraphNode( "Create new Popup" ), Pure]
+	public static Popup NewPopup( string title, int time )
+	{
+		return new Popup
+		{
+			Title = title,
+			Time = time
+		};
+	}
+
+	[ActionGraphNode( "Has Popup" ), Pure]
+	public static bool HasPopup( Popup popup )
+	{
+		var instance = PopupHolder.Instance;
+
+		if ( !instance.IsValid() )
+			return true;
+		
+		return instance?.Panel.ChildrenOfType<Popup>().Any( x => x.Title == popup.Title ) ?? false;
+	}
 }
