@@ -28,7 +28,7 @@
         "CanTakeDamage": {
           "__version": 8,
           "__guid": "a0b25689-2b35-42ab-8f67-f87cd2683819",
-          "__changeId": 114,
+          "__changeId": 124,
           "UserData": {
             "Title": "Can Take Damage",
             "ReferencedComponentTypes": []
@@ -126,7 +126,7 @@
               "DstName": "Attacker"
             },
             {
-              "Id": 83,
+              "Id": 72,
               "Value": "Red",
               "DstId": 59,
               "DstName": "team"
@@ -147,13 +147,13 @@
               }
             },
             {
-              "Id": 84,
+              "Id": 69,
               "Value": 5,
               "DstId": 61,
               "DstName": "time"
             },
             {
-              "Id": 85,
+              "Id": 70,
               "Value": "You can\u0027t shoot your own ball!",
               "DstId": 61,
               "DstName": "title"

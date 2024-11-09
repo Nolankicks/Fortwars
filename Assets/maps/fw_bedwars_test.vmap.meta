@@ -1,0 +1,24 @@
+{
+  "publish": {
+    "Enabled": false,
+    "ProjectConfig": {
+      "Title": "Fw Bedwars Test",
+      "Type": "map",
+      "Org": "local",
+      "Ident": "fwbedwarstest",
+      "Schema": 0,
+      "IncludeSourceFiles": false,
+      "Resources": null,
+      "PackageReferences": [],
+      "EditorReferences": [
+        "nolankicks.barrier_blue#76309",
+        "nolankicks.barrier_neutral#76308"
+      ],
+      "IsWhitelistDisabled": false,
+      "Metadata": {
+        "SingleAssetSource": "maps/fw_bedwars_test.vmap",
+        "ParentPackage": "nolankicks.fortwars"
+      }
+    }
+  }
+}
