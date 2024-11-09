@@ -2782,7 +2782,7 @@
           "CanTakeDamage": {
             "__version": 8,
             "__guid": "a0b25689-2b35-42ab-8f67-f87cd2683819",
-            "__changeId": 114,
+            "__changeId": 134,
             "UserData": {
               "Title": "Can Take Damage",
               "ReferencedComponentTypes": []
@@ -2790,34 +2790,34 @@
             "Variables": [],
             "Nodes": [
               {
-                "Id": 57,
+                "Id": 93,
                 "Type": "input",
                 "UserData": {
-                  "Position": "-516,456",
+                  "Position": "-1068,924",
                   "Labels": {
                     "arg1": "Attacker"
                   }
                 }
               },
               {
-                "Id": 58,
+                "Id": 94,
                 "Type": "output",
                 "UserData": {
-                  "Position": "-84,456"
+                  "Position": "-624,924"
                 }
               },
               {
-                "Id": 59,
+                "Id": 95,
                 "Type": "Is Friendly",
                 "UserData": {
-                  "Position": "-528,600",
+                  "Position": "-1068,1068",
                   "Labels": {
                     "_result": "IsFriendly"
                   }
                 }
               },
               {
-                "Id": 60,
+                "Id": 96,
                 "Type": "call",
                 "Properties": {
                   "_isStatic": true,
@@ -2825,97 +2825,97 @@
                   "_type": "PopupHolder"
                 },
                 "UserData": {
-                  "Position": "564,456"
+                  "Position": "540,924"
                 }
               },
               {
-                "Id": 61,
+                "Id": 97,
                 "Type": "Create new Popup",
                 "UserData": {
-                  "Position": "216,612",
+                  "Position": "192,1080",
                   "Labels": {
                     "_result": "Popup"
                   }
                 }
               },
               {
-                "Id": 62,
+                "Id": 98,
                 "Type": "Has Popup",
                 "UserData": {
-                  "Position": "36,552"
+                  "Position": "24,948"
                 }
               },
               {
-                "Id": 63,
+                "Id": 99,
                 "Type": "if",
                 "UserData": {
-                  "Position": "204,456"
+                  "Position": "180,924"
                 }
               },
               {
-                "Id": 64,
-                "Type": "op.not",
+                "Id": 100,
+                "Type": "if",
                 "UserData": {
-                  "Position": "-144,480"
+                  "Position": "-300,924"
                 }
               }
             ],
             "Links": [
               {
-                "SrcId": 64,
+                "SrcId": 95,
                 "SrcName": "_result",
-                "DstId": 58,
+                "DstId": 94,
                 "DstName": "_result"
               },
               {
-                "SrcId": 57,
+                "SrcId": 93,
                 "SrcName": "_signal",
-                "DstId": 58,
+                "DstId": 94,
                 "DstName": "_signal"
               },
               {
-                "SrcId": 57,
+                "SrcId": 93,
                 "SrcName": "arg1",
-                "DstId": 59,
+                "DstId": 95,
                 "DstName": "Attacker"
               },
               {
-                "Id": 71,
+                "Id": 107,
                 "Value": "Red",
-                "DstId": 59,
+                "DstId": 95,
                 "DstName": "team"
               },
               {
-                "SrcId": 63,
+                "SrcId": 99,
                 "SrcName": "false",
-                "DstId": 60,
+                "DstId": 96,
                 "DstName": "_signal"
               },
               {
-                "SrcId": 61,
+                "SrcId": 97,
                 "SrcName": "_result",
-                "DstId": 60,
+                "DstId": 96,
                 "DstName": "popup",
                 "UserData": {
                   "x": 276
                 }
               },
               {
-                "Id": 69,
+                "Id": 105,
                 "Value": 5,
-                "DstId": 61,
+                "DstId": 97,
                 "DstName": "time"
               },
               {
-                "Id": 72,
+                "Id": 106,
                 "Value": "You can\u0027t shoot your own ball!",
-                "DstId": 61,
+                "DstId": 97,
                 "DstName": "title"
               },
               {
-                "SrcId": 61,
+                "SrcId": 97,
                 "SrcName": "_result",
-                "DstId": 62,
+                "DstId": 98,
                 "DstName": "popup",
                 "UserData": {
                   "a": -60,
@@ -2923,22 +2923,28 @@
                 }
               },
               {
-                "SrcId": 58,
-                "SrcName": "_signal",
-                "DstId": 63,
+                "SrcId": 100,
+                "SrcName": "true",
+                "DstId": 99,
                 "DstName": "_signal"
               },
               {
-                "SrcId": 62,
+                "SrcId": 98,
                 "SrcName": "_result",
-                "DstId": 63,
+                "DstId": 99,
                 "DstName": "condition"
               },
               {
-                "SrcId": 59,
+                "SrcId": 94,
+                "SrcName": "_signal",
+                "DstId": 100,
+                "DstName": "_signal"
+              },
+              {
+                "SrcId": 95,
                 "SrcName": "_result",
-                "DstId": 64,
-                "DstName": "a"
+                "DstId": 100,
+                "DstName": "condition"
               }
             ]
           },
@@ -2984,7 +2990,7 @@
           "CanTakeDamage": {
             "__version": 8,
             "__guid": "1ddc8c06-b0b9-491c-b852-f386f372b32a",
-            "__changeId": 32,
+            "__changeId": 54,
             "UserData": {
               "Title": "Can Take Damage",
               "ReferencedComponentTypes": []
@@ -2992,34 +2998,34 @@
             "Variables": [],
             "Nodes": [
               {
-                "Id": 12,
+                "Id": 38,
                 "Type": "input",
                 "UserData": {
-                  "Position": "60,636",
+                  "Position": "-120,972",
                   "Labels": {
                     "arg1": "Attacker"
                   }
                 }
               },
               {
-                "Id": 13,
+                "Id": 39,
                 "Type": "output",
                 "UserData": {
-                  "Position": "492,636"
+                  "Position": "324,972"
                 }
               },
               {
-                "Id": 14,
+                "Id": 40,
                 "Type": "Is Friendly",
                 "UserData": {
-                  "Position": "48,780",
+                  "Position": "-120,1116",
                   "Labels": {
                     "_result": "IsFriendly"
                   }
                 }
               },
               {
-                "Id": 15,
+                "Id": 41,
                 "Type": "call",
                 "Properties": {
                   "_isStatic": true,
@@ -3027,97 +3033,97 @@
                   "_type": "PopupHolder"
                 },
                 "UserData": {
-                  "Position": "1140,636"
+                  "Position": "1488,972"
                 }
               },
               {
-                "Id": 16,
+                "Id": 42,
                 "Type": "Create new Popup",
                 "UserData": {
-                  "Position": "792,792",
+                  "Position": "1140,1128",
                   "Labels": {
                     "_result": "Popup"
                   }
                 }
               },
               {
-                "Id": 17,
+                "Id": 43,
                 "Type": "Has Popup",
                 "UserData": {
-                  "Position": "612,732"
+                  "Position": "972,996"
                 }
               },
               {
-                "Id": 18,
+                "Id": 44,
                 "Type": "if",
                 "UserData": {
-                  "Position": "780,636"
+                  "Position": "1128,972"
                 }
               },
               {
-                "Id": 25,
-                "Type": "op.not",
+                "Id": 53,
+                "Type": "if",
                 "UserData": {
-                  "Position": "432,660"
+                  "Position": "648,972"
                 }
               }
             ],
             "Links": [
               {
-                "SrcId": 25,
+                "SrcId": 40,
                 "SrcName": "_result",
-                "DstId": 13,
+                "DstId": 39,
                 "DstName": "_result"
               },
               {
-                "SrcId": 12,
+                "SrcId": 38,
                 "SrcName": "_signal",
-                "DstId": 13,
+                "DstId": 39,
                 "DstName": "_signal"
               },
               {
-                "SrcId": 12,
+                "SrcId": 38,
                 "SrcName": "arg1",
-                "DstId": 14,
+                "DstId": 40,
                 "DstName": "Attacker"
               },
               {
-                "Id": 45,
+                "Id": 51,
                 "Value": "Blue",
-                "DstId": 14,
+                "DstId": 40,
                 "DstName": "team"
               },
               {
-                "SrcId": 18,
+                "SrcId": 44,
                 "SrcName": "false",
-                "DstId": 15,
+                "DstId": 41,
                 "DstName": "_signal"
               },
               {
-                "SrcId": 16,
+                "SrcId": 42,
                 "SrcName": "_result",
-                "DstId": 15,
+                "DstId": 41,
                 "DstName": "popup",
                 "UserData": {
                   "x": 276
                 }
               },
               {
-                "Id": 46,
+                "Id": 49,
                 "Value": 5,
-                "DstId": 16,
+                "DstId": 42,
                 "DstName": "time"
               },
               {
-                "Id": 48,
+                "Id": 50,
                 "Value": "You can\u0027t shoot your own ball!",
-                "DstId": 16,
+                "DstId": 42,
                 "DstName": "title"
               },
               {
-                "SrcId": 16,
+                "SrcId": 42,
                 "SrcName": "_result",
-                "DstId": 17,
+                "DstId": 43,
                 "DstName": "popup",
                 "UserData": {
                   "a": -60,
@@ -3125,22 +3131,28 @@
                 }
               },
               {
-                "SrcId": 13,
-                "SrcName": "_signal",
-                "DstId": 18,
+                "SrcId": 53,
+                "SrcName": "true",
+                "DstId": 44,
                 "DstName": "_signal"
               },
               {
-                "SrcId": 17,
+                "SrcId": 43,
                 "SrcName": "_result",
-                "DstId": 18,
+                "DstId": 44,
                 "DstName": "condition"
               },
               {
-                "SrcId": 14,
+                "SrcId": 39,
+                "SrcName": "_signal",
+                "DstId": 53,
+                "DstName": "_signal"
+              },
+              {
+                "SrcId": 40,
                 "SrcName": "_result",
-                "DstId": 25,
-                "DstName": "a"
+                "DstId": 53,
+                "DstName": "condition"
               }
             ]
           },
