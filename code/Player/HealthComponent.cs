@@ -21,8 +21,6 @@ public sealed partial class HealthComponent : Component
         if ( IsDead )
             return;
 
-		Log.Info( CanTakeDamage?.Invoke( Attacker, damage ) );
-
 		if ( CanTakeDamage?.Invoke( Attacker, damage ) ?? false )
 			return;
 
