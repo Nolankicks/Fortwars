@@ -18,9 +18,13 @@
             <label>Current Prop: @(GetItemName())</label>
         </div>
 		
-		 <div class="text">
+		<div class="text">
             <InputHint Size=@InputGlyphSize.Small @Action=@("ToggleGrid") @ShowAction=@false/>
             <label>Grid Snap: @(GetPropGun().SnapToGrid)</label>
+        </div>
+		<div class="text">
+            <InputHint Size=@InputGlyphSize.Small @Action=@("RotateProp") @ShowAction=@false/>
+            <label>Rotate Prop</label>
         </div>
     </div>
 </root>
