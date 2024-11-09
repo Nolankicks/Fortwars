@@ -1,3 +1,4 @@
+using System;
 using Sandbox;
 using Sandbox.Events;
 
@@ -6,18 +7,24 @@ public record DeathEvent( GameObject Attacker, GameObject Player, Vector3 damage
 
 public record GlobalDamageEvent( int Amount, GameObject Attacker, GameObject Player, Vector3 HitPos = default ) : IGameEvent;
 
-public sealed class HealthComponent : Component
+public sealed partial class HealthComponent : Component
 {
     [Property, Sync] public int Health { get; set; } = 100;
     [Property] public int MaxHealth { get; set; } = 100;
     [Property, Sync] public bool IsDead { get; set; } = false;
 	[Property, Sync] public bool SpawnDamageIndicator { get; set; } = true;
+	[Property] public Func<GameObject, int, bool> CanTakeDamage { get; set; }
 
     [Authority]
     public void TakeDamage( GameObject Attacker, int damage = 10, Vector3 HitPos = default, Vector3 normal = default )
     {
         if ( IsDead )
             return;
+
+		Log.Info( CanTakeDamage?.Invoke( Attacker, damage ) );
+
+		if ( CanTakeDamage?.Invoke( Attacker, damage ) ?? false )
+			return;
 
         var health = Health - damage;
 
