@@ -1584,7 +1584,6 @@
       "Flags": 0,
       "Name": "Death Trigger",
       "Position": "-1080,-8.000092,40",
-      "Enabled": true,
       "NetworkMode": 1,
       "Components": [
         {
@@ -1719,7 +1718,6 @@
       "Flags": 0,
       "Name": "Death Trigger (1)",
       "Position": "1088,-16,40",
-      "Enabled": true,
       "NetworkMode": 1,
       "Components": [
         {
