@@ -138,7 +138,7 @@ public sealed partial class GameSystem : Component
 	{
 		Instance = this;
 
-		if ( IsProxy )
+		if ( !Networking.IsHost )
 			return;
 
 		if ( LoadGameData && SavedGameMode is not null )
@@ -148,6 +148,18 @@ public sealed partial class GameSystem : Component
 		else if ( LoadGameData && SavedGameMode is null )
 		{
 			Log.Warning( $"GameMode: {SavedGameMode} not found" );
+		}
+
+		var forcer = Scene.GetAll<GameModeForcer>()?.FirstOrDefault();
+
+		if ( forcer.IsValid() )
+		{
+			var gameMode = GetGameModeType( forcer.GameMode );
+
+			Log.Info( $"Forcing Game Mode to {gameMode}" );
+
+			if ( gameMode is not null )
+				CurrentGameMode = gameMode;
 		}
 
 		if ( CurrentGameMode is not null )
@@ -162,9 +174,67 @@ public sealed partial class GameSystem : Component
 			mode.NetworkSpawn( null );
 
 			CurrentGameModeType = CurrentGameMode.Type;
-
-			Scene.GetAll<GameModeObject>()?.Where( x => x.Type != CurrentGameModeType )?.ToList()?.ForEach( x => x?.GameObject?.Destroy() );
 		}
+	}
+
+	protected override void OnStart()
+	{
+		if ( IsProxy )
+			return;
+		
+		Scene.GetAll<GameModeObject>()?.Where( x => x.Type != CurrentGameModeType )?.ToList()?.ForEach( x => x?.GameObject?.Destroy() );
+
+		if ( Networking.IsHost )
+		{
+			InitBlueTimeHeld = BlueTimeHeld;
+			InitRedTimeHeld = RedTimeHeld;
+			InitYellowTimeHeld = YellowTimeHeld;
+			InitGreenTimeHeld = GreenTimeHeld;
+
+			var mapData = Scene.GetAll<MapData>()?.FirstOrDefault();
+
+			//Load our map data from the scene
+			if ( mapData.IsValid() )
+			{
+				FourTeams = mapData.FourTeams;
+			}
+
+			//Load our lobby settings from the file
+			var lobbySettings = LobbySettings.Load();
+
+			if ( LoadLobbySettings && lobbySettings is not null )
+			{
+				ClassicModels = lobbySettings?.ClassicModels ?? true;
+				MaxProps = lobbySettings?.MaxProps ?? 50;
+			}
+
+			//Create our prop helpers
+			foreach ( var prop in Scene.GetAll<Prop>() )
+			{
+				if ( prop.Components.TryGet<FortwarsProp>( out var p ) )
+					return;
+
+				prop.Network.SetOwnerTransfer( OwnerTransfer.Takeover );
+
+				if ( prop.Components.TryGet<Rigidbody>( out var rb ) )
+				{
+					var propHelper = prop.Components.Create<FortwarsProp>();
+					propHelper.Health = prop.Health;
+					propHelper.Rigidbody = rb;
+
+					if ( propHelper.Health == 0 )
+						propHelper.Invincible = true;
+
+					prop.Break();
+				}
+			}
+		}
+	}
+
+	/// <summary> Ugly I know </summary>
+	public GameModeResource GetGameModeType( GameModeType type )
+	{
+		return ResourceLibrary.GetAll<GameModeResource>()?.FirstOrDefault( x => x.Type == type );
 	}
 
 	public static void SetGameMode( GameModeResource mode )
