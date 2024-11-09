@@ -7,57 +7,6 @@ public partial class ClassicGameMode : GameMode, Component.INetworkListener,
 IGameEventHandler<OnBuildMode>, IGameEventHandler<OnGameEnd>, IGameEventHandler<OnGameWaiting>, IGameEventHandler<OnFightMode>,
 IGameEventHandler<OnGameOvertimeBuild>, IGameEventHandler<OnGameOvertimeFight>
 {
-	protected override void OnStart()
-	{
-		Log.Info( "Game System Started" );
-
-		if ( Networking.IsHost )
-		{
-			GameSystem.InitBlueTimeHeld = GameSystem.BlueTimeHeld;
-			GameSystem.InitRedTimeHeld = GameSystem.RedTimeHeld;
-			GameSystem.InitYellowTimeHeld = GameSystem.YellowTimeHeld;
-			GameSystem.InitGreenTimeHeld = GameSystem.GreenTimeHeld;
-
-			var mapData = Scene.GetAll<MapData>()?.FirstOrDefault();
-
-			//Load our map data from the scene
-			if ( mapData.IsValid() )
-			{
-				GameSystem.FourTeams = mapData.FourTeams;
-			}
-
-			//Load our lobby settings from the file
-			var lobbySettings = LobbySettings.Load();
-
-			if ( GameSystem.LoadLobbySettings && lobbySettings is not null )
-			{
-				GameSystem.ClassicModels = lobbySettings?.ClassicModels ?? true;
-				GameSystem.MaxProps = lobbySettings?.MaxProps ?? 50;
-			}
-
-			//Create our prop helpers
-			foreach ( var prop in Scene.GetAll<Prop>() )
-			{
-				if ( prop.Components.TryGet<FortwarsProp>( out var p ) )
-					return;
-
-				prop.Network.SetOwnerTransfer( OwnerTransfer.Takeover );
-
-				if ( prop.Components.TryGet<Rigidbody>( out var rb ) )
-				{
-					var propHelper = prop.Components.Create<FortwarsProp>();
-					propHelper.Health = prop.Health;
-					propHelper.Rigidbody = rb;
-
-					if ( propHelper.Health == 0 )
-						propHelper.Invincible = true;
-
-					prop.Break();
-				}
-			}
-		}
-	}
-
 	protected override void OnUpdate()
 	{
 		if ( !Networking.IsHost )
