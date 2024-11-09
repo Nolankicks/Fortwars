@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using Sandbox.Events;
 
 /// <summary> Bedwars... kinda </summary>
-public partial class RollermineWars : GameMode, Component.INetworkListener,
+public partial class RollermineWars : GameMode,
 IGameEventHandler<OnBuildMode>, IGameEventHandler<OnGameEnd>, IGameEventHandler<OnGameWaiting>, IGameEventHandler<OnFightMode>,
 IGameEventHandler<OnGameOvertimeBuild>, IGameEventHandler<OnGameOvertimeFight>
 {

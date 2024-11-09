@@ -14,8 +14,6 @@ public partial class RollermineWars
 			x.ClearSelectedClass();
 			x.ClearAll();
 			x.AddItem( ResourceLibrary.GetAll<WeaponData>().FirstOrDefault( x => x.ResourceName == "propgun" ) );
-			//x.AddItem( ResourceLibrary.GetAll<WeaponData>().FirstOrDefault( x => x.ResourceName == "physgun" ) );
-			//x.OpenClassSelect();
 		} );
 
 		Log.Info( "Build Mode" );
@@ -40,7 +38,6 @@ public partial class RollermineWars
 		Scene.GetAll<Inventory>()?.ToList()?.ForEach( x =>
 		{
 			x.ClearAll();
-
 			x.OpenClassSelect();
 		} );
 

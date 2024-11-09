@@ -1,7 +1,7 @@
 
 using Sandbox.Events;
 
-public class GameMode : Component
+public class GameMode : Component, Component.INetworkListener
 {
 	/// <summary> The current state of the game, should never be null </summary>
 	[Property, ReadOnly, Sync] public GameSystem GameSystem { get; set; }
@@ -10,6 +10,8 @@ public class GameMode : Component
 	{
 		Log.Info( "Game Mode Started" );
 	}
+
+	public virtual void OnActive( Connection connection ) { }
 
 	protected override void OnUpdate()
 	{
@@ -24,6 +26,11 @@ public class GameMode : Component
 				Log.Info( "All players left, ending game." );
 			}
 		}
+	}
+
+	void INetworkListener.OnActive( Connection channel )
+	{
+		OnActive( channel );
 	}
 
 	[Broadcast]

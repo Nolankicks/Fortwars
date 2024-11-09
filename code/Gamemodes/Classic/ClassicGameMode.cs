@@ -3,7 +3,7 @@ using System;
 using System.Threading.Tasks;
 using Sandbox.Events;
 
-public partial class ClassicGameMode : GameMode, Component.INetworkListener,
+public partial class ClassicGameMode : GameMode,
 IGameEventHandler<OnBuildMode>, IGameEventHandler<OnGameEnd>, IGameEventHandler<OnGameWaiting>, IGameEventHandler<OnFightMode>,
 IGameEventHandler<OnGameOvertimeBuild>, IGameEventHandler<OnGameOvertimeFight>
 {

@@ -3,7 +3,7 @@ using Sandbox.Events;
 
 public partial class RollermineWars
 {
-	public void OnActive( Connection connection )
+	public override void OnActive( Connection connection )
 	{
 		connection.CanRefreshObjects = true;
 
