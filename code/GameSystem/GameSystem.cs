@@ -87,23 +87,6 @@ public sealed partial class GameSystem : Component
 	[Property, Category( "Game Mode" )] public bool LoadGameData { get; set; } = true;
 	public static GameModeResource SavedGameMode { get; set; }
 
-
-	[Button( "Save Lobby Settings" ), Feature( "Lobby Settings" )]
-	public void SaveLobbySettings()
-	{
-		LobbySettings.Save( LobbySettings );
-
-		Log.Info( $"Saved Lobby Settings as {FileSystem.Data?.ReadAllText( "lobbysettings.json" )}" );
-
-		Log.Info( $"Loaded Lobby Settings as {JsonSerializer.Serialize( LobbySettings.Load() )}" );
-	}
-
-	[Authority]
-	public void AddKill()
-	{
-		TotalKills++;
-	}
-
 	protected override async Task OnLoad()
 	{
 		if ( Networking.IsHost && !Networking.IsActive && StartServer && !Scene.IsEditor )
@@ -111,26 +94,6 @@ public sealed partial class GameSystem : Component
 			LoadingScreen.Title = "Creating Lobby...";
 			await Task.DelaySeconds( 0.1f );
 			Networking.CreateLobby();
-		}
-	}
-
-	[Authority]
-	public void SubtractTimeHeld( Team team, float time )
-	{
-		switch ( team )
-		{
-			case Team.Red:
-				RedTimeHeld -= time;
-				break;
-			case Team.Blue:
-				BlueTimeHeld -= time;
-				break;
-			case Team.Yellow:
-				YellowTimeHeld -= time;
-				break;
-			case Team.Green:
-				GreenTimeHeld -= time;
-				break;
 		}
 	}
 
@@ -231,6 +194,32 @@ public sealed partial class GameSystem : Component
 		}
 	}
 
+	[Authority]
+	public void SubtractTimeHeld( Team team, float time )
+	{
+		switch ( team )
+		{
+			case Team.Red:
+				RedTimeHeld -= time;
+				break;
+			case Team.Blue:
+				BlueTimeHeld -= time;
+				break;
+			case Team.Yellow:
+				YellowTimeHeld -= time;
+				break;
+			case Team.Green:
+				GreenTimeHeld -= time;
+				break;
+		}
+	}
+
+	[Authority]
+	public void AddKill()
+	{
+		TotalKills++;
+	}
+
 	/// <summary> Ugly I know </summary>
 	public GameModeResource GetGameModeType( GameModeType type )
 	{
@@ -242,5 +231,16 @@ public sealed partial class GameSystem : Component
 		SavedGameMode = mode;
 
 		Log.Info( $"Set GameMode as {mode}" );
+	}
+
+	
+	[Button( "Save Lobby Settings" ), Feature( "Lobby Settings" )]
+	public void SaveLobbySettings()
+	{
+		LobbySettings.Save( LobbySettings );
+
+		Log.Info( $"Saved Lobby Settings as {FileSystem.Data?.ReadAllText( "lobbysettings.json" )}" );
+
+		Log.Info( $"Loaded Lobby Settings as {JsonSerializer.Serialize( LobbySettings.Load() )}" );
 	}
 }
