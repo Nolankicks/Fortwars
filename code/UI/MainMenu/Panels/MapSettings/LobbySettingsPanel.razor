@@ -81,13 +81,9 @@
 			<div class="settings">
 
 				<div class="setting">
-					<div class="label">Classic Props</div>
-					<SwitchControl Value:bind="@ClassicModels" />
-				</div>
-				
-				<div class="setting">
 					<div class="label">Max Props</div>
 					<SliderControl Value:bind="@MaxProps" max=500 />
+					<div class="value">@MaxProps</div>
 				</div>
 			
 			</div>
@@ -109,22 +105,34 @@
 		if ( SelectedPackage is null )
 			return;
 
-		Log.Info( $"Loading package {SelectedPackage.FullIdent}" );
+		Log.Info( $"Loading package {SelectedPackage?.FullIdent}" );
 
 		//I have to fetch it again?
-		var pkg = await Package.Fetch( SelectedPackage.FullIdent, false );
+		var pkg = await Package.Fetch( SelectedPackage?.FullIdent, false );
 
 		if ( pkg is null )
 			return;
 
-		await pkg.MountAsync();
+		await pkg?.MountAsync();
 
-		var sceneFile = pkg.GetMeta<SceneFile>( "PrimaryAsset" );
+		if ( pkg?.GetMeta<string>( "PrimaryAsset" ).EndsWith( ".scene" ) ?? false )
+		{
+			var sceneFile = pkg?.GetMeta<SceneFile>( "PrimaryAsset" );
 
-		if ( sceneFile is null )
-			return;
-		
-		Scene.Load( sceneFile );
+			if ( sceneFile is null )
+			{
+				Scene?.LoadFromFile( "scenes/easter.scene" );
+				return;
+			}
+
+			Scene?.Load( sceneFile );
+		}
+		else if ( pkg?.GetMeta<string>( "PrimaryAsset" )?.EndsWith( ".vmap" ) ?? false )
+		{
+			LaunchArguments.Map = pkg?.FullIdent;
+
+			Scene?.LoadFromFile( "scenes/mapselect.scene" );
+		}
 	}
 
 	public async Task<Package> GetPackage( string ident )
