@@ -39,13 +39,7 @@ public partial class RollermineWars
 
 		Scene.GetAll<Inventory>()?.ToList()?.ForEach( x =>
 		{
-			//Clear the inventory and give players the grav gun
 			x.ClearAll();
-
-			/*if ( x.SelectedClass is not null )
-			{
-				x.AddItem( x.SelectedClass.WeaponData );
-			}*/
 
 			x.OpenClassSelect();
 		} );
@@ -71,20 +65,6 @@ public partial class RollermineWars
 		DeleteClassSelect();
 
 		BroadcastChangeState( GameSystem.GameState.Ended );
-	}
-
-	[Broadcast]
-	public void DeleteClassSelect()
-	{
-		var hud = Scene.GetAll<HUD>()?.FirstOrDefault();
-
-		if ( hud.IsValid() )
-		{
-			foreach ( var select in hud.Panel.ChildrenOfType<ClassSelect>().ToList() )
-			{
-				select.Delete();
-			}
-		}
 	}
 
 	[After<OnGameEnd>]

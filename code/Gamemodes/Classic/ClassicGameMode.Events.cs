@@ -43,11 +43,6 @@ public partial class ClassicGameMode
 			x.ClearAll();
 			x.AddItem( ResourceLibrary.GetAll<WeaponData>().FirstOrDefault( x => x.ResourceName == "gravgun" ) );
 
-			/*if ( x.SelectedClass is not null )
-			{
-				x.AddItem( x.SelectedClass.WeaponData );
-			}*/
-
 			x.OpenClassSelect();
 		} );
 
@@ -72,20 +67,6 @@ public partial class ClassicGameMode
 		DeleteClassSelect();
 
 		BroadcastChangeState( GameSystem.GameState.Ended );
-	}
-
-	[Broadcast]
-	public void DeleteClassSelect()
-	{
-		var hud = Scene.GetAll<HUD>()?.FirstOrDefault();
-
-		if ( hud.IsValid() )
-		{
-			foreach ( var select in hud.Panel.ChildrenOfType<ClassSelect>().ToList() )
-			{
-				select.Delete();
-			}
-		}
 	}
 
 	[After<OnGameEnd>]

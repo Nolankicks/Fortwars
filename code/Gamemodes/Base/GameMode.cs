@@ -53,6 +53,20 @@ public class GameMode : Component
 	{
 		Scene.Dispatch( new OnRoundSwitch( state ) );
 	}
+
+	[Broadcast]
+	public void DeleteClassSelect()
+	{
+		var hud = Scene.GetAll<HUD>()?.FirstOrDefault();
+
+		if ( hud.IsValid() )
+		{
+			foreach ( var select in hud.Panel.ChildrenOfType<ClassSelect>().ToList() )
+			{
+				select.Delete();
+			}
+		}
+	}
 }
 
 [GameResource( "Game Mode", "mode", "A game mode that can be selected by the player", Icon = "gamepad" )]
