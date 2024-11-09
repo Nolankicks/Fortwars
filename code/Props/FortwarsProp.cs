@@ -7,7 +7,7 @@ public sealed class FortwarsProp : Component, Component.ICollisionListener, IGam
 	[Property, Sync] public bool Invincible { get; set; } = false;
 	[Property, Sync] public float CollisionThreshold { get; set; } = 1300;
 	[Property, Sync] public int Divisor { get; set; } = 20;
-	[Property, Sync] public Team Team { get; set; }
+	[Property, Sync] public Team Team { get; set; } = Team.None;
 	[Property, Sync] public FWPlayerController Grabber { get; set; }
 	[Property, Sync] public bool CanKill { get; set; } = true;
 	[Property, Sync] public float Health { get; set; } = 100;
