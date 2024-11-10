@@ -26,7 +26,7 @@
               {
                 "__type": "RoundComponent",
                 "__guid": "e44f4583-0b3c-4dca-8491-774985b7405b",
-                "EndCondition": "E_TIMER",
+                "EndType": "E_TIMER",
                 "Name": "Build",
                 "PlayerWeapons": [
                   "weapondatas/propgun.weapons"
