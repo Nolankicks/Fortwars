@@ -107,11 +107,12 @@
             "BlueTimeHeld": 60,
             "BuildTime": 120,
             "ClassicModels": true,
-            "CurrentGameMode": "gamemodes/rollerminewars.mode",
+            "CurrentGameMode": "gamemodes/classic.mode",
             "CurrentGameModeType": "Classic",
             "FightTime": 240,
             "FourTeams": false,
             "GreenTimeHeld": 60,
+            "LoadGameData": true,
             "LoadLobbySettings": true,
             "LobbySettings": {
               "ClassicModels": true,
