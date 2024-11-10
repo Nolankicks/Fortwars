@@ -221,6 +221,18 @@ public sealed class Inventory : Component
 		ItemsData.Insert( index, item );
 	}
 
+	[Authority]
+	public void AddItems( List<WeaponData> weaponDatas )
+	{
+		if ( weaponDatas is null )
+			return;
+
+		foreach ( var item in weaponDatas )
+		{
+			AddItem( item );
+		}
+	}
+
 	[Button, Category( "Buttons" )]
 	public void AddItemAtButton()
 	{

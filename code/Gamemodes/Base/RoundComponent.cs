@@ -29,13 +29,31 @@ public sealed class RoundComponent : Component
 	[Property, Category( "Actions" )] public Action OnRoundStart { get; set; }
 	[Property, Category( "Actions" )] public Action OnRoundEnd { get; set; }
 
-
-
-	private TimeUntil RoundTimer { get; set; }
+	[InlineEditor, Property] public TimeUntil RoundTimer { get; set; }
 
 	public void ActivateRound()
 	{
 		OnRoundStart?.Invoke();
+
+		RoundTimer = RoundTime;
+
+		Scene.GetAll<Inventory>()?.ToList()?.ForEach( x => 
+		{
+			x.ClearAll();
+
+			x.AddItems( PlayerWeapons );
+		});
+
+		IsRoundActive = true;
+
+		var instance = GameSystem.Instance;
+
+		if ( instance.IsValid() && instance.CurrentGameModeComponent.IsValid() )
+		{
+			instance.CurrentGameModeComponent.CurrentRound = this;
+
+			instance.CurrentTime = RoundTime;
+		}
 	}
 
 	protected override void OnFixedUpdate()
@@ -45,10 +63,12 @@ public sealed class RoundComponent : Component
 
 		if ( Time )
 		{
-			if ( RoundTimer <= 0 )
+			if ( RoundTimer )
 			{
 				OnRoundEnd?.Invoke();
 				NextRoundTimer?.ActivateRound();
+
+				IsRoundActive = false;
 			}
 		}
 	}

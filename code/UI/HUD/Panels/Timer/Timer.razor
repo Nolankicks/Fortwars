@@ -9,11 +9,11 @@
 	@{
 		var gs = GameSystem.Instance;
 
-		if ( !gs.IsValid() )
+		if (!gs.IsValid())
 			return;
 	}
 
-	<div class="status">@GetStateText( gs.State )</div>
+	<div class="status">@GetStateText(gs.State)</div>
 	<div class="time">
 
 		<div class="text">@FormatedTimer()</div>
@@ -22,29 +22,23 @@
 
 @code
 {
-	public string GetStateText( GameSystem.GameState gameState )
+	public string GetStateText(GameSystem.GameState gameState)
 	{
 		var gs = GameSystem.Instance;
 
-		if ( !gs.IsValid() )
+		if (!gs.IsValid())
 			return "Unknown";
 
-		switch ( gameState )
+		if (!gs.CurrentGameModeComponent.IsValid())
+			return "Unknown";
+
+		if (gs.State == GameSystem.GameState.Waiting)
 		{
-			case GameSystem.GameState.Waiting:
-				return "Waiting";
-			case GameSystem.GameState.BuildMode:
-				return "Build Mode";
-			case GameSystem.GameState.FightMode:
-				return "Ongoing";
-			case GameSystem.GameState.Ended:
-				return "Ending";
-			case GameSystem.GameState.OvertimeBuild:
-				return "Overtime Build " + ( gs.Overtimes != 0 ? gs.Overtimes + 1 : "" );
-			case GameSystem.GameState.OvertimeFight:
-				return "Overtime Fight " + ( gs.Overtimes != 0 ? gs.Overtimes + 1 : "" );
-			default:
-				return "Unknown";
+			return "Waiting for players";
+		}
+		else
+		{
+			return gs.CurrentGameModeComponent.CurrentRound.Name;
 		}
 	}
 
@@ -52,10 +46,10 @@
 	{
 		var gs = GameSystem.Instance;
 
-		if ( !gs.IsValid() )
+		if (!gs.IsValid())
 			return 1;
 
-		if ( gs.State == GameSystem.GameState.Waiting )
+		if (gs.State == GameSystem.GameState.Waiting)
 		{
 			return 1;
 		}
@@ -69,15 +63,18 @@
 	{
 		var gs = Scene.GetAll<GameSystem>().FirstOrDefault();
 
-		if ( gs.IsValid() )
+		if (gs.IsValid())
 		{
-			if ( gs.State == GameSystem.GameState.Waiting )
+			if (gs.State == GameSystem.GameState.Waiting)
 			{
 				return gs.StateSwitch.Relative;
 			}
 			else
 			{
-				return gs.CurrentTime - gs.StateSwitch.Relative;
+				//TODO: Fix this
+				var remainingTime = gs.CurrentGameModeComponent.CurrentRound.RoundTimer.Relative - gs.CurrentTime;
+
+				return remainingTime;
 			}
 		}
 
@@ -86,11 +83,11 @@
 
 	public string FormatedTimer()
 	{
-		return $"{TimeSpan.FromSeconds( GetTime() ):mm\\:ss}";
+		return $"{TimeSpan.FromSeconds(GetTime()):mm\\:ss}";
 	}
 
 	protected override int BuildHash()
 	{
-		return System.HashCode.Combine( GetTime() );
+		return System.HashCode.Combine(GetTime());
 	}
 }

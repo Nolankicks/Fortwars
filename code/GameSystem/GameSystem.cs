@@ -31,7 +31,7 @@ public sealed partial class GameSystem : Component
 	[Property, Category( "Game Settings" ), Sync] public bool ClassicModels { get; set; } = false;
 	[Property, Sync, Category( "Game Settings" )] public bool FourTeams { get; set; } = false;
 
-	public float CurrentTime => State == GameState.BuildMode || State == GameState.OvertimeBuild ? BuildTime : FightTime;
+	public float CurrentTime { get; set; }
 
 	[Property, Category( "Game Settings" )] public int PlayerToStart { get; set; } = 2;
 
@@ -86,6 +86,7 @@ public sealed partial class GameSystem : Component
 	[Property, Sync, Category( "Game Mode" )] public GameModeType CurrentGameModeType { get; set; }
 	[Property, Category( "Game Mode" )] public bool LoadGameData { get; set; } = true;
 	public static GameModeResource SavedGameMode { get; set; }
+	[Sync] public GameMode CurrentGameModeComponent { get; set; }
 
 	protected override async Task OnLoad()
 	{
@@ -132,6 +133,8 @@ public sealed partial class GameSystem : Component
 			if ( mode.Components.TryGet<GameMode>( out var gm ) )
 			{
 				gm.GameSystem = this;
+
+				CurrentGameModeComponent = gm;
 			}
 
 			mode.NetworkSpawn( null );

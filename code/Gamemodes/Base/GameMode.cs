@@ -8,6 +8,8 @@ public partial class GameMode : Component, Component.INetworkListener
 
 	[Property] public RoundComponent InitialRound { get; set; }
 
+	[Property, Sync] public RoundComponent CurrentRound { get; set; }
+
 	protected override void OnStart()
 	{
 		Log.Info( "Game Mode Started" );
@@ -102,7 +104,7 @@ public partial class GameMode : Component, Component.INetworkListener
 			players[i].SetTeam( teams[i % teams.Count] );
 		}
 
-		Scene.GetAll<FWPlayerController>().ToList().ForEach( x => x.TeleportToTeamSpawnPoint() );
+		Scene.GetAll<FWPlayerController>()?.ToList()?.ForEach( x => x.TeleportToTeamSpawnPoint() );
 	}
 
 	[Broadcast]
@@ -156,34 +158,6 @@ public partial class GameMode : Component, Component.INetworkListener
 
 		if ( !gs.IsValid() )
 			return;
-
-		switch ( gs.State )
-		{
-			case GameSystem.GameState.Waiting:
-				GameSystem.Instance?.Scene.Dispatch( new OnBuildMode() );
-				GameSystem.Instance.State = GameSystem.GameState.BuildMode;
-				break;
-			case GameSystem.GameState.BuildMode:
-				GameSystem.Instance?.Scene.Dispatch( new OnFightMode() );
-				GameSystem.Instance.State = GameSystem.GameState.FightMode;
-				break;
-			case GameSystem.GameState.FightMode:
-				GameSystem.Instance?.Scene.Dispatch( new OnGameEnd() );
-				GameSystem.Instance.State = GameSystem.GameState.Ended;
-				break;
-			case GameSystem.GameState.OvertimeBuild:
-				GameSystem.Instance?.Scene.Dispatch( new OnGameOvertimeFight() );
-				GameSystem.Instance.State = GameSystem.GameState.OvertimeFight;
-				break;
-			case GameSystem.GameState.OvertimeFight:
-				GameSystem.Instance?.Scene.Dispatch( new OnGameOvertimeBuild() );
-				GameSystem.Instance.State = GameSystem.GameState.OvertimeBuild;
-				break;
-			case GameSystem.GameState.Ended:
-				GameSystem.Instance?.Scene.Dispatch( new OnBuildMode() );
-				GameSystem.Instance.State = GameSystem.GameState.BuildMode;
-				break;
-		}
 	}
 
 	public bool CanStartGame()

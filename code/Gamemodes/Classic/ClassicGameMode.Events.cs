@@ -11,11 +11,12 @@ public partial class ClassicGameMode
 
 		Scene.GetAll<Inventory>()?.ToList()?.ForEach( x =>
 		{
-			x.ClearSelectedClass();
+			/*x.ClearSelectedClass();
 			x.ClearAll();
 			x.AddItem( ResourceLibrary.GetAll<WeaponData>().FirstOrDefault( x => x.ResourceName == "propgun" ) );
 			//x.AddItem( ResourceLibrary.GetAll<WeaponData>().FirstOrDefault( x => x.ResourceName == "physgun" ) );
 			//x.OpenClassSelect();
+			*/
 		} );
 
 		Log.Info( "Build Mode" );
@@ -39,11 +40,11 @@ public partial class ClassicGameMode
 
 		Scene.GetAll<Inventory>()?.ToList()?.ForEach( x =>
 		{
-			//Clear the inventory and give players the grav gun
+			/*//Clear the inventory and give players the grav gun
 			x.ClearAll();
 			x.AddItem( ResourceLibrary.GetAll<WeaponData>().FirstOrDefault( x => x.ResourceName == "gravgun" ) );
 
-			x.OpenClassSelect();
+			x.OpenClassSelect();*/
 		} );
 
 		//Broadcast random text from a list

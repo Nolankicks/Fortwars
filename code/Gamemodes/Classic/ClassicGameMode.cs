@@ -6,14 +6,11 @@ public partial class ClassicGameMode : GameMode,
 IGameEventHandler<OnBuildMode>, IGameEventHandler<OnGameEnd>, IGameEventHandler<OnGameWaiting>, IGameEventHandler<OnFightMode>,
 IGameEventHandler<OnGameOvertimeBuild>, IGameEventHandler<OnGameOvertimeFight>
 {
-
-
-
 	protected override void OnUpdate()
 	{
 		if ( Networking.IsHost )
 		{
-			GameLoop();
+			//GameLoop();
 		}
 
 		base.OnUpdate();
