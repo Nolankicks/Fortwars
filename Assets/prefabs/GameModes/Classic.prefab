@@ -10,7 +10,40 @@
         "__guid": "7579476d-6c7f-415d-97b8-149783e56e3e"
       }
     ],
-    "Children": [],
+    "Children": [
+      {
+        "__guid": "e98b9be0-ef35-4daa-a32f-8a69b99ad7e1",
+        "Flags": 0,
+        "Name": "Rounds",
+        "Enabled": true,
+        "Children": [
+          {
+            "__guid": "e9808dfe-3a94-45f9-903f-1e792cbc1ce4",
+            "Flags": 0,
+            "Name": "Build",
+            "Enabled": true,
+            "Components": [
+              {
+                "__type": "RoundComponent",
+                "__guid": "e44f4583-0b3c-4dca-8491-774985b7405b",
+                "EndCondition": "E_TIMER",
+                "Name": "Build",
+                "PlayerWeapons": [
+                  "weapondatas/propgun.weapons"
+                ],
+                "UseClasses": false
+              }
+            ]
+          },
+          {
+            "__guid": "f19aaa98-fa80-4421-b71d-92d0aa9591dc",
+            "Flags": 0,
+            "Name": "Fight",
+            "Enabled": true
+          }
+        ]
+      }
+    ],
     "__variables": [],
     "__properties": {
       "FixedUpdateFrequency": 50,
