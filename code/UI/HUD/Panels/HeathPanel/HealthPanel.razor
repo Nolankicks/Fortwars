@@ -12,7 +12,7 @@
 		if ( !player.IsValid() )
 			return;
 	}
-    <div class="number" @ref="NumberPanel">
+    <div class="number" @ref="NumberPanel" style="background-color: @HUD.GetColor().Hex;">
         ✚<div>@player.HealthComponent?.Health</div>
     </div>
 </root>
