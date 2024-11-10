@@ -30,6 +30,8 @@ public sealed class FuncDoor : Component, Component.IPressable
 	[Sync] public bool IsMoving { get; set; }
 	[Sync] public bool State { get; set; }
 
+	[Property] public bool ShowPivot { get; set; } = false;
+
 	protected override void OnStart()
 	{
 		base.OnStart();
@@ -47,10 +49,29 @@ public sealed class FuncDoor : Component, Component.IPressable
 		if ( !Gizmo.IsSelected )
 			return;
 
+		if ( ShowPivot )
+		{
+			using ( Gizmo.Scope( "Tool", new Transform( Pivot ) ) )
+			{
+				Gizmo.Hitbox.DepthBias = 0.1f;
+
+				if ( Gizmo.Control.Position( "pivot", 0, out var newPivot ) )
+				{
+					Pivot += newPivot;
+				}
+			}
+		}
+
 		var delta = MathF.Sin( RealTime.Now * 2.0f ).Remap( -1, 1 );
 		DrawAt( delta );
 		DrawAt( 0 );
 		DrawAt( 1 );
+	}
+
+	[Button( "Reset Pivot" )]
+	public void ResetPivot()
+	{
+		Pivot = Vector3.Zero;
 	}
 
 	void DrawAt( float f )
