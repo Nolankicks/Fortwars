@@ -7,19 +7,18 @@ public sealed class RoundComponent : Component
 
 
 
-	enum EndTypes
-	{
-		[Title( "Timer" ), Icon( "Timer" ),
-			Description( "End the round when the timer runs out" )]
-		E_TIMER,
-		[Title( "Condition" ), Icon( "Receipt" ),
-		Description( "End the round when a team reaches a certain score (DONE VIA ACTION)" )]
-		E_CONDITION,
-	}
-	[Header( "End Conditions" )]
-	[Property] EndTypes EndType { get; set; }
 
-	[Property, ShowIf( "EndType", EndTypes.E_CONDITION )] public Func<bool> EndCondition { get; set; }
+
+	[Property, ToggleGroup( "Condition" )] public bool Condition { get; set; }
+	[Property, Group( "Condition" )] public Func<bool> EndCondition { get; set; }
+	[Property, Group( "Condition" )] public RoundComponent NextRoundCondition { get; set; }
+
+	[Property, ToggleGroup( "Time" )] public bool Time { get; set; }
+
+	[Property, Group( "Time" )] public float RoundTime { get; set; }
+
+	[Property, Group( "Time" )] public RoundComponent NextRoundTimer { get; set; }
+
 
 	[Header( "Inventory" )]
 

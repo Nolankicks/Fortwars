@@ -26,12 +26,20 @@
               {
                 "__type": "RoundComponent",
                 "__guid": "e44f4583-0b3c-4dca-8491-774985b7405b",
-                "EndType": "E_TIMER",
+                "HasCondition": false,
                 "Name": "Build",
+                "NextRoundTimer": {
+                  "_type": "component",
+                  "component_id": "6ba6116e-10e0-4183-a2f1-45d8ec5648ca",
+                  "go": "f19aaa98-fa80-4421-b71d-92d0aa9591dc",
+                  "component_type": "RoundComponent"
+                },
                 "PlayerWeapons": [
                   "weapondatas/propgun.weapons"
                 ],
-                "UseClasses": false
+                "RoundTime": 120,
+                "UseClasses": false,
+                "UseTimer": true
               }
             ]
           },
@@ -39,7 +47,43 @@
             "__guid": "f19aaa98-fa80-4421-b71d-92d0aa9591dc",
             "Flags": 0,
             "Name": "Fight",
-            "Enabled": true
+            "Enabled": true,
+            "Components": [
+              {
+                "__type": "RoundComponent",
+                "__guid": "6ba6116e-10e0-4183-a2f1-45d8ec5648ca",
+                "HasCondition": false,
+                "Name": "Fight",
+                "NextRoundTimer": {
+                  "_type": "component",
+                  "component_id": "e44f4583-0b3c-4dca-8491-774985b7405b",
+                  "go": "e9808dfe-3a94-45f9-903f-1e792cbc1ce4",
+                  "component_type": "RoundComponent"
+                },
+                "PlayerWeapons": [],
+                "RoundTime": 240,
+                "UseClasses": true,
+                "UseTimer": true
+              }
+            ]
+          },
+          {
+            "__guid": "1d0124c0-70de-4a00-a613-6041dfe6d430",
+            "Flags": 0,
+            "Name": "GameOver",
+            "Enabled": true,
+            "Components": [
+              {
+                "__type": "RoundComponent",
+                "__guid": "b99e2f85-571c-4be2-a0fa-1428764a62cf",
+                "HasCondition": false,
+                "Name": "Game Over",
+                "PlayerWeapons": [],
+                "RoundTime": 0,
+                "UseClasses": false,
+                "UseTimer": false
+              }
+            ]
           }
         ]
       }
