@@ -47,16 +47,6 @@ public sealed class FuncDoor : Component, Component.IPressable
 		if ( !Gizmo.IsSelected )
 			return;
 
-		using ( Gizmo.Scope( "Tool", new Transform( Pivot ) ) )
-		{
-			Gizmo.Hitbox.DepthBias = 0.1f;
-
-			if ( Gizmo.Control.Position( "pivot", 0, out var newPivot ) )
-			{
-				Pivot += newPivot;
-			}
-		}
-
 		var delta = MathF.Sin( RealTime.Now * 2.0f ).Remap( -1, 1 );
 		DrawAt( delta );
 		DrawAt( 0 );
