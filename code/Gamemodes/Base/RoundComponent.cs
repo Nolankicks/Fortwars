@@ -14,7 +14,7 @@ public sealed class RoundComponent : Component
 
 	[Property, ToggleGroup( "Time" )] public bool Time { get; set; }
 
-	[Property, Group( "Time" )] public float RoundTime { get; set; }
+	[Property, Group( "Time" ), Sync] public float RoundTime { get; set; }
 
 	[Property, Group( "Time" )] public RoundComponent NextRoundTimer { get; set; }
 
@@ -31,7 +31,7 @@ public sealed class RoundComponent : Component
 	[Property, Category( "Actions" )] public Action OnRoundEnd { get; set; }
 	[Property, Category( "Actions" )] public Action RoundUpdate { get; set; }
 
-	[InlineEditor, Property] public TimeUntil RoundTimer { get; set; }
+	[InlineEditor, Property, Sync] public TimeUntil RoundTimer { get; set; }
 
 	[Header( "We can add a new type each time we want a new round")]
 	[Property] public GameSystem.GameState State { get; set; }

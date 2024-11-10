@@ -22,28 +22,43 @@ public partial class GameMode : Component, Component.INetworkListener
 	{
 		if ( Networking.IsHost )
 		{
-			//If we are the dedicated server and all players left, end the game
-			if ( Connection.All.Where( x => x != Connection.Local ).Count() == 0 && GameSystem.IsPlaying && Application.IsHeadless )
+			switch ( GameSystem?.State )
 			{
-				GameSystem.State = GameSystem.GameState.Ended;
-				Scene.Dispatch( new OnGameEnd() );
+				case GameSystem.GameState.Waiting:
+					if ( CanStartGame() && GameSystem.StateSwitch.Relative > 5 )
+					{
+						InitialRound.ActivateRound();
+					}
 
-				Log.Info( "All players left, ending game." );
+					break;
+				case GameSystem.GameState.Ended:
+					if ( GameSystem.StateSwitch > 25 )
+					{
+						DispatchEvent( GameSystem.GameState.Waiting );
+					}
+
+					break;
+
 			}
 		}
 
 		if ( IsProxy )
 			return;
 
-		if ( GameSystem.State == GameSystem.GameState.Waiting && CanStartGame() )
+		//If we are the dedicated server and all players left, end the game
+		if ( Connection.All.Where( x => x != Connection.Local ).Count() == 0 && GameSystem.IsPlaying )
 		{
-			InitialRound.ActivateRound();
+			GameSystem.State = GameSystem.GameState.Ended;
+			Scene.Dispatch( new OnGameEnd() );
+
+			Log.Info( "All players left, ending game." );
 		}
 	}
 
 	public void DispatchEvent( GameSystem.GameState state )
 	{
 		GameSystem.State = state;
+		GameSystem.StateSwitch = 0;
 
 		switch ( state )
 		{
@@ -75,8 +90,6 @@ public partial class GameMode : Component, Component.INetworkListener
 		if ( !gs.IsValid() || !Networking.IsHost )
 			return;
 
-		gs.State = GameSystem.GameState.Ended;
-
 		Log.Info( $"Game Ended: {team}" );
 
 		if ( team != Team.None )
@@ -88,11 +101,7 @@ public partial class GameMode : Component, Component.INetworkListener
 
 		if ( Networking.IsHost )
 		{
-			DispatchEvent( GameSystem.GameState.Waiting );
-				
-			Invoke( 5, () => {
-				InitialRound.ActivateRound();
-			});
+			DispatchEvent( GameSystem.GameState.Ended );
 		}
 	}
 
@@ -205,6 +214,8 @@ public partial class GameMode : Component, Component.INetworkListener
 
 		if ( !gs.IsValid() )
 			return;
+
+		gs.CurrentGameModeComponent?.CurrentRound?.EndRound();
 	}
 
 	public bool CanStartGame()

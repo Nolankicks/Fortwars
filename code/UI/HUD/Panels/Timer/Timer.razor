@@ -72,7 +72,7 @@
 			else
 			{
 				//TODO: Fix this
-				var remainingTime = gs.CurrentGameModeComponent.CurrentRound.RoundTimer.Relative - gs.CurrentTime;
+				var remainingTime = gs.StateSwitch - gs.CurrentTime;
 
 				return remainingTime;
 			}

@@ -22,12 +22,14 @@
         "Flags": 0,
         "Name": "Rounds",
         "Enabled": true,
+        "NetworkMode": 1,
         "Children": [
           {
             "__guid": "e9808dfe-3a94-45f9-903f-1e792cbc1ce4",
             "Flags": 0,
             "Name": "Build",
             "Enabled": true,
+            "NetworkMode": 1,
             "Components": [
               {
                 "__type": "RoundComponent",
@@ -46,10 +48,10 @@
                 "PlayerWeapons": [
                   "weapondatas/propgun.weapons"
                 ],
-                "RoundTime": 60,
+                "RoundTime": 0,
                 "RoundTimer": {
-                  "Relative": -8164.5127,
-                  "Passed": 8164.5127,
+                  "Relative": -9521.935,
+                  "Passed": 9521.935,
                   "Fraction": 1
                 },
                 "State": "BuildMode",
@@ -62,6 +64,7 @@
             "Flags": 0,
             "Name": "Fight",
             "Enabled": true,
+            "NetworkMode": 1,
             "Components": [
               {
                 "__type": "RoundComponent",
@@ -162,10 +165,10 @@
                 "PlayerWeapons": [
                   "weapondatas/gravgun.weapons"
                 ],
-                "RoundTime": 120,
+                "RoundTime": 0,
                 "RoundTimer": {
-                  "Relative": -8164.5127,
-                  "Passed": 8164.5127,
+                  "Relative": -9521.935,
+                  "Passed": 9521.935,
                   "Fraction": 1
                 },
                 "State": "FightMode",
@@ -178,6 +181,7 @@
             "Flags": 0,
             "Name": "OvertimeBuild",
             "Enabled": true,
+            "NetworkMode": 1,
             "Components": [
               {
                 "__type": "RoundComponent",
@@ -194,10 +198,10 @@
                   "component_type": "RoundComponent"
                 },
                 "PlayerWeapons": [],
-                "RoundTime": 60,
+                "RoundTime": 0,
                 "RoundTimer": {
-                  "Relative": -8164.5127,
-                  "Passed": 8164.5127,
+                  "Relative": -9521.935,
+                  "Passed": 9521.935,
                   "Fraction": 1
                 },
                 "State": "OvertimeBuild",
@@ -210,6 +214,7 @@
             "Flags": 0,
             "Name": "OvertimeFight",
             "Enabled": true,
+            "NetworkMode": 1,
             "Components": [
               {
                 "__type": "RoundComponent",
@@ -226,10 +231,10 @@
                   "component_type": "RoundComponent"
                 },
                 "PlayerWeapons": [],
-                "RoundTime": 120,
+                "RoundTime": 0,
                 "RoundTimer": {
-                  "Relative": -8164.5127,
-                  "Passed": 8164.5127,
+                  "Relative": -9521.935,
+                  "Passed": 9521.935,
                   "Fraction": 1
                 },
                 "State": "OvertimeFight",
