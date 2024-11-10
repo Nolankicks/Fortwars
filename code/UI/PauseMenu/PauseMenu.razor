@@ -11,7 +11,6 @@
 	<div class="buttons">
 		<button onclick=@( () => Visible = false )> Resume </button>
 		<button onclick=@( () => Game.Overlay.ShowServerList( new Sandbox.Modals.ServerListConfig( Game.Ident ) ) )> Servers </button>
-		<button onclick=@( () => Game.Overlay.ShowReviewModal( Package.Fetch( Game.Ident, false )?.Result ) )> Review </button>
 		<button onclick=@( () => OpenAboutMenu() )> About </button>
 		<button onclick=@( () => Game.Overlay.ShowSettingsModal() )> Settings </button>
 		<button onclick=@BackToMenu> Back to Menu </button>
