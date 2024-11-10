@@ -13,8 +13,6 @@ public partial class GameMode : Component, Component.INetworkListener
 		Log.Info( "Game Mode Started" );
 	}
 
-	public virtual void OnActive( Connection connection ) { }
-
 	protected override void OnUpdate()
 	{
 		if ( Networking.IsHost )
@@ -28,6 +26,20 @@ public partial class GameMode : Component, Component.INetworkListener
 				Log.Info( "All players left, ending game." );
 			}
 		}
+
+		if ( IsProxy )
+			return;
+
+		if ( GameSystem.State == GameSystem.GameState.Waiting && CanStartGame() )
+		{
+			InitialRound.ActivateRound();
+		}
+	}
+
+	public void StartGame()
+	{
+		Scene.Dispatch( new OnBuildMode() );
+		GameSystem.State = GameSystem.GameState.BuildMode;
 	}
 
 	void INetworkListener.OnActive( Connection channel )
@@ -172,6 +184,11 @@ public partial class GameMode : Component, Component.INetworkListener
 				GameSystem.Instance.State = GameSystem.GameState.BuildMode;
 				break;
 		}
+	}
+
+	public bool CanStartGame()
+	{
+		return Scene.GetAll<FWPlayerController>().Count() >= GameSystem.PlayerToStart && GameSystem.StateSwitch > 5;
 	}
 }
 

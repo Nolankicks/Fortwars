@@ -28,8 +28,8 @@ IGameEventHandler<OnGameOvertimeBuild>, IGameEventHandler<OnGameOvertimeFight>
 				//Start the game if we have enough players
 				if ( Scene.GetAll<FWPlayerController>().Count() >= GameSystem.PlayerToStart && GameSystem.StateSwitch > 5 )
 				{
-					Scene.Dispatch( new OnBuildMode() );
-					GameSystem.State = GameSystem.GameState.BuildMode;
+					//Scene.Dispatch( new OnBuildMode() );
+					//GameSystem.State = GameSystem.GameState.BuildMode;
 				}
 				break;
 
