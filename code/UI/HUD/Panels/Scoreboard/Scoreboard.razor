@@ -17,15 +17,15 @@
 		var meta = Scene.GetAll<SceneInformation>()?.FirstOrDefault();
 	}
 
-	@if ( meta.IsValid() )
+	@if (meta.IsValid())
 	{
 		<div class="map-meta">
-			@if ( meta.IsValid() )
+			@if (meta.IsValid())
 			{
 				<div class="info">
 					<div class="name">@meta.Title</div>
 
-					@if ( !string.IsNullOrEmpty( meta.Author ))
+					@if (!string.IsNullOrEmpty(meta.Author))
 					{
 						<div class="author">By @meta.Author</div>
 					}
@@ -39,7 +39,7 @@
 
 	<div class="body">
 
-		@if ( blueTeam.Any() && blueTeam is not null )
+		@if (blueTeam.Any() && blueTeam is not null)
 		{
 			<div class="team">
 
@@ -48,7 +48,7 @@
 					<div class="underline"></div>
 				</div>
 
-				@foreach ( var player in blueTeam )
+				@foreach (var player in blueTeam)
 				{
 					<div class="player">
 						<div class="player-info">
@@ -62,17 +62,17 @@
 				}
 			</div>
 
-		} 
+		}
 
-		@if ( redTeam.Any() && redTeam is not null )
+		@if (redTeam.Any() && redTeam is not null)
 		{
 			<div class="team">
 				<div class="team-name">
 					<div class="text">Red Team</div>
 					<div class="underline"></div>
-				</div>
+			</div>
 
-				@foreach ( var player in redTeam )
+				@foreach (var player in redTeam)
 				{
 					<div class="player">
 						<div class="player-info">
@@ -83,28 +83,31 @@
 							<div class="kills">@player?.Player.Kills / @player?.Player.Deaths</div>
 						</div>
 					</div>
-				}	
+				}
 			</div>
 		}
 
-		@if ( noneTeam.Any() && noneTeam is not null )
+		@if (noneTeam.Any() && noneTeam is not null)
 		{
 			<div class="team">
-				<div class="team-name">
-					<div class="text">None</div>
-					<div class="underline"></div>
+			@if ( gs.CurrentGameModeType != GameModeType.Deathmatch )
+			{
+					<div class="team-name">
+						<div class="text">None</div>
+						<div class="underline"></div>
 				</div>
+			}
 
-				@foreach ( var player in noneTeam )
-				{
-					<div class="player">
-						<div class="player-info">
-							<div class="avatar" style="background-image: url( avatar:@player.Network.Owner?.SteamId)"></div>
-							<div class="name">@player.Network.Owner?.DisplayName</div>
-						</div>
+			@foreach (var player in noneTeam)
+			{
+				<div class="player">
+					<div class="player-info">
+						<div class="avatar" style="background-image: url( avatar:@player.Network.Owner?.SteamId)"></div>
+						<div class="name">@player.Network.Owner?.DisplayName</div>
 					</div>
-				}	
-			</div>
+				</div>
+			}
+		</div>
 		}
 
 	</div>

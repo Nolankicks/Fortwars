@@ -36,6 +36,10 @@
 		{
 			return "Waiting for players";
 		}
+		else if (gs.State == GameSystem.GameState.Ended)
+		{
+			return "Ended";
+		}
 		else
 		{
 			return gs.CurrentGameModeComponent.CurrentRound.Name;

@@ -405,7 +405,6 @@ IGameEventHandler<DeathEvent>, IGameEventHandler<OnPhysgunGrabChange>
 	{
 		List<TeamSpawnPoint> Spawns;
 
-
 		Spawns = Scene.GetAll<TeamSpawnPoint>()?.Where( x => x.Team == TeamComponent.Team )?.ToList();
 
 		if ( Spawns is null || Spawns?.Count == 0 )
@@ -414,9 +413,33 @@ IGameEventHandler<DeathEvent>, IGameEventHandler<OnPhysgunGrabChange>
 			return;
 		}
 
-		var spawn = Game.Random.FromList( Spawns );
+		if ( GameSystem.Instance.IsValid() && GameSystem.Instance.CurrentGameModeType != GameModeType.Deathmatch )
+		{
+			var spawn = Game.Random.FromList( Spawns );
 
-		SetWorld( spawn.Transform.World, changeEyeAngles );
+			SetWorld( spawn.Transform.World, changeEyeAngles );
+		}
+	}
+
+	[Authority]
+	public void TeleportToAnySpawnPoint()
+	{
+		var teamSpawns = Scene.GetAll<TeamSpawnPoint>()
+			.Where( x => x.Team == Team.None )
+			.Select( x => x.GameObject )
+			.ToList();
+
+		var spawns = Scene.GetAll<SpawnPoint>()
+			.Select( x => x.GameObject )
+			.ToList();
+
+		var allSpawns = new List<GameObject>();
+		allSpawns.AddRange( teamSpawns );
+		allSpawns.AddRange( spawns );
+
+		Transform SpawnTransform = allSpawns.Count > 0 ? Game.Random.FromList( allSpawns ).Transform.World : Transform.World;
+
+		SetWorld( SpawnTransform );
 	}
 
 	[Broadcast]

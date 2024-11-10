@@ -13,10 +13,12 @@ public record OnGameOvertimeFight() : IGameEvent;
 public record OnGameEnd() : IGameEvent;
 public record OnRoundSwitch( GameSystem.GameState state ) : IGameEvent;
 
+[Flags]
 public enum GameModeType
 {
-	Classic,
-	RollermineWars
+	Classic = 1,
+	RollermineWars = 2,
+	Deathmatch = 4,
 }
 
 public sealed partial class GameSystem : Component
@@ -147,7 +149,7 @@ public sealed partial class GameSystem : Component
 		if ( IsProxy )
 			return;
 		
-		Scene.GetAll<GameModeObject>()?.Where( x => x.Type != CurrentGameModeType )?.ToList()?.ForEach( x => x?.GameObject?.Destroy() );
+		Scene.GetAll<GameModeObject>()?.Where( x => x.Type.HasFlag( CurrentGameModeType ) )?.ToList()?.ForEach( x => x?.GameObject?.Destroy() );
 
 		if ( Networking.IsHost )
 		{

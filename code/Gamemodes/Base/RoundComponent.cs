@@ -2,39 +2,29 @@ using System;
 
 public sealed class RoundComponent : Component
 {
-	[Property, ReadOnly] public bool IsRoundActive { get; set; }
-	[Property] public bool CheckForWinningTeam { get; set; } = false;
-
-	[Header( "Metadata" )]
-	[Property] public string Name { get; set; }
+	[Property, Feature( "Metadata" )] public string Name { get; set; }
+	[Property, ReadOnly, Feature( "Metadata" )] public bool IsRoundActive { get; set; }
+	[Property, Feature( "Metadata" )] public bool CheckForWinningTeam { get; set; } = false;
+	[Property, Feature( "Metadata" )] public bool IsLastRound { get; set; } = false;
+	[Property, Feature( "Metadata" )] public GameSystem.GameState State { get; set; }
 
 	[Property, ToggleGroup( "Condition" )] public bool Condition { get; set; }
 	[Property, Group( "Condition" )] public Func<bool> EndCondition { get; set; }
-	[Property, Group( "Condition" )] public RoundComponent NextRoundCondition { get; set; }
+	[Property, Group( "Condition" ), ShowIf( "IsLastRound", false )] public RoundComponent NextRoundCondition { get; set; }
 
 	[Property, ToggleGroup( "Time" )] public bool Time { get; set; }
 
 	[Property, Group( "Time" ), Sync] public float RoundTime { get; set; }
+	[Property, Group( "Time" ), ShowIf( "IsLastRound", false )] public RoundComponent NextRoundTimer { get; set; }
 
-	[Property, Group( "Time" )] public RoundComponent NextRoundTimer { get; set; }
+	[Property, Feature( "Inventory")] public bool AddClass { get; set; }
+	[Property, Feature( "Inventory")] List<WeaponData> PlayerWeapons { get; set; }
 
-
-	[Header( "Inventory" )]
-
-	[Property] public bool AddClass { get; set; }
-
-	[Property] List<WeaponData> PlayerWeapons { get; set; }
-
-
-	[Header( "Actions" )]
 	[Property, Category( "Actions" )] public Action OnRoundStart { get; set; }
 	[Property, Category( "Actions" )] public Action OnRoundEnd { get; set; }
 	[Property, Category( "Actions" )] public Action RoundUpdate { get; set; }
 
 	[InlineEditor, Property, Sync] public TimeUntil RoundTimer { get; set; }
-
-	[Header( "We can add a new type each time we want a new round")]
-	[Property] public GameSystem.GameState State { get; set; }
 
 	public GameMode GameMode => Scene?.GetAll<GameMode>()?.FirstOrDefault();
 
@@ -104,6 +94,12 @@ public sealed class RoundComponent : Component
 	public void EndRound()
 	{
 		OnRoundEnd?.Invoke();
+
+		if ( IsLastRound )
+		{
+			GameSystem.Instance?.CurrentGameModeComponent?.EndGame();
+			return;
+		}
 
 		if ( Condition )
 			NextRoundCondition?.ActivateRound();

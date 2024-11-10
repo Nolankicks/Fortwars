@@ -6,6 +6,7 @@
     "prefab": "prefabs/gamemodes/classic.prefab"
   },
   "Hidden": false,
+  "Type": "Classic",
   "__references": [],
   "__version": 0
 }

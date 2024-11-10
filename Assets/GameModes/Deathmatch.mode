@@ -6,7 +6,7 @@
     "prefab": "prefabs/gamemodes/deathmatch.prefab"
   },
   "Hidden": false,
-  "Type": "Classic",
+  "Type": "Deathmatch",
   "__references": [],
   "__version": 0
 }

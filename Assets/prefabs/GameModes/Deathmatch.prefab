@@ -4,10 +4,11 @@
     "Flags": 0,
     "Name": "deathmatch",
     "Enabled": true,
+    "NetworkMode": 1,
     "Components": [
       {
-        "__type": "GameMode",
-        "__guid": "8ad24342-84ab-4291-8e30-e0e08c36653a",
+        "__type": "Deathmatch",
+        "__guid": "b000a83d-f9e9-4d68-ad49-d7a8400dc495",
         "InitialRound": {
           "_type": "component",
           "component_id": "346d83ed-5cdf-4c79-838c-2241d58472e0",
@@ -22,12 +23,14 @@
         "Flags": 0,
         "Name": "--Rounds--",
         "Enabled": true,
+        "NetworkMode": 1,
         "Children": [
           {
             "__guid": "047cc4fb-e838-4df1-9ccc-0e949a6a36f2",
             "Flags": 0,
             "Name": "Fight",
             "Enabled": true,
+            "NetworkMode": 1,
             "Components": [
               {
                 "__type": "RoundComponent",
@@ -35,18 +38,102 @@
                 "AddClass": false,
                 "CheckForWinningTeam": false,
                 "Condition": false,
+                "IsLastRound": true,
                 "IsRoundActive": false,
+                "Name": "Ongoing",
                 "NextRoundTimer": {
                   "_type": "component",
                   "component_id": "346d83ed-5cdf-4c79-838c-2241d58472e0",
                   "go": "047cc4fb-e838-4df1-9ccc-0e949a6a36f2",
                   "component_type": "RoundComponent"
                 },
-                "PlayerWeapons": [],
+                "OnRoundStart": {
+                  "__version": 8,
+                  "__guid": "e3024115-fa6e-4181-976d-101921a9aacd",
+                  "__changeId": 34,
+                  "UserData": {
+                    "Title": "On Round Start",
+                    "ReferencedComponentTypes": []
+                  },
+                  "Variables": [],
+                  "Nodes": [
+                    {
+                      "Id": 0,
+                      "Type": "input",
+                      "UserData": {
+                        "Position": "-12,-0"
+                      }
+                    },
+                    {
+                      "Id": 4,
+                      "Type": "scene.getall.inscene",
+                      "Properties": {
+                        "T": "FWPlayerController"
+                      },
+                      "UserData": {
+                        "Position": "-12,132",
+                        "Labels": {
+                          "_result": "Players"
+                        }
+                      }
+                    },
+                    {
+                      "Id": 6,
+                      "Type": "foreach",
+                      "UserData": {
+                        "Position": "228,0"
+                      }
+                    },
+                    {
+                      "Id": 8,
+                      "Type": "call",
+                      "Properties": {
+                        "_isStatic": false,
+                        "_name": "TeleportToAnySpawnPoint",
+                        "_type": "FWPlayerController"
+                      },
+                      "UserData": {
+                        "Position": "408,-0"
+                      }
+                    }
+                  ],
+                  "Links": [
+                    {
+                      "SrcId": 0,
+                      "SrcName": "_signal",
+                      "DstId": 6,
+                      "DstName": "_signal"
+                    },
+                    {
+                      "SrcId": 4,
+                      "SrcName": "_result",
+                      "DstId": 6,
+                      "DstName": "enumerable"
+                    },
+                    {
+                      "SrcId": 6,
+                      "SrcName": "body",
+                      "DstId": 8,
+                      "DstName": "_signal"
+                    },
+                    {
+                      "SrcId": 6,
+                      "SrcName": "body.value",
+                      "DstId": 8,
+                      "DstName": "_target"
+                    }
+                  ]
+                },
+                "PlayerWeapons": [
+                  "weapondatas/m4a4.weapons",
+                  "weapondatas/mp5.weapons",
+                  "weapondatas/pistol.weapons",
+                  "weapondatas/shotgun.weapons"
+                ],
                 "RoundTime": 120,
                 "RoundTimer": {
-                  "Relative": -8281.36,
-                  "Passed": 8281.36,
+                  "Relative": -2498.6772,
+                  "Passed": 2498.6772,
                   "Fraction": 1
                 },
                 "State": "FightMode",

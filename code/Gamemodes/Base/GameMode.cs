@@ -32,7 +32,7 @@ public partial class GameMode : Component, Component.INetworkListener
 
 					break;
 				case GameSystem.GameState.Ended:
-					if ( GameSystem.StateSwitch > 25 )
+					if ( GameSystem.StateSwitch > 5 )
 					{
 						DispatchEvent( GameSystem.GameState.Waiting );
 					}
@@ -215,7 +215,14 @@ public partial class GameMode : Component, Component.INetworkListener
 		if ( !gs.IsValid() )
 			return;
 
-		gs.CurrentGameModeComponent?.CurrentRound?.EndRound();
+		if ( (!gs.CurrentGameModeComponent?.CurrentRound.IsValid() ?? false) && (gs.CurrentGameModeComponent?.InitialRound.IsValid() ?? false) )
+		{
+			gs.CurrentGameModeComponent.InitialRound.ActivateRound();
+		}
+		else
+		{
+			gs.CurrentGameModeComponent?.CurrentRound?.EndRound();
+		}
 	}
 
 	public bool CanStartGame()

@@ -1128,6 +1128,11 @@
           "Static": true,
           "Surface": "surfaces/glass.pane.surface",
           "SurfaceVelocity": "0,0,0"
+        },
+        {
+          "__type": "GameModeObject",
+          "__guid": "4b0a3d3e-5971-4d8a-93e2-e85660f7bba4",
+          "Type": "Classic, RollermineWars"
         }
       ]
     },
@@ -2128,6 +2133,11 @@
           "SmoothingAngle": 40,
           "Static": true,
           "SurfaceVelocity": "0,0,0"
+        },
+        {
+          "__type": "GameModeObject",
+          "__guid": "b1a71b9c-2e40-4a55-b542-1c476fdea95f",
+          "Type": "Classic, RollermineWars"
         }
       ]
     },
@@ -2390,6 +2400,11 @@
           "SmoothingAngle": 40,
           "Static": true,
           "SurfaceVelocity": "0,0,0"
+        },
+        {
+          "__type": "GameModeObject",
+          "__guid": "02c29799-8318-4aa5-a2a4-2a6a83dbfd15",
+          "Type": "Classic, RollermineWars"
         }
       ]
     },
@@ -2764,6 +2779,7 @@
         {
           "__type": "SpawnObject",
           "__guid": "3be84f45-cf62-4193-a4e6-93333c9aa0f3",
+          "Level": "Level1",
           "Team": "Red"
         },
         {
@@ -2880,7 +2896,7 @@
                 "DstName": "Attacker"
               },
               {
-                "Id": 107,
+                "Id": 101,
                 "Value": "Red",
                 "DstId": 95,
                 "DstName": "team"
@@ -2901,13 +2917,13 @@
                 }
               },
               {
-                "Id": 105,
+                "Id": 102,
                 "Value": 5,
                 "DstId": 97,
                 "DstName": "time"
               },
               {
-                "Id": 106,
+                "Id": 103,
                 "Value": "You can\u0027t shoot your own ball!",
                 "DstId": 97,
                 "DstName": "title"
@@ -2956,7 +2972,7 @@
         {
           "__type": "GameModeObject",
           "__guid": "dc66aee9-1ee1-40f0-b945-38b38811abcf",
-          "Type": "RollermineWars"
+          "Type": "Classic"
         }
       ]
     },
@@ -2972,6 +2988,7 @@
         {
           "__type": "SpawnObject",
           "__guid": "9402e60c-ef1c-4641-bba8-d04055a92af0",
+          "Level": "Level1",
           "Team": "Blue"
         },
         {
@@ -3088,7 +3105,7 @@
                 "DstName": "Attacker"
               },
               {
-                "Id": 51,
+                "Id": 54,
                 "Value": "Blue",
                 "DstId": 40,
                 "DstName": "team"
@@ -3109,13 +3126,13 @@
                 }
               },
               {
-                "Id": 49,
+                "Id": 55,
                 "Value": 5,
                 "DstId": 42,
                 "DstName": "time"
               },
               {
-                "Id": 50,
+                "Id": 56,
                 "Value": "You can\u0027t shoot your own ball!",
                 "DstId": 42,
                 "DstName": "title"
@@ -3164,7 +3181,7 @@
         {
           "__type": "GameModeObject",
           "__guid": "bca4e500-d3b7-417c-bc96-defcc7aa3a98",
-          "Type": "RollermineWars"
+          "Type": "Classic"
         }
       ]
     }

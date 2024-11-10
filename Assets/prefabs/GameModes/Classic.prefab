@@ -4,6 +4,7 @@
     "Flags": 0,
     "Name": "classic",
     "Enabled": true,
+    "NetworkMode": 1,
     "Components": [
       {
         "__type": "ClassicGameMode",
@@ -37,6 +38,7 @@
                 "AddClass": false,
                 "CheckForWinningTeam": false,
                 "Condition": false,
+                "IsLastRound": false,
                 "IsRoundActive": false,
                 "Name": "Build",
                 "NextRoundTimer": {
@@ -50,8 +52,8 @@
                 ],
                 "RoundTime": 0,
                 "RoundTimer": {
-                  "Relative": -9521.935,
-                  "Passed": 9521.935,
+                  "Relative": -2489.5002,
+                  "Passed": 2489.5002,
                   "Fraction": 1
                 },
                 "State": "BuildMode",
@@ -72,9 +74,9 @@
                 "AddClass": true,
                 "CheckForWinningTeam": true,
                 "Condition": false,
+                "IsLastRound": false,
                 "IsRoundActive": false,
                 "Name": "Fight",
-                "NextRoundCondition": null,
                 "NextRoundTimer": {
                   "_type": "component",
                   "component_id": "82ac2f45-7e8f-4928-92d0-7b86283ad010",
@@ -167,8 +169,8 @@
                 ],
                 "RoundTime": 0,
                 "RoundTimer": {
-                  "Relative": -9521.935,
-                  "Passed": 9521.935,
+                  "Relative": -2489.5002,
+                  "Passed": 2489.5002,
                   "Fraction": 1
                 },
                 "State": "FightMode",
@@ -189,6 +191,7 @@
                 "AddClass": false,
                 "CheckForWinningTeam": false,
                 "Condition": false,
+                "IsLastRound": false,
                 "IsRoundActive": false,
                 "Name": "OvertimeBuild",
                 "NextRoundTimer": {
@@ -200,8 +203,8 @@
                 "PlayerWeapons": [],
                 "RoundTime": 0,
                 "RoundTimer": {
-                  "Relative": -9521.935,
-                  "Passed": 9521.935,
+                  "Relative": -2489.5002,
+                  "Passed": 2489.5002,
                   "Fraction": 1
                 },
                 "State": "OvertimeBuild",
@@ -222,6 +225,7 @@
                 "AddClass": false,
                 "CheckForWinningTeam": true,
                 "Condition": false,
+                "IsLastRound": false,
                 "IsRoundActive": false,
                 "Name": "OvertimeFight",
                 "NextRoundTimer": {
@@ -233,8 +237,8 @@
                 "PlayerWeapons": [],
                 "RoundTime": 0,
                 "RoundTimer": {
-                  "Relative": -9521.935,
-                  "Passed": 9521.935,
+                  "Relative": -2489.5002,
+                  "Passed": 2489.5002,
                   "Fraction": 1
                 },
                 "State": "OvertimeFight",
