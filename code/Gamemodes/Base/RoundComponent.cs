@@ -98,13 +98,6 @@ public sealed class RoundComponent : Component
 			NextRoundTimer?.ActivateRound();
 
 		IsRoundActive = false;
-
-		var instance = GameSystem.Instance;
-
-		/*if ( instance.IsValid() && instance.CurrentGameModeComponent.IsValid() && instance.CurrentGameModeComponent.WinningTeam() != Team.None )
-		{
-			GameSystem.Instance?.CurrentGameModeComponent?.EndGame( instance.CurrentGameModeComponent.WinningTeam() );
-		}*/
 	}
 
 	[ActionGraphNode( "50 / 50" ), Pure]

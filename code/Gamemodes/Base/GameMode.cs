@@ -85,6 +85,15 @@ public partial class GameMode : Component, Component.INetworkListener
 			WinGame();
 
 		OnGameEnd?.Invoke( team );
+
+		if ( Networking.IsHost )
+		{
+			DispatchEvent( GameSystem.GameState.Waiting );
+				
+			Invoke( 5, () => {
+				InitialRound.ActivateRound();
+			});
+		}
 	}
 
 	public virtual Team WinningTeam() => Team.None;

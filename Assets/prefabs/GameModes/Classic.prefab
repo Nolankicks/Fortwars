@@ -83,8 +83,8 @@
                 ],
                 "RoundTime": 5,
                 "RoundTimer": {
-                  "Relative": -5827.484,
-                  "Passed": 5827.484,
+                  "Relative": -7150.7007,
+                  "Passed": 7150.7007,
                   "Fraction": 1
                 },
                 "State": "BuildMode",
@@ -117,17 +117,19 @@
                   "go": "751e6d21-8b6f-4587-aaea-f0ffc93da8c6",
                   "component_type": "RoundComponent"
                 },
-                "PlayerWeapons": [],
+                "PlayerWeapons": [
+                  "weapondatas/gravgun.weapons"
+                ],
                 "RoundTime": 5,
                 "RoundTimer": {
-                  "Relative": -5827.484,
-                  "Passed": 5827.484,
+                  "Relative": -7150.7007,
+                  "Passed": 7150.7007,
                   "Fraction": 1
                 },
                 "RoundUpdate": {
                   "__version": 8,
                   "__guid": "4ba58584-39c2-483c-8cdd-4e2e7cf0a536",
-                  "__changeId": 20,
+                  "__changeId": 25,
                   "UserData": {
                     "Title": "Round Update",
                     "ReferencedComponentTypes": [
@@ -170,6 +172,12 @@
                   ],
                   "Links": [
                     {
+                      "SrcId": 0,
+                      "SrcName": "_signal",
+                      "DstId": 1,
+                      "DstName": "_signal"
+                    },
+                    {
                       "SrcId": 4,
                       "SrcName": "_result",
                       "DstId": 1,
@@ -191,7 +199,7 @@
                 },
                 "State": "FightMode",
                 "Time": true,
-                "UseClasses": true
+                "UseClasses": false
               }
             ]
           },
@@ -210,8 +218,8 @@
                 "PlayerWeapons": [],
                 "RoundTime": 0,
                 "RoundTimer": {
-                  "Relative": -5827.484,
-                  "Passed": 5827.484,
+                  "Relative": -7150.7007,
+                  "Passed": 7150.7007,
                   "Fraction": 1
                 },
                 "State": "Ended",
@@ -232,11 +240,17 @@
                 "Condition": false,
                 "IsRoundActive": false,
                 "Name": "OvertimeBuild",
+                "NextRoundTimer": {
+                  "_type": "component",
+                  "component_id": "4715cc07-74da-4aab-83af-91dd2916fd08",
+                  "go": "7095e602-3256-41cd-89c5-71b78c77c6e4",
+                  "component_type": "RoundComponent"
+                },
                 "PlayerWeapons": [],
                 "RoundTime": 5,
                 "RoundTimer": {
-                  "Relative": -5827.484,
-                  "Passed": 5827.484,
+                  "Relative": -7150.7007,
+                  "Passed": 7150.7007,
                   "Fraction": 1
                 },
                 "State": "OvertimeBuild",
@@ -257,15 +271,196 @@
                 "Condition": false,
                 "IsRoundActive": false,
                 "Name": "OvertimeFight",
+                "NextRoundTimer": {
+                  "_type": "component",
+                  "component_id": "82ac2f45-7e8f-4928-92d0-7b86283ad010",
+                  "go": "751e6d21-8b6f-4587-aaea-f0ffc93da8c6",
+                  "component_type": "RoundComponent"
+                },
+                "OnRoundEnd": {
+                  "__version": 8,
+                  "__guid": "5792b89b-c6d4-4333-84dd-feb78986bf79",
+                  "__changeId": 109,
+                  "UserData": {
+                    "Title": "On Round End",
+                    "ReferencedComponentTypes": []
+                  },
+                  "Variables": [],
+                  "Nodes": [
+                    {
+                      "Id": 0,
+                      "Type": "input"
+                    },
+                    {
+                      "Id": 1,
+                      "Type": "property",
+                      "Properties": {
+                        "_name": "Instance",
+                        "_type": "GameSystem"
+                      },
+                      "UserData": {
+                        "Position": "-12,72",
+                        "Labels": {
+                          "_result": "gs"
+                        }
+                      }
+                    },
+                    {
+                      "Id": 49,
+                      "Type": "property",
+                      "Properties": {
+                        "_kind": "Set",
+                        "_name": "Overtimes",
+                        "_type": "GameSystem"
+                      },
+                      "UserData": {
+                        "Position": "324,-0"
+                      }
+                    },
+                    {
+                      "Id": 50,
+                      "Type": "property",
+                      "Properties": {
+                        "_name": "Overtimes",
+                        "_type": "GameSystem"
+                      },
+                      "UserData": {
+                        "Position": "-12,120"
+                      }
+                    },
+                    {
+                      "Id": 51,
+                      "Type": "op.add",
+                      "UserData": {
+                        "Position": "252,120"
+                      }
+                    }
+                  ],
+                  "Links": [
+                    {
+                      "SrcId": 0,
+                      "SrcName": "_signal",
+                      "DstId": 49,
+                      "DstName": "_signal"
+                    },
+                    {
+                      "SrcId": 1,
+                      "SrcName": "_result",
+                      "DstId": 49,
+                      "DstName": "_target"
+                    },
+                    {
+                      "SrcId": 51,
+                      "SrcName": "_result",
+                      "DstId": 49,
+                      "DstName": "_value"
+                    },
+                    {
+                      "SrcId": 1,
+                      "SrcName": "_result",
+                      "DstId": 50,
+                      "DstName": "_target"
+                    },
+                    {
+                      "Id": 52,
+                      "Value": 1,
+                      "DstId": 50,
+                      "DstName": "_value"
+                    },
+                    {
+                      "SrcId": 50,
+                      "SrcName": "_result",
+                      "DstId": 51,
+                      "DstName": "a"
+                    },
+                    {
+                      "Id": 53,
+                      "Value": 1,
+                      "DstId": 51,
+                      "DstName": "b"
+                    }
+                  ]
+                },
                 "PlayerWeapons": [],
-                "RoundTime": 0,
+                "RoundTime": 10,
                 "RoundTimer": {
-                  "Relative": -5827.484,
-                  "Passed": 5827.484,
+                  "Relative": -7150.7007,
+                  "Passed": 7150.7007,
                   "Fraction": 1
                 },
+                "RoundUpdate": {
+                  "__version": 8,
+                  "__guid": "d3a63760-7dfd-41bf-a2a6-9714f9a77400",
+                  "__changeId": 6,
+                  "UserData": {
+                    "Title": "Round Update",
+                    "ReferencedComponentTypes": [
+                      "ClassicGameMode"
+                    ]
+                  },
+                  "Variables": [],
+                  "Nodes": [
+                    {
+                      "Id": 0,
+                      "Type": "input"
+                    },
+                    {
+                      "Id": 1,
+                      "Type": "call",
+                      "Properties": {
+                        "_isStatic": false,
+                        "_name": "CheckForWinningTeam",
+                        "_type": "ClassicGameMode"
+                      },
+                      "UserData": {
+                        "Position": "192,0"
+                      }
+                    },
+                    {
+                      "Id": 2,
+                      "Type": "scene.ref",
+                      "UserData": {
+                        "Position": "-0,120"
+                      }
+                    },
+                    {
+                      "Id": 3,
+                      "Type": "scene.get",
+                      "ParentId": 2,
+                      "Properties": {
+                        "T": "ClassicGameMode"
+                      }
+                    }
+                  ],
+                  "Links": [
+                    {
+                      "SrcId": 0,
+                      "SrcName": "_signal",
+                      "DstId": 1,
+                      "DstName": "_signal"
+                    },
+                    {
+                      "SrcId": 3,
+                      "SrcName": "_result",
+                      "DstId": 1,
+                      "DstName": "_target"
+                    },
+                    {
+                      "SrcId": 2,
+                      "SrcName": "_result",
+                      "DstId": 3,
+                      "DstName": "_this"
+                    }
+                  ],
+                  "Defaults": {
+                    "$2.gameobject": {
+                      "_type": "gameobject",
+                      "go": "a3d7f9ff-9c73-42da-acda-2a56ded467ea"
+                    }
+                  }
+                },
                 "State": "OvertimeFight",
-                "Time": false,
+                "Time": true,
                 "UseClasses": false
               }
             ]
