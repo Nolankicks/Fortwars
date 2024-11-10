@@ -158,6 +158,22 @@ public partial class GameMode : Component, Component.INetworkListener
 		}
 	}
 
+	public void OpenAllClassSelect()
+	{
+		Scene.GetAll<Inventory>()?.ToList()?.ForEach( x =>
+		{
+			x.OpenClassSelect();
+		} );
+	}
+
+	public void ClearAll()
+	{
+		Scene.GetAll<Inventory>()?.ToList()?.ForEach( x =>
+		{
+			x.ClearAll();
+		} );
+	}
+
 	public List<string> FightModePopups = new()
 	{
 		"Fight for your right to party!",

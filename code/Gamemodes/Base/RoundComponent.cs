@@ -3,6 +3,7 @@ using System;
 public sealed class RoundComponent : Component
 {
 	[Property, ReadOnly] public bool IsRoundActive { get; set; }
+	[Property] public bool CheckForWinningTeam { get; set; } = false;
 
 	[Header( "Metadata" )]
 	[Property] public string Name { get; set; }
@@ -20,9 +21,9 @@ public sealed class RoundComponent : Component
 
 	[Header( "Inventory" )]
 
-	[Property] public bool UseClasses { get; set; }
+	[Property] public bool AddClass { get; set; }
 
-	[Property, ShowIf( "UseClasses", false )] List<WeaponData> PlayerWeapons { get; set; }
+	[Property] List<WeaponData> PlayerWeapons { get; set; }
 
 
 	[Header( "Actions" )]
@@ -34,6 +35,8 @@ public sealed class RoundComponent : Component
 
 	[Header( "We can add a new type each time we want a new round")]
 	[Property] public GameSystem.GameState State { get; set; }
+
+	public GameMode GameMode => Scene?.GetAll<GameMode>()?.FirstOrDefault();
 
 	public void ActivateRound()
 	{
@@ -48,6 +51,11 @@ public sealed class RoundComponent : Component
 			x.ClearAll();
 
 			x.AddItems( PlayerWeapons );
+
+			if ( AddClass && x.SelectedClass is not null )
+			{
+				x.AddClass( x.SelectedClass );
+			}
 		} );
 
 		IsRoundActive = true;
@@ -70,6 +78,11 @@ public sealed class RoundComponent : Component
 			return;
 
 		RoundUpdate?.Invoke();
+
+		if ( CheckForWinningTeam && GameSystem.Instance.CurrentGameModeComponent.IsValid() )
+		{
+			GameSystem.Instance.CurrentGameModeComponent.CheckForWinningTeam();
+		}
 
 		if ( Time )
 		{
