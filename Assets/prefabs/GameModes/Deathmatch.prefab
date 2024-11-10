@@ -1,0 +1,73 @@
+{
+  "RootObject": {
+    "__guid": "65e9bb67-95e1-464e-9c72-851e26c3337b",
+    "Flags": 0,
+    "Name": "deathmatch",
+    "Enabled": true,
+    "Components": [
+      {
+        "__type": "GameMode",
+        "__guid": "8ad24342-84ab-4291-8e30-e0e08c36653a"
+      }
+    ],
+    "Children": [
+      {
+        "__guid": "ded0a376-33f8-4787-93b9-fd46de21885c",
+        "Flags": 0,
+        "Name": "--Rounds--",
+        "Enabled": true,
+        "Children": [
+          {
+            "__guid": "047cc4fb-e838-4df1-9ccc-0e949a6a36f2",
+            "Flags": 0,
+            "Name": "Fight",
+            "Enabled": true,
+            "Components": [
+              {
+                "__type": "RoundComponent",
+                "__guid": "346d83ed-5cdf-4c79-838c-2241d58472e0",
+                "Condition": false,
+                "IsRoundActive": false,
+                "PlayerWeapons": [],
+                "RoundTime": 0,
+                "Time": false,
+                "UseClasses": false
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "__variables": [],
+    "__properties": {
+      "FixedUpdateFrequency": 50,
+      "MaxFixedUpdates": 5,
+      "NetworkFrequency": 30,
+      "NetworkInterpolation": true,
+      "PhysicsSubSteps": 1,
+      "ThreadedAnimation": true,
+      "TimeScale": 1,
+      "UseFixedUpdate": true,
+      "Metadata": {},
+      "NavMesh": {
+        "Enabled": false,
+        "IncludeStaticBodies": true,
+        "IncludeKeyframedBodies": true,
+        "EditorAutoUpdate": true,
+        "AgentHeight": 64,
+        "AgentRadius": 16,
+        "AgentStepSize": 18,
+        "AgentMaxSlope": 40,
+        "ExcludedBodies": "",
+        "IncludedBodies": ""
+      }
+    }
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "DontBreakAsTemplate": false,
+  "ResourceVersion": 1,
+  "__references": [],
+  "__version": 1
+}
