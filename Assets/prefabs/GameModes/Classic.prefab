@@ -41,127 +41,53 @@
                   "go": "f19aaa98-fa80-4421-b71d-92d0aa9591dc",
                   "component_type": "RoundComponent"
                 },
-                "OnRoundStart": [
-                  {
-                    "__version": 8,
-                    "__guid": "cc810304-fe32-4ce5-b97a-fee8dea5b961",
-                    "__changeId": 27,
-                    "UserData": {
-                      "Title": "On Round Start",
-                      "ReferencedComponentTypes": [
-                        "ClassicGameMode"
-                      ]
+                "OnRoundStart": {
+                  "__version": 8,
+                  "__guid": "b8078d55-d195-4fc8-bd77-b92e0d7e8102",
+                  "__changeId": 26,
+                  "UserData": {
+                    "Title": "On Round Start",
+                    "ReferencedComponentTypes": []
+                  },
+                  "Variables": [],
+                  "Nodes": [
+                    {
+                      "Id": 0,
+                      "Type": "input"
                     },
-                    "Variables": [],
-                    "Nodes": [
-                      {
-                        "Id": 0,
-                        "Type": "input"
-                      },
-                      {
-                        "Id": 6,
-                        "Type": "scene.ref",
-                        "UserData": {
-                          "Position": "84,264"
-                        }
-                      },
-                      {
-                        "Id": 7,
-                        "Type": "scene.get",
-                        "Properties": {
-                          "T": "ClassicGameMode"
-                        },
-                        "UserData": {
-                          "Position": "228,324"
-                        }
-                      },
-                      {
-                        "Id": 8,
-                        "Type": "call",
-                        "Properties": {
-                          "_isStatic": false,
-                          "_name": "StartGame",
-                          "_type": "GameMode"
-                        },
-                        "UserData": {
-                          "Position": "372,60"
-                        }
-                      }
-                    ],
-                    "Links": [
-                      {
-                        "SrcId": 6,
-                        "SrcName": "_result",
-                        "DstId": 7,
-                        "DstName": "_this"
-                      },
-                      {
-                        "SrcId": 0,
-                        "SrcName": "_signal",
-                        "DstId": 8,
-                        "DstName": "_signal"
-                      },
-                      {
-                        "SrcId": 7,
-                        "SrcName": "_result",
-                        "DstId": 8,
-                        "DstName": "_target"
-                      }
-                    ],
-                    "Defaults": {
-                      "$6.gameobject": {
-                        "_type": "gameobject",
-                        "go": "a3d7f9ff-9c73-42da-acda-2a56ded467ea"
+                    {
+                      "Id": 1,
+                      "Type": "log.info",
+                      "UserData": {
+                        "Position": "288,-0"
                       }
                     }
-                  },
-                  {
-                    "__version": 8,
-                    "__guid": "b8078d55-d195-4fc8-bd77-b92e0d7e8102",
-                    "__changeId": 23,
-                    "UserData": {
-                      "Title": "On Round Start",
-                      "ReferencedComponentTypes": []
+                  ],
+                  "Links": [
+                    {
+                      "SrcId": 0,
+                      "SrcName": "_signal",
+                      "DstId": 1,
+                      "DstName": "_signal"
                     },
-                    "Variables": [],
-                    "Nodes": [
-                      {
-                        "Id": 0,
-                        "Type": "input"
-                      },
-                      {
-                        "Id": 1,
-                        "Type": "log.info",
-                        "UserData": {
-                          "Position": "288,-0"
-                        }
-                      }
-                    ],
-                    "Links": [
-                      {
-                        "SrcId": 0,
-                        "SrcName": "_signal",
-                        "DstId": 1,
-                        "DstName": "_signal"
-                      },
-                      {
-                        "Id": 16,
-                        "Value": "Round start",
-                        "DstId": 1,
-                        "DstName": "format"
-                      }
-                    ]
-                  }
-                ],
+                    {
+                      "Id": 16,
+                      "Value": "Round start",
+                      "DstId": 1,
+                      "DstName": "format"
+                    }
+                  ]
+                },
                 "PlayerWeapons": [
                   "weapondatas/propgun.weapons"
                 ],
                 "RoundTime": 5,
                 "RoundTimer": {
-                  "Relative": -2436.629,
-                  "Passed": 2436.629,
+                  "Relative": -5827.484,
+                  "Passed": 5827.484,
                   "Fraction": 1
                 },
+                "State": "BuildMode",
                 "Time": true,
                 "UseClasses": false
               }
@@ -187,17 +113,26 @@
                 },
                 "NextRoundTimer": {
                   "_type": "component",
-                  "component_id": "e44f4583-0b3c-4dca-8491-774985b7405b",
-                  "go": "e9808dfe-3a94-45f9-903f-1e792cbc1ce4",
+                  "component_id": "82ac2f45-7e8f-4928-92d0-7b86283ad010",
+                  "go": "751e6d21-8b6f-4587-aaea-f0ffc93da8c6",
                   "component_type": "RoundComponent"
                 },
-                "OnRoundStart": {
+                "PlayerWeapons": [],
+                "RoundTime": 5,
+                "RoundTimer": {
+                  "Relative": -5827.484,
+                  "Passed": 5827.484,
+                  "Fraction": 1
+                },
+                "RoundUpdate": {
                   "__version": 8,
-                  "__guid": "c691da7b-c3ba-46c0-9e57-3f6582c3ee0d",
-                  "__changeId": 11,
+                  "__guid": "4ba58584-39c2-483c-8cdd-4e2e7cf0a536",
+                  "__changeId": 20,
                   "UserData": {
-                    "Title": "On Round Start",
-                    "ReferencedComponentTypes": []
+                    "Title": "Round Update",
+                    "ReferencedComponentTypes": [
+                      "ClassicGameMode"
+                    ]
                   },
                   "Variables": [],
                   "Nodes": [
@@ -207,34 +142,54 @@
                     },
                     {
                       "Id": 1,
-                      "Type": "log.info",
+                      "Type": "call",
+                      "Properties": {
+                        "_isStatic": false,
+                        "_name": "CheckForWinningTeam",
+                        "_type": "ClassicGameMode"
+                      },
                       "UserData": {
-                        "Position": "252,0"
+                        "Position": "192,-0"
+                      }
+                    },
+                    {
+                      "Id": 3,
+                      "Type": "scene.ref",
+                      "UserData": {
+                        "Position": "0,120"
+                      }
+                    },
+                    {
+                      "Id": 4,
+                      "Type": "scene.get",
+                      "ParentId": 3,
+                      "Properties": {
+                        "T": "ClassicGameMode"
                       }
                     }
                   ],
                   "Links": [
                     {
-                      "SrcId": 0,
-                      "SrcName": "_signal",
+                      "SrcId": 4,
+                      "SrcName": "_result",
                       "DstId": 1,
-                      "DstName": "_signal"
+                      "DstName": "_target"
                     },
                     {
-                      "Id": 6,
-                      "Value": "Fight",
-                      "DstId": 1,
-                      "DstName": "format"
+                      "SrcId": 3,
+                      "SrcName": "_result",
+                      "DstId": 4,
+                      "DstName": "_this"
                     }
-                  ]
+                  ],
+                  "Defaults": {
+                    "$3.gameobject": {
+                      "_type": "gameobject",
+                      "go": "a3d7f9ff-9c73-42da-acda-2a56ded467ea"
+                    }
+                  }
                 },
-                "PlayerWeapons": [],
-                "RoundTime": 5,
-                "RoundTimer": {
-                  "Relative": -2436.629,
-                  "Passed": 2436.629,
-                  "Fraction": 1
-                },
+                "State": "FightMode",
                 "Time": true,
                 "UseClasses": true
               }
@@ -255,10 +210,61 @@
                 "PlayerWeapons": [],
                 "RoundTime": 0,
                 "RoundTimer": {
-                  "Relative": -2436.629,
-                  "Passed": 2436.629,
+                  "Relative": -5827.484,
+                  "Passed": 5827.484,
                   "Fraction": 1
                 },
+                "State": "Ended",
+                "Time": false,
+                "UseClasses": false
+              }
+            ]
+          },
+          {
+            "__guid": "751e6d21-8b6f-4587-aaea-f0ffc93da8c6",
+            "Flags": 0,
+            "Name": "OvertimeBuild",
+            "Enabled": true,
+            "Components": [
+              {
+                "__type": "RoundComponent",
+                "__guid": "82ac2f45-7e8f-4928-92d0-7b86283ad010",
+                "Condition": false,
+                "IsRoundActive": false,
+                "Name": "OvertimeBuild",
+                "PlayerWeapons": [],
+                "RoundTime": 5,
+                "RoundTimer": {
+                  "Relative": -5827.484,
+                  "Passed": 5827.484,
+                  "Fraction": 1
+                },
+                "State": "OvertimeBuild",
+                "Time": true,
+                "UseClasses": false
+              }
+            ]
+          },
+          {
+            "__guid": "7095e602-3256-41cd-89c5-71b78c77c6e4",
+            "Flags": 0,
+            "Name": "OvertimeFight",
+            "Enabled": true,
+            "Components": [
+              {
+                "__type": "RoundComponent",
+                "__guid": "4715cc07-74da-4aab-83af-91dd2916fd08",
+                "Condition": false,
+                "IsRoundActive": false,
+                "Name": "OvertimeFight",
+                "PlayerWeapons": [],
+                "RoundTime": 0,
+                "RoundTimer": {
+                  "Relative": -5827.484,
+                  "Passed": 5827.484,
+                  "Fraction": 1
+                },
+                "State": "OvertimeFight",
                 "Time": false,
                 "UseClasses": false
               }

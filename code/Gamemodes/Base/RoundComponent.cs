@@ -28,21 +28,27 @@ public sealed class RoundComponent : Component
 	[Header( "Actions" )]
 	[Property, Category( "Actions" )] public Action OnRoundStart { get; set; }
 	[Property, Category( "Actions" )] public Action OnRoundEnd { get; set; }
+	[Property, Category( "Actions" )] public Action RoundUpdate { get; set; }
 
 	[InlineEditor, Property] public TimeUntil RoundTimer { get; set; }
 
+	[Header( "We can add a new type each time we want a new round")]
+	[Property] public GameSystem.GameState State { get; set; }
+
 	public void ActivateRound()
 	{
+		Log.Info( "Activating round: " + Name );
+
 		OnRoundStart?.Invoke();
 
 		RoundTimer = RoundTime;
 
-		Scene.GetAll<Inventory>()?.ToList()?.ForEach( x => 
+		Scene.GetAll<Inventory>()?.ToList()?.ForEach( x =>
 		{
 			x.ClearAll();
 
 			x.AddItems( PlayerWeapons );
-		});
+		} );
 
 		IsRoundActive = true;
 
@@ -53,6 +59,8 @@ public sealed class RoundComponent : Component
 			instance.CurrentGameModeComponent.CurrentRound = this;
 
 			instance.CurrentTime = RoundTime;
+
+			instance.CurrentGameModeComponent.DispatchEvent( State );
 		}
 	}
 
@@ -61,16 +69,48 @@ public sealed class RoundComponent : Component
 		if ( IsProxy || !IsRoundActive )
 			return;
 
+		RoundUpdate?.Invoke();
+
 		if ( Time )
 		{
 			if ( RoundTimer )
 			{
-				OnRoundEnd?.Invoke();
-				NextRoundTimer?.ActivateRound();
-
-				IsRoundActive = false;
+				EndRound();
 			}
 		}
+
+		if ( Condition )
+		{
+			if ( EndCondition?.Invoke() ?? false )
+			{
+				EndRound();
+			}
+		}
+	}
+
+	public void EndRound()
+	{
+		OnRoundEnd?.Invoke();
+
+		if ( Condition )
+			NextRoundCondition?.ActivateRound();
+		else
+			NextRoundTimer?.ActivateRound();
+
+		IsRoundActive = false;
+
+		var instance = GameSystem.Instance;
+
+		/*if ( instance.IsValid() && instance.CurrentGameModeComponent.IsValid() && instance.CurrentGameModeComponent.WinningTeam() != Team.None )
+		{
+			GameSystem.Instance?.CurrentGameModeComponent?.EndGame( instance.CurrentGameModeComponent.WinningTeam() );
+		}*/
+	}
+
+	[ActionGraphNode( "50 / 50" ), Pure]
+	public static bool FiftyFifty()
+	{
+		return Game.Random.Float( 0, 1 ) > 0.5f;
 	}
 
 }

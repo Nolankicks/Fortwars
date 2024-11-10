@@ -10,7 +10,6 @@ public record OnFightMode() : IGameEvent;
 public record OnGameWaiting() : IGameEvent;
 public record OnGameOvertimeBuild() : IGameEvent;
 public record OnGameOvertimeFight() : IGameEvent;
-public record OnOnGameEnd() : IGameEvent;
 public record OnGameEnd() : IGameEvent;
 public record OnRoundSwitch( GameSystem.GameState state ) : IGameEvent;
 

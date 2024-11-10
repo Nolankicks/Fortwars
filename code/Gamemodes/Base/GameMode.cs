@@ -1,4 +1,5 @@
 
+using System;
 using Sandbox.Events;
 
 public partial class GameMode : Component, Component.INetworkListener
@@ -8,7 +9,9 @@ public partial class GameMode : Component, Component.INetworkListener
 
 	[Property] public RoundComponent InitialRound { get; set; }
 
-	[Property, Sync] public RoundComponent CurrentRound { get; set; }
+	[Property, Sync, ReadOnly] public RoundComponent CurrentRound { get; set; }
+
+	[Property] public Action<Team> OnGameEnd { get; set; }
 
 	protected override void OnStart()
 	{
@@ -38,10 +41,25 @@ public partial class GameMode : Component, Component.INetworkListener
 		}
 	}
 
-	public void StartGame()
+	public void DispatchEvent( GameSystem.GameState state )
 	{
-		Scene.Dispatch( new OnBuildMode() );
-		GameSystem.State = GameSystem.GameState.BuildMode;
+		GameSystem.State = state;
+
+		switch ( state )
+		{
+			case GameSystem.GameState.BuildMode:
+				Scene.Dispatch( new OnBuildMode() );
+				break;
+			case GameSystem.GameState.FightMode:
+				Scene.Dispatch( new OnFightMode() );
+				break;
+			case GameSystem.GameState.OvertimeBuild:
+				Scene.Dispatch( new OnGameOvertimeBuild() );
+				break;
+			case GameSystem.GameState.OvertimeFight:
+				Scene.Dispatch( new OnGameOvertimeFight() );
+				break;
+		}
 	}
 
 	void INetworkListener.OnActive( Connection channel )
@@ -65,6 +83,8 @@ public partial class GameMode : Component, Component.INetworkListener
 			WinGame( team );
 		else
 			WinGame();
+
+		OnGameEnd?.Invoke( team );
 	}
 
 	public virtual Team WinningTeam() => Team.None;
@@ -106,6 +126,8 @@ public partial class GameMode : Component, Component.INetworkListener
 
 		Scene.GetAll<FWPlayerController>()?.ToList()?.ForEach( x => x.TeleportToTeamSpawnPoint() );
 	}
+
+	public virtual void CheckForWinningTeam() { }
 
 	[Broadcast]
 	public void BroadcastChangeState( GameSystem.GameState state )

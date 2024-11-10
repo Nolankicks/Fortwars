@@ -85,7 +85,7 @@ IGameEventHandler<OnGameOvertimeBuild>, IGameEventHandler<OnGameOvertimeFight>
 		Scene.Dispatch( new PlayerReset() );
 	}
 
-	public void CheckForWinningTeam()
+	public override void CheckForWinningTeam()
 	{
 		var teams = new Dictionary<Team, float>
 		{
