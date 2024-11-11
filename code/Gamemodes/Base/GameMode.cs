@@ -18,62 +18,14 @@ public partial class GameMode : Component, Component.INetworkListener
 		Log.Info( "Game Mode Started" );
 	}
 
+
+	public bool GameHasStarted { get; set; } = false;
 	protected override void OnUpdate()
 	{
-		if ( Networking.IsHost )
+		if ( !GameHasStarted && CanStartGame() )
 		{
-			switch ( GameSystem?.State )
-			{
-				case GameSystem.GameState.Waiting:
-					if ( CanStartGame() && GameSystem.StateSwitch.Relative > 5 )
-					{
-						InitialRound.ActivateRound();
-					}
-
-					break;
-				case GameSystem.GameState.Ended:
-					if ( GameSystem.StateSwitch > 5 )
-					{
-						DispatchEvent( GameSystem.GameState.Waiting );
-					}
-
-					break;
-
-			}
-		}
-
-		if ( IsProxy )
-			return;
-
-		//If we are the dedicated server and all players left, end the game
-		if ( Connection.All.Where( x => x != Connection.Local ).Count() == 0 && GameSystem.IsPlaying )
-		{
-			GameSystem.State = GameSystem.GameState.Ended;
-			Scene.Dispatch( new OnGameEnd() );
-
-			Log.Info( "All players left, ending game." );
-		}
-	}
-
-	public void DispatchEvent( GameSystem.GameState state )
-	{
-		GameSystem.State = state;
-		GameSystem.StateSwitch = 0;
-
-		switch ( state )
-		{
-			case GameSystem.GameState.BuildMode:
-				Scene.Dispatch( new OnBuildMode() );
-				break;
-			case GameSystem.GameState.FightMode:
-				Scene.Dispatch( new OnFightMode() );
-				break;
-			case GameSystem.GameState.OvertimeBuild:
-				Scene.Dispatch( new OnGameOvertimeBuild() );
-				break;
-			case GameSystem.GameState.OvertimeFight:
-				Scene.Dispatch( new OnGameOvertimeFight() );
-				break;
+			GameHasStarted = true;
+			InitialRound.ActivateRound();
 		}
 	}
 
@@ -98,11 +50,6 @@ public partial class GameMode : Component, Component.INetworkListener
 			WinGame();
 
 		OnGameEnd?.Invoke( team );
-
-		if ( Networking.IsHost )
-		{
-			DispatchEvent( GameSystem.GameState.Ended );
-		}
 	}
 
 	public virtual Team WinningTeam() => Team.None;
@@ -129,59 +76,9 @@ public partial class GameMode : Component, Component.INetworkListener
 		GameSystem.Overtimes = 0;
 	}
 
-	/// <summary> Creates random teams for the players </summary>
-	public void SetTeams()
-	{
-		var players = Scene.GetAllComponents<TeamComponent>().ToList();
-		var teams = GameSystem.FourTeams ? new List<Team> { Team.Red, Team.Blue, Team.Yellow, Team.Green } : new List<Team> { Team.Red, Team.Blue };
 
-		players = players.OrderBy( x => Game.Random.Next() ).ToList();
-
-		for ( int i = 0; i < players.Count; i++ )
-		{
-			players[i].SetTeam( teams[i % teams.Count] );
-		}
-
-		Scene.GetAll<FWPlayerController>()?.ToList()?.ForEach( x => x.TeleportToTeamSpawnPoint() );
-	}
 
 	public virtual void CheckForWinningTeam() { }
-
-	[Broadcast]
-	public void BroadcastChangeState( GameSystem.GameState state )
-	{
-		Scene.Dispatch( new OnRoundSwitch( state ) );
-	}
-
-	[Broadcast]
-	public void DeleteClassSelect()
-	{
-		var hud = Scene.GetAll<HUD>()?.FirstOrDefault();
-
-		if ( hud.IsValid() )
-		{
-			foreach ( var select in hud.Panel.ChildrenOfType<ClassSelect>().ToList() )
-			{
-				select.Delete();
-			}
-		}
-	}
-
-	public void OpenAllClassSelect()
-	{
-		Scene.GetAll<Inventory>()?.ToList()?.ForEach( x =>
-		{
-			x.OpenClassSelect();
-		} );
-	}
-
-	public void ClearAll()
-	{
-		Scene.GetAll<Inventory>()?.ToList()?.ForEach( x =>
-		{
-			x.ClearAll();
-		} );
-	}
 
 	public List<string> FightModePopups = new()
 	{

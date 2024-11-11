@@ -5,14 +5,6 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
-public record OnBuildMode() : IGameEvent;
-public record OnFightMode() : IGameEvent;
-public record OnGameWaiting() : IGameEvent;
-public record OnGameOvertimeBuild() : IGameEvent;
-public record OnGameOvertimeFight() : IGameEvent;
-public record OnGameEnd() : IGameEvent;
-public record OnRoundSwitch( GameSystem.GameState state ) : IGameEvent;
-
 [Flags]
 public enum GameModeType
 {
@@ -38,17 +30,6 @@ public sealed partial class GameSystem : Component
 
 	[Sync] public int TotalKills { get; set; } = 0;
 
-	public enum GameState
-	{
-		Waiting,
-		BuildMode,
-		FightMode,
-		OvertimeBuild,
-		OvertimeFight,
-		Ended
-	}
-
-	[Property, ReadOnly, Sync, Category( "Game State" )] public GameState State { get; set; } = GameState.Waiting;
 	[Sync, InlineEditor, Property, JsonIgnore, Category( "Game State" )] public TimeSince StateSwitch { get; set; } = 0;
 
 	public IEnumerable<TeamComponent> BlueTeam => Scene?.GetAll<TeamComponent>().Where( x => x?.Team == Team.Blue );
@@ -62,8 +43,6 @@ public sealed partial class GameSystem : Component
 	[Property, Sync, Feature( "Game Data" )] public float YellowTimeHeld { get; set; } = 5;
 	[Property, Sync, Feature( "Game Data" )] public float GreenTimeHeld { get; set; } = 5;
 	public static GameSystem Instance { get; set; }
-
-	public bool CountUp => State == GameState.Waiting;
 
 	[Sync] public int Overtimes { get; set; } = 0;
 
@@ -80,8 +59,6 @@ public sealed partial class GameSystem : Component
 	public IEnumerable<FortwarsProp> BlueProps => Scene?.GetAll<FortwarsProp>().Where( x => x.Team == Team.Blue );
 	public IEnumerable<FortwarsProp> YellowProps => Scene?.GetAll<FortwarsProp>().Where( x => x.Team == Team.Yellow );
 	public IEnumerable<FortwarsProp> GreenProps => Scene?.GetAll<FortwarsProp>().Where( x => x.Team == Team.Green );
-
-	public bool IsPlaying => State == GameState.BuildMode || State == GameState.FightMode || State == GameState.OvertimeBuild || State == GameState.OvertimeFight;
 
 	[Property, Sync, Category( "Game Mode" )] public GameModeResource CurrentGameMode { get; set; }
 	[Property, Sync, Category( "Game Mode" )] public GameModeType CurrentGameModeType { get; set; }

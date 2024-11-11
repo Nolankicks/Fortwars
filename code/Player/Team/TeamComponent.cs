@@ -9,8 +9,7 @@ public enum Team
 	None
 }
 
-public sealed class TeamComponent : Component, IGameEventHandler<OnBuildMode>,
-	IGameEventHandler<OnFightMode>, IGameEventHandler<OnGameOvertimeBuild>, IGameEventHandler<OnGameOvertimeFight>
+public sealed class TeamComponent : Component
 {
 	[Property, Sync] public Team Team { get; set; } = Team.None;
 	[Property, Sync] public FWPlayerController Player { get; set; }
@@ -75,27 +74,6 @@ public sealed class TeamComponent : Component, IGameEventHandler<OnBuildMode>,
 		return Team == other.Team;
 	}
 
-	void IGameEventHandler<OnBuildMode>.OnGameEvent( OnBuildMode eventArgs )
-	{
-		ResetToSpawnPoint();
-	}
-
-	void IGameEventHandler<OnFightMode>.OnGameEvent( OnFightMode eventArgs )
-	{
-		ResetToSpawnPoint();
-	}
-
-	void IGameEventHandler<OnGameOvertimeBuild>.OnGameEvent( OnGameOvertimeBuild eventArgs )
-	{
-		ResetToSpawnPoint();
-	}
-
-	void IGameEventHandler<OnGameOvertimeFight>.OnGameEvent( OnGameOvertimeFight eventArgs )
-	{
-		ResetToSpawnPoint();
-	}
-
-
 	[Authority]
 	public void ResetToSpawnPoint()
 	{
@@ -116,5 +94,11 @@ public sealed class TeamComponent : Component, IGameEventHandler<OnBuildMode>,
 		{
 			player.SetWorld( spawn.Transform.World );
 		}
+	}
+
+	[ActionGraphNode( "Reset All Teams" )]
+	public static void TeleportAllTeams()
+	{
+		Game.ActiveScene?.GetAll<TeamComponent>()?.ToList()?.ForEach( x => x.ResetToSpawnPoint() );
 	}
 }

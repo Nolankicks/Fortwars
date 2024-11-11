@@ -17,8 +17,6 @@
 		var red = gs.InitRedTimeHeld;
 		var blue = gs.InitBlueTimeHeld;
 
-		if (gs.State == GameSystem.GameState.Waiting || gs.State == GameSystem.GameState.Ended)
-			return;
 	}
 
 	@if (gs.CurrentGameModeType == GameModeType.Classic)
@@ -34,48 +32,6 @@
 			<div class="time" style="border-radius: 4 0 0 4;">@FormatTime(gs.RedTimeHeld)</div>
 			<div class="bar">
 				<div class="fill red" style=" border-radius: 0 4 4 0; width: @(gs.RedTimeHeld / red * 100)%;"></div>
-			</div>
-
-		</div>
-
-		@if (!gs.FourTeams)
-			return;
-
-		<div class="team-bar">
-			<div class="bar green" style="width: @(gs.GreenTimeHeld / green * 100)%;"></div>
-			<div class="time">@FormatTime(gs.GreenTimeHeld)</div>
-		</div>
-
-		<div class="team-bar">
-			<div class="bar yellow" style="width: @(gs.YellowTimeHeld / yellow * 100)%;"></div>
-			<div class="time">@FormatTime(gs.YellowTimeHeld)</div>
-		</div>
-	}
-	else if (gs.CurrentGameModeType == GameModeType.RollermineWars)
-	{
-		@{
-			var blueBall = Scene.GetAll<SpawnObject>().FirstOrDefault(x => x.Team == Team.Blue);
-			var redBall = Scene.GetAll<SpawnObject>().FirstOrDefault(x => x.Team == Team.Red);
-
-			if (!blueBall.IsValid() || !redBall.IsValid())
-				return;
-		}
-
-		<div class="team-bar blue-bar">
-			<div class="bar" style="">
-				<div class="fill blue"
-					style=" border-radius: 4 0 0 4; width: @((float)blueBall.Health?.Health / blueBall.Health?.MaxHealth * 100)%;">
-				</div>
-			</div>
-			<div class="time" style="border-radius: 0 4 4 0;">@blueBall.Health?.Health</div>
-		</div>
-
-		<div class="team-bar red-bar">
-			<div class="time" style="border-radius: 4 0 0 4;">@redBall.Health?.Health</div>
-			<div class="bar">
-				<div class="fill red"
-					style=" border-radius: 0 4 4 0; width: @((float)redBall.Health?.Health / redBall.Health?.MaxHealth * 100)%;">
-				</div>
 			</div>
 
 		</div>
@@ -110,19 +66,7 @@
 		hash.Add(gs.RedTimeHeld);
 		hash.Add(gs.GreenTimeHeld);
 		hash.Add(gs.YellowTimeHeld);
-		hash.Add(gs.State);
 		hash.Add(gs.CurrentGameModeType);
-
-		var blueBall = Scene.GetAll<SpawnObject>().FirstOrDefault(x => x.Team == Team.Blue);
-		var redBall = Scene.GetAll<SpawnObject>().FirstOrDefault(x => x.Team == Team.Red);
-
-		if (blueBall.IsValid() || redBall.IsValid())
-		{
-			hash.Add(blueBall.Health?.Health);
-			hash.Add(blueBall.Health?.MaxHealth);
-			hash.Add(redBall.Health?.Health);
-			hash.Add(redBall.Health?.MaxHealth);
-		}
 
 		return HashCode.Combine( Time.Now );
 	}

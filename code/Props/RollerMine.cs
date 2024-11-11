@@ -1,9 +1,7 @@
 using Sandbox;
 using Sandbox.Events;
 
-public sealed class RollerMine : Component, IGameEventHandler<OnGameEnd>, IGameEventHandler<OnBuildMode>,
-IGameEventHandler<OnFightMode>, IGameEventHandler<OnGameOvertimeBuild>, IGameEventHandler<OnGameOvertimeFight>,
-IGameEventHandler<OnGameWaiting>
+public sealed class RollerMine : Component
 {
 	[Sync] public Transform StartingTransform { get; set; }
 	[Sync] public bool IsGrabbed { get; set; } = false;
@@ -37,34 +35,13 @@ IGameEventHandler<OnGameWaiting>
 		Renderer?.Set( "b_open", IsGrabbed );
 	}
 
-	void IGameEventHandler<OnGameEnd>.OnGameEvent( OnGameEnd eventArgs )
+	[ActionGraphNode( "Reset Rollermine" )]
+	public static void ResetRollermine()
 	{
-		ResetPosition();
-	}
-
-	void IGameEventHandler<OnBuildMode>.OnGameEvent( OnBuildMode eventArgs )
-	{
-		ResetPosition();
-	}
-
-	void IGameEventHandler<OnFightMode>.OnGameEvent( OnFightMode eventArgs )
-	{
-		ResetPosition();
-	}
-
-	void IGameEventHandler<OnGameOvertimeBuild>.OnGameEvent( OnGameOvertimeBuild eventArgs )
-	{
-		ResetPosition();
-	}
-
-	void IGameEventHandler<OnGameOvertimeFight>.OnGameEvent( OnGameOvertimeFight eventArgs )
-	{
-		ResetPosition();
-	}
-
-	void IGameEventHandler<OnGameWaiting>.OnGameEvent( OnGameWaiting eventArgs )
-	{
-		ResetPosition();
+		foreach ( var rollerMine in Game.ActiveScene?.GetAll<RollerMine>() )
+		{
+			rollerMine.ResetPosition();
+		}
 	}
 
 	[Broadcast]

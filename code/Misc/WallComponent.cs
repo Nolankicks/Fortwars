@@ -1,39 +1,7 @@
 using Sandbox.Events;
 
-public sealed class WallComponent : Component, IGameEventHandler<OnBuildMode>, IGameEventHandler<OnFightMode>,
-IGameEventHandler<OnGameOvertimeBuild>, IGameEventHandler<OnGameEnd>, IGameEventHandler<OnGameOvertimeFight>,
-IGameEventHandler<OnGameWaiting>, Component.ExecuteInEditor
+public sealed class WallComponent : Component, Component.ExecuteInEditor
 {
-	void IGameEventHandler<OnBuildMode>.OnGameEvent( OnBuildMode eventArgs )
-	{
-		ToggleEnable( true );
-	}
-
-	void IGameEventHandler<OnFightMode>.OnGameEvent( OnFightMode eventArgs )
-	{
-		ToggleEnable( false );
-	}
-
-	void IGameEventHandler<OnGameOvertimeBuild>.OnGameEvent( OnGameOvertimeBuild eventArgs )
-	{
-		ToggleEnable( true );
-	}
-
-	void IGameEventHandler<OnGameEnd>.OnGameEvent( OnGameEnd eventArgs )
-	{
-		ToggleEnable( false );
-	}
-
-	void IGameEventHandler<OnGameOvertimeFight>.OnGameEvent( OnGameOvertimeFight eventArgs )
-	{
-		ToggleEnable( false );
-	}
-
-	void IGameEventHandler<OnGameWaiting>.OnGameEvent( OnGameWaiting eventArgs )
-	{
-		ToggleEnable( false );
-	}
-
 	protected override void OnEnabled()
 	{
 		if ( GameObject.NetworkMode != NetworkMode.Object )
@@ -55,6 +23,15 @@ IGameEventHandler<OnGameWaiting>, Component.ExecuteInEditor
 
 			c.Enabled = enable;
 			Network.Refresh();
+		}
+	}
+
+	[ActionGraphNode( "Toggle Wall" )]
+	public static void ToggleWall( bool enable )
+	{
+		foreach ( var wall in Game.ActiveScene?.GetAll<WallComponent>() )
+		{
+			wall.ToggleEnable( enable );
 		}
 	}
 }

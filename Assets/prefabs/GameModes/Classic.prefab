@@ -14,6 +14,105 @@
           "component_id": "e44f4583-0b3c-4dca-8491-774985b7405b",
           "go": "e9808dfe-3a94-45f9-903f-1e792cbc1ce4",
           "component_type": "RoundComponent"
+        },
+        "OnGameEnd": {
+          "__version": 8,
+          "__guid": "386ed363-0807-41da-ab42-556294729f89",
+          "__changeId": 23,
+          "UserData": {
+            "Title": "On Game End",
+            "ReferencedComponentTypes": [
+              "RoundComponent"
+            ]
+          },
+          "Variables": [],
+          "Nodes": [
+            {
+              "Id": 0,
+              "Type": "input"
+            },
+            {
+              "Id": 1,
+              "Type": "Destroy All Props",
+              "UserData": {
+                "Position": "156,-0"
+              }
+            },
+            {
+              "Id": 5,
+              "Type": "scene.ref",
+              "UserData": {
+                "Position": "-0,120"
+              }
+            },
+            {
+              "Id": 6,
+              "Type": "scene.get",
+              "ParentId": 5,
+              "Properties": {
+                "T": "RoundComponent"
+              },
+              "UserData": {
+                "Labels": {
+                  "_result": "Build"
+                }
+              }
+            },
+            {
+              "Id": 7,
+              "Type": "call",
+              "Properties": {
+                "_isStatic": false,
+                "_name": "ActivateRound",
+                "_type": "RoundComponent"
+              },
+              "UserData": {
+                "Position": "480,0"
+              }
+            },
+            {
+              "Id": 8,
+              "Type": "comment",
+              "UserData": {
+                "Position": "396,-48",
+                "Size": "396,132",
+                "Title": "TEMP",
+                "Layer": 1
+              }
+            }
+          ],
+          "Links": [
+            {
+              "SrcId": 0,
+              "SrcName": "_signal",
+              "DstId": 1,
+              "DstName": "_signal"
+            },
+            {
+              "SrcId": 5,
+              "SrcName": "_result",
+              "DstId": 6,
+              "DstName": "_this"
+            },
+            {
+              "SrcId": 1,
+              "SrcName": "_signal",
+              "DstId": 7,
+              "DstName": "_signal"
+            },
+            {
+              "SrcId": 6,
+              "SrcName": "_result",
+              "DstId": 7,
+              "DstName": "_target"
+            }
+          ],
+          "Defaults": {
+            "$5.gameobject": {
+              "_type": "gameobject",
+              "go": "e9808dfe-3a94-45f9-903f-1e792cbc1ce4"
+            }
+          }
         }
       }
     ],
@@ -29,6 +128,7 @@
             "__guid": "e9808dfe-3a94-45f9-903f-1e792cbc1ce4",
             "Flags": 0,
             "Name": "Build",
+            "Scale": "0.9,1,1",
             "Enabled": true,
             "NetworkMode": 1,
             "Components": [
@@ -37,6 +137,8 @@
                 "__guid": "e44f4583-0b3c-4dca-8491-774985b7405b",
                 "AddClass": false,
                 "CheckForWinningTeam": false,
+                "ClearAllWeapons": true,
+                "ClearClass": false,
                 "Condition": false,
                 "IsLastRound": false,
                 "IsRoundActive": false,
@@ -47,14 +149,187 @@
                   "go": "f19aaa98-fa80-4421-b71d-92d0aa9591dc",
                   "component_type": "RoundComponent"
                 },
+                "OnRoundStart": {
+                  "__version": 8,
+                  "__guid": "2f84c17f-94e0-4441-b9b8-5883fffdb4d5",
+                  "__changeId": 52,
+                  "UserData": {
+                    "Title": "On Round Start",
+                    "ReferencedComponentTypes": [
+                      "RoundComponent"
+                    ]
+                  },
+                  "Variables": [],
+                  "Nodes": [
+                    {
+                      "Id": 0,
+                      "Type": "input",
+                      "UserData": {
+                        "Labels": {
+                          "_signal": "Run"
+                        },
+                        "Position": "0,36"
+                      }
+                    },
+                    {
+                      "Id": 1,
+                      "Type": "scene.get",
+                      "Properties": {
+                        "T": "RoundComponent"
+                      },
+                      "UserData": {
+                        "Position": "-132,444",
+                        "Labels": {
+                          "_result": "Round Component"
+                        }
+                      }
+                    },
+                    {
+                      "Id": 2,
+                      "Type": "call",
+                      "Properties": {
+                        "_isStatic": false,
+                        "_name": "SetTeams",
+                        "_type": "RoundComponent"
+                      },
+                      "UserData": {
+                        "Position": "0,72"
+                      }
+                    },
+                    {
+                      "Id": 3,
+                      "Type": "call",
+                      "Properties": {
+                        "_isStatic": false,
+                        "_name": "ClearAllClasses",
+                        "_type": "RoundComponent"
+                      },
+                      "UserData": {
+                        "Position": "0,132"
+                      }
+                    },
+                    {
+                      "Id": 7,
+                      "Type": "call",
+                      "Properties": {
+                        "_isStatic": false,
+                        "_name": "SpawnFightModePopups",
+                        "_type": "RoundComponent"
+                      },
+                      "UserData": {
+                        "Position": "-12,192"
+                      }
+                    },
+                    {
+                      "Id": 9,
+                      "Type": "call",
+                      "Properties": {
+                        "_isStatic": false,
+                        "_name": "SpawnBuildModePopups",
+                        "_type": "RoundComponent"
+                      },
+                      "UserData": {
+                        "Position": "-12,252"
+                      }
+                    },
+                    {
+                      "Id": 10,
+                      "Type": "Toggle Wall",
+                      "UserData": {
+                        "Position": "-12,312"
+                      }
+                    },
+                    {
+                      "Id": 14,
+                      "Type": "Reset All Teams",
+                      "UserData": {
+                        "Position": "-12,372"
+                      }
+                    }
+                  ],
+                  "Links": [
+                    {
+                      "SrcId": 0,
+                      "SrcName": "_target",
+                      "DstId": 1,
+                      "DstName": "_this"
+                    },
+                    {
+                      "SrcId": 0,
+                      "SrcName": "_signal",
+                      "DstId": 2,
+                      "DstName": "_signal"
+                    },
+                    {
+                      "SrcId": 1,
+                      "SrcName": "_result",
+                      "DstId": 2,
+                      "DstName": "_target"
+                    },
+                    {
+                      "SrcId": 0,
+                      "SrcName": "_signal",
+                      "DstId": 3,
+                      "DstName": "_signal"
+                    },
+                    {
+                      "SrcId": 1,
+                      "SrcName": "_result",
+                      "DstId": 3,
+                      "DstName": "_target"
+                    },
+                    {
+                      "SrcId": 0,
+                      "SrcName": "_signal",
+                      "DstId": 7,
+                      "DstName": "_signal"
+                    },
+                    {
+                      "SrcId": 1,
+                      "SrcName": "_result",
+                      "DstId": 7,
+                      "DstName": "_target"
+                    },
+                    {
+                      "SrcId": 0,
+                      "SrcName": "_signal",
+                      "DstId": 9,
+                      "DstName": "_signal"
+                    },
+                    {
+                      "SrcId": 1,
+                      "SrcName": "_result",
+                      "DstId": 9,
+                      "DstName": "_target"
+                    },
+                    {
+                      "SrcId": 0,
+                      "SrcName": "_signal",
+                      "DstId": 10,
+                      "DstName": "_signal"
+                    },
+                    {
+                      "Id": 13,
+                      "Value": true,
+                      "DstId": 10,
+                      "DstName": "enable"
+                    },
+                    {
+                      "SrcId": 0,
+                      "SrcName": "_signal",
+                      "DstId": 14,
+                      "DstName": "_signal"
+                    }
+                  ]
+                },
                 "PlayerWeapons": [
                   "weapondatas/propgun.weapons",
                   "weapondatas/physgun.weapons"
                 ],
-                "RoundTime": 60,
+                "RoundTime": 5,
                 "RoundTimer": {
-                  "Relative": -3456.0542,
-                  "Passed": 3456.0542,
+                  "Relative": -4098.7617,
+                  "Passed": 4098.7617,
                   "Fraction": 1
                 },
                 "State": "BuildMode",
@@ -74,20 +349,22 @@
                 "__guid": "6ba6116e-10e0-4183-a2f1-45d8ec5648ca",
                 "AddClass": true,
                 "CheckForWinningTeam": true,
+                "ClearAllWeapons": true,
+                "ClearClass": true,
                 "Condition": false,
                 "IsLastRound": false,
                 "IsRoundActive": false,
                 "Name": "Fight",
                 "NextRoundTimer": {
                   "_type": "component",
-                  "component_id": "82ac2f45-7e8f-4928-92d0-7b86283ad010",
-                  "go": "751e6d21-8b6f-4587-aaea-f0ffc93da8c6",
+                  "component_id": "b0c6c488-f995-4511-b4e7-bac6724f1cee",
+                  "go": "1f9e9240-4854-4b99-9f1c-b360180acd7a",
                   "component_type": "RoundComponent"
                 },
                 "OnRoundStart": {
                   "__version": 8,
                   "__guid": "a8a041bc-7d5b-4c31-b007-98d025bf4fdf",
-                  "__changeId": 27,
+                  "__changeId": 55,
                   "UserData": {
                     "Title": "On Round Start",
                     "ReferencedComponentTypes": [
@@ -100,68 +377,112 @@
                       "Id": 0,
                       "Type": "input",
                       "UserData": {
-                        "Position": "-0,-0"
+                        "Position": "-0,-0",
+                        "Labels": {
+                          "_signal": "Run"
+                        }
                       }
                     },
                     {
-                      "Id": 6,
-                      "Type": "call",
-                      "Properties": {
-                        "_isStatic": false,
-                        "_name": "OpenAllClassSelect",
-                        "_type": "GameMode"
-                      },
-                      "UserData": {
-                        "Position": "324,0"
-                      }
-                    },
-                    {
-                      "Id": 7,
+                      "Id": 9,
                       "Type": "scene.get",
                       "Properties": {
                         "T": "RoundComponent"
                       },
                       "UserData": {
-                        "Position": "0,96"
+                        "Position": "0,252",
+                        "Labels": {
+                          "_result": "Round component"
+                        }
                       }
                     },
                     {
-                      "Id": 8,
-                      "Type": "property",
-                      "ParentId": 7,
+                      "Id": 10,
+                      "Type": "call",
                       "Properties": {
-                        "_name": "GameMode",
+                        "_isStatic": false,
+                        "_name": "OpenAllClassSelect",
                         "_type": "RoundComponent"
+                      },
+                      "UserData": {
+                        "Position": "0,36"
+                      }
+                    },
+                    {
+                      "Id": 11,
+                      "Type": "call",
+                      "Properties": {
+                        "_isStatic": false,
+                        "_name": "ResetAllHealth",
+                        "_type": "RoundComponent"
+                      },
+                      "UserData": {
+                        "Position": "-0,96"
+                      }
+                    },
+                    {
+                      "Id": 12,
+                      "Type": "Toggle Wall",
+                      "UserData": {
+                        "Position": "0,156"
+                      }
+                    },
+                    {
+                      "Id": 17,
+                      "Type": "Reset All Teams",
+                      "UserData": {
+                        "Position": "0,216"
                       }
                     }
                   ],
                   "Links": [
                     {
                       "SrcId": 0,
-                      "SrcName": "_signal",
-                      "DstId": 6,
-                      "DstName": "_signal"
-                    },
-                    {
-                      "SrcId": 8,
-                      "SrcName": "_result",
-                      "DstId": 6,
-                      "DstName": "_target",
-                      "UserData": {
-                        "x": 60
-                      }
-                    },
-                    {
-                      "SrcId": 0,
                       "SrcName": "_target",
-                      "DstId": 7,
+                      "DstId": 9,
                       "DstName": "_this"
                     },
                     {
-                      "SrcId": 7,
+                      "SrcId": 0,
+                      "SrcName": "_signal",
+                      "DstId": 10,
+                      "DstName": "_signal"
+                    },
+                    {
+                      "SrcId": 9,
                       "SrcName": "_result",
-                      "DstId": 8,
+                      "DstId": 10,
                       "DstName": "_target"
+                    },
+                    {
+                      "SrcId": 0,
+                      "SrcName": "_signal",
+                      "DstId": 11,
+                      "DstName": "_signal"
+                    },
+                    {
+                      "SrcId": 9,
+                      "SrcName": "_result",
+                      "DstId": 11,
+                      "DstName": "_target"
+                    },
+                    {
+                      "SrcId": 0,
+                      "SrcName": "_signal",
+                      "DstId": 12,
+                      "DstName": "_signal"
+                    },
+                    {
+                      "Id": 16,
+                      "Value": false,
+                      "DstId": 12,
+                      "DstName": "enable"
+                    },
+                    {
+                      "SrcId": 0,
+                      "SrcName": "_signal",
+                      "DstId": 17,
+                      "DstName": "_signal"
                     }
                   ]
                 },
@@ -170,9 +491,85 @@
                 ],
                 "RoundTime": 60,
                 "RoundTimer": {
-                  "Relative": -3456.0542,
-                  "Passed": 3456.0542,
+                  "Relative": -4098.7617,
+                  "Passed": 4098.7617,
                   "Fraction": 1
+                },
+                "RoundUpdate": {
+                  "__version": 8,
+                  "__guid": "9cb27adc-d8dd-4ad2-bdbc-e60f3ab714be",
+                  "__changeId": 20,
+                  "UserData": {
+                    "Title": "Round Update",
+                    "ReferencedComponentTypes": [
+                      "ClassicGameMode"
+                    ]
+                  },
+                  "Variables": [],
+                  "Nodes": [
+                    {
+                      "Id": 0,
+                      "Type": "input"
+                    },
+                    {
+                      "Id": 2,
+                      "Type": "scene.ref",
+                      "UserData": {
+                        "Position": "0,168"
+                      }
+                    },
+                    {
+                      "Id": 3,
+                      "Type": "scene.get",
+                      "ParentId": 2,
+                      "Properties": {
+                        "T": "ClassicGameMode"
+                      },
+                      "UserData": {
+                        "Labels": {
+                          "_result": "Classic"
+                        }
+                      }
+                    },
+                    {
+                      "Id": 4,
+                      "Type": "call",
+                      "Properties": {
+                        "_isStatic": false,
+                        "_name": "CheckForWinningTeam",
+                        "_type": "ClassicGameMode"
+                      },
+                      "UserData": {
+                        "Position": "240,0"
+                      }
+                    }
+                  ],
+                  "Links": [
+                    {
+                      "SrcId": 2,
+                      "SrcName": "_result",
+                      "DstId": 3,
+                      "DstName": "_this"
+                    },
+                    {
+                      "SrcId": 0,
+                      "SrcName": "_signal",
+                      "DstId": 4,
+                      "DstName": "_signal"
+                    },
+                    {
+                      "SrcId": 3,
+                      "SrcName": "_result",
+                      "DstId": 4,
+                      "DstName": "_target"
+                    }
+                  ],
+                  "Defaults": {
+                    "$2.gameobject": {
+                      "_type": "gameobject",
+                      "go": "a3d7f9ff-9c73-42da-acda-2a56ded467ea"
+                    }
+                  }
                 },
                 "State": "FightMode",
                 "Time": true
@@ -180,69 +577,428 @@
             ]
           },
           {
-            "__guid": "751e6d21-8b6f-4587-aaea-f0ffc93da8c6",
+            "__guid": "1f9e9240-4854-4b99-9f1c-b360180acd7a",
             "Flags": 0,
-            "Name": "OvertimeBuild",
+            "Name": "Overtime Build",
             "Enabled": true,
             "NetworkMode": 1,
             "Components": [
               {
                 "__type": "RoundComponent",
-                "__guid": "82ac2f45-7e8f-4928-92d0-7b86283ad010",
+                "__guid": "b0c6c488-f995-4511-b4e7-bac6724f1cee",
                 "AddClass": false,
                 "CheckForWinningTeam": false,
+                "ClearAllWeapons": true,
+                "ClearClass": false,
                 "Condition": false,
                 "IsLastRound": false,
                 "IsRoundActive": false,
-                "Name": "OvertimeBuild",
+                "Name": "Overtime Build",
                 "NextRoundTimer": {
                   "_type": "component",
-                  "component_id": "4715cc07-74da-4aab-83af-91dd2916fd08",
-                  "go": "7095e602-3256-41cd-89c5-71b78c77c6e4",
+                  "component_id": "6000c9eb-abc7-406f-8f2f-312248e4cd4c",
+                  "go": "29c372f0-eb89-4167-8dbb-0ecf19fa9ca7",
                   "component_type": "RoundComponent"
                 },
-                "PlayerWeapons": [],
-                "RoundTime": 60,
+                "OnRoundStart": {
+                  "__version": 8,
+                  "__guid": "27780797-dade-4bfa-bb53-21f91975eddc",
+                  "__changeId": 53,
+                  "UserData": {
+                    "Title": "On Round Start",
+                    "ReferencedComponentTypes": [
+                      "RoundComponent"
+                    ]
+                  },
+                  "Variables": [],
+                  "Nodes": [
+                    {
+                      "Id": 0,
+                      "Type": "input",
+                      "UserData": {
+                        "Labels": {
+                          "_signal": "Run"
+                        },
+                        "Position": "0,36"
+                      }
+                    },
+                    {
+                      "Id": 1,
+                      "Type": "scene.get",
+                      "Properties": {
+                        "T": "RoundComponent"
+                      },
+                      "UserData": {
+                        "Position": "-132,444",
+                        "Labels": {
+                          "_result": "Round Component"
+                        }
+                      }
+                    },
+                    {
+                      "Id": 3,
+                      "Type": "call",
+                      "Properties": {
+                        "_isStatic": false,
+                        "_name": "ClearAllClasses",
+                        "_type": "RoundComponent"
+                      },
+                      "UserData": {
+                        "Position": "0,132"
+                      }
+                    },
+                    {
+                      "Id": 7,
+                      "Type": "call",
+                      "Properties": {
+                        "_isStatic": false,
+                        "_name": "SpawnFightModePopups",
+                        "_type": "RoundComponent"
+                      },
+                      "UserData": {
+                        "Position": "-12,192"
+                      }
+                    },
+                    {
+                      "Id": 9,
+                      "Type": "call",
+                      "Properties": {
+                        "_isStatic": false,
+                        "_name": "SpawnBuildModePopups",
+                        "_type": "RoundComponent"
+                      },
+                      "UserData": {
+                        "Position": "-12,252"
+                      }
+                    },
+                    {
+                      "Id": 10,
+                      "Type": "Toggle Wall",
+                      "UserData": {
+                        "Position": "-12,312"
+                      }
+                    },
+                    {
+                      "Id": 14,
+                      "Type": "Reset All Teams",
+                      "UserData": {
+                        "Position": "-12,372"
+                      }
+                    }
+                  ],
+                  "Links": [
+                    {
+                      "SrcId": 0,
+                      "SrcName": "_target",
+                      "DstId": 1,
+                      "DstName": "_this"
+                    },
+                    {
+                      "SrcId": 0,
+                      "SrcName": "_signal",
+                      "DstId": 3,
+                      "DstName": "_signal"
+                    },
+                    {
+                      "SrcId": 1,
+                      "SrcName": "_result",
+                      "DstId": 3,
+                      "DstName": "_target"
+                    },
+                    {
+                      "SrcId": 0,
+                      "SrcName": "_signal",
+                      "DstId": 7,
+                      "DstName": "_signal"
+                    },
+                    {
+                      "SrcId": 1,
+                      "SrcName": "_result",
+                      "DstId": 7,
+                      "DstName": "_target"
+                    },
+                    {
+                      "SrcId": 0,
+                      "SrcName": "_signal",
+                      "DstId": 9,
+                      "DstName": "_signal"
+                    },
+                    {
+                      "SrcId": 1,
+                      "SrcName": "_result",
+                      "DstId": 9,
+                      "DstName": "_target"
+                    },
+                    {
+                      "SrcId": 0,
+                      "SrcName": "_signal",
+                      "DstId": 10,
+                      "DstName": "_signal"
+                    },
+                    {
+                      "Id": 15,
+                      "Value": true,
+                      "DstId": 10,
+                      "DstName": "enable"
+                    },
+                    {
+                      "SrcId": 0,
+                      "SrcName": "_signal",
+                      "DstId": 14,
+                      "DstName": "_signal"
+                    }
+                  ]
+                },
+                "PlayerWeapons": [
+                  "weapondatas/propgun.weapons",
+                  "weapondatas/physgun.weapons"
+                ],
+                "RoundTime": 5,
                 "RoundTimer": {
-                  "Relative": -3456.0542,
-                  "Passed": 3456.0542,
+                  "Relative": -4098.7617,
+                  "Passed": 4098.7617,
                   "Fraction": 1
                 },
-                "State": "OvertimeBuild",
+                "State": "BuildMode",
                 "Time": true
               }
             ]
           },
           {
-            "__guid": "7095e602-3256-41cd-89c5-71b78c77c6e4",
+            "__guid": "29c372f0-eb89-4167-8dbb-0ecf19fa9ca7",
             "Flags": 0,
-            "Name": "OvertimeFight",
+            "Name": "Overtime Fight",
             "Enabled": true,
             "NetworkMode": 1,
             "Components": [
               {
                 "__type": "RoundComponent",
-                "__guid": "4715cc07-74da-4aab-83af-91dd2916fd08",
-                "AddClass": false,
+                "__guid": "6000c9eb-abc7-406f-8f2f-312248e4cd4c",
+                "AddClass": true,
                 "CheckForWinningTeam": true,
+                "ClearAllWeapons": true,
+                "ClearClass": true,
                 "Condition": false,
                 "IsLastRound": false,
                 "IsRoundActive": false,
-                "Name": "OvertimeFight",
+                "Name": "Overtime Fight",
                 "NextRoundTimer": {
                   "_type": "component",
-                  "component_id": "82ac2f45-7e8f-4928-92d0-7b86283ad010",
-                  "go": "751e6d21-8b6f-4587-aaea-f0ffc93da8c6",
+                  "component_id": "b0c6c488-f995-4511-b4e7-bac6724f1cee",
+                  "go": "1f9e9240-4854-4b99-9f1c-b360180acd7a",
                   "component_type": "RoundComponent"
                 },
-                "PlayerWeapons": [],
+                "OnRoundStart": {
+                  "__version": 8,
+                  "__guid": "fc261c2c-b288-4787-b1b6-8661cc6e111a",
+                  "__changeId": 54,
+                  "UserData": {
+                    "Title": "On Round Start",
+                    "ReferencedComponentTypes": [
+                      "RoundComponent"
+                    ]
+                  },
+                  "Variables": [],
+                  "Nodes": [
+                    {
+                      "Id": 0,
+                      "Type": "input",
+                      "UserData": {
+                        "Position": "-0,-0",
+                        "Labels": {
+                          "_signal": "Run"
+                        }
+                      }
+                    },
+                    {
+                      "Id": 9,
+                      "Type": "scene.get",
+                      "Properties": {
+                        "T": "RoundComponent"
+                      },
+                      "UserData": {
+                        "Position": "0,252",
+                        "Labels": {
+                          "_result": "Round component"
+                        }
+                      }
+                    },
+                    {
+                      "Id": 10,
+                      "Type": "call",
+                      "Properties": {
+                        "_isStatic": false,
+                        "_name": "OpenAllClassSelect",
+                        "_type": "RoundComponent"
+                      },
+                      "UserData": {
+                        "Position": "0,36"
+                      }
+                    },
+                    {
+                      "Id": 11,
+                      "Type": "call",
+                      "Properties": {
+                        "_isStatic": false,
+                        "_name": "ResetAllHealth",
+                        "_type": "RoundComponent"
+                      },
+                      "UserData": {
+                        "Position": "-0,96"
+                      }
+                    },
+                    {
+                      "Id": 12,
+                      "Type": "Toggle Wall",
+                      "UserData": {
+                        "Position": "0,156"
+                      }
+                    },
+                    {
+                      "Id": 17,
+                      "Type": "Reset All Teams",
+                      "UserData": {
+                        "Position": "0,216"
+                      }
+                    }
+                  ],
+                  "Links": [
+                    {
+                      "SrcId": 0,
+                      "SrcName": "_target",
+                      "DstId": 9,
+                      "DstName": "_this"
+                    },
+                    {
+                      "SrcId": 0,
+                      "SrcName": "_signal",
+                      "DstId": 10,
+                      "DstName": "_signal"
+                    },
+                    {
+                      "SrcId": 9,
+                      "SrcName": "_result",
+                      "DstId": 10,
+                      "DstName": "_target"
+                    },
+                    {
+                      "SrcId": 0,
+                      "SrcName": "_signal",
+                      "DstId": 11,
+                      "DstName": "_signal"
+                    },
+                    {
+                      "SrcId": 9,
+                      "SrcName": "_result",
+                      "DstId": 11,
+                      "DstName": "_target"
+                    },
+                    {
+                      "SrcId": 0,
+                      "SrcName": "_signal",
+                      "DstId": 12,
+                      "DstName": "_signal"
+                    },
+                    {
+                      "Id": 18,
+                      "Value": false,
+                      "DstId": 12,
+                      "DstName": "enable"
+                    },
+                    {
+                      "SrcId": 0,
+                      "SrcName": "_signal",
+                      "DstId": 17,
+                      "DstName": "_signal"
+                    }
+                  ]
+                },
+                "PlayerWeapons": [
+                  "weapondatas/gravgun.weapons"
+                ],
                 "RoundTime": 60,
                 "RoundTimer": {
-                  "Relative": -3456.0542,
-                  "Passed": 3456.0542,
+                  "Relative": -4098.7617,
+                  "Passed": 4098.7617,
                   "Fraction": 1
                 },
-                "State": "OvertimeFight",
+                "RoundUpdate": {
+                  "__version": 8,
+                  "__guid": "40b2d061-76ff-4125-8a34-22fcf8a7ceb8",
+                  "__changeId": 20,
+                  "UserData": {
+                    "Title": "Round Update",
+                    "ReferencedComponentTypes": [
+                      "ClassicGameMode"
+                    ]
+                  },
+                  "Variables": [],
+                  "Nodes": [
+                    {
+                      "Id": 0,
+                      "Type": "input"
+                    },
+                    {
+                      "Id": 2,
+                      "Type": "scene.ref",
+                      "UserData": {
+                        "Position": "0,168"
+                      }
+                    },
+                    {
+                      "Id": 3,
+                      "Type": "scene.get",
+                      "ParentId": 2,
+                      "Properties": {
+                        "T": "ClassicGameMode"
+                      },
+                      "UserData": {
+                        "Labels": {
+                          "_result": "Classic"
+                        }
+                      }
+                    },
+                    {
+                      "Id": 4,
+                      "Type": "call",
+                      "Properties": {
+                        "_isStatic": false,
+                        "_name": "CheckForWinningTeam",
+                        "_type": "ClassicGameMode"
+                      },
+                      "UserData": {
+                        "Position": "240,0"
+                      }
+                    }
+                  ],
+                  "Links": [
+                    {
+                      "SrcId": 2,
+                      "SrcName": "_result",
+                      "DstId": 3,
+                      "DstName": "_this"
+                    },
+                    {
+                      "SrcId": 0,
+                      "SrcName": "_signal",
+                      "DstId": 4,
+                      "DstName": "_signal"
+                    },
+                    {
+                      "SrcId": 3,
+                      "SrcName": "_result",
+                      "DstId": 4,
+                      "DstName": "_target"
+                    }
+                  ],
+                  "Defaults": {
+                    "$2.gameobject": {
+                      "_type": "gameobject",
+                      "go": "a3d7f9ff-9c73-42da-acda-2a56ded467ea"
+                    }
+                  }
+                },
+                "State": "FightMode",
                 "Time": true
               }
             ]

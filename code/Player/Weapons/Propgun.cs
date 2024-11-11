@@ -44,20 +44,6 @@ public sealed class Propgun : Item
 		{
 			SwitchModes();
 		}
-
-		if ( Input.Pressed( "flashlight" ) && FWPlayerController.Local.IsValid() )
-		{
-			var local = FWPlayerController.Local;
-
-			var tr = Scene.Trace.Ray( local.Eye.WorldPosition, local.Eye.WorldPosition + local.Eye.WorldRotation.Forward * 1000f )
-				.WithoutTags( FW.Tags.NoBuild, FW.Tags.Player )
-				.Run();
-
-			if ( tr.Hit && tr.GameObject.IsValid() && tr.GameObject.Components.TryGet<SpawnObject>( out var spawnObject ) )
-			{
-				spawnObject.UpgradeLevel1();
-			}
-		}
 		
 		if ( Input.Pressed( "togglegrid" ) )
 		{

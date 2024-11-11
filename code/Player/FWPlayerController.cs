@@ -468,9 +468,6 @@ IGameEventHandler<DeathEvent>, IGameEventHandler<OnPhysgunGrabChange>
 
 		if ( !gs.IsValid() )
 			return;
-
-		if ( gs.State == GameSystem.GameState.OvertimeFight || gs.State == GameSystem.GameState.FightMode )
-			TeleportToTeamSpawnPoint();
 	}
 
 	[Authority]

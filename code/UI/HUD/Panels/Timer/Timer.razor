@@ -13,7 +13,7 @@
 			return;
 	}
 
-	<div class="status">@GetStateText(gs.State)</div>
+	<div class="status">@GetStateText()</div>
 	<div class="time">
 
 		<div class="text">@FormatedTimer()</div>
@@ -22,45 +22,11 @@
 
 @code
 {
-	public string GetStateText(GameSystem.GameState gameState)
+	public string GetStateText()
 	{
 		var gs = GameSystem.Instance;
 
-		if (!gs.IsValid())
-			return "Unknown";
-
-		if (!gs.CurrentGameModeComponent.IsValid())
-			return "Unknown";
-
-		if (gs.State == GameSystem.GameState.Waiting)
-		{
-			return "Waiting for players";
-		}
-		else if (gs.State == GameSystem.GameState.Ended)
-		{
-			return "Ended";
-		}
-		else
-		{
-			return gs.CurrentGameModeComponent.CurrentRound.Name;
-		}
-	}
-
-	public float TimeFraction()
-	{
-		var gs = GameSystem.Instance;
-
-		if (!gs.IsValid())
-			return 1;
-
-		if (gs.State == GameSystem.GameState.Waiting)
-		{
-			return 1;
-		}
-		else
-		{
-			return (gs.CurrentTime - gs.StateSwitch.Relative) / gs.CurrentTime;
-		}
+		return gs.CurrentGameModeComponent?.CurrentRound?.Name;
 	}
 
 	public float GetTime()
@@ -69,17 +35,10 @@
 
 		if (gs.IsValid())
 		{
-			if (gs.State == GameSystem.GameState.Waiting)
-			{
-				return gs.StateSwitch.Relative;
-			}
-			else
-			{
-				//TODO: Fix this
-				var remainingTime = gs.StateSwitch - gs.CurrentTime;
+			//TODO: Fix this
+			var remainingTime = gs.StateSwitch - gs.CurrentTime;
 
-				return remainingTime;
-			}
+			return remainingTime;
 		}
 
 		return 0;

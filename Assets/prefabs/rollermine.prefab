@@ -3,7 +3,7 @@
     "__guid": "39ef8517-7e7e-45e6-b649-a5a0aa4cdedd",
     "Flags": 0,
     "Name": "rollermine",
-    "Tags": "light,light_point,rollermine",
+    "Tags": "rollermine,light_point,light",
     "Enabled": true,
     "NetworkMode": 1,
     "NetworkOrphaned": 3,
@@ -55,16 +55,6 @@
         "OverrideMassCenter": false,
         "RigidbodyFlags": 0,
         "StartAsleep": false
-      },
-      {
-        "__type": "RollerMine",
-        "__guid": "92081e8f-596b-4ade-a874-8d4970511081",
-        "Renderer": {
-          "_type": "component",
-          "component_id": "f8b32643-7800-458e-add2-00f12fea5a3c",
-          "go": "39ef8517-7e7e-45e6-b649-a5a0aa4cdedd",
-          "component_type": "SkinnedModelRenderer"
-        }
       },
       {
         "__type": "FortwarsProp",
@@ -141,9 +131,14 @@
         "Shadows": false
       },
       {
-        "__type": "GameModeObject",
-        "__guid": "5a579c74-7ba5-41d0-abd0-0d853b7a7bea",
-        "Type": "Classic"
+        "__type": "RollerMine",
+        "__guid": "95219195-d35e-449d-88c1-a0442c8298dd",
+        "Renderer": {
+          "_type": "component",
+          "component_id": "f8b32643-7800-458e-add2-00f12fea5a3c",
+          "go": "39ef8517-7e7e-45e6-b649-a5a0aa4cdedd",
+          "component_type": "SkinnedModelRenderer"
+        }
       }
     ],
     "Children": [

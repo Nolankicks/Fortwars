@@ -1,7 +1,7 @@
 using Sandbox.Events;
 using System;
 
-public sealed class FortwarsProp : Component, Component.ICollisionListener, IGameEventHandler<OnGameEnd>, Component.IDamageable
+public sealed class FortwarsProp : Component, Component.ICollisionListener, Component.IDamageable
 {
 	[RequireComponent, Sync] public Rigidbody Rigidbody { get; set; }
 	[Property, Sync] public bool Invincible { get; set; } = false;
@@ -127,10 +127,6 @@ public sealed class FortwarsProp : Component, Component.ICollisionListener, IGam
 	{
 		Rigidbody.PhysicsBody.BodyType = PhysicsBodyType.Static;
 	}
-	void IGameEventHandler<OnGameEnd>.OnGameEvent( OnGameEnd eventArgs )
-	{
-		DestroyProp();
-	}
 
 	void IDamageable.OnDamage( in Sandbox.DamageInfo damage )
 	{
@@ -150,5 +146,14 @@ public sealed class FortwarsProp : Component, Component.ICollisionListener, IGam
 	public void SetGrabber( FWPlayerController player )
 	{
 		Grabber = player;
+	}
+
+	[ActionGraphNode( "Destroy All Props" )]
+	public static void DestroyAllProps()
+	{
+		foreach ( var prop in Game.ActiveScene.GetAll<FortwarsProp>().Where( x => !x.Invincible ) )
+		{
+			prop.DestroyProp();
+		}
 	}
 }
