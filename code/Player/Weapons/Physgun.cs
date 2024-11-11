@@ -153,11 +153,6 @@ public class Physgun : Item
 			GrabEnd();
 		}
 
-		if ( !Grabbing && Input.Pressed( "reload" ) )
-		{
-			TryUnfreeze();
-		}
-
 		PhysicsStep();
 
 		UpdateEffects();
