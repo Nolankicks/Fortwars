@@ -48,12 +48,13 @@
                   "component_type": "RoundComponent"
                 },
                 "PlayerWeapons": [
-                  "weapondatas/propgun.weapons"
+                  "weapondatas/propgun.weapons",
+                  "weapondatas/physgun.weapons"
                 ],
                 "RoundTime": 0,
                 "RoundTimer": {
-                  "Relative": -2489.5002,
-                  "Passed": 2489.5002,
+                  "Relative": -260.14972,
+                  "Passed": 260.14972,
                   "Fraction": 1
                 },
                 "State": "BuildMode",
@@ -169,8 +170,8 @@
                 ],
                 "RoundTime": 0,
                 "RoundTimer": {
-                  "Relative": -2489.5002,
-                  "Passed": 2489.5002,
+                  "Relative": -260.14972,
+                  "Passed": 260.14972,
                   "Fraction": 1
                 },
                 "State": "FightMode",
@@ -203,8 +204,8 @@
                 "PlayerWeapons": [],
                 "RoundTime": 0,
                 "RoundTimer": {
-                  "Relative": -2489.5002,
-                  "Passed": 2489.5002,
+                  "Relative": -260.14972,
+                  "Passed": 260.14972,
                   "Fraction": 1
                 },
                 "State": "OvertimeBuild",
@@ -237,8 +238,8 @@
                 "PlayerWeapons": [],
                 "RoundTime": 0,
                 "RoundTimer": {
-                  "Relative": -2489.5002,
-                  "Passed": 2489.5002,
+                  "Relative": -260.14972,
+                  "Passed": 260.14972,
                   "Fraction": 1
                 },
                 "State": "OvertimeFight",
