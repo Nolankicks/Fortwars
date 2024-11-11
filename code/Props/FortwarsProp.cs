@@ -43,6 +43,21 @@ public sealed class FortwarsProp : Component, Component.ICollisionListener, IGam
 					return;
 
 				player?.TakeDamage( null, (int)dmg, WorldPosition );
+
+				var cam = Scene.Camera;
+				
+				var text = GameObject.Clone( ResourceLibrary.Get<PrefabFile>( "prefabs/effects/textparticle.prefab" ) );
+				text.WorldPosition = other.Contact.Point + other.Contact.Normal * 10;
+
+				if ( cam.IsValid() )
+					text.WorldRotation = Rotation.LookAt( -cam.WorldRotation.Forward );
+
+				if ( text.Components.TryGet<ParticleTextRenderer>( out var textRenderer ) )
+				{
+					textRenderer.Text = new TextRendering.Scope( ((int)dmg).ToString(), Color.White, 24 );
+				}
+
+				Sound.Play( "hitmarker" );
 			}
 		}
 	}

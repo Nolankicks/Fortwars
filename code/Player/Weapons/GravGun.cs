@@ -209,6 +209,14 @@ public class Gravgun : Item, IGameEventHandler<DeathEvent>
 
 		var team = teamComponent.Team;
 
+		if ( heldBodyGb.Network.Owner != local.Network.Owner )
+		{
+			GrabEnd( false );
+			Log.Info( "Owner mismatch" );
+
+			return;
+		}
+
 		gs.SubtractTimeHeld( team, Time.Delta );
 	}
 
