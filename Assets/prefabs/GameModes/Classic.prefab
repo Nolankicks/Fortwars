@@ -51,10 +51,10 @@
                   "weapondatas/propgun.weapons",
                   "weapondatas/physgun.weapons"
                 ],
-                "RoundTime": 0,
+                "RoundTime": 60,
                 "RoundTimer": {
-                  "Relative": -260.14972,
-                  "Passed": 260.14972,
+                  "Relative": -3456.0542,
+                  "Passed": 3456.0542,
                   "Fraction": 1
                 },
                 "State": "BuildMode",
@@ -168,10 +168,10 @@
                 "PlayerWeapons": [
                   "weapondatas/gravgun.weapons"
                 ],
-                "RoundTime": 0,
+                "RoundTime": 60,
                 "RoundTimer": {
-                  "Relative": -260.14972,
-                  "Passed": 260.14972,
+                  "Relative": -3456.0542,
+                  "Passed": 3456.0542,
                   "Fraction": 1
                 },
                 "State": "FightMode",
@@ -202,10 +202,10 @@
                   "component_type": "RoundComponent"
                 },
                 "PlayerWeapons": [],
-                "RoundTime": 0,
+                "RoundTime": 60,
                 "RoundTimer": {
-                  "Relative": -260.14972,
-                  "Passed": 260.14972,
+                  "Relative": -3456.0542,
+                  "Passed": 3456.0542,
                   "Fraction": 1
                 },
                 "State": "OvertimeBuild",
@@ -236,10 +236,10 @@
                   "component_type": "RoundComponent"
                 },
                 "PlayerWeapons": [],
-                "RoundTime": 0,
+                "RoundTime": 60,
                 "RoundTimer": {
-                  "Relative": -260.14972,
-                  "Passed": 260.14972,
+                  "Relative": -3456.0542,
+                  "Passed": 3456.0542,
                   "Fraction": 1
                 },
                 "State": "OvertimeFight",
