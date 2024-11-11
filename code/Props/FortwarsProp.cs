@@ -85,7 +85,8 @@ public sealed class FortwarsProp : Component, Component.ICollisionListener, IGam
 
 		//if ( IsProxy && !Invincible && Rigidbody.IsValid() && Rigidbody.PhysicsBody.IsValid() )
 		//{
-		Rigidbody.PhysicsBody.BodyType = PhysicsBodyType.Static;
+		if ( Rigidbody.IsValid() && !Tags.Has( FW.Tags.Rollermine ) )
+			Rigidbody.PhysicsBody.BodyType = PhysicsBodyType.Static;
 		//}
 	}
 
