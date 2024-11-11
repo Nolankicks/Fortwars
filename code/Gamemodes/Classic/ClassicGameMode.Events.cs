@@ -14,7 +14,7 @@ public partial class ClassicGameMode
 			/*x.ClearSelectedClass();
 			x.ClearAll();
 			x.AddItem( ResourceLibrary.GetAll<WeaponData>().FirstOrDefault( x => x.ResourceName == "propgun" ) );
-			x.AddItem( ResourceLibrary.GetAll<WeaponData>().FirstOrDefault( x => x.ResourceName == "physgun" ) );
+			//x.AddItem( ResourceLibrary.GetAll<WeaponData>().FirstOrDefault( x => x.ResourceName == "physgun" ) );
 			//x.OpenClassSelect();
 			*/
 		} );
@@ -96,7 +96,6 @@ public partial class ClassicGameMode
 		{
 			x.ClearAll();
 			x.AddItem( ResourceLibrary.GetAll<WeaponData>().FirstOrDefault( x => x.ResourceName == "propgun" ) );
-			x.AddItem( ResourceLibrary.GetAll<WeaponData>().FirstOrDefault( x => x.ResourceName == "physgun" ) );
 		} );
 
 		BroadcastChangeState( GameSystem.GameState.OvertimeBuild );
