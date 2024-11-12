@@ -14,7 +14,8 @@
           "component_id": "e44f4583-0b3c-4dca-8491-774985b7405b",
           "go": "e9808dfe-3a94-45f9-903f-1e792cbc1ce4",
           "component_type": "RoundComponent"
-        }
+        },
+        "TeamsEnabled": false
       }
     ],
     "Children": [
@@ -52,7 +53,7 @@
                 "OnRoundStart": {
                   "__version": 8,
                   "__guid": "0def4a9f-0327-4117-8b0a-b78f4dc75b92",
-                  "__changeId": 39,
+                  "__changeId": 59,
                   "UserData": {
                     "Title": "On Round Start",
                     "ReferencedComponentTypes": [
@@ -72,7 +73,7 @@
                         "T": "RoundComponent"
                       },
                       "UserData": {
-                        "Position": "0,264",
+                        "Position": "-456,132",
                         "Labels": {
                           "_result": "Round component"
                         }
@@ -101,14 +102,26 @@
                       "Id": 5,
                       "Type": "Reset All Teams",
                       "UserData": {
-                        "Position": "0,180"
+                        "Position": "96,216"
                       }
                     },
                     {
-                      "Id": 7,
-                      "Type": "log.info",
+                      "Id": 31,
+                      "Type": "scene.ref",
                       "UserData": {
-                        "Position": "264,180"
+                        "Position": "-516,240"
+                      }
+                    },
+                    {
+                      "Id": 34,
+                      "Type": "call",
+                      "Properties": {
+                        "_isStatic": false,
+                        "_name": "EnableTeams",
+                        "_type": "GameMode"
+                      },
+                      "UserData": {
+                        "Position": "-216,300"
                       }
                     }
                   ],
@@ -144,34 +157,42 @@
                       "DstName": "enable"
                     },
                     {
-                      "SrcId": 4,
+                      "SrcId": 34,
                       "SrcName": "_signal",
                       "DstId": 5,
                       "DstName": "_signal"
                     },
                     {
-                      "SrcId": 5,
+                      "SrcId": 4,
                       "SrcName": "_signal",
-                      "DstId": 7,
+                      "DstId": 34,
                       "DstName": "_signal"
                     },
                     {
-                      "Id": 29,
-                      "Value": "Round just started",
-                      "DstId": 7,
-                      "DstName": "args",
-                      "DstIndex": 0
+                      "SrcId": 31,
+                      "SrcName": "_result",
+                      "DstId": 34,
+                      "DstName": "_target"
                     }
-                  ]
+                  ],
+                  "Defaults": {
+                    "$31.component": {
+                      "_type": "component",
+                      "component_id": "7579476d-6c7f-415d-97b8-149783e56e3e",
+                      "go": "a3d7f9ff-9c73-42da-acda-2a56ded467ea",
+                      "component_type": "ClassicGameMode"
+                    }
+                  }
                 },
+                "PlayersToSpawns": true,
                 "PlayerWeapons": [
                   "weapondatas/propgun.weapons",
                   "weapondatas/physgun.weapons"
                 ],
                 "RoundTime": 60,
                 "RoundTimer": {
-                  "Relative": -69.02108,
-                  "Passed": 69.02108,
+                  "Relative": -1665.0941,
+                  "Passed": 1665.0941,
                   "Fraction": 1
                 },
                 "Time": true
@@ -192,7 +213,44 @@
                 "CheckForWinningTeam": true,
                 "ClearAllWeapons": true,
                 "ClearClass": false,
-                "Condition": false,
+                "Condition": true,
+                "EndCondition": {
+                  "__version": 8,
+                  "__guid": "cc1ca8c1-895c-4fa1-a836-def18b712445",
+                  "__changeId": 22,
+                  "UserData": {
+                    "Title": "End Condition",
+                    "ReferencedComponentTypes": []
+                  },
+                  "Variables": [],
+                  "Nodes": [
+                    {
+                      "Id": 0,
+                      "Type": "input"
+                    },
+                    {
+                      "Id": 1,
+                      "Type": "output",
+                      "UserData": {
+                        "Position": "564,60"
+                      }
+                    }
+                  ],
+                  "Links": [
+                    {
+                      "Id": 10,
+                      "Value": false,
+                      "DstId": 1,
+                      "DstName": "_result"
+                    },
+                    {
+                      "SrcId": 0,
+                      "SrcName": "_signal",
+                      "DstId": 1,
+                      "DstName": "_signal"
+                    }
+                  ]
+                },
                 "IsLastRound": false,
                 "IsRoundActive": false,
                 "Name": "Fight",
@@ -327,13 +385,14 @@
                     }
                   ]
                 },
+                "PlayersToSpawns": true,
                 "PlayerWeapons": [
                   "weapondatas/gravgun.weapons"
                 ],
                 "RoundTime": 60,
                 "RoundTimer": {
-                  "Relative": -69.02108,
-                  "Passed": 69.02108,
+                  "Relative": -1665.0941,
+                  "Passed": 1665.0941,
                   "Fraction": 1
                 },
                 "Time": true
@@ -364,11 +423,12 @@
                   "go": "7095e602-3256-41cd-89c5-71b78c77c6e4",
                   "component_type": "RoundComponent"
                 },
+                "PlayersToSpawns": true,
                 "PlayerWeapons": [],
                 "RoundTime": 60,
                 "RoundTimer": {
-                  "Relative": -69.02108,
-                  "Passed": 69.02108,
+                  "Relative": -1665.0941,
+                  "Passed": 1665.0941,
                   "Fraction": 1
                 },
                 "Time": true
@@ -399,11 +459,12 @@
                   "go": "751e6d21-8b6f-4587-aaea-f0ffc93da8c6",
                   "component_type": "RoundComponent"
                 },
+                "PlayersToSpawns": true,
                 "PlayerWeapons": [],
                 "RoundTime": 60,
                 "RoundTimer": {
-                  "Relative": -69.02108,
-                  "Passed": 69.02108,
+                  "Relative": -1665.0941,
+                  "Passed": 1665.0941,
                   "Fraction": 1
                 },
                 "Time": true

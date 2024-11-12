@@ -13,6 +13,8 @@ public partial class GameMode : Component, Component.INetworkListener
 
 	[Property] public Action<Team> OnGameEnd { get; set; }
 
+	[Property, ReadOnly] public bool TeamsEnabled { get; set; } = false;
+
 	protected override void OnStart()
 	{
 		Log.Info( "Game Mode Started" );
@@ -51,6 +53,14 @@ public partial class GameMode : Component, Component.INetworkListener
 			WinGame();
 
 		OnGameEnd?.Invoke( team );
+	}
+
+	public void EnableTeams()
+	{
+		foreach ( var player in Scene.GetAllComponents<FWPlayerController>() )
+		{
+			player.TeamComponent.SetTeam( TeamComponent.GetTeamLowestCount() );
+		}
 	}
 
 	public virtual Team WinningTeam() => Team.None;

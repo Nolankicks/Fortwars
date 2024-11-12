@@ -16,7 +16,12 @@ public partial class GameMode
 		var player = GameSystem.PlayerPrefab.Clone( SpawnTransform );
 
 		if ( player.Components.TryGet<FWPlayerController>( out var p ) )
+		{
 			p.SetWorld( SpawnTransform );
+			if ( TeamsEnabled )
+				p.TeamComponent.SetTeam( TeamComponent.GetTeamLowestCount() );
+		}
+
 
 		if ( player.Components.TryGet<CitizenAnimationHelper>( out var animHelper, FindMode.EnabledInSelfAndChildren ) && animHelper.Target.IsValid() )
 		{
@@ -24,6 +29,8 @@ public partial class GameMode
 			clothing.Deserialize( connection.GetUserData( "avatar" ) );
 			clothing.Apply( animHelper.Target );
 		}
+
+
 
 		player.NetworkSpawn( connection );
 

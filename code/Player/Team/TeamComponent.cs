@@ -1,5 +1,3 @@
-using Sandbox.Events;
-
 public enum Team
 {
 	Red,
@@ -100,5 +98,16 @@ public sealed class TeamComponent : Component
 	public static void TeleportAllTeams()
 	{
 		Game.ActiveScene?.GetAll<TeamComponent>()?.ToList()?.ForEach( x => x.ResetToSpawnPoint() );
+	}
+
+	public static Team GetTeamLowestCount()
+	{
+		var blueCount = Game.ActiveScene.GetAllComponents<FWPlayerController>().Where( x => x.TeamComponent.Team == Team.Blue ).Count();
+		var redCount = Game.ActiveScene.GetAllComponents<FWPlayerController>().Where( x => x.TeamComponent.Team == Team.Red ).Count();
+
+		if ( blueCount < redCount )
+			return Team.Blue;
+		else
+			return Team.Red;
 	}
 }
