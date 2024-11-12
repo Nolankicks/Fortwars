@@ -15,6 +15,8 @@ public partial class GameMode : Component, Component.INetworkListener
 
 	[Property, ReadOnly] public bool TeamsEnabled { get; set; } = false;
 
+	public static RoundComponent ActiveRound { get; set; } = null;
+
 	protected override void OnStart()
 	{
 		Log.Info( "Game Mode Started" );

@@ -7,9 +7,10 @@
 
 <root>
 	@{
-		var gs = GameSystem.Instance;
+        var gs = GameSystem.Instance;
+        var round = GameMode.ActiveRound;
 
-		if (!gs.IsValid())
+		if (!gs.IsValid() || !round.IsValid())
 			return;
 	}
 
@@ -22,22 +23,22 @@
 
 @code
 {
-	public string GetStateText()
-	{
-		var gs = GameSystem.Instance;
+    public string GetStateText()
+    {
+        var gs = GameSystem.Instance;
 
-		return gs.CurrentGameModeComponent?.CurrentRound?.Name;
-	}
+        return gs.CurrentGameModeComponent?.CurrentRound?.Name;
+    }
 
-	public float GetTime()
-	{
-		var gs = Scene.GetAll<GameSystem>().FirstOrDefault();
+    public float GetTime()
+    {
+        var gs = Scene.GetAll<GameSystem>().FirstOrDefault();
+        var round = GameMode.ActiveRound;
 
-		if (gs.IsValid())
-		{
-			//TODO: Fix this
-			var remainingTime = gs.StateSwitch - gs.CurrentTime;
-
+        if (round.IsValid())
+        {
+            //TODO: Fix this
+            var remainingTime = round.RoundTimer;
 			return remainingTime;
 		}
 

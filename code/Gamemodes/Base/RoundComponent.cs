@@ -73,6 +73,8 @@ public sealed class RoundComponent : Component
 			GameMode.ResetPlayers();
 
 		Scene.Dispatch( new OnRoundSwitch() );
+
+		GameMode.ActiveRound = this;
 	}
 
 	protected override void OnFixedUpdate()
