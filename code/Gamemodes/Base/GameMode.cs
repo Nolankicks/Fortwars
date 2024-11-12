@@ -24,14 +24,12 @@ public partial class GameMode : Component, Component.INetworkListener
 
 
 	public bool GameHasStarted { get; set; } = false;
-	protected override void OnUpdate()
+
+	public void StartGame()
 	{
-		if ( !GameHasStarted && CanStartGame() )
-		{
-			GameHasStarted = true;
-			CurrentRound = InitialRound;
-			InitialRound.ActivateRound();
-		}
+		GameHasStarted = true;
+		CurrentRound = InitialRound;
+		InitialRound.ActivateRound();
 	}
 
 	void INetworkListener.OnActive( Connection channel )
@@ -139,11 +137,6 @@ public partial class GameMode : Component, Component.INetworkListener
 		{
 			gs.CurrentGameModeComponent?.CurrentRound?.EndRound( i == 0 ? false : true );
 		}
-	}
-
-	public bool CanStartGame()
-	{
-		return Scene.GetAll<FWPlayerController>().Count() >= GameSystem.PlayerToStart && GameSystem.StateSwitch > 5;
 	}
 }
 

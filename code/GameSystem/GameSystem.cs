@@ -64,6 +64,15 @@ public sealed partial class GameSystem : Component
 	public static GameModeResource SavedGameMode { get; set; }
 	[Sync] public GameMode CurrentGameModeComponent { get; set; }
 
+	public enum GameStates
+	{
+		S_WAITING,
+		S_ACTIVE,
+		S_END
+	}
+
+	[Property, HostSync, ReadOnly] public GameStates GameState { get; set; }
+
 	protected override async Task OnLoad()
 	{
 		if ( Networking.IsHost && !Networking.IsActive && StartServer && !Scene.IsEditor )
@@ -212,6 +221,18 @@ public sealed partial class GameSystem : Component
 		Log.Info( $"Set GameMode as {mode}" );
 	}
 
+	protected override void OnFixedUpdate()
+	{
+		if ( IsProxy )
+			return;
+
+		if ( GameState == GameStates.S_WAITING && CanStartGame() )
+		{
+			GameState = GameStates.S_ACTIVE;
+			var gMode = Scene.GetAllComponents<GameMode>()?.FirstOrDefault();
+			gMode.StartGame();
+		}
+	}
 
 	[Button( "Save Lobby Settings" ), Feature( "Lobby Settings" )]
 	public void SaveLobbySettings()
@@ -221,5 +242,10 @@ public sealed partial class GameSystem : Component
 		Log.Info( $"Saved Lobby Settings as {FileSystem.Data?.ReadAllText( "lobbysettings.json" )}" );
 
 		Log.Info( $"Loaded Lobby Settings as {JsonSerializer.Serialize( LobbySettings.Load() )}" );
+	}
+
+	public bool CanStartGame()
+	{
+		return Scene.GetAll<FWPlayerController>().Count() >= PlayerToStart && StateSwitch > 5;
 	}
 }
