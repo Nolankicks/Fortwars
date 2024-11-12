@@ -1,5 +1,5 @@
-using System;
 using Sandbox.Events;
+using System;
 
 public record OnRoundSwitch() : IGameEvent;
 
@@ -29,6 +29,8 @@ public sealed class RoundComponent : Component
 	[Property, Category( "Actions" )] public Action RoundUpdate { get; set; }
 
 	[InlineEditor, Property, Sync] public TimeUntil RoundTimer { get; set; }
+
+	[Property] bool PlayersToSpawns { get; set; } = true;
 
 	public GameMode GameMode => Scene?.GetAll<GameMode>()?.FirstOrDefault();
 
@@ -66,6 +68,9 @@ public sealed class RoundComponent : Component
 
 			instance.CurrentTime = RoundTime;
 		}
+
+		if ( PlayersToSpawns )
+			GameMode.ResetPlayers();
 
 		Scene.Dispatch( new OnRoundSwitch() );
 	}

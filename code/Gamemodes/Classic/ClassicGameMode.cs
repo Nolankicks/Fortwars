@@ -1,24 +1,15 @@
-
-using Sandbox.Events;
 using System;
 
 public partial class ClassicGameMode : GameMode
 {
 	protected override void OnUpdate()
 	{
-		if ( Networking.IsHost )
-		{
-			//GameLoop();
-		}
-
 		base.OnUpdate();
+		if ( CurrentRound.IsValid() )
+			Log.Info( CurrentRound.Name );
 	}
 
-	[Broadcast]
-	public void ResetPlayers()
-	{
-		Scene.Dispatch( new PlayerReset() );
-	}
+
 
 	//I think this might be a good idea to keep? We would be defining this in code anyway
 	public override void CheckForWinningTeam()

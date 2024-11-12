@@ -1,6 +1,6 @@
 
-using System;
 using Sandbox.Events;
+using System;
 
 public partial class GameMode : Component, Component.INetworkListener
 {
@@ -25,6 +25,7 @@ public partial class GameMode : Component, Component.INetworkListener
 		if ( !GameHasStarted && CanStartGame() )
 		{
 			GameHasStarted = true;
+			CurrentRound = InitialRound;
 			InitialRound.ActivateRound();
 		}
 	}
@@ -53,6 +54,12 @@ public partial class GameMode : Component, Component.INetworkListener
 	}
 
 	public virtual Team WinningTeam() => Team.None;
+
+	[Broadcast]
+	public void ResetPlayers()
+	{
+		Scene.Dispatch( new PlayerReset() );
+	}
 
 	public virtual void WinGame( Team team = Team.None )
 	{
