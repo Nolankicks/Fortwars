@@ -129,6 +129,9 @@ public partial class GameMode : Component, Component.INetworkListener
 		if ( !gs.IsValid() )
 			return;
 
+		if ( gs.GameState == GameSystem.GameStates.S_WAITING )
+			gs.GameState = GameSystem.GameStates.S_ACTIVE;
+
 		if ( (!gs.CurrentGameModeComponent?.CurrentRound.IsValid() ?? false) && (gs.CurrentGameModeComponent?.InitialRound.IsValid() ?? false) )
 		{
 			gs.CurrentGameModeComponent.InitialRound.ActivateRound();

@@ -2,15 +2,6 @@ using System;
 
 public partial class ClassicGameMode : GameMode
 {
-	protected override void OnUpdate()
-	{
-		base.OnUpdate();
-		if ( CurrentRound.IsValid() )
-			Log.Info( CurrentRound.Name );
-	}
-
-
-
 	//I think this might be a good idea to keep? We would be defining this in code anyway
 	public override void CheckForWinningTeam()
 	{

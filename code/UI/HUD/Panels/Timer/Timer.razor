@@ -10,15 +10,16 @@
         var gs = GameSystem.Instance;
         var round = GameMode.ActiveRound;
 
-		if (!gs.IsValid() || !round.IsValid())
+		if (!gs.IsValid())
 			return;
 	}
 
 	<div class="status">@GetStateText()</div>
+    @if(round.IsValid()) {
 	<div class="time">
-
 		<div class="text">@FormatedTimer()</div>
 	</div>
+    }
 </root>
 
 @code
@@ -26,8 +27,12 @@
     public string GetStateText()
     {
         var gs = GameSystem.Instance;
+        if (gs.GameState == GameSystem.GameStates.S_WAITING)
+            return "Waiting for players";
+        else if (gs.GameState == GameSystem.GameStates.S_END)
+            return "Game Over!";
 
-        return gs.CurrentGameModeComponent?.CurrentRound?.Name;
+        return GameMode.ActiveRound.Name;
     }
 
     public float GetTime()
@@ -39,19 +44,19 @@
         {
             //TODO: Fix this
             var remainingTime = round.RoundTimer;
-			return remainingTime;
-		}
+            return remainingTime;
+        }
 
-		return 0;
-	}
+        return 0;
+    }
 
-	public string FormatedTimer()
-	{
-		return $"{TimeSpan.FromSeconds(GetTime()):mm\\:ss}";
-	}
+    public string FormatedTimer()
+    {
+        return $"{TimeSpan.FromSeconds(GetTime()):mm\\:ss}";
+    }
 
-	protected override int BuildHash()
-	{
-		return System.HashCode.Combine(GetTime());
+    protected override int BuildHash()
+    {
+        return System.HashCode.Combine(GetTime(), GameMode.ActiveRound);
 	}
 }

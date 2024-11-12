@@ -71,7 +71,7 @@ public sealed partial class GameSystem : Component
 		S_END
 	}
 
-	[Property, HostSync, ReadOnly] public GameStates GameState { get; set; }
+	[Property, Sync, ReadOnly] public GameStates GameState { get; set; } = GameStates.S_WAITING;
 
 	protected override async Task OnLoad()
 	{
