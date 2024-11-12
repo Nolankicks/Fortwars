@@ -1,5 +1,3 @@
-using Sandbox.Events;
-using Sandbox.Utility;
 using System;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -125,8 +123,8 @@ public sealed partial class GameSystem : Component
 	{
 		if ( IsProxy )
 			return;
-		
-		Scene.GetAll<GameModeObject>()?.Where( x => x.Type.HasFlag( CurrentGameModeType ) )?.ToList()?.ForEach( x => x?.GameObject?.Destroy() );
+
+		Scene.GetAll<GameModeObject>()?.Where( x => !x.Type.HasFlag( CurrentGameModeType ) )?.ToList()?.ForEach( x => x.GameObject?.Destroy() );
 
 		if ( Networking.IsHost )
 		{
@@ -214,7 +212,7 @@ public sealed partial class GameSystem : Component
 		Log.Info( $"Set GameMode as {mode}" );
 	}
 
-	
+
 	[Button( "Save Lobby Settings" ), Feature( "Lobby Settings" )]
 	public void SaveLobbySettings()
 	{

@@ -1,5 +1,3 @@
-using Sandbox.Events;
-
 public sealed class WallComponent : Component, Component.ExecuteInEditor
 {
 	protected override void OnEnabled()
