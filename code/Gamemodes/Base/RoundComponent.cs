@@ -88,7 +88,7 @@ public sealed class RoundComponent : Component
 		{
 			if ( RoundTimer )
 			{
-				EndRound();
+				EndRound( true );
 			}
 		}
 
@@ -96,12 +96,12 @@ public sealed class RoundComponent : Component
 		{
 			if ( EndCondition?.Invoke() ?? false )
 			{
-				EndRound();
+				EndRound( false );
 			}
 		}
 	}
 
-	public void EndRound()
+	public void EndRound( bool timer )
 	{
 		OnRoundEnd?.Invoke();
 
@@ -111,7 +111,7 @@ public sealed class RoundComponent : Component
 			return;
 		}
 
-		if ( Condition )
+		if ( !timer )
 			NextRoundCondition?.ActivateRound();
 		else
 			NextRoundTimer?.ActivateRound();

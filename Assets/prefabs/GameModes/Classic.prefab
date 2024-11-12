@@ -53,7 +53,7 @@
                 "OnRoundStart": {
                   "__version": 8,
                   "__guid": "0def4a9f-0327-4117-8b0a-b78f4dc75b92",
-                  "__changeId": 59,
+                  "__changeId": 60,
                   "UserData": {
                     "Title": "On Round Start",
                     "ReferencedComponentTypes": [
@@ -191,8 +191,8 @@
                 ],
                 "RoundTime": 60,
                 "RoundTimer": {
-                  "Relative": -1665.0941,
-                  "Passed": 1665.0941,
+                  "Relative": -2694.2722,
+                  "Passed": 2694.2722,
                   "Fraction": 1
                 },
                 "Time": true
@@ -263,7 +263,7 @@
                 "OnRoundStart": {
                   "__version": 8,
                   "__guid": "a8a041bc-7d5b-4c31-b007-98d025bf4fdf",
-                  "__changeId": 57,
+                  "__changeId": 59,
                   "UserData": {
                     "Title": "On Round Start",
                     "ReferencedComponentTypes": [
@@ -391,8 +391,8 @@
                 ],
                 "RoundTime": 60,
                 "RoundTimer": {
-                  "Relative": -1665.0941,
-                  "Passed": 1665.0941,
+                  "Relative": -2694.2722,
+                  "Passed": 2694.2722,
                   "Fraction": 1
                 },
                 "Time": true
@@ -423,12 +423,149 @@
                   "go": "7095e602-3256-41cd-89c5-71b78c77c6e4",
                   "component_type": "RoundComponent"
                 },
+                "OnRoundStart": {
+                  "__version": 8,
+                  "__guid": "4e645e7f-2746-4ec1-bd57-2bb0af56087e",
+                  "__changeId": 4,
+                  "UserData": {
+                    "Title": "On Round Start",
+                    "ReferencedComponentTypes": [
+                      "RoundComponent"
+                    ]
+                  },
+                  "Variables": [],
+                  "Nodes": [
+                    {
+                      "Id": 1,
+                      "Type": "input",
+                      "UserData": {
+                        "Position": "312,96"
+                      }
+                    },
+                    {
+                      "Id": 2,
+                      "Type": "scene.get",
+                      "Properties": {
+                        "T": "RoundComponent"
+                      },
+                      "UserData": {
+                        "Position": "-144,228",
+                        "Labels": {
+                          "_result": "Round component"
+                        }
+                      }
+                    },
+                    {
+                      "Id": 3,
+                      "Type": "call",
+                      "Properties": {
+                        "_isStatic": false,
+                        "_name": "ResetAllHealth",
+                        "_type": "RoundComponent"
+                      },
+                      "UserData": {
+                        "Position": "312,156"
+                      }
+                    },
+                    {
+                      "Id": 4,
+                      "Type": "Toggle Wall",
+                      "UserData": {
+                        "Position": "312,216"
+                      }
+                    },
+                    {
+                      "Id": 5,
+                      "Type": "Reset All Teams",
+                      "UserData": {
+                        "Position": "408,312"
+                      }
+                    },
+                    {
+                      "Id": 6,
+                      "Type": "scene.ref",
+                      "UserData": {
+                        "Position": "-204,336"
+                      }
+                    },
+                    {
+                      "Id": 7,
+                      "Type": "call",
+                      "Properties": {
+                        "_isStatic": false,
+                        "_name": "EnableTeams",
+                        "_type": "GameMode"
+                      },
+                      "UserData": {
+                        "Position": "96,396"
+                      }
+                    }
+                  ],
+                  "Links": [
+                    {
+                      "SrcId": 1,
+                      "SrcName": "_target",
+                      "DstId": 2,
+                      "DstName": "_this"
+                    },
+                    {
+                      "SrcId": 1,
+                      "SrcName": "_signal",
+                      "DstId": 3,
+                      "DstName": "_signal"
+                    },
+                    {
+                      "SrcId": 2,
+                      "SrcName": "_result",
+                      "DstId": 3,
+                      "DstName": "_target"
+                    },
+                    {
+                      "SrcId": 3,
+                      "SrcName": "_signal",
+                      "DstId": 4,
+                      "DstName": "_signal"
+                    },
+                    {
+                      "Id": 9,
+                      "Value": true,
+                      "DstId": 4,
+                      "DstName": "enable"
+                    },
+                    {
+                      "SrcId": 7,
+                      "SrcName": "_signal",
+                      "DstId": 5,
+                      "DstName": "_signal"
+                    },
+                    {
+                      "SrcId": 4,
+                      "SrcName": "_signal",
+                      "DstId": 7,
+                      "DstName": "_signal"
+                    },
+                    {
+                      "SrcId": 6,
+                      "SrcName": "_result",
+                      "DstId": 7,
+                      "DstName": "_target"
+                    }
+                  ],
+                  "Defaults": {
+                    "$6.component": {
+                      "_type": "component",
+                      "component_id": "7579476d-6c7f-415d-97b8-149783e56e3e",
+                      "go": "a3d7f9ff-9c73-42da-acda-2a56ded467ea",
+                      "component_type": "ClassicGameMode"
+                    }
+                  }
+                },
                 "PlayersToSpawns": true,
                 "PlayerWeapons": [],
                 "RoundTime": 60,
                 "RoundTimer": {
-                  "Relative": -1665.0941,
-                  "Passed": 1665.0941,
+                  "Relative": -2694.2722,
+                  "Passed": 2694.2722,
                   "Fraction": 1
                 },
                 "Time": true
@@ -459,12 +596,137 @@
                   "go": "751e6d21-8b6f-4587-aaea-f0ffc93da8c6",
                   "component_type": "RoundComponent"
                 },
+                "OnRoundStart": {
+                  "__version": 8,
+                  "__guid": "7fe87d82-dc47-439f-b4ef-62b7908bf49a",
+                  "__changeId": 4,
+                  "UserData": {
+                    "Title": "On Round Start",
+                    "ReferencedComponentTypes": [
+                      "RoundComponent"
+                    ]
+                  },
+                  "Variables": [],
+                  "Nodes": [
+                    {
+                      "Id": 1,
+                      "Type": "input",
+                      "UserData": {
+                        "Position": "96,72",
+                        "Labels": {
+                          "_signal": "Run"
+                        }
+                      }
+                    },
+                    {
+                      "Id": 2,
+                      "Type": "scene.get",
+                      "Properties": {
+                        "T": "RoundComponent"
+                      },
+                      "UserData": {
+                        "Position": "156,360",
+                        "Labels": {
+                          "_result": "Round component"
+                        }
+                      }
+                    },
+                    {
+                      "Id": 3,
+                      "Type": "call",
+                      "Properties": {
+                        "_isStatic": false,
+                        "_name": "OpenAllClassSelect",
+                        "_type": "RoundComponent"
+                      },
+                      "UserData": {
+                        "Position": "156,144"
+                      }
+                    },
+                    {
+                      "Id": 4,
+                      "Type": "call",
+                      "Properties": {
+                        "_isStatic": false,
+                        "_name": "ResetAllHealth",
+                        "_type": "RoundComponent"
+                      },
+                      "UserData": {
+                        "Position": "156,192"
+                      }
+                    },
+                    {
+                      "Id": 5,
+                      "Type": "Toggle Wall",
+                      "UserData": {
+                        "Position": "156,264"
+                      }
+                    },
+                    {
+                      "Id": 6,
+                      "Type": "Reset All Teams",
+                      "UserData": {
+                        "Position": "156,312"
+                      }
+                    }
+                  ],
+                  "Links": [
+                    {
+                      "SrcId": 1,
+                      "SrcName": "_target",
+                      "DstId": 2,
+                      "DstName": "_this"
+                    },
+                    {
+                      "SrcId": 1,
+                      "SrcName": "_signal",
+                      "DstId": 3,
+                      "DstName": "_signal"
+                    },
+                    {
+                      "SrcId": 2,
+                      "SrcName": "_result",
+                      "DstId": 3,
+                      "DstName": "_target"
+                    },
+                    {
+                      "SrcId": 1,
+                      "SrcName": "_signal",
+                      "DstId": 4,
+                      "DstName": "_signal"
+                    },
+                    {
+                      "SrcId": 2,
+                      "SrcName": "_result",
+                      "DstId": 4,
+                      "DstName": "_target"
+                    },
+                    {
+                      "SrcId": 1,
+                      "SrcName": "_signal",
+                      "DstId": 5,
+                      "DstName": "_signal"
+                    },
+                    {
+                      "Id": 9,
+                      "Value": false,
+                      "DstId": 5,
+                      "DstName": "enable"
+                    },
+                    {
+                      "SrcId": 1,
+                      "SrcName": "_signal",
+                      "DstId": 6,
+                      "DstName": "_signal"
+                    }
+                  ]
+                },
                 "PlayersToSpawns": true,
                 "PlayerWeapons": [],
                 "RoundTime": 60,
                 "RoundTimer": {
-                  "Relative": -1665.0941,
-                  "Passed": 1665.0941,
+                  "Relative": -2694.2722,
+                  "Passed": 2694.2722,
                   "Fraction": 1
                 },
                 "Time": true

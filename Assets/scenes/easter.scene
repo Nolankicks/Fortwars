@@ -2972,7 +2972,7 @@
         {
           "__type": "GameModeObject",
           "__guid": "dc66aee9-1ee1-40f0-b945-38b38811abcf",
-          "Type": "Classic"
+          "Type": "RollermineWars"
         }
       ]
     },
@@ -3181,7 +3181,7 @@
         {
           "__type": "GameModeObject",
           "__guid": "bca4e500-d3b7-417c-bc96-defcc7aa3a98",
-          "Type": "Classic"
+          "Type": "RollermineWars"
         }
       ]
     },

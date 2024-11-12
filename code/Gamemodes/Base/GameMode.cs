@@ -121,7 +121,7 @@ public partial class GameMode : Component, Component.INetworkListener
 	};
 
 	[ConCmd( "skip_wait" )]
-	public static void SkipWait()
+	public static void SkipWait( int i )
 	{
 		if ( !Networking.IsHost )
 			return;
@@ -137,7 +137,7 @@ public partial class GameMode : Component, Component.INetworkListener
 		}
 		else
 		{
-			gs.CurrentGameModeComponent?.CurrentRound?.EndRound();
+			gs.CurrentGameModeComponent?.CurrentRound?.EndRound( i == 0 ? false : true );
 		}
 	}
 

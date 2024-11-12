@@ -404,7 +404,7 @@ public class Weapon : Item, IGameEventHandler<OnReloadEvent>
 			{
 				GameObject.Dispatch( new WeaponAnimEvent( "b_reloading_first_shell", true ) );
 
-				await Task.DelaySeconds( 2.75f );
+				await Task.DelaySeconds( 2.5f );
 				if ( !GameObject.IsValid() )
 				{
 					IsReloading = false;
