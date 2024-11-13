@@ -89,6 +89,10 @@ LobbySelector
             border-radius: $border-radius;
             flex-shrink: 0;
 
+            &:nth-child(even) {
+                background-color: $button-secondary;
+            }
+
             >div
             {
                 font-size: 24px;
