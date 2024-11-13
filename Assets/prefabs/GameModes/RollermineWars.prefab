@@ -53,7 +53,7 @@
                 "OnRoundStart": {
                   "__version": 8,
                   "__guid": "ba983595-2745-455b-9881-fecba3ab0e13",
-                  "__changeId": 68,
+                  "__changeId": 71,
                   "UserData": {
                     "Title": "On Round Start",
                     "ReferencedComponentTypes": [
@@ -122,7 +122,7 @@
                       "Id": 37,
                       "Type": "scene.ref",
                       "UserData": {
-                        "Position": "-576,276"
+                        "Position": "-468,276"
                       }
                     },
                     {
@@ -204,8 +204,8 @@
                 ],
                 "RoundTime": 60,
                 "RoundTimer": {
-                  "Relative": -140.83737,
-                  "Passed": 140.83737,
+                  "Relative": -334.31448,
+                  "Passed": 334.31448,
                   "Fraction": 1
                 },
                 "Time": true
@@ -223,7 +223,7 @@
                 "__type": "RoundComponent",
                 "__guid": "b088f2a5-4d6a-4ca6-bccd-e9f762c4ec37",
                 "AddClass": true,
-                "CheckForWinningTeam": true,
+                "CheckForWinningTeam": false,
                 "ClearAllWeapons": true,
                 "ClearClass": false,
                 "Condition": true,
@@ -276,7 +276,7 @@
                 "OnRoundStart": {
                   "__version": 8,
                   "__guid": "12b436a3-8953-4584-bdaf-03192c107916",
-                  "__changeId": 59,
+                  "__changeId": 60,
                   "UserData": {
                     "Title": "On Round Start",
                     "ReferencedComponentTypes": [
@@ -385,7 +385,7 @@
                       "DstName": "_signal"
                     },
                     {
-                      "Id": 18,
+                      "Id": 22,
                       "Value": false,
                       "DstId": 12,
                       "DstName": "enable"
@@ -404,8 +404,8 @@
                 ],
                 "RoundTime": 60,
                 "RoundTimer": {
-                  "Relative": -140.83737,
-                  "Passed": 140.83737,
+                  "Relative": -334.31448,
+                  "Passed": 334.31448,
                   "Fraction": 1
                 },
                 "Time": true
@@ -590,8 +590,8 @@
                 "PlayerWeapons": [],
                 "RoundTime": 60,
                 "RoundTimer": {
-                  "Relative": -140.83737,
-                  "Passed": 140.83737,
+                  "Relative": -334.31448,
+                  "Passed": 334.31448,
                   "Fraction": 1
                 },
                 "Time": true
@@ -751,8 +751,8 @@
                 "PlayerWeapons": [],
                 "RoundTime": 60,
                 "RoundTimer": {
-                  "Relative": -140.83737,
-                  "Passed": 140.83737,
+                  "Relative": -334.31448,
+                  "Passed": 334.31448,
                   "Fraction": 1
                 },
                 "Time": true
