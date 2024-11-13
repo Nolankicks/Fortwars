@@ -26,33 +26,7 @@
 	@switch (CurrentState)
 	{
 		case MenuState.Lobbies:
-
-			<div class="lobbies">
-				<div class="header"> Lobbies </div>
-
-				<div class="lobby-holder">
-					
-					@if (Fetching)
-					{
-						<button class="info">Fetching lobbies...</button>
-					}
-					else if (Lobbies.Count == 0)
-					{
-						<button class="info">No lobbies found</button>
-					}
-					else
-					{
-						foreach (var lobby in Lobbies)
-						{
-							<button class="lobby" onclick=@( () => JoinLobby( lobby ) )>
-								<div class="map"> @lobby.Map </div>
-								<div class="members"> @lobby.Members / @lobby.MaxMembers </div>
-							</button>
-						}
-					}
-				</div>
-			</div>
-
+			<LobbySelector MainMenu=@this />
 			break;
 
 		case MenuState.Leaderboards:
@@ -135,8 +109,6 @@
 	}
 
 	public MenuState CurrentState { get; set; } = MenuState.None;
-	public List<LobbyInformation> Lobbies { get; set; } = new();
-	public bool Fetching { get; set; }
 	public bool FetchingLeaderboard { get; set; }
 	[Property] public SceneFile MainScene { get; set; }
 	public Sandbox.Services.Leaderboards.Board2 Leaderboard { get; set; }
@@ -156,19 +128,6 @@
 	public bool IsMe(Sandbox.Services.Leaderboards.Board2.Entry entry)
 	{
 		return entry.SteamId == (long)Sandbox.Utility.Steam.SteamId;
-	}
-
-	public async Task FetchLobbyInfo()
-	{
-		while (true)
-		{
-			Fetching = true;
-
-			Lobbies = await Networking.QueryLobbies();
-
-			Fetching = false;
-			await Task.DelayRealtimeSeconds(5);
-		}
 	}
 
 	public async void FetchLeaderboard(SortBy sortBy = SortBy.AllTime, bool country = false, bool friends = false)
@@ -241,12 +200,6 @@
 		}
 
 		return "All Time";
-	}
-
-	protected override void OnStart()
-	{
-		_ = FetchLobbyInfo();
-		//FetchLeaderboard();
 	}
 
     protected override void OnUpdate()
@@ -378,6 +331,6 @@
 	/// <summary>
 	/// the hash determines if the system should be rebuilt. If it changes, it will be rebuilt
 	/// </summary>
-	protected override int BuildHash() => System.HashCode.Combine(CurrentState, Fetching, Lobbies?.Count(),
+	protected override int BuildHash() => System.HashCode.Combine(CurrentState,
 	Leaderboard?.Entries?.Count(), FetchingLeaderboard, CurrentSortBy, Country, Friends);
 }

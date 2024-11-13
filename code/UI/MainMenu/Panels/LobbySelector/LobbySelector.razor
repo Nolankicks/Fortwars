@@ -1,0 +1,64 @@
+@using Sandbox;
+@using Sandbox.UI;
+@using Sandbox.Network;
+@using System.Threading.Tasks;
+@inherits Panel
+
+<root>
+	<div class="top-bar">
+		<div class="icon refresh" onclick=@( () => FetchLobbyInfo() )>refresh</div>
+		<div class="icon refresh" onclick=@( () => MainMenu.ChangeMenuState( MainMenu.MenuState.None ) )>close</div>
+	</div>
+
+	<div class="lobbies">
+		@if ( Fetching )
+		{
+			<div class="info">Fetching lobbies...</div>
+		}
+		else if ( Lobbies.Count() == 0 )
+		{
+			<div class="info">No lobbies found... Create one!</div>
+		}
+		else
+		{
+			@foreach ( var lobby in Lobbies )
+			{
+				<div class="lobby" onclick=@( () => Networking.Connect( lobby.LobbyId ) )>
+					<div class="name">@lobby.Map</div>
+					<div class="players">@lobby.Members / @lobby.MaxMembers</div>
+				</div>
+			}
+		}
+	</div>
+</root>
+
+@code
+{
+	public List<LobbyInformation> Lobbies { get; set; } = new();
+	public bool Fetching { get; set; }
+	public MainMenu MainMenu { get; set; }
+
+	public async void FetchLobbyInfo()
+	{
+		Fetching = true;
+
+		Lobbies = await Networking.QueryLobbies();
+
+		Fetching = false;
+	}
+
+	protected override void OnAfterTreeRender( bool firstTime )
+	{
+		if ( firstTime )
+		{
+			FetchLobbyInfo();
+		}
+
+		base.OnAfterTreeRender( firstTime );
+	}
+
+	protected override int BuildHash()
+	{
+		return System.HashCode.Combine( Lobbies?.Count(), Fetching );
+	}
+}
