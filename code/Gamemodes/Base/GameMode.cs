@@ -53,6 +53,9 @@ public partial class GameMode : Component, Component.INetworkListener
 			WinGame();
 
 		OnGameEnd?.Invoke( team );
+
+		//We need some sort of delay here. Maybe hard code in ending state?
+		InitialRound?.ActivateRound();
 	}
 
 	public void EnableTeams()

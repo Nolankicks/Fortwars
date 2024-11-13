@@ -151,7 +151,7 @@
                       "DstName": "_signal"
                     },
                     {
-                      "Id": 6,
+                      "Id": 36,
                       "Value": true,
                       "DstId": 4,
                       "DstName": "enable"
@@ -191,8 +191,8 @@
                 ],
                 "RoundTime": 60,
                 "RoundTimer": {
-                  "Relative": -2694.2722,
-                  "Passed": 2694.2722,
+                  "Relative": -491.5149,
+                  "Passed": 491.5149,
                   "Fraction": 1
                 },
                 "Time": true
@@ -238,7 +238,7 @@
                   ],
                   "Links": [
                     {
-                      "Id": 10,
+                      "Id": 3,
                       "Value": false,
                       "DstId": 1,
                       "DstName": "_result"
@@ -372,7 +372,7 @@
                       "DstName": "_signal"
                     },
                     {
-                      "Id": 18,
+                      "Id": 19,
                       "Value": false,
                       "DstId": 12,
                       "DstName": "enable"
@@ -391,8 +391,8 @@
                 ],
                 "RoundTime": 60,
                 "RoundTimer": {
-                  "Relative": -2694.2722,
-                  "Passed": 2694.2722,
+                  "Relative": -491.5149,
+                  "Passed": 491.5149,
                   "Fraction": 1
                 },
                 "Time": true
@@ -564,8 +564,8 @@
                 "PlayerWeapons": [],
                 "RoundTime": 60,
                 "RoundTimer": {
-                  "Relative": -2694.2722,
-                  "Passed": 2694.2722,
+                  "Relative": -491.5149,
+                  "Passed": 491.5149,
                   "Fraction": 1
                 },
                 "Time": true
@@ -708,7 +708,7 @@
                       "DstName": "_signal"
                     },
                     {
-                      "Id": 9,
+                      "Id": 8,
                       "Value": false,
                       "DstId": 5,
                       "DstName": "enable"
@@ -725,8 +725,8 @@
                 "PlayerWeapons": [],
                 "RoundTime": 60,
                 "RoundTimer": {
-                  "Relative": -2694.2722,
-                  "Passed": 2694.2722,
+                  "Relative": -491.5149,
+                  "Passed": 491.5149,
                   "Fraction": 1
                 },
                 "Time": true

@@ -99,6 +99,11 @@ public sealed class RoundComponent : Component
 				EndRound( false );
 			}
 		}
+
+		if ( CheckForWinningTeam )
+		{
+			GameMode.CheckForWinningTeam();
+		}
 	}
 
 	public void EndRound( bool timer )
