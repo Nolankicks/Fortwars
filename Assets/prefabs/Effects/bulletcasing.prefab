@@ -4,6 +4,7 @@
     "Flags": 0,
     "Name": "bulletcasing",
     "Scale": "4,4,4",
+    "Tags": "ignore_player",
     "Enabled": true,
     "Components": [
       {
