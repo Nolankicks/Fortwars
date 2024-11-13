@@ -5,7 +5,7 @@ public record OnRoundSwitch() : IGameEvent;
 
 public sealed class RoundComponent : Component
 {
-	[Property, Feature( "Metadata" )] public string Name { get; set; }
+	[Property, Feature( "Metadata" ), Sync] public string Name { get; set; }
 	[Property, ReadOnly, Feature( "Metadata" )] public bool IsRoundActive { get; set; }
 	[Property, Feature( "Metadata" )] public bool CheckForWinningTeam { get; set; } = false;
 	[Property, Feature( "Metadata" )] public bool IsLastRound { get; set; } = false;
@@ -74,7 +74,7 @@ public sealed class RoundComponent : Component
 
 		Scene.Dispatch( new OnRoundSwitch() );
 
-		GameMode.ActiveRound = this;
+		SetActiveRound();
 	}
 
 	protected override void OnFixedUpdate()
@@ -117,6 +117,12 @@ public sealed class RoundComponent : Component
 			NextRoundTimer?.ActivateRound();
 
 		IsRoundActive = false;
+	}
+
+	[Broadcast]
+	public void SetActiveRound()
+	{
+		GameMode.ActiveRound = this;
 	}
 
 	/// <summary> Creates random teams for the players </summary>
