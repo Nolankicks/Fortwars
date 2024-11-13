@@ -16,7 +16,7 @@
           "HideInGame": false,
           "IsTrigger": false,
           "Mesh": {
-            "Topology": "H4sIAAAAAAAACl2Qiw6CUAxDh1flgg/wAfr/X2pP0iWLJA25W9t16xHxFc4C30E4\u002Bt2FWbgKd2Ew4NTvIZxcb9ZH4b5db\u002Bb9z/oUzVh8m7lPc9FOzjRYQ8ZXyXxxXvrw4e72wvtWdoEPdzMXj8We9OHDXcvO7EqdN396eKaeLHjkLciePeYxi4z0mMFtMisablFvRXZ2Tj158KQOF78f9WSROMQBAAA=",
+            "Topology": "H4sIAAAAAAAACl2QCQ7CMAwEp4Qj3NBy/f\u002BlaMRGsohUVbFn1\u002Bt04ANs\u002BZ0VsM69AwfgBFyAKZ9MPXdgk3qLnsI\u002BUm/h/me9i2ZXfFvYOazafTJN0XRgKZmPyWtfXvYVL73PZRd52WdYPa7xtC8veys7u6t17/7t6Tn0ZtFjvIXZR895zjKjPWf4NiOrGt\u002BivpXZ3XnozaOndVn9vvVkkTjEAQAA",
             "Positions": [
               "-832,-864,16",
               "832,-864,16",
@@ -200,14 +200,6 @@
           "Tint": "1,0,0,1"
         },
         {
-          "__type": "HealthComponent",
-          "__guid": "c32a64ff-3447-4aa9-a24e-ba6d1cad21dd",
-          "Health": 500,
-          "IsDead": false,
-          "MaxHealth": 500,
-          "SpawnDamageIndicator": true
-        },
-        {
           "__type": "GameModeObject",
           "__guid": "86cb1d3b-0b8c-487d-b126-1a1beb2c3695",
           "Type": "RollermineWars"
@@ -215,12 +207,11 @@
         {
           "__type": "RollermineWarsObject",
           "__guid": "ca679cd2-fb70-429e-99a4-656500a947f9",
-          "__enabled": false,
           "Health": 100,
           "IsDead": false,
           "MaxHealth": 100,
           "SpawnDamageIndicator": true,
-          "Team": "Red"
+          "Team": "Blue"
         }
       ]
     },
@@ -244,14 +235,6 @@
           "Tint": "0,0.3,1,1"
         },
         {
-          "__type": "HealthComponent",
-          "__guid": "a0228401-0056-4521-a7ce-36200f7b61f7",
-          "Health": 500,
-          "IsDead": false,
-          "MaxHealth": 500,
-          "SpawnDamageIndicator": true
-        },
-        {
           "__type": "GameModeObject",
           "__guid": "620836c4-b262-434f-a1b3-a61fde9abad1",
           "Type": "RollermineWars"
@@ -259,12 +242,11 @@
         {
           "__type": "RollermineWarsObject",
           "__guid": "6164575c-f4d3-4efa-a4a8-1ec85bd45602",
-          "__enabled": false,
           "Health": 100,
           "IsDead": false,
           "MaxHealth": 100,
           "SpawnDamageIndicator": true,
-          "Team": "Blue"
+          "Team": "Red"
         }
       ]
     }

@@ -9,7 +9,20 @@ public sealed class RollermineWarsObject : HealthComponent
 	{
 		var gamemode = Scene?.GetAll<GameMode>()?.FirstOrDefault();
 
+		Log.Info( $"RollermineWarsObject: {GameObject} has died" );
+
 		if ( gamemode.IsValid() )
 			gamemode.EndGame( Team );
+	}
+
+	public override void TakeDamage( GameObject Attacker, int damage = 10, Vector3 HitPos = default, Vector3 normal = default )
+	{
+		if ( Attacker.Components.TryGet<TeamComponent>( out var team, FindMode.EverythingInSelfAndParent ) && team.Team != Team )
+		{
+			Log.Info( "RollermineWarsObject: Can't damage your own team" );
+			return;
+		}
+
+		base.TakeDamage( Attacker, damage, HitPos, normal );
 	}
 }

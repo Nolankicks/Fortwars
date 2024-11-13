@@ -160,7 +160,7 @@
                       "DstName": "_signal"
                     },
                     {
-                      "Id": 35,
+                      "Id": 39,
                       "Value": true,
                       "DstId": 4,
                       "DstName": "enable"
@@ -204,8 +204,8 @@
                 ],
                 "RoundTime": 60,
                 "RoundTimer": {
-                  "Relative": -334.31448,
-                  "Passed": 334.31448,
+                  "Relative": -392.71088,
+                  "Passed": 392.71088,
                   "Fraction": 1
                 },
                 "Time": true
@@ -385,7 +385,7 @@
                       "DstName": "_signal"
                     },
                     {
-                      "Id": 22,
+                      "Id": 18,
                       "Value": false,
                       "DstId": 12,
                       "DstName": "enable"
@@ -404,8 +404,8 @@
                 ],
                 "RoundTime": 60,
                 "RoundTimer": {
-                  "Relative": -334.31448,
-                  "Passed": 334.31448,
+                  "Relative": -392.71088,
+                  "Passed": 392.71088,
                   "Fraction": 1
                 },
                 "Time": true
@@ -549,7 +549,7 @@
                       "DstName": "_signal"
                     },
                     {
-                      "Id": 8,
+                      "Id": 12,
                       "Value": true,
                       "DstId": 4,
                       "DstName": "enable"
@@ -590,8 +590,8 @@
                 "PlayerWeapons": [],
                 "RoundTime": 60,
                 "RoundTimer": {
-                  "Relative": -334.31448,
-                  "Passed": 334.31448,
+                  "Relative": -392.71088,
+                  "Passed": 392.71088,
                   "Fraction": 1
                 },
                 "Time": true
@@ -751,8 +751,8 @@
                 "PlayerWeapons": [],
                 "RoundTime": 60,
                 "RoundTimer": {
-                  "Relative": -334.31448,
-                  "Passed": 334.31448,
+                  "Relative": -392.71088,
+                  "Passed": 392.71088,
                   "Fraction": 1
                 },
                 "Time": true
