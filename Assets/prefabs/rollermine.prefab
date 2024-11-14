@@ -60,7 +60,7 @@
         "__type": "FortwarsProp",
         "__guid": "f3202565-7b00-4282-adc7-46297ebc4923",
         "CanKill": true,
-        "CollisionThreshold": 100,
+        "CollisionThreshold": 300,
         "Divisor": 20,
         "Health": 100,
         "Invincible": true,
