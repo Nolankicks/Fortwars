@@ -14,7 +14,8 @@
           "component_id": "346d83ed-5cdf-4c79-838c-2241d58472e0",
           "go": "047cc4fb-e838-4df1-9ccc-0e949a6a36f2",
           "component_type": "RoundComponent"
-        }
+        },
+        "TeamsEnabled": false
       }
     ],
     "Children": [
@@ -37,6 +38,8 @@
                 "__guid": "346d83ed-5cdf-4c79-838c-2241d58472e0",
                 "AddClass": false,
                 "CheckForWinningTeam": false,
+                "ClearAllWeapons": true,
+                "ClearClass": false,
                 "Condition": false,
                 "IsLastRound": true,
                 "IsRoundActive": false,
@@ -124,6 +127,7 @@
                     }
                   ]
                 },
+                "PlayersToSpawns": true,
                 "PlayerWeapons": [
                   "weapondatas/m4a4.weapons",
                   "weapondatas/mp5.weapons",
@@ -131,12 +135,6 @@
                   "weapondatas/shotgun.weapons"
                 ],
                 "RoundTime": 120,
-                "RoundTimer": {
-                  "Relative": -2498.6772,
-                  "Passed": 2498.6772,
-                  "Fraction": 1
-                },
-                "State": "FightMode",
                 "Time": true
               }
             ]

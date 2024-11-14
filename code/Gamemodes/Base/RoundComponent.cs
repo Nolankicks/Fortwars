@@ -1,5 +1,6 @@
 using Sandbox.Events;
 using System;
+using System.Text.Json.Serialization;
 
 public record OnRoundSwitch() : IGameEvent;
 
@@ -29,7 +30,7 @@ public sealed class RoundComponent : Component
 	[Property, Category( "Actions" )] public Action RoundUpdate { get; set; }
 	[Property, Category( "Actions" )] public Action<GameObject> OnPlayerJoin { get; set; }
 
-	[InlineEditor, Property, Sync] public TimeUntil RoundTimer { get; set; }
+	[InlineEditor, Property, Sync, JsonIgnore] public TimeUntil RoundTimer { get; set; }
 
 	[Property] bool PlayersToSpawns { get; set; } = true;
 

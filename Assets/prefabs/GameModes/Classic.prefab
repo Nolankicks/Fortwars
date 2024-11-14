@@ -190,11 +190,6 @@
                   "weapondatas/physgun.weapons"
                 ],
                 "RoundTime": 60,
-                "RoundTimer": {
-                  "Relative": -1513.4,
-                  "Passed": 1513.4,
-                  "Fraction": 1
-                },
                 "Time": true
               }
             ]
@@ -477,11 +472,6 @@
                   "weapondatas/gravgun.weapons"
                 ],
                 "RoundTime": 60,
-                "RoundTimer": {
-                  "Relative": -1513.4,
-                  "Passed": 1513.4,
-                  "Fraction": 1
-                },
                 "Time": true
               }
             ]
@@ -650,11 +640,6 @@
                 "PlayersToSpawns": true,
                 "PlayerWeapons": [],
                 "RoundTime": 60,
-                "RoundTimer": {
-                  "Relative": -1513.4,
-                  "Passed": 1513.4,
-                  "Fraction": 1
-                },
                 "Time": true
               }
             ]
@@ -900,11 +885,6 @@
                 "PlayersToSpawns": true,
                 "PlayerWeapons": [],
                 "RoundTime": 60,
-                "RoundTimer": {
-                  "Relative": -1513.4,
-                  "Passed": 1513.4,
-                  "Fraction": 1
-                },
                 "Time": true
               }
             ]

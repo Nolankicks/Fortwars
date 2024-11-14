@@ -160,7 +160,7 @@
                       "DstName": "_signal"
                     },
                     {
-                      "Id": 39,
+                      "Id": 40,
                       "Value": true,
                       "DstId": 4,
                       "DstName": "enable"
@@ -203,11 +203,6 @@
                   "weapondatas/physgun.weapons"
                 ],
                 "RoundTime": 60,
-                "RoundTimer": {
-                  "Relative": -392.71088,
-                  "Passed": 392.71088,
-                  "Fraction": 1
-                },
                 "Time": true
               }
             ]
@@ -251,7 +246,7 @@
                   ],
                   "Links": [
                     {
-                      "Id": 2,
+                      "Id": 3,
                       "Value": false,
                       "DstId": 1,
                       "DstName": "_result"
@@ -385,7 +380,7 @@
                       "DstName": "_signal"
                     },
                     {
-                      "Id": 18,
+                      "Id": 19,
                       "Value": false,
                       "DstId": 12,
                       "DstName": "enable"
@@ -403,11 +398,6 @@
                   "weapondatas/gravgun.weapons"
                 ],
                 "RoundTime": 60,
-                "RoundTimer": {
-                  "Relative": -392.71088,
-                  "Passed": 392.71088,
-                  "Fraction": 1
-                },
                 "Time": true
               }
             ]
@@ -549,7 +539,7 @@
                       "DstName": "_signal"
                     },
                     {
-                      "Id": 12,
+                      "Id": 13,
                       "Value": true,
                       "DstId": 4,
                       "DstName": "enable"
@@ -589,11 +579,6 @@
                 "PlayersToSpawns": true,
                 "PlayerWeapons": [],
                 "RoundTime": 60,
-                "RoundTimer": {
-                  "Relative": -392.71088,
-                  "Passed": 392.71088,
-                  "Fraction": 1
-                },
                 "Time": true
               }
             ]
@@ -734,7 +719,7 @@
                       "DstName": "_signal"
                     },
                     {
-                      "Id": 7,
+                      "Id": 8,
                       "Value": false,
                       "DstId": 5,
                       "DstName": "enable"
@@ -750,11 +735,6 @@
                 "PlayersToSpawns": true,
                 "PlayerWeapons": [],
                 "RoundTime": 60,
-                "RoundTimer": {
-                  "Relative": -392.71088,
-                  "Passed": 392.71088,
-                  "Fraction": 1
-                },
                 "Time": true
               }
             ]
