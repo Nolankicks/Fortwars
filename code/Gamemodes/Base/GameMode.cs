@@ -53,9 +53,6 @@ public partial class GameMode : Component, Component.INetworkListener
 			WinGame();
 
 		OnGameEnd?.Invoke( team );
-
-		//We need some sort of delay here. Maybe hard code in ending state?
-		InitialRound?.ActivateRound();
 	}
 
 	public void EnableTeams()
@@ -88,12 +85,15 @@ public partial class GameMode : Component, Component.INetworkListener
 		} );
 
 		Scene.GetAll<HealthComponent>()?.ToList()?.ForEach( x => x.ResetHealth() );
+		Scene.GetAll<RollerMine>()?.ToList()?.ForEach( x => x.ResetPosition() );
 
 		GameSystem.RedTimeHeld = GameSystem.InitRedTimeHeld;
 		GameSystem.BlueTimeHeld = GameSystem.InitBlueTimeHeld;
 		GameSystem.YellowTimeHeld = GameSystem.InitYellowTimeHeld;
 		GameSystem.GreenTimeHeld = GameSystem.InitGreenTimeHeld;
 		GameSystem.Overtimes = 0;
+		GameSystem.GameState = GameSystem.GameStates.S_END;
+		GameSystem.StateSwitch = 0;
 	}
 
 

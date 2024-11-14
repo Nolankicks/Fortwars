@@ -75,6 +75,11 @@ public sealed class RoundComponent : Component
 		Scene.Dispatch( new OnRoundSwitch() );
 
 		SetActiveRound();
+
+		var gs = GameSystem.Instance;
+
+		if ( gs.IsValid() )
+			gs.StateSwitch = 0;
 	}
 
 	protected override void OnFixedUpdate()

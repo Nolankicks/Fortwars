@@ -231,6 +231,13 @@ public sealed partial class GameSystem : Component
 			GameState = GameStates.S_ACTIVE;
 			var gMode = Scene.GetAllComponents<GameMode>()?.FirstOrDefault();
 			gMode.StartGame();
+			StateSwitch = 0;
+		}
+		else if ( GameState == GameStates.S_END && StateSwitch > 5 )
+		{
+			GameState = GameStates.S_WAITING;
+
+			StateSwitch = 0;
 		}
 	}
 

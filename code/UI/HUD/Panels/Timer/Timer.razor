@@ -15,11 +15,9 @@
 	}
 
 	<div class="status">@GetStateText()</div>
-    @if(round.IsValid()) {
 	<div class="time">
 		<div class="text">@FormatedTimer()</div>
 	</div>
-    }
 </root>
 
 @code
@@ -40,7 +38,15 @@
         var gs = Scene.GetAll<GameSystem>().FirstOrDefault();
         var round = GameMode.ActiveRound;
 
-        if (round.IsValid())
+		if (gs.GameState == GameSystem.GameStates.S_WAITING)
+		{
+			return gs.StateSwitch;
+		}
+		else if (gs.GameState == GameSystem.GameStates.S_END)
+		{
+			return gs.StateSwitch - 5;
+		}
+        else if (round.IsValid())
         {
             //TODO: Fix this
             var remainingTime = round.RoundTimer;
