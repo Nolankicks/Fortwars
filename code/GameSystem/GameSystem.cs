@@ -86,7 +86,7 @@ IGameEventHandler<OnGameOvertimeBuild>, IGameEventHandler<OnGameOvertimeFight>
 		{
 			LoadingScreen.Title = "Creating Lobby...";
 			await Task.DelaySeconds( 0.1f );
-			Networking.CreateLobby();
+			Networking.CreateLobby( new Sandbox.Network.LobbyConfig() );
 		}
 	}
 
