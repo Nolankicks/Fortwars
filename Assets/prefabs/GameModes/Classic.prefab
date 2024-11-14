@@ -191,8 +191,8 @@
                 ],
                 "RoundTime": 60,
                 "RoundTimer": {
-                  "Relative": -491.5149,
-                  "Passed": 491.5149,
+                  "Relative": -1513.4,
+                  "Passed": 1513.4,
                   "Fraction": 1
                 },
                 "Time": true
@@ -259,6 +259,93 @@
                   "component_id": "82ac2f45-7e8f-4928-92d0-7b86283ad010",
                   "go": "751e6d21-8b6f-4587-aaea-f0ffc93da8c6",
                   "component_type": "RoundComponent"
+                },
+                "OnPlayerJoin": {
+                  "__version": 8,
+                  "__guid": "9b8746c5-6c1c-4940-8385-d5cc7df81e4e",
+                  "__changeId": 11,
+                  "UserData": {
+                    "Title": "On Player Join"
+                  },
+                  "Variables": [],
+                  "Nodes": [
+                    {
+                      "Id": 0,
+                      "Type": "input",
+                      "UserData": {
+                        "Labels": {
+                          "obj": "Obj"
+                        }
+                      }
+                    },
+                    {
+                      "Id": 1,
+                      "Type": "call",
+                      "Properties": {
+                        "_isStatic": false,
+                        "_name": "TryGet",
+                        "_type": "Sandbox.IComponentLister",
+                        "T": "Inventory"
+                      },
+                      "UserData": {
+                        "Position": "-0,144",
+                        "Labels": {
+                          "component": "inv"
+                        }
+                      }
+                    },
+                    {
+                      "Id": 2,
+                      "Type": "if",
+                      "UserData": {
+                        "Position": "264,-0"
+                      }
+                    },
+                    {
+                      "Id": 3,
+                      "Type": "call",
+                      "Properties": {
+                        "_isStatic": false,
+                        "_name": "OpenClassSelect",
+                        "_type": "Inventory"
+                      },
+                      "UserData": {
+                        "Position": "492,0"
+                      }
+                    }
+                  ],
+                  "Links": [
+                    {
+                      "SrcId": 0,
+                      "SrcName": "obj",
+                      "DstId": 1,
+                      "DstName": "_target"
+                    },
+                    {
+                      "SrcId": 0,
+                      "SrcName": "_signal",
+                      "DstId": 2,
+                      "DstName": "_signal"
+                    },
+                    {
+                      "SrcId": 1,
+                      "SrcName": "_result",
+                      "DstId": 2,
+                      "DstName": "condition"
+                    },
+                    {
+                      "SrcId": 2,
+                      "SrcName": "true",
+                      "DstId": 3,
+                      "DstName": "_signal"
+                    },
+                    {
+                      "SrcId": 1,
+                      "SrcName": "component",
+                      "DstId": 3,
+                      "DstName": "_target"
+                    }
+                  ]
                 },
                 "OnRoundStart": {
                   "__version": 8,
@@ -391,8 +478,8 @@
                 ],
                 "RoundTime": 60,
                 "RoundTimer": {
-                  "Relative": -491.5149,
-                  "Passed": 491.5149,
+                  "Relative": -1513.4,
+                  "Passed": 1513.4,
                   "Fraction": 1
                 },
                 "Time": true
@@ -564,8 +651,8 @@
                 "PlayerWeapons": [],
                 "RoundTime": 60,
                 "RoundTimer": {
-                  "Relative": -491.5149,
-                  "Passed": 491.5149,
+                  "Relative": -1513.4,
+                  "Passed": 1513.4,
                   "Fraction": 1
                 },
                 "Time": true
@@ -595,6 +682,95 @@
                   "component_id": "82ac2f45-7e8f-4928-92d0-7b86283ad010",
                   "go": "751e6d21-8b6f-4587-aaea-f0ffc93da8c6",
                   "component_type": "RoundComponent"
+                },
+                "OnPlayerJoin": {
+                  "__version": 8,
+                  "__guid": "6e847170-64f7-4812-93a6-cf499286aec6",
+                  "__changeId": 4,
+                  "UserData": {
+                    "Title": "On Player Join",
+                    "ReferencedComponentTypes": []
+                  },
+                  "Variables": [],
+                  "Nodes": [
+                    {
+                      "Id": 1,
+                      "Type": "input",
+                      "UserData": {
+                        "Labels": {
+                          "obj": "Obj"
+                        },
+                        "Position": "96,156"
+                      }
+                    },
+                    {
+                      "Id": 2,
+                      "Type": "call",
+                      "Properties": {
+                        "_isStatic": false,
+                        "_name": "TryGet",
+                        "_type": "Sandbox.IComponentLister",
+                        "T": "Inventory"
+                      },
+                      "UserData": {
+                        "Position": "96,300",
+                        "Labels": {
+                          "component": "inv"
+                        }
+                      }
+                    },
+                    {
+                      "Id": 3,
+                      "Type": "if",
+                      "UserData": {
+                        "Position": "360,156"
+                      }
+                    },
+                    {
+                      "Id": 4,
+                      "Type": "call",
+                      "Properties": {
+                        "_isStatic": false,
+                        "_name": "OpenClassSelect",
+                        "_type": "Inventory"
+                      },
+                      "UserData": {
+                        "Position": "588,156"
+                      }
+                    }
+                  ],
+                  "Links": [
+                    {
+                      "SrcId": 1,
+                      "SrcName": "obj",
+                      "DstId": 2,
+                      "DstName": "_target"
+                    },
+                    {
+                      "SrcId": 1,
+                      "SrcName": "_signal",
+                      "DstId": 3,
+                      "DstName": "_signal"
+                    },
+                    {
+                      "SrcId": 2,
+                      "SrcName": "_result",
+                      "DstId": 3,
+                      "DstName": "condition"
+                    },
+                    {
+                      "SrcId": 3,
+                      "SrcName": "true",
+                      "DstId": 4,
+                      "DstName": "_signal"
+                    },
+                    {
+                      "SrcId": 2,
+                      "SrcName": "component",
+                      "DstId": 4,
+                      "DstName": "_target"
+                    }
+                  ]
                 },
                 "OnRoundStart": {
                   "__version": 8,
@@ -725,8 +901,8 @@
                 "PlayerWeapons": [],
                 "RoundTime": 60,
                 "RoundTimer": {
-                  "Relative": -491.5149,
-                  "Passed": 491.5149,
+                  "Relative": -1513.4,
+                  "Passed": 1513.4,
                   "Fraction": 1
                 },
                 "Time": true

@@ -22,11 +22,12 @@ public sealed class RoundComponent : Component
 	[Property, Feature( "Inventory" )] public bool AddClass { get; set; }
 	[Property, Feature( "Inventory" )] public bool ClearAllWeapons { get; set; } = true;
 	[Property, Feature( "Inventory" )] public bool ClearClass { get; set; }
-	[Property, Feature( "Inventory" )] List<WeaponData> PlayerWeapons { get; set; }
+	[Property, Feature( "Inventory" )] public List<WeaponData> PlayerWeapons { get; set; }
 
 	[Property, Category( "Actions" )] public Action OnRoundStart { get; set; }
 	[Property, Category( "Actions" )] public Action OnRoundEnd { get; set; }
 	[Property, Category( "Actions" )] public Action RoundUpdate { get; set; }
+	[Property, Category( "Actions" )] public Action<GameObject> OnPlayerJoin { get; set; }
 
 	[InlineEditor, Property, Sync] public TimeUntil RoundTimer { get; set; }
 

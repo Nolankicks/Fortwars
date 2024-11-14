@@ -20,8 +20,9 @@ public partial class GameMode
 			p.SetWorld( SpawnTransform );
 			if ( TeamsEnabled )
 				p.TeamComponent.SetTeam( TeamComponent.GetTeamLowestCount() );
-		}
 
+			p.TeleportToTeamSpawnPoint();
+		}
 
 		if ( player.Components.TryGet<CitizenAnimationHelper>( out var animHelper, FindMode.EnabledInSelfAndChildren ) && animHelper.Target.IsValid() )
 		{
@@ -30,9 +31,21 @@ public partial class GameMode
 			clothing.Apply( animHelper.Target );
 		}
 
-
-
 		player.NetworkSpawn( connection );
+
+		var mode = Scene.GetAll<GameMode>()?.FirstOrDefault();
+
+		if ( mode.IsValid() && mode.CurrentRound.IsValid() )
+		{
+			mode.CurrentRound.SetActiveRound();
+
+			mode.CurrentRound.OnPlayerJoin?.Invoke( player );
+
+			if ( mode.CurrentRound.PlayerWeapons.Any() && player.Components.TryGet<Inventory>( out var i ) )
+			{
+				i.AddItems( mode.CurrentRound.PlayerWeapons );
+			}
+		}
 
 		//We need a better way of joining mid game. But I'm not sure what the best way is. Maybe an action on the round gameobject?
 
