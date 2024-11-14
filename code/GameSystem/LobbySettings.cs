@@ -1,10 +1,13 @@
 using System.Text.Json;
 using Sandbox;
+using Sandbox.Network;
 
 public sealed class LobbySettings
 {
 	public bool ClassicModels { get; set; } = true;
 	public int MaxProps { get; set; } = 50;
+	public LobbySettingsPanel.LobbyPrivacy Privacy { get; set; } = LobbySettingsPanel.LobbyPrivacy.Public;
+	public int MaxPlayers { get; set; } = 64;
 
 	public static void Save( LobbySettings settings )
 	{

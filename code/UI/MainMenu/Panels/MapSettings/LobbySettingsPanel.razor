@@ -46,6 +46,16 @@
 				 	<SwitchControl Value:bind="@ClassicModels" />
 				 </div> *@
 
+				<div class="setting">
+					<DropDown @ref="LocalDropDown" ValueChanged=@OnValueChanged />
+				</div>
+
+				 <div class="setting">
+					<div class="label">Max Players</div>
+					<SliderControl Value:bind="@MaxPlayers" max=64 />
+					<div class="value">@MaxPlayers</div>
+				</div>
+
                 <div class="setting">
 					<div class="label">Max Props</div>
 					<SliderControl Value:bind="@MaxProps" max=500 />
@@ -81,6 +91,16 @@
 			<div class="settings">
 
 				<div class="setting">
+					<DropDown @ref="CloudDropDown" ValueChanged=@OnValueChanged />
+				</div>
+
+				<div class="setting">
+					<div class="label">Max Players</div>
+					<SliderControl Value:bind="@MaxPlayers" max=64 />
+					<div class="value">@MaxPlayers</div>
+				</div>
+
+				<div class="setting">
 					<div class="label">Max Props</div>
 					<SliderControl Value:bind="@MaxProps" max=500 />
 					<div class="value">@MaxProps</div>
@@ -99,6 +119,18 @@
 	public MapInfo SelectedMap { get; set; }
 	[Change( nameof( OnValueMapChange ) )] private bool ClassicModels { get; set; } = true;
 	[Change( nameof( OnValueMapChange ) )] private int MaxProps { get; set; } = 100;
+	[Change( nameof( OnValueMapChange ) )] private int MaxPlayers { get; set; } = 64;
+
+	public DropDown CloudDropDown;
+	public DropDown LocalDropDown;
+
+	public enum LobbyPrivacy
+	{
+		Public,
+		FriendsOnly,
+		Private
+	}
+
 
 	public async void LoadPackage()
 	{
@@ -160,7 +192,66 @@
 
 	void OnValueMapChange()
 	{
-		var lobbySettings = new LobbySettings { ClassicModels = ClassicModels, MaxProps = MaxProps };
+		var lobbySettings = new LobbySettings { ClassicModels = ClassicModels, MaxProps = MaxProps, MaxPlayers = MaxPlayers };
+
+		if ( LocalDropDown is not null )
+		{
+			lobbySettings.Privacy = (LobbyPrivacy)LocalDropDown.Selected.Value;
+		}
+		else if ( CloudDropDown is not null )
+		{
+			lobbySettings.Privacy = (LobbyPrivacy)CloudDropDown.Selected.Value;
+		}
+
+		Log.Info( JsonSerializer.Serialize( lobbySettings ) );
+
+		LobbySettings.Save( lobbySettings );
+	}
+
+	protected override void OnAfterTreeRender( bool firstTime )
+	{
+		if ( firstTime )
+		{
+			if ( CloudDropDown is not null )
+			{
+				CloudDropDown.Options = new()
+				{
+					new Option( "FriendsOnly", LobbyPrivacy.FriendsOnly ),
+					new Option( "Public", LobbyPrivacy.Public ),
+					new Option( "Private", LobbyPrivacy.Private ),
+				};
+
+				CloudDropDown.Selected = CloudDropDown.Options.FirstOrDefault( x => x.Value.Equals( LobbyPrivacy.Public ) );
+			}
+
+			if ( LocalDropDown is not null )
+			{
+				LocalDropDown.Options = new()
+				{
+					new Option( "FriendsOnly", LobbyPrivacy.FriendsOnly ),
+					new Option( "Public", LobbyPrivacy.Public ),
+					new Option( "Private", LobbyPrivacy.Private ),
+				};
+
+				LocalDropDown.Selected = LocalDropDown.Options.FirstOrDefault( x => x.Value.Equals( LobbyPrivacy.Public ) );
+			}
+		}
+
+		base.OnAfterTreeRender( firstTime );
+	}
+
+	void OnValueChanged( string String )
+	{
+		var lobbySettings = new LobbySettings { ClassicModels = ClassicModels, MaxProps = MaxProps, MaxPlayers = MaxPlayers };
+
+		if ( LocalDropDown is not null )
+		{
+			lobbySettings.Privacy = (LobbyPrivacy)LocalDropDown.Selected.Value;
+		}
+		else if ( CloudDropDown is not null )
+		{
+			lobbySettings.Privacy = (LobbyPrivacy)CloudDropDown.Selected.Value;
+		}
 
 		Log.Info( JsonSerializer.Serialize( lobbySettings ) );
 
