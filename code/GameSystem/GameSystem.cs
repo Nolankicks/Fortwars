@@ -86,7 +86,31 @@ IGameEventHandler<OnGameOvertimeBuild>, IGameEventHandler<OnGameOvertimeFight>
 		{
 			LoadingScreen.Title = "Creating Lobby...";
 			await Task.DelaySeconds( 0.1f );
-			Networking.CreateLobby( new Sandbox.Network.LobbyConfig() );
+
+			var lobbyConfig = new Sandbox.Network.LobbyConfig();
+
+			var lobbySettings = LobbySettings.Load();
+
+			if ( LoadLobbySettings && lobbySettings is not null )
+			{
+				//Don't set the privacy when in the editor. Use the editors's privacy settings
+				if ( !Game.IsEditor )
+				{
+					lobbyConfig.Privacy = lobbySettings.Privacy switch
+					{
+						LobbySettingsPanel.LobbyPrivacy.Public => Sandbox.Network.LobbyPrivacy.Public,
+						LobbySettingsPanel.LobbyPrivacy.FriendsOnly => Sandbox.Network.LobbyPrivacy.FriendsOnly,
+						LobbySettingsPanel.LobbyPrivacy.Private => Sandbox.Network.LobbyPrivacy.Private,
+						_ => Sandbox.Network.LobbyPrivacy.Public
+					};
+				}
+
+				lobbyConfig.MaxPlayers = lobbySettings.MaxPlayers;
+			}
+
+			Log.Info( $"Creating Lobby with {lobbyConfig.MaxPlayers} players and {lobbyConfig.Privacy} privacy" );
+
+			Networking.CreateLobby( lobbyConfig );
 		}
 	}
 
