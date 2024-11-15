@@ -50,83 +50,6 @@
                   "go": "047cc4fb-e838-4df1-9ccc-0e949a6a36f2",
                   "component_type": "RoundComponent"
                 },
-                "OnRoundStart": {
-                  "__version": 8,
-                  "__guid": "e3024115-fa6e-4181-976d-101921a9aacd",
-                  "__changeId": 34,
-                  "UserData": {
-                    "Title": "On Round Start",
-                    "ReferencedComponentTypes": []
-                  },
-                  "Variables": [],
-                  "Nodes": [
-                    {
-                      "Id": 0,
-                      "Type": "input",
-                      "UserData": {
-                        "Position": "-12,-0"
-                      }
-                    },
-                    {
-                      "Id": 4,
-                      "Type": "scene.getall.inscene",
-                      "Properties": {
-                        "T": "FWPlayerController"
-                      },
-                      "UserData": {
-                        "Position": "-12,132",
-                        "Labels": {
-                          "_result": "Players"
-                        }
-                      }
-                    },
-                    {
-                      "Id": 6,
-                      "Type": "foreach",
-                      "UserData": {
-                        "Position": "228,0"
-                      }
-                    },
-                    {
-                      "Id": 8,
-                      "Type": "call",
-                      "Properties": {
-                        "_isStatic": false,
-                        "_name": "TeleportToAnySpawnPoint",
-                        "_type": "FWPlayerController"
-                      },
-                      "UserData": {
-                        "Position": "408,-0"
-                      }
-                    }
-                  ],
-                  "Links": [
-                    {
-                      "SrcId": 0,
-                      "SrcName": "_signal",
-                      "DstId": 6,
-                      "DstName": "_signal"
-                    },
-                    {
-                      "SrcId": 4,
-                      "SrcName": "_result",
-                      "DstId": 6,
-                      "DstName": "enumerable"
-                    },
-                    {
-                      "SrcId": 6,
-                      "SrcName": "body",
-                      "DstId": 8,
-                      "DstName": "_signal"
-                    },
-                    {
-                      "SrcId": 6,
-                      "SrcName": "body.value",
-                      "DstId": 8,
-                      "DstName": "_target"
-                    }
-                  ]
-                },
                 "PlayersToSpawns": true,
                 "PlayerWeapons": [
                   "weapondatas/m4a4.weapons",
@@ -134,7 +57,7 @@
                   "weapondatas/pistol.weapons",
                   "weapondatas/shotgun.weapons"
                 ],
-                "RoundTime": 120,
+                "RoundTime": 20,
                 "Time": true
               }
             ]
@@ -173,5 +96,6 @@
   "DontBreakAsTemplate": false,
   "ResourceVersion": 1,
   "__references": [],
+  "HasUnsavedChanges": false,
   "__version": 1
 }

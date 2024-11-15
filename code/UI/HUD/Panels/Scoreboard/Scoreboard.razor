@@ -20,7 +20,7 @@
 	<div class="map-meta">
 		<div class="info">
 			@if (meta.IsValid())
-			{	
+			{
 				<div class="name">@meta.Title</div>
 
 				@if (!string.IsNullOrEmpty(meta.Author))
@@ -32,8 +32,8 @@
 			<div class="gamemode">Gamemode: @gs.CurrentGameMode?.Title</div>
 		</div>
 
-	<div class="players">Players: @Connection.All?.Count()</div>
-</div>
+		<div class="players">Players: @Connection.All?.Count()</div>
+	</div>
 
 	<div class="body">
 
@@ -68,7 +68,7 @@
 				<div class="team-name">
 					<div class="text">Red Team</div>
 					<div class="underline"></div>
-			</div>
+				</div>
 
 				@foreach (var player in redTeam)
 				{
@@ -88,24 +88,39 @@
 		@if (noneTeam.Any() && noneTeam is not null)
 		{
 			<div class="team">
-			@if ( gs.CurrentGameModeType != GameModeType.Deathmatch )
-			{
+				@if (gs.CurrentGameModeType != GameModeType.Deathmatch)
+				{
 					<div class="team-name">
-							<div class="text">None</div>
+						<div class="text">None</div>
 						<div class="underline"></div>
-				</div>
-			}
-
-			@foreach (var player in noneTeam)
-			{
-				<div class="player">
-					<div class="player-info">
-						<div class="avatar" style="background-image: url( avatar:@player.Network.Owner?.SteamId)"></div>
-						<div class="name">@player.Network.Owner?.DisplayName</div>
 					</div>
-				</div>
-			}
-		</div>
+
+					@foreach (var player in noneTeam)
+					{
+						<div class="player">
+							<div class="player-info">
+								<div class="avatar" style="background-image: url( avatar:@player.Network.Owner?.SteamId)"></div>
+								<div class="name">@player.Network.Owner?.DisplayName</div>
+							</div>
+						</div>
+					}
+				}
+				else
+				{
+					@foreach (var player in noneTeam.OrderBy(x => x.Player.Kills))
+					{
+						<div class="player">
+							<div class="player-info">
+								<div class="avatar" style="background-image: url(avatar:@player.Network.Owner?.SteamId)"></div>
+								<div class="name">@player.Network.Owner?.DisplayName</div>
+							</div>
+							<div class="stats">
+								<div class="kills">@player?.Player.Kills / @player?.Player.Deaths</div>
+							</div>
+						</div>
+					}
+				}
+			</div>
 		}
 
 	</div>

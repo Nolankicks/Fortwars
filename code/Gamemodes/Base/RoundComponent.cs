@@ -117,6 +117,9 @@ public sealed class RoundComponent : Component
 	{
 		OnRoundEnd?.Invoke();
 
+		IsRoundActive = false;
+		Log.Info( "Ending round: " + Name );
+
 		if ( IsLastRound )
 		{
 			GameSystem.Instance?.CurrentGameModeComponent?.EndGame();
@@ -127,8 +130,6 @@ public sealed class RoundComponent : Component
 			NextRoundCondition?.ActivateRound();
 		else
 			NextRoundTimer?.ActivateRound();
-
-		IsRoundActive = false;
 	}
 
 	[Broadcast]

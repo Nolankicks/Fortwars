@@ -53,6 +53,10 @@ public partial class GameMode : Component, Component.INetworkListener
 			WinGame();
 
 		OnGameEnd?.Invoke( team );
+
+		GameSystem.Overtimes = 0;
+		GameSystem.GameState = GameSystem.GameStates.S_END;
+		GameSystem.StateSwitch = 0;
 	}
 
 	public void EnableTeams()
@@ -91,9 +95,6 @@ public partial class GameMode : Component, Component.INetworkListener
 		GameSystem.BlueTimeHeld = GameSystem.InitBlueTimeHeld;
 		GameSystem.YellowTimeHeld = GameSystem.InitYellowTimeHeld;
 		GameSystem.GreenTimeHeld = GameSystem.InitGreenTimeHeld;
-		GameSystem.Overtimes = 0;
-		GameSystem.GameState = GameSystem.GameStates.S_END;
-		GameSystem.StateSwitch = 0;
 	}
 
 
