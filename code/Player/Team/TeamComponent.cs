@@ -110,4 +110,12 @@ public sealed class TeamComponent : Component
 		else
 			return Team.Red;
 	}
+
+	public static void ResetTeams()
+	{
+		foreach ( var team in Game.ActiveScene.GetAllComponents<TeamComponent>() )
+		{
+			team.Team = Team.None;
+		}
+	}
 }
