@@ -20,6 +20,22 @@
         }
       ],
       "Children": []
+    },
+    {
+      "__guid": "dc5eed8f-f3f8-47ba-b7ac-984025131c2c",
+      "Flags": 0,
+      "Name": "Meta",
+      "Position": "-329.0441,-229.7482,300.4733",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.SceneInformation",
+          "__guid": "e0895a70-4c8e-4bb6-9566-33fb55978580",
+          "Author": "Facepunch",
+          "SceneTags": "",
+          "Title": "Datacore"
+        }
+      ]
     }
   ],
   "SceneProperties": {
@@ -31,7 +47,10 @@
     "ThreadedAnimation": true,
     "TimeScale": 1,
     "UseFixedUpdate": true,
-    "Metadata": {},
+    "Metadata": {
+      "Title": "Datacore",
+      "Author": "Facepunch"
+    },
     "NavMesh": {
       "Enabled": false,
       "IncludeStaticBodies": true,
@@ -46,7 +65,7 @@
     }
   },
   "ResourceVersion": 2,
-  "Title": null,
+  "Title": "Datacore",
   "Description": null,
   "__references": [],
   "HasUnsavedChanges": false,
