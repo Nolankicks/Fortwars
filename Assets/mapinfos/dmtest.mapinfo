@@ -1,0 +1,15 @@
+{
+  "MapName": "Datacore",
+  "MapDescription": null,
+  "FourTeams": false,
+  "Scene": "scenes/datacore.scene",
+  "Thumb": "textures/grassforts.vtex",
+  "Author": "Facepunch",
+  "PackageIndent": "facepunch.datacore",
+  "Hidden": false,
+  "Order": 0,
+  "AvailableGamemodes": "Deathmatch",
+  "__references": [],
+  "HasUnsavedChanges": true,
+  "__version": 0
+}

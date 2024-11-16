@@ -8,6 +8,8 @@
   "PackageIndent": "https://sbox.game/apetavern/fw_grassforts",
   "Hidden": false,
   "Order": 4,
+  "AvailableGamemodes": "Classic, RollermineWars, Deathmatch",
   "__references": [],
+  "HasUnsavedChanges": true,
   "__version": 0
 }

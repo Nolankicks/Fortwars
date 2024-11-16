@@ -3,14 +3,14 @@
 @inherits Panel
 
 <root>
-	<DropDown @ref="DropDown" onclick=@OnClick ValueChanged="@OnValueChange" />
+    <DropDown @ref="DropDown" onclick=@OnClick ValueChanged="@OnValueChange" />
 </root>
 
 @code
 {
-	DropDown DropDown;
+    DropDown DropDown;
 
-	public bool IsDropDownOpen { get; set; } = false;
+    public bool IsDropDownOpen { get; set; } = false;
 
 	protected override void OnAfterTreeRender(bool firstTime)
 	{
