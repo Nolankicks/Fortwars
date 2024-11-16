@@ -46,18 +46,7 @@ public sealed class RoundComponent : Component
 
 		Scene.GetAll<Inventory>()?.ToList()?.ForEach( x =>
 		{
-			if ( ClearAllWeapons )
-				x.ClearAll();
-
-			if ( ClearClass )
-				x.ClearSelectedClass();
-
-			x.AddItems( PlayerWeapons );
-
-			if ( AddClass && x.SelectedClass is not null )
-			{
-				x.AddClass( x.SelectedClass );
-			}
+			AddWeapons( x );
 		} );
 
 		IsRoundActive = true;
@@ -110,6 +99,22 @@ public sealed class RoundComponent : Component
 		if ( CheckForWinningTeam )
 		{
 			GameMode.CheckForWinningTeam();
+		}
+	}
+
+	public void AddWeapons( Inventory inventory )
+	{
+		if ( ClearAllWeapons )
+			inventory.ClearAll();
+
+		if ( ClearClass )
+			inventory.ClearSelectedClass();
+
+		inventory.AddItems( PlayerWeapons );
+
+		if ( AddClass && inventory.SelectedClass is not null )
+		{
+			inventory.AddClass( inventory.SelectedClass );
 		}
 	}
 
