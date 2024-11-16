@@ -413,7 +413,7 @@ IGameEventHandler<DeathEvent>, IGameEventHandler<OnPhysgunGrabChange>
 			return;
 		}
 
-		if ( GameSystem.Instance.IsValid() && GameSystem.Instance.CurrentGameModeType != GameModeType.Deathmatch )
+		if ( GameSystem.Instance.IsValid() )
 		{
 			var spawn = Game.Random.FromList( Spawns );
 
