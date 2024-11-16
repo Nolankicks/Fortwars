@@ -297,6 +297,8 @@ public class Weapon : Item, IGameEventHandler<OnReloadEvent>
 					decal.WorldRotation = Rotation.LookAt( -trace.Normal );
 					decal.WorldScale = 1.0f;
 					decal.SetParent( trace.GameObject );
+
+					Sound.Play( trace.Surface.Sounds.Bullet, trace.HitPosition );
 				}
 				CreateTracer( trace.StartPosition, trace.Direction );
 
