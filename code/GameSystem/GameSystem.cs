@@ -62,6 +62,7 @@ public sealed partial class GameSystem : Component
 	[Property, Sync, Category( "Game Mode" )] public GameModeType CurrentGameModeType { get; set; }
 	[Property, Category( "Game Mode" )] public bool LoadGameData { get; set; } = true;
 	public static GameModeResource SavedGameMode { get; set; }
+	[ConVar( Name = "fw_server_gamemode", Help = "A gamemode override for dedicated servers. Gamemodes: classic, deathmatch" )] public static string ServerGameMode { get; set; } = "classic";
 	[Sync] public GameMode CurrentGameModeComponent { get; set; }
 
 	public enum GameStates
@@ -133,6 +134,11 @@ public sealed partial class GameSystem : Component
 
 			if ( gameMode is not null )
 				CurrentGameMode = gameMode;
+		}
+
+		if ( Application.IsHeadless )
+		{
+			CurrentGameMode = ResourceLibrary.Get<GameModeResource>( $"gamemodes/{ServerGameMode}.mode" );
 		}
 
 		if ( CurrentGameMode is not null )
