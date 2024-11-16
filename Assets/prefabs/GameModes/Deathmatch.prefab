@@ -40,7 +40,213 @@
                 "CheckForWinningTeam": false,
                 "ClearAllWeapons": true,
                 "ClearClass": false,
-                "Condition": false,
+                "Condition": true,
+                "EndCondition": {
+                  "__version": 8,
+                  "__guid": "71e267ef-3ffd-4832-8572-69da0f24da33",
+                  "__changeId": 51,
+                  "UserData": {
+                    "Title": "End Condition",
+                    "ReferencedComponentTypes": []
+                  },
+                  "Variables": [
+                    {
+                      "Name": "win",
+                      "Type": "System.Boolean"
+                    }
+                  ],
+                  "Nodes": [
+                    {
+                      "Id": 0,
+                      "Type": "input"
+                    },
+                    {
+                      "Id": 1,
+                      "Type": "output",
+                      "UserData": {
+                        "Position": "1044,-60"
+                      }
+                    },
+                    {
+                      "Id": 2,
+                      "Type": "property",
+                      "Properties": {
+                        "_name": "Kills",
+                        "_type": "FWPlayerController"
+                      },
+                      "UserData": {
+                        "Position": "552,216"
+                      }
+                    },
+                    {
+                      "Id": 3,
+                      "Type": "property",
+                      "Properties": {
+                        "_name": "Scene",
+                        "_type": "Sandbox.GameObject"
+                      },
+                      "UserData": {
+                        "Position": "-144,240"
+                      }
+                    },
+                    {
+                      "Id": 4,
+                      "Type": "call",
+                      "Properties": {
+                        "_isStatic": false,
+                        "_name": "GetAllComponents",
+                        "_type": "Sandbox.Scene",
+                        "T": "FWPlayerController"
+                      },
+                      "UserData": {
+                        "Position": "24,240"
+                      }
+                    },
+                    {
+                      "Id": 5,
+                      "Type": "foreach",
+                      "UserData": {
+                        "Position": "372,132"
+                      }
+                    },
+                    {
+                      "Id": 7,
+                      "Type": "if",
+                      "UserData": {
+                        "Position": "924,96"
+                      }
+                    },
+                    {
+                      "Id": 16,
+                      "Type": "op.greaterthan",
+                      "UserData": {
+                        "Position": "672,336"
+                      }
+                    },
+                    {
+                      "Id": 20,
+                      "Type": "var",
+                      "Properties": {
+                        "_var": "win"
+                      },
+                      "UserData": {
+                        "Position": "1128,276"
+                      }
+                    },
+                    {
+                      "Id": 22,
+                      "Type": "var",
+                      "Properties": {
+                        "_var": "win"
+                      },
+                      "UserData": {
+                        "Position": "840,12"
+                      }
+                    },
+                    {
+                      "Id": 23,
+                      "Type": "var",
+                      "Properties": {
+                        "_var": "win"
+                      },
+                      "UserData": {
+                        "Position": "120,120"
+                      }
+                    }
+                  ],
+                  "Links": [
+                    {
+                      "SrcId": 22,
+                      "SrcName": "_result",
+                      "DstId": 1,
+                      "DstName": "_result"
+                    },
+                    {
+                      "SrcId": 5,
+                      "SrcName": "_signal",
+                      "DstId": 1,
+                      "DstName": "_signal"
+                    },
+                    {
+                      "SrcId": 5,
+                      "SrcName": "body.value",
+                      "DstId": 2,
+                      "DstName": "_target"
+                    },
+                    {
+                      "SrcId": 0,
+                      "SrcName": "_target",
+                      "DstId": 3,
+                      "DstName": "_target"
+                    },
+                    {
+                      "SrcId": 3,
+                      "SrcName": "_result",
+                      "DstId": 4,
+                      "DstName": "_target"
+                    },
+                    {
+                      "SrcId": 23,
+                      "SrcName": "_signal",
+                      "DstId": 5,
+                      "DstName": "_signal"
+                    },
+                    {
+                      "SrcId": 4,
+                      "SrcName": "_result",
+                      "DstId": 5,
+                      "DstName": "enumerable"
+                    },
+                    {
+                      "SrcId": 5,
+                      "SrcName": "body",
+                      "DstId": 7,
+                      "DstName": "_signal"
+                    },
+                    {
+                      "SrcId": 16,
+                      "SrcName": "_result",
+                      "DstId": 7,
+                      "DstName": "condition"
+                    },
+                    {
+                      "SrcId": 2,
+                      "SrcName": "_result",
+                      "DstId": 16,
+                      "DstName": "a"
+                    },
+                    {
+                      "Id": 19,
+                      "Value": 1,
+                      "DstId": 16,
+                      "DstName": "b"
+                    },
+                    {
+                      "SrcId": 7,
+                      "SrcName": "true",
+                      "DstId": 20,
+                      "DstName": "_signal"
+                    },
+                    {
+                      "Id": 21,
+                      "Value": true,
+                      "DstId": 20,
+                      "DstName": "_value"
+                    },
+                    {
+                      "SrcId": 0,
+                      "SrcName": "_signal",
+                      "DstId": 23,
+                      "DstName": "_signal"
+                    },
+                    {
+                      "Id": 25,
+                      "Value": false,
+                      "DstId": 23,
+                      "DstName": "_value"
+                    }
+                  ]
+                },
                 "IsLastRound": true,
                 "IsRoundActive": false,
                 "Name": "Ongoing",
