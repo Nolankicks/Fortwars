@@ -43,7 +43,7 @@
                 "Condition": false,
                 "IsLastRound": false,
                 "IsRoundActive": false,
-                "Name": "Build",
+                "Name": "Build Mode",
                 "NextRoundTimer": {
                   "_type": "component",
                   "component_id": "6ba6116e-10e0-4183-a2f1-45d8ec5648ca",
@@ -248,7 +248,7 @@
                 },
                 "IsLastRound": false,
                 "IsRoundActive": false,
-                "Name": "Fight",
+                "Name": "Fight Mode",
                 "NextRoundTimer": {
                   "_type": "component",
                   "component_id": "82ac2f45-7e8f-4928-92d0-7b86283ad010",
@@ -493,7 +493,7 @@
                 "Condition": false,
                 "IsLastRound": false,
                 "IsRoundActive": false,
-                "Name": "OvertimeBuild",
+                "Name": "Overtime Build Mode",
                 "NextRoundTimer": {
                   "_type": "component",
                   "component_id": "4715cc07-74da-4aab-83af-91dd2916fd08",
@@ -661,7 +661,7 @@
                 "Condition": false,
                 "IsLastRound": false,
                 "IsRoundActive": false,
-                "Name": "OvertimeFight",
+                "Name": "Overtime Fight Mode",
                 "NextRoundTimer": {
                   "_type": "component",
                   "component_id": "82ac2f45-7e8f-4928-92d0-7b86283ad010",
