@@ -75,10 +75,10 @@ public sealed class TeamComponent : Component
 	[Authority]
 	public void ResetToSpawnPoint()
 	{
-		if ( Team == Team.None )
-			return;
-
 		var spawns = Scene.GetAll<TeamSpawnPoint>()?.Where( x => x.Team == Team )?.ToList();
+
+		if ( Team == Team.None )
+			spawns.AddRange( spawns );
 
 		if ( spawns == null || spawns.Count == 0 )
 			return;

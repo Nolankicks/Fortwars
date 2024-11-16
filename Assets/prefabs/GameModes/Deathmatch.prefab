@@ -44,7 +44,7 @@
                 "EndCondition": {
                   "__version": 8,
                   "__guid": "71e267ef-3ffd-4832-8572-69da0f24da33",
-                  "__changeId": 51,
+                  "__changeId": 57,
                   "UserData": {
                     "Title": "End Condition",
                     "ReferencedComponentTypes": []
@@ -75,7 +75,7 @@
                         "_type": "FWPlayerController"
                       },
                       "UserData": {
-                        "Position": "552,216"
+                        "Position": "552,180"
                       }
                     },
                     {
@@ -120,7 +120,7 @@
                       "Id": 16,
                       "Type": "op.greaterthan",
                       "UserData": {
-                        "Position": "672,336"
+                        "Position": "828,276"
                       }
                     },
                     {
@@ -216,8 +216,8 @@
                       "DstName": "a"
                     },
                     {
-                      "Id": 19,
-                      "Value": 1,
+                      "Id": 27,
+                      "Value": 25,
                       "DstId": 16,
                       "DstName": "b"
                     },
@@ -259,7 +259,7 @@
                 "OnRoundStart": {
                   "__version": 8,
                   "__guid": "22e5145b-630e-4319-a31d-18fd9b981252",
-                  "__changeId": 19,
+                  "__changeId": 46,
                   "UserData": {
                     "Title": "On Round Start",
                     "ReferencedComponentTypes": []
@@ -268,7 +268,10 @@
                   "Nodes": [
                     {
                       "Id": 0,
-                      "Type": "input"
+                      "Type": "input",
+                      "UserData": {
+                        "Position": "-36,-36"
+                      }
                     },
                     {
                       "Id": 1,
@@ -291,7 +294,7 @@
                       "Id": 3,
                       "Type": "if",
                       "UserData": {
-                        "Position": "408,0"
+                        "Position": "540,-12"
                       }
                     },
                     {
@@ -303,7 +306,66 @@
                         "_type": "WallComponent"
                       },
                       "UserData": {
-                        "Position": "648,168"
+                        "Position": "768,108"
+                      }
+                    },
+                    {
+                      "Id": 11,
+                      "Type": "scene.ref",
+                      "UserData": {
+                        "Position": "12,228"
+                      }
+                    },
+                    {
+                      "Id": 12,
+                      "Type": "call",
+                      "Properties": {
+                        "_isStatic": false,
+                        "_name": "ResetPlayers",
+                        "_type": "GameMode"
+                      },
+                      "UserData": {
+                        "Position": "252,228"
+                      }
+                    },
+                    {
+                      "Id": 13,
+                      "Type": "scene.get.inscene",
+                      "Properties": {
+                        "T": "RollerMine"
+                      },
+                      "UserData": {
+                        "Position": "84,408"
+                      }
+                    },
+                    {
+                      "Id": 14,
+                      "Type": "property",
+                      "Properties": {
+                        "_name": "GameObject",
+                        "_type": "Sandbox.Component"
+                      },
+                      "UserData": {
+                        "Position": "288,408"
+                      }
+                    },
+                    {
+                      "Id": 15,
+                      "Type": "call",
+                      "Properties": {
+                        "_isStatic": false,
+                        "_name": "Destroy",
+                        "_type": "Sandbox.GameObject"
+                      },
+                      "UserData": {
+                        "Position": "720,384"
+                      }
+                    },
+                    {
+                      "Id": 17,
+                      "Type": "Reset All Teams",
+                      "UserData": {
+                        "Position": "540,252"
                       }
                     }
                   ],
@@ -315,7 +377,7 @@
                       "DstName": "obj"
                     },
                     {
-                      "SrcId": 0,
+                      "SrcId": 12,
                       "SrcName": "_signal",
                       "DstId": 3,
                       "DstName": "_signal"
@@ -343,8 +405,52 @@
                       "Value": false,
                       "DstId": 4,
                       "DstName": "enable"
+                    },
+                    {
+                      "SrcId": 0,
+                      "SrcName": "_signal",
+                      "DstId": 12,
+                      "DstName": "_signal"
+                    },
+                    {
+                      "SrcId": 11,
+                      "SrcName": "_result",
+                      "DstId": 12,
+                      "DstName": "_target"
+                    },
+                    {
+                      "SrcId": 13,
+                      "SrcName": "_result",
+                      "DstId": 14,
+                      "DstName": "_target"
+                    },
+                    {
+                      "SrcId": 4,
+                      "SrcName": "_signal",
+                      "DstId": 15,
+                      "DstName": "_signal"
+                    },
+                    {
+                      "SrcId": 14,
+                      "SrcName": "_result",
+                      "DstId": 15,
+                      "DstName": "_target"
+                    },
+                    {
+                      "SrcId": 12,
+                      "SrcName": "_signal",
+                      "DstId": 17,
+                      "DstName": "_signal"
                     }
-                  ]
+                  ],
+                  "Defaults": {
+                    "$11.component": {
+                      "_type": "component",
+                      "component_id": "b000a83d-f9e9-4d68-ad49-d7a8400dc495",
+                      "go": "65e9bb67-95e1-464e-9c72-851e26c3337b",
+                      "component_type": "Deathmatch"
+                    }
+                  }
                 },
                 "PlayersToSpawns": true,
                 "PlayerWeapons": [
@@ -353,7 +459,7 @@
                   "weapondatas/pistol.weapons",
                   "weapondatas/shotgun.weapons"
                 ],
-                "RoundTime": 180,
+                "RoundTime": 360,
                 "Time": true
               }
             ]
