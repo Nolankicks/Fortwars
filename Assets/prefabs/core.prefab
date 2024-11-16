@@ -91,6 +91,15 @@
             "Recoil": "-2,2,0.35",
             "ReturnSpeed": 2,
             "Snappiness": 20
+          },
+          {
+            "__type": "Sandbox.Vignette",
+            "__guid": "d1e39dd2-adbe-4493-9f55-c84afb7a87e0",
+            "Center": "0.5,0.5",
+            "Color": "1,0.06047,0.06047,0",
+            "Intensity": 1,
+            "Roundness": 1,
+            "Smoothness": 1
           }
         ]
       },
