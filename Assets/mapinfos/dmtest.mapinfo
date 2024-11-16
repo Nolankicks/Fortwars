@@ -3,7 +3,7 @@
   "MapDescription": null,
   "FourTeams": false,
   "Scene": "scenes/datacore.scene",
-  "Thumb": "textures/grassforts.vtex",
+  "Thumb": "textures/datacore.vtex",
   "Author": "Facepunch",
   "PackageIndent": "facepunch.datacore",
   "Hidden": false,
