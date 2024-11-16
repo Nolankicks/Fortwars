@@ -205,7 +205,7 @@ public class Weapon : Item, IGameEventHandler<OnReloadEvent>
 		if ( tr.GameObject.Components.TryGet<RollerMine>( out var m, FindMode.EverythingInSelfAndParent ) )
 			return;
 
-		if ( tr.GameObject.Components.TryGet<HealthComponent>( out var health, FindMode.EverythingInSelfAndParent ) )
+		if ( tr.GameObject.Components.TryGet<HealthComponent>( out var health, FindMode.EverythingInSelfAndParent ) && !health.IsDead )
 		{
 			health.TakeDamage( local.GameObject, Damage, tr.EndPosition, tr.Normal );
 
