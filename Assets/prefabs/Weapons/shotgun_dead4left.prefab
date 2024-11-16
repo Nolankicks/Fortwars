@@ -72,6 +72,9 @@
           "AfterUILayer": false
         },
         "RenderType": "Off",
+        "Sequence": {
+          "Name": null
+        },
         "Tint": "1,1,1,1",
         "UseAnimGraph": true
       },
@@ -84,6 +87,17 @@
           "go": "05010af5-08de-47a8-baaf-c91149b77d70",
           "component_type": "SkinnedModelRenderer"
         }
+      },
+      {
+        "__type": "WeaponCrosshair",
+        "__guid": "001efa25-db5d-4c54-b289-5d7708c56f4f",
+        "BorderEnabled": true,
+        "BorderSize": 1,
+        "Dynamic": true,
+        "Gap": 8,
+        "Length": 16,
+        "Size": 4,
+        "TopEnabled": true
       }
     ],
     "Children": [
@@ -115,6 +129,9 @@
               "AfterUILayer": false
             },
             "RenderType": "Off",
+            "Sequence": {
+              "Name": null
+            },
             "Tint": "1,1,1,1",
             "UseAnimGraph": true
           }
@@ -845,5 +862,6 @@
     "facepunch.v_spaghellim4#64353",
     "facepunch.w_spaghellim4#58057"
   ],
+  "HasUnsavedChanges": false,
   "__version": 1
 }
