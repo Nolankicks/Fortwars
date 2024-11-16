@@ -92,7 +92,13 @@
         "Gap": 8,
         "Length": 16,
         "Size": 4,
-        "TopEnabled": true
+        "TopEnabled": true,
+        "Weapon": {
+          "_type": "component",
+          "component_id": "4ed6a63a-4d64-4b12-b540-69664f44f101",
+          "go": "d6cb651b-100f-4e47-9cef-629f07e941eb",
+          "component_type": "Weapon"
+        }
       }
     ],
     "Children": [
@@ -839,6 +845,12 @@
             "Enabled": true
           }
         ]
+      },
+      {
+        "__guid": "1da97548-bd76-4951-ac3d-df19f7e49e40",
+        "Flags": 0,
+        "Name": "Crosshair",
+        "Enabled": true
       }
     ],
     "__variables": [],

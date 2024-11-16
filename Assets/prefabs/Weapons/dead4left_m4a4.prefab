@@ -86,11 +86,20 @@
       {
         "__type": "WeaponCrosshair",
         "__guid": "001efa25-db5d-4c54-b289-5d7708c56f4f",
+        "AmmoAngle": 180,
         "BorderEnabled": true,
         "BorderSize": 1,
+        "Dynamic": true,
         "Gap": 8,
         "Length": 16,
-        "Size": 4
+        "Size": 4,
+        "TopEnabled": true,
+        "Weapon": {
+          "_type": "component",
+          "component_id": "4ed6a63a-4d64-4b12-b540-69664f44f101",
+          "go": "88dac86d-8c58-4629-b04d-5ed6bf7d8028",
+          "component_type": "Weapon"
+        }
       }
     ],
     "Children": [
