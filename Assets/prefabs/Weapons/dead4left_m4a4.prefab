@@ -14,6 +14,7 @@
         "FireRate": 0.1,
         "FireSound": "audio/rifle.fire.sound",
         "FireType": "F_AUTOMATIC",
+        "HasBulletCasing": false,
         "HoldType": "Rifle",
         "MaxAmmo": 30,
         "Offset": "2.883967,0.1033601,-4.295026",
@@ -28,6 +29,7 @@
         },
         "TraceTimes": 1,
         "UsesAmmo": true,
+        "UseShotgunReload": false,
         "UsesRecoil": true,
         "VModel": {
           "_type": "component",
@@ -57,6 +59,7 @@
           "go": "7e5d9147-461b-4082-86e1-877152c8c7b1",
           "component_type": "SkinnedModelRenderer"
         },
+        "CreateAttachments": false,
         "CreateBoneObjects": false,
         "Model": "models/first_person/first_person_arms.vmdl",
         "Morphs": {},
@@ -74,8 +77,20 @@
           "AfterUILayer": false
         },
         "RenderType": "Off",
+        "Sequence": {
+          "Name": null
+        },
         "Tint": "1,1,1,1",
         "UseAnimGraph": true
+      },
+      {
+        "__type": "WeaponCrosshair",
+        "__guid": "001efa25-db5d-4c54-b289-5d7708c56f4f",
+        "BorderEnabled": true,
+        "BorderSize": 1,
+        "Gap": 8,
+        "Length": 16,
+        "Size": 4
       }
     ],
     "Children": [
@@ -89,6 +104,7 @@
             "__type": "Sandbox.SkinnedModelRenderer",
             "__guid": "09f1a69a-497e-4e93-8687-06917bb5b912",
             "BodyGroups": 111907,
+            "CreateAttachments": false,
             "CreateBoneObjects": true,
             "Model": "models/weapons/sbox_assault_m4a1/v_m4a1.vmdl",
             "Morphs": {},
@@ -106,6 +122,9 @@
               "AfterUILayer": false
             },
             "RenderType": "Off",
+            "Sequence": {
+              "Name": null
+            },
             "Tint": "1,1,1,1",
             "UseAnimGraph": true
           }
@@ -852,5 +871,6 @@
     "facepunch.v_m4a1#68031",
     "facepunch.w_m4a1#60166"
   ],
+  "HasUnsavedChanges": false,
   "__version": 1
 }
