@@ -31,6 +31,7 @@
           "AfterUILayer": false
         },
         "RenderType": "On",
+        "Sequence": {},
         "Tint": "1,1,1,1",
         "UseAnimGraph": true
       },
@@ -139,6 +140,11 @@
           "go": "39ef8517-7e7e-45e6-b649-a5a0aa4cdedd",
           "component_type": "SkinnedModelRenderer"
         }
+      },
+      {
+        "__type": "GameModeObject",
+        "__guid": "e4e0769e-fe9b-4321-8eb2-b4669fed4ebc",
+        "Type": "Classic, RollermineWars"
       }
     ],
     "Children": [
@@ -206,5 +212,6 @@
   "__references": [
     "igrium.rollermine-model#19481"
   ],
+  "HasUnsavedChanges": false,
   "__version": 1
 }
