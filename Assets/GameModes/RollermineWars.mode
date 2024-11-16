@@ -5,8 +5,9 @@
     "_type": "gameobject",
     "prefab": "prefabs/gamemodes/rollerminewars.prefab"
   },
-  "Hidden": false,
+  "Hidden": true,
   "Type": "RollermineWars",
   "__references": [],
+  "HasUnsavedChanges": true,
   "__version": 0
 }
