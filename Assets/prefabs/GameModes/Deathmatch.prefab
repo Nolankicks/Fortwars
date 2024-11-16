@@ -256,6 +256,96 @@
                   "go": "047cc4fb-e838-4df1-9ccc-0e949a6a36f2",
                   "component_type": "RoundComponent"
                 },
+                "OnRoundStart": {
+                  "__version": 8,
+                  "__guid": "22e5145b-630e-4319-a31d-18fd9b981252",
+                  "__changeId": 19,
+                  "UserData": {
+                    "Title": "On Round Start",
+                    "ReferencedComponentTypes": []
+                  },
+                  "Variables": [],
+                  "Nodes": [
+                    {
+                      "Id": 0,
+                      "Type": "input"
+                    },
+                    {
+                      "Id": 1,
+                      "Type": "scene.get.inscene",
+                      "Properties": {
+                        "T": "WallComponent"
+                      },
+                      "UserData": {
+                        "Position": "-72,108"
+                      }
+                    },
+                    {
+                      "Id": 2,
+                      "Type": "sys.isvalid",
+                      "UserData": {
+                        "Position": "204,48"
+                      }
+                    },
+                    {
+                      "Id": 3,
+                      "Type": "if",
+                      "UserData": {
+                        "Position": "408,0"
+                      }
+                    },
+                    {
+                      "Id": 4,
+                      "Type": "call",
+                      "Properties": {
+                        "_isStatic": false,
+                        "_name": "ToggleEnable",
+                        "_type": "WallComponent"
+                      },
+                      "UserData": {
+                        "Position": "648,168"
+                      }
+                    }
+                  ],
+                  "Links": [
+                    {
+                      "SrcId": 1,
+                      "SrcName": "_result",
+                      "DstId": 2,
+                      "DstName": "obj"
+                    },
+                    {
+                      "SrcId": 0,
+                      "SrcName": "_signal",
+                      "DstId": 3,
+                      "DstName": "_signal"
+                    },
+                    {
+                      "SrcId": 2,
+                      "SrcName": "_result",
+                      "DstId": 3,
+                      "DstName": "condition"
+                    },
+                    {
+                      "SrcId": 3,
+                      "SrcName": "true",
+                      "DstId": 4,
+                      "DstName": "_signal"
+                    },
+                    {
+                      "SrcId": 1,
+                      "SrcName": "_result",
+                      "DstId": 4,
+                      "DstName": "_target"
+                    },
+                    {
+                      "Id": 8,
+                      "Value": false,
+                      "DstId": 4,
+                      "DstName": "enable"
+                    }
+                  ]
+                },
                 "PlayersToSpawns": true,
                 "PlayerWeapons": [
                   "weapondatas/m4a4.weapons",
@@ -263,7 +353,7 @@
                   "weapondatas/pistol.weapons",
                   "weapondatas/shotgun.weapons"
                 ],
-                "RoundTime": 20,
+                "RoundTime": 180,
                 "Time": true
               }
             ]
