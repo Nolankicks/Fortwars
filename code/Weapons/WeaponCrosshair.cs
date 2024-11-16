@@ -61,11 +61,12 @@ public sealed class WeaponCrosshair : Component
 
 		var bullets = Weapon.MaxAmmo;
 
+		float dist = 42.0f;
 		for ( int i = 0; i < bullets; i++ )
 		{
 			float angle = (i + 0.5f) * (AmmoAngle / bullets);
 			Vector2 dir = new Angles( 0, angle, 0 ).Forward;
-			float dist = 38.0f;
+
 			DrawLine( hud, center + dir * dist, center + dir * (dist + 8.0f), i + 1 > Weapon.Ammo ? Color.Gray.WithAlpha( 0.5f ) : Color.White.WithAlpha( 0.5f ), 3.0f );
 		}
 		float counterDist = 48.0f;
