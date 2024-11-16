@@ -2,7 +2,7 @@ public sealed class MapLoadingSystem : GameObjectSystem<MapLoadingSystem>, IScen
 {
 	public MapLoadingSystem( Scene scene ) : base( scene )
 	{
-		Listen( Stage.SceneLoaded, 1, OnSceneLoad, "OnSceneLoad" );
+		Listen( Stage.SceneLoaded, 0, OnSceneLoad, "OnSceneLoad" );
 	}
 
 	void ISceneStartup.OnHostInitialize()
