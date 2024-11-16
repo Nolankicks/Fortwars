@@ -1015,7 +1015,7 @@
           "HideInGame": false,
           "IsTrigger": false,
           "Mesh": {
-            "Topology": "H4sIAAAAAAAACl2Qiw6CUAxDh1flgg/wAfr/X2pP0iWLJA25W9t16xHxFc4C30E4\u002Bt2FWbgKd2Ew4NTvIZxcb9ZH4b5db\u002Bb9z/oUzVh8m7lPc9FOzjRYQ8ZXyXxxXvrw4e72wvtWdoEPdzMXj8We9OHDXcvO7EqdN396eKaeLHjkLciePeYxi4z0mMFtMisablFvRXZ2Tj158KQOF78f9WSROMQBAAA=",
+            "Topology": "H4sIAAAAAAAACl2QCQ7CMAwEp4Qj3NBy/f\u002BlaMRGsohUVbFn1\u002Bt04ANs\u002BZ0VsM69AwfgBFyAKZ9MPXdgk3qLnsI\u002BUm/h/me9i2ZXfFvYOazafTJN0XRgKZmPyWtfXvYVL73PZRd52WdYPa7xtC8veys7u6t17/7t6Tn0ZtFjvIXZR895zjKjPWf4NiOrGt\u002BivpXZ3XnozaOndVn9vvVkkTjEAQAA",
             "Positions": [
               "-62.45879,1793.276,-1039.511",
               "62.45879,1790.724,-1040.489",
@@ -1128,6 +1128,11 @@
           "Static": true,
           "Surface": "surfaces/glass.pane.surface",
           "SurfaceVelocity": "0,0,0"
+        },
+        {
+          "__type": "GameModeObject",
+          "__guid": "4b0a3d3e-5971-4d8a-93e2-e85660f7bba4",
+          "Type": "Classic, RollermineWars"
         }
       ]
     },
@@ -1286,7 +1291,7 @@
           "HideInGame": false,
           "IsTrigger": false,
           "Mesh": {
-            "Topology": "H4sIAAAAAAAACl2Qiw6CUAxDh1flgg/wAfr/X2pP0iWLJA25W9t16xHxFc4C30E4\u002Bt2FWbgKd2Ew4NTvIZxcb9ZH4b5db\u002Bb9z/oUzVh8m7lPc9FOzjRYQ8ZXyXxxXvrw4e72wvtWdoEPdzMXj8We9OHDXcvO7EqdN396eKaeLHjkLciePeYxi4z0mMFtMisablFvRXZ2Tj158KQOF78f9WSROMQBAAA=",
+            "Topology": "H4sIAAAAAAAACl2QCQ7CMAwEp4Qj3NBy/f\u002BlaMRGsohUVbFn1\u002Bt04ANs\u002BZ0VsM69AwfgBFyAKZ9MPXdgk3qLnsI\u002BUm/h/me9i2ZXfFvYOazafTJN0XRgKZmPyWtfXvYVL73PZRd52WdYPa7xtC8veys7u6t17/7t6Tn0ZtFjvIXZR895zjKjPWf4NiOrGt\u002BivpXZ3XnozaOndVn9vvVkkTjEAQAA",
             "Positions": [
               "-192,-160,64",
               "192,-160,64",
@@ -1417,7 +1422,7 @@
           "HideInGame": false,
           "IsTrigger": false,
           "Mesh": {
-            "Topology": "H4sIAAAAAAAACl2Qiw6CUAxDh1flgg/wAfr/X2pP0iWLJA25W9t16xHxFc4C30E4\u002Bt2FWbgKd2Ew4NTvIZxcb9ZH4b5db\u002Bb9z/oUzVh8m7lPc9FOzjRYQ8ZXyXxxXvrw4e72wvtWdoEPdzMXj8We9OHDXcvO7EqdN396eKaeLHjkLciePeYxi4z0mMFtMisablFvRXZ2Tj158KQOF78f9WSROMQBAAA=",
+            "Topology": "H4sIAAAAAAAACl2QCQ7CMAwEp4Qj3NBy/f\u002BlaMRGsohUVbFn1\u002Bt04ANs\u002BZ0VsM69AwfgBFyAKZ9MPXdgk3qLnsI\u002BUm/h/me9i2ZXfFvYOazafTJN0XRgKZmPyWtfXvYVL73PZRd52WdYPa7xtC8veys7u6t17/7t6Tn0ZtFjvIXZR895zjKjPWf4NiOrGt\u002BivpXZ3XnozaOndVn9vvVkkTjEAQAA",
             "Positions": [
               "-192,-160,64",
               "192,-160,64",
@@ -1595,7 +1600,7 @@
           "HideInGame": true,
           "IsTrigger": true,
           "Mesh": {
-            "Topology": "H4sIAAAAAAAACl2Qiw6CUAxDh1flgg/wAfr/X2pP0iWLJA25W9t16xHxFc4C30E4\u002Bt2FWbgKd2Ew4NTvIZxcb9ZH4b5db\u002Bb9z/oUzVh8m7lPc9FOzjRYQ8ZXyXxxXvrw4e72wvtWdoEPdzMXj8We9OHDXcvO7EqdN396eKaeLHjkLciePeYxi4z0mMFtMisablFvRXZ2Tj158KQOF78f9WSROMQBAAA=",
+            "Topology": "H4sIAAAAAAAACl2QCQ7CMAwEp4Qj3NBy/f\u002BlaMRGsohUVbFn1\u002Bt04ANs\u002BZ0VsM69AwfgBFyAKZ9MPXdgk3qLnsI\u002BUm/h/me9i2ZXfFvYOazafTJN0XRgKZmPyWtfXvYVL73PZRd52WdYPa7xtC8veys7u6t17/7t6Tn0ZtFjvIXZR895zjKjPWf4NiOrGt\u002BivpXZ3XnozaOndVn9vvVkkTjEAQAA",
             "Positions": [
               "-56,-200,72",
               "56,-200,72",
@@ -1730,7 +1735,7 @@
           "HideInGame": true,
           "IsTrigger": true,
           "Mesh": {
-            "Topology": "H4sIAAAAAAAACl2Qiw6CUAxDh1flgg/wAfr/X2pP0iWLJA25W9t16xHxFc4C30E4\u002Bt2FWbgKd2Ew4NTvIZxcb9ZH4b5db\u002Bb9z/oUzVh8m7lPc9FOzjRYQ8ZXyXxxXvrw4e72wvtWdoEPdzMXj8We9OHDXcvO7EqdN396eKaeLHjkLciePeYxi4z0mMFtMisablFvRXZ2Tj158KQOF78f9WSROMQBAAA=",
+            "Topology": "H4sIAAAAAAAACl2QCQ7CMAwEp4Qj3NBy/f\u002BlaMRGsohUVbFn1\u002Bt04ANs\u002BZ0VsM69AwfgBFyAKZ9MPXdgk3qLnsI\u002BUm/h/me9i2ZXfFvYOazafTJN0XRgKZmPyWtfXvYVL73PZRd52WdYPa7xtC8veys7u6t17/7t6Tn0ZtFjvIXZR895zjKjPWf4NiOrGt\u002BivpXZ3XnozaOndVn9vvVkkTjEAQAA",
             "Positions": [
               "-64,-191.9999,72",
               "48,-191.9999,72",
@@ -1885,7 +1890,7 @@
           "HideInGame": true,
           "IsTrigger": true,
           "Mesh": {
-            "Topology": "H4sIAAAAAAAACl2Qiw6CUAxDh1flgg/wAfr/X2pP0iWLJA25W9t16xHxFc4C30E4\u002Bt2FWbgKd2Ew4NTvIZxcb9ZH4b5db\u002Bb9z/oUzVh8m7lPc9FOzjRYQ8ZXyXxxXvrw4e72wvtWdoEPdzMXj8We9OHDXcvO7EqdN396eKaeLHjkLciePeYxi4z0mMFtMisablFvRXZ2Tj158KQOF78f9WSROMQBAAA=",
+            "Topology": "H4sIAAAAAAAACl2QCQ7CMAwEp4Qj3NBy/f\u002BlaMRGsohUVbFn1\u002Bt04ANs\u002BZ0VsM69AwfgBFyAKZ9MPXdgk3qLnsI\u002BUm/h/me9i2ZXfFvYOazafTJN0XRgKZmPyWtfXvYVL73PZRd52WdYPa7xtC8veys7u6t17/7t6Tn0ZtFjvIXZR895zjKjPWf4NiOrGt\u002BivpXZ3XnozaOndVn9vvVkkTjEAQAA",
             "Positions": [
               "-64,-8,64",
               "64,-8,64",
@@ -2018,7 +2023,7 @@
           "HideInGame": false,
           "IsTrigger": false,
           "Mesh": {
-            "Topology": "H4sIAAAAAAAACl2Qiw6CUAxDh1flgg/wAfr/X2pP0iWLJA25W9t16xHxFc4C30E4\u002Bt2FWbgKd2Ew4NTvIZxcb9ZH4b5db\u002Bb9z/oUzVh8m7lPc9FOzjRYQ8ZXyXxxXvrw4e72wvtWdoEPdzMXj8We9OHDXcvO7EqdN396eKaeLHjkLciePeYxi4z0mMFtMisablFvRXZ2Tj158KQOF78f9WSROMQBAAA=",
+            "Topology": "H4sIAAAAAAAACl2QCQ7CMAwEp4Qj3NBy/f\u002BlaMRGsohUVbFn1\u002Bt04ANs\u002BZ0VsM69AwfgBFyAKZ9MPXdgk3qLnsI\u002BUm/h/me9i2ZXfFvYOazafTJN0XRgKZmPyWtfXvYVL73PZRd52WdYPa7xtC8veys7u6t17/7t6Tn0ZtFjvIXZR895zjKjPWf4NiOrGt\u002BivpXZ3XnozaOndVn9vvVkkTjEAQAA",
             "Positions": [
               "-64,-8,64",
               "64,-8,64",
@@ -2128,6 +2133,11 @@
           "SmoothingAngle": 40,
           "Static": true,
           "SurfaceVelocity": "0,0,0"
+        },
+        {
+          "__type": "GameModeObject",
+          "__guid": "b1a71b9c-2e40-4a55-b542-1c476fdea95f",
+          "Type": "Classic, RollermineWars"
         }
       ]
     },
@@ -2147,7 +2157,7 @@
           "HideInGame": true,
           "IsTrigger": true,
           "Mesh": {
-            "Topology": "H4sIAAAAAAAACl2Qiw6CUAxDh1flgg/wAfr/X2pP0iWLJA25W9t16xHxFc4C30E4\u002Bt2FWbgKd2Ew4NTvIZxcb9ZH4b5db\u002Bb9z/oUzVh8m7lPc9FOzjRYQ8ZXyXxxXvrw4e72wvtWdoEPdzMXj8We9OHDXcvO7EqdN396eKaeLHjkLciePeYxi4z0mMFtMisablFvRXZ2Tj158KQOF78f9WSROMQBAAA=",
+            "Topology": "H4sIAAAAAAAACl2QCQ7CMAwEp4Qj3NBy/f\u002BlaMRGsohUVbFn1\u002Bt04ANs\u002BZ0VsM69AwfgBFyAKZ9MPXdgk3qLnsI\u002BUm/h/me9i2ZXfFvYOazafTJN0XRgKZmPyWtfXvYVL73PZRd52WdYPa7xtC8veys7u6t17/7t6Tn0ZtFjvIXZR895zjKjPWf4NiOrGt\u002BivpXZ3XnozaOndVn9vvVkkTjEAQAA",
             "Positions": [
               "-64,-12,64",
               "64,-12,64",
@@ -2280,7 +2290,7 @@
           "HideInGame": false,
           "IsTrigger": false,
           "Mesh": {
-            "Topology": "H4sIAAAAAAAACl2Qiw6CUAxDh1flgg/wAfr/X2pP0iWLJA25W9t16xHxFc4C30E4\u002Bt2FWbgKd2Ew4NTvIZxcb9ZH4b5db\u002Bb9z/oUzVh8m7lPc9FOzjRYQ8ZXyXxxXvrw4e72wvtWdoEPdzMXj8We9OHDXcvO7EqdN396eKaeLHjkLciePeYxi4z0mMFtMisablFvRXZ2Tj158KQOF78f9WSROMQBAAA=",
+            "Topology": "H4sIAAAAAAAACl2QCQ7CMAwEp4Qj3NBy/f\u002BlaMRGsohUVbFn1\u002Bt04ANs\u002BZ0VsM69AwfgBFyAKZ9MPXdgk3qLnsI\u002BUm/h/me9i2ZXfFvYOazafTJN0XRgKZmPyWtfXvYVL73PZRd52WdYPa7xtC8veys7u6t17/7t6Tn0ZtFjvIXZR895zjKjPWf4NiOrGt\u002BivpXZ3XnozaOndVn9vvVkkTjEAQAA",
             "Positions": [
               "-64,-12,64",
               "64,-12,64",
@@ -2390,6 +2400,11 @@
           "SmoothingAngle": 40,
           "Static": true,
           "SurfaceVelocity": "0,0,0"
+        },
+        {
+          "__type": "GameModeObject",
+          "__guid": "02c29799-8318-4aa5-a2a4-2a6a83dbfd15",
+          "Type": "Classic, RollermineWars"
         }
       ]
     },
@@ -2409,7 +2424,7 @@
           "HideInGame": false,
           "IsTrigger": false,
           "Mesh": {
-            "Topology": "H4sIAAAAAAAACl2Qiw6CUAxDh1flgg/wAfr/X2pP0iWLJA25W9t16xHxFc4C30E4\u002Bt2FWbgKd2Ew4NTvIZxcb9ZH4b5db\u002Bb9z/oUzVh8m7lPc9FOzjRYQ8ZXyXxxXvrw4e72wvtWdoEPdzMXj8We9OHDXcvO7EqdN396eKaeLHjkLciePeYxi4z0mMFtMisablFvRXZ2Tj158KQOF78f9WSROMQBAAA=",
+            "Topology": "H4sIAAAAAAAACl2QCQ7CMAwEp4Qj3NBy/f\u002BlaMRGsohUVbFn1\u002Bt04ANs\u002BZ0VsM69AwfgBFyAKZ9MPXdgk3qLnsI\u002BUm/h/me9i2ZXfFvYOazafTJN0XRgKZmPyWtfXvYVL73PZRd52WdYPa7xtC8veys7u6t17/7t6Tn0ZtFjvIXZR895zjKjPWf4NiOrGt\u002BivpXZ3XnozaOndVn9vvVkkTjEAQAA",
             "Positions": [
               "-64,-12,64",
               "64,-12,64",
@@ -2519,6 +2534,11 @@
           "SmoothingAngle": 40,
           "Static": true,
           "SurfaceVelocity": "0,0,0"
+        },
+        {
+          "__type": "GameModeObject",
+          "__guid": "29c74d7d-529d-4ea8-97e3-6675a9fe5354",
+          "Type": "Classic, RollermineWars"
         }
       ]
     },
@@ -2533,6 +2553,36 @@
         {
           "__type": "TeamSpawnPoint",
           "__guid": "ecb0631b-2e47-4bd2-8d86-a2abde73e0f1",
+          "Team": "None"
+        }
+      ]
+    },
+    {
+      "__guid": "bafbd5f1-668e-470f-b701-9859d41cb336",
+      "Flags": 0,
+      "Name": "Spawn (9)",
+      "Position": "-1368,-624,256",
+      "Rotation": "0,0,-0.5775297,0.8163697",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "TeamSpawnPoint",
+          "__guid": "a98bfba6-a6b2-4efa-a51b-f54708ab89f1",
+          "Team": "None"
+        }
+      ]
+    },
+    {
+      "__guid": "93b21ccb-e2c3-4828-abbe-005aa40f9710",
+      "Flags": 0,
+      "Name": "Spawn (10)",
+      "Position": "-1232,696,256",
+      "Rotation": "0,0,-0.5775297,0.8163697",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "TeamSpawnPoint",
+          "__guid": "0e4f2690-b43b-478a-b3c5-4571ae9d7a08",
           "Team": "None"
         }
       ]
@@ -2578,6 +2628,81 @@
         {
           "__type": "TeamSpawnPoint",
           "__guid": "793631aa-9474-4a08-b6ca-ea2fa750f7e3",
+          "Team": "None"
+        }
+      ]
+    },
+    {
+      "__guid": "1b5cbce8-12b1-4586-92f3-aaff1108ab8f",
+      "Flags": 0,
+      "Name": "Spawn (4)",
+      "Position": "848,568,248",
+      "Rotation": "0,0,-0.845979,0.5332162",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "TeamSpawnPoint",
+          "__guid": "41d6e7e8-02ca-40c6-8d5c-a3f14031f53c",
+          "Team": "None"
+        }
+      ]
+    },
+    {
+      "__guid": "13b29787-d73e-4009-a835-8993beed3d04",
+      "Flags": 0,
+      "Name": "Spawn (5)",
+      "Position": "1219.065,-736.5811,264",
+      "Rotation": "0,0,-0.9752383,-0.2211566",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "TeamSpawnPoint",
+          "__guid": "1f64541e-2eaf-4316-9995-13f850bc28b3",
+          "Team": "None"
+        }
+      ]
+    },
+    {
+      "__guid": "272d47da-3e85-4c69-8457-f8dc6a99b3ed",
+      "Flags": 0,
+      "Name": "Spawn (6)",
+      "Position": "968,-608,136",
+      "Rotation": "0,0,-0.9752383,-0.2211566",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "TeamSpawnPoint",
+          "__guid": "1ec5f61c-f793-492a-b989-2b3ee6087dd8",
+          "Team": "None"
+        }
+      ]
+    },
+    {
+      "__guid": "ca892f66-0e83-46c0-83c3-17bb3fad13df",
+      "Flags": 0,
+      "Name": "Spawn (7)",
+      "Position": "344,-736,136",
+      "Rotation": "0,0,-0.9752383,-0.2211566",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "TeamSpawnPoint",
+          "__guid": "bc3738f8-fafc-41f2-9847-176bf4c3ae39",
+          "Team": "None"
+        }
+      ]
+    },
+    {
+      "__guid": "2f373b00-9ba2-446e-8fcb-c9dc5dbb55ac",
+      "Flags": 0,
+      "Name": "Spawn (8)",
+      "Position": "24,-344,136",
+      "Rotation": "0,0,-0.6791465,0.7340028",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "TeamSpawnPoint",
+          "__guid": "e7f6e0f9-47ba-421e-8412-97814cd4ab8e",
           "Team": "None"
         }
       ]
@@ -2671,6 +2796,7 @@
                 "AfterUILayer": false
               },
               "RenderType": "On",
+              "Sequence": {},
               "Tint": "1,1,1,1",
               "UseAnimGraph": true
             }
@@ -2751,6 +2877,444 @@
           }
         }
       ]
+    },
+    {
+      "__guid": "3c2aa20c-da2e-4441-ac83-06122ed377b1",
+      "Flags": 0,
+      "Name": "SpawnObject",
+      "Position": "841.5121,-516.5511,466.9352",
+      "Scale": "10.9866,10.9866,10.9866",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "Components": [
+        {
+          "__type": "SpawnObject",
+          "__guid": "3be84f45-cf62-4193-a4e6-93333c9aa0f3",
+          "Level": "Level1",
+          "Team": "Red"
+        },
+        {
+          "__type": "Sandbox.Prop",
+          "__guid": "c014cd81-c762-41cc-9914-491433ac8515",
+          "BodyGroups": 18446744073709551615,
+          "Health": 0,
+          "IsStatic": true,
+          "Model": "models/rollermine.vmdl",
+          "StartAsleep": false,
+          "Tint": "1,0,0,1"
+        },
+        {
+          "__type": "HealthComponent",
+          "__guid": "bc54e218-f8a0-4771-8c90-ccbe72b79cf9",
+          "CanTakeDamage": {
+            "__version": 8,
+            "__guid": "a0b25689-2b35-42ab-8f67-f87cd2683819",
+            "__changeId": 134,
+            "UserData": {
+              "Title": "Can Take Damage",
+              "ReferencedComponentTypes": []
+            },
+            "Variables": [],
+            "Nodes": [
+              {
+                "Id": 93,
+                "Type": "input",
+                "UserData": {
+                  "Position": "-1068,924",
+                  "Labels": {
+                    "arg1": "Attacker"
+                  }
+                }
+              },
+              {
+                "Id": 94,
+                "Type": "output",
+                "UserData": {
+                  "Position": "-624,924"
+                }
+              },
+              {
+                "Id": 95,
+                "Type": "Is Friendly",
+                "UserData": {
+                  "Position": "-1068,1068",
+                  "Labels": {
+                    "_result": "IsFriendly"
+                  }
+                }
+              },
+              {
+                "Id": 96,
+                "Type": "call",
+                "Properties": {
+                  "_isStatic": true,
+                  "_name": "AddPopup",
+                  "_type": "PopupHolder"
+                },
+                "UserData": {
+                  "Position": "540,924"
+                }
+              },
+              {
+                "Id": 97,
+                "Type": "Create new Popup",
+                "UserData": {
+                  "Position": "192,1080",
+                  "Labels": {
+                    "_result": "Popup"
+                  }
+                }
+              },
+              {
+                "Id": 98,
+                "Type": "Has Popup",
+                "UserData": {
+                  "Position": "24,948"
+                }
+              },
+              {
+                "Id": 99,
+                "Type": "if",
+                "UserData": {
+                  "Position": "180,924"
+                }
+              },
+              {
+                "Id": 100,
+                "Type": "if",
+                "UserData": {
+                  "Position": "-300,924"
+                }
+              }
+            ],
+            "Links": [
+              {
+                "SrcId": 95,
+                "SrcName": "_result",
+                "DstId": 94,
+                "DstName": "_result"
+              },
+              {
+                "SrcId": 93,
+                "SrcName": "_signal",
+                "DstId": 94,
+                "DstName": "_signal"
+              },
+              {
+                "SrcId": 93,
+                "SrcName": "arg1",
+                "DstId": 95,
+                "DstName": "Attacker"
+              },
+              {
+                "Id": 104,
+                "Value": "Red",
+                "DstId": 95,
+                "DstName": "team"
+              },
+              {
+                "SrcId": 99,
+                "SrcName": "false",
+                "DstId": 96,
+                "DstName": "_signal"
+              },
+              {
+                "SrcId": 97,
+                "SrcName": "_result",
+                "DstId": 96,
+                "DstName": "popup",
+                "UserData": {
+                  "x": 276
+                }
+              },
+              {
+                "Id": 105,
+                "Value": 5,
+                "DstId": 97,
+                "DstName": "time"
+              },
+              {
+                "Id": 106,
+                "Value": "You can\u0027t shoot your own ball!",
+                "DstId": 97,
+                "DstName": "title"
+              },
+              {
+                "SrcId": 97,
+                "SrcName": "_result",
+                "DstId": 98,
+                "DstName": "popup",
+                "UserData": {
+                  "a": -60,
+                  "y": -72
+                }
+              },
+              {
+                "SrcId": 100,
+                "SrcName": "true",
+                "DstId": 99,
+                "DstName": "_signal"
+              },
+              {
+                "SrcId": 98,
+                "SrcName": "_result",
+                "DstId": 99,
+                "DstName": "condition"
+              },
+              {
+                "SrcId": 94,
+                "SrcName": "_signal",
+                "DstId": 100,
+                "DstName": "_signal"
+              },
+              {
+                "SrcId": 95,
+                "SrcName": "_result",
+                "DstId": 100,
+                "DstName": "condition"
+              }
+            ]
+          },
+          "Health": 500,
+          "IsDead": false,
+          "MaxHealth": 500,
+          "SpawnDamageIndicator": true
+        },
+        {
+          "__type": "GameModeObject",
+          "__guid": "dc66aee9-1ee1-40f0-b945-38b38811abcf",
+          "Type": "RollermineWars"
+        }
+      ]
+    },
+    {
+      "__guid": "01bd15be-2467-4480-805b-6b2243030468",
+      "Flags": 0,
+      "Name": "SpawnObject (1)",
+      "Position": "-773.8713,-583.0853,431.7464",
+      "Scale": "10.9866,10.9866,10.9866",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "Components": [
+        {
+          "__type": "SpawnObject",
+          "__guid": "9402e60c-ef1c-4641-bba8-d04055a92af0",
+          "Level": "Level1",
+          "Team": "Blue"
+        },
+        {
+          "__type": "Sandbox.Prop",
+          "__guid": "1857d139-1984-404c-85ce-430223b57fc2",
+          "BodyGroups": 18446744073709551615,
+          "Health": 0,
+          "IsStatic": true,
+          "Model": "models/rollermine.vmdl",
+          "StartAsleep": false,
+          "Tint": "1,1,1,1"
+        },
+        {
+          "__type": "HealthComponent",
+          "__guid": "aac37479-352e-4466-8e21-98c879fa0525",
+          "CanTakeDamage": {
+            "__version": 8,
+            "__guid": "1ddc8c06-b0b9-491c-b852-f386f372b32a",
+            "__changeId": 54,
+            "UserData": {
+              "Title": "Can Take Damage",
+              "ReferencedComponentTypes": []
+            },
+            "Variables": [],
+            "Nodes": [
+              {
+                "Id": 38,
+                "Type": "input",
+                "UserData": {
+                  "Position": "-120,972",
+                  "Labels": {
+                    "arg1": "Attacker"
+                  }
+                }
+              },
+              {
+                "Id": 39,
+                "Type": "output",
+                "UserData": {
+                  "Position": "324,972"
+                }
+              },
+              {
+                "Id": 40,
+                "Type": "Is Friendly",
+                "UserData": {
+                  "Position": "-120,1116",
+                  "Labels": {
+                    "_result": "IsFriendly"
+                  }
+                }
+              },
+              {
+                "Id": 41,
+                "Type": "call",
+                "Properties": {
+                  "_isStatic": true,
+                  "_name": "AddPopup",
+                  "_type": "PopupHolder"
+                },
+                "UserData": {
+                  "Position": "1488,972"
+                }
+              },
+              {
+                "Id": 42,
+                "Type": "Create new Popup",
+                "UserData": {
+                  "Position": "1140,1128",
+                  "Labels": {
+                    "_result": "Popup"
+                  }
+                }
+              },
+              {
+                "Id": 43,
+                "Type": "Has Popup",
+                "UserData": {
+                  "Position": "972,996"
+                }
+              },
+              {
+                "Id": 44,
+                "Type": "if",
+                "UserData": {
+                  "Position": "1128,972"
+                }
+              },
+              {
+                "Id": 53,
+                "Type": "if",
+                "UserData": {
+                  "Position": "648,972"
+                }
+              }
+            ],
+            "Links": [
+              {
+                "SrcId": 40,
+                "SrcName": "_result",
+                "DstId": 39,
+                "DstName": "_result"
+              },
+              {
+                "SrcId": 38,
+                "SrcName": "_signal",
+                "DstId": 39,
+                "DstName": "_signal"
+              },
+              {
+                "SrcId": 38,
+                "SrcName": "arg1",
+                "DstId": 40,
+                "DstName": "Attacker"
+              },
+              {
+                "Id": 57,
+                "Value": "Blue",
+                "DstId": 40,
+                "DstName": "team"
+              },
+              {
+                "SrcId": 44,
+                "SrcName": "false",
+                "DstId": 41,
+                "DstName": "_signal"
+              },
+              {
+                "SrcId": 42,
+                "SrcName": "_result",
+                "DstId": 41,
+                "DstName": "popup",
+                "UserData": {
+                  "x": 276
+                }
+              },
+              {
+                "Id": 58,
+                "Value": 5,
+                "DstId": 42,
+                "DstName": "time"
+              },
+              {
+                "Id": 59,
+                "Value": "You can\u0027t shoot your own ball!",
+                "DstId": 42,
+                "DstName": "title"
+              },
+              {
+                "SrcId": 42,
+                "SrcName": "_result",
+                "DstId": 43,
+                "DstName": "popup",
+                "UserData": {
+                  "a": -60,
+                  "y": -72
+                }
+              },
+              {
+                "SrcId": 53,
+                "SrcName": "true",
+                "DstId": 44,
+                "DstName": "_signal"
+              },
+              {
+                "SrcId": 43,
+                "SrcName": "_result",
+                "DstId": 44,
+                "DstName": "condition"
+              },
+              {
+                "SrcId": 39,
+                "SrcName": "_signal",
+                "DstId": 53,
+                "DstName": "_signal"
+              },
+              {
+                "SrcId": 40,
+                "SrcName": "_result",
+                "DstId": 53,
+                "DstName": "condition"
+              }
+            ]
+          },
+          "Health": 500,
+          "IsDead": false,
+          "MaxHealth": 500,
+          "SpawnDamageIndicator": true
+        },
+        {
+          "__type": "GameModeObject",
+          "__guid": "bca4e500-d3b7-417c-bc96-defcc7aa3a98",
+          "Type": "RollermineWars"
+        }
+      ]
+    },
+    {
+      "__guid": "52e2337e-b8df-4f7a-8505-b20a817cfab2",
+      "Flags": 0,
+      "Name": "Point Light",
+      "Position": "1075.658,1.29198,35.3712",
+      "Tags": "light_point,light",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.PointLight",
+          "__guid": "ac407b32-fc3f-42a0-ab99-1214600e6c24",
+          "Attenuation": 1,
+          "FogMode": "Enabled",
+          "FogStrength": 1,
+          "LightColor": "0.33953,0.84589,1,1",
+          "Radius": 400,
+          "Shadows": true
+        }
+      ]
     }
   ],
   "SceneProperties": {
@@ -2788,7 +3352,9 @@
     "facepunch.glass_c#70691",
     "facepunch.grass_mud_blend_01a#47043",
     "facepunch.wooden_crate#29138",
+    "igrium.rollermine-model#19481",
     "rust.field_day_breeze_01a#43855"
   ],
+  "HasUnsavedChanges": false,
   "__version": 2
 }

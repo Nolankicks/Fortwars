@@ -44,7 +44,7 @@ public sealed class Propgun : Item
 		{
 			SwitchModes();
 		}
-
+		
 		if ( Input.Pressed( "togglegrid" ) )
 		{
 			SnapToGrid = !SnapToGrid;
@@ -193,7 +193,6 @@ public sealed class Propgun : Item
 			PropRotation = Rotation.Identity;
 		}
 
-
 		if ( CanPlace && Input.Pressed( "attack1" ) )
 		{
 			if ( ShootSound is not null )
@@ -206,7 +205,6 @@ public sealed class Propgun : Item
 
 			if ( !player.TeamComponent.IsValid() )
 				return;
-
 
 			if ( HeldObject is null )
 			{

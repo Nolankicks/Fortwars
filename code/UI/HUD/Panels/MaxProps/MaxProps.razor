@@ -13,7 +13,7 @@
 			return;
 	}
 
-			@if ( gs.State == GameSystem.GameState.BuildMode || gs.State == GameSystem.GameState.OvertimeBuild )
+			@if ( true )
             {
                 var localTeam = player.TeamComponent;
 
@@ -49,6 +49,6 @@
 	{
 		var gs = GameSystem.Instance;
 
-		return System.HashCode.Combine( gs?.MaxProps, gs?.RedProps?.Count(), gs?.BlueProps?.Count(), gs?.GreenProps?.Count(), gs?.YellowProps?.Count(), gs?.State );
+		return System.HashCode.Combine( gs?.MaxProps, gs?.RedProps?.Count(), gs?.BlueProps?.Count(), gs?.GreenProps?.Count(), gs?.YellowProps?.Count() );
 	}
 }

@@ -87,10 +87,10 @@ public sealed class Inventory : Component
 			if ( !gs.IsValid() || !local.IsValid() )
 				return;
 
-			if ( gs.State != GameSystem.GameState.Waiting && gs.State != GameSystem.GameState.Ended )
-			{
+			//if ( gs.State != GameSystem.GameState.Waiting && gs.State != GameSystem.GameState.Ended )
+			//{
 				OpenClassSelect();
-			}
+			//}
 		}
 
 		if ( Items?.Count() == 0 || Items is null )
@@ -219,6 +219,18 @@ public sealed class Inventory : Component
 
 		Items.Insert( index, clone );
 		ItemsData.Insert( index, item );
+	}
+
+	[Authority]
+	public void AddItems( List<WeaponData> weaponDatas )
+	{
+		if ( weaponDatas is null )
+			return;
+
+		foreach ( var item in weaponDatas )
+		{
+			AddItem( item );
+		}
 	}
 
 	[Button, Category( "Buttons" )]
@@ -410,6 +422,9 @@ public sealed class Inventory : Component
 
 		classSelect.Inventory = this;
 
+		if ( hud.Panel.ChildrenOfType<ClassSelect>().Count() != 0 )
+			return;
+
 		hud.Panel.AddChild( classSelect );
 
 		Log.Info( "Opened class select" );
@@ -428,7 +443,8 @@ public sealed class Inventory : Component
 		if ( playerClass is null )
 			return;
 
-		if ( SelectedClass is not null && (gs.State == GameSystem.GameState.FightMode || gs.State == GameSystem.GameState.OvertimeFight) )
+		//Need to limit when they can place, maybe a bool? @ScoutWozniak
+		if ( SelectedClass is not null )
 		{
 			ClearAll();
 
@@ -445,17 +461,18 @@ public sealed class Inventory : Component
 		{
 			local.SetSpeed( playerClass.WalkSpeed, playerClass.RunSpeed );
 			local.SetPlayerMaxHealth( playerClass.Health );
+
+			if ( local.TeamComponent.IsValid() )
+				local.TeamComponent.ResetToSpawnPoint();
 		}
 
-		if ( gs.State == GameSystem.GameState.FightMode || gs.State == GameSystem.GameState.OvertimeFight )
-		{
-			AddItem( playerClass.WeaponData, true, 0 );
+		AddItem( playerClass.WeaponData, true, 0 );
 
-			ChangeItem( 0, Items );
+		ChangeItem( 0, Items );
 
-			Log.Info( "Added weapon" );
-		}
+		Log.Info( "Added weapon" );
 	}
+
 	[Authority]
 	public void ResetAmmo()
 	{

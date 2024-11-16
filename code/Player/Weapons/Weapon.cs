@@ -213,13 +213,16 @@ public class Weapon : Item, IGameEventHandler<OnReloadEvent>
 
 			if ( !health.IsDead )
 			{
-				var text = GameObject.Clone( ResourceLibrary.Get<PrefabFile>( "prefabs/effects/textparticle.prefab" ) );
-				text.WorldPosition = tr.HitPosition + tr.Normal * 10;
-				text.WorldRotation = Rotation.LookAt( -cam.WorldRotation.Forward );
-
-				if ( text.Components.TryGet<ParticleTextRenderer>( out var textRenderer ) )
+				if ( health.SpawnDamageIndicator )
 				{
-					textRenderer.Text = new TextRendering.Scope( Damage.ToString(), Color.White, 24 );
+					var text = GameObject.Clone( ResourceLibrary.Get<PrefabFile>( "prefabs/effects/textparticle.prefab" ) );
+					text.WorldPosition = tr.HitPosition + tr.Normal * 10;
+					text.WorldRotation = Rotation.LookAt( -cam.WorldRotation.Forward );
+
+					if ( text.Components.TryGet<ParticleTextRenderer>( out var textRenderer ) )
+					{
+						textRenderer.Text = new TextRendering.Scope( Damage.ToString(), Color.White, 24 );
+					}
 				}
 
 				Sound.Play( "hitmarker" );
@@ -294,6 +297,8 @@ public class Weapon : Item, IGameEventHandler<OnReloadEvent>
 					decal.WorldRotation = Rotation.LookAt( -trace.Normal );
 					decal.WorldScale = 1.0f;
 					decal.SetParent( trace.GameObject );
+
+					Sound.Play( trace.Surface.Sounds.Bullet, trace.HitPosition );
 				}
 				CreateTracer( trace.StartPosition, trace.Direction );
 
@@ -401,7 +406,7 @@ public class Weapon : Item, IGameEventHandler<OnReloadEvent>
 			{
 				GameObject.Dispatch( new WeaponAnimEvent( "b_reloading_first_shell", true ) );
 
-				await Task.DelaySeconds( 2.75f );
+				await Task.DelaySeconds( 2.5f );
 				if ( !GameObject.IsValid() )
 				{
 					IsReloading = false;

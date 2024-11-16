@@ -11,4 +11,6 @@ public sealed class MapInfo : GameResource
 	public string PackageIndent { get; set; }
 	public bool Hidden { get; set; } = false;
 	public int Order { get; set; } = 0;
+
+	public GameModeType AvailableGamemodes { get; set; }
 }

@@ -104,16 +104,21 @@
           {
             "__type": "GameSystem",
             "__guid": "c2b69b60-c9c1-4a84-866a-a00f287f6fdc",
-            "BlueTimeHeld": 60,
+            "BlueTimeHeld": 5,
             "BuildTime": 120,
             "ClassicModels": true,
+            "CurrentGameMode": "gamemodes/deathmatch.mode",
+            "CurrentGameModeType": "Deathmatch",
             "FightTime": 240,
             "FourTeams": false,
+            "GameState": "S_WAITING",
             "GreenTimeHeld": 60,
+            "LoadGameData": true,
             "LoadLobbySettings": true,
             "LobbySettings": {
               "ClassicModels": true,
-              "MaxProps": 50
+              "MaxProps": 50,
+              "MaxPlayers": 64
             },
             "MaxProps": 50,
             "PlayerPrefab": {
@@ -121,10 +126,9 @@
               "prefab": "prefabs/player.prefab"
             },
             "PlayerToStart": 2,
-            "RedTimeHeld": 60,
+            "RedTimeHeld": 5,
             "SpawnPlayer": true,
             "StartServer": true,
-            "State": "Waiting",
             "YellowTimeHeld": 60
           }
         ]
@@ -250,5 +254,6 @@
   "DontBreakAsTemplate": false,
   "ResourceVersion": 1,
   "__references": [],
+  "HasUnsavedChanges": false,
   "__version": 1
 }

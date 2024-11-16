@@ -7,90 +7,62 @@
 
 <root>
 	@{
-		var gs = GameSystem.Instance;
+        var gs = GameSystem.Instance;
+        var round = GameMode.ActiveRound;
 
-		if ( !gs.IsValid() )
+		if (!gs.IsValid())
 			return;
 	}
 
-	<div class="status">@GetStateText( gs.State )</div>
+	<div class="status">@GetStateText()</div>
 	<div class="time">
-
 		<div class="text">@FormatedTimer()</div>
 	</div>
 </root>
 
 @code
 {
-	public string GetStateText( GameSystem.GameState gameState )
-	{
-		var gs = GameSystem.Instance;
+    public string GetStateText()
+    {
+        var gs = GameSystem.Instance;
+        if (gs.GameState == GameSystem.GameStates.S_WAITING)
+            return "Waiting for players";
+        else if (gs.GameState == GameSystem.GameStates.S_END)
+            return "Game Over!";
 
-		if ( !gs.IsValid() )
-			return "Unknown";
+        return GameMode.ActiveRound.Name;
+    }
 
-		switch ( gameState )
+    public float GetTime()
+    {
+        var gs = Scene.GetAll<GameSystem>().FirstOrDefault();
+        var round = GameMode.ActiveRound;
+
+		if (gs.GameState == GameSystem.GameStates.S_WAITING)
 		{
-			case GameSystem.GameState.Waiting:
-				return "Waiting";
-			case GameSystem.GameState.BuildMode:
-				return "Build Mode";
-			case GameSystem.GameState.FightMode:
-				return "Ongoing";
-			case GameSystem.GameState.Ended:
-				return "Ending";
-			case GameSystem.GameState.OvertimeBuild:
-				return "Overtime Build " + ( gs.Overtimes != 0 ? gs.Overtimes + 1 : "" );
-			case GameSystem.GameState.OvertimeFight:
-				return "Overtime Fight " + ( gs.Overtimes != 0 ? gs.Overtimes + 1 : "" );
-			default:
-				return "Unknown";
+			return gs.StateSwitch;
 		}
-	}
-
-	public float TimeFraction()
-	{
-		var gs = GameSystem.Instance;
-
-		if ( !gs.IsValid() )
-			return 1;
-
-		if ( gs.State == GameSystem.GameState.Waiting )
+		else if (gs.GameState == GameSystem.GameStates.S_END)
 		{
-			return 1;
+			return gs.StateSwitch - 5;
 		}
-		else
-		{
-			return (gs.CurrentTime - gs.StateSwitch.Relative) / gs.CurrentTime;
-		}
-	}
+        else if (round.IsValid())
+        {
+            //TODO: Fix this
+            var remainingTime = round.RoundTimer;
+            return remainingTime;
+        }
 
-	public float GetTime()
-	{
-		var gs = Scene.GetAll<GameSystem>().FirstOrDefault();
+        return 0;
+    }
 
-		if ( gs.IsValid() )
-		{
-			if ( gs.State == GameSystem.GameState.Waiting )
-			{
-				return gs.StateSwitch.Relative;
-			}
-			else
-			{
-				return gs.CurrentTime - gs.StateSwitch.Relative;
-			}
-		}
+    public string FormatedTimer()
+    {
+        return $"{TimeSpan.FromSeconds(GetTime()):mm\\:ss}";
+    }
 
-		return 0;
-	}
-
-	public string FormatedTimer()
-	{
-		return $"{TimeSpan.FromSeconds( GetTime() ):mm\\:ss}";
-	}
-
-	protected override int BuildHash()
-	{
-		return System.HashCode.Combine( GetTime() );
+    protected override int BuildHash()
+    {
+        return System.HashCode.Combine(GetTime(), GameMode.ActiveRound);
 	}
 }

@@ -14,8 +14,9 @@ public sealed class DamageTrigger : Component, Component.ITriggerListener
 		if ( !gs.IsValid() )
 			return;
 
-		if ( (gs.State == GameSystem.GameState.Waiting || gs.State == GameSystem.GameState.Ended) && !DamageAlways )
-			return;
+		//TODO: @Nolankicks
+		/*if ( (gs.State == GameSystem.GameState.Waiting || gs.State == GameSystem.GameState.Ended) && !DamageAlways )
+			return;*/
 
 		if ( other.GameObject.Root.Components.TryGet<HealthComponent>( out var player ) )
 		{

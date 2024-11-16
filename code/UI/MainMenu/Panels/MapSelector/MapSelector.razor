@@ -8,91 +8,94 @@
 <root class=@( Parent?.ChildrenOfType<LobbySettingsPanel>().Any() ?? false ? "" : "full" )>
 
 	<div class="tabs">
+        <GameModeSelector @ref=ModeSelector />
 		<div class="tab @IsActive( MapType.Official )" onclick=@( () => ChangeMapType( MapType.Official ) )>Official Maps</div>
 		<div class="tab @IsActive( MapType.Custom )" onclick=@( () => ChangeMapType( MapType.Custom ) )>Custom Maps</div>
 	</div>
 
 	@switch ( SelectedMapType )
-	{
-		case MapType.Official:
-			<div class="maps">
-				<div class="holder">
-				@foreach ( var map in ResourceLibrary.GetAll<MapInfo>().OrderBy( x => x.Order ) )
-				{
-                    if ( map.Hidden )
-                        continue;
+    {
+        case MapType.Official:
+            <div class="maps">
+                <div class="holder">
+                    @foreach ( var map in ResourceLibrary.GetAll<MapInfo>().OrderBy( x => x.Order ) )
+                    {
+                        if (map.Hidden || (GameSystem.SavedGameMode.Type & map.AvailableGamemodes) == 0)
+                            continue;
 
-					<div class="map" onclick=@( () => LoadMapInfo( map ) )>
-						<div class="img" style="background-image: url( @map?.Thumb?.ResourcePath )"></div>
-						<div class="chip">
-							<p>@map?.MapName</p>
-							<p>By: @map?.Author</p>
-							<p>@( map.FourTeams ? "Four Teams" : "Two Teams" )</p>
-						</div>
-					</div>
-				}
-				</div>
-			</div>
-			break;
+                        <div class="map" onclick=@( () => LoadMapInfo( map ) )>
+                            <div class="img" style="background-image: url( @map?.Thumb?.ResourcePath )"></div>
+                            <div class="chip">
+                                <p>@map?.MapName</p>
+                                <p>By: @map?.Author</p>
+                                <p>@( map.FourTeams ? "Four Teams" : "Two Teams" )</p>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+            break;
 
-		case MapType.Custom:
-			<div class="maps">
-				<div class="notice">Custom maps are made by the community and could not be properly tested</div>
-				
-				<div class="holder">
-					@if ( CustomMaps.Count() == 0 && FirstTime )
-					{
-						<div class="info">Fetching custom maps...</div>
-					}
-					else if ( CustomMaps.Count() == 0 )
-					{
-						<div class="info">No custom maps found</div>
-					}
-					else
-					{
-						foreach ( var map in CustomMaps )
-						{
-							<div class="map" onclick=@( () => SelectMap( map ) )>
-								<img class="img" src=@map?.Thumb>
-								<div class="chip">
-									<p>@map.Title</p>
-									<p>By: @map.Org.Title</p>
-								</div>
-							</div>
-						}
-					}
-					
-				</div>
-			</div>
+        case MapType.Custom:
+            <div class="maps">
+                <div class="notice">Custom maps are made by the community and could not be properly tested</div>
 
-			<div class="search-bar">
-				<TextEntry @ref="Search" placeholder="Search..." onsubmit=@BuildCustomMaps />
-			</div>
+                <div class="holder">
+                    @if ( CustomMaps.Count() == 0 && FirstTime )
+                    {
+                        <div class="info">Fetching custom maps...</div>
+                    }
+                    else if ( CustomMaps.Count() == 0 )
+                    {
+                        <div class="info">No custom maps found</div>
+                    }
+                    else
+                    {
+                        foreach ( var map in CustomMaps )
+                        {
+                            <div class="map" onclick=@( () => SelectMap( map ) )>
+                                <img class="img" src=@map?.Thumb>
+                                <div class="chip">
+                                    <p>@map.Title</p>
+                                    <p>By: @map.Org.Title</p>
+                                </div>
+                            </div>
+                        }
+                    }
 
-			break;
-	}
+                </div>
+            </div>
 
-    
+            <div class="search-bar">
+                <TextEntry @ref="Search" placeholder="Search..." onsubmit=@BuildCustomMaps />
+            </div>
+
+            break;
+    }
+
+
 </root>
 
 
 
 @code
 {
-	public enum MapType
-	{
-		Official,
-		Custom
-	}
+    public enum MapType
+    {
+        Official,
+        Custom
+    }
 
-	public MapType SelectedMapType { get; set; } = MapType.Official;
-	public List<Package> CustomMaps { get; set; } = new();
-	public bool FirstTime { get; set; } = true;
-	TextEntry Search;
-	public string Query { get; set; } = "";
+    public MapType SelectedMapType { get; set; } = MapType.Official;
+    public List<Package> CustomMaps { get; set; } = new();
+    public bool FirstTime { get; set; } = true;
+    TextEntry Search;
+    public string Query { get; set; } = "";
 
-	public Package SelectedPackage { get; set; }
-	public LobbySettingsPanel LobbySettingsPanel;
+    public Package SelectedPackage { get; set; }
+    public LobbySettingsPanel LobbySettingsPanel;
+
+    public GameModeSelector ModeSelector { get; set; }
 
 	public void ChangeMapType( MapType mapType )
 	{

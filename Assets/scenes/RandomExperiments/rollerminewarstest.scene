@@ -1,0 +1,284 @@
+{
+  "__guid": "23e20495-133f-4088-a48d-1409bbf2bc72",
+  "GameObjects": [
+    {
+      "__guid": "f2f0c6cb-67de-493b-95a6-1293febd30a2",
+      "Flags": 0,
+      "Name": "Box",
+      "Position": "0,0,16",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.MeshComponent",
+          "__guid": "b3ea106f-fd28-411d-bf28-17a757bff152",
+          "Collision": "Mesh",
+          "Color": "1,1,1,1",
+          "HideInGame": false,
+          "IsTrigger": false,
+          "Mesh": {
+            "Topology": "H4sIAAAAAAAACl2QCQ7CMAwEp4Qj3NBy/f\u002BlaMRGsohUVbFn1\u002Bt04ANs\u002BZ0VsM69AwfgBFyAKZ9MPXdgk3qLnsI\u002BUm/h/me9i2ZXfFvYOazafTJN0XRgKZmPyWtfXvYVL73PZRd52WdYPa7xtC8veys7u6t17/7t6Tn0ZtFjvIXZR895zjKjPWf4NiOrGt\u002BivpXZ3XnozaOndVn9vvVkkTjEAQAA",
+            "Positions": [
+              "-832,-864,16",
+              "832,-864,16",
+              "832,864,16",
+              "-832,864,16",
+              "-832,864,-16",
+              "832,864,-16",
+              "832,-864,-16",
+              "-832,-864,-16"
+            ],
+            "TextureCoord": [
+              "6.5,6.75",
+              "-6.5,-0.125",
+              "6.5,-6.75",
+              "-6.75,-0.125",
+              "-6.5,-6.75",
+              "-6.5,-0.125",
+              "-6.5,6.75",
+              "-6.75,-0.125",
+              "6.5,-6.75",
+              "6.5,0.125",
+              "6.5,6.75",
+              "6.75,0.125",
+              "-6.5,6.75",
+              "6.5,0.125",
+              "-6.5,-6.75",
+              "6.75,0.125",
+              "6.75,-0.125",
+              "-6.5,0.125",
+              "-6.75,0.125",
+              "6.5,-0.125",
+              "-6.75,0.125",
+              "6.5,-0.125",
+              "6.75,-0.125",
+              "-6.5,0.125"
+            ],
+            "TextureUAxis": [
+              "1,0,0",
+              "1,0,-0",
+              "0,-1,0",
+              "0,1,0",
+              "-1,0,0",
+              "1,-0,0"
+            ],
+            "TextureVAxis": [
+              "0,-1,0",
+              "0,-1,0",
+              "0,0,-1",
+              "-0,0,-1",
+              "0,0,-1",
+              "-0,0,-1"
+            ],
+            "TextureScale": [
+              "0.25,0.25",
+              "0.25,0.25",
+              "0.25,0.25",
+              "0.25,0.25",
+              "0.25,0.25",
+              "0.25,0.25"
+            ],
+            "TextureOffset": [
+              "0,0",
+              "0,0",
+              "0,64",
+              "0,64",
+              "0,64",
+              "0,64"
+            ],
+            "MaterialIndex": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "EdgeFlags": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "Materials": [
+              "materials/dev/reflectivity_30.vmat"
+            ]
+          },
+          "SmoothingAngle": 40,
+          "Static": true,
+          "SurfaceVelocity": "0,0,0"
+        }
+      ]
+    },
+    {
+      "__guid": "13f10f9e-e68f-4194-a954-733edbb28b75",
+      "Flags": 0,
+      "Name": "Sun",
+      "Position": "692.7949,483.1821,227.5936",
+      "Rotation": "0.3535534,0.3535533,-0.6123724,0.6123725",
+      "Tags": "light_directional,light",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.DirectionalLight",
+          "__guid": "4de8b245-fc1b-4f92-8509-cbbec379a93f",
+          "FogMode": "Enabled",
+          "FogStrength": 1,
+          "LightColor": "0.91373,0.98039,1,1",
+          "Shadows": true,
+          "SkyColor": "0,0,0,0"
+        }
+      ]
+    },
+    {
+      "__guid": "215b567e-bba9-45fa-97b3-0c15610edd06",
+      "Flags": 0,
+      "Name": "2D Skybox",
+      "Position": "560.9375,424.4483,193.1712",
+      "Tags": "skybox",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.SkyBox2D",
+          "__guid": "9bd5ff96-d4d6-4df4-b697-00aa32f284fb",
+          "SkyIndirectLighting": true,
+          "SkyMaterial": "materials/skybox/skybox_day_01.vmat",
+          "Tint": "1,1,1,1"
+        }
+      ]
+    },
+    {
+      "__guid": "b403d108-5079-4e3e-b771-03ae85711b3c",
+      "Flags": 0,
+      "Name": "Object",
+      "Position": "0,0,32",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "TeamSpawnPoint",
+          "__guid": "12ebc9d1-34f6-4af5-8bd1-dec4753f6af8",
+          "Team": "None"
+        }
+      ]
+    },
+    {
+      "__guid": "ac56c8ff-ace0-43b7-95a7-c4df1ec71c52",
+      "Flags": 0,
+      "Name": "spawnobject (1)",
+      "Position": "-576,0,160",
+      "Scale": "5,5,5",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "Components": [
+        {
+          "__type": "Sandbox.Prop",
+          "__guid": "388c7d63-9908-419e-9c65-552538b28e70",
+          "BodyGroups": 18446744073709551615,
+          "Health": 0,
+          "IsStatic": true,
+          "Model": "models/rollermine.vmdl",
+          "StartAsleep": false,
+          "Tint": "1,0,0,1"
+        },
+        {
+          "__type": "GameModeObject",
+          "__guid": "86cb1d3b-0b8c-487d-b126-1a1beb2c3695",
+          "Type": "RollermineWars"
+        },
+        {
+          "__type": "RollermineWarsObject",
+          "__guid": "ca679cd2-fb70-429e-99a4-656500a947f9",
+          "Health": 100,
+          "IsDead": false,
+          "MaxHealth": 100,
+          "SpawnDamageIndicator": true,
+          "Team": "Blue"
+        }
+      ]
+    },
+    {
+      "__guid": "57fd9bc8-df3a-4bba-b6b9-697ce1a124cf",
+      "Flags": 0,
+      "Name": "spawnobject",
+      "Position": "672,0,160",
+      "Scale": "5,5,5",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "Components": [
+        {
+          "__type": "Sandbox.Prop",
+          "__guid": "fad5f7ee-a14e-4bba-873d-5fdb375a191e",
+          "BodyGroups": 18446744073709551615,
+          "Health": 0,
+          "IsStatic": true,
+          "Model": "models/rollermine.vmdl",
+          "StartAsleep": false,
+          "Tint": "0,0.3,1,1"
+        },
+        {
+          "__type": "GameModeObject",
+          "__guid": "620836c4-b262-434f-a1b3-a61fde9abad1",
+          "Type": "RollermineWars"
+        },
+        {
+          "__type": "RollermineWarsObject",
+          "__guid": "6164575c-f4d3-4efa-a4a8-1ec85bd45602",
+          "Health": 100,
+          "IsDead": false,
+          "MaxHealth": 100,
+          "SpawnDamageIndicator": true,
+          "Team": "Red"
+        }
+      ]
+    }
+  ],
+  "SceneProperties": {
+    "FixedUpdateFrequency": 50,
+    "MaxFixedUpdates": 5,
+    "NetworkFrequency": 30,
+    "NetworkInterpolation": true,
+    "PhysicsSubSteps": 1,
+    "ThreadedAnimation": true,
+    "TimeScale": 1,
+    "UseFixedUpdate": true,
+    "Metadata": {},
+    "NavMesh": {
+      "Enabled": false,
+      "IncludeStaticBodies": true,
+      "IncludeKeyframedBodies": true,
+      "EditorAutoUpdate": true,
+      "AgentHeight": 64,
+      "AgentRadius": 16,
+      "AgentStepSize": 18,
+      "AgentMaxSlope": 40,
+      "ExcludedBodies": "",
+      "IncludedBodies": ""
+    }
+  },
+  "ResourceVersion": 2,
+  "Title": null,
+  "Description": null,
+  "__references": [
+    "igrium.rollermine-model#19481"
+  ],
+  "__version": 2
+}

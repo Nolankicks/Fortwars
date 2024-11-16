@@ -8,6 +8,8 @@
   "PackageIndent": null,
   "Hidden": false,
   "Order": 1,
+  "AvailableGamemodes": "Classic, RollermineWars, Deathmatch",
   "__references": [],
+  "HasUnsavedChanges": true,
   "__version": 0
 }

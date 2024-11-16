@@ -1,0 +1,503 @@
+{
+  "RootObject": {
+    "__guid": "65e9bb67-95e1-464e-9c72-851e26c3337b",
+    "Flags": 0,
+    "Name": "deathmatch",
+    "Enabled": true,
+    "NetworkMode": 1,
+    "Components": [
+      {
+        "__type": "Deathmatch",
+        "__guid": "b000a83d-f9e9-4d68-ad49-d7a8400dc495",
+        "InitialRound": {
+          "_type": "component",
+          "component_id": "346d83ed-5cdf-4c79-838c-2241d58472e0",
+          "go": "047cc4fb-e838-4df1-9ccc-0e949a6a36f2",
+          "component_type": "RoundComponent"
+        },
+        "TeamsEnabled": false
+      }
+    ],
+    "Children": [
+      {
+        "__guid": "ded0a376-33f8-4787-93b9-fd46de21885c",
+        "Flags": 0,
+        "Name": "--Rounds--",
+        "Enabled": true,
+        "NetworkMode": 1,
+        "Children": [
+          {
+            "__guid": "047cc4fb-e838-4df1-9ccc-0e949a6a36f2",
+            "Flags": 0,
+            "Name": "Fight",
+            "Enabled": true,
+            "NetworkMode": 1,
+            "Components": [
+              {
+                "__type": "RoundComponent",
+                "__guid": "346d83ed-5cdf-4c79-838c-2241d58472e0",
+                "AddClass": false,
+                "CheckForWinningTeam": false,
+                "ClearAllWeapons": true,
+                "ClearClass": false,
+                "Condition": true,
+                "EndCondition": {
+                  "__version": 8,
+                  "__guid": "71e267ef-3ffd-4832-8572-69da0f24da33",
+                  "__changeId": 57,
+                  "UserData": {
+                    "Title": "End Condition",
+                    "ReferencedComponentTypes": []
+                  },
+                  "Variables": [
+                    {
+                      "Name": "win",
+                      "Type": "System.Boolean"
+                    }
+                  ],
+                  "Nodes": [
+                    {
+                      "Id": 0,
+                      "Type": "input"
+                    },
+                    {
+                      "Id": 1,
+                      "Type": "output",
+                      "UserData": {
+                        "Position": "1044,-60"
+                      }
+                    },
+                    {
+                      "Id": 2,
+                      "Type": "property",
+                      "Properties": {
+                        "_name": "Kills",
+                        "_type": "FWPlayerController"
+                      },
+                      "UserData": {
+                        "Position": "552,180"
+                      }
+                    },
+                    {
+                      "Id": 3,
+                      "Type": "property",
+                      "Properties": {
+                        "_name": "Scene",
+                        "_type": "Sandbox.GameObject"
+                      },
+                      "UserData": {
+                        "Position": "-144,240"
+                      }
+                    },
+                    {
+                      "Id": 4,
+                      "Type": "call",
+                      "Properties": {
+                        "_isStatic": false,
+                        "_name": "GetAllComponents",
+                        "_type": "Sandbox.Scene",
+                        "T": "FWPlayerController"
+                      },
+                      "UserData": {
+                        "Position": "24,240"
+                      }
+                    },
+                    {
+                      "Id": 5,
+                      "Type": "foreach",
+                      "UserData": {
+                        "Position": "372,132"
+                      }
+                    },
+                    {
+                      "Id": 7,
+                      "Type": "if",
+                      "UserData": {
+                        "Position": "924,96"
+                      }
+                    },
+                    {
+                      "Id": 16,
+                      "Type": "op.greaterthan",
+                      "UserData": {
+                        "Position": "828,276"
+                      }
+                    },
+                    {
+                      "Id": 20,
+                      "Type": "var",
+                      "Properties": {
+                        "_var": "win"
+                      },
+                      "UserData": {
+                        "Position": "1128,276"
+                      }
+                    },
+                    {
+                      "Id": 22,
+                      "Type": "var",
+                      "Properties": {
+                        "_var": "win"
+                      },
+                      "UserData": {
+                        "Position": "840,12"
+                      }
+                    },
+                    {
+                      "Id": 23,
+                      "Type": "var",
+                      "Properties": {
+                        "_var": "win"
+                      },
+                      "UserData": {
+                        "Position": "120,120"
+                      }
+                    }
+                  ],
+                  "Links": [
+                    {
+                      "SrcId": 22,
+                      "SrcName": "_result",
+                      "DstId": 1,
+                      "DstName": "_result"
+                    },
+                    {
+                      "SrcId": 5,
+                      "SrcName": "_signal",
+                      "DstId": 1,
+                      "DstName": "_signal"
+                    },
+                    {
+                      "SrcId": 5,
+                      "SrcName": "body.value",
+                      "DstId": 2,
+                      "DstName": "_target"
+                    },
+                    {
+                      "SrcId": 0,
+                      "SrcName": "_target",
+                      "DstId": 3,
+                      "DstName": "_target"
+                    },
+                    {
+                      "SrcId": 3,
+                      "SrcName": "_result",
+                      "DstId": 4,
+                      "DstName": "_target"
+                    },
+                    {
+                      "SrcId": 23,
+                      "SrcName": "_signal",
+                      "DstId": 5,
+                      "DstName": "_signal"
+                    },
+                    {
+                      "SrcId": 4,
+                      "SrcName": "_result",
+                      "DstId": 5,
+                      "DstName": "enumerable"
+                    },
+                    {
+                      "SrcId": 5,
+                      "SrcName": "body",
+                      "DstId": 7,
+                      "DstName": "_signal"
+                    },
+                    {
+                      "SrcId": 16,
+                      "SrcName": "_result",
+                      "DstId": 7,
+                      "DstName": "condition"
+                    },
+                    {
+                      "SrcId": 2,
+                      "SrcName": "_result",
+                      "DstId": 16,
+                      "DstName": "a"
+                    },
+                    {
+                      "Id": 27,
+                      "Value": 25,
+                      "DstId": 16,
+                      "DstName": "b"
+                    },
+                    {
+                      "SrcId": 7,
+                      "SrcName": "true",
+                      "DstId": 20,
+                      "DstName": "_signal"
+                    },
+                    {
+                      "Id": 21,
+                      "Value": true,
+                      "DstId": 20,
+                      "DstName": "_value"
+                    },
+                    {
+                      "SrcId": 0,
+                      "SrcName": "_signal",
+                      "DstId": 23,
+                      "DstName": "_signal"
+                    },
+                    {
+                      "Id": 25,
+                      "Value": false,
+                      "DstId": 23,
+                      "DstName": "_value"
+                    }
+                  ]
+                },
+                "IsLastRound": true,
+                "IsRoundActive": false,
+                "Name": "Ongoing",
+                "NextRoundTimer": {
+                  "_type": "component",
+                  "component_id": "346d83ed-5cdf-4c79-838c-2241d58472e0",
+                  "go": "047cc4fb-e838-4df1-9ccc-0e949a6a36f2",
+                  "component_type": "RoundComponent"
+                },
+                "OnRoundStart": {
+                  "__version": 8,
+                  "__guid": "22e5145b-630e-4319-a31d-18fd9b981252",
+                  "__changeId": 46,
+                  "UserData": {
+                    "Title": "On Round Start",
+                    "ReferencedComponentTypes": []
+                  },
+                  "Variables": [],
+                  "Nodes": [
+                    {
+                      "Id": 0,
+                      "Type": "input",
+                      "UserData": {
+                        "Position": "-36,-36"
+                      }
+                    },
+                    {
+                      "Id": 1,
+                      "Type": "scene.get.inscene",
+                      "Properties": {
+                        "T": "WallComponent"
+                      },
+                      "UserData": {
+                        "Position": "-72,108"
+                      }
+                    },
+                    {
+                      "Id": 2,
+                      "Type": "sys.isvalid",
+                      "UserData": {
+                        "Position": "204,48"
+                      }
+                    },
+                    {
+                      "Id": 3,
+                      "Type": "if",
+                      "UserData": {
+                        "Position": "540,-12"
+                      }
+                    },
+                    {
+                      "Id": 4,
+                      "Type": "call",
+                      "Properties": {
+                        "_isStatic": false,
+                        "_name": "ToggleEnable",
+                        "_type": "WallComponent"
+                      },
+                      "UserData": {
+                        "Position": "768,108"
+                      }
+                    },
+                    {
+                      "Id": 11,
+                      "Type": "scene.ref",
+                      "UserData": {
+                        "Position": "12,228"
+                      }
+                    },
+                    {
+                      "Id": 12,
+                      "Type": "call",
+                      "Properties": {
+                        "_isStatic": false,
+                        "_name": "ResetPlayers",
+                        "_type": "GameMode"
+                      },
+                      "UserData": {
+                        "Position": "252,228"
+                      }
+                    },
+                    {
+                      "Id": 13,
+                      "Type": "scene.get.inscene",
+                      "Properties": {
+                        "T": "RollerMine"
+                      },
+                      "UserData": {
+                        "Position": "84,408"
+                      }
+                    },
+                    {
+                      "Id": 14,
+                      "Type": "property",
+                      "Properties": {
+                        "_name": "GameObject",
+                        "_type": "Sandbox.Component"
+                      },
+                      "UserData": {
+                        "Position": "288,408"
+                      }
+                    },
+                    {
+                      "Id": 15,
+                      "Type": "call",
+                      "Properties": {
+                        "_isStatic": false,
+                        "_name": "Destroy",
+                        "_type": "Sandbox.GameObject"
+                      },
+                      "UserData": {
+                        "Position": "720,384"
+                      }
+                    },
+                    {
+                      "Id": 17,
+                      "Type": "Reset All Teams",
+                      "UserData": {
+                        "Position": "540,252"
+                      }
+                    }
+                  ],
+                  "Links": [
+                    {
+                      "SrcId": 1,
+                      "SrcName": "_result",
+                      "DstId": 2,
+                      "DstName": "obj"
+                    },
+                    {
+                      "SrcId": 12,
+                      "SrcName": "_signal",
+                      "DstId": 3,
+                      "DstName": "_signal"
+                    },
+                    {
+                      "SrcId": 2,
+                      "SrcName": "_result",
+                      "DstId": 3,
+                      "DstName": "condition"
+                    },
+                    {
+                      "SrcId": 3,
+                      "SrcName": "true",
+                      "DstId": 4,
+                      "DstName": "_signal"
+                    },
+                    {
+                      "SrcId": 1,
+                      "SrcName": "_result",
+                      "DstId": 4,
+                      "DstName": "_target"
+                    },
+                    {
+                      "Id": 8,
+                      "Value": false,
+                      "DstId": 4,
+                      "DstName": "enable"
+                    },
+                    {
+                      "SrcId": 0,
+                      "SrcName": "_signal",
+                      "DstId": 12,
+                      "DstName": "_signal"
+                    },
+                    {
+                      "SrcId": 11,
+                      "SrcName": "_result",
+                      "DstId": 12,
+                      "DstName": "_target"
+                    },
+                    {
+                      "SrcId": 13,
+                      "SrcName": "_result",
+                      "DstId": 14,
+                      "DstName": "_target"
+                    },
+                    {
+                      "SrcId": 4,
+                      "SrcName": "_signal",
+                      "DstId": 15,
+                      "DstName": "_signal"
+                    },
+                    {
+                      "SrcId": 14,
+                      "SrcName": "_result",
+                      "DstId": 15,
+                      "DstName": "_target"
+                    },
+                    {
+                      "SrcId": 12,
+                      "SrcName": "_signal",
+                      "DstId": 17,
+                      "DstName": "_signal"
+                    }
+                  ],
+                  "Defaults": {
+                    "$11.component": {
+                      "_type": "component",
+                      "component_id": "b000a83d-f9e9-4d68-ad49-d7a8400dc495",
+                      "go": "65e9bb67-95e1-464e-9c72-851e26c3337b",
+                      "component_type": "Deathmatch"
+                    }
+                  }
+                },
+                "PlayersToSpawns": true,
+                "PlayerWeapons": [
+                  "weapondatas/m4a4.weapons",
+                  "weapondatas/mp5.weapons",
+                  "weapondatas/pistol.weapons",
+                  "weapondatas/shotgun.weapons"
+                ],
+                "RoundTime": 360,
+                "Time": true
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "__variables": [],
+    "__properties": {
+      "FixedUpdateFrequency": 50,
+      "MaxFixedUpdates": 5,
+      "NetworkFrequency": 30,
+      "NetworkInterpolation": true,
+      "PhysicsSubSteps": 1,
+      "ThreadedAnimation": true,
+      "TimeScale": 1,
+      "UseFixedUpdate": true,
+      "Metadata": {},
+      "NavMesh": {
+        "Enabled": false,
+        "IncludeStaticBodies": true,
+        "IncludeKeyframedBodies": true,
+        "EditorAutoUpdate": true,
+        "AgentHeight": 64,
+        "AgentRadius": 16,
+        "AgentStepSize": 18,
+        "AgentMaxSlope": 40,
+        "ExcludedBodies": "",
+        "IncludedBodies": ""
+      }
+    }
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "DontBreakAsTemplate": false,
+  "ResourceVersion": 1,
+  "__references": [],
+  "HasUnsavedChanges": false,
+  "__version": 1
+}

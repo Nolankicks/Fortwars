@@ -3,7 +3,7 @@
     "__guid": "39ef8517-7e7e-45e6-b649-a5a0aa4cdedd",
     "Flags": 0,
     "Name": "rollermine",
-    "Tags": "light,light_point,rollermine",
+    "Tags": "rollermine,light_point,light",
     "Enabled": true,
     "NetworkMode": 1,
     "NetworkOrphaned": 3,
@@ -13,6 +13,7 @@
         "__type": "Sandbox.SkinnedModelRenderer",
         "__guid": "f8b32643-7800-458e-add2-00f12fea5a3c",
         "BodyGroups": 18446744073709551615,
+        "CreateAttachments": false,
         "CreateBoneObjects": false,
         "Model": "models/rollermine.vmdl",
         "Morphs": {},
@@ -30,6 +31,7 @@
           "AfterUILayer": false
         },
         "RenderType": "On",
+        "Sequence": {},
         "Tint": "1,1,1,1",
         "UseAnimGraph": true
       },
@@ -56,29 +58,13 @@
         "StartAsleep": false
       },
       {
-        "__type": "RollerMine",
-        "__guid": "92081e8f-596b-4ade-a874-8d4970511081",
-        "Renderer": {
-          "_type": "component",
-          "component_id": "f8b32643-7800-458e-add2-00f12fea5a3c",
-          "go": "39ef8517-7e7e-45e6-b649-a5a0aa4cdedd",
-          "component_type": "SkinnedModelRenderer"
-        }
-      },
-      {
         "__type": "FortwarsProp",
         "__guid": "f3202565-7b00-4282-adc7-46297ebc4923",
         "CanKill": true,
-        "CollisionThreshold": 100,
+        "CollisionThreshold": 300,
         "Divisor": 20,
         "Health": 100,
         "Invincible": true,
-        "Rigidbody": {
-          "_type": "component",
-          "component_id": "25e96918-402a-43e9-88f4-7fcf220fb16b",
-          "go": "39ef8517-7e7e-45e6-b649-a5a0aa4cdedd",
-          "component_type": "Rigidbody"
-        },
         "Team": "None"
       },
       {
@@ -104,6 +90,7 @@
           ],
           "alpha": []
         },
+        "Emitting": true,
         "Face": "Camera",
         "LifeTime": 0.2,
         "MaxPoints": 64,
@@ -143,6 +130,21 @@
         "LightColor": "0.13953,0.79922,1,1",
         "Radius": 30,
         "Shadows": false
+      },
+      {
+        "__type": "RollerMine",
+        "__guid": "95219195-d35e-449d-88c1-a0442c8298dd",
+        "Renderer": {
+          "_type": "component",
+          "component_id": "f8b32643-7800-458e-add2-00f12fea5a3c",
+          "go": "39ef8517-7e7e-45e6-b649-a5a0aa4cdedd",
+          "component_type": "SkinnedModelRenderer"
+        }
+      },
+      {
+        "__type": "GameModeObject",
+        "__guid": "e4e0769e-fe9b-4321-8eb2-b4669fed4ebc",
+        "Type": "Classic, RollermineWars"
       }
     ],
     "Children": [
@@ -210,5 +212,6 @@
   "__references": [
     "igrium.rollermine-model#19481"
   ],
+  "HasUnsavedChanges": false,
   "__version": 1
 }

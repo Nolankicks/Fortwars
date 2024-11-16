@@ -1,0 +1,12 @@
+{
+  "Title": "Deathmatch",
+  "Description": null,
+  "Prefab": {
+    "_type": "gameobject",
+    "prefab": "prefabs/gamemodes/deathmatch.prefab"
+  },
+  "Hidden": false,
+  "Type": "Deathmatch",
+  "__references": [],
+  "__version": 0
+}

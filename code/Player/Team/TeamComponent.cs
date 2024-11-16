@@ -1,5 +1,3 @@
-using Sandbox.Events;
-
 public enum Team
 {
 	Red,
@@ -9,8 +7,7 @@ public enum Team
 	None
 }
 
-public sealed class TeamComponent : Component, IGameEventHandler<OnBuildMode>,
-	IGameEventHandler<OnFightMode>, IGameEventHandler<OnGameOvertimeBuild>, IGameEventHandler<OnGameOvertimeFight>
+public sealed class TeamComponent : Component
 {
 	[Property, Sync] public Team Team { get; set; } = Team.None;
 	[Property, Sync] public FWPlayerController Player { get; set; }
@@ -75,34 +72,13 @@ public sealed class TeamComponent : Component, IGameEventHandler<OnBuildMode>,
 		return Team == other.Team;
 	}
 
-	void IGameEventHandler<OnBuildMode>.OnGameEvent( OnBuildMode eventArgs )
-	{
-		ResetToSpawnPoint();
-	}
-
-	void IGameEventHandler<OnFightMode>.OnGameEvent( OnFightMode eventArgs )
-	{
-		ResetToSpawnPoint();
-	}
-
-	void IGameEventHandler<OnGameOvertimeBuild>.OnGameEvent( OnGameOvertimeBuild eventArgs )
-	{
-		ResetToSpawnPoint();
-	}
-
-	void IGameEventHandler<OnGameOvertimeFight>.OnGameEvent( OnGameOvertimeFight eventArgs )
-	{
-		ResetToSpawnPoint();
-	}
-
-
 	[Authority]
 	public void ResetToSpawnPoint()
 	{
-		if ( Team == Team.None )
-			return;
-
 		var spawns = Scene.GetAll<TeamSpawnPoint>()?.Where( x => x.Team == Team )?.ToList();
+
+		if ( Team == Team.None )
+			spawns.AddRange( spawns );
 
 		if ( spawns == null || spawns.Count == 0 )
 			return;
@@ -115,6 +91,31 @@ public sealed class TeamComponent : Component, IGameEventHandler<OnBuildMode>,
 		if ( GameObject.Components.TryGet<FWPlayerController>( out var player ) )
 		{
 			player.SetWorld( spawn.Transform.World );
+		}
+	}
+
+	[ActionGraphNode( "Reset All Teams" )]
+	public static void TeleportAllTeams()
+	{
+		Game.ActiveScene?.GetAll<TeamComponent>()?.ToList()?.ForEach( x => x.ResetToSpawnPoint() );
+	}
+
+	public static Team GetTeamLowestCount()
+	{
+		var blueCount = Game.ActiveScene.GetAllComponents<FWPlayerController>().Where( x => x.TeamComponent.Team == Team.Blue ).Count();
+		var redCount = Game.ActiveScene.GetAllComponents<FWPlayerController>().Where( x => x.TeamComponent.Team == Team.Red ).Count();
+
+		if ( blueCount < redCount )
+			return Team.Blue;
+		else
+			return Team.Red;
+	}
+
+	public static void ResetTeams()
+	{
+		foreach ( var team in Game.ActiveScene.GetAllComponents<TeamComponent>() )
+		{
+			team.Team = Team.None;
 		}
 	}
 }
