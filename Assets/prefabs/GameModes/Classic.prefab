@@ -506,7 +506,7 @@
                 "OnRoundStart": {
                   "__version": 8,
                   "__guid": "4e645e7f-2746-4ec1-bd57-2bb0af56087e",
-                  "__changeId": 4,
+                  "__changeId": 6,
                   "UserData": {
                     "Title": "On Round Start",
                     "ReferencedComponentTypes": [
@@ -553,32 +553,6 @@
                       "UserData": {
                         "Position": "312,216"
                       }
-                    },
-                    {
-                      "Id": 5,
-                      "Type": "Reset All Teams",
-                      "UserData": {
-                        "Position": "408,312"
-                      }
-                    },
-                    {
-                      "Id": 6,
-                      "Type": "scene.ref",
-                      "UserData": {
-                        "Position": "-204,336"
-                      }
-                    },
-                    {
-                      "Id": 7,
-                      "Type": "call",
-                      "Properties": {
-                        "_isStatic": false,
-                        "_name": "EnableTeams",
-                        "_type": "GameMode"
-                      },
-                      "UserData": {
-                        "Position": "96,396"
-                      }
                     }
                   ],
                   "Links": [
@@ -611,34 +585,8 @@
                       "Value": true,
                       "DstId": 4,
                       "DstName": "enable"
-                    },
-                    {
-                      "SrcId": 7,
-                      "SrcName": "_signal",
-                      "DstId": 5,
-                      "DstName": "_signal"
-                    },
-                    {
-                      "SrcId": 4,
-                      "SrcName": "_signal",
-                      "DstId": 7,
-                      "DstName": "_signal"
-                    },
-                    {
-                      "SrcId": 6,
-                      "SrcName": "_result",
-                      "DstId": 7,
-                      "DstName": "_target"
                     }
-                  ],
-                  "Defaults": {
-                    "$6.component": {
-                      "_type": "component",
-                      "component_id": "7579476d-6c7f-415d-97b8-149783e56e3e",
-                      "go": "a3d7f9ff-9c73-42da-acda-2a56ded467ea",
-                      "component_type": "ClassicGameMode"
-                    }
-                  }
+                  ]
                 },
                 "PlayersToSpawns": true,
                 "PlayerWeapons": [],
@@ -675,7 +623,7 @@
                 "OnPlayerJoin": {
                   "__version": 8,
                   "__guid": "6e847170-64f7-4812-93a6-cf499286aec6",
-                  "__changeId": 4,
+                  "__changeId": 5,
                   "UserData": {
                     "Title": "On Player Join",
                     "ReferencedComponentTypes": []
@@ -724,7 +672,7 @@
                         "_type": "Inventory"
                       },
                       "UserData": {
-                        "Position": "588,156"
+                        "Position": "648,180"
                       }
                     }
                   ],
@@ -764,7 +712,7 @@
                 "OnRoundStart": {
                   "__version": 8,
                   "__guid": "7fe87d82-dc47-439f-b4ef-62b7908bf49a",
-                  "__changeId": 4,
+                  "__changeId": 5,
                   "UserData": {
                     "Title": "On Round Start",
                     "ReferencedComponentTypes": [
