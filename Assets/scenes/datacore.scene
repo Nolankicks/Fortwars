@@ -36,6 +36,84 @@
           "Title": "Datacore"
         }
       ]
+    },
+    {
+      "__guid": "fac02d2e-d362-43fc-bd81-1b7a1ce3f452",
+      "Flags": 0,
+      "Name": "Healthpack",
+      "Position": "41.47311,747.763,888",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.SphereCollider",
+          "__guid": "026840a3-19be-4339-b0a0-7505d9083182",
+          "Center": "0,0,21.30001",
+          "IsTrigger": true,
+          "Radius": 19.899996,
+          "Static": false,
+          "SurfaceVelocity": "0,0,0"
+        }
+      ],
+      "Children": [
+        {
+          "__guid": "79d36b94-567d-484c-ad1c-12be0984494c",
+          "Flags": 0,
+          "Name": "Model",
+          "Position": "0,0,24",
+          "Rotation": "0,0.3826834,0,0.9238796",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.SkinnedModelRenderer",
+              "__guid": "803e599f-eac1-4dfa-9888-92535759493d",
+              "BodyGroups": 18446744073709551615,
+              "CreateAttachments": false,
+              "CreateBoneObjects": false,
+              "Model": "models/items/medkit/medkit.vmdl",
+              "Morphs": {},
+              "Parameters": {
+                "bools": {},
+                "ints": {},
+                "floats": {},
+                "vectors": {},
+                "rotations": {}
+              },
+              "RenderOptions": {
+                "GameLayer": true,
+                "OverlayLayer": false,
+                "BloomLayer": false,
+                "AfterUILayer": false
+              },
+              "RenderType": "On",
+              "Sequence": {
+                "Name": null
+              },
+              "Tint": "1,1,1,1",
+              "UseAnimGraph": true
+            }
+          ]
+        },
+        {
+          "__guid": "6e796002-c613-48d8-818d-789d9d8ca336",
+          "Flags": 0,
+          "Name": "Point Light",
+          "Position": "0,0,40.67017",
+          "Tags": "light_point,light",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.PointLight",
+              "__guid": "04454728-4656-4591-bfed-12a756d7829e",
+              "Attenuation": 1,
+              "FogMode": "Enabled",
+              "FogStrength": 1,
+              "LightColor": "1,0.54419,0.54419,1",
+              "Radius": 400,
+              "Shadows": false
+            }
+          ]
+        }
+      ]
     }
   ],
   "SceneProperties": {
@@ -67,7 +145,9 @@
   "ResourceVersion": 2,
   "Title": "Datacore",
   "Description": null,
-  "__references": [],
+  "__references": [
+    "apetavern.medkit#42632"
+  ],
   "HasUnsavedChanges": false,
   "__version": 2
 }
