@@ -1,11 +1,5 @@
 public sealed partial class Deathmatch : GameMode
 {
-	protected override void OnFixedUpdate()
-	{
-		base.OnFixedUpdate();
-		Log.Info( ActiveRound );
-	}
-
 	public override void WinGame( Team team = Team.None )
 	{
 		Scene.GetAll<Inventory>()?.ToList()?.ForEach( x =>

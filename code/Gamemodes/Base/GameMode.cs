@@ -15,6 +15,7 @@ public partial class GameMode : Component, Component.INetworkListener
 
 	[Property, ReadOnly] public bool TeamsEnabled { get; set; } = false;
 
+	// Note this is awful and long and i hate it but it works
 	public static RoundComponent ActiveRound { get { return Game.ActiveScene.GetAllComponents<GameMode>().FirstOrDefault().Components.GetAll<RoundComponent>().Where( x => x.IsRoundActive ).FirstOrDefault(); } }
 
 	protected override void OnStart()
