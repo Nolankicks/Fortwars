@@ -76,6 +76,7 @@ public sealed partial class GameSystem : Component
 
 	[Property, Feature( "Map Voting" ), Sync] public Dictionary<MapInfo, int> MapVotes { get; set; } = new();
 
+
 	protected override async Task OnLoad()
 	{
 		if ( Networking.IsHost && !Networking.IsActive && StartServer && !Scene.IsEditor )
@@ -289,8 +290,18 @@ public sealed partial class GameSystem : Component
 	}
 
 	[Authority]
-	public void AddMapVote( MapInfo map )
+	public void AddMapVote( MapInfo map, FWPlayerController caster )
 	{
+		if ( !caster.IsValid() )
+			return;
+
+		if ( caster.VotedForMap is not null && MapVotes.ContainsKey( caster.VotedForMap ) )
+		{
+			MapVotes[caster.VotedForMap]--;
+		}
+
+		caster.SetVotedMap( map );
+
 		if ( MapVotes.ContainsKey( map ) )
 		{
 			MapVotes[map]++;

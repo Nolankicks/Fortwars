@@ -26,7 +26,7 @@
 
 				var votes = gs.MapVotes.ContainsKey(map) ? gs.MapVotes[map] : 0;
 
-				<div class="map" onclick=@( () => gs.AddMapVote( map ) )>
+				<div class="map" onclick=@( () => gs.AddMapVote( map, FWPlayerController.Local ) )>
 					<div class="info">
 						<div>@map.MapName</div>
 						<div>Votes: @votes</div>
@@ -37,3 +37,16 @@
 		</div>
 	</div>
 </root>
+
+@code
+{
+	protected override int BuildHash()
+	{
+		var gs = GameSystem.Instance;
+
+		if ( !gs.IsValid() ) 
+			return 0;
+
+		return gs.MapVotes.Count();
+	}
+}
