@@ -81,7 +81,7 @@
           "HideInGame": false,
           "IsTrigger": false,
           "Mesh": {
-            "Topology": "H4sIAAAAAAAACl2Qiw6CUAxDh1flgg/wAfr/X2pP0iWLJA25W9t16xHxFc4C30E4\u002Bt2FWbgKd2Ew4NTvIZxcb9ZH4b5db\u002Bb9z/oUzVh8m7lPc9FOzjRYQ8ZXyXxxXvrw4e72wvtWdoEPdzMXj8We9OHDXcvO7EqdN396eKaeLHjkLciePeYxi4z0mMFtMisablFvRXZ2Tj158KQOF78f9WSROMQBAAA=",
+            "Topology": "H4sIAAAAAAAACl2QCQ7CMAwEp4Qj3NBy/f\u002BlaMRGsohUVbFn1\u002Bt04ANs\u002BZ0VsM69AwfgBFyAKZ9MPXdgk3qLnsI\u002BUm/h/me9i2ZXfFvYOazafTJN0XRgKZmPyWtfXvYVL73PZRd52WdYPa7xtC8veys7u6t17/7t6Tn0ZtFjvIXZR895zjKjPWf4NiOrGt\u002BivpXZ3XnozaOndVn9vvVkkTjEAQAA",
             "Positions": [
               "-64.00211,-6063.999,3360",
               "63.99789,-6063.999,3360",
@@ -197,6 +197,11 @@
         {
           "__type": "WallComponent",
           "__guid": "2f71bc6b-c6d0-41ad-98d3-ba0ace6241e4"
+        },
+        {
+          "__type": "GameModeObject",
+          "__guid": "dcf38f02-a756-4023-8899-f08f3bb3df17",
+          "Type": "Classic, RollermineWars"
         }
       ]
     },
@@ -1284,5 +1289,6 @@
   "__references": [
     "facepunch.glass_c#70691"
   ],
+  "HasUnsavedChanges": false,
   "__version": 2
 }
