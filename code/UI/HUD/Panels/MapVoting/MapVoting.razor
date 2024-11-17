@@ -19,7 +19,8 @@
 
 	<div class="inner">
 		<div class="holder">
-			@foreach ( var map in ResourceLibrary.GetAll<MapInfo>() )
+			@*Temp? Maybe we want a better way of handeling maps who support diff gamemodes*@
+			@foreach ( var map in ResourceLibrary.GetAll<MapInfo>().Where( x => x.AvailableGamemodes.HasFlag( gs.CurrentGameModeType ) ))
 			{
 				if ( map.Hidden )
 					continue;
