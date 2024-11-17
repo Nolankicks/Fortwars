@@ -15,7 +15,7 @@
 	}
 
 	<div class="status">@GetStateText()</div>
-    @if (round.Time) {
+    @if (round.IsValid() && round.Time) {
 	<div class="time">
 		<div class="text">@FormatedTimer()</div>
 	</div>
