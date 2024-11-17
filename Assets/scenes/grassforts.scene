@@ -38,7 +38,7 @@
           "HideInGame": false,
           "IsTrigger": false,
           "Mesh": {
-            "Topology": "H4sIAAAAAAAACl2Qiw6CUAxDh1flgg/wAfr/X2pP0iWLJA25W9t16xHxFc4C30E4\u002Bt2FWbgKd2Ew4NTvIZxcb9ZH4b5db\u002Bb9z/oUzVh8m7lPc9FOzjRYQ8ZXyXxxXvrw4e72wvtWdoEPdzMXj8We9OHDXcvO7EqdN396eKaeLHjkLciePeYxi4z0mMFtMisablFvRXZ2Tj158KQOF78f9WSROMQBAAA=",
+            "Topology": "H4sIAAAAAAAACl2QCQ7CMAwEp4Qj3NBy/f\u002BlaMRGsohUVbFn1\u002Bt04ANs\u002BZ0VsM69AwfgBFyAKZ9MPXdgk3qLnsI\u002BUm/h/me9i2ZXfFvYOazafTJN0XRgKZmPyWtfXvYVL73PZRd52WdYPa7xtC8veys7u6t17/7t6Tn0ZtFjvIXZR895zjKjPWf4NiOrGt\u002BivpXZ3XnozaOndVn9vvVkkTjEAQAA",
             "Positions": [
               "-64.00024,-3712,1823.995",
               "63.99976,-3712,1823.995",
@@ -154,6 +154,11 @@
         {
           "__type": "WallComponent",
           "__guid": "063d01a6-c28d-47fd-90a8-b27b725bfc93"
+        },
+        {
+          "__type": "GameModeObject",
+          "__guid": "125c9a9e-b2ca-4145-897f-daeb42cf5e3a",
+          "Type": "Classic, RollermineWars"
         }
       ]
     },
@@ -173,7 +178,7 @@
           "HideInGame": true,
           "IsTrigger": true,
           "Mesh": {
-            "Topology": "H4sIAAAAAAAACk2Sh27DMAxErTiJ2zjpSNp07/n/P9jeAx4BETjIEo/H5e0wDL/BHGCLYBmsg5NgE2yDs\u002BA2uA8eg\u002BegiU\u002B5ZZfBSq0x\u002BA5O5fJ25fso78M8lfvGE5uCV8/RuvZyV\u002Bpu1F5ax6HrYbb\u002BJh/uUS00d/bW5MO9lovGuZpNPtwL81evk/dJ366LP6hRs9h3vrW5Zn3N2VStC2fRz\u002Bpoz8Rz3rmT2hc7eut29\u002BC\u002B8MOH\u002B\u002BU3eZ/cJX74cH/8RuNFzZol3Hd7xU8uONwxdoXho2Z2Syx\u002B4oklJ/rUQC30UDPmX6Lv2iu10AN33vmX6B3fX4x9MFPmwqyYZ9VIbeij8Q/Momb06AIAAA==",
+            "Topology": "H4sIAAAAAAAACk2SiW7DMAxDn5s02Zp2R7t1933\u002B/w9meBgFREDg2KIpifQW\u002BAUm/mMF9MAAnAAbYAucAbfAPfAIPAMt32ewFZfAOlwd8A2cBuvZVc674D5Sp2rfZDVG4DVrl772wa7Duwl3nz4Oixmm9N\u002BCF3sMl5y7zNaCF3sdrBzn4WzBi71I/Zp1zH5Mbre4fwhHabFf5IbUmpJr0aZ6XUWLpVbHzNxnvYsn5ZcevS28e4hfQ/Biv/Jv3ad4aV682J/8y/ESztJS7HtmNW8tMe4NvTLM2bPeete8971rTfntwV6coTT2LTl3\u002BWovzuDec9\u002BSs5ub53nWDzVVF7VSz\u002BrR3uSX4w/Momb06AIAAA==",
             "Positions": [
               "-64,-16,64.00001",
               "320,-16,64",
@@ -368,7 +373,7 @@
           "HideInGame": true,
           "IsTrigger": true,
           "Mesh": {
-            "Topology": "H4sIAAAAAAAACk2Sh27DMAxErTiJ2zjpSNp07/n/P9jeAx4BETjIEo/H5e0wDL/BHGCLYBmsg5NgE2yDs\u002BA2uA8eg\u002BegiU\u002B5ZZfBSq0x\u002BA5O5fJ25fso78M8lfvGE5uCV8/RuvZyV\u002Bpu1F5ax6HrYbb\u002BJh/uUS00d/bW5MO9lovGuZpNPtwL81evk/dJ366LP6hRs9h3vrW5Zn3N2VStC2fRz\u002Bpoz8Rz3rmT2hc7eut29\u002BC\u002B8MOH\u002B\u002BU3eZ/cJX74cH/8RuNFzZol3Hd7xU8uONwxdoXho2Z2Syx\u002B4oklJ/rUQC30UDPmX6Lv2iu10AN33vmX6B3fX4x9MFPmwqyYZ9VIbeij8Q/Momb06AIAAA==",
+            "Topology": "H4sIAAAAAAAACk2SiW7DMAxDn5s02Zp2R7t1933\u002B/w9meBgFREDg2KIpifQW\u002BAUm/mMF9MAAnAAbYAucAbfAPfAIPAMt32ewFZfAOlwd8A2cBuvZVc674D5Sp2rfZDVG4DVrl772wa7Duwl3nz4Oixmm9N\u002BCF3sMl5y7zNaCF3sdrBzn4WzBi71I/Zp1zH5Mbre4fwhHabFf5IbUmpJr0aZ6XUWLpVbHzNxnvYsn5ZcevS28e4hfQ/Biv/Jv3ad4aV682J/8y/ESztJS7HtmNW8tMe4NvTLM2bPeete8971rTfntwV6coTT2LTl3\u002BWovzuDec9\u002BSs5ub53nWDzVVF7VSz\u002BrR3uSX4w/Momb06AIAAA==",
             "Positions": [
               "-64,-16,64.00001",
               "320,-16,64",
@@ -563,7 +568,7 @@
           "HideInGame": false,
           "IsTrigger": false,
           "Mesh": {
-            "Topology": "H4sIAAAAAAAACk2Sh27DMAxErTiJ2zjpSNp07/n/P9jeAx4BETjIEo/H5e0wDL/BHGCLYBmsg5NgE2yDs\u002BA2uA8eg\u002BegiU\u002B5ZZfBSq0x\u002BA5O5fJ25fso78M8lfvGE5uCV8/RuvZyV\u002Bpu1F5ax6HrYbb\u002BJh/uUS00d/bW5MO9lovGuZpNPtwL81evk/dJ366LP6hRs9h3vrW5Zn3N2VStC2fRz\u002Bpoz8Rz3rmT2hc7eut29\u002BC\u002B8MOH\u002B\u002BU3eZ/cJX74cH/8RuNFzZol3Hd7xU8uONwxdoXho2Z2Syx\u002B4oklJ/rUQC30UDPmX6Lv2iu10AN33vmX6B3fX4x9MFPmwqyYZ9VIbeij8Q/Momb06AIAAA==",
+            "Topology": "H4sIAAAAAAAACk2SiW7DMAxDn5s02Zp2R7t1933\u002B/w9meBgFREDg2KIpifQW\u002BAUm/mMF9MAAnAAbYAucAbfAPfAIPAMt32ewFZfAOlwd8A2cBuvZVc674D5Sp2rfZDVG4DVrl772wa7Duwl3nz4Oixmm9N\u002BCF3sMl5y7zNaCF3sdrBzn4WzBi71I/Zp1zH5Mbre4fwhHabFf5IbUmpJr0aZ6XUWLpVbHzNxnvYsn5ZcevS28e4hfQ/Biv/Jv3ad4aV682J/8y/ESztJS7HtmNW8tMe4NvTLM2bPeete8971rTfntwV6coTT2LTl3\u002BWovzuDec9\u002BSs5ub53nWDzVVF7VSz\u002BrR3uSX4w/Momb06AIAAA==",
             "Positions": [
               "-64,-16,64.00001",
               "320,-16,64",
@@ -754,7 +759,7 @@
           "HideInGame": true,
           "IsTrigger": true,
           "Mesh": {
-            "Topology": "H4sIAAAAAAAACk2Sh27DMAxErTiJ2zjpSNp07/n/P9jeAx4BETjIEo/H5e0wDL/BHGCLYBmsg5NgE2yDs\u002BA2uA8eg\u002BegiU\u002B5ZZfBSq0x\u002BA5O5fJ25fso78M8lfvGE5uCV8/RuvZyV\u002Bpu1F5ax6HrYbb\u002BJh/uUS00d/bW5MO9lovGuZpNPtwL81evk/dJ366LP6hRs9h3vrW5Zn3N2VStC2fRz\u002Bpoz8Rz3rmT2hc7eut29\u002BC\u002B8MOH\u002B\u002BU3eZ/cJX74cH/8RuNFzZol3Hd7xU8uONwxdoXho2Z2Syx\u002B4oklJ/rUQC30UDPmX6Lv2iu10AN33vmX6B3fX4x9MFPmwqyYZ9VIbeij8Q/Momb06AIAAA==",
+            "Topology": "H4sIAAAAAAAACk2SiW7DMAxDn5s02Zp2R7t1933\u002B/w9meBgFREDg2KIpifQW\u002BAUm/mMF9MAAnAAbYAucAbfAPfAIPAMt32ewFZfAOlwd8A2cBuvZVc674D5Sp2rfZDVG4DVrl772wa7Duwl3nz4Oixmm9N\u002BCF3sMl5y7zNaCF3sdrBzn4WzBi71I/Zp1zH5Mbre4fwhHabFf5IbUmpJr0aZ6XUWLpVbHzNxnvYsn5ZcevS28e4hfQ/Biv/Jv3ad4aV682J/8y/ESztJS7HtmNW8tMe4NvTLM2bPeete8971rTfntwV6coTT2LTl3\u002BWovzuDec9\u002BSs5ub53nWDzVVF7VSz\u002BrR3uSX4w/Momb06AIAAA==",
             "Positions": [
               "-64,-16,64.00001",
               "320,-16,64",
@@ -950,7 +955,7 @@
           "HideInGame": false,
           "IsTrigger": false,
           "Mesh": {
-            "Topology": "H4sIAAAAAAAACk2Sh27DMAxErTiJ2zjpSNp07/n/P9jeAx4BETjIEo/H5e0wDL/BHGCLYBmsg5NgE2yDs\u002BA2uA8eg\u002BegiU\u002B5ZZfBSq0x\u002BA5O5fJ25fso78M8lfvGE5uCV8/RuvZyV\u002Bpu1F5ax6HrYbb\u002BJh/uUS00d/bW5MO9lovGuZpNPtwL81evk/dJ366LP6hRs9h3vrW5Zn3N2VStC2fRz\u002Bpoz8Rz3rmT2hc7eut29\u002BC\u002B8MOH\u002B\u002BU3eZ/cJX74cH/8RuNFzZol3Hd7xU8uONwxdoXho2Z2Syx\u002B4oklJ/rUQC30UDPmX6Lv2iu10AN33vmX6B3fX4x9MFPmwqyYZ9VIbeij8Q/Momb06AIAAA==",
+            "Topology": "H4sIAAAAAAAACk2SiW7DMAxDn5s02Zp2R7t1933\u002B/w9meBgFREDg2KIpifQW\u002BAUm/mMF9MAAnAAbYAucAbfAPfAIPAMt32ewFZfAOlwd8A2cBuvZVc674D5Sp2rfZDVG4DVrl772wa7Duwl3nz4Oixmm9N\u002BCF3sMl5y7zNaCF3sdrBzn4WzBi71I/Zp1zH5Mbre4fwhHabFf5IbUmpJr0aZ6XUWLpVbHzNxnvYsn5ZcevS28e4hfQ/Biv/Jv3ad4aV682J/8y/ESztJS7HtmNW8tMe4NvTLM2bPeete8971rTfntwV6coTT2LTl3\u002BWovzuDec9\u002BSs5ub53nWDzVVF7VSz\u002BrR3uSX4w/Momb06AIAAA==",
             "Positions": [
               "-64,-16,64.00001",
               "320,-16,64",
@@ -1142,7 +1147,7 @@
           "HideInGame": true,
           "IsTrigger": true,
           "Mesh": {
-            "Topology": "H4sIAAAAAAAACk2Sh27DMAxErTiJ2zjpSNp07/n/P9jeAx4BETjIEo/H5e0wDL/BHGCLYBmsg5NgE2yDs\u002BA2uA8eg\u002BegiU\u002B5ZZfBSq0x\u002BA5O5fJ25fso78M8lfvGE5uCV8/RuvZyV\u002Bpu1F5ax6HrYbb\u002BJh/uUS00d/bW5MO9lovGuZpNPtwL81evk/dJ366LP6hRs9h3vrW5Zn3N2VStC2fRz\u002Bpoz8Rz3rmT2hc7eut29\u002BC\u002B8MOH\u002B\u002BU3eZ/cJX74cH/8RuNFzZol3Hd7xU8uONwxdoXho2Z2Syx\u002B4oklJ/rUQC30UDPmX6Lv2iu10AN33vmX6B3fX4x9MFPmwqyYZ9VIbeij8Q/Momb06AIAAA==",
+            "Topology": "H4sIAAAAAAAACk2SiW7DMAxDn5s02Zp2R7t1933\u002B/w9meBgFREDg2KIpifQW\u002BAUm/mMF9MAAnAAbYAucAbfAPfAIPAMt32ewFZfAOlwd8A2cBuvZVc674D5Sp2rfZDVG4DVrl772wa7Duwl3nz4Oixmm9N\u002BCF3sMl5y7zNaCF3sdrBzn4WzBi71I/Zp1zH5Mbre4fwhHabFf5IbUmpJr0aZ6XUWLpVbHzNxnvYsn5ZcevS28e4hfQ/Biv/Jv3ad4aV682J/8y/ESztJS7HtmNW8tMe4NvTLM2bPeete8971rTfntwV6coTT2LTl3\u002BWovzuDec9\u002BSs5ub53nWDzVVF7VSz\u002BrR3uSX4w/Momb06AIAAA==",
             "Positions": [
               "-64,-16,64.00001",
               "320,-16,64",
@@ -1338,7 +1343,7 @@
           "HideInGame": false,
           "IsTrigger": false,
           "Mesh": {
-            "Topology": "H4sIAAAAAAAACk2Sh27DMAxErTiJ2zjpSNp07/n/P9jeAx4BETjIEo/H5e0wDL/BHGCLYBmsg5NgE2yDs\u002BA2uA8eg\u002BegiU\u002B5ZZfBSq0x\u002BA5O5fJ25fso78M8lfvGE5uCV8/RuvZyV\u002Bpu1F5ax6HrYbb\u002BJh/uUS00d/bW5MO9lovGuZpNPtwL81evk/dJ366LP6hRs9h3vrW5Zn3N2VStC2fRz\u002Bpoz8Rz3rmT2hc7eut29\u002BC\u002B8MOH\u002B\u002BU3eZ/cJX74cH/8RuNFzZol3Hd7xU8uONwxdoXho2Z2Syx\u002B4oklJ/rUQC30UDPmX6Lv2iu10AN33vmX6B3fX4x9MFPmwqyYZ9VIbeij8Q/Momb06AIAAA==",
+            "Topology": "H4sIAAAAAAAACk2SiW7DMAxDn5s02Zp2R7t1933\u002B/w9meBgFREDg2KIpifQW\u002BAUm/mMF9MAAnAAbYAucAbfAPfAIPAMt32ewFZfAOlwd8A2cBuvZVc674D5Sp2rfZDVG4DVrl772wa7Duwl3nz4Oixmm9N\u002BCF3sMl5y7zNaCF3sdrBzn4WzBi71I/Zp1zH5Mbre4fwhHabFf5IbUmpJr0aZ6XUWLpVbHzNxnvYsn5ZcevS28e4hfQ/Biv/Jv3ad4aV682J/8y/ESztJS7HtmNW8tMe4NvTLM2bPeete8971rTfntwV6coTT2LTl3\u002BWovzuDec9\u002BSs5ub53nWDzVVF7VSz\u002BrR3uSX4w/Momb06AIAAA==",
             "Positions": [
               "-64,-16,64.00001",
               "320,-16,64",
@@ -2535,5 +2540,6 @@
   "Title": "Grassforts",
   "Description": null,
   "__references": [],
+  "HasUnsavedChanges": false,
   "__version": 2
 }
