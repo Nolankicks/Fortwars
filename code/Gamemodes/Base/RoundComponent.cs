@@ -34,6 +34,8 @@ public sealed class RoundComponent : Component
 
 	[Property] bool PlayersToSpawns { get; set; } = true;
 
+	[Property] public bool CanOpenClassSelect { get; set; } = false;
+
 	public GameMode GameMode => Scene?.GetAll<GameMode>()?.FirstOrDefault();
 
 	public void ActivateRound()

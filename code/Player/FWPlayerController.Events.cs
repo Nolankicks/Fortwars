@@ -17,7 +17,7 @@ partial class FWPlayerController
 		if ( HealthComponent.IsValid() )
 			HealthComponent.ResetHealth();
 
-		Log.Info( "Player Reset" );
+		TeleportToAnySpawnPoint();
 	}
 
 	void IGameEventHandler<DamageEvent>.OnGameEvent( DamageEvent eventArgs )

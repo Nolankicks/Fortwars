@@ -37,6 +37,7 @@
                 "__type": "RoundComponent",
                 "__guid": "e44f4583-0b3c-4dca-8491-774985b7405b",
                 "AddClass": false,
+                "CanOpenClassSelect": false,
                 "CheckForWinningTeam": false,
                 "ClearAllWeapons": true,
                 "ClearClass": false,
@@ -205,6 +206,7 @@
                 "__type": "RoundComponent",
                 "__guid": "6ba6116e-10e0-4183-a2f1-45d8ec5648ca",
                 "AddClass": true,
+                "CanOpenClassSelect": true,
                 "CheckForWinningTeam": true,
                 "ClearAllWeapons": true,
                 "ClearClass": false,
@@ -212,7 +214,7 @@
                 "EndCondition": {
                   "__version": 8,
                   "__guid": "cc1ca8c1-895c-4fa1-a836-def18b712445",
-                  "__changeId": 22,
+                  "__changeId": 23,
                   "UserData": {
                     "Title": "End Condition",
                     "ReferencedComponentTypes": []
@@ -487,6 +489,7 @@
                 "__type": "RoundComponent",
                 "__guid": "82ac2f45-7e8f-4928-92d0-7b86283ad010",
                 "AddClass": false,
+                "CanOpenClassSelect": false,
                 "CheckForWinningTeam": false,
                 "ClearAllWeapons": true,
                 "ClearClass": false,
@@ -655,6 +658,7 @@
                 "__type": "RoundComponent",
                 "__guid": "4715cc07-74da-4aab-83af-91dd2916fd08",
                 "AddClass": false,
+                "CanOpenClassSelect": false,
                 "CheckForWinningTeam": true,
                 "ClearAllWeapons": true,
                 "ClearClass": false,
