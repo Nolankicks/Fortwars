@@ -280,15 +280,22 @@ public sealed partial class GameSystem : Component
 			StateSwitch = 0;
 
 			if ( MapVotes.Count == 0 )
-				return;
-
-			var map = MapVotes.OrderByDescending( x => x.Value ).FirstOrDefault().Key;
-
-			if ( map is not null )
 			{
-				Log.Info( $"Map {map.ResourceName} won the vote" );
+				PopupHolder.BroadcastPopup( "No map votes were casted. Restarting on the same map", 5 );
+				return;
+			}
 
-				Scene.Load( map.Scene );
+			var maxVotes = MapVotes.Max( x => x.Value );
+			var topMaps = MapVotes.Where( x => x.Value == maxVotes ).Select( x => x.Key ).ToList();
+
+			var random = new Random();
+			var selectedMap = topMaps[random.Next( topMaps.Count )];
+
+			if ( selectedMap is not null )
+			{
+				Log.Info( $"Map {selectedMap.ResourceName} won the vote" );
+
+				Scene.Load( selectedMap.Scene );
 			}
 		}
 	}
