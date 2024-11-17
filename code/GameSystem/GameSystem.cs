@@ -69,7 +69,8 @@ public sealed partial class GameSystem : Component
 	{
 		S_WAITING,
 		S_ACTIVE,
-		S_END
+		S_END,
+		S_VOTING,
 	}
 
 	[Property, Sync, ReadOnly] public GameStates GameState { get; set; } = GameStates.S_WAITING;
@@ -271,6 +272,24 @@ public sealed partial class GameSystem : Component
 			GameState = GameStates.S_WAITING;
 
 			StateSwitch = 0;
+		}
+		else if ( GameState == GameStates.S_VOTING && StateSwitch > 30 )
+		{
+			GameState = GameStates.S_WAITING;
+
+			StateSwitch = 0;
+
+			if ( MapVotes.Count == 0 )
+				return;
+
+			var map = MapVotes.OrderByDescending( x => x.Value ).FirstOrDefault().Key;
+
+			if ( map is not null )
+			{
+				Log.Info( $"Map {map.ResourceName} won the vote" );
+
+				Scene.Load( map.Scene );
+			}
 		}
 	}
 

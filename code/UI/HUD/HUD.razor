@@ -27,8 +27,6 @@
 	<Scoreboard/>
 
 	<Timer />
-
-	<MapVoting />
 </root>
 
 @code
@@ -97,6 +95,24 @@
 			default:
 				return "#1a1a1b";
 		}
+	}
+
+	[Broadcast]
+	public static void FlashMapVoting()
+	{
+		var hud = Instance;
+
+		if ( !hud.IsValid() )
+			return;
+
+		hud.Panel?.AddChild( new MapVoting() );
+
+		hud.Invoke( 30, () => {
+			if ( hud.Panel.IsValid() && hud.IsValid() && hud.Panel.ChildrenOfType<MapVoting>().Any() )
+			{
+				hud?.Panel?.ChildrenOfType<MapVoting>()?.ToList()?.ForEach( x => x.Delete() );
+			}
+		});
 	}
 
 	/// <summary>

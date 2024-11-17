@@ -29,6 +29,8 @@
         var gs = GameSystem.Instance;
         if (gs.GameState == GameSystem.GameStates.S_WAITING)
             return "Waiting for players";
+		else if (gs.GameState == GameSystem.GameStates.S_VOTING)
+			return "Voting";
         else if (gs.GameState == GameSystem.GameStates.S_END)
             return "Game Over!";
 
