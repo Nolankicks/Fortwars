@@ -9,6 +9,7 @@
       {
         "__type": "ClassicGameMode",
         "__guid": "7579476d-6c7f-415d-97b8-149783e56e3e",
+        "HasMapVoting": true,
         "InitialRound": {
           "_type": "component",
           "component_id": "e44f4583-0b3c-4dca-8491-774985b7405b",
@@ -148,7 +149,7 @@
                       "DstName": "_signal"
                     },
                     {
-                      "Id": 36,
+                      "Id": 38,
                       "Value": true,
                       "DstId": 4,
                       "DstName": "enable"
@@ -180,7 +181,7 @@
                   "weapondatas/propgun.weapons",
                   "weapondatas/physgun.weapons"
                 ],
-                "RoundTime": 60,
+                "RoundTime": 120,
                 "Time": true
               }
             ]
@@ -225,7 +226,7 @@
                   ],
                   "Links": [
                     {
-                      "Id": 3,
+                      "Id": 4,
                       "Value": false,
                       "DstId": 1,
                       "DstName": "_result"
@@ -440,7 +441,7 @@
                       "DstName": "_signal"
                     },
                     {
-                      "Id": 19,
+                      "Id": 20,
                       "Value": false,
                       "DstId": 12,
                       "DstName": "enable"
