@@ -97,6 +97,24 @@
 		}
 	}
 
+	[Broadcast]
+	public static void FlashMapVoting()
+	{
+		var hud = Instance;
+
+		if ( !hud.IsValid() )
+			return;
+
+		hud.Panel?.AddChild( new MapVoting() );
+
+		hud.Invoke( 30, () => {
+			if ( hud.Panel.IsValid() && hud.IsValid() && hud.Panel.ChildrenOfType<MapVoting>().Any() )
+			{
+				hud?.Panel?.ChildrenOfType<MapVoting>()?.ToList()?.ForEach( x => x.Delete() );
+			}
+		});
+	}
+
 	/// <summary>
 	/// the hash determines if the system should be rebuilt. If it changes, it will be rebuilt
 	/// </summary>

@@ -1,0 +1,128 @@
+@import "/UI/HUD/HUD.razor.scss";
+
+MapVoting
+{
+    position: absolute;
+    width: 50%;
+    height: 50%;
+
+    background-color: rgba($primary, 0.99);
+
+    pointer-events: all;
+    
+    display: flex;
+    flex-direction: column;
+
+    .map-voting-header
+    {
+        width: 100%;
+
+        padding: 12px;
+
+        font-size: 42px;
+
+        flex-direction: column;
+        flex-shrink: 0;
+    }
+
+    .hr
+    {
+        width: 100%;
+        height: 2px;
+
+        background-color: $button-primary-fg;
+    }
+
+    .inner
+    {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        padding: 12px;
+
+        .holder
+        {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            width: 100%;
+            justify-content: flex-start;
+            height: 100%;
+
+            overflow-y: scroll;
+            overflow-x: hidden;
+
+            .map
+            {
+                position: relative;
+                max-width: 24%;
+                aspect-ratio: 1 / 1;
+                background-color: $secondary;
+                flex-grow: 1;
+                height: 100%;
+                width: 100%;
+                flex-shrink: 0;
+
+                border-radius: $border-radius;
+                align-items: center;
+                justify-content: center;
+                transition: all 0.2s;
+
+                >.map-image
+                {
+                    width: 95%;
+                    height: 95%;
+                    background-size: cover;
+                    z-index: -1;
+                }
+
+                .info {
+                    position: absolute;
+                    bottom: 0;
+                    font-size: 18px;
+                    text-overflow: ellipsis;
+                    min-height: 32px;
+                    width: 90%;
+                    margin: 12px;
+                    border-radius: 12px;
+                    flex-direction: column;
+                    padding: 12px;
+                    align-items: center;
+                    justify-content: center;
+                    z-index: 100;
+                    background-color: $button-secondary;
+                    border-color: $primary;
+                    border-width: 4;
+                    gap: 2px;
+
+                    > p {
+                        font-size: 14px;
+                        text-align: center;
+                    }
+                }
+
+                &:hover {
+                    background-color: hsl(0, 0%, 20%);
+                    sound-in: ui.button.over;
+                    cursor: pointer;
+
+                    .chip {
+                        background-color: hsl(0, 0%, 20%);
+                    }
+
+                    .img {
+                        filter: brightness(0.8);
+                    }
+                }
+
+                &:active {
+                    background-color: hsl(0, 0%, 15%);
+                    sound-in: ui.button.press;
+                }
+            }
+        }
+    }
+}

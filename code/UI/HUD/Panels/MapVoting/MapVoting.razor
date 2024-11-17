@@ -1,0 +1,53 @@
+@using Sandbox;
+@using Sandbox.UI;
+@using System;
+@attribute [StyleSheet]
+@inherits Panel
+
+@{
+	var gs = GameSystem.Instance;
+
+	if ( !gs.IsValid() ) 
+		return;
+}
+
+<root>
+	<div class="map-voting-header">
+		<div style="margin-bottom: 6px;">Map Voting</div>
+		<div class="hr"></div>
+	</div>
+
+	<div class="inner">
+		<div class="holder">
+			@*Temp? Maybe we want a better way of handeling maps who support diff gamemodes*@
+			@foreach ( var map in ResourceLibrary.GetAll<MapInfo>().Where( x => x.AvailableGamemodes.HasFlag( gs.CurrentGameModeType ) ))
+			{
+				if ( map.Hidden )
+					continue;
+
+				var votes = gs.MapVotes.ContainsKey(map) ? gs.MapVotes[map] : 0;
+
+				<div class="map" onclick=@( () => gs.AddMapVote( map, FWPlayerController.Local ) )>
+					<div class="info">
+						<div>@map.MapName</div>
+						<div>Votes: @votes</div>
+					</div>
+					<div class="map-image" style="background-image: url(@map?.Thumb.ResourcePath);"></div>
+				</div>
+			}
+		</div>
+	</div>
+</root>
+
+@code
+{
+	protected override int BuildHash()
+	{
+		var gs = GameSystem.Instance;
+
+		if ( !gs.IsValid() ) 
+			return 0;
+
+		return gs.MapVotes.Count();
+	}
+}

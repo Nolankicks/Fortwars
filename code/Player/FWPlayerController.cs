@@ -65,6 +65,9 @@ IGameEventHandler<DeathEvent>, IGameEventHandler<OnPhysgunGrabChange>
 
 	public SceneTraceResult ViewTrace => Scene.Trace.Ray( Eye.WorldPosition, Eye.WorldPosition + EyeAngles.Forward * 1000 ).WithoutTags( FW.Tags.NoBuild, FW.Tags.Player ).Run();
 
+	//TODO RESET THIS SHIT!!!!
+	[Sync] public MapInfo VotedForMap { get; set; }
+
 	protected override void OnStart()
 	{
 		if ( !AnimHelper.IsValid() )
@@ -487,5 +490,11 @@ IGameEventHandler<DeathEvent>, IGameEventHandler<OnPhysgunGrabChange>
 
 		WalkSpeed = StartingWalkSpeed;
 		RunSpeed = StartingRunSpeed;
+	}
+
+	[Authority]
+	public void SetVotedMap( MapInfo map )
+	{
+		VotedForMap = map;
 	}
 }

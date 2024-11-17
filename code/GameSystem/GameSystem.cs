@@ -69,10 +69,14 @@ public sealed partial class GameSystem : Component
 	{
 		S_WAITING,
 		S_ACTIVE,
-		S_END
+		S_END,
+		S_VOTING,
 	}
 
 	[Property, Sync, ReadOnly] public GameStates GameState { get; set; } = GameStates.S_WAITING;
+
+	[Property, Feature( "Map Voting" ), Sync] public Dictionary<MapInfo, int> MapVotes { get; set; } = new();
+
 
 	protected override async Task OnLoad()
 	{
@@ -269,6 +273,31 @@ public sealed partial class GameSystem : Component
 
 			StateSwitch = 0;
 		}
+		else if ( GameState == GameStates.S_VOTING && StateSwitch > 30 )
+		{
+			GameState = GameStates.S_WAITING;
+
+			StateSwitch = 0;
+
+			if ( MapVotes.Count == 0 )
+			{
+				PopupHolder.BroadcastPopup( "No map votes were casted. Restarting on the same map", 5 );
+				return;
+			}
+
+			var maxVotes = MapVotes.Max( x => x.Value );
+			var topMaps = MapVotes.Where( x => x.Value == maxVotes ).Select( x => x.Key ).ToList();
+
+			var random = new Random();
+			var selectedMap = topMaps[random.Next( topMaps.Count )];
+
+			if ( selectedMap is not null )
+			{
+				Log.Info( $"Map {selectedMap.ResourceName} won the vote" );
+
+				Scene.Load( selectedMap.Scene );
+			}
+		}
 	}
 
 	[Button( "Save Lobby Settings" ), Feature( "Lobby Settings" )]
@@ -284,5 +313,28 @@ public sealed partial class GameSystem : Component
 	public bool CanStartGame()
 	{
 		return Scene.GetAll<FWPlayerController>().Count() >= PlayerToStart && StateSwitch > 5;
+	}
+
+	[Authority]
+	public void AddMapVote( MapInfo map, FWPlayerController caster )
+	{
+		if ( !caster.IsValid() )
+			return;
+
+		if ( caster.VotedForMap is not null && MapVotes.ContainsKey( caster.VotedForMap ) )
+		{
+			MapVotes[caster.VotedForMap]--;
+		}
+
+		caster.SetVotedMap( map );
+
+		if ( MapVotes.ContainsKey( map ) )
+		{
+			MapVotes[map]++;
+		}
+		else
+		{
+			MapVotes.Add( map, 1 );
+		}
 	}
 }
