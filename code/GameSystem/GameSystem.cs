@@ -287,4 +287,17 @@ public sealed partial class GameSystem : Component
 	{
 		return Scene.GetAll<FWPlayerController>().Count() >= PlayerToStart && StateSwitch > 5;
 	}
+
+	[Authority]
+	public void AddMapVote( MapInfo map )
+	{
+		if ( MapVotes.ContainsKey( map ) )
+		{
+			MapVotes[map]++;
+		}
+		else
+		{
+			MapVotes.Add( map, 1 );
+		}
+	}
 }
