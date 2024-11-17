@@ -7,15 +7,20 @@
 
 <root>
 
-	<div class="output">
-		@foreach (var entry in Entries)
-		{
+    <div class="output">
+        @foreach (var entry in Entries)
+        {
+            var isDev = DevCheck.IsDev(entry.steamid);
+
 			<div class="chat_entry">
 				@if (entry.steamid > 0)
 				{
 					<div class="avatar" style="background-image: url( avatar:@entry.steamid )"></div>
 				}
-				<div class="author" style="color: @(entry.Color.Hex);">@entry.author</div>
+                <div class="author" style="color: @(DevCheck.IsDev(entry.steamid) ? Color.Yellow.Hex : entry.Color.Hex);">
+                    @(isDev ? "[DEV] " : "")
+                    @entry.author
+                </div>
 				<div class="message">@entry.message</div>
 			</div>
 		}
