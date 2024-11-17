@@ -1,5 +1,3 @@
-using Sandbox;
-
 public sealed partial class Deathmatch : GameMode
 {
 	public override void WinGame( Team team = Team.None )
