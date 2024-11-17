@@ -74,6 +74,8 @@ public sealed partial class GameSystem : Component
 
 	[Property, Sync, ReadOnly] public GameStates GameState { get; set; } = GameStates.S_WAITING;
 
+	[Property, Feature( "Map Voting" ), Sync] public Dictionary<MapInfo, int> MapVotes { get; set; } = new();
+
 	protected override async Task OnLoad()
 	{
 		if ( Networking.IsHost && !Networking.IsActive && StartServer && !Scene.IsEditor )
