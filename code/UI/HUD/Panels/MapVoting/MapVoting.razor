@@ -1,0 +1,39 @@
+@using Sandbox;
+@using Sandbox.UI;
+@using System;
+@attribute [StyleSheet]
+@inherits Panel
+
+@{
+	var gs = GameSystem.Instance;
+
+	if ( !gs.IsValid() ) 
+		return;
+}
+
+<root>
+	<div class="map-voting-header">
+		<div style="margin-bottom: 6px;">Map Voting</div>
+		<div class="hr"></div>
+	</div>
+
+	<div class="inner">
+		<div class="holder">
+			@foreach ( var map in ResourceLibrary.GetAll<MapInfo>() )
+			{
+				if ( map.Hidden )
+					continue;
+
+				var votes = gs.MapVotes.ContainsKey(map) ? gs.MapVotes[map] : 0;
+
+				<div class="map" onclick=@( () => gs.AddMapVote( map ) )>
+					<div class="info">
+						<div>@map.MapName</div>
+						<div>Votes: @votes</div>
+					</div>
+					<div class="map-image" style="background-image: url(@map?.Thumb.ResourcePath);"></div>
+				</div>
+			}
+		</div>
+	</div>
+</root>
