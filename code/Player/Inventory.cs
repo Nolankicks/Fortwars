@@ -71,7 +71,7 @@ public sealed class Inventory : Component
 		if ( IsProxy )
 			return;
 
-		if ( Input.Pressed( "view" ) )
+		if ( Input.Pressed( "view" ) && (GameMode.ActiveRound.IsValid() && GameMode.ActiveRound.CanOpenClassSelect) )
 		{
 			var hud = Scene.GetAll<HUD>()?.FirstOrDefault();
 
@@ -89,7 +89,7 @@ public sealed class Inventory : Component
 
 			//if ( gs.State != GameSystem.GameState.Waiting && gs.State != GameSystem.GameState.Ended )
 			//{
-				OpenClassSelect();
+			OpenClassSelect();
 			//}
 		}
 
