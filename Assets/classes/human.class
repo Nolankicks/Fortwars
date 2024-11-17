@@ -1,12 +1,12 @@
 {
   "WeaponData": "weapondatas/pistol.weapons",
-  "ClassName": "Human",
+  "ClassName": "Light",
   "ClassDescription": "This is the default class. It is better to not underestimate the power of a pistol. Humans are quick on their feet. ",
-  "ClassIcon": null,
   "WalkSpeed": 350,
   "RunSpeed": 450,
   "Health": 100,
+  "Hidden": false,
   "__references": [],
-  "IsValid": true,
+  "HasUnsavedChanges": true,
   "__version": 0
 }

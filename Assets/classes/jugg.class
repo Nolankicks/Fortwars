@@ -1,12 +1,12 @@
 {
   "WeaponData": "weapondatas/shotgun.weapons",
-  "ClassName": "Juggernaut ",
+  "ClassName": "Heavy",
   "ClassDescription": "This class is the tankiest of them all, weilding a shotgun. This defensive class is best used in close quarters, and is great for guarding a base. ",
-  "ClassIcon": null,
   "WalkSpeed": 250,
   "RunSpeed": 350,
   "Health": 150,
+  "Hidden": false,
   "__references": [],
-  "IsValid": true,
+  "HasUnsavedChanges": true,
   "__version": 0
 }

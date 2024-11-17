@@ -17,7 +17,10 @@ partial class FWPlayerController
 		if ( HealthComponent.IsValid() )
 			HealthComponent.ResetHealth();
 
-		TeleportToAnySpawnPoint();
+		if ( Scene.GetAllComponents<GameMode>().FirstOrDefault().TeamsEnabled )
+			TeleportToTeamSpawnPoint();
+		else
+			TeleportToAnySpawnPoint();
 	}
 
 	void IGameEventHandler<DamageEvent>.OnGameEvent( DamageEvent eventArgs )
