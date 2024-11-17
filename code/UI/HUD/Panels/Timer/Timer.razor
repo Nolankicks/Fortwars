@@ -20,6 +20,12 @@
 		<div class="text">@FormatedTimer()</div>
 	</div>
     }
+	else if ( gs.GameState != GameSystem.GameStates.S_ACTIVE )
+	{
+		<div class="time">
+			<div class="text">@FormatedTimer()</div>
+		</div>
+	}
 </root>
 
 @code
@@ -49,6 +55,10 @@
 		else if (gs.GameState == GameSystem.GameStates.S_END)
 		{
 			return gs.StateSwitch - 5;
+		}
+		else if (gs.GameState == GameSystem.GameStates.S_VOTING)
+		{
+			return gs.StateSwitch - 30;
 		}
         else if (round.IsValid())
         {
