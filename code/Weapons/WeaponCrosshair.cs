@@ -18,6 +18,10 @@ public sealed class WeaponCrosshair : Component
 
 	[Category( "Ammo" ), Property] float AmmoAngle { get; set; } = 180.0f;
 
+	float HitmarkerPerc { get; set; } = 1.0f;
+
+	private bool IsHeadshot { get; set; } = false;
+
 	protected override void OnUpdate()
 	{
 		if ( IsProxy )
@@ -28,6 +32,8 @@ public sealed class WeaponCrosshair : Component
 			DynamicGap = (local.shrimpleCharacterController.Velocity.Length * 0.03f);
 
 		DrawCrosshair( Scene.Camera.Hud );
+
+		HitmarkerPerc = HitmarkerPerc.LerpTo( 0.0f, Time.Delta * 10.0f );
 	}
 
 	void DrawCrosshair( HudPainter hud )
@@ -56,6 +62,19 @@ public sealed class WeaponCrosshair : Component
 		if ( TopEnabled )
 			DrawLine( hud, center - up * _gap, center - up * _end, Color.White, Size );
 
+		if ( HitmarkerPerc > 0.1f )
+		{
+			float hitEnd = Gap + Length * HitmarkerPerc;
+			Rotation hitAng = new Angles( 0, 45, 0 );
+			Vector2 hitUp = hitAng.Forward;
+			Vector2 hitSide = hitAng.Left;
+			Color hitColor = IsHeadshot ? Color.Red : Color.White;
+			hud.DrawLine( center + hitUp * Gap, center + hitUp * hitEnd, 1.0f, hitColor );
+			hud.DrawLine( center - hitUp * Gap, center - hitUp * hitEnd, 1.0f, hitColor );
+			hud.DrawLine( center + hitSide * Gap, center + hitSide * hitEnd, 1.0f, hitColor );
+			hud.DrawLine( center - hitSide * Gap, center - hitSide * hitEnd, 1.0f, hitColor );
+		}
+
 		if ( !Weapon.IsValid() )
 			return;
 
@@ -82,5 +101,12 @@ public sealed class WeaponCrosshair : Component
 			hud.DrawLine( start, end, size + BorderSize, Color.Black, corners: Vector4.One * 4.0f );
 
 		hud.DrawLine( start, end, size, col, corners: Vector4.One * 4.0f );
+	}
+
+	public void DoHitmarker( bool Kill )
+	{
+		Sound.Play( "hitmarker" );
+		HitmarkerPerc = 1.0f;
+		IsHeadshot = Kill;
 	}
 }

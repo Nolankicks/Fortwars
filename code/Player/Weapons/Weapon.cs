@@ -108,7 +108,8 @@ public class Weapon : Item, IGameEventHandler<OnReloadEvent>
 	[Property, Feature( "Casing" )] public Model CasingModel { get; set; }
 	[Property, Feature( "Casing" )] public GameObject EjectionPoint { get; set; }
 
-
+	[Property, FeatureEnabled( "Crosshair" )] bool CrosshairEnabled { get; set; }
+	[Property, Feature( "Crosshair" )] WeaponCrosshair WeaponCrosshair { get; set; }
 
 	public enum FireTypes
 	{
@@ -138,8 +139,14 @@ public class Weapon : Item, IGameEventHandler<OnReloadEvent>
 
 		if ( (CheckFireInput() && lastFired > FireRate) && CanUse() && reloadTime > ReloadDelay && CanFire && !IsReloading )
 		{
+			Hit = false;
 			for ( var i = 0; i < TraceTimes; i++ )
 				Shoot( i );
+
+			if ( Hit && CrosshairEnabled )
+			{
+				WeaponCrosshair.DoHitmarker( Died );
+			}
 
 			SubtractAmmo();
 
@@ -178,6 +185,9 @@ public class Weapon : Item, IGameEventHandler<OnReloadEvent>
 			GameObject.Dispatch( new WeaponAnimEvent( "b_empty", true ) );
 		}
 	}
+
+	private bool Hit { get; set; } = false;
+	private bool Died { get; set; } = false;
 
 	public void Shoot( int index = 0 )
 	{
@@ -224,14 +234,14 @@ public class Weapon : Item, IGameEventHandler<OnReloadEvent>
 						textRenderer.Text = new TextRendering.Scope( Damage.ToString(), Color.White, 24 );
 					}
 				}
-
-				Sound.Play( "hitmarker" );
-
 				var hud = HUD.Instance;
 
 				if ( hud.IsValid() )
 					hud.FlashHitMarker();
 			}
+
+			Hit = true;
+			Died = health.IsDead;
 		}
 
 		var damage = new DamageInfo( Damage, GameObject, GameObject, tr.Hitbox );
