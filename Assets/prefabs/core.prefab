@@ -113,7 +113,7 @@
           {
             "__type": "GameSystem",
             "__guid": "c2b69b60-c9c1-4a84-866a-a00f287f6fdc",
-            "BlueTimeHeld": 5,
+            "BlueTimeHeld": 60,
             "BuildTime": 120,
             "ClassicModels": true,
             "CurrentGameMode": "gamemodes/deathmatch.mode",
@@ -135,7 +135,7 @@
               "prefab": "prefabs/player.prefab"
             },
             "PlayerToStart": 2,
-            "RedTimeHeld": 5,
+            "RedTimeHeld": 60,
             "SpawnPlayer": true,
             "StartServer": true,
             "YellowTimeHeld": 60
