@@ -37,6 +37,7 @@
                 "__type": "RoundComponent",
                 "__guid": "346d83ed-5cdf-4c79-838c-2241d58472e0",
                 "AddClass": false,
+                "CanOpenClassSelect": false,
                 "CheckForWinningTeam": false,
                 "ClearAllWeapons": true,
                 "ClearClass": false,
@@ -228,7 +229,7 @@
                       "DstName": "_signal"
                     },
                     {
-                      "Id": 21,
+                      "Id": 28,
                       "Value": true,
                       "DstId": 20,
                       "DstName": "_value"
@@ -240,7 +241,7 @@
                       "DstName": "_signal"
                     },
                     {
-                      "Id": 25,
+                      "Id": 29,
                       "Value": false,
                       "DstId": 23,
                       "DstName": "_value"
@@ -259,7 +260,7 @@
                 "OnRoundStart": {
                   "__version": 8,
                   "__guid": "22e5145b-630e-4319-a31d-18fd9b981252",
-                  "__changeId": 46,
+                  "__changeId": 47,
                   "UserData": {
                     "Title": "On Round Start",
                     "ReferencedComponentTypes": []
@@ -401,7 +402,7 @@
                       "DstName": "_target"
                     },
                     {
-                      "Id": 8,
+                      "Id": 19,
                       "Value": false,
                       "DstId": 4,
                       "DstName": "enable"
@@ -454,10 +455,7 @@
                 },
                 "PlayersToSpawns": true,
                 "PlayerWeapons": [
-                  "weapondatas/m4a4.weapons",
-                  "weapondatas/mp5.weapons",
-                  "weapondatas/pistol.weapons",
-                  "weapondatas/shotgun.weapons"
+                  "weapondatas/pistol.weapons"
                 ],
                 "RoundTime": 360,
                 "Time": true
