@@ -54,7 +54,7 @@
                 "OnRoundStart": {
                   "__version": 8,
                   "__guid": "0def4a9f-0327-4117-8b0a-b78f4dc75b92",
-                  "__changeId": 60,
+                  "__changeId": 63,
                   "UserData": {
                     "Title": "On Round Start",
                     "ReferencedComponentTypes": [
@@ -65,7 +65,10 @@
                   "Nodes": [
                     {
                       "Id": 0,
-                      "Type": "input"
+                      "Type": "input",
+                      "UserData": {
+                        "Position": "288,-156"
+                      }
                     },
                     {
                       "Id": 1,
@@ -74,7 +77,7 @@
                         "T": "RoundComponent"
                       },
                       "UserData": {
-                        "Position": "-456,132",
+                        "Position": "-168,-24",
                         "Labels": {
                           "_result": "Round component"
                         }
@@ -89,28 +92,21 @@
                         "_type": "RoundComponent"
                       },
                       "UserData": {
-                        "Position": "0,60"
+                        "Position": "288,-96"
                       }
                     },
                     {
                       "Id": 4,
                       "Type": "Toggle Wall",
                       "UserData": {
-                        "Position": "-0,120"
-                      }
-                    },
-                    {
-                      "Id": 5,
-                      "Type": "Reset All Teams",
-                      "UserData": {
-                        "Position": "96,216"
+                        "Position": "288,-36"
                       }
                     },
                     {
                       "Id": 31,
                       "Type": "scene.ref",
                       "UserData": {
-                        "Position": "-516,240"
+                        "Position": "-240,84"
                       }
                     },
                     {
@@ -122,7 +118,7 @@
                         "_type": "GameMode"
                       },
                       "UserData": {
-                        "Position": "-216,300"
+                        "Position": "72,144"
                       }
                     }
                   ],
@@ -156,12 +152,6 @@
                       "Value": true,
                       "DstId": 4,
                       "DstName": "enable"
-                    },
-                    {
-                      "SrcId": 34,
-                      "SrcName": "_signal",
-                      "DstId": 5,
-                      "DstName": "_signal"
                     },
                     {
                       "SrcId": 4,
@@ -251,7 +241,6 @@
                 "IsLastRound": false,
                 "IsRoundActive": false,
                 "Name": "Fight Mode",
-                "NextRoundTimer": null,
                 "OnPlayerJoin": {
                   "__version": 8,
                   "__guid": "9b8746c5-6c1c-4940-8385-d5cc7df81e4e",
