@@ -36,6 +36,11 @@ public sealed class RoundComponent : Component
 
 	[Property] public bool CanOpenClassSelect { get; set; } = false;
 
+	[Property, ToggleGroup( "Warning" )] public bool Warning { get; set; }
+	[Property, Group( "Warning" )] public string WarningText { get; set; }
+	[Property, Group( "Warning" )] public float WarningTime { get; set; }
+	[Property, Group( "Warning" )] public int WarningDuration { get; set; }
+
 	public GameMode GameMode => Scene?.GetAll<GameMode>()?.FirstOrDefault();
 
 	public void ActivateRound()
@@ -63,7 +68,7 @@ public sealed class RoundComponent : Component
 		}
 
 		if ( PlayersToSpawns )
-			GameMode.ResetPlayers();
+			TeamComponent.TeleportAllTeams();
 
 		Scene.Dispatch( new OnRoundSwitch() );
 
@@ -101,6 +106,14 @@ public sealed class RoundComponent : Component
 		if ( CheckForWinningTeam )
 		{
 			GameMode.CheckForWinningTeam();
+		}
+
+		if ( Warning )
+		{
+			if ( RoundTimer.Relative == WarningTime )
+			{
+				PopupHolder.BroadcastPopup( WarningText, WarningDuration );
+			}
 		}
 	}
 

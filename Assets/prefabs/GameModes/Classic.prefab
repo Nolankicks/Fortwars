@@ -9,6 +9,7 @@
       {
         "__type": "ClassicGameMode",
         "__guid": "7579476d-6c7f-415d-97b8-149783e56e3e",
+        "HasMapVoting": true,
         "InitialRound": {
           "_type": "component",
           "component_id": "e44f4583-0b3c-4dca-8491-774985b7405b",
@@ -54,7 +55,7 @@
                 "OnRoundStart": {
                   "__version": 8,
                   "__guid": "0def4a9f-0327-4117-8b0a-b78f4dc75b92",
-                  "__changeId": 63,
+                  "__changeId": 64,
                   "UserData": {
                     "Title": "On Round Start",
                     "ReferencedComponentTypes": [
@@ -148,7 +149,7 @@
                       "DstName": "_signal"
                     },
                     {
-                      "Id": 36,
+                      "Id": 35,
                       "Value": true,
                       "DstId": 4,
                       "DstName": "enable"
@@ -181,7 +182,11 @@
                   "weapondatas/physgun.weapons"
                 ],
                 "RoundTime": 60,
-                "Time": true
+                "Time": true,
+                "Warning": true,
+                "WarningDuration": 5,
+                "WarningText": "Test",
+                "WarningTime": 45
               }
             ]
           },
@@ -225,7 +230,7 @@
                   ],
                   "Links": [
                     {
-                      "Id": 3,
+                      "Id": 2,
                       "Value": false,
                       "DstId": 1,
                       "DstName": "_result"
@@ -331,7 +336,7 @@
                 "OnRoundStart": {
                   "__version": 8,
                   "__guid": "a8a041bc-7d5b-4c31-b007-98d025bf4fdf",
-                  "__changeId": 60,
+                  "__changeId": 64,
                   "UserData": {
                     "Title": "On Round Start",
                     "ReferencedComponentTypes": [
@@ -357,7 +362,7 @@
                         "T": "RoundComponent"
                       },
                       "UserData": {
-                        "Position": "0,252",
+                        "Position": "0,216",
                         "Labels": {
                           "_result": "Round component"
                         }
@@ -392,13 +397,6 @@
                       "Type": "Toggle Wall",
                       "UserData": {
                         "Position": "0,156"
-                      }
-                    },
-                    {
-                      "Id": 17,
-                      "Type": "Reset All Teams",
-                      "UserData": {
-                        "Position": "0,216"
                       }
                     }
                   ],
@@ -440,16 +438,10 @@
                       "DstName": "_signal"
                     },
                     {
-                      "Id": 19,
+                      "Id": 18,
                       "Value": false,
                       "DstId": 12,
                       "DstName": "enable"
-                    },
-                    {
-                      "SrcId": 0,
-                      "SrcName": "_signal",
-                      "DstId": 17,
-                      "DstName": "_signal"
                     }
                   ]
                 },
@@ -458,7 +450,10 @@
                   "weapondatas/gravgun.weapons"
                 ],
                 "RoundTime": 5,
-                "Time": false
+                "Time": false,
+                "Warning": false,
+                "WarningDuration": 0,
+                "WarningTime": 0
               }
             ]
           }
