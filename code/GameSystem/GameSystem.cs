@@ -261,6 +261,12 @@ public sealed partial class GameSystem : Component
 		if ( IsProxy )
 			return;
 
+		if ( Application.IsHeadless && !Connection.All.Any() && CurrentGameModeComponent.IsValid() && GameState == GameStates.S_ACTIVE )
+		{
+			CurrentGameModeComponent.EndGame();
+			Log.Info( "No players connected, ending game" );
+		}
+
 		if ( GameState == GameStates.S_WAITING && CanStartGame() )
 		{
 			GameState = GameStates.S_ACTIVE;
@@ -313,7 +319,7 @@ public sealed partial class GameSystem : Component
 
 	public bool CanStartGame()
 	{
-		return (Scene.GetAll<FWPlayerController>().Count() >= (Application.IsHeadless ? 2 : PlayerToStart)) && StateSwitch > 5;
+		return (Scene.GetAll<FWPlayerController>().Count() >= (Application.IsHeadless ? 1 : PlayerToStart)) && StateSwitch > 5;
 	}
 
 	[Authority]
