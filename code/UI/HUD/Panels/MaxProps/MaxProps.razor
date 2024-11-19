@@ -9,37 +9,40 @@
 		var gs = GameSystem.Instance;
 		var player = FWPlayerController.Local;
 
-		if ( !gs.IsValid() || !player.IsValid() )
+		if (!gs.IsValid() || !player.IsValid())
 			return;
-	}
 
-			@if ( true )
-            {
-                var localTeam = player.TeamComponent;
+		if (gs.CurrentGameModeComponent.IsValid() && gs.CurrentGameModeComponent.CurrentRound.IsValid() &&
+		gs.CurrentGameModeComponent.CurrentRound.Name == "Build Mode")
+		}
 
-                if ( !localTeam.IsValid() )
-                    return;
+		@if (true)
+		{
+			var localTeam = player.TeamComponent;
 
-                switch ( localTeam.Team )
-                {
-                    case Team.Red:
-							<div class="text red">Props Left</div>
-							<div class="number">@(gs.MaxProps - gs.RedProps.Count())</div>
-                        break;
-                    case Team.Blue:
-							<div class="text blue">Props Left</div>
-							<div class="number">@(gs.MaxProps - gs.BlueProps.Count())</div>
-                        break;
-                    case Team.Green:
-							<div class="text green">Props Left</div>
-							<div class="number">@(gs.MaxProps - gs.GreenProps?.Count())</div>
-                        break;
-                    case Team.Yellow:
-							<div class="text yellow">Props Left</div>
-							<div class="number">@(gs.MaxProps - gs.YellowProps?.Count())</div>
-                        break;
-                }
-            }
+			if (!localTeam.IsValid())
+				return;
+
+			switch (localTeam.Team)
+			{
+				case Team.Red:
+					<div class="text red">Props Left</div>
+					<div class="number">@(gs.MaxProps - gs.RedProps.Count())</div>
+					break;
+				case Team.Blue:
+					<div class="text blue">Props Left</div>
+					<div class="number">@(gs.MaxProps - gs.BlueProps.Count())</div>
+					break;
+				case Team.Green:
+					<div class="text green">Props Left</div>
+					<div class="number">@(gs.MaxProps - gs.GreenProps?.Count())</div>
+					break;
+				case Team.Yellow:
+					<div class="text yellow">Props Left</div>
+					<div class="number">@(gs.MaxProps - gs.YellowProps?.Count())</div>
+					break;
+			}
+		}
 
 </root>
 
@@ -49,6 +52,7 @@
 	{
 		var gs = GameSystem.Instance;
 
-		return System.HashCode.Combine( gs?.MaxProps, gs?.RedProps?.Count(), gs?.BlueProps?.Count(), gs?.GreenProps?.Count(), gs?.YellowProps?.Count() );
+		return System.HashCode.Combine(gs?.MaxProps, gs?.RedProps?.Count(), gs?.BlueProps?.Count(), gs?.GreenProps?.Count(),
+		gs?.YellowProps?.Count(), gs?.CurrentGameModeComponent?.CurrentRound?.Name);
 	}
 }

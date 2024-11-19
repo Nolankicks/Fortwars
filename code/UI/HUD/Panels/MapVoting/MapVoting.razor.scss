@@ -12,6 +12,7 @@ MapVoting
     
     display: flex;
     flex-direction: column;
+    border-radius: $border-radius;
 
     .map-voting-header
     {

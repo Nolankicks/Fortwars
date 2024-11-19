@@ -9,6 +9,7 @@
       {
         "__type": "Deathmatch",
         "__guid": "b000a83d-f9e9-4d68-ad49-d7a8400dc495",
+        "HasMapVoting": true,
         "InitialRound": {
           "_type": "component",
           "component_id": "346d83ed-5cdf-4c79-838c-2241d58472e0",
@@ -217,7 +218,7 @@
                       "DstName": "a"
                     },
                     {
-                      "Id": 27,
+                      "Id": 24,
                       "Value": 25,
                       "DstId": 16,
                       "DstName": "b"
@@ -229,7 +230,7 @@
                       "DstName": "_signal"
                     },
                     {
-                      "Id": 28,
+                      "Id": 25,
                       "Value": true,
                       "DstId": 20,
                       "DstName": "_value"
@@ -241,7 +242,7 @@
                       "DstName": "_signal"
                     },
                     {
-                      "Id": 29,
+                      "Id": 26,
                       "Value": false,
                       "DstId": 23,
                       "DstName": "_value"
@@ -402,7 +403,7 @@
                       "DstName": "_target"
                     },
                     {
-                      "Id": 19,
+                      "Id": 18,
                       "Value": false,
                       "DstId": 4,
                       "DstName": "enable"
@@ -455,10 +456,15 @@
                 },
                 "PlayersToSpawns": true,
                 "PlayerWeapons": [
-                  "weapondatas/pistol.weapons"
+                  "weapondatas/pistol.weapons",
+                  "weapondatas/m4a4.weapons",
+                  "weapondatas/mp5.weapons"
                 ],
                 "RoundTime": 360,
-                "Time": true
+                "Time": true,
+                "Warning": false,
+                "WarningDuration": 0,
+                "WarningTime": 0
               }
             ]
           }

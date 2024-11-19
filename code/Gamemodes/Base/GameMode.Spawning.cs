@@ -15,15 +15,6 @@ public partial class GameMode
 
 		var player = GameSystem.PlayerPrefab.Clone( SpawnTransform );
 
-		if ( player.Components.TryGet<FWPlayerController>( out var p ) )
-		{
-			p.SetWorld( SpawnTransform );
-			if ( TeamsEnabled )
-				p.TeamComponent.SetTeam( TeamComponent.GetTeamLowestCount() );
-
-			p.TeleportToTeamSpawnPoint();
-		}
-
 		if ( player.Components.TryGet<CitizenAnimationHelper>( out var animHelper, FindMode.EnabledInSelfAndChildren ) && animHelper.Target.IsValid() )
 		{
 			var clothing = new ClothingContainer();
@@ -45,6 +36,15 @@ public partial class GameMode
 			{
 				i.AddItems( mode.CurrentRound.PlayerWeapons );
 			}
+		}
+
+		if ( player.Components.TryGet<FWPlayerController>( out var p ) )
+		{
+			p.SetWorld( SpawnTransform );
+			if ( TeamsEnabled )
+				p.TeamComponent.SetTeam( TeamComponent.GetTeamLowestCount() );
+
+			p.TeleportToTeamSpawnPoint();
 		}
 
 		//We need a better way of joining mid game. But I'm not sure what the best way is. Maybe an action on the round gameobject?

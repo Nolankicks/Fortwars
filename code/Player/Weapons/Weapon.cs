@@ -234,6 +234,7 @@ public class Weapon : Item, IGameEventHandler<OnReloadEvent>
 						textRenderer.Text = new TextRendering.Scope( Damage.ToString(), Color.White, 24 );
 					}
 				}
+				
 				var hud = HUD.Instance;
 
 				if ( hud.IsValid() )

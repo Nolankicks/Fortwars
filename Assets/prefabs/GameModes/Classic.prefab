@@ -55,7 +55,7 @@
                 "OnRoundStart": {
                   "__version": 8,
                   "__guid": "0def4a9f-0327-4117-8b0a-b78f4dc75b92",
-                  "__changeId": 63,
+                  "__changeId": 80,
                   "UserData": {
                     "Title": "On Round Start",
                     "ReferencedComponentTypes": [
@@ -78,7 +78,7 @@
                         "T": "RoundComponent"
                       },
                       "UserData": {
-                        "Position": "-168,-24",
+                        "Position": "-108,-156",
                         "Labels": {
                           "_result": "Round component"
                         }
@@ -107,7 +107,7 @@
                       "Id": 31,
                       "Type": "scene.ref",
                       "UserData": {
-                        "Position": "-240,84"
+                        "Position": "-108,132"
                       }
                     },
                     {
@@ -120,6 +120,18 @@
                       },
                       "UserData": {
                         "Position": "72,144"
+                      }
+                    },
+                    {
+                      "Id": 39,
+                      "Type": "call",
+                      "Properties": {
+                        "_isStatic": false,
+                        "_name": "DestroyAllProps",
+                        "_type": "RoundComponent"
+                      },
+                      "UserData": {
+                        "Position": "72,216"
                       }
                     }
                   ],
@@ -149,7 +161,7 @@
                       "DstName": "_signal"
                     },
                     {
-                      "Id": 38,
+                      "Id": 35,
                       "Value": true,
                       "DstId": 4,
                       "DstName": "enable"
@@ -158,12 +170,28 @@
                       "SrcId": 4,
                       "SrcName": "_signal",
                       "DstId": 34,
-                      "DstName": "_signal"
+                      "DstName": "_signal",
+                      "UserData": {
+                        "y": 96,
+                        "b": -24
+                      }
                     },
                     {
                       "SrcId": 31,
                       "SrcName": "_result",
                       "DstId": 34,
+                      "DstName": "_target"
+                    },
+                    {
+                      "SrcId": 34,
+                      "SrcName": "_signal",
+                      "DstId": 39,
+                      "DstName": "_signal"
+                    },
+                    {
+                      "SrcId": 1,
+                      "SrcName": "_result",
+                      "DstId": 39,
                       "DstName": "_target"
                     }
                   ],
@@ -182,7 +210,10 @@
                   "weapondatas/physgun.weapons"
                 ],
                 "RoundTime": 120,
-                "Time": true
+                "Time": true,
+                "Warning": false,
+                "WarningDuration": 0,
+                "WarningTime": 0
               }
             ]
           },
@@ -226,7 +257,7 @@
                   ],
                   "Links": [
                     {
-                      "Id": 4,
+                      "Id": 2,
                       "Value": false,
                       "DstId": 1,
                       "DstName": "_result"
@@ -441,7 +472,7 @@
                       "DstName": "_signal"
                     },
                     {
-                      "Id": 20,
+                      "Id": 18,
                       "Value": false,
                       "DstId": 12,
                       "DstName": "enable"
@@ -459,7 +490,10 @@
                   "weapondatas/gravgun.weapons"
                 ],
                 "RoundTime": 5,
-                "Time": false
+                "Time": false,
+                "Warning": false,
+                "WarningDuration": 0,
+                "WarningTime": 0
               }
             ]
           }

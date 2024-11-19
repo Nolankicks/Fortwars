@@ -223,6 +223,11 @@ public sealed class RoundComponent : Component
 		} );
 	}
 
+	public void DestroyAllProps()
+	{
+		Scene.GetAll<FortwarsProp>()?.Where( x => !x.Invincible )?.ToList()?.ForEach( x => x.DestroyProp() );
+	}
+
 	public void SpawnFightModePopups()
 	{
 		var gamemode = GameMode;
