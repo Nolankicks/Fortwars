@@ -32,16 +32,16 @@ public sealed class Viewmodel : Component, IGameEventHandler<JumpEvent>, IGameEv
 
 		var local = FWPlayerController.Local;
 
-		if ( !local.IsValid() || !Renderer.IsValid() && !local.shrimpleCharacterController.IsValid() )
-			return;
+		////if ( !local.IsValid() || !Renderer.IsValid() && !local.shrimpleCharacterController.IsValid() )
+		////	return;
 
-		Renderer.Set( "b_grounded", local.shrimpleCharacterController.IsOnGround );
+		//Renderer.Set( "b_grounded", local.shrimpleCharacterController.IsOnGround );
 	}
 
 	void ApplyInertia()
 	{
 		var camera = Scene.GetAllComponents<CameraComponent>().FirstOrDefault( x => !x.IsProxy );
-		var controller = FWPlayerController.Local?.shrimpleCharacterController;
+		var controller = this.GetLocalPlayer();
 
 		if ( !camera.IsValid() || !Renderer.IsValid() || !controller.IsValid() )
 			return;
@@ -71,7 +71,7 @@ public sealed class Viewmodel : Component, IGameEventHandler<JumpEvent>, IGameEv
 	{
 		if ( GameObject.Parent.IsProxy )
 			return;
-		
+
 		if ( Renderer.IsValid() )
 		{
 			Renderer.Set( "b_attack", false );

@@ -389,7 +389,7 @@ public class Weapon : Item, IGameEventHandler<OnReloadEvent>
 
 	void EjectCasing()
 	{
-		var local = FWPlayerController.Local;
+		var local = this.GetLocalPlayer();
 
 		if ( !HasBulletCasing || !local.IsValid() || !EjectionPoint.IsValid() )
 			return;
@@ -400,7 +400,7 @@ public class Weapon : Item, IGameEventHandler<OnReloadEvent>
 		casing.Components.Get<ModelRenderer>().Model = CasingModel;
 
 		var rb = casing.Components.Get<Rigidbody>();
-		rb.ApplyForce( EjectionPoint.WorldRotation.Up * 10.0f + EjectionPoint.WorldRotation.Forward * 500.0f + local.shrimpleCharacterController.Velocity );
+		rb.ApplyForce( EjectionPoint.WorldRotation.Up * 10.0f + EjectionPoint.WorldRotation.Forward * 500.0f + local.Velocity );
 	}
 
 	public async Task ShotgunReload()

@@ -131,28 +131,28 @@ public class ScopeWeaponComponent : Weapon
 			EndZoom();
 		}
 
-		if ( IsZooming )
-		{
+		//if ( IsZooming )
+		//{
 
-			var cc = FWPlayerController.Local?.shrimpleCharacterController;
+		//	var cc = FWPlayerController.Local?.shrimpleCharacterController;
 
-			float velocity = cc.Velocity.Length / 25.0f;
-			float blur = 1.0f / (velocity + 1.0f);
-			blur = MathX.Clamp( blur, 0.1f, 1.0f );
+		//	float velocity = cc.Velocity.Length / 25.0f;
+		//	float blur = 1.0f / (velocity + 1.0f);
+		//	blur = MathX.Clamp( blur, 0.1f, 1.0f );
 
-			if ( !cc.IsOnGround )
-				blur = 0.1f;
+		//	if ( !cc.IsOnGround )
+		//		blur = 0.1f;
 
-			if ( blur > BlurLerp )
-				BlurLerp = BlurLerp.LerpTo( blur, Time.Delta * 1.0f );
-			else
-				BlurLerp = BlurLerp.LerpTo( blur, Time.Delta * 10.0f );
+		//	if ( blur > BlurLerp )
+		//		BlurLerp = BlurLerp.LerpTo( blur, Time.Delta * 1.0f );
+		//	else
+		//		BlurLerp = BlurLerp.LerpTo( blur, Time.Delta * 10.0f );
 
-			var angles = FWPlayerController.Local.EyeAngles;
-			var delta = angles - LastAngles;
+		//	var angles = FWPlayerController.Local.EyeAngles;
+		//	var delta = angles - LastAngles;
 
-			AnglesLerp = AnglesLerp.LerpTo( delta, Time.Delta * 10.0f );
-			LastAngles = angles;
-		}
+		//	AnglesLerp = AnglesLerp.LerpTo( delta, Time.Delta * 10.0f );
+		//	LastAngles = angles;
+		//}
 	}
 };

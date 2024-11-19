@@ -29,7 +29,7 @@ public sealed class WeaponCrosshair : Component
 
 		var local = FWPlayerController.Local;
 		if ( local.IsValid() && Dynamic )
-			DynamicGap = (local.shrimpleCharacterController.Velocity.Length * 0.03f);
+			DynamicGap = (this.GetLocalPlayer().Velocity.Length * 0.03f);
 
 		DrawCrosshair( Scene.Camera.Hud );
 

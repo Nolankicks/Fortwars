@@ -129,6 +129,7 @@
               "MaxProps": 50,
               "MaxPlayers": 64
             },
+            "MapVotes": {},
             "MaxProps": 50,
             "PlayerPrefab": {
               "_type": "gameobject",

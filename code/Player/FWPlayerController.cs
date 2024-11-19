@@ -7,7 +7,6 @@ public sealed partial class FWPlayerController : Component, IGameEventHandler<Da
 IGameEventHandler<DeathEvent>, IGameEventHandler<OnPhysgunGrabChange>
 {
 	//Refrences
-	[Property, Category( "References" )] public ShrimpleCharacterController.ShrimpleCharacterController shrimpleCharacterController { get; set; }
 	[Property, Category( "References" ), Sync] public CitizenAnimationHelper AnimHelper { get; set; }
 	[Property, Category( "References" )] public GameObject Eye { get; set; }
 	[Property, Category( "References" )] public CapsuleCollider Hitbox { get; set; }
@@ -101,19 +100,6 @@ IGameEventHandler<DeathEvent>, IGameEventHandler<OnPhysgunGrabChange>
 		AnimHelper.HoldType = newValue;
 	}
 
-	protected override void OnFixedUpdate()
-	{
-		if ( !IsProxy )
-		{
-			Crouch();
-			Move();
-
-			if ( shrimpleCharacterController.IsOnGround && !LastOnGround )
-				CameraController.Instance.RecoilFire( new Vector3( 5, 0, 0 ) );
-
-			LastOnGround = shrimpleCharacterController.IsOnGround;
-		}
-	}
 
 	protected override void OnUpdate()
 	{
@@ -127,56 +113,6 @@ IGameEventHandler<DeathEvent>, IGameEventHandler<OnPhysgunGrabChange>
 		UpdateAnimation();
 		if ( AnimHelper?.Target.IsValid() ?? false )
 			AnimHelper.Target.WorldRotation = new Angles( 0, EyeAngles.yaw, 0 ).ToRotation();
-	}
-
-	public void Crouch()
-	{
-		var wishCrouch = Input.Down( "duck" );
-
-		if ( wishCrouch == IsCrouching )
-			return;
-
-		// crouch
-		if ( wishCrouch )
-		{
-			shrimpleCharacterController.TraceHeight = 36;
-			IsCrouching = wishCrouch;
-
-			if ( !shrimpleCharacterController.IsOnGround )
-			{
-				if ( airCrouchCount < 1 )
-				{
-					shrimpleCharacterController.WorldPosition += Vector3.Up * 32;
-					airCrouchCount += 1;
-				}
-
-				Transform.ClearInterpolation();
-				EyeHeight -= 32;
-			}
-
-			return;
-		}
-
-		bool canUnCrouch()
-		{
-			if ( !IsCrouching )
-				return true;
-
-			var tr = Scene.Trace.Ray( shrimpleCharacterController.WorldPosition, shrimpleCharacterController.WorldPosition + Vector3.Up * 64 )
-				.IgnoreGameObject( GameObject )
-				.Run();
-
-			return !tr.Hit;
-		}
-
-		if ( !wishCrouch )
-		{
-			if ( !canUnCrouch() ) return;
-
-			shrimpleCharacterController.TraceHeight = 64;
-			IsCrouching = wishCrouch;
-			return;
-		}
 	}
 
 	[Authority]
@@ -194,36 +130,6 @@ IGameEventHandler<DeathEvent>, IGameEventHandler<OnPhysgunGrabChange>
 		return (Input.Down( "run" ) ? RunSpeed : WalkSpeed) * SpeedMult;
 	}
 
-	public void Move()
-	{
-		if ( !shrimpleCharacterController.IsValid() || IsRespawning )
-			return;
-
-		WishVelocity = Input.AnalogMove.Normal * Rotation.FromYaw( EyeAngles.yaw );
-
-		WishVelocity *= GetMoveSpeed();
-
-		if ( !shrimpleCharacterController.IsOnGround )
-		{
-			lastUngrounded = 0;
-		}
-		else
-		{
-			airCrouchCount = 0;
-		}
-
-		if ( Input.Pressed( "jump" ) && shrimpleCharacterController.IsOnGround )
-		{
-			shrimpleCharacterController.Punch( Vector3.Up * 350 );
-			GameObject.Dispatch( new JumpEvent() );
-			CameraController.Instance.RecoilFire( new Vector3( 10, 0, 0 ) );
-		}
-
-		shrimpleCharacterController.WishVelocity = WishVelocity;
-
-		shrimpleCharacterController.Move();
-	}
-
 	[Broadcast]
 	public void BroadcastJump()
 	{
@@ -235,22 +141,9 @@ IGameEventHandler<DeathEvent>, IGameEventHandler<OnPhysgunGrabChange>
 
 	public void UpdateAnimation()
 	{
-		if ( !AnimHelper.IsValid() || !shrimpleCharacterController.IsValid() )
+		if ( !AnimHelper.IsValid() )
 			return;
-
-		AnimHelper.WithVelocity( shrimpleCharacterController.Velocity );
-		AnimHelper.WithWishVelocity( WishVelocity );
-		AnimHelper.IsGrounded = shrimpleCharacterController.IsOnGround;
 		AnimHelper.WithLook( EyeAngles.Forward * 100, 1, 0.5f, 0.25f );
-
-		AnimHelper.DuckLevel = IsCrouching ? 1 : 0;
-
-		// Match the hitbox size to our animation.
-		// DuckLevel doesn't seem to work during jumping so let's just not bother if we aren't grounded.
-		if ( IsCrouching && shrimpleCharacterController.IsOnGround )
-			Hitbox.End = Vector3.Up * 32.0f;
-		else
-			Hitbox.End = Vector3.Up * 56.0f;
 	}
 
 	public void BuildEyeAngles()

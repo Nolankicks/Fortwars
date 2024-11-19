@@ -107,13 +107,11 @@ public partial class Crosshair : Panel
 
 	int GetGap()
 	{
-		int playerSpeed = (int)(local.shrimpleCharacterController.Velocity.Length * 0.03f);
+		var local = Game.ActiveScene.GetLocalPlayer();
+		int playerSpeed = (int)(local.Velocity.Length * 0.03f);
 
-		if ( !local.shrimpleCharacterController.IsOnGround )
+		if ( !local.IsOnGround )
 			playerSpeed += 5;
-
-		if ( local.IsCrouching )
-			playerSpeed -= 2;
 
 		return Config.Gap + playerSpeed + (int)GapAddition;
 	}

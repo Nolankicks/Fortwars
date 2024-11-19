@@ -92,8 +92,8 @@ partial class FWPlayerController
 			modelPhys.Renderer = ragdollBody;
 			modelPhys.CopyBonesFrom( target, true );
 
-			if ( shrimpleCharacterController.IsValid() )
-				modelPhys.PhysicsGroup.AddVelocity( shrimpleCharacterController.Velocity );
+			//if ( shrimpleCharacterController.IsValid() )
+			//	modelPhys.PhysicsGroup.AddVelocity( shrimpleCharacterController.Velocity );
 
 			go.Components.Create<RagdollComponent>();
 

@@ -44,7 +44,7 @@ public sealed class TeamComponent : Component
 					continue;
 
 				controller.Tags.Add( col.ToLower() );
-				controller?.shrimpleCharacterController?.IgnoreTags?.Add( col.ToLower() );
+				//controller?.shrimpleCharacterController?.IgnoreTags?.Add( col.ToLower() );
 			}
 		}
 
