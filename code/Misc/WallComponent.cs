@@ -25,7 +25,7 @@ public sealed class WallComponent : Component, Component.ExecuteInEditor
 		}
 	}
 
-	[ActionGraphNode( "Toggle Wall" )]
+	[ActionGraphNode( "Toggle Wall" ), Broadcast]
 	public static void ToggleWall( bool enable )
 	{
 		foreach ( var wall in Game.ActiveScene?.GetAll<WallComponent>() )
