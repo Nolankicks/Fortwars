@@ -21,30 +21,32 @@ public sealed class CameraController : Component
 
 	protected override void OnPreRender()
 	{
-		var player = this.GetLocalPlayer();
+		var controller = this.GetLocalPlayer();
+		var player = FWPlayerController.Local;
 
 		if ( !player.IsValid() || !Scene.Camera.IsValid() )
 			return;
 
-		//if ( player.IsRespawning )
-		//{
-		//	var ragdollPos = player.Ragdoll.IsValid() ? player.Ragdoll.WorldPosition : player.DeathPos;
+		if ( player.IsRespawning )
+		{
+			var ragdollPos = player.Ragdoll.IsValid() ? player.Ragdoll.WorldPosition : player.DeathPos;
 
-		//	Scene.Camera.WorldPosition = ragdollPos + player.EyeAngles.ToRotation().Backward * 250;
-		//	Scene.Camera.WorldRotation = player.EyeAngles;
+			Scene.Camera.WorldPosition = ragdollPos + player.EyeAngles.ToRotation().Backward * 250;
+			Scene.Camera.WorldRotation = player.EyeAngles;
 
-		//	if ( player.SetFov )
-		//		Scene.Camera.FieldOfView = (player.OverrideFOV == 0 ? Preferences.FieldOfView : player.OverrideFOV) * FOVMult;
+			if ( player.SetFov )
+				Scene.Camera.FieldOfView = (player.OverrideFOV == 0 ? Preferences.FieldOfView : player.OverrideFOV) * FOVMult;
 
-		//	return;
-		//}
+			controller.EyeAngles = player.EyeAngles;
+			return;
+		}
 
-		//UpdateRecoil();
+		UpdateRecoil();
 
-		//WorldPosition = player.Eye.WorldPosition;
-		//WorldRotation = player.Eye.WorldRotation.Angles() + AngleOffset;
+		WorldPosition = player.Eye.WorldPosition;
+		WorldRotation = player.Eye.WorldRotation.Angles() + AngleOffset;
 
-		//Scene.Camera.FieldOfView = (player.OverrideFOV == 0 ? Preferences.FieldOfView : player.OverrideFOV) * FOVMult;
+		Scene.Camera.FieldOfView = (player.OverrideFOV == 0 ? Preferences.FieldOfView : player.OverrideFOV) * FOVMult;
 	}
 
 	void UpdateRecoil()
