@@ -38,7 +38,7 @@ public sealed class RoundComponent : Component
 
 	[Property, ToggleGroup( "Warning" )] public bool Warning { get; set; }
 	[Property, Group( "Warning" )] public string WarningText { get; set; }
-	[Property, Group( "Warning" )] public float WarningTime { get; set; }
+	[Property, Group( "Warning" )] public int WarningTime { get; set; }
 	[Property, Group( "Warning" )] public int WarningDuration { get; set; }
 
 	public GameMode GameMode => Scene?.GetAll<GameMode>()?.FirstOrDefault();
@@ -110,7 +110,7 @@ public sealed class RoundComponent : Component
 
 		if ( Warning )
 		{
-			if ( RoundTimer.Relative == WarningTime )
+			if ( RoundTimer.Relative.CeilToInt() == WarningTime )
 			{
 				PopupHolder.BroadcastPopup( WarningText, WarningDuration );
 			}
