@@ -13,7 +13,7 @@ public partial class GameMode : Component, Component.INetworkListener
 
 	[Property] public Action<Team> OnGameEnd { get; set; }
 
-	[Property, ReadOnly] public bool TeamsEnabled { get; set; } = false;
+	[Property, ReadOnly, Sync] public bool TeamsEnabled { get; set; } = false;
 
 	[Property] public bool HasMapVoting { get; set; } = true;
   
