@@ -71,6 +71,8 @@ public partial class GameMode : Component, Component.INetworkListener
 
 	public void EnableTeams()
 	{
+		TeamsEnabled = true;
+
 		TeamComponent.ResetTeams();
 		foreach ( var player in Scene.GetAllComponents<FWPlayerController>() )
 		{
