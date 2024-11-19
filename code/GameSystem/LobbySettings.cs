@@ -8,6 +8,7 @@ public sealed class LobbySettings
 	public int MaxProps { get; set; } = 50;
 	public LobbySettingsPanel.LobbyPrivacy Privacy { get; set; } = LobbySettingsPanel.LobbyPrivacy.Public;
 	public int MaxPlayers { get; set; } = 64;
+	public int PlayersToStart { get; set; } = 1;
 
 	public static void Save( LobbySettings settings )
 	{

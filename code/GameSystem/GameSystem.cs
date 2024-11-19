@@ -191,6 +191,7 @@ public sealed partial class GameSystem : Component
 			{
 				ClassicModels = lobbySettings?.ClassicModels ?? true;
 				MaxProps = lobbySettings?.MaxProps ?? 50;
+				PlayerToStart = lobbySettings?.PlayersToStart ?? 1;
 			}
 
 			//Create our prop helpers
@@ -312,7 +313,7 @@ public sealed partial class GameSystem : Component
 
 	public bool CanStartGame()
 	{
-		return Scene.GetAll<FWPlayerController>().Count() >= PlayerToStart && StateSwitch > 5;
+		return (Scene.GetAll<FWPlayerController>().Count() >= (Application.IsHeadless ? 2 : PlayerToStart)) && StateSwitch > 5;
 	}
 
 	[Authority]

@@ -51,7 +51,12 @@
 					<DropDown @ref="LocalDropDown" ValueChanged=@OnValueChanged />
 				</div>
 
-				 <div class="setting">
+				<div class="setting">
+					<div class="label">Players to Start</div>
+					<TextEntry Value:bind="@PlayersToStart" Numeric=@true max=64 min=0 />
+				</div>
+
+				<div class="setting">
 					<div class="label">Max Players</div>
 					<SliderControl Value:bind="@MaxPlayers" max=64 />
 					<div class="value">@MaxPlayers</div>
@@ -97,6 +102,12 @@
 				</div>
 
 				<div class="setting">
+					<div class="label">Players to Start</div>
+					<TextEntry Value:bind="@PlayersToStart" Numeric=@true max=64 min=0 />
+				</div>
+
+
+				<div class="setting">
 					<div class="label">Max Players</div>
 					<SliderControl Value:bind="@MaxPlayers" max=64 />
 					<div class="value">@MaxPlayers</div>
@@ -122,6 +133,7 @@
 	[Change( nameof( OnValueMapChange ) )] private bool ClassicModels { get; set; } = true;
 	[Change( nameof( OnValueMapChange ) )] private int MaxProps { get; set; } = 100;
 	[Change( nameof( OnValueMapChange ) )] private int MaxPlayers { get; set; } = 64;
+	[Change( nameof( OnValueMapChange ) )] private int PlayersToStart { get; set; } = 1;
 
 	public DropDown CloudDropDown;
 	public DropDown LocalDropDown;
@@ -194,7 +206,7 @@
 
 	void OnValueMapChange()
 	{
-		var lobbySettings = new LobbySettings { ClassicModels = ClassicModels, MaxProps = MaxProps, MaxPlayers = MaxPlayers };
+		var lobbySettings = new LobbySettings { ClassicModels = ClassicModels, MaxProps = MaxProps, MaxPlayers = MaxPlayers, PlayersToStart = PlayersToStart };
 
 		if ( LocalDropDown is not null )
 		{
@@ -244,7 +256,7 @@
 
 	void OnValueChanged( string String )
 	{
-		var lobbySettings = new LobbySettings { ClassicModels = ClassicModels, MaxProps = MaxProps, MaxPlayers = MaxPlayers };
+		var lobbySettings = new LobbySettings { ClassicModels = ClassicModels, MaxProps = MaxProps, MaxPlayers = MaxPlayers, PlayersToStart = PlayersToStart };
 
 		if ( LocalDropDown is not null )
 		{
