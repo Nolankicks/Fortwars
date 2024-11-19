@@ -25,6 +25,6 @@
     "StartupScene": "scenes/fortwarsmenu.scene",
     "LaunchMode": "Normal",
     "ControlModes": {},
-    "DedicatedServerStartupScene": "scenes/easter.scene"
+    "DedicatedServerStartupScene": "scenes/dedicatedserverscene.scene"
   }
 }

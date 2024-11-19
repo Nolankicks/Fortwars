@@ -1,0 +1,47 @@
+{
+  "__guid": "01b6a1eb-53af-4386-b397-c4bf2bbe463d",
+  "GameObjects": [
+    {
+      "__guid": "39699596-52aa-49e6-850a-5b39f56284c2",
+      "Flags": 0,
+      "Name": "Blocker",
+      "Position": "620.7328,315.0712,337.0953",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "SceneLoaderBlocker",
+          "__guid": "99b44c45-62bc-4c70-8c82-698077d21334"
+        }
+      ]
+    }
+  ],
+  "SceneProperties": {
+    "FixedUpdateFrequency": 50,
+    "MaxFixedUpdates": 5,
+    "NetworkFrequency": 30,
+    "NetworkInterpolation": true,
+    "PhysicsSubSteps": 1,
+    "ThreadedAnimation": true,
+    "TimeScale": 1,
+    "UseFixedUpdate": true,
+    "Metadata": {},
+    "NavMesh": {
+      "Enabled": false,
+      "IncludeStaticBodies": true,
+      "IncludeKeyframedBodies": true,
+      "EditorAutoUpdate": true,
+      "AgentHeight": 64,
+      "AgentRadius": 16,
+      "AgentStepSize": 18,
+      "AgentMaxSlope": 40,
+      "ExcludedBodies": "",
+      "IncludedBodies": ""
+    }
+  },
+  "ResourceVersion": 2,
+  "Title": null,
+  "Description": null,
+  "__references": [],
+  "HasUnsavedChanges": false,
+  "__version": 2
+}
