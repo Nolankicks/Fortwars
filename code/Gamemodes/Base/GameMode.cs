@@ -67,6 +67,11 @@ public partial class GameMode : Component, Component.INetworkListener
 
 			HUD.FlashMapVoting();
 		}
+		else
+		{
+			GameSystem.GameState = GameSystem.GameStates.S_WAITING;
+			Log.Info( "No map voting, waiting for next round" );
+		}
 	}
 
 	public void EnableTeams()
