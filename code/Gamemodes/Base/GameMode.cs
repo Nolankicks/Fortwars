@@ -33,6 +33,7 @@ public partial class GameMode : Component, Component.INetworkListener
 		GameHasStarted = true;
 		CurrentRound = InitialRound;
 		InitialRound.ActivateRound();
+		Log.Info( "Activated inital round" );
 	}
 
 	void INetworkListener.OnActive( Connection channel )

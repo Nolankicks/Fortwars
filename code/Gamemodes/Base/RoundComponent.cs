@@ -143,13 +143,20 @@ public sealed class RoundComponent : Component
 		if ( IsLastRound )
 		{
 			GameSystem.Instance?.CurrentGameModeComponent?.EndGame();
+			Log.Info( "Last round ended" );
 			return;
 		}
 
 		if ( !timer )
+		{
 			NextRoundCondition?.ActivateRound();
+			Log.Info( "Next round condiction activated" );
+		}
 		else
+		{
 			NextRoundTimer?.ActivateRound();
+			Log.Info( "Next round timer activated" );
+		}
 	}
 
 	[Broadcast]
