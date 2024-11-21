@@ -62,8 +62,6 @@ public partial class GameMode : Component, Component.INetworkListener
 		GameSystem.GameState = GameSystem.GameStates.S_END;
 		GameSystem.StateSwitch = 0;
 
-		ActiveRound?.EndRound( false, true );
-
 		if ( HasMapVoting && Connection.All.Any() && Networking.IsHost && !Application.IsHeadless )
 		{
 			GameSystem.GameState = GameSystem.GameStates.S_VOTING;

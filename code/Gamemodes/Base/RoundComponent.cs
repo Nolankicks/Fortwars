@@ -133,18 +133,12 @@ public sealed class RoundComponent : Component
 		}
 	}
 
-	public void EndRound( bool timer, bool forceEnd = false )
+	public void EndRound( bool timer )
 	{
 		OnRoundEnd?.Invoke();
 
 		IsRoundActive = false;
 		Log.Info( "Ending round: " + Name );
-
-		if ( forceEnd )
-		{
-			Log.Info( "Force ending round" );
-			return;
-		}
 
 		if ( IsLastRound )
 		{
