@@ -52,7 +52,7 @@ public partial class GameMode : Component, Component.INetworkListener
 		if ( ActiveRound.IsValid() && ActiveRound.IsRoundActive )
 		{
 			ActiveRound.IsRoundActive = false;
-			ActiveRound.OnRoundEnd?.Invoke();
+			ActiveRound?.OnRoundEnd?.Invoke();
 		}
 
 		Log.Info( $"Game Ended: {team}" );
