@@ -49,6 +49,12 @@ public partial class GameMode : Component, Component.INetworkListener
 		if ( !gs.IsValid() || !Networking.IsHost )
 			return;
 
+		if ( ActiveRound.IsValid() && ActiveRound.IsRoundActive )
+		{
+			ActiveRound.IsRoundActive = false;
+			ActiveRound.OnRoundEnd?.Invoke();
+		}
+
 		Log.Info( $"Game Ended: {team}" );
 
 		if ( team != Team.None )
