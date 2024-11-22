@@ -7,10 +7,8 @@
 
 <root>
 	<div class="buttons">
-
-		<button onclick=@( () => ChangeMenuState( MenuState.LobbyCreation ) ) class="big"> Create Lobby </button>
-
         <button onclick=@( () => ChangeMenuState( MenuState.Lobbies )) class="big"> Lobbies </button>
+		<button onclick=@( () => ChangeMenuState( MenuState.LobbyCreation ) ) class="big"> Create Lobby </button>
 		@* Leaderboards if yall want it *@
 		 @* <div class="button" onclick=@( () => ChangeMenuState( MenuState.Leaderboards ))> Leaderboards</div> *@
         <button onclick=@( () => ChangeMenuState( MenuState.About ) ) class="small"> About </button>

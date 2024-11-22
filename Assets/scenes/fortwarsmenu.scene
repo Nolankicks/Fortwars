@@ -58,10 +58,53 @@
           "ExposureBias": 2,
           "ExposureCompensation": 0,
           "ExposureMethod": "RGB",
-          "MaximumExposure": 3,
+          "MaximumExposure": 2.96,
           "MinimumExposure": 1,
           "Mode": "Legacy",
           "Rate": 1
+        },
+        {
+          "__type": "Sandbox.DepthOfField",
+          "__guid": "1717010f-838f-4221-bcae-94a044a35471",
+          "BackBlur": true,
+          "BlurSize": 30,
+          "FocalDistance": 200,
+          "FocusRange": 500,
+          "FrontBlur": false,
+          "QualityLevel": "High"
+        },
+        {
+          "__type": "Sandbox.Bloom",
+          "__guid": "b5eef619-2ea0-4764-8382-d48ee49357da",
+          "BloomColor": {
+            "color": [
+              {
+                "c": "1,1,1,1"
+              },
+              {
+                "t": 1,
+                "c": "1,1,1,1"
+              }
+            ]
+          },
+          "BloomCurve": [
+            {
+              "y": 0.5
+            },
+            {
+              "x": 1,
+              "y": 1
+            }
+          ],
+          "Mode": "Additive",
+          "Strength": 1,
+          "Threshold": 0.5,
+          "ThresholdWidth": 0
+        },
+        {
+          "__type": "Sandbox.Sharpen",
+          "__guid": "38a3877d-7d11-4267-87ec-031ac2344244",
+          "Scale": 0.2
         }
       ]
     },
@@ -108,504 +151,6 @@
       "Children": []
     },
     {
-      "__guid": "80e86607-ff68-4bb4-9f72-a6452c142e39",
-      "Flags": 0,
-      "Name": "wooden_crate",
-      "Position": "551.1438,256,256.1369",
-      "Rotation": "-0.00009304551,-0.00006306887,0.2781919,0.9605256",
-      "Enabled": true,
-      "Components": [
-        {
-          "__type": "Sandbox.Prop",
-          "__guid": "8d485181-f5b1-440c-9014-fe97245e56c0",
-          "BodyGroups": 18446744073709551615,
-          "Health": 50,
-          "IsStatic": false,
-          "Model": "models/sbox_props/wooden_crate/wooden_crate.vmdl",
-          "StartAsleep": false,
-          "Tint": "1,1,1,1"
-        }
-      ]
-    },
-    {
-      "__guid": "2018e020-9950-4074-9278-37620e634d1f",
-      "Flags": 0,
-      "Name": "wooden_crate (5)",
-      "Position": "605.7158,260.1906,256.1458",
-      "Rotation": "-0.0001061985,-0.0000368379,0.517315,0.8557951",
-      "Enabled": true,
-      "Components": [
-        {
-          "__type": "Sandbox.Prop",
-          "__guid": "c7d3a032-4006-4ca9-a276-c89ff1a3f20b",
-          "BodyGroups": 18446744073709551615,
-          "Health": 50,
-          "IsStatic": false,
-          "Model": "models/sbox_props/wooden_crate/wooden_crate.vmdl",
-          "StartAsleep": false,
-          "Tint": "1,1,1,1"
-        }
-      ]
-    },
-    {
-      "__guid": "6062f7ab-4a6e-4ed9-9936-7fe157603ff7",
-      "Flags": 0,
-      "Name": "wooden_crate (4)",
-      "Position": "569.264,297.8272,256.1341",
-      "Rotation": "-0.00009304551,-0.00006306887,0.2781919,0.9605256",
-      "Enabled": true,
-      "Components": [
-        {
-          "__type": "Sandbox.Prop",
-          "__guid": "f13f0f1e-8020-474a-ab7f-8ae5597bd442",
-          "BodyGroups": 18446744073709551615,
-          "Health": 50,
-          "IsStatic": false,
-          "Model": "models/sbox_props/wooden_crate/wooden_crate.vmdl",
-          "StartAsleep": false,
-          "Tint": "1,1,1,1"
-        }
-      ]
-    },
-    {
-      "__guid": "5891eb19-6143-447b-a6fb-a94a7b0e44f1",
-      "Flags": 0,
-      "Name": "wooden_crate (1)",
-      "Position": "488.7776,268.7951,256.1241",
-      "Rotation": "0.0000009571913,-0.0000005477925,0.1042443,0.9945517",
-      "Enabled": true,
-      "Components": [
-        {
-          "__type": "Sandbox.Prop",
-          "__guid": "34b3856c-8a3f-4973-bf5c-cfda9cac420c",
-          "BodyGroups": 18446744073709551615,
-          "Health": 50,
-          "IsStatic": false,
-          "Model": "models/sbox_props/wooden_crate/wooden_crate.vmdl",
-          "StartAsleep": false,
-          "Tint": "1,1,1,1"
-        }
-      ]
-    },
-    {
-      "__guid": "deac009c-480e-4320-bb99-54e91060b0cc",
-      "Flags": 0,
-      "Name": "wooden_crate (2)",
-      "Position": "440.146,258.4872,256.124",
-      "Rotation": "0.0000009571913,-0.0000005477925,0.1042443,0.9945517",
-      "Enabled": true,
-      "Components": [
-        {
-          "__type": "Sandbox.Prop",
-          "__guid": "9cb78c6d-9385-448d-baec-547a8f9325b2",
-          "BodyGroups": 18446744073709551615,
-          "Health": 50,
-          "IsStatic": false,
-          "Model": "models/sbox_props/wooden_crate/wooden_crate.vmdl",
-          "StartAsleep": false,
-          "Tint": "1,1,1,1"
-        }
-      ]
-    },
-    {
-      "__guid": "8f0bf487-3dbd-4c47-8b9d-997a790faad6",
-      "Flags": 0,
-      "Name": "wooden_crate (3)",
-      "Position": "440.1459,258.4871,319.0486",
-      "Rotation": "0.0000009571913,-0.0000005477925,0.1042443,0.9945517",
-      "Enabled": true,
-      "Components": [
-        {
-          "__type": "Sandbox.Prop",
-          "__guid": "08d699de-aac8-4a23-833d-83976a6fd659",
-          "BodyGroups": 18446744073709551615,
-          "Health": 50,
-          "IsStatic": false,
-          "Model": "models/sbox_props/wooden_crate/wooden_crate.vmdl",
-          "StartAsleep": false,
-          "Tint": "1,1,1,1"
-        }
-      ]
-    },
-    {
-      "__guid": "7a001fcd-72c8-4c37-9a37-915dfd8b8225",
-      "Flags": 0,
-      "Name": "rollermine",
-      "Position": "496,304,271.8685",
-      "Enabled": true,
-      "Components": [
-        {
-          "__type": "Sandbox.Prop",
-          "__guid": "f7ea8e2c-d1a4-4b87-b849-629ae1f5f5ae",
-          "BodyGroups": 18446744073709551615,
-          "Health": 0,
-          "IsStatic": false,
-          "Model": "models/rollermine.vmdl",
-          "StartAsleep": false,
-          "Tint": "0.32682,1,0.22326,1"
-        },
-        {
-          "__type": "Sandbox.TrailRenderer",
-          "__guid": "de1bc7e9-a6c8-4248-ae88-e6c3c740281d",
-          "BlendMode": "Normal",
-          "CastShadows": false,
-          "Color": {
-            "color": [
-              {
-                "t": 0.5,
-                "c": "0,1,1,1"
-              }
-            ],
-            "alpha": []
-          },
-          "Face": "Camera",
-          "LifeTime": 0.2,
-          "MaxPoints": 420,
-          "Opaque": true,
-          "PointDistance": 2,
-          "RenderOptions": {
-            "GameLayer": true,
-            "OverlayLayer": false,
-            "BloomLayer": false,
-            "AfterUILayer": false
-          },
-          "Texturing": {
-            "WorldSpace": true,
-            "UnitsPerTexture": 10,
-            "Scale": 1
-          },
-          "Width": [
-            {
-              "x": 0.67410713,
-              "y": 1
-            },
-            {
-              "x": 1,
-              "y": 0.021276595,
-              "in": 3.684211,
-              "out": -3.684211
-            }
-          ],
-          "Wireframe": false
-        }
-      ]
-    },
-    {
-      "__guid": "9c2c28d9-49e9-4231-920b-5bfc1acadd7f",
-      "Flags": 0,
-      "Name": "rollermine (1)",
-      "Position": "528,304,320",
-      "Enabled": true,
-      "Components": [
-        {
-          "__type": "Sandbox.TrailRenderer",
-          "__guid": "280d2cd0-917f-4768-b1bc-34952e44c372",
-          "BlendMode": "Normal",
-          "CastShadows": false,
-          "Color": {
-            "color": [
-              {
-                "t": 0.5,
-                "c": "0,1,1,1"
-              }
-            ],
-            "alpha": []
-          },
-          "Face": "Camera",
-          "LifeTime": 0.2,
-          "MaxPoints": 420,
-          "Opaque": true,
-          "PointDistance": 2,
-          "RenderOptions": {
-            "GameLayer": true,
-            "OverlayLayer": false,
-            "BloomLayer": false,
-            "AfterUILayer": false
-          },
-          "Texturing": {
-            "WorldSpace": true,
-            "UnitsPerTexture": 10,
-            "Scale": 1
-          },
-          "Width": [
-            {
-              "x": 0.67410713,
-              "y": 1
-            },
-            {
-              "x": 1,
-              "y": 0.021276595,
-              "in": 3.684211,
-              "out": -3.684211
-            }
-          ],
-          "Wireframe": false
-        },
-        {
-          "__type": "Sandbox.Prop",
-          "__guid": "e42371f3-9b7c-4cf4-a6f5-02a09301ef2c",
-          "BodyGroups": 18446744073709551615,
-          "Health": 0,
-          "IsStatic": false,
-          "Model": "models/rollermine.vmdl",
-          "StartAsleep": false,
-          "Tint": "1,0.01395,0.3262,1"
-        }
-      ]
-    },
-    {
-      "__guid": "7abb3c1a-c4c1-4d4a-8e96-205e60337731",
-      "Flags": 0,
-      "Name": "rollermine (5)",
-      "Position": "463.4892,292.6838,397.944",
-      "Enabled": true,
-      "Components": [
-        {
-          "__type": "Sandbox.Prop",
-          "__guid": "eaec697c-768f-4096-8408-e3a2ffd304e5",
-          "BodyGroups": 18446744073709551615,
-          "Health": 0,
-          "IsStatic": false,
-          "Model": "models/rollermine.vmdl",
-          "StartAsleep": false,
-          "Tint": "0.58333,0,1,1"
-        },
-        {
-          "__type": "Sandbox.TrailRenderer",
-          "__guid": "ee30d3c7-52c3-408a-b081-de34422e809c",
-          "BlendMode": "Normal",
-          "CastShadows": false,
-          "Color": {
-            "color": [
-              {
-                "t": 0.5,
-                "c": "0,1,1,1"
-              }
-            ],
-            "alpha": []
-          },
-          "Face": "Camera",
-          "LifeTime": 0.2,
-          "MaxPoints": 420,
-          "Opaque": true,
-          "PointDistance": 2,
-          "RenderOptions": {
-            "GameLayer": true,
-            "OverlayLayer": false,
-            "BloomLayer": false,
-            "AfterUILayer": false
-          },
-          "Texturing": {
-            "WorldSpace": true,
-            "UnitsPerTexture": 10,
-            "Scale": 1
-          },
-          "Width": [
-            {
-              "x": 0.67410713,
-              "y": 1
-            },
-            {
-              "x": 1,
-              "y": 0.021276595,
-              "in": 3.684211,
-              "out": -3.684211
-            }
-          ],
-          "Wireframe": false
-        }
-      ]
-    },
-    {
-      "__guid": "73e3ecb7-8a57-45bb-beb0-235eb3e64e9d",
-      "Flags": 0,
-      "Name": "rollermine (2)",
-      "Position": "528,288,272",
-      "Enabled": true,
-      "Components": [
-        {
-          "__type": "Sandbox.Prop",
-          "__guid": "86a88aa1-35b3-4402-98e6-a452b10a823b",
-          "BodyGroups": 18446744073709551615,
-          "Health": 0,
-          "IsStatic": false,
-          "Model": "models/rollermine.vmdl",
-          "StartAsleep": false,
-          "Tint": "1,0.13953,0.13953,1"
-        },
-        {
-          "__type": "Sandbox.TrailRenderer",
-          "__guid": "ad4d324e-c288-4f34-bd7f-ddf476dc4a5d",
-          "BlendMode": "Normal",
-          "CastShadows": false,
-          "Color": {
-            "color": [
-              {
-                "t": 0.5,
-                "c": "0,1,1,1"
-              }
-            ],
-            "alpha": []
-          },
-          "Face": "Camera",
-          "LifeTime": 0.2,
-          "MaxPoints": 420,
-          "Opaque": true,
-          "PointDistance": 2,
-          "RenderOptions": {
-            "GameLayer": true,
-            "OverlayLayer": false,
-            "BloomLayer": false,
-            "AfterUILayer": false
-          },
-          "Texturing": {
-            "WorldSpace": true,
-            "UnitsPerTexture": 10,
-            "Scale": 1
-          },
-          "Width": [
-            {
-              "x": 0.67410713,
-              "y": 1
-            },
-            {
-              "x": 1,
-              "y": 0.021276595,
-              "in": 3.684211,
-              "out": -3.684211
-            }
-          ],
-          "Wireframe": false
-        }
-      ]
-    },
-    {
-      "__guid": "0abeca31-4bdb-4c04-9d18-0351b9c9b49e",
-      "Flags": 0,
-      "Name": "rollermine (4)",
-      "Position": "512,304,384",
-      "Enabled": true,
-      "Components": [
-        {
-          "__type": "Sandbox.Prop",
-          "__guid": "a94b5e40-ebb4-47bb-8de8-96b7cf30bf82",
-          "BodyGroups": 18446744073709551615,
-          "Health": 0,
-          "IsStatic": false,
-          "Model": "models/rollermine.vmdl",
-          "StartAsleep": false,
-          "Tint": "1,1,1,1"
-        },
-        {
-          "__type": "Sandbox.TrailRenderer",
-          "__guid": "972a75e4-b33e-40bb-a9e1-9406f9f68b2e",
-          "BlendMode": "Normal",
-          "CastShadows": false,
-          "Color": {
-            "color": [
-              {
-                "t": 0.5,
-                "c": "0,1,1,1"
-              }
-            ],
-            "alpha": []
-          },
-          "Face": "Camera",
-          "LifeTime": 0.2,
-          "MaxPoints": 420,
-          "Opaque": true,
-          "PointDistance": 2,
-          "RenderOptions": {
-            "GameLayer": true,
-            "OverlayLayer": false,
-            "BloomLayer": false,
-            "AfterUILayer": false
-          },
-          "Texturing": {
-            "WorldSpace": true,
-            "UnitsPerTexture": 10,
-            "Scale": 1
-          },
-          "Width": [
-            {
-              "x": 0.67410713,
-              "y": 1
-            },
-            {
-              "x": 1,
-              "y": 0.021276595,
-              "in": 3.684211,
-              "out": -3.684211
-            }
-          ],
-          "Wireframe": false
-        }
-      ]
-    },
-    {
-      "__guid": "85644b1f-fc57-4fef-82a5-192c7630d886",
-      "Flags": 0,
-      "Name": "rollermine (3)",
-      "Position": "496,288,336",
-      "Enabled": true,
-      "Components": [
-        {
-          "__type": "Sandbox.Prop",
-          "__guid": "ad97598e-de4b-4198-a7e9-4835a923c450",
-          "BodyGroups": 18446744073709551615,
-          "Health": 0,
-          "IsStatic": false,
-          "Model": "models/rollermine.vmdl",
-          "StartAsleep": false,
-          "Tint": "1,0.43426,0.17209,1"
-        },
-        {
-          "__type": "Sandbox.TrailRenderer",
-          "__guid": "5bb31fc0-5dca-4944-8dd8-dff9cb3ad6e4",
-          "BlendMode": "Normal",
-          "CastShadows": false,
-          "Color": {
-            "color": [
-              {
-                "t": 0.5,
-                "c": "0,1,1,1"
-              }
-            ],
-            "alpha": []
-          },
-          "Face": "Camera",
-          "LifeTime": 0.2,
-          "MaxPoints": 420,
-          "Opaque": true,
-          "PointDistance": 2,
-          "RenderOptions": {
-            "GameLayer": true,
-            "OverlayLayer": false,
-            "BloomLayer": false,
-            "AfterUILayer": false
-          },
-          "Texturing": {
-            "WorldSpace": true,
-            "UnitsPerTexture": 10,
-            "Scale": 1
-          },
-          "Width": [
-            {
-              "x": 0.67410713,
-              "y": 1
-            },
-            {
-              "x": 1,
-              "y": 0.021276595,
-              "in": 3.684211,
-              "out": -3.684211
-            }
-          ],
-          "Wireframe": false
-        }
-      ]
-    },
-    {
       "__guid": "99e978ae-8110-4bf7-b257-4933f56048be",
       "Flags": 0,
       "Name": "Ambience",
@@ -619,6 +164,123 @@
           "Soundscape": "soundscapes/field/field_day_breeze_01a.sndscape",
           "StayActiveOnExit": true,
           "Type": "Point"
+        }
+      ]
+    },
+    {
+      "__guid": "0e8b2ee7-f42c-4311-8ecc-8a9ed67ed706",
+      "Flags": 0,
+      "Name": "citizen",
+      "Position": "431.9535,370.4318,256.0353",
+      "Rotation": "0,0,0.8660254,0.5",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.SkinnedModelRenderer",
+          "__guid": "b54905e8-017d-43be-b835-95cbd433ebe1",
+          "BodyGroups": 341,
+          "CreateAttachments": false,
+          "CreateBoneObjects": false,
+          "Model": "models/citizen/citizen.vmdl",
+          "Morphs": {},
+          "Parameters": {
+            "bools": {
+              "b_long_idle": true
+            },
+            "ints": {
+              "special_idle_states": 1
+            },
+            "floats": {
+              "holdtype_pose": 2
+            },
+            "vectors": {},
+            "rotations": {}
+          },
+          "RenderOptions": {
+            "GameLayer": true,
+            "OverlayLayer": false,
+            "BloomLayer": false,
+            "AfterUILayer": false
+          },
+          "RenderType": "On",
+          "Sequence": {
+            "Name": null
+          },
+          "Tint": "1,1,1,1",
+          "UseAnimGraph": true
+        },
+        {
+          "__type": "LocalPlayerDresser",
+          "__guid": "6e36e25b-5680-49c3-a425-f3bd0e93300f"
+        }
+      ]
+    },
+    {
+      "__guid": "3ea8fda3-8ceb-4b5b-b1f3-98a7673d6fc8",
+      "Flags": 0,
+      "Name": "Spot Light",
+      "Position": "353.0139,409.9338,316.2001",
+      "Rotation": "0,0,-0.1305262,0.9914449",
+      "Tags": "light_spot,light",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.SpotLight",
+          "__guid": "3e3a3b2e-6e5c-4bd0-9627-765ed5b68483",
+          "Attenuation": 1,
+          "ConeInner": 15,
+          "ConeOuter": 45,
+          "FogMode": "Enabled",
+          "FogStrength": 1,
+          "LightColor": "0.68837,0.68837,0.68837,1",
+          "Radius": 500,
+          "Shadows": false
+        }
+      ]
+    },
+    {
+      "__guid": "b49ec6dc-427b-4864-b8fe-7fe5ac8b3655",
+      "Flags": 0,
+      "Name": "Spot Light (1)",
+      "Position": "439.6376,448.3019,316.2",
+      "Rotation": "0,0,-0.7933533,0.6087615",
+      "Tags": "light_spot,light",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.SpotLight",
+          "__guid": "6abf9629-9f78-4640-8ae7-3bf6b10e25d6",
+          "Attenuation": 1,
+          "ConeInner": 15,
+          "ConeOuter": 45,
+          "FogMode": "Enabled",
+          "FogStrength": 1,
+          "LightColor": "0.68837,0.68837,0.68837,1",
+          "Radius": 500,
+          "Shadows": false
+        }
+      ]
+    },
+    {
+      "__guid": "0c380512-12fe-4e94-9cb2-ef6a94316082",
+      "Flags": 0,
+      "Name": "Spot Light (2)",
+      "Position": "498.4807,316.9667,316.2",
+      "Rotation": "0,0,-0.9238796,-0.3826833",
+      "Tags": "light_spot,light",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.SpotLight",
+          "__guid": "d4535780-e7be-42fd-90c4-3f26918845c5",
+          "Attenuation": 1,
+          "ConeInner": 15,
+          "ConeOuter": 45,
+          "FogMode": "Enabled",
+          "FogStrength": 1,
+          "LightColor": "0.91373,0.98039,1,1",
+          "Radius": 500,
+          "Shadows": false
         }
       ]
     }
@@ -652,8 +314,6 @@
   "Title": "dead4leftmenurewrite",
   "Description": null,
   "__references": [
-    "facepunch.wooden_crate#29138",
-    "igrium.rollermine-model#19481",
     "rust.field_day_breeze_01a#43855"
   ],
   "__version": 2
