@@ -211,7 +211,9 @@ MainMenu {
 
     .lobby-creation {
         width: 700px;
-        height: 700px;
+        height: 800px;
+        position: absolute;
+        right: 25%;
         align-items: center;
         justify-content: flex-start;
     }

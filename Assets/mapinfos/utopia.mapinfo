@@ -1,0 +1,14 @@
+{
+  "MapName": "Utopia",
+  "MapDescription": "A clean looking map suitable for any team based PVP",
+  "FourTeams": false,
+  "Scene": "scenes/utopia.scene",
+  "Thumb": "textures/utopia.vtex",
+  "Author": "Willow",
+  "PackageIndent": "willow.utopia",
+  "Hidden": true,
+  "Order": 0,
+  "AvailableGamemodes": "Deathmatch",
+  "__references": [],
+  "__version": 0
+}
