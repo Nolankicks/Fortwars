@@ -72,7 +72,7 @@ public sealed class FortwarsProp : Component, Component.ICollisionListener, Comp
 			Renderer.Model = prop.Model;
 			Collider.Model = prop.Model;
 			CanKill = false;
-			SetStaticBodyType();
+			SetStaticBodyType( Rigidbody );
 		}
 		Team = team;
 
@@ -85,7 +85,7 @@ public sealed class FortwarsProp : Component, Component.ICollisionListener, Comp
 
 		//if ( IsProxy && !Invincible && Rigidbody.IsValid() && Rigidbody.PhysicsBody.IsValid() )
 		//{
-		if ( Rigidbody.IsValid() && !Tags.Has( FW.Tags.Rollermine ) )
+		if ( Rigidbody.IsValid() && !Tags.Has( FW.Tags.Rollermine ) && Rigidbody.PhysicsBody.IsValid() )
 			Rigidbody.PhysicsBody.BodyType = PhysicsBodyType.Static;
 		//}
 	}
@@ -124,9 +124,10 @@ public sealed class FortwarsProp : Component, Component.ICollisionListener, Comp
 
 
 	[Broadcast]
-	public void SetStaticBodyType()
+	public void SetStaticBodyType( Rigidbody rb )
 	{
-		Rigidbody.PhysicsBody.BodyType = PhysicsBodyType.Static;
+		if ( rb.IsValid() && rb.PhysicsBody.IsValid() )
+			rb.PhysicsBody.BodyType = PhysicsBodyType.Static;
 	}
 
 	void IDamageable.OnDamage( in Sandbox.DamageInfo damage )

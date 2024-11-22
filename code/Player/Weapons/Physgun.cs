@@ -430,8 +430,11 @@ public class Physgun : Item
 		}
 		else
 		{
-			LineParticles.Enabled = false;
-			PhysLine.Enabled = false;
+			if ( LineParticles.IsValid() )
+				LineParticles.Enabled = false;
+			
+			if ( PhysLine.IsValid() )
+				PhysLine.Enabled = false;
 		}
 	}
 }
