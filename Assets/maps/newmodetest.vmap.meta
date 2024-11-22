@@ -1,0 +1,21 @@
+{
+  "publish": {
+    "Enabled": false,
+    "ProjectConfig": {
+      "Title": "Newmodetest",
+      "Type": "map",
+      "Org": "local",
+      "Ident": "newmodetest",
+      "Schema": 0,
+      "IncludeSourceFiles": false,
+      "Resources": null,
+      "PackageReferences": [],
+      "EditorReferences": [],
+      "IsWhitelistDisabled": false,
+      "Metadata": {
+        "SingleAssetSource": "maps/newmodetest.vmap",
+        "ParentPackage": "nolankicks.fortwars"
+      }
+    }
+  }
+}

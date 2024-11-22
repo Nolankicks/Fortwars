@@ -1,0 +1,90 @@
+{
+  "__guid": "85b40063-6fe3-4a92-b7e7-e10fe749bf4b",
+  "GameObjects": [
+    {
+      "__guid": "35a601ab-b2c9-470a-9fa5-6808918808fe",
+      "Flags": 0,
+      "Name": "Map",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.MapInstance",
+          "__guid": "73f5015a-26b0-40ec-a0c8-1df98dd316f4",
+          "__version": 1,
+          "EnableCollision": true,
+          "MapName": "maps/newmodetest.vmap",
+          "NoOrigin": false,
+          "OnMapLoaded": null,
+          "OnMapUnloaded": null,
+          "UseMapFromLaunch": false
+        }
+      ],
+      "Children": []
+    },
+    {
+      "__guid": "312b3a14-542d-4935-bf3a-400be6e3fe84",
+      "Flags": 0,
+      "Name": "Sun",
+      "Position": "-329.5312,0.0002144575,249.671",
+      "Rotation": "-0.1464466,0.3535534,0.3535534,0.8535535",
+      "Tags": "light_directional,light",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.DirectionalLight",
+          "__guid": "f14786a9-dfd6-4720-a731-4c11049064ee",
+          "FogMode": "Enabled",
+          "FogStrength": 1,
+          "LightColor": "0.91373,0.98039,1,1",
+          "Shadows": true,
+          "SkyColor": "0,0,0,0"
+        }
+      ]
+    },
+    {
+      "__guid": "e098e1ce-a1cb-410f-a616-e64b032ef732",
+      "Flags": 0,
+      "Name": "2D Skybox",
+      "Position": "-202.0936,-0.000130713,195.1971",
+      "Tags": "skybox",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.SkyBox2D",
+          "__guid": "0feabde8-e900-4686-a326-5c903304c040",
+          "SkyIndirectLighting": true,
+          "SkyMaterial": "materials/skybox/skybox_day_01.vmat",
+          "Tint": "1,1,1,1"
+        }
+      ]
+    }
+  ],
+  "SceneProperties": {
+    "FixedUpdateFrequency": 50,
+    "MaxFixedUpdates": 5,
+    "NetworkFrequency": 30,
+    "NetworkInterpolation": true,
+    "PhysicsSubSteps": 1,
+    "ThreadedAnimation": true,
+    "TimeScale": 1,
+    "UseFixedUpdate": true,
+    "Metadata": {},
+    "NavMesh": {
+      "Enabled": false,
+      "IncludeStaticBodies": true,
+      "IncludeKeyframedBodies": true,
+      "EditorAutoUpdate": true,
+      "AgentHeight": 64,
+      "AgentRadius": 16,
+      "AgentStepSize": 18,
+      "AgentMaxSlope": 40,
+      "ExcludedBodies": "",
+      "IncludedBodies": ""
+    }
+  },
+  "ResourceVersion": 2,
+  "Title": null,
+  "Description": null,
+  "__references": [],
+  "__version": 2
+}
