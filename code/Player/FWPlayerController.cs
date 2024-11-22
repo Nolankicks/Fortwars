@@ -87,8 +87,6 @@ IGameEventHandler<DeathEvent>, IGameEventHandler<OnPhysgunGrabChange>
 	[Broadcast]
 	public static void ClearHoldRenderer( ModelRenderer modelRenderer )
 	{
-		Log.Info( "Clearing hold renderer" );
-
 		if ( modelRenderer.IsValid() )
 			modelRenderer.GameObject.Enabled = false;
 	}
