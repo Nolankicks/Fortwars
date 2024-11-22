@@ -77,41 +77,6 @@ public sealed partial class GameSystem : Component
 
 	[Property, Feature( "Map Voting" ), Sync] public Dictionary<MapInfo, int> MapVotes { get; set; } = new();
 
-
-	protected override async Task OnLoad()
-	{
-		if ( Networking.IsHost && !Networking.IsActive && StartServer && !Scene.IsEditor )
-		{
-			LoadingScreen.Title = "Creating Lobby...";
-			await Task.DelaySeconds( 0.1f );
-
-			var lobbyConfig = new Sandbox.Network.LobbyConfig();
-
-			var lobbySettings = LobbySettings.Load();
-
-			if ( LoadLobbySettings && lobbySettings is not null )
-			{
-				//Don't set the privacy when in the editor. Use the editors's privacy settings
-				if ( !Game.IsEditor )
-				{
-					lobbyConfig.Privacy = lobbySettings.Privacy switch
-					{
-						LobbySettingsPanel.LobbyPrivacy.Public => Sandbox.Network.LobbyPrivacy.Public,
-						LobbySettingsPanel.LobbyPrivacy.FriendsOnly => Sandbox.Network.LobbyPrivacy.FriendsOnly,
-						LobbySettingsPanel.LobbyPrivacy.Private => Sandbox.Network.LobbyPrivacy.Private,
-						_ => Sandbox.Network.LobbyPrivacy.Public
-					};
-				}
-
-				lobbyConfig.MaxPlayers = lobbySettings.MaxPlayers;
-			}
-
-			Log.Info( $"Creating Lobby with {lobbyConfig.MaxPlayers} players and {lobbyConfig.Privacy} privacy" );
-
-			Networking.CreateLobby( lobbyConfig );
-		}
-	}
-
 	protected override void OnAwake()
 	{
 		Instance = this;

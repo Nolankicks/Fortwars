@@ -25,7 +25,7 @@
 			@foreach ( var lobby in Lobbies )
 			{
 				<div class="lobby" onclick=@( () => Networking.Connect( lobby.LobbyId ) )>
-					<div class="name">@lobby.Map</div>
+					<div class="name">@lobby.Name</div>
 					<div class="players">@lobby.Members / @lobby.MaxMembers</div>
 				</div>
 			}
