@@ -10,16 +10,17 @@
 		<div class="icon refresh" onclick=@( () => MainMenu.ChangeMenuState( MainMenu.MenuState.None ) )>close</div>
 	</div>
 
+	@if ( Fetching )
+	{
+		<div class="info">Fetching lobbies...</div>
+	}
+	else
+	{
+		<div class="info">No lobbies found... Create one!</div>
+	}
+
 	<div class="lobbies">
-		@if ( Fetching )
-		{
-			<div class="info">Fetching lobbies...</div>
-		}
-		else if ( Lobbies.Count() == 0 )
-		{
-			<div class="info">No lobbies found... Create one!</div>
-		}
-		else
+		@if ( Lobbies.Count() > 0 && !Fetching )
 		{
 			@foreach ( var lobby in Lobbies )
 			{
