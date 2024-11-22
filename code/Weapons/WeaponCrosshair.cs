@@ -18,7 +18,7 @@ public sealed class WeaponCrosshair : Component
 
 	[Category( "Ammo" ), Property] float AmmoAngle { get; set; } = 180.0f;
 
-	float HitmarkerPerc { get; set; } = 1.0f;
+	float HitmarkerPerc { get; set; } = 0.0f;
 
 	private bool IsHeadshot { get; set; } = false;
 
