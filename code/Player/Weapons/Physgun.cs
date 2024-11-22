@@ -48,12 +48,12 @@ public class Physgun : Item
 
 		if ( !Player.IsValid() ) return;
 
-		if ( Input.Pressed( "mouseprop" ) )
+		/*if ( Input.Pressed( "mouseprop" ) )
 		{
 			MouseInput = !MouseInput;
 
 			Mouse.Visible = MouseInput;
-		}
+		}*/
 
 		// Rotate the viewmodel around
 		if ( MouseInput )
@@ -72,8 +72,9 @@ public class Physgun : Item
 				.WithoutTags( FW.Tags.Player, FW.Tags.Trigger, FW.Tags.Map, "held" )
 				.Run();
 
-			if ( Input.Pressed( "attack1" ) )
+			/*if ( Input.Pressed( "attack1" ) )
 			{
+				Log.Info( "Pressed attack1" );
 				if ( tr.Body.IsValid() )
 				{
 					var go = tr.Body.GetGameObject();
@@ -89,7 +90,8 @@ public class Physgun : Item
 					DistanceBetweenMouseObject = tr.Distance;
 
 					MouseBody = tr.Body;
-					MouseBody.BodyType = PhysicsBodyType.Dynamic;
+
+					go.Components.Get<FortwarsProp>().Rigidbody.Enabled = true;
 				}
 			}
 
@@ -97,7 +99,7 @@ public class Physgun : Item
 			{
 				if ( MouseBody.IsValid() )
 				{
-					MouseBody.BodyType = PhysicsBodyType.Static;
+					MouseBody.GetGameObject().Components.Get<FortwarsProp>().Rigidbody.Enabled = false;
 
 					var go = MouseBody.GetGameObject();
 
@@ -118,9 +120,11 @@ public class Physgun : Item
 					.WithoutTags( "held", FW.Tags.Player, FW.Tags.Trigger, FW.Tags.Map )
 					.Run();
 
+				Log.Info( "MouseBody is valid" );
+
 				MouseBody.SmoothMove( GrabTrace.EndPosition, 0.5f, Time.Delta );
 				MouseBody.Rotation = StartingBodyRotation;
-			}
+			}*/
 
 			return;
 		}
@@ -158,50 +162,6 @@ public class Physgun : Item
 		UpdateEffects();
 	}
 
-	private void TryUnfreeze()
-	{
-		if ( !Scene.Camera.IsValid() )
-			return;
-
-		var tr = Scene.Trace.Ray( Scene.Camera.ScreenNormalToRay( 0.5f ), 1000 )
-			.UseHitboxes()
-			.IgnoreGameObjectHierarchy( GameObject.Root )
-			.WithoutTags( FW.Tags.Player, FW.Tags.Trigger, FW.Tags.Map )
-			.Run();
-
-		if ( !tr.Hit || !tr.Body.IsValid() )
-			return;
-
-		var go = tr.GameObject;
-		if ( go.Tags.Has( FW.Tags.Map ) || go.Parent.Tags.Has( FW.Tags.Map ) )
-			return;
-
-		Log.Info( $"Unfreezing {go}" );
-
-		var physicsGroup = tr.Body.PhysicsGroup;
-
-		if ( tr.Body.IsValid() )
-			tr.Body.BodyType = PhysicsBodyType.Dynamic;
-
-		if ( physicsGroup == null )
-			return;
-
-		go.Network.SetOwnerTransfer( OwnerTransfer.Takeover );
-		go.Root.Network.TakeOwnership();
-
-		Log.Info( $"Unfreezing {physicsGroup.BodyCount} bodies" );
-
-		for ( int i = 0; i < physicsGroup.BodyCount; i++ )
-		{
-			var body = physicsGroup.GetBody( i );
-
-			if ( body.BodyType != PhysicsBodyType.Dynamic )
-			{
-				body.BodyType = PhysicsBodyType.Dynamic;
-			}
-		}
-	}
-
 	private void TryStartGrab( Vector3 eyePos, Rotation eyeRot, Vector3 eyeDir )
 	{
 		var tr = Scene.Trace.Ray( eyePos, eyePos + eyeDir * MaxTargetDistance )
@@ -215,6 +175,9 @@ public class Physgun : Item
 
 		var rootObject = tr.GameObject.Root;
 
+		if ( tr.GameObject.Components.TryGet<FortwarsProp>( out var p, FindMode.EverythingInSelfAndParent ) )
+			p.Rigidbody.Enabled = true;
+
 		if ( !tr.GameObject.Components.TryGet<Rigidbody>( out var rigidbody, FindMode.EverythingInSelfAndAncestors ) )
 			return;
 
@@ -223,13 +186,6 @@ public class Physgun : Item
 		// Don't move keyframed objects and ignore the Wall
 		if ( body.BodyType == PhysicsBodyType.Keyframed || tr.GameObject.Components.TryGet<MapCollider>( out _, FindMode.EverythingInSelfAndAncestors ) )
 			return;
-
-		// Unfreeze
-		if ( body.BodyType != PhysicsBodyType.Dynamic )
-		{
-			body.BodyType = PhysicsBodyType.Dynamic;
-			body.Sleeping = false;
-		}
 
 		GrabInit( body, eyePos, tr.EndPosition, eyeRot );
 
@@ -270,13 +226,6 @@ public class Physgun : Item
 
 		if ( wantsToFreeze )
 		{
-			if ( HeldBody.BodyType == PhysicsBodyType.Dynamic )
-			{
-				HeldBody.BodyType = PhysicsBodyType.Static;
-				HeldBody.Velocity = 0;
-				HeldBody.AngularVelocity = 0;
-			}
-
 			GrabEnd();
 			return;
 		}
@@ -327,9 +276,10 @@ public class Physgun : Item
 
 			if ( HeldBody.BodyType == PhysicsBodyType.Dynamic )
 			{
-				HeldBody.BodyType = PhysicsBodyType.Static;
 				HeldBody.Velocity = 0;
 				HeldBody.AngularVelocity = 0;
+
+				HeldBody.GetGameObject().Components.Get<FortwarsProp>().Rigidbody.Enabled = false;
 			}
 		}
 

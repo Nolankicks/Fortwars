@@ -33,12 +33,13 @@
         "__type": "Sandbox.ModelCollider",
         "__guid": "eea84880-f612-446e-9ab8-b4ccc09419c4",
         "IsTrigger": false,
-        "Static": false,
+        "Static": true,
         "SurfaceVelocity": "0,0,0"
       },
       {
         "__type": "Sandbox.Rigidbody",
         "__guid": "fcd82784-06ac-4f19-a860-2e48defc6ce0",
+        "__enabled": false,
         "AngularDamping": 0,
         "Gravity": true,
         "LinearDamping": 0,

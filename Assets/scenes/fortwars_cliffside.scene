@@ -513,7 +513,7 @@
               "HideInGame": true,
               "IsTrigger": false,
               "Mesh": {
-                "Topology": "H4sIAAAAAAAACl2Qiw6CUAxDh1flgg/wAfr/X2pP0iWLJA25W9t16xHxFc4C30E4\u002Bt2FWbgKd2Ew4NTvIZxcb9ZH4b5db\u002Bb9z/oUzVh8m7lPc9FOzjRYQ8ZXyXxxXvrw4e72wvtWdoEPdzMXj8We9OHDXcvO7EqdN396eKaeLHjkLciePeYxi4z0mMFtMisablFvRXZ2Tj158KQOF78f9WSROMQBAAA=",
+                "Topology": "H4sIAAAAAAAACl2QCQ7CMAwEp4Qj3NBy/f\u002BlaMRGsohUVbFn1\u002Bt04ANs\u002BZ0VsM69AwfgBFyAKZ9MPXdgk3qLnsI\u002BUm/h/me9i2ZXfFvYOazafTJN0XRgKZmPyWtfXvYVL73PZRd52WdYPa7xtC8veys7u6t17/7t6Tn0ZtFjvIXZR895zjKjPWf4NiOrGt\u002BivpXZ3XnozaOndVn9vvVkkTjEAQAA",
                 "Positions": [
                   "-1408,-128,560",
                   "1408,-128,560",
@@ -643,7 +643,7 @@
               "HideInGame": true,
               "IsTrigger": false,
               "Mesh": {
-                "Topology": "H4sIAAAAAAAACl2Qiw6CUAxDh1flgg/wAfr/X2pP0iWLJA25W9t16xHxFc4C30E4\u002Bt2FWbgKd2Ew4NTvIZxcb9ZH4b5db\u002Bb9z/oUzVh8m7lPc9FOzjRYQ8ZXyXxxXvrw4e72wvtWdoEPdzMXj8We9OHDXcvO7EqdN396eKaeLHjkLciePeYxi4z0mMFtMisablFvRXZ2Tj158KQOF78f9WSROMQBAAA=",
+                "Topology": "H4sIAAAAAAAACl2QCQ7CMAwEp4Qj3NBy/f\u002BlaMRGsohUVbFn1\u002Bt04ANs\u002BZ0VsM69AwfgBFyAKZ9MPXdgk3qLnsI\u002BUm/h/me9i2ZXfFvYOazafTJN0XRgKZmPyWtfXvYVL73PZRd52WdYPa7xtC8veys7u6t17/7t6Tn0ZtFjvIXZR895zjKjPWf4NiOrGt\u002BivpXZ3XnozaOndVn9vvVkkTjEAQAA",
                 "Positions": [
                   "-1408,-127.9999,1792",
                   "1408,-127.9999,1792",
@@ -683,8 +683,8 @@
                 "TextureUAxis": [
                   "1,0,0",
                   "1,-0,0",
-                  "0,-0.0000001778037,-1",
-                  "0,0.0000002424596,1",
+                  "0,-0.0000001616397,-1",
+                  "0,0.0000002262957,1",
                   "-1,0,0",
                   "1,-0,0"
                 ],
@@ -693,8 +693,8 @@
                   "0,0,-1",
                   "-0,1,0",
                   "0,1,0",
-                  "0,1,-0.0000001778037",
-                  "-0,1,-0.0000002101317"
+                  "0,1,-0.0000001616397",
+                  "-0,1,-0.0000001939677"
                 ],
                 "TextureScale": [
                   "0.5,0.5000002",
@@ -705,12 +705,12 @@
                   "0.5,0.5"
                 ],
                 "TextureOffset": [
-                  "0,127.9996",
                   "0,127.9995",
-                  "127.9989,255.9998",
-                  "128.001,255.9998",
-                  "0,0.0004882812",
-                  "0,0"
+                  "0,127.9995",
+                  "127.9988,0",
+                  "128.001,0",
+                  "0,0.0007324219",
+                  "0,0.0002441406"
                 ],
                 "MaterialIndex": [
                   1,
@@ -772,7 +772,7 @@
               "HideInGame": true,
               "IsTrigger": false,
               "Mesh": {
-                "Topology": "H4sIAAAAAAAACl2Qiw6CUAxDh1flgg/wAfr/X2pP0iWLJA25W9t16xHxFc4C30E4\u002Bt2FWbgKd2Ew4NTvIZxcb9ZH4b5db\u002Bb9z/oUzVh8m7lPc9FOzjRYQ8ZXyXxxXvrw4e72wvtWdoEPdzMXj8We9OHDXcvO7EqdN396eKaeLHjkLciePeYxi4z0mMFtMisablFvRXZ2Tj158KQOF78f9WSROMQBAAA=",
+                "Topology": "H4sIAAAAAAAACl2QCQ7CMAwEp4Qj3NBy/f\u002BlaMRGsohUVbFn1\u002Bt04ANs\u002BZ0VsM69AwfgBFyAKZ9MPXdgk3qLnsI\u002BUm/h/me9i2ZXfFvYOazafTJN0XRgKZmPyWtfXvYVL73PZRd52WdYPa7xtC8veys7u6t17/7t6Tn0ZtFjvIXZR895zjKjPWf4NiOrGt\u002BivpXZ3XnozaOndVn9vvVkkTjEAQAA",
                 "Positions": [
                   "-16,-256,560",
                   "16,-256,560",
@@ -901,7 +901,7 @@
               "HideInGame": true,
               "IsTrigger": false,
               "Mesh": {
-                "Topology": "H4sIAAAAAAAACl2Qiw6CUAxDh1flgg/wAfr/X2pP0iWLJA25W9t16xHxFc4C30E4\u002Bt2FWbgKd2Ew4NTvIZxcb9ZH4b5db\u002Bb9z/oUzVh8m7lPc9FOzjRYQ8ZXyXxxXvrw4e72wvtWdoEPdzMXj8We9OHDXcvO7EqdN396eKaeLHjkLciePeYxi4z0mMFtMisablFvRXZ2Tj158KQOF78f9WSROMQBAAA=",
+                "Topology": "H4sIAAAAAAAACl2QCQ7CMAwEp4Qj3NBy/f\u002BlaMRGsohUVbFn1\u002Bt04ANs\u002BZ0VsM69AwfgBFyAKZ9MPXdgk3qLnsI\u002BUm/h/me9i2ZXfFvYOazafTJN0XRgKZmPyWtfXvYVL73PZRd52WdYPa7xtC8veys7u6t17/7t6Tn0ZtFjvIXZR895zjKjPWf4NiOrGt\u002BivpXZ3XnozaOndVn9vvVkkTjEAQAA",
                 "Positions": [
                   "-16,-256,560",
                   "16,-256,560",
@@ -1030,7 +1030,7 @@
               "HideInGame": true,
               "IsTrigger": false,
               "Mesh": {
-                "Topology": "H4sIAAAAAAAACl2Qiw6CUAxDh1flgg/wAfr/X2pP0iWLJA25W9t16xHxFc4C30E4\u002Bt2FWbgKd2Ew4NTvIZxcb9ZH4b5db\u002Bb9z/oUzVh8m7lPc9FOzjRYQ8ZXyXxxXvrw4e72wvtWdoEPdzMXj8We9OHDXcvO7EqdN396eKaeLHjkLciePeYxi4z0mMFtMisablFvRXZ2Tj158KQOF78f9WSROMQBAAA=",
+                "Topology": "H4sIAAAAAAAACl2QCQ7CMAwEp4Qj3NBy/f\u002BlaMRGsohUVbFn1\u002Bt04ANs\u002BZ0VsM69AwfgBFyAKZ9MPXdgk3qLnsI\u002BUm/h/me9i2ZXfFvYOazafTJN0XRgKZmPyWtfXvYVL73PZRd52WdYPa7xtC8veys7u6t17/7t6Tn0ZtFjvIXZR895zjKjPWf4NiOrGt\u002BivpXZ3XnozaOndVn9vvVkkTjEAQAA",
                 "Positions": [
                   "-144,-220.4846,560",
                   "144,-220.4846,560",
@@ -1159,7 +1159,7 @@
               "HideInGame": true,
               "IsTrigger": false,
               "Mesh": {
-                "Topology": "H4sIAAAAAAAACl2Qiw6CUAxDh1flgg/wAfr/X2pP0iWLJA25W9t16xHxFc4C30E4\u002Bt2FWbgKd2Ew4NTvIZxcb9ZH4b5db\u002Bb9z/oUzVh8m7lPc9FOzjRYQ8ZXyXxxXvrw4e72wvtWdoEPdzMXj8We9OHDXcvO7EqdN396eKaeLHjkLciePeYxi4z0mMFtMisablFvRXZ2Tj158KQOF78f9WSROMQBAAA=",
+                "Topology": "H4sIAAAAAAAACl2QCQ7CMAwEp4Qj3NBy/f\u002BlaMRGsohUVbFn1\u002Bt04ANs\u002BZ0VsM69AwfgBFyAKZ9MPXdgk3qLnsI\u002BUm/h/me9i2ZXfFvYOazafTJN0XRgKZmPyWtfXvYVL73PZRd52WdYPa7xtC8veys7u6t17/7t6Tn0ZtFjvIXZR895zjKjPWf4NiOrGt\u002BivpXZ3XnozaOndVn9vvVkkTjEAQAA",
                 "Positions": [
                   "-144,-220.4846,560",
                   "144,-220.4846,560",
@@ -1288,7 +1288,7 @@
               "HideInGame": true,
               "IsTrigger": false,
               "Mesh": {
-                "Topology": "H4sIAAAAAAAACl2Qiw6CUAxDh1flgg/wAfr/X2pP0iWLJA25W9t16xHxFc4C30E4\u002Bt2FWbgKd2Ew4NTvIZxcb9ZH4b5db\u002Bb9z/oUzVh8m7lPc9FOzjRYQ8ZXyXxxXvrw4e72wvtWdoEPdzMXj8We9OHDXcvO7EqdN396eKaeLHjkLciePeYxi4z0mMFtMisablFvRXZ2Tj158KQOF78f9WSROMQBAAA=",
+                "Topology": "H4sIAAAAAAAACl2QCQ7CMAwEp4Qj3NBy/f\u002BlaMRGsohUVbFn1\u002Bt04ANs\u002BZ0VsM69AwfgBFyAKZ9MPXdgk3qLnsI\u002BUm/h/me9i2ZXfFvYOazafTJN0XRgKZmPyWtfXvYVL73PZRd52WdYPa7xtC8veys7u6t17/7t6Tn0ZtFjvIXZR895zjKjPWf4NiOrGt\u002BivpXZ3XnozaOndVn9vvVkkTjEAQAA",
                 "Positions": [
                   "-176,-320,560",
                   "176,-320,560",
@@ -1417,7 +1417,7 @@
               "HideInGame": true,
               "IsTrigger": false,
               "Mesh": {
-                "Topology": "H4sIAAAAAAAACl2Qiw6CUAxDh1flgg/wAfr/X2pP0iWLJA25W9t16xHxFc4C30E4\u002Bt2FWbgKd2Ew4NTvIZxcb9ZH4b5db\u002Bb9z/oUzVh8m7lPc9FOzjRYQ8ZXyXxxXvrw4e72wvtWdoEPdzMXj8We9OHDXcvO7EqdN396eKaeLHjkLciePeYxi4z0mMFtMisablFvRXZ2Tj158KQOF78f9WSROMQBAAA=",
+                "Topology": "H4sIAAAAAAAACl2QCQ7CMAwEp4Qj3NBy/f\u002BlaMRGsohUVbFn1\u002Bt04ANs\u002BZ0VsM69AwfgBFyAKZ9MPXdgk3qLnsI\u002BUm/h/me9i2ZXfFvYOazafTJN0XRgKZmPyWtfXvYVL73PZRd52WdYPa7xtC8veys7u6t17/7t6Tn0ZtFjvIXZR895zjKjPWf4NiOrGt\u002BivpXZ3XnozaOndVn9vvVkkTjEAQAA",
                 "Positions": [
                   "-176,-320,560.0247",
                   "176,-320,560",
@@ -1546,7 +1546,7 @@
               "HideInGame": true,
               "IsTrigger": false,
               "Mesh": {
-                "Topology": "H4sIAAAAAAAACl2Ri27CMAxFk5Z1g5YBG3SDsQeM1///4PCRTqRoka6axtfX1/aQUroFhgCnCUwCXeApMDP2HHgP7AL7wFcgC3Lqswo8\u002BN6qlyru2vdWXvev9luV81jptnJ/9UXu1Hs2B8\u002BvVQ\u002B9/rN8uKNaaM/tLcuHu5GLxkLNLB/uybfS68U6xJdqlny8/Bij5ksV66zVG8vOpnhtnEU9q9Geyee7dSdlX\u002Bzo4J1eP9wXcfhwz9YEnwF2SRw\u002B3Kt3NL7VLLOEe7Qf4tSCwz\u002Be6LXMDM/sip6Jk08uNdHHD17oAT4cZssM4cLBCz3wz2HW8IjhiX38xWEuzIp5Fo94I4YGmnc3keA17AIAAA==",
+                "Topology": "H4sIAAAAAAAACl2Ri07CQBREz1IoKigvBRQVfID8/w/WnDibbNykabszd\u002B7cuXPgCsz5OyNgDPTADXAX7AHYAy/AK/AOlDzWtGcFTHLfRY\u002BG\u002B5j7Lrz\u002BX\u002B9dUzNtdLtwv\u002BLL2tt8l9ToedPMMIv/Er7cbbTUvs9sJXy5T\u002BGqsYhmCV/ud\u002B7qrJf0EV9Gs9br5RTMnusG69NrFqwkm\u002Bp1lCzarLaZeZz3c3ZS9\u002BWOPprdHbKvPny55/T0ecsuxeXL/cm3Gsdo1izlfmYecXvJ8V9Pzloz07O7cmZx6621p/r60YszyJdjtmYoV45enMF/j1nLE9OT\u002BxiGYTAXszLP6lFvYmqo\u002BQs3keA17AIAAA==",
                 "Positions": [
                   "-94.10547,-190.9127,595.0321",
                   "151.9081,-190.9127,595.0321",
@@ -1741,7 +1741,7 @@
               "HideInGame": true,
               "IsTrigger": false,
               "Mesh": {
-                "Topology": "H4sIAAAAAAAACl2Qiw6CUAxDh1flgg/wAfr/X2pP0iWLJA25W9t16xHxFc4C30E4\u002Bt2FWbgKd2Ew4NTvIZxcb9ZH4b5db\u002Bb9z/oUzVh8m7lPc9FOzjRYQ8ZXyXxxXvrw4e72wvtWdoEPdzMXj8We9OHDXcvO7EqdN396eKaeLHjkLciePeYxi4z0mMFtMisablFvRXZ2Tj158KQOF78f9WSROMQBAAA=",
+                "Topology": "H4sIAAAAAAAACl2QCQ7CMAwEp4Qj3NBy/f\u002BlaMRGsohUVbFn1\u002Bt04ANs\u002BZ0VsM69AwfgBFyAKZ9MPXdgk3qLnsI\u002BUm/h/me9i2ZXfFvYOazafTJN0XRgKZmPyWtfXvYVL73PZRd52WdYPa7xtC8veys7u6t17/7t6Tn0ZtFjvIXZR895zjKjPWf4NiOrGt\u002BivpXZ3XnozaOndVn9vvVkkTjEAQAA",
                 "Positions": [
                   "-187.0515,141.1398,618.6187",
                   "131.4549,-220.7484,618.6193",
@@ -1800,7 +1800,7 @@
                   "0.609844,0.5",
                   "0.499999,0.5",
                   "0.4999999,0.5",
-                  "0.7567957,0.5000001"
+                  "0.7567956,0.5000001"
                 ],
                 "TextureOffset": [
                   "225.5651,110.8008",
@@ -1808,7 +1808,7 @@
                   "244.3961,128.0044",
                   "145.1992,128.0035",
                   "30.43372,128",
-                  "82.2926,127.9987"
+                  "82.29285,127.9987"
                 ],
                 "MaterialIndex": [
                   1,
@@ -1874,7 +1874,7 @@
           "HideInGame": true,
           "IsTrigger": true,
           "Mesh": {
-            "Topology": "H4sIAAAAAAAACl2Qiw6CUAxDh1flgg/wAfr/X2pP0iWLJA25W9t16xHxFc4C30E4\u002Bt2FWbgKd2Ew4NTvIZxcb9ZH4b5db\u002Bb9z/oUzVh8m7lPc9FOzjRYQ8ZXyXxxXvrw4e72wvtWdoEPdzMXj8We9OHDXcvO7EqdN396eKaeLHjkLciePeYxi4z0mMFtMisablFvRXZ2Tj158KQOF78f9WSROMQBAAA=",
+            "Topology": "H4sIAAAAAAAACl2QCQ7CMAwEp4Qj3NBy/f\u002BlaMRGsohUVbFn1\u002Bt04ANs\u002BZ0VsM69AwfgBFyAKZ9MPXdgk3qLnsI\u002BUm/h/me9i2ZXfFvYOazafTJN0XRgKZmPyWtfXvYVL73PZRd52WdYPa7xtC8veys7u6t17/7t6Tn0ZtFjvIXZR895zjKjPWf4NiOrGt\u002BivpXZ3XnozaOndVn9vvVkkTjEAQAA",
             "Positions": [
               "-17960.17,-18865.21,64",
               "17960.17,-18865.21,64",
@@ -2009,7 +2009,7 @@
           "HideInGame": false,
           "IsTrigger": false,
           "Mesh": {
-            "Topology": "H4sIAAAAAAAACl2Qiw6CUAxDh1flgg/wAfr/X2pP0iWLJA25W9t16xHxFc4C30E4\u002Bt2FWbgKd2Ew4NTvIZxcb9ZH4b5db\u002Bb9z/oUzVh8m7lPc9FOzjRYQ8ZXyXxxXvrw4e72wvtWdoEPdzMXj8We9OHDXcvO7EqdN396eKaeLHjkLciePeYxi4z0mMFtMisablFvRXZ2Tj158KQOF78f9WSROMQBAAA=",
+            "Topology": "H4sIAAAAAAAACl2QCQ7CMAwEp4Qj3NBy/f\u002BlaMRGsohUVbFn1\u002Bt04ANs\u002BZ0VsM69AwfgBFyAKZ9MPXdgk3qLnsI\u002BUm/h/me9i2ZXfFvYOazafTJN0XRgKZmPyWtfXvYVL73PZRd52WdYPa7xtC8veys7u6t17/7t6Tn0ZtFjvIXZR895zjKjPWf4NiOrGt\u002BivpXZ3XnozaOndVn9vvVkkTjEAQAA",
             "Positions": [
               "-17960.17,-18865.21,64",
               "17960.17,-18865.21,64",
@@ -2303,6 +2303,9 @@
             "AfterUILayer": false
           },
           "RenderType": "On",
+          "Sequence": {
+            "Name": null
+          },
           "Tint": "1,1,1,1",
           "UseAnimGraph": true
         },
@@ -2320,7 +2323,14 @@
           "AngularDamping": 0,
           "Gravity": true,
           "LinearDamping": 0,
-          "Locking": {},
+          "Locking": {
+            "X": false,
+            "Y": false,
+            "Z": false,
+            "Pitch": false,
+            "Yaw": false,
+            "Roll": false
+          },
           "MassCenterOverride": "0,0,0",
           "MassOverride": 0,
           "MotionEnabled": true,
@@ -2346,12 +2356,6 @@
           "Divisor": 20,
           "Health": 100,
           "Invincible": true,
-          "Rigidbody": {
-            "_type": "component",
-            "component_id": "48067f08-f3a4-47bd-88e6-a86f8efdd838",
-            "go": "093c013a-f495-45d4-9718-5062cb7b194f",
-            "component_type": "Rigidbody"
-          },
           "Team": "None"
         },
         {
@@ -2369,6 +2373,7 @@
           "BlendMode": "Normal",
           "CastShadows": false,
           "Color": {
+            "blend": "Linear",
             "color": [
               {
                 "t": 0.5,
@@ -2377,6 +2382,7 @@
             ],
             "alpha": []
           },
+          "Emitting": true,
           "Face": "Camera",
           "LifeTime": 0.2,
           "MaxPoints": 64,
@@ -2389,20 +2395,27 @@
             "AfterUILayer": false
           },
           "Texturing": {
+            "Texture": null,
             "WorldSpace": true,
             "UnitsPerTexture": 10,
-            "Scale": 1
+            "Scale": 1,
+            "Offset": 0,
+            "Scroll": 0
           },
           "Width": [
             {
               "x": 0.67410713,
-              "y": 1
+              "y": 1,
+              "in": 0,
+              "out": 0,
+              "mode": "Mirrored"
             },
             {
               "x": 1,
               "y": 0.021276595,
               "in": 3.684211,
-              "out": -3.684211
+              "out": -3.684211,
+              "mode": "Mirrored"
             }
           ],
           "Wireframe": false
