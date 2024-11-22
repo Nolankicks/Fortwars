@@ -86,32 +86,29 @@ HUD {
     }
 }
 
-button
-{
+button {
     font-size: 42px;
     height: 100px;
-
-    background-color: $button-secondary;
     color: $button-secondary-fg;
-
-    border-radius: $border-radius;
-    border-width: 2px;
-    border-color: $primary;
-    
+    text-stroke: 4px black;
     align-items: center;
     justify-content: center;
+    background-image: url("textures/ui/button.png");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-image-tint: white;
+    transform: scale(1);
 
-    &:hover
-    {
-        background-color: hsl(0, 0%, 20%);
+    &:hover {
         sound-in: ui.button.over;
         cursor: pointer;
+        background-image-tint: orange;
+        transform: scale(1.1);
     }
 
-    &:active
-    {
-        background-color: hsl(0, 0%, 15%);
+    &:active {
         sound-in: ui.button.press;
         cursor: pointer;
+        transform: scale(0.9);
     }
 }
