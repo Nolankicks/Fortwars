@@ -6,7 +6,7 @@
   "Thumb": "textures/utopia.vtex",
   "Author": "Willow",
   "PackageIndent": "willow.utopia",
-  "Hidden": true,
+  "Hidden": false,
   "Order": 0,
   "AvailableGamemodes": "Deathmatch",
   "__references": [],
