@@ -69,19 +69,6 @@ partial class FWPlayerController
 
 			var mode = Scene.GetAll<GameMode>()?.FirstOrDefault();
 
-			if ( mode.IsValid() && !mode.RespawnPlayers )
-			{
-				IsSpectating = true;
-
-				if ( shrimpleCharacterController.IsValid() )
-					shrimpleCharacterController.Enabled = false;
-
-				if ( AnimHelper.Target.IsValid() )
-					BroadcastEnable( AnimHelper.Target.GameObject, false );
-
-				return;
-			}
-
 			var target = AnimHelper.Target;
 
 			var go = new GameObject( true, $"{Network.Owner?.DisplayName}'s ragdoll" );
@@ -118,6 +105,16 @@ partial class FWPlayerController
 			go.NetworkSpawn();
 
 			BroadcastEnable( target.GameObject, false );
+
+			if ( mode.IsValid() && !mode.RespawnPlayers )
+			{
+				IsSpectating = true;
+
+				if ( shrimpleCharacterController.IsValid() )
+					shrimpleCharacterController.Enabled = false;
+
+				return;
+			}
 
 			IsRespawning = true;
 

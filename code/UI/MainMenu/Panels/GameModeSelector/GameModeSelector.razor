@@ -16,9 +16,15 @@
 	{
 		if (firstTime)
 		{
-			var options = ResourceLibrary.GetAll<GameModeResource>().Where( x => !x.Hidden ).Select( x => new Option() { Title = x.Title, Value = x } ).ToList();
-			DropDown.Options = options;
-			DropDown.Selected = options.FirstOrDefault( x => x.Title == GameModeType.Classic.ToString() );
+			List<Option> Options;
+			
+			if ( !Game.IsEditor )
+				Options = ResourceLibrary.GetAll<GameModeResource>().Where( x => !x.Hidden ).Select( x => new Option() { Title = x.Title, Value = x } ).ToList();
+			else
+				Options = ResourceLibrary.GetAll<GameModeResource>().Select( x => new Option() { Title = x.Title, Value = x } ).ToList();
+			
+			DropDown.Options = Options;
+			DropDown.Selected = Options.FirstOrDefault( x => x.Title == GameModeType.Classic.ToString() );
 		}
 
 		base.OnAfterTreeRender(firstTime);

@@ -160,6 +160,9 @@ public sealed partial class GameSystem : Component
 				PlayerToStart = lobbySettings?.PlayersToStart ?? 1;
 			}
 
+			if ( CurrentGameModeComponent.SetMaxPlayersToStart )
+				PlayerToStart = CurrentGameModeComponent.MaxPlayersToStart;
+
 			//Create our prop helpers
 			foreach ( var prop in Scene.GetAll<Prop>() )
 			{

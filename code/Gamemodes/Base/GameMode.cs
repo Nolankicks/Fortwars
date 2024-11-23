@@ -23,11 +23,14 @@ public partial class GameMode : Component, Component.INetworkListener
 
 	[Property, Sync] public bool RespawnPlayers { get; set; } = true;
 
+	[Property, ToggleGroup( "SetMaxPlayersToStart" )] public bool SetMaxPlayersToStart { get; set; } = false;
+	[Property, ToggleGroup( "SetMaxPlayersToStart" )] public int MaxPlayersToStart { get; set; } = 2;
+
+
 	protected override void OnStart()
 	{
 		Log.Info( "Game Mode Started" );
 	}
-
 
 	public bool GameHasStarted { get; set; } = false;
 
