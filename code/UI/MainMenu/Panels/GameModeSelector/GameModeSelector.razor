@@ -18,7 +18,7 @@
 		{
 			var options = ResourceLibrary.GetAll<GameModeResource>().Where( x => !x.Hidden ).Select( x => new Option() { Title = x.Title, Value = x } ).ToList();
 			DropDown.Options = options;
-			DropDown.Selected = options.FirstOrDefault();
+			DropDown.Selected = options.FirstOrDefault( x => x.Title == GameModeType.Classic.ToString() );
 		}
 
 		base.OnAfterTreeRender(firstTime);

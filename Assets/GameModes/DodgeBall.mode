@@ -1,0 +1,12 @@
+{
+  "Title": "Dodgeball",
+  "Description": "",
+  "Prefab": {
+    "_type": "gameobject",
+    "prefab": "prefabs/gamemodes/dodgeball.prefab"
+  },
+  "Hidden": true,
+  "Type": "Dodgeball",
+  "__references": [],
+  "__version": 0
+}

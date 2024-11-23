@@ -1,0 +1,181 @@
+{
+  "RootObject": {
+    "__guid": "08781cd7-a731-4cf9-9271-a9e754ca7449",
+    "Flags": 0,
+    "Name": "dodgeball",
+    "Enabled": true,
+    "NetworkMode": 1,
+    "Components": [
+      {
+        "__type": "GameMode",
+        "__guid": "cf9574c9-fcd7-4db1-9e8f-36f9a140d8db",
+        "HasMapVoting": false,
+        "InitialRound": {
+          "_type": "component",
+          "component_id": "f3bc34e5-e3dc-4821-8b5d-608573df95f2",
+          "go": "56798eb2-8567-4722-8b10-e8a4f7497265",
+          "component_type": "RoundComponent"
+        },
+        "OnGameEnd": {
+          "__version": 8,
+          "__guid": "8cfedfea-f283-409b-8692-5c9594ca4f69",
+          "__changeId": 14,
+          "UserData": {
+            "Title": "On Game End",
+            "ReferencedComponentTypes": []
+          },
+          "Variables": [],
+          "Nodes": [
+            {
+              "Id": 0,
+              "Type": "input"
+            },
+            {
+              "Id": 1,
+              "Type": "scene.getall.inscene",
+              "Properties": {
+                "T": "FWPlayerController"
+              },
+              "UserData": {
+                "Position": "0,276",
+                "Labels": {
+                  "_result": "Players"
+                }
+              }
+            },
+            {
+              "Id": 2,
+              "Type": "foreach",
+              "UserData": {
+                "Position": "252,0",
+                "Labels": {
+                  "body.value": "p",
+                  "body": "body"
+                }
+              }
+            },
+            {
+              "Id": 3,
+              "Type": "Reset All Teams",
+              "UserData": {
+                "Position": "636,-0"
+              }
+            },
+            {
+              "Id": 4,
+              "Type": "call",
+              "Properties": {
+                "_isStatic": false,
+                "_name": "RespawnPlayer",
+                "_type": "FWPlayerController"
+              },
+              "UserData": {
+                "Position": "12,156"
+              }
+            }
+          ],
+          "Links": [
+            {
+              "SrcId": 0,
+              "SrcName": "_signal",
+              "DstId": 2,
+              "DstName": "_signal"
+            },
+            {
+              "SrcId": 1,
+              "SrcName": "_result",
+              "DstId": 2,
+              "DstName": "enumerable"
+            },
+            {
+              "SrcId": 2,
+              "SrcName": "_signal",
+              "DstId": 3,
+              "DstName": "_signal"
+            },
+            {
+              "SrcId": 2,
+              "SrcName": "body",
+              "DstId": 4,
+              "DstName": "_signal"
+            },
+            {
+              "SrcId": 2,
+              "SrcName": "body.value",
+              "DstId": 4,
+              "DstName": "_target"
+            }
+          ]
+        },
+        "RespawnPlayers": false,
+        "TeamsEnabled": false
+      },
+      {
+        "__type": "DodgeBall",
+        "__guid": "9ba5b7bb-7d9c-4ee3-b35f-59197bdb37f9"
+      }
+    ],
+    "Children": [
+      {
+        "__guid": "56798eb2-8567-4722-8b10-e8a4f7497265",
+        "Flags": 0,
+        "Name": "Playing",
+        "Enabled": true,
+        "NetworkMode": 1,
+        "Components": [
+          {
+            "__type": "RoundComponent",
+            "__guid": "f3bc34e5-e3dc-4821-8b5d-608573df95f2",
+            "AddClass": false,
+            "CanOpenClassSelect": false,
+            "CheckForWinningTeam": false,
+            "ClearAllWeapons": true,
+            "ClearClass": false,
+            "Condition": false,
+            "IsLastRound": true,
+            "IsRoundActive": false,
+            "Name": "Ongoing",
+            "PlayersToSpawns": true,
+            "PlayerWeapons": [],
+            "RoundTime": 5,
+            "Time": true,
+            "Warning": false,
+            "WarningDuration": 0,
+            "WarningTime": 0
+          }
+        ]
+      }
+    ],
+    "__variables": [],
+    "__properties": {
+      "FixedUpdateFrequency": 50,
+      "MaxFixedUpdates": 5,
+      "NetworkFrequency": 30,
+      "NetworkInterpolation": true,
+      "PhysicsSubSteps": 1,
+      "ThreadedAnimation": true,
+      "TimeScale": 1,
+      "UseFixedUpdate": true,
+      "Metadata": {},
+      "NavMesh": {
+        "Enabled": false,
+        "IncludeStaticBodies": true,
+        "IncludeKeyframedBodies": true,
+        "EditorAutoUpdate": true,
+        "AgentHeight": 64,
+        "AgentRadius": 16,
+        "AgentStepSize": 18,
+        "AgentMaxSlope": 40,
+        "ExcludedBodies": "",
+        "IncludedBodies": ""
+      }
+    }
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "DontBreakAsTemplate": false,
+  "ResourceVersion": 1,
+  "__references": [],
+  "__version": 1
+}

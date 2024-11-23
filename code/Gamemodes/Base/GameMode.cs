@@ -21,6 +21,8 @@ public partial class GameMode : Component, Component.INetworkListener
 	// Note this is awful and long and i hate it but it works
 	public static RoundComponent ActiveRound { get { return Game.ActiveScene.GetAllComponents<GameMode>().FirstOrDefault().Components.GetAll<RoundComponent>().Where( x => x.IsRoundActive ).FirstOrDefault(); } }
 
+	[Property, Sync] public bool RespawnPlayers { get; set; } = true;
+
 	protected override void OnStart()
 	{
 		Log.Info( "Game Mode Started" );
