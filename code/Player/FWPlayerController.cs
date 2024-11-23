@@ -71,6 +71,8 @@ IGameEventHandler<DeathEvent>, IGameEventHandler<OnPhysgunGrabChange>
 
 	[Sync] public bool IsSpectating { get; set; } = false;
 
+	public static bool ShownAboutPanel { get; set; } = false;
+
 	protected override void OnStart()
 	{
 		if ( !AnimHelper.IsValid() )
@@ -85,6 +87,15 @@ IGameEventHandler<DeathEvent>, IGameEventHandler<OnPhysgunGrabChange>
 		StartingRunSpeed = RunSpeed;
 
 		RespawnPoint = Transform.World;
+
+		var hud = HUD.Instance;
+
+		if ( hud.IsValid() && !ShownAboutPanel )
+		{
+			hud?.Panel.AddChild( new AboutPanel() );
+
+			ShownAboutPanel = true;
+		}
 	}
 
 	[Broadcast]
