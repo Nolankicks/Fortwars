@@ -291,7 +291,7 @@
 				healthComponent.TakeDamage( GameObject, 25 );
 				Sound.Play( tr.Surface.Sounds.Bullet, tr.HitPosition );
 
-				Weapon.SpawnParticleEffect( Cloud.ParticleSystem( "bolt.impactflesh" ), tr.EndPosition + (tr.Normal * 2) );
+				Weapon.SpawnParticleEffect( Cloud.ParticleSystem( "bolt.impactflesh" ), tr.EndPosition + (tr.Normal * 5) );
 			}
 
             if ( tr.Body.IsValid() )

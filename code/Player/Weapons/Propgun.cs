@@ -28,7 +28,7 @@ public sealed class Propgun : Item
 
 	public bool SnapToGrid { get; set; } = false;
 
-	public bool UseBounds { get; set; } = true;
+	public bool UseBounds { get; set; } = false;
 
 	protected override void OnStart()
 	{
