@@ -10,6 +10,7 @@
         "__guid": "4ed6a63a-4d64-4b12-b540-69664f44f101",
         "AmmoPerShot": 1,
         "AttackAnimName": "b_attack",
+        "CrosshairEnabled": false,
         "Damage": 8,
         "FireRate": 0.065,
         "FireSound": "audio/smg.fire.sound",
@@ -21,7 +22,7 @@
         "Range": 50000,
         "RecoilValues": "-4,3,0.35",
         "ReloadAnimName": "b_reload",
-        "ReloadDelay": 1.8,
+        "ReloadDelay": 1.2,
         "Spread": 0.06,
         "TracerPoint": {
           "_type": "gameobject",
@@ -86,6 +87,7 @@
       {
         "__type": "WeaponCrosshair",
         "__guid": "001efa25-db5d-4c54-b289-5d7708c56f4f",
+        "AmmoAngle": 180,
         "BorderEnabled": true,
         "BorderSize": 1,
         "Dynamic": true,
@@ -886,6 +888,5 @@
   "__references": [
     "facepunch.v_mp5#64494"
   ],
-  "HasUnsavedChanges": false,
   "__version": 1
 }

@@ -11,6 +11,7 @@
         "AmmoPerShot": 1,
         "AttackAnimName": "b_attack",
         "CasingModel": "models/weapons/sbox_ammo/12g_shell/12g_shell.vmdl",
+        "CrosshairEnabled": false,
         "Damage": 20,
         "EjectionPoint": {
           "_type": "gameobject",
@@ -27,7 +28,7 @@
         "RecoilValues": "-10,5,2",
         "ReloadAnimName": "b_reload",
         "ReloadDelay": 5.25,
-        "Spread": 0.07,
+        "Spread": 0.1,
         "TracerPoint": {
           "_type": "gameobject",
           "go": "956d25ca-2cba-4cfa-93a6-dfe90ea33096"
@@ -869,6 +870,5 @@
     "facepunch.v_spaghellim4#64353",
     "facepunch.w_spaghellim4#58057"
   ],
-  "HasUnsavedChanges": false,
   "__version": 1
 }

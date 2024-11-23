@@ -85,6 +85,11 @@ public sealed partial class GameSystem : Component
 		if ( !Networking.IsHost )
 			return;
 
+		if ( SavedGameMode is null && !Application.IsHeadless )
+		{
+			SavedGameMode = ResourceLibrary.Get<GameModeResource>( $"gamemodes/classic.mode" );
+		}
+
 		if ( LoadGameData && SavedGameMode is not null )
 		{
 			CurrentGameMode = SavedGameMode;

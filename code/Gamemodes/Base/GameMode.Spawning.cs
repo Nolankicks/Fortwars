@@ -51,7 +51,7 @@ public partial class GameMode
 
 		//Event callback
 		Scene.Dispatch( new OnPlayerJoin() );
+
+		SetGamemode( GameSystem.SavedGameMode );
 	}
-
-
 }

@@ -10,6 +10,7 @@
         "__guid": "4ed6a63a-4d64-4b12-b540-69664f44f101",
         "AmmoPerShot": 1,
         "AttackAnimName": "b_attack",
+        "CrosshairEnabled": false,
         "Damage": 15,
         "FireRate": 0.1,
         "FireSound": "audio/rifle.fire.sound",
@@ -21,7 +22,7 @@
         "Range": 50000,
         "RecoilValues": "-3,2,0.5",
         "ReloadAnimName": "b_reload",
-        "ReloadDelay": 1.8,
+        "ReloadDelay": 1.2,
         "Spread": 0.03,
         "TracerPoint": {
           "_type": "gameobject",
@@ -880,6 +881,5 @@
     "facepunch.v_m4a1#68031",
     "facepunch.w_m4a1#60166"
   ],
-  "HasUnsavedChanges": false,
   "__version": 1
 }

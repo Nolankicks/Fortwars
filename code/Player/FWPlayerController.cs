@@ -1,3 +1,4 @@
+using System;
 using Sandbox.Citizen;
 using Sandbox.Events;
 using Sandbox.Services;
@@ -114,7 +115,7 @@ IGameEventHandler<DeathEvent>, IGameEventHandler<OnPhysgunGrabChange>
 			{
 				Spectate();
 			}
-			
+
 			if ( shrimpleCharacterController.IsOnGround && !LastOnGround && !IsSpectating )
 				CameraController.Instance.RecoilFire( new Vector3( 5, 0, 0 ) );
 
@@ -207,9 +208,18 @@ IGameEventHandler<DeathEvent>, IGameEventHandler<OnPhysgunGrabChange>
 		if ( !shrimpleCharacterController.IsValid() || IsRespawning )
 			return;
 
-		WishVelocity = Input.AnalogMove.Normal * Rotation.FromYaw( EyeAngles.yaw );
+		var forwardDirection = EyeAngles.WithPitch( 0f ).Forward;
+		var velocityDirection = shrimpleCharacterController.Velocity.WithZ( 0f ).Normal;
+		var dotProduct = Math.Max( Vector3.Dot( forwardDirection, velocityDirection ), 0.5f );
+		var sprintingCoefficient = MathX.Remap( dotProduct, 0.5f, 1f, 0f, 1f );
 
-		WishVelocity *= GetMoveSpeed();
+		var sprintSpeed = MathX.Lerp( GetMoveSpeed(), RunSpeed, sprintingCoefficient );
+
+		var isCrouching = Input.Down( "crouch" );
+		var wishSpeed = isCrouching ? 100 : sprintSpeed;
+
+		var wishDirection = Input.AnalogMove.Normal * Rotation.FromYaw( EyeAngles.yaw );
+		WishVelocity = wishDirection * wishSpeed;
 
 		if ( !shrimpleCharacterController.IsOnGround )
 		{

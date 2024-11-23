@@ -128,6 +128,13 @@ public partial class GameMode : Component, Component.INetworkListener
 		Scene.Dispatch( new PlayerReset() );
 	}
 
+	[Broadcast]
+	public void SetGamemode( GameModeResource type )
+	{
+		if ( type is not null )
+			GameSystem.SavedGameMode = type;
+	}
+
 	public virtual void WinGame( Team team = Team.None )
 	{
 		if ( team == Team.None )

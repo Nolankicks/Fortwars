@@ -27,6 +27,8 @@
 			DropDown.Selected = Options.FirstOrDefault( x => x.Title == GameModeType.Classic.ToString() );
 		}
 
+		GameSystem.SetGameMode( (GameModeResource)DropDown.Selected.Value );
+
 		base.OnAfterTreeRender(firstTime);
 	}
 
