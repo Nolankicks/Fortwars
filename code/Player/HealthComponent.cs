@@ -14,6 +14,7 @@ public partial class HealthComponent : Component
     [Property, Sync] public bool IsDead { get; set; } = false;
 	[Property, Sync] public bool SpawnDamageIndicator { get; set; } = true;
 	[Property] public Func<GameObject, int, bool> CanTakeDamage { get; set; }
+	[Property] public Action<int, Vector3> OnDeathAction { get; set; }
 
 	public virtual void OnDeath( GameObject Attacker, Vector3 damagePos, Vector3 damageNormal ) { }
 
@@ -40,6 +41,7 @@ public partial class HealthComponent : Component
             IsDead = true;
             GameObject.Dispatch( new DeathEvent( Attacker, GameObject, HitPos, normal ) );
 			OnDeath( Attacker, HitPos, normal );
+			OnDeathAction?.Invoke( damage, HitPos );
         }
     }
 

@@ -77,23 +77,33 @@
           "__type": "Sandbox.Bloom",
           "__guid": "b5eef619-2ea0-4764-8382-d48ee49357da",
           "BloomColor": {
+            "blend": "Linear",
             "color": [
               {
+                "t": 0,
                 "c": "1,1,1,1"
               },
               {
                 "t": 1,
                 "c": "1,1,1,1"
               }
-            ]
+            ],
+            "alpha": []
           },
           "BloomCurve": [
             {
-              "y": 0.5
+              "x": 0,
+              "y": 0.5,
+              "in": 0,
+              "out": 0,
+              "mode": "Mirrored"
             },
             {
               "x": 1,
-              "y": 1
+              "y": 1,
+              "in": 0,
+              "out": 0,
+              "mode": "Mirrored"
             }
           ],
           "Mode": "Additive",
@@ -212,6 +222,100 @@
         {
           "__type": "LocalPlayerDresser",
           "__guid": "6e36e25b-5680-49c3-a425-f3bd0e93300f"
+        },
+        {
+          "__type": "Sandbox.ModelPhysics",
+          "__guid": "2dfad6fd-7c94-47fa-ba1c-0cf12fe24b39",
+          "Locking": {
+            "X": false,
+            "Y": false,
+            "Z": false,
+            "Pitch": false,
+            "Yaw": false,
+            "Roll": false
+          },
+          "Model": "models/citizen/citizen.vmdl",
+          "MotionEnabled": false,
+          "Renderer": {
+            "_type": "component",
+            "component_id": "b54905e8-017d-43be-b835-95cbd433ebe1",
+            "go": "0e8b2ee7-f42c-4311-8ecc-8a9ed67ed706",
+            "component_type": "SkinnedModelRenderer"
+          },
+          "RigidbodyFlags": 0
+        },
+        {
+          "__type": "HealthComponent",
+          "__guid": "f5cdcc85-42e3-47df-b13f-daf8d54faa4e",
+          "Health": 125,
+          "IsDead": false,
+          "MaxHealth": 100,
+          "OnDeathAction": {
+            "__version": 8,
+            "__guid": "27aa4f0c-f135-49af-b796-a450882e16a9",
+            "__changeId": 20,
+            "UserData": {
+              "Title": "On Death Action",
+              "ReferencedComponentTypes": []
+            },
+            "Variables": [],
+            "Nodes": [
+              {
+                "Id": 0,
+                "Type": "input"
+              },
+              {
+                "Id": 1,
+                "Type": "scene.ref",
+                "UserData": {
+                  "Position": "0,84"
+                }
+              },
+              {
+                "Id": 2,
+                "Type": "property",
+                "Properties": {
+                  "_name": "MotionEnabled",
+                  "_type": "Sandbox.ModelPhysics"
+                },
+                "UserData": {
+                  "Position": "288,-0"
+                }
+              }
+            ],
+            "Links": [
+              {
+                "SrcId": 0,
+                "SrcName": "_signal",
+                "DstId": 2,
+                "DstName": "_signal"
+              },
+              {
+                "SrcId": 1,
+                "SrcName": "_result",
+                "DstId": 2,
+                "DstName": "_target",
+                "UserData": {
+                  "x": 96
+                }
+              },
+              {
+                "Id": 4,
+                "Value": true,
+                "DstId": 2,
+                "DstName": "_value"
+              }
+            ],
+            "Defaults": {
+              "$1.component": {
+                "_type": "component",
+                "component_id": "2dfad6fd-7c94-47fa-ba1c-0cf12fe24b39",
+                "go": "0e8b2ee7-f42c-4311-8ecc-8a9ed67ed706",
+                "component_type": "ModelPhysics"
+              }
+            }
+          },
+          "SpawnDamageIndicator": true
         }
       ]
     },

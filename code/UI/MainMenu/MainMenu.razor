@@ -286,6 +286,14 @@
 			    damageable.OnDamage( damage );
 		    }
 
+			if ( tr.GameObject.Components.TryGet<HealthComponent>( out var healthComponent, FindMode.EverythingInSelfAndParent ) )
+			{
+				healthComponent.TakeDamage( GameObject, 25 );
+				Sound.Play( tr.Surface.Sounds.Bullet, tr.HitPosition );
+
+				Weapon.SpawnParticleEffect( Cloud.ParticleSystem( "bolt.impactflesh" ), tr.EndPosition + (tr.Normal * 2) );
+			}
+
             if ( tr.Body.IsValid() )
 		    {
                 tr.Body.BodyType = PhysicsBodyType.Dynamic;

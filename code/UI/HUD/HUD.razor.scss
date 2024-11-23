@@ -96,6 +96,7 @@ button {
     border-color: $primary;
     align-items: center;
     justify-content: center;
+    transition: all 0.05s;
 
     &:hover {
         sound-in: ui.button.over;
