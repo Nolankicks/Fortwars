@@ -98,7 +98,6 @@ button {
     background-size: 100%;
     background-image-tint: white;
     transform: scale(1);
-    image-rendering: pixelated;
 
     &:hover {
         sound-in: ui.button.over;
