@@ -12,6 +12,7 @@ public partial class GameMode : Component, Component.INetworkListener
 	[Property, Sync, ReadOnly] public RoundComponent CurrentRound { get; set; }
 
 	[Property] public Action<Team> OnGameEnd { get; set; }
+	[Property] public Action OnGameStart { get; set; }
 
 	[Property, ReadOnly, Sync] public bool TeamsEnabled { get; set; } = false;
 
@@ -34,6 +35,8 @@ public partial class GameMode : Component, Component.INetworkListener
 		CurrentRound = InitialRound;
 		InitialRound.ActivateRound();
 		Log.Info( "Activated inital round" );
+
+		OnGameStart?.Invoke();
 	}
 
 	void INetworkListener.OnActive( Connection channel )
