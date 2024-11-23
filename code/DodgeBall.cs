@@ -10,6 +10,9 @@ public sealed class DodgeBall : GameMode
 		if ( blue is null || red is null )
 			return Team.None;
 
+		if ( !blue.Any() && !red.Any() )
+			return Team.None;
+
 		if ( !blue.Any() )
 			return Team.Red;
 
@@ -25,6 +28,9 @@ public sealed class DodgeBall : GameMode
 		var red = Scene.GetAll<FWPlayerController>().Where( x => !x.HealthComponent.IsDead && x.TeamComponent.Team == Team.Red );
 
 		if ( blue is null || red is null )
+			return;
+
+		if ( !blue.Any() && !red.Any() )
 			return;
 
 		if ( !blue.Any() )

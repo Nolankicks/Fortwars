@@ -129,51 +129,14 @@
             "CheckForWinningTeam": true,
             "ClearAllWeapons": true,
             "ClearClass": false,
-            "Condition": true,
-            "EndCondition": {
-              "__version": 8,
-              "__guid": "cb506620-f9a8-4b1c-a652-d3620fd22177",
-              "__changeId": 4,
-              "UserData": {
-                "Title": "End Condition",
-                "ReferencedComponentTypes": []
-              },
-              "Variables": [],
-              "Nodes": [
-                {
-                  "Id": 0,
-                  "Type": "input"
-                },
-                {
-                  "Id": 1,
-                  "Type": "output",
-                  "UserData": {
-                    "Position": "252,0"
-                  }
-                }
-              ],
-              "Links": [
-                {
-                  "Id": 3,
-                  "Value": false,
-                  "DstId": 1,
-                  "DstName": "_result"
-                },
-                {
-                  "SrcId": 0,
-                  "SrcName": "_signal",
-                  "DstId": 1,
-                  "DstName": "_signal"
-                }
-              ]
-            },
+            "Condition": false,
             "IsLastRound": false,
             "IsRoundActive": false,
             "Name": "Ongoing",
             "OnRoundStart": {
               "__version": 8,
               "__guid": "b76aad72-efbe-47e8-9cb0-32c7ccb45163",
-              "__changeId": 16,
+              "__changeId": 18,
               "UserData": {
                 "Title": "On Round Start",
                 "ReferencedComponentTypes": [
@@ -207,7 +170,7 @@
                     "T": "GameMode"
                   },
                   "UserData": {
-                    "Position": "228,132"
+                    "Position": "144,120"
                   }
                 },
                 {
@@ -246,7 +209,12 @@
                   "SrcId": 5,
                   "SrcName": "_result",
                   "DstId": 6,
-                  "DstName": "_target"
+                  "DstName": "_target",
+                  "UserData": {
+                    "a": -1116,
+                    "b": 12,
+                    "y": -36
+                  }
                 }
               ],
               "Defaults": {

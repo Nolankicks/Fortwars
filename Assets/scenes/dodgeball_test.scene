@@ -111,7 +111,7 @@
           "__guid": "894b73b9-db7c-4fd7-9f35-526541a8fff4",
           "CanKill": true,
           "CollisionThreshold": 100,
-          "Divisor": 20,
+          "Divisor": 1,
           "Health": 100,
           "Invincible": true,
           "Team": "None"
@@ -498,7 +498,6 @@
       "Flags": 0,
       "Name": "Trigger",
       "Position": "0.0007324219,0,384",
-      "Enabled": true,
       "Components": [
         {
           "__type": "Sandbox.MeshComponent",
@@ -562,20 +561,20 @@
               "-0,0,-1"
             ],
             "TextureScale": [
+              "0.2499999,0.25",
+              "0.2499999,0.25",
               "0.25,0.25",
               "0.25,0.25",
-              "0.25,0.25",
-              "0.25,0.25",
-              "0.25,0.25",
-              "0.25,0.25"
+              "0.2499999,0.25",
+              "0.2499999,0.25"
             ],
             "TextureOffset": [
               "255.9971,0",
               "255.9971,0",
               "0,0",
               "0,0",
-              "0.002929688,0",
-              "255.9971,0"
+              "0.002441406,0",
+              "255.9976,0"
             ],
             "MaterialIndex": [
               0,
