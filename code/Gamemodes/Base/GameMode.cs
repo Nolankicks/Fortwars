@@ -157,8 +157,6 @@ public partial class GameMode : Component, Component.INetworkListener
 		GameSystem.GreenTimeHeld = GameSystem.InitGreenTimeHeld;
 	}
 
-
-
 	public virtual void CheckForWinningTeam() { }
 
 	public List<string> FightModePopups = new()
@@ -204,6 +202,20 @@ public partial class GameMode : Component, Component.INetworkListener
 		{
 			gs.CurrentGameModeComponent?.CurrentRound?.EndRound( i == 0 ? false : true );
 		}
+	}
+
+	[ConCmd( "end_game" )]
+	public static void EndGame()
+	{
+		if ( !Networking.IsHost )
+			return;
+
+		var gs = GameSystem.Instance;
+
+		if ( !gs.IsValid() )
+			return;
+
+		gs.CurrentGameModeComponent?.EndGame();
 	}
 }
 
