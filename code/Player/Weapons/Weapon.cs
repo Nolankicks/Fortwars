@@ -217,6 +217,11 @@ public class Weapon : Item, IGameEventHandler<OnReloadEvent>
 
 		if ( tr.GameObject.Components.TryGet<HealthComponent>( out var health, FindMode.EverythingInSelfAndParent ) && !health.IsDead )
 		{
+			var team = health.GameObject.Components.Get<TeamComponent>();
+
+			if ( team.IsValid() && local.TeamComponent.IsValid() && local.TeamComponent.IsFriendly( team ) && team.Team != Team.None )
+				return;
+
 			health.TakeDamage( local.GameObject, Damage, tr.EndPosition, tr.Normal );
 
 			SpawnParticleEffect( Cloud.ParticleSystem( "bolt.impactflesh" ), tr.EndPosition );
