@@ -55,7 +55,7 @@
                 "OnRoundStart": {
                   "__version": 8,
                   "__guid": "0def4a9f-0327-4117-8b0a-b78f4dc75b92",
-                  "__changeId": 80,
+                  "__changeId": 87,
                   "UserData": {
                     "Title": "On Round Start",
                     "ReferencedComponentTypes": [
@@ -133,6 +133,13 @@
                       "UserData": {
                         "Position": "72,216"
                       }
+                    },
+                    {
+                      "Id": 42,
+                      "Type": "Reset Rollermine",
+                      "UserData": {
+                        "Position": "72,276"
+                      }
                     }
                   ],
                   "Links": [
@@ -161,7 +168,7 @@
                       "DstName": "_signal"
                     },
                     {
-                      "Id": 35,
+                      "Id": 41,
                       "Value": true,
                       "DstId": 4,
                       "DstName": "enable"
@@ -193,6 +200,12 @@
                       "SrcName": "_result",
                       "DstId": 39,
                       "DstName": "_target"
+                    },
+                    {
+                      "SrcId": 39,
+                      "SrcName": "_signal",
+                      "DstId": 42,
+                      "DstName": "_signal"
                     }
                   ],
                   "Defaults": {
@@ -236,7 +249,7 @@
                 "EndCondition": {
                   "__version": 8,
                   "__guid": "cc1ca8c1-895c-4fa1-a836-def18b712445",
-                  "__changeId": 23,
+                  "__changeId": 24,
                   "UserData": {
                     "Title": "End Condition",
                     "ReferencedComponentTypes": []
@@ -257,7 +270,7 @@
                   ],
                   "Links": [
                     {
-                      "Id": 2,
+                      "Id": 3,
                       "Value": false,
                       "DstId": 1,
                       "DstName": "_result"
@@ -363,7 +376,7 @@
                 "OnRoundStart": {
                   "__version": 8,
                   "__guid": "a8a041bc-7d5b-4c31-b007-98d025bf4fdf",
-                  "__changeId": 60,
+                  "__changeId": 66,
                   "UserData": {
                     "Title": "On Round Start",
                     "ReferencedComponentTypes": [
@@ -389,7 +402,7 @@
                         "T": "RoundComponent"
                       },
                       "UserData": {
-                        "Position": "0,252",
+                        "Position": "0,288",
                         "Labels": {
                           "_result": "Round component"
                         }
@@ -432,6 +445,13 @@
                       "UserData": {
                         "Position": "0,216"
                       }
+                    },
+                    {
+                      "Id": 20,
+                      "Type": "Reset Rollermine",
+                      "UserData": {
+                        "Position": "0,252"
+                      }
                     }
                   ],
                   "Links": [
@@ -472,7 +492,7 @@
                       "DstName": "_signal"
                     },
                     {
-                      "Id": 18,
+                      "Id": 19,
                       "Value": false,
                       "DstId": 12,
                       "DstName": "enable"
@@ -481,6 +501,12 @@
                       "SrcId": 0,
                       "SrcName": "_signal",
                       "DstId": 17,
+                      "DstName": "_signal"
+                    },
+                    {
+                      "SrcId": 0,
+                      "SrcName": "_signal",
+                      "DstId": 20,
                       "DstName": "_signal"
                     }
                   ]
@@ -531,6 +557,5 @@
   "DontBreakAsTemplate": false,
   "ResourceVersion": 1,
   "__references": [],
-  "HasUnsavedChanges": false,
   "__version": 1
 }
