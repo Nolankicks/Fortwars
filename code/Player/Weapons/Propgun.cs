@@ -109,7 +109,6 @@ public sealed class Propgun : Item
 					var res = fwProp.Resource;
 					CurrentProp = res;
 					HeldObject = tr.GameObject;
-					tr.Component.Enabled = false;
 				}
 			}
 			return;
@@ -119,13 +118,6 @@ public sealed class Propgun : Item
 		{
 			HandleProp();
 		}
-	}
-
-
-	[Broadcast]
-	public void SetStaticBodyType( Rigidbody rb )
-	{
-		rb.PhysicsBody.BodyType = PhysicsBodyType.Static;
 	}
 
 	protected override void OnDisabled()
@@ -230,17 +222,10 @@ public sealed class Propgun : Item
 			{
 				HeldObject.WorldPosition = ObjectPos;
 				HeldObject.WorldRotation = PropRotation;
-				var rb = HeldObject.Components.Get<Rigidbody>( FindMode.EverythingInSelf );
-				rb.Enabled = true;
-				SetStaticBodyType( rb );
-				HeldObject.Network.Refresh();
-
 
 				HeldObject = null;
 				HoldingObject = false;
 			}
-
-
 		}
 	}
 
