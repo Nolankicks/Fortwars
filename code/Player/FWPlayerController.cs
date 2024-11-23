@@ -115,7 +115,7 @@ IGameEventHandler<DeathEvent>, IGameEventHandler<OnPhysgunGrabChange>
 				Spectate();
 			}
 			
-			if ( shrimpleCharacterController.IsOnGround && !LastOnGround )
+			if ( shrimpleCharacterController.IsOnGround && !LastOnGround && !IsSpectating )
 				CameraController.Instance.RecoilFire( new Vector3( 5, 0, 0 ) );
 
 			LastOnGround = shrimpleCharacterController.IsOnGround;
