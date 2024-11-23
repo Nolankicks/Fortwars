@@ -88,14 +88,14 @@ IGameEventHandler<DeathEvent>, IGameEventHandler<OnPhysgunGrabChange>
 
 		RespawnPoint = Transform.World;
 
-		var hud = HUD.Instance;
+		/*var hud = HUD.Instance;
 
 		if ( hud.IsValid() && !ShownAboutPanel )
 		{
 			hud?.Panel.AddChild( new AboutPanel() );
 
 			ShownAboutPanel = true;
-		}
+		}*/
 	}
 
 	[Broadcast]
