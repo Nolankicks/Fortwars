@@ -4,7 +4,7 @@ AboutPanel
 {
     position: absolute;
     color: white;
-    right: 12px;
+    left: 12px;
     font-family: 'IBM Plex Mono';
     width: 500px;
     background-color: $primary;
@@ -31,12 +31,12 @@ AboutPanel
 
     &:intro
     {
-        transform: translateX( 105% );
+        transform: translateX( -105% );
     }
 
     &:outro
     {
-        transform: translateX( 105% );
+        transform: translateX( -105% );
     }
 
     >label
