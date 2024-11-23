@@ -1544,7 +1544,7 @@
           "__guid": "ac868462-21e8-4259-ba7f-bdc169bda684",
           "Flags": 0,
           "Name": "Red Spawn",
-          "Position": "-127.9993,896.0009,128",
+          "Position": "-127.9993,896.0009,144",
           "Rotation": "0,0,0.7071069,-0.7071065",
           "Enabled": true,
           "Components": [
@@ -1574,7 +1574,7 @@
           "__guid": "9bc96c0d-e892-433e-a70c-baf353e5f766",
           "Flags": 0,
           "Name": "Red Spawn",
-          "Position": "-127.999,1024,128",
+          "Position": "-127.999,1024,144",
           "Rotation": "0,0,0.7071069,-0.7071065",
           "Enabled": true,
           "Components": [
@@ -1604,7 +1604,7 @@
           "__guid": "436ad49f-af41-4c2e-80c3-cf1109307e56",
           "Flags": 0,
           "Name": "Red Spawn",
-          "Position": "-127.998,1152,128",
+          "Position": "-127.998,1152,144",
           "Rotation": "0,0,0.7071069,-0.7071065",
           "Enabled": true,
           "Components": [
@@ -1634,7 +1634,7 @@
           "__guid": "f6b785cd-6529-42d0-abb2-8474a1715a9d",
           "Flags": 0,
           "Name": "Red Spawn",
-          "Position": "-63.99805,1152,128",
+          "Position": "-63.9981,1152,144",
           "Rotation": "0,0,0.7071069,-0.7071065",
           "Enabled": true,
           "Components": [
@@ -1664,7 +1664,7 @@
           "__guid": "38b3ccc0-b824-4a1f-81bc-a237732679d4",
           "Flags": 0,
           "Name": "Red Spawn",
-          "Position": "-63.99902,1024,128",
+          "Position": "-63.99907,1024,144",
           "Rotation": "0,0,0.7071069,-0.7071065",
           "Enabled": true,
           "Components": [
@@ -1694,7 +1694,7 @@
           "__guid": "30bba3e6-df28-4add-b014-3464cafc69fe",
           "Flags": 0,
           "Name": "Red Spawn",
-          "Position": "-63.99927,896.0004,128",
+          "Position": "-63.99932,896.0004,144",
           "Rotation": "0,0,0.7071069,-0.7071065",
           "Enabled": true,
           "Components": [
@@ -1724,7 +1724,7 @@
           "__guid": "b4404d43-51b2-487c-9cef-3aea5e6d706b",
           "Flags": 0,
           "Name": "Red Spawn",
-          "Position": "0.001953125,1152,128",
+          "Position": "0.001907349,1152,144",
           "Rotation": "0,0,0.7071069,-0.7071065",
           "Enabled": true,
           "Components": [
@@ -1754,7 +1754,7 @@
           "__guid": "e1493c59-d3e9-4250-9259-393dd67f771f",
           "Flags": 0,
           "Name": "Red Spawn",
-          "Position": "0.0009765625,1024,128",
+          "Position": "0.0009307861,1024,144",
           "Rotation": "0,0,0.7071069,-0.7071065",
           "Enabled": true,
           "Components": [
@@ -1784,7 +1784,7 @@
           "__guid": "cf31b950-c020-4681-9c26-64ca35a9a377",
           "Flags": 0,
           "Name": "Red Spawn",
-          "Position": "0.0007324219,895.9999,128",
+          "Position": "0.0006866455,895.9998,144",
           "Rotation": "0,0,0.7071069,-0.7071065",
           "Enabled": true,
           "Components": [
@@ -2080,279 +2080,7 @@
       "Flags": 0,
       "Name": "Blue Spawns (1)",
       "Position": "3584,0,0",
-      "Enabled": true,
-      "Children": [
-        {
-          "__guid": "ffabb155-a847-437e-bcae-7af5e00feae4",
-          "Flags": 0,
-          "Name": "Blue Spawn",
-          "Position": "2943.999,896.0009,128",
-          "Rotation": "0,0,-0.7071067,0.7071068",
-          "Enabled": true,
-          "Components": [
-            {
-              "__type": "TeamSpawnPoint",
-              "__guid": "95037326-98cf-48ea-be12-3c8b64106455",
-              "Team": "Blue"
-            }
-          ]
-        },
-        {
-          "__guid": "0fd44b48-84f4-46d6-822f-b9c3d231b466",
-          "Flags": 0,
-          "Name": "Blue Spawn",
-          "Position": "3071.998,-896.0003,128",
-          "Rotation": "0,0,0.7071066,0.7071068",
-          "Enabled": true,
-          "Components": [
-            {
-              "__type": "TeamSpawnPoint",
-              "__guid": "e6df6987-4b05-4304-b5c0-bf8dd74b378a",
-              "Team": "Blue"
-            }
-          ]
-        },
-        {
-          "__guid": "0f1e69be-ca2e-4ab3-a2fa-ce5b38254372",
-          "Flags": 0,
-          "Name": "Blue Spawn",
-          "Position": "2943.999,1024.001,128",
-          "Rotation": "0,0,-0.7071067,0.7071068",
-          "Enabled": true,
-          "Components": [
-            {
-              "__type": "TeamSpawnPoint",
-              "__guid": "d10bb7f0-6552-4353-9d99-05881cd33e80",
-              "Team": "Blue"
-            }
-          ]
-        },
-        {
-          "__guid": "f09fa344-770b-4cd7-82fd-ad5589e63aa3",
-          "Flags": 0,
-          "Name": "Blue Spawn",
-          "Position": "3071.998,-1024,128",
-          "Rotation": "0,0,0.7071066,0.7071068",
-          "Enabled": true,
-          "Components": [
-            {
-              "__type": "TeamSpawnPoint",
-              "__guid": "d36a8b83-1e39-4d29-8e80-8247b6ad9b55",
-              "Team": "Blue"
-            }
-          ]
-        },
-        {
-          "__guid": "1914ee11-ce8e-48c6-a531-c9c43086d648",
-          "Flags": 0,
-          "Name": "Blue Spawn",
-          "Position": "2944,1152,128",
-          "Rotation": "0,0,-0.7071067,0.7071068",
-          "Enabled": true,
-          "Components": [
-            {
-              "__type": "TeamSpawnPoint",
-              "__guid": "de0f55ad-9b3a-48e8-ae76-cd30593052c2",
-              "Team": "Blue"
-            }
-          ]
-        },
-        {
-          "__guid": "c4ecd066-ada5-4be6-a6fb-ae3fc0974e3a",
-          "Flags": 0,
-          "Name": "Blue Spawn",
-          "Position": "3071.997,-1151.999,128",
-          "Rotation": "0,0,0.7071066,0.7071068",
-          "Enabled": true,
-          "Components": [
-            {
-              "__type": "TeamSpawnPoint",
-              "__guid": "3246c129-3c33-4153-be18-5908c27801c9",
-              "Team": "Blue"
-            }
-          ]
-        },
-        {
-          "__guid": "6b781973-9561-49c8-b630-c4081d4f8363",
-          "Flags": 0,
-          "Name": "Blue Spawn",
-          "Position": "3008,1152,128",
-          "Rotation": "0,0,-0.7071067,0.7071068",
-          "Enabled": true,
-          "Components": [
-            {
-              "__type": "TeamSpawnPoint",
-              "__guid": "2476226e-631c-4472-8ca3-bfbd982ae799",
-              "Team": "Blue"
-            }
-          ]
-        },
-        {
-          "__guid": "ae170e3e-7bed-4b3c-92cb-4655c9c94e49",
-          "Flags": 0,
-          "Name": "Blue Spawn",
-          "Position": "3007.997,-1151.999,128",
-          "Rotation": "0,0,0.7071066,0.7071068",
-          "Enabled": true,
-          "Components": [
-            {
-              "__type": "TeamSpawnPoint",
-              "__guid": "e1370950-d127-490f-a42f-b2bda486e284",
-              "Team": "Blue"
-            }
-          ]
-        },
-        {
-          "__guid": "20ecb170-a2ed-49b4-86c9-e2aee7504369",
-          "Flags": 0,
-          "Name": "Blue Spawn",
-          "Position": "3007.999,1024,128",
-          "Rotation": "0,0,-0.7071067,0.7071068",
-          "Enabled": true,
-          "Components": [
-            {
-              "__type": "TeamSpawnPoint",
-              "__guid": "a0d8bb83-1f55-4196-90a8-fa9b580d4743",
-              "Team": "Blue"
-            }
-          ]
-        },
-        {
-          "__guid": "35b45a55-6942-45ee-b806-9427b12438e0",
-          "Flags": 0,
-          "Name": "Blue Spawn",
-          "Position": "3007.998,-1024,128",
-          "Rotation": "0,0,0.7071066,0.7071068",
-          "Enabled": true,
-          "Components": [
-            {
-              "__type": "TeamSpawnPoint",
-              "__guid": "fce4266f-ac87-49d9-a8c7-ad5f95dbf7f1",
-              "Team": "Blue"
-            }
-          ]
-        },
-        {
-          "__guid": "89d52e0d-c9a1-4dd1-acf2-c4078958dae7",
-          "Flags": 0,
-          "Name": "Blue Spawn",
-          "Position": "3007.999,896.0004,128",
-          "Rotation": "0,0,-0.7071067,0.7071068",
-          "Enabled": true,
-          "Components": [
-            {
-              "__type": "TeamSpawnPoint",
-              "__guid": "1b9b4d9f-b24a-4f7c-a1a0-4c8de14fc46f",
-              "Team": "Blue"
-            }
-          ]
-        },
-        {
-          "__guid": "8c628c7e-c72d-4c94-826d-c4c2bf324c07",
-          "Flags": 0,
-          "Name": "Blue Spawn",
-          "Position": "3007.998,-895.9998,128",
-          "Rotation": "0,0,0.7071066,0.7071068",
-          "Enabled": true,
-          "Components": [
-            {
-              "__type": "TeamSpawnPoint",
-              "__guid": "17ff7a38-fa4e-455a-80f8-009a7204b1ee",
-              "Team": "Blue"
-            }
-          ]
-        },
-        {
-          "__guid": "11fa89f0-3212-46f1-9b97-e5fdeb654699",
-          "Flags": 0,
-          "Name": "Blue Spawn",
-          "Position": "3072,1151.999,128",
-          "Rotation": "0,0,-0.7071067,0.7071068",
-          "Enabled": true,
-          "Components": [
-            {
-              "__type": "TeamSpawnPoint",
-              "__guid": "239ddddf-c609-49c8-9e34-d96b1eef3317",
-              "Team": "Blue"
-            }
-          ]
-        },
-        {
-          "__guid": "1398bf4f-b8a6-4845-b560-449d9b807ab8",
-          "Flags": 0,
-          "Name": "Blue Spawn",
-          "Position": "2943.997,-1151.999,128",
-          "Rotation": "0,0,0.7071066,0.7071068",
-          "Enabled": true,
-          "Components": [
-            {
-              "__type": "TeamSpawnPoint",
-              "__guid": "df187967-c997-415c-b468-5da00500e967",
-              "Team": "Blue"
-            }
-          ]
-        },
-        {
-          "__guid": "4cad3db9-2ea6-438b-a267-65262f6ac3dc",
-          "Flags": 0,
-          "Name": "Blue Spawn",
-          "Position": "3071.999,1024,128",
-          "Rotation": "0,0,-0.7071067,0.7071068",
-          "Enabled": true,
-          "Components": [
-            {
-              "__type": "TeamSpawnPoint",
-              "__guid": "d1f11dd3-afbd-4b79-800a-5ffc0b7db866",
-              "Team": "Blue"
-            }
-          ]
-        },
-        {
-          "__guid": "904987fb-797d-4345-a035-035e796641ce",
-          "Flags": 0,
-          "Name": "Blue Spawn",
-          "Position": "2943.998,-1023.999,128",
-          "Rotation": "0,0,0.7071066,0.7071068",
-          "Enabled": true,
-          "Components": [
-            {
-              "__type": "TeamSpawnPoint",
-              "__guid": "944d750b-2cff-4a3b-bba6-73749b00a6bb",
-              "Team": "Blue"
-            }
-          ]
-        },
-        {
-          "__guid": "17832e50-38fc-4c4c-a31b-591b33288727",
-          "Flags": 0,
-          "Name": "Blue Spawn",
-          "Position": "3071.999,896,128",
-          "Rotation": "0,0,-0.7071067,0.7071068",
-          "Enabled": true,
-          "Components": [
-            {
-              "__type": "TeamSpawnPoint",
-              "__guid": "ee827ddd-1c6e-45d1-9311-638c2db6e1c7",
-              "Team": "Blue"
-            }
-          ]
-        },
-        {
-          "__guid": "018f4cd1-608c-465f-a3c2-0599b38ae844",
-          "Flags": 0,
-          "Name": "Blue Spawn",
-          "Position": "2943.998,-895.9993,128",
-          "Rotation": "0,0,0.7071066,0.7071068",
-          "Enabled": true,
-          "Components": [
-            {
-              "__type": "TeamSpawnPoint",
-              "__guid": "c39e93fa-632d-45b9-b8e1-cfaf18999104",
-              "Team": "Blue"
-            }
-          ]
-        }
-      ]
+      "Enabled": true
     },
     {
       "__guid": "220183f9-ff67-4ee5-b535-7dcc73928b9e",
@@ -2540,6 +2268,5 @@
   "Title": "Grassforts",
   "Description": null,
   "__references": [],
-  "HasUnsavedChanges": false,
   "__version": 2
 }
