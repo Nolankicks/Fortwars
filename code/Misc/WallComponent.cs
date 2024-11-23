@@ -12,7 +12,7 @@ public sealed class WallComponent : Component, Component.ExecuteInEditor
 	[Broadcast]
 	public void ToggleEnable( bool enable )
 	{
-		if ( Scene.IsEditor || IsProxy )
+		if ( Scene.IsEditor )
 			return;
 
 		foreach ( var c in Components.GetAll().ToList() )

@@ -1,3 +1,4 @@
+using System;
 using Sandbox.Events;
 
 public record PlayerDeath( FWPlayerController Player, GameObject Attacker ) : IGameEvent;
@@ -66,6 +67,8 @@ partial class FWPlayerController
 			Inventory.DisableAll();
 			Inventory.CanScrollSwitch = false;
 
+			var mode = Scene.GetAll<GameMode>()?.FirstOrDefault();
+
 			var target = AnimHelper.Target;
 
 			var go = new GameObject( true, $"{Network.Owner?.DisplayName}'s ragdoll" );
@@ -103,6 +106,16 @@ partial class FWPlayerController
 
 			BroadcastEnable( target.GameObject, false );
 
+			if ( mode.IsValid() && !mode.RespawnPlayers )
+			{
+				IsSpectating = true;
+
+				if ( shrimpleCharacterController.IsValid() )
+					shrimpleCharacterController.Enabled = false;
+
+				return;
+			}
+
 			IsRespawning = true;
 
 			DeathPos = target.WorldPosition;
@@ -118,23 +131,36 @@ partial class FWPlayerController
 
 			Invoke( 2, () =>
 			{
-				Inventory.CanScrollSwitch = true;
-				Inventory.ChangeItem( Inventory.Index, Inventory?.Items );
-
 				BroadcastEnable( target.GameObject, true );
 
 				if ( tag.IsValid() )
 					BroadcastEnable( tag.GameObject, true );
 
-				IsRespawning = false;
-
-				EyeAngles = WorldRotation.Angles();
-
-				GameObject.Dispatch( new PlayerReset() );
-
-				Ragdoll = null;
+				RespawnPlayer();
 			} );
 		}
+	}
+
+	[Authority]
+	public void RespawnPlayer()
+	{
+		Inventory.CanScrollSwitch = true;
+		Inventory.ChangeItem( Inventory.Index, Inventory?.Items );
+
+		IsRespawning = false;
+		IsSpectating = false;
+
+		EyeAngles = WorldRotation.Angles();
+
+		GameObject.Dispatch( new PlayerReset() );
+
+		if ( shrimpleCharacterController.IsValid() )
+			shrimpleCharacterController.Enabled = false;
+
+		if ( AnimHelper.Target.IsValid() )
+			BroadcastEnable( AnimHelper.Target.GameObject, true );
+
+		Ragdoll = null;
 	}
 
 	void IGameEventHandler<OnPhysgunGrabChange>.OnGameEvent( OnPhysgunGrabChange eventArgs )

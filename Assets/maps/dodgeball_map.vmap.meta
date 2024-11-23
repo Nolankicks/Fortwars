@@ -1,0 +1,21 @@
+{
+  "publish": {
+    "Enabled": false,
+    "ProjectConfig": {
+      "Title": "Dodgeball Map",
+      "Type": "map",
+      "Org": "local",
+      "Ident": "dodgeballmap",
+      "Schema": 0,
+      "IncludeSourceFiles": false,
+      "Resources": null,
+      "PackageReferences": [],
+      "EditorReferences": [],
+      "IsWhitelistDisabled": false,
+      "Metadata": {
+        "SingleAssetSource": "maps/dodgeball_map.vmap",
+        "ParentPackage": "nolankicks.fortwars"
+      }
+    }
+  }
+}

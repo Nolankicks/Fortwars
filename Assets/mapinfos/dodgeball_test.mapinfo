@@ -1,0 +1,14 @@
+{
+  "MapName": "DodgeBall",
+  "MapDescription": null,
+  "FourTeams": false,
+  "Scene": "scenes/dodgeball_test.scene",
+  "Thumb": null,
+  "Author": null,
+  "PackageIndent": null,
+  "Hidden": false,
+  "Order": 0,
+  "AvailableGamemodes": "Dodgeball",
+  "__references": [],
+  "__version": 0
+}

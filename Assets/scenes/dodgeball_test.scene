@@ -1,0 +1,690 @@
+{
+  "__guid": "b829c11d-316c-4ec9-8f40-94e9640bfd51",
+  "GameObjects": [
+    {
+      "__guid": "f81dd974-57a1-4bcf-ab00-1e786996c89b",
+      "Flags": 0,
+      "Name": "Map",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.MapInstance",
+          "__guid": "172dedfc-b0b6-47c2-bbe7-4e7b0c1beaf2",
+          "__version": 1,
+          "EnableCollision": true,
+          "MapName": "maps/dodgeball_map.vmap",
+          "NoOrigin": false,
+          "OnMapLoaded": null,
+          "OnMapUnloaded": null,
+          "UseMapFromLaunch": false
+        }
+      ],
+      "Children": []
+    },
+    {
+      "__guid": "0de46139-20ae-4c4f-8375-049bb4cb0c38",
+      "Flags": 0,
+      "Name": "2D Skybox",
+      "Position": "23.63805,-25.86273,336.3564",
+      "Tags": "skybox",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.SkyBox2D",
+          "__guid": "5030d2ce-ec36-466a-8890-e04c974f1169",
+          "SkyIndirectLighting": false,
+          "SkyMaterial": "materials/skybox/skybox_day_01.vmat",
+          "Tint": "1,1,1,1"
+        }
+      ]
+    },
+    {
+      "__guid": "78ce60c4-14a8-477f-88cb-0fcc4a5f5b98",
+      "Flags": 0,
+      "Name": "rollermine",
+      "Position": "0,64,16",
+      "Tags": "rollermine,light_point,light",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "NetworkOrphaned": 3,
+      "OwnerTransfer": 0,
+      "Components": [
+        {
+          "__type": "Sandbox.SkinnedModelRenderer",
+          "__guid": "a2354af3-b8af-4130-aef2-22e7d963501c",
+          "BodyGroups": 18446744073709551615,
+          "CreateAttachments": false,
+          "CreateBoneObjects": false,
+          "Model": "models/rollermine.vmdl",
+          "Morphs": {},
+          "Parameters": {
+            "bools": {},
+            "ints": {},
+            "floats": {},
+            "vectors": {},
+            "rotations": {}
+          },
+          "RenderOptions": {
+            "GameLayer": true,
+            "OverlayLayer": false,
+            "BloomLayer": false,
+            "AfterUILayer": false
+          },
+          "RenderType": "On",
+          "Sequence": {
+            "Name": null
+          },
+          "Tint": "1,1,1,1",
+          "UseAnimGraph": true
+        },
+        {
+          "__type": "Sandbox.ModelCollider",
+          "__guid": "b054e5cb-8d08-4818-9417-6552f954cfd6",
+          "IsTrigger": false,
+          "Model": "models/rollermine.vmdl",
+          "Static": false,
+          "SurfaceVelocity": "0,0,0"
+        },
+        {
+          "__type": "Sandbox.Rigidbody",
+          "__guid": "a5d0dc09-80b7-4165-af2d-9e3ebdb1ece3",
+          "AngularDamping": 0,
+          "Gravity": true,
+          "LinearDamping": 0,
+          "Locking": {
+            "X": false,
+            "Y": false,
+            "Z": false,
+            "Pitch": false,
+            "Yaw": false,
+            "Roll": false
+          },
+          "MassCenterOverride": "0,0,0",
+          "MassOverride": 0,
+          "MotionEnabled": true,
+          "OverrideMassCenter": false,
+          "RigidbodyFlags": 0,
+          "StartAsleep": false
+        },
+        {
+          "__type": "FortwarsProp",
+          "__guid": "894b73b9-db7c-4fd7-9f35-526541a8fff4",
+          "CanKill": true,
+          "CollisionThreshold": 100,
+          "Divisor": 20,
+          "Health": 100,
+          "Invincible": true,
+          "Team": "None"
+        },
+        {
+          "__type": "Sandbox.HighlightOutline",
+          "__guid": "f868aad3-d460-4a56-a800-a3bfb5517893",
+          "Color": "0.4,0.93,1,1",
+          "InsideColor": "0,0,0,0",
+          "InsideObscuredColor": "0.1921,0.47846,0.51628,0.23",
+          "ObscuredColor": "0.4,0.93,1,0.36",
+          "Width": 0.54999995
+        },
+        {
+          "__type": "Sandbox.TrailRenderer",
+          "__guid": "1162b4e2-477b-4805-9bb4-21ab393038de",
+          "BlendMode": "Normal",
+          "CastShadows": false,
+          "Color": {
+            "blend": "Linear",
+            "color": [
+              {
+                "t": 0.5,
+                "c": "0,1,1,1"
+              }
+            ],
+            "alpha": []
+          },
+          "Emitting": true,
+          "Face": "Camera",
+          "LifeTime": 0.2,
+          "MaxPoints": 64,
+          "Opaque": true,
+          "PointDistance": 8,
+          "RenderOptions": {
+            "GameLayer": true,
+            "OverlayLayer": false,
+            "BloomLayer": false,
+            "AfterUILayer": false
+          },
+          "Texturing": {
+            "Texture": null,
+            "WorldSpace": true,
+            "UnitsPerTexture": 10,
+            "Scale": 1,
+            "Offset": 0,
+            "Scroll": 0
+          },
+          "Width": [
+            {
+              "x": 0.67410713,
+              "y": 1,
+              "in": 0,
+              "out": 0,
+              "mode": "Mirrored"
+            },
+            {
+              "x": 1,
+              "y": 0.021276595,
+              "in": 3.684211,
+              "out": -3.684211,
+              "mode": "Mirrored"
+            }
+          ],
+          "Wireframe": false
+        },
+        {
+          "__type": "Sandbox.PointLight",
+          "__guid": "2d30d3f9-4422-4536-b7d9-d089c4689fcc",
+          "Attenuation": 10,
+          "FogMode": "Enabled",
+          "FogStrength": 1,
+          "LightColor": "0.13953,0.79922,1,1",
+          "Radius": 30,
+          "Shadows": false
+        },
+        {
+          "__type": "RollerMine",
+          "__guid": "83a63c3c-fa56-4391-b3cd-e98c5fa240a1",
+          "Renderer": {
+            "_type": "component",
+            "component_id": "a2354af3-b8af-4130-aef2-22e7d963501c",
+            "go": "78ce60c4-14a8-477f-88cb-0fcc4a5f5b98",
+            "component_type": "SkinnedModelRenderer"
+          }
+        },
+        {
+          "__type": "GameModeObject",
+          "__guid": "9ce07cd0-3616-47d6-bfcc-eefc993d0660",
+          "Type": "Classic, RollermineWars, Dodgeball"
+        }
+      ],
+      "Children": [
+        {
+          "__guid": "73e62788-8b85-4132-8739-ab2b79057192",
+          "Flags": 2048,
+          "Name": "Camera",
+          "Tags": "maincamera",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.CameraComponent",
+              "__guid": "6b2d1494-68a4-4951-a5ca-90978316c053",
+              "BackgroundColor": "0.33333,0.46275,0.52157,1",
+              "ClearFlags": "All",
+              "FieldOfView": 60,
+              "IsMainCamera": true,
+              "Orthographic": false,
+              "OrthographicHeight": 1204,
+              "Priority": 1,
+              "RenderExcludeTags": "",
+              "RenderTags": "",
+              "TargetEye": "None",
+              "Viewport": "0,0,1,1",
+              "ZFar": 10000,
+              "ZNear": 10
+            },
+            {
+              "__type": "Sandbox.Highlight",
+              "__guid": "7aa965b7-261e-48cc-9803-96efb28ac807"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "__guid": "11e91351-f3a1-492d-98d2-9aaee1437726",
+      "Flags": 0,
+      "Name": "Red Spawns",
+      "Enabled": true,
+      "Children": [
+        {
+          "__guid": "3ebaab86-c5bd-4f5d-86a8-3624e3561ff2",
+          "Flags": 0,
+          "Name": "Spawn (14)",
+          "Position": "256.0003,895.9998,0",
+          "Rotation": "0,0,0.7071069,-0.7071066",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "TeamSpawnPoint",
+              "__guid": "ec87a18c-5a13-4b3d-876b-964123697da8",
+              "Team": "Red"
+            }
+          ]
+        },
+        {
+          "__guid": "7d2dab3e-ec4c-4c35-a395-ce6631ba80ff",
+          "Flags": 0,
+          "Name": "Spawn (11)",
+          "Position": "64.00034,895.9999,0",
+          "Rotation": "0,0,0.7071069,-0.7071066",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "TeamSpawnPoint",
+              "__guid": "d9da9095-b184-4ff9-9bbe-6c0c73921aa0",
+              "Team": "Red"
+            }
+          ]
+        },
+        {
+          "__guid": "a60eddcb-c86b-4f47-a8fe-faf966d813cb",
+          "Flags": 0,
+          "Name": "Spawn (9)",
+          "Position": "128.0003,895.9999,0",
+          "Rotation": "0,0,0.7071069,-0.7071066",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "TeamSpawnPoint",
+              "__guid": "161e68a7-dd30-4465-9d55-54453162ab87",
+              "Team": "Red"
+            }
+          ]
+        },
+        {
+          "__guid": "9bd7d2c2-47ca-4821-9f99-1de3b0e5d547",
+          "Flags": 0,
+          "Name": "Spawn (12)",
+          "Position": "192.0003,895.9998,0",
+          "Rotation": "0,0,0.7071069,-0.7071066",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "TeamSpawnPoint",
+              "__guid": "cecfc298-2b57-4c38-8a3b-18a598710e72",
+              "Team": "Red"
+            }
+          ]
+        },
+        {
+          "__guid": "749e04fc-82d3-4f94-9793-2649b3ef3c1e",
+          "Flags": 0,
+          "Name": "Spawn (15)",
+          "Position": "0.000289917,895.9999,0",
+          "Rotation": "0,0,0.7071069,-0.7071066",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "TeamSpawnPoint",
+              "__guid": "a6d98819-ef3f-49e5-a025-76bceb7cd534",
+              "Team": "Red"
+            }
+          ]
+        },
+        {
+          "__guid": "9ab228cc-5392-43a2-a5d9-f8810146c48e",
+          "Flags": 0,
+          "Name": "Spawn (13)",
+          "Position": "-63.99971,895.9999,0",
+          "Rotation": "0,0,0.7071069,-0.7071066",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "TeamSpawnPoint",
+              "__guid": "e7c44bee-3c1f-46aa-847c-80221fe825c9",
+              "Team": "Red"
+            }
+          ]
+        },
+        {
+          "__guid": "9e79234e-1d3c-4db3-a274-2ab8e36887aa",
+          "Flags": 0,
+          "Name": "Spawn (8)",
+          "Position": "-127.9997,896,0",
+          "Rotation": "0,0,0.7071069,-0.7071066",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "TeamSpawnPoint",
+              "__guid": "26fbf648-0e6d-44ed-95bb-a98a111504b5",
+              "Team": "Red"
+            }
+          ]
+        },
+        {
+          "__guid": "2699d162-6df0-4f4e-91c9-83e256a147d7",
+          "Flags": 0,
+          "Name": "Spawn (10)",
+          "Position": "-191.9997,896,0",
+          "Rotation": "0,0,0.7071069,-0.7071066",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "TeamSpawnPoint",
+              "__guid": "1087a7a2-c5af-462a-826e-e1d5ae02e32a",
+              "Team": "Red"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "__guid": "bd4d7614-7ba2-4425-8063-1f4b2793e8bd",
+      "Flags": 0,
+      "Name": "Blue Spawns",
+      "Enabled": true,
+      "Children": [
+        {
+          "__guid": "ca447764-5907-40fc-9a3e-354e54138673",
+          "Flags": 0,
+          "Name": "Spawn (4)",
+          "Position": "63.99988,-896,0",
+          "Rotation": "0,0,0.7071067,0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "TeamSpawnPoint",
+              "__guid": "3946e0c2-4e2f-494a-b372-080ad58a97de",
+              "Team": "Blue"
+            }
+          ]
+        },
+        {
+          "__guid": "1f98dd8e-8167-49ad-9792-b11adf5cde5f",
+          "Flags": 0,
+          "Name": "Spawn (3)",
+          "Position": "-192.0001,-896,0",
+          "Rotation": "0,0,0.7071067,0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "TeamSpawnPoint",
+              "__guid": "e3a0529c-2bd9-445d-b1a2-115b6e790e5e",
+              "Team": "Blue"
+            }
+          ]
+        },
+        {
+          "__guid": "b4cb6a9c-96d0-4138-af10-a9f7ef1d0d40",
+          "Flags": 0,
+          "Name": "Spawn (5)",
+          "Position": "127.9999,-896,0",
+          "Rotation": "0,0,0.7071067,0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "TeamSpawnPoint",
+              "__guid": "a03a7cab-acb6-489c-b55b-9f593201afd6",
+              "Team": "Blue"
+            }
+          ]
+        },
+        {
+          "__guid": "a6a19ff0-451c-4a0a-80fa-addd10204f69",
+          "Flags": 0,
+          "Name": "Spawn (2)",
+          "Position": "-128.0001,-896,0",
+          "Rotation": "0,0,0.7071067,0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "TeamSpawnPoint",
+              "__guid": "c690c077-1b6e-4e60-898e-0c014b1597c5",
+              "Team": "Blue"
+            }
+          ]
+        },
+        {
+          "__guid": "d9e18b81-9225-4295-ba55-3cc08c679476",
+          "Flags": 0,
+          "Name": "Spawn (6)",
+          "Position": "191.9999,-896.0001,0",
+          "Rotation": "0,0,0.7071067,0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "TeamSpawnPoint",
+              "__guid": "89670cb7-23c3-45e8-868a-35aaddf91ad0",
+              "Team": "Blue"
+            }
+          ]
+        },
+        {
+          "__guid": "6038074d-e4ab-40c1-9bf8-97a8f2900a31",
+          "Flags": 0,
+          "Name": "Spawn (1)",
+          "Position": "-64.00016,-896.0001,0",
+          "Rotation": "0,0,0.7071067,0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "TeamSpawnPoint",
+              "__guid": "152577e7-86e7-4465-8359-dcea4aab6bff",
+              "Team": "Blue"
+            }
+          ]
+        },
+        {
+          "__guid": "a6231eb9-485f-46e6-bdd6-b2c285270e8d",
+          "Flags": 0,
+          "Name": "Spawn (7)",
+          "Position": "255.9999,-896.0001,0",
+          "Rotation": "0,0,0.7071067,0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "TeamSpawnPoint",
+              "__guid": "f2a8e0a4-1faf-4fb8-9db5-7d5ec00c94ea",
+              "Team": "Blue"
+            }
+          ]
+        },
+        {
+          "__guid": "2e80e807-6911-476d-bfea-aa28e9758bf2",
+          "Flags": 0,
+          "Name": "Spawn",
+          "Position": "-0.0001678467,-896.0001,0",
+          "Rotation": "0,0,0.7071067,0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "TeamSpawnPoint",
+              "__guid": "00e35d26-24ac-4cee-af5f-0e4d3962c43b",
+              "Team": "Blue"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "__guid": "c6b47288-926b-4d6b-808f-14f85c77d940",
+      "Flags": 0,
+      "Name": "Trigger",
+      "Position": "0.0007324219,0,384",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.MeshComponent",
+          "__guid": "eca7e498-059b-480a-aa15-8dd5b4a76de3",
+          "Collision": "Mesh",
+          "Color": "1,1,1,1",
+          "HideInGame": false,
+          "IsTrigger": true,
+          "Mesh": {
+            "Topology": "H4sIAAAAAAAACl2QCQ7CMAwEp4Qj3NBy/f\u002BlaMRGsohUVbFn1\u002Bt04ANs\u002BZ0VsM69AwfgBFyAKZ9MPXdgk3qLnsI\u002BUm/h/me9i2ZXfFvYOazafTJN0XRgKZmPyWtfXvYVL73PZRd52WdYPa7xtC8veys7u6t17/7t6Tn0ZtFjvIXZR895zjKjPWf4NiOrGt\u002BivpXZ3XnozaOndVn9vvVkkTjEAQAA",
+            "Positions": [
+              "-1023.999,-32,384",
+              "1023.999,-32,384",
+              "1023.999,32,384",
+              "-1023.999,32,384",
+              "-1023.999,32,-384",
+              "1023.999,32,-384",
+              "1023.999,-32,-384",
+              "-1023.999,-32,-384"
+            ],
+            "TextureCoord": [
+              "15.99999,0.5",
+              "-15.99999,-6",
+              "15.99999,-0.5",
+              "-0.5,-6",
+              "-15.99999,-0.5",
+              "-15.99999,-6",
+              "-15.99999,0.5",
+              "-0.5,-6",
+              "15.99999,-0.5",
+              "15.99999,6",
+              "15.99999,0.5",
+              "0.5,6",
+              "-15.99999,0.5",
+              "15.99999,6",
+              "-15.99999,-0.5",
+              "0.5,6",
+              "0.5,-6",
+              "-15.99999,6",
+              "-0.5,6",
+              "15.99999,-6",
+              "-0.5,6",
+              "15.99999,-6",
+              "0.5,-6",
+              "-15.99999,6"
+            ],
+            "TextureUAxis": [
+              "1,0,0",
+              "1,0,-0",
+              "0,-1,0",
+              "0,1,0",
+              "-1,0,0",
+              "1,-0,0"
+            ],
+            "TextureVAxis": [
+              "0,-1,0",
+              "0,-1,0",
+              "0,0,-1",
+              "-0,0,-1",
+              "0,0,-1",
+              "-0,0,-1"
+            ],
+            "TextureScale": [
+              "0.25,0.25",
+              "0.25,0.25",
+              "0.25,0.25",
+              "0.25,0.25",
+              "0.25,0.25",
+              "0.25,0.25"
+            ],
+            "TextureOffset": [
+              "255.9971,0",
+              "255.9971,0",
+              "0,0",
+              "0,0",
+              "0.002929688,0",
+              "255.9971,0"
+            ],
+            "MaterialIndex": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "EdgeFlags": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "Materials": [
+              "materials/tools/toolstrigger.vmat"
+            ]
+          },
+          "SmoothingAngle": 40,
+          "Static": true,
+          "SurfaceVelocity": "0,0,0"
+        },
+        {
+          "__type": "DeathTrigger",
+          "__guid": "89ae000d-be74-4104-82f5-82807586d5e8",
+          "TeleportBall": false
+        }
+      ]
+    },
+    {
+      "__guid": "47be87c0-745a-45a8-a764-528618f9067b",
+      "Flags": 0,
+      "Name": "None Spawn",
+      "Position": "-640,-645.9093,0",
+      "Rotation": "0,0,0.6087614,0.7933534",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "TeamSpawnPoint",
+          "__guid": "7882404a-07ed-4f7b-b337-aaf664af2ec6",
+          "Team": "None"
+        }
+      ]
+    },
+    {
+      "__guid": "a89bed24-9660-4edb-a0bb-e305ecaab955",
+      "Flags": 0,
+      "Name": "None Spawn (1)",
+      "Position": "640,-645.9093,0",
+      "Rotation": "0,0,0.8660254,0.5000001",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "TeamSpawnPoint",
+          "__guid": "ba215599-f88d-47fb-a178-96494e6e3b56",
+          "Team": "None"
+        }
+      ]
+    }
+  ],
+  "SceneProperties": {
+    "FixedUpdateFrequency": 50,
+    "MaxFixedUpdates": 5,
+    "NetworkFrequency": 30,
+    "NetworkInterpolation": true,
+    "PhysicsSubSteps": 1,
+    "ThreadedAnimation": true,
+    "TimeScale": 1,
+    "UseFixedUpdate": true,
+    "Metadata": {},
+    "NavMesh": {
+      "Enabled": false,
+      "IncludeStaticBodies": true,
+      "IncludeKeyframedBodies": true,
+      "EditorAutoUpdate": true,
+      "AgentHeight": 64,
+      "AgentRadius": 16,
+      "AgentStepSize": 18,
+      "AgentMaxSlope": 40,
+      "ExcludedBodies": "",
+      "IncludedBodies": ""
+    }
+  },
+  "ResourceVersion": 2,
+  "Title": null,
+  "Description": null,
+  "__references": [
+    "igrium.rollermine-model#19481"
+  ],
+  "__version": 2
+}

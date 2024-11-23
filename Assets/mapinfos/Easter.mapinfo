@@ -7,9 +7,8 @@
   "Author": "Ape Tavern",
   "PackageIndent": "apetavern.fw_easter",
   "Hidden": false,
-  "Order": 0,
+  "Order": 1,
   "AvailableGamemodes": "Classic, RollermineWars, Deathmatch",
   "__references": [],
-  "HasUnsavedChanges": true,
   "__version": 0
 }

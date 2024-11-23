@@ -1,5 +1,6 @@
 using Sandbox;
 
+[EditorHandle("materials/gizmo/spawnpoint.png")]
 public sealed class TeamSpawnPoint : Component
 {
 	[Property] public Team Team { get; set; } = Team.None;

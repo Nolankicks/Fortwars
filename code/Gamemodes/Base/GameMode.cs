@@ -12,6 +12,7 @@ public partial class GameMode : Component, Component.INetworkListener
 	[Property, Sync, ReadOnly] public RoundComponent CurrentRound { get; set; }
 
 	[Property] public Action<Team> OnGameEnd { get; set; }
+	[Property] public Action OnGameStart { get; set; }
 
 	[Property, ReadOnly, Sync] public bool TeamsEnabled { get; set; } = false;
 
@@ -20,11 +21,16 @@ public partial class GameMode : Component, Component.INetworkListener
 	// Note this is awful and long and i hate it but it works
 	public static RoundComponent ActiveRound { get { return Game.ActiveScene.GetAllComponents<GameMode>().FirstOrDefault().Components.GetAll<RoundComponent>().Where( x => x.IsRoundActive ).FirstOrDefault(); } }
 
+	[Property, Sync] public bool RespawnPlayers { get; set; } = true;
+
+	[Property, ToggleGroup( "SetMaxPlayersToStart" )] public bool SetMaxPlayersToStart { get; set; } = false;
+	[Property, ToggleGroup( "SetMaxPlayersToStart" )] public int MaxPlayersToStart { get; set; } = 2;
+
+
 	protected override void OnStart()
 	{
 		Log.Info( "Game Mode Started" );
 	}
-
 
 	public bool GameHasStarted { get; set; } = false;
 
@@ -34,6 +40,8 @@ public partial class GameMode : Component, Component.INetworkListener
 		CurrentRound = InitialRound;
 		InitialRound.ActivateRound();
 		Log.Info( "Activated inital round" );
+
+		OnGameStart?.Invoke();
 	}
 
 	void INetworkListener.OnActive( Connection channel )

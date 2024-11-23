@@ -1,0 +1,304 @@
+{
+  "RootObject": {
+    "__guid": "08781cd7-a731-4cf9-9271-a9e754ca7449",
+    "Flags": 0,
+    "Name": "dodgeball",
+    "Enabled": true,
+    "NetworkMode": 1,
+    "Components": [
+      {
+        "__type": "DodgeBall",
+        "__guid": "9ba5b7bb-7d9c-4ee3-b35f-59197bdb37f9",
+        "HasMapVoting": false,
+        "InitialRound": {
+          "_type": "component",
+          "component_id": "f3bc34e5-e3dc-4821-8b5d-608573df95f2",
+          "go": "56798eb2-8567-4722-8b10-e8a4f7497265",
+          "component_type": "RoundComponent"
+        },
+        "MaxPlayersToStart": 2,
+        "OnGameEnd": {
+          "__version": 8,
+          "__guid": "b2176bd8-66aa-4a1f-b5bb-30eb70b3d5d5",
+          "__changeId": 4,
+          "UserData": {
+            "Title": "On Game End",
+            "ReferencedComponentTypes": []
+          },
+          "Variables": [],
+          "Nodes": [
+            {
+              "Id": 0,
+              "Type": "input"
+            },
+            {
+              "Id": 1,
+              "Type": "scene.getall.inscene",
+              "Properties": {
+                "T": "FWPlayerController"
+              },
+              "UserData": {
+                "Position": "-24,276",
+                "Labels": {
+                  "_result": "Players"
+                }
+              }
+            },
+            {
+              "Id": 2,
+              "Type": "foreach",
+              "UserData": {
+                "Position": "228,0",
+                "Labels": {
+                  "body.value": "p",
+                  "body": "body"
+                }
+              }
+            },
+            {
+              "Id": 3,
+              "Type": "Reset All Teams",
+              "UserData": {
+                "Position": "612,0"
+              }
+            },
+            {
+              "Id": 4,
+              "Type": "call",
+              "Properties": {
+                "_isStatic": false,
+                "_name": "RespawnPlayer",
+                "_type": "FWPlayerController"
+              },
+              "UserData": {
+                "Position": "-12,156"
+              }
+            }
+          ],
+          "Links": [
+            {
+              "SrcId": 0,
+              "SrcName": "_signal",
+              "DstId": 2,
+              "DstName": "_signal"
+            },
+            {
+              "SrcId": 1,
+              "SrcName": "_result",
+              "DstId": 2,
+              "DstName": "enumerable"
+            },
+            {
+              "SrcId": 2,
+              "SrcName": "_signal",
+              "DstId": 3,
+              "DstName": "_signal"
+            },
+            {
+              "SrcId": 2,
+              "SrcName": "body",
+              "DstId": 4,
+              "DstName": "_signal"
+            },
+            {
+              "SrcId": 2,
+              "SrcName": "body.value",
+              "DstId": 4,
+              "DstName": "_target"
+            }
+          ]
+        },
+        "RespawnPlayers": false,
+        "SetMaxPlayersToStart": true,
+        "TeamsEnabled": false
+      }
+    ],
+    "Children": [
+      {
+        "__guid": "56798eb2-8567-4722-8b10-e8a4f7497265",
+        "Flags": 0,
+        "Name": "Playing",
+        "Enabled": true,
+        "NetworkMode": 1,
+        "Components": [
+          {
+            "__type": "RoundComponent",
+            "__guid": "f3bc34e5-e3dc-4821-8b5d-608573df95f2",
+            "AddClass": false,
+            "CanOpenClassSelect": false,
+            "CheckForWinningTeam": true,
+            "ClearAllWeapons": true,
+            "ClearClass": false,
+            "Condition": true,
+            "EndCondition": {
+              "__version": 8,
+              "__guid": "cb506620-f9a8-4b1c-a652-d3620fd22177",
+              "__changeId": 4,
+              "UserData": {
+                "Title": "End Condition",
+                "ReferencedComponentTypes": []
+              },
+              "Variables": [],
+              "Nodes": [
+                {
+                  "Id": 0,
+                  "Type": "input"
+                },
+                {
+                  "Id": 1,
+                  "Type": "output",
+                  "UserData": {
+                    "Position": "252,0"
+                  }
+                }
+              ],
+              "Links": [
+                {
+                  "Id": 3,
+                  "Value": false,
+                  "DstId": 1,
+                  "DstName": "_result"
+                },
+                {
+                  "SrcId": 0,
+                  "SrcName": "_signal",
+                  "DstId": 1,
+                  "DstName": "_signal"
+                }
+              ]
+            },
+            "IsLastRound": false,
+            "IsRoundActive": false,
+            "Name": "Ongoing",
+            "OnRoundStart": {
+              "__version": 8,
+              "__guid": "b76aad72-efbe-47e8-9cb0-32c7ccb45163",
+              "__changeId": 16,
+              "UserData": {
+                "Title": "On Round Start",
+                "ReferencedComponentTypes": [
+                  "GameMode"
+                ]
+              },
+              "Variables": [],
+              "Nodes": [
+                {
+                  "Id": 0,
+                  "Type": "input"
+                },
+                {
+                  "Id": 1,
+                  "Type": "Reset Rollermine",
+                  "UserData": {
+                    "Position": "168,0"
+                  }
+                },
+                {
+                  "Id": 3,
+                  "Type": "scene.ref",
+                  "UserData": {
+                    "Position": "-0,84"
+                  }
+                },
+                {
+                  "Id": 5,
+                  "Type": "scene.get",
+                  "Properties": {
+                    "T": "GameMode"
+                  },
+                  "UserData": {
+                    "Position": "228,132"
+                  }
+                },
+                {
+                  "Id": 6,
+                  "Type": "call",
+                  "Properties": {
+                    "_isStatic": false,
+                    "_name": "EnableTeams",
+                    "_type": "GameMode"
+                  },
+                  "UserData": {
+                    "Position": "372,0"
+                  }
+                }
+              ],
+              "Links": [
+                {
+                  "SrcId": 0,
+                  "SrcName": "_signal",
+                  "DstId": 1,
+                  "DstName": "_signal"
+                },
+                {
+                  "SrcId": 3,
+                  "SrcName": "_result",
+                  "DstId": 5,
+                  "DstName": "_this"
+                },
+                {
+                  "SrcId": 1,
+                  "SrcName": "_signal",
+                  "DstId": 6,
+                  "DstName": "_signal"
+                },
+                {
+                  "SrcId": 5,
+                  "SrcName": "_result",
+                  "DstId": 6,
+                  "DstName": "_target"
+                }
+              ],
+              "Defaults": {
+                "$3.gameobject": {
+                  "_type": "gameobject",
+                  "go": "08781cd7-a731-4cf9-9271-a9e754ca7449"
+                }
+              }
+            },
+            "PlayersToSpawns": true,
+            "PlayerWeapons": [
+              "weapondatas/gravgun.weapons"
+            ],
+            "RoundTime": 30,
+            "Time": false,
+            "Warning": false,
+            "WarningDuration": 0,
+            "WarningTime": 0
+          }
+        ]
+      }
+    ],
+    "__variables": [],
+    "__properties": {
+      "FixedUpdateFrequency": 50,
+      "MaxFixedUpdates": 5,
+      "NetworkFrequency": 30,
+      "NetworkInterpolation": true,
+      "PhysicsSubSteps": 1,
+      "ThreadedAnimation": true,
+      "TimeScale": 1,
+      "UseFixedUpdate": true,
+      "Metadata": {},
+      "NavMesh": {
+        "Enabled": false,
+        "IncludeStaticBodies": true,
+        "IncludeKeyframedBodies": true,
+        "EditorAutoUpdate": true,
+        "AgentHeight": 64,
+        "AgentRadius": 16,
+        "AgentStepSize": 18,
+        "AgentMaxSlope": 40,
+        "ExcludedBodies": "",
+        "IncludedBodies": ""
+      }
+    }
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "DontBreakAsTemplate": false,
+  "ResourceVersion": 1,
+  "__references": [],
+  "__version": 1
+}

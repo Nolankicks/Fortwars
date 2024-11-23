@@ -1,4 +1,5 @@
 using Sandbox.Events;
+using System;
 using System.Threading.Tasks;
 
 public sealed class Propgun : Item
@@ -25,7 +26,9 @@ public sealed class Propgun : Item
 
 	private Modes Mode { get; set; } = Modes.P_PLACE;
 
-	public bool SnapToGrid { get; set; } = true;
+	public bool SnapToGrid { get; set; } = false;
+
+	public bool UseBounds { get; set; } = true;
 
 	protected override void OnStart()
 	{
@@ -56,6 +59,11 @@ public sealed class Propgun : Item
 			UsingMouseInput = !UsingMouseInput;
 
 			PropRotation = Rotation.Identity;
+		}
+
+		if ( Input.Pressed( "voice" ) )
+		{
+			UseBounds = !UseBounds;
 		}
 
 		if ( Input.Pressed( "menu" ) && !HoldingObject )
@@ -158,11 +166,19 @@ public sealed class Propgun : Item
 
 		var model = CurrentProp.Model;
 
-		var tr = Scene.Trace.Size( model.Bounds.Rotate( PropRotation ) ).Ray( player.Eye.WorldPosition, ObjectPos ).IgnoreGameObjectHierarchy( GameObject.Root ).Run();
+		SceneTraceResult tr;
+
+		if ( UseBounds )
+			tr = Scene.Trace.Size( model.Bounds.Rotate( PropRotation ) ).Ray( player.Eye.WorldPosition, ObjectPos ).IgnoreGameObjectHierarchy( GameObject.Root ).Run();
+		else
+			tr = Scene.Trace.Ray( player.Eye.WorldPosition, ObjectPos ).IgnoreGameObjectHierarchy( GameObject.Root ).Run();
 
 		if ( tr.Hit )
 		{
 			ObjectPos = tr.HitPosition;
+
+			if ( !UseBounds )
+				ObjectPos = new Vector3( ObjectPos.x, ObjectPos.y, ObjectPos.z + model.Bounds.Size.z / 2 );
 		}
 
 		//ObjectPos = ObjectPos.SnapToGrid( 16, true, true, !(tr.Hit && tr.Normal == Vector3.Up) );
@@ -291,7 +307,11 @@ public sealed class Propgun : Item
 		var gizmo = Gizmo.Draw.Model( prop.Model.ResourcePath );
 		gizmo.ColorTint = Color.White.WithAlpha( 0.5f );
 		gizmo.Rotation = PropRotation.SnapToGrid( 15 );
-		gizmo.Position = SnapToGrid ? pos.SnapToGrid( 16, true, true, !(Hit && Normal == Vector3.Up) ) : pos;
+
+		if ( UseBounds )
+			gizmo.Position = SnapToGrid ? pos.SnapToGrid( 16, true, true, !(Hit && Normal == Vector3.Up) ) : pos;
+		else
+			gizmo.Position = SnapToGrid ? pos.SnapToGrid( 16) : pos;
 
 		if ( !canPlace )
 		{

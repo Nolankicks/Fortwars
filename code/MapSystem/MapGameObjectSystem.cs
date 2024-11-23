@@ -11,6 +11,31 @@ public sealed class MapLoadingSystem : GameObjectSystem<MapLoadingSystem>, IScen
 		if ( Scene.GetAll<GameSystem>().Any() || Scene.IsEditor || Scene.GetAll<MainMenu>().Any() || Scene.GetAll<SceneLoaderBlocker>().Any() )
 			return;
 
+		var lobbyConfig = new Sandbox.Network.LobbyConfig();
+
+		var lobbySettings = LobbySettings.Load();
+
+		if ( lobbySettings is not null )
+		{
+			//Don't set the privacy when in the editor. Use the editors's privacy settings
+			if ( !Game.IsEditor )
+			{
+				lobbyConfig.Privacy = lobbySettings.Privacy switch
+				{
+					LobbySettingsPanel.LobbyPrivacy.Public => Sandbox.Network.LobbyPrivacy.Public,
+					LobbySettingsPanel.LobbyPrivacy.FriendsOnly => Sandbox.Network.LobbyPrivacy.FriendsOnly,
+					LobbySettingsPanel.LobbyPrivacy.Private => Sandbox.Network.LobbyPrivacy.Private,
+					_ => Sandbox.Network.LobbyPrivacy.Public
+				};
+			}
+
+			lobbyConfig.MaxPlayers = lobbySettings.MaxPlayers;
+		}
+
+		Log.Info( $"Creating Lobby with {lobbyConfig.MaxPlayers} players and {lobbyConfig.Privacy} privacy" );
+
+		Networking.CreateLobby( lobbyConfig );
+
 		var core = GameObject.Clone( ResourceLibrary.Get<PrefabFile>( "prefabs/core.prefab" ) );
 		core.BreakFromPrefab();
 	}

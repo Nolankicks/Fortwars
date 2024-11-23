@@ -72,7 +72,6 @@ public sealed class FortwarsProp : Component, Component.ICollisionListener, Comp
 			Renderer.Model = prop.Model;
 			Collider.Model = prop.Model;
 			CanKill = false;
-			SetStaticBodyType();
 		}
 		Team = team;
 
@@ -80,13 +79,14 @@ public sealed class FortwarsProp : Component, Component.ICollisionListener, Comp
 
 	protected override void OnStart()
 	{
-		if ( Networking.IsHost )
+		if ( Network.IsOwner )
+		{
 			Network.SetOwnerTransfer( OwnerTransfer.Takeover );
+			Network.SetOrphanedMode( NetworkOrphaned.ClearOwner );
+		}
 
 		//if ( IsProxy && !Invincible && Rigidbody.IsValid() && Rigidbody.PhysicsBody.IsValid() )
 		//{
-		if ( Rigidbody.IsValid() && !Tags.Has( FW.Tags.Rollermine ) )
-			Rigidbody.PhysicsBody.BodyType = PhysicsBodyType.Static;
 		//}
 	}
 
@@ -120,13 +120,6 @@ public sealed class FortwarsProp : Component, Component.ICollisionListener, Comp
 
 			GameObject.Destroy();
 		}
-	}
-
-
-	[Broadcast]
-	public void SetStaticBodyType()
-	{
-		Rigidbody.PhysicsBody.BodyType = PhysicsBodyType.Static;
 	}
 
 	void IDamageable.OnDamage( in Sandbox.DamageInfo damage )

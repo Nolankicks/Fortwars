@@ -68,6 +68,8 @@ IGameEventHandler<DeathEvent>, IGameEventHandler<OnPhysgunGrabChange>
 	//TODO RESET THIS SHIT!!!!
 	[Sync] public MapInfo VotedForMap { get; set; }
 
+	[Sync] public bool IsSpectating { get; set; } = false;
+
 	protected override void OnStart()
 	{
 		if ( !AnimHelper.IsValid() )
@@ -87,8 +89,6 @@ IGameEventHandler<DeathEvent>, IGameEventHandler<OnPhysgunGrabChange>
 	[Broadcast]
 	public static void ClearHoldRenderer( ModelRenderer modelRenderer )
 	{
-		Log.Info( "Clearing hold renderer" );
-
 		if ( modelRenderer.IsValid() )
 			modelRenderer.GameObject.Enabled = false;
 	}
@@ -105,10 +105,17 @@ IGameEventHandler<DeathEvent>, IGameEventHandler<OnPhysgunGrabChange>
 	{
 		if ( !IsProxy )
 		{
-			Crouch();
-			Move();
-
-			if ( shrimpleCharacterController.IsOnGround && !LastOnGround )
+			if ( !IsSpectating )
+			{
+				Crouch();
+				Move();
+			}
+			else
+			{
+				Spectate();
+			}
+			
+			if ( shrimpleCharacterController.IsOnGround && !LastOnGround && !IsSpectating )
 				CameraController.Instance.RecoilFire( new Vector3( 5, 0, 0 ) );
 
 			LastOnGround = shrimpleCharacterController.IsOnGround;
@@ -125,7 +132,8 @@ IGameEventHandler<DeathEvent>, IGameEventHandler<OnPhysgunGrabChange>
 		}
 
 		UpdateAnimation();
-		if ( AnimHelper?.Target.IsValid() ?? false )
+
+		if ( (AnimHelper?.Target.IsValid() ?? false) && !IsSpectating )
 			AnimHelper.Target.WorldRotation = new Angles( 0, EyeAngles.yaw, 0 ).ToRotation();
 	}
 
@@ -222,6 +230,18 @@ IGameEventHandler<DeathEvent>, IGameEventHandler<OnPhysgunGrabChange>
 		shrimpleCharacterController.WishVelocity = WishVelocity;
 
 		shrimpleCharacterController.Move();
+	}
+
+	public void Spectate()
+	{
+		WishVelocity = new Angles( EyeAngles.pitch, EyeAngles.yaw, 0 ).ToRotation() * Input.AnalogMove.Normal;
+
+		WishVelocity *= GetMoveSpeed() * 2;
+
+		if ( !WishVelocity.IsNearlyZero() )
+		{
+			WorldPosition += WishVelocity * Time.Delta;
+		}
 	}
 
 	[Broadcast]
