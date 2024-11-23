@@ -89,15 +89,13 @@ HUD {
 button {
     font-size: 42px;
     height: 100px;
+    background-color: $button-secondary;
     color: $button-secondary-fg;
-    text-stroke: 4px black;
+    border-radius: $border-radius;
+    border-width: 2px;
+    border-color: $primary;
     align-items: center;
     justify-content: center;
-    background-image: url("textures/ui/button.png");
-    background-repeat: no-repeat;
-    background-size: 100%;
-    background-image-tint: white;
-    transform: scale(1);
 
     &:hover {
         sound-in: ui.button.over;
