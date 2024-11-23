@@ -17,7 +17,7 @@ public partial class GameMode : Component, Component.INetworkListener
 	[Property, ReadOnly, Sync] public bool TeamsEnabled { get; set; } = false;
 
 	[Property] public bool HasMapVoting { get; set; } = true;
-  
+
 	// Note this is awful and long and i hate it but it works
 	public static RoundComponent ActiveRound { get { return Game.ActiveScene.GetAllComponents<GameMode>().FirstOrDefault().Components.GetAll<RoundComponent>().Where( x => x.IsRoundActive ).FirstOrDefault(); } }
 
@@ -89,15 +89,35 @@ public partial class GameMode : Component, Component.INetworkListener
 		}
 	}
 
+	private Dictionary<FWPlayerController, Team> playerTeamAssignments = new Dictionary<FWPlayerController, Team>();
+
 	public void EnableTeams()
 	{
 		TeamsEnabled = true;
 
 		TeamComponent.ResetTeams();
-		foreach ( var player in Scene.GetAllComponents<FWPlayerController>() )
+
+		var players = Scene.GetAllComponents<FWPlayerController>().ToList();
+		var teamCounts = new Dictionary<Team, int>();
+
+		foreach ( var team in Enum.GetValues( typeof( Team ) ).Cast<Team>().Where( x => x != Team.Green && x != Team.Yellow && x != Team.None ) )
 		{
-			player.TeamComponent.SetTeam( TeamComponent.GetTeamLowestCount() );
+			teamCounts[team] = 0;
 		}
+
+		// Assign teams to players
+		foreach ( var player in players )
+		{
+			var team = GetTeamLowestCount( teamCounts );
+			player.TeamComponent.SetTeam( team );
+			playerTeamAssignments[player] = team;
+			teamCounts[team]++;
+		}
+	}
+
+	public Team GetTeamLowestCount( Dictionary<Team, int> teamCounts )
+	{
+		return teamCounts.OrderBy( kvp => kvp.Value ).First().Key;
 	}
 
 	public virtual Team WinningTeam() => Team.None;
