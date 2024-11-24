@@ -7,7 +7,7 @@
   "Author": "Facepunch",
   "PackageIndent": "facepunch.crossfire",
   "Hidden": false,
-  "Order": 0,
+  "Order": 1,
   "AvailableGamemodes": "Deathmatch",
   "__references": [],
   "__version": 0
