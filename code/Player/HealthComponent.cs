@@ -16,7 +16,9 @@ public partial class HealthComponent : Component
 	[Property] public Func<GameObject, int, bool> CanTakeDamage { get; set; }
 	[Property] public Action<int, Vector3> OnDeathAction { get; set; }
 
-	[Property] public bool Autoheal { get; set; } = false;
+	[Property, FeatureEnabled( "Autoheal" )] public bool AutohealEnabled { get; set; } = false;
+	[Property, FeatureEnabled( "Autoheal" )] public int AutohealRate { get; set; } = 1;
+	[Property, FeatureEnabled( "Autoheal" )] public float AutohealDelay { get; set; } = 5.0f;
 
 	public TimeSince LastHit { get; set; }
 
@@ -58,13 +60,13 @@ public partial class HealthComponent : Component
 
 		if ( IsAutoHealing() )
 		{
-			Heal( 1 );
+			Heal( AutohealRate );
 		}
 	}
 
 	public bool IsAutoHealing()
 	{
-		return Autoheal && !IsDead && Health < MaxHealth && LastHit > 5;
+		return AutohealEnabled && !IsDead && Health < MaxHealth && LastHit > AutohealDelay;
 	}
 
 	[Button]
