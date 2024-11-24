@@ -1,0 +1,14 @@
+{
+  "MapName": "Crossfire",
+  "MapDescription": "Throwback to 1998",
+  "FourTeams": false,
+  "Scene": "scenes/crossfire.scene",
+  "Thumb": "textures/crossfire.vtex",
+  "Author": "Facepunch",
+  "PackageIndent": "facepunch.crossfire",
+  "Hidden": false,
+  "Order": 0,
+  "AvailableGamemodes": "Deathmatch",
+  "__references": [],
+  "__version": 0
+}
