@@ -8,11 +8,15 @@
       {
         "__type": "Weapon",
         "__guid": "db0a5184-ee6e-4bd0-a83a-a1c14ef7f60b",
+        "ADSEnabled": true,
+        "ADSFOV": 0.8,
+        "ADSOffset": "4,0,0",
         "AmmoPerShot": 1,
         "AttackAnimName": "b_attack",
         "CasingModel": "models/weapons/sbox_ammo/12g_shell/12g_shell.vmdl",
         "CrosshairEnabled": false,
         "Damage": 20,
+        "DisableCrosshair": true,
         "EjectionPoint": {
           "_type": "gameobject",
           "go": "0f6b5eb1-d448-465e-ae32-2f9b3fc3fa6a"

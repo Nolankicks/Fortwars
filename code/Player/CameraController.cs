@@ -7,6 +7,8 @@ public sealed class CameraController : Component
 
 	public float FOVMult { get; set; } = 1.0f;
 
+	public float FOVMultTarget { get; set; } = 1.0f;
+
 	private Rotation CurrentRotation { get; set; }
 	private Rotation TargetRotation { get; set; }
 
@@ -25,6 +27,8 @@ public sealed class CameraController : Component
 
 		if ( !player.IsValid() || !Scene.Camera.IsValid() )
 			return;
+
+		FOVMult = FOVMult.LerpTo( FOVMultTarget, 10.0f * Time.Delta );
 
 		if ( player.IsRespawning )
 		{

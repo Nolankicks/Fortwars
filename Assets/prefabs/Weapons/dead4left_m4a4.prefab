@@ -8,9 +8,11 @@
       {
         "__type": "Weapon",
         "__guid": "4ed6a63a-4d64-4b12-b540-69664f44f101",
+        "ADSEnabled": true,
+        "ADSOffset": "0,0,0",
         "AmmoPerShot": 1,
         "AttackAnimName": "b_attack",
-        "CrosshairEnabled": false,
+        "CrosshairEnabled": true,
         "Damage": 15,
         "FireRate": 0.1,
         "FireSound": "audio/rifle.fire.sound",
@@ -37,6 +39,12 @@
           "component_id": "02a5e8c5-70df-4150-ac0f-87ff6a8f9662",
           "go": "88dac86d-8c58-4629-b04d-5ed6bf7d8028",
           "component_type": "Viewmodel"
+        },
+        "WeaponCrosshair": {
+          "_type": "component",
+          "component_id": "001efa25-db5d-4c54-b289-5d7708c56f4f",
+          "go": "88dac86d-8c58-4629-b04d-5ed6bf7d8028",
+          "component_type": "WeaponCrosshair"
         },
         "WorldModel": "models/weapons/sbox_assault_m4a1/w_m4a1.vmdl"
       },

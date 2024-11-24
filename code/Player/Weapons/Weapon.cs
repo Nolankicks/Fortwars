@@ -112,7 +112,9 @@ public class Weapon : Item, IGameEventHandler<OnReloadEvent>
 	[Property, Feature( "Crosshair" )] WeaponCrosshair WeaponCrosshair { get; set; }
 
 	[Property, FeatureEnabled( "ADS" )] public bool ADSEnabled { get; set; } = true;
-	[Property, Feature( "ADS" )] public Vector3 ADSOffset { get; set; } = new( 4, 0, -0.3f );
+	[Property, Feature( "ADS" )] public Vector3 ADSOffset { get; set; } = new( 4, 0, 0 );
+	[Property, Feature( "ADS" )] public float ADSFOV { get; set; } = 0.8f;
+	[Property, Feature( "ADS" )] public bool DisableCrosshair { get; set; } = false;
 
 	public enum FireTypes
 	{
@@ -150,12 +152,12 @@ public class Weapon : Item, IGameEventHandler<OnReloadEvent>
 
 			Renderer.LocalPosition = Renderer.LocalPosition.LerpTo( targetPos, Time.Delta * 10 );
 
-			if ( WeaponCrosshair.IsValid() )
+			if ( WeaponCrosshair.IsValid() && DisableCrosshair )
 				WeaponCrosshair.Enabled = !isAiming;
 
 			if ( CameraController.Instance.IsValid() )
 			{
-				CameraController.Instance.FOVMult = isAiming ? 0.8f : 1.0f;
+				CameraController.Instance.FOVMultTarget = isAiming ? 0.8f : 1.0f;
 			}
 		}
 
