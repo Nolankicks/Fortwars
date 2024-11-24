@@ -77,6 +77,10 @@ public sealed class Viewmodel : Component, IGameEventHandler<JumpEvent>, IGameEv
 			Renderer.Set( "b_attack", false );
 			Renderer.Set( "b_reload", false );
 			Renderer.Set( "b_jump", false );
+
+			Renderer.Set( "ironsights", 0 );
+
+			Renderer.LocalPosition = Vector3.Zero;
 		}
 	}
 

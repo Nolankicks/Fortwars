@@ -111,6 +111,9 @@ public class Weapon : Item, IGameEventHandler<OnReloadEvent>
 	[Property, FeatureEnabled( "Crosshair" )] bool CrosshairEnabled { get; set; }
 	[Property, Feature( "Crosshair" )] WeaponCrosshair WeaponCrosshair { get; set; }
 
+	[Property, FeatureEnabled( "ADS" )] public bool ADSEnabled { get; set; } = true;
+	[Property, Feature( "ADS" )] public Vector3 ADSOffset { get; set; } = new( 4, 0, -0.3f );
+
 	public enum FireTypes
 	{
 		F_SEMIAUTO,
@@ -134,6 +137,22 @@ public class Weapon : Item, IGameEventHandler<OnReloadEvent>
 	{
 		if ( IsProxy || equipTime < 0.2f )
 			return;
+
+		if ( VModel.IsValid() && VModel.Renderer.IsValid() && ADSEnabled )
+		{
+			var isAiming = Input.Down( "attack2" ) && !IsReloading;
+
+			var Renderer = VModel.Renderer;
+
+			Renderer.Set( "ironsights", isAiming ? 1 : 0 );
+
+			var targetPos = isAiming ? ADSOffset : Vector3.Zero;
+
+			Renderer.LocalPosition = Renderer.LocalPosition.LerpTo( targetPos, Time.Delta * 10 );
+
+			if ( WeaponCrosshair.IsValid() )
+				WeaponCrosshair.Enabled = !isAiming;
+		}
 
 		Traces = new SceneTraceResult[TraceTimes];
 
@@ -239,7 +258,7 @@ public class Weapon : Item, IGameEventHandler<OnReloadEvent>
 						textRenderer.Text = new TextRendering.Scope( Damage.ToString(), Color.White, 24 );
 					}
 				}
-				
+
 				var hud = HUD.Instance;
 
 				if ( hud.IsValid() )
@@ -362,6 +381,9 @@ public class Weapon : Item, IGameEventHandler<OnReloadEvent>
 			return;
 
 		IsReloading = false;
+
+		if ( WeaponCrosshair.IsValid() )
+			WeaponCrosshair.Enabled = true;
 	}
 
 	bool CheckFireInput()

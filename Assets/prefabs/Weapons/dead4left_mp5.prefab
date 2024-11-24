@@ -8,9 +8,11 @@
       {
         "__type": "Weapon",
         "__guid": "4ed6a63a-4d64-4b12-b540-69664f44f101",
+        "ADSEnabled": true,
+        "ADSOffset": "6,0,-0.6",
         "AmmoPerShot": 1,
         "AttackAnimName": "b_attack",
-        "CrosshairEnabled": false,
+        "CrosshairEnabled": true,
         "Damage": 8,
         "FireRate": 0.065,
         "FireSound": "audio/smg.fire.sound",
@@ -20,7 +22,7 @@
         "MaxAmmo": 30,
         "Offset": "2.012506,-1.151374,-4.363367",
         "Range": 50000,
-        "RecoilValues": "-4,3,0.35",
+        "RecoilValues": "-6,0,0.4",
         "ReloadAnimName": "b_reload",
         "ReloadDelay": 1.2,
         "Spread": 0.06,
@@ -37,6 +39,12 @@
           "component_id": "fb6d4f07-1994-43d5-bb43-64fdea1cea19",
           "go": "d6cb651b-100f-4e47-9cef-629f07e941eb",
           "component_type": "Viewmodel"
+        },
+        "WeaponCrosshair": {
+          "_type": "component",
+          "component_id": "001efa25-db5d-4c54-b289-5d7708c56f4f",
+          "go": "d6cb651b-100f-4e47-9cef-629f07e941eb",
+          "component_type": "WeaponCrosshair"
         },
         "WorldModel": "models/weapons/sbox_smg_mp5/v_mp5.vmdl"
       },
@@ -847,12 +855,6 @@
             "Enabled": true
           }
         ]
-      },
-      {
-        "__guid": "1da97548-bd76-4951-ac3d-df19f7e49e40",
-        "Flags": 0,
-        "Name": "Crosshair",
-        "Enabled": true
       }
     ],
     "__variables": [],

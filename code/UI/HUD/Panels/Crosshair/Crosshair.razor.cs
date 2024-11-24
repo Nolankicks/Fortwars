@@ -78,6 +78,11 @@ public partial class Crosshair : Panel
 		if ( !local.IsValid() )
 			return;
 
+		Log.Info( ShowCrosshair );
+
+		if ( !ShowCrosshair )
+			return;
+
 		var centerRect = Box.RectOuter;
 		DrawSegment( centerRect );
 
