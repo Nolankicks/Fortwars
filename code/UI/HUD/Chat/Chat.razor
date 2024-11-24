@@ -50,10 +50,10 @@
 			InputBox.Focus();
 		}
 
-		if ( Entries.RemoveAll(x => x.timeSinceAdded > 20.0f) > 0 )
+		/*if ( Entries.RemoveAll(x => x.timeSinceAdded > 20.0f) > 0 )
 		{
 			StateHasChanged();
-		}
+		}*/
 
 		SetClass( "open", InputBox.HasFocus );
 	}
