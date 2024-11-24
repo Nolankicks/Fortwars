@@ -102,12 +102,12 @@ button {
         sound-in: ui.button.over;
         cursor: pointer;
         background-image-tint: orange;
-        transform: scale(1.1);
+        transform: scale(1.05);
     }
 
     &:active {
         sound-in: ui.button.press;
         cursor: pointer;
-        transform: scale(0.9);
+        transform: scale(0.95);
     }
 }
