@@ -226,8 +226,8 @@ IGameEventHandler<DeathEvent>, IGameEventHandler<OnPhysgunGrabChange>
 
 		var sprintSpeed = MathX.Lerp( GetMoveSpeed(), RunSpeed, sprintingCoefficient );
 
-		var isCrouching = Input.Down( "crouch" );
-		var wishSpeed = isCrouching ? 100 : sprintSpeed;
+		var isCrouching = Input.Down( "duck" );
+		var wishSpeed = isCrouching ? 175 : sprintSpeed;
 
 		var wishDirection = Input.AnalogMove.Normal * Rotation.FromYaw( EyeAngles.yaw );
 		WishVelocity = wishDirection * wishSpeed;
