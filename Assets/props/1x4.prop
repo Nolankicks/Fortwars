@@ -4,7 +4,7 @@
   "Model": "models/blocks/steel/fw_1x4.vmdl",
   "Cost": 0,
   "Max": 0,
-  "Icon": "models/blocks/steel/fw_1x4.vmdl.png",
+  "Icon": "textures/propicons/steel1x4.png",
   "PrefabOverride": null,
   "__references": [
     "apetavern.fw1x4_steel#78630"
