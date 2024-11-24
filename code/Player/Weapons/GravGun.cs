@@ -30,7 +30,7 @@ public class Gravgun : Item, IGameEventHandler<DeathEvent>
 	PhysicsBody HeldBody = null;
 	[Sync] public GameObject GrabbedObject { get; set; }
 
-	SceneTrace GravGunTrace => Scene.Trace.Ray( new Ray( FWPlayerController.Local.Eye.WorldPosition, FWPlayerController.Local.EyeAngles.Forward ), 350f )
+	SceneTrace GravGunTrace => Scene.Trace.Ray( new Ray( FWPlayerController.Local.Eye.WorldPosition, FWPlayerController.Local.EyeAngles.Forward ), 375f )
 			.IgnoreGameObjectHierarchy( GameObject.Root )
 			.WithoutTags( FW.Tags.Trigger, FW.Tags.Player )
 			.WithTag( FW.Tags.Rollermine );
