@@ -3,23 +3,42 @@
 @using System;
 @inherits Panel
 
+@*Ceitine is a genius*@
+
 <root class="@(Visible ? "visible" : "")">
+    <div class="title">PICK A PROP</div>
+
     @{
         var i = 0;
         var count = Props.Count;
 
-        foreach (var prop in Props)
+        foreach ( var prop in Props )
         {
-            var rgb = Color.Blue.Rgb;
+            var rgb = Color.Green.Rgb;
             var size = (1f / count * 100f);
 
-            <div class="wheel-fraction @(SelectedProp == prop ? "selected" : "")" style="background: conic-gradient(
-                        @rgb @(MathF.Max(i * size, 0f))%, 
-                        @rgb @(i * size + size)%, 
-                        @rgb @(MathF.Min(i * size + size, 100f))%, 
-                        transparent @(MathF.Min(i * size + size, 100f))%, 
-                        transparent 100%);">
-            </div>
+            <div 
+                class="wheel-fraction @(prop == SelectedProp ? "selected" : "")"
+                style="background: conic-gradient(
+                    @rgb @(MathF.Max( i * size, 0f ))%, 
+                    @rgb @(i * size + size)%, 
+                    @rgb @(MathF.Min( i * size + size, 100f ))%,
+                    transparent @(MathF.Min( i * size + size, 100f ))%, 
+                    transparent 100%);"
+            />
+
+            @* Our radius is like 500px, use the one that you have... *@
+            var radius = 500f;
+
+            @* Use cosine and sine to determine the position in circle. *@
+            var ang = MathF.PI * 2f * i / count - 0.5f * MathF.PI + 1f * MathF.PI / count;
+            var pos = radius / 2.5f * new Vector2( MathF.Cos( ang ), MathF.Sin( ang ) );
+            pos += Screen.Size * ScaleFromScreen / 2f;
+
+            @* Now draw our text at the circle position at our current index. *@
+            <p style="position: absolute; z-index:99; left: @($"{pos.x:N1}")px; top: @($"{pos.y:N1}")px; transform: translate(-50% -50%); color: black">
+				@prop.DisplayName
+			</p>
 
             i++;
         }
@@ -55,6 +74,8 @@
 		ang = (ang + 90f) % 360f;
 
 		SelectedProp = Props.ElementAtOrDefault((int)(ang / size));
+
+		Log.Info( SelectedProp.DisplayName );
 	}
 
 	protected override int BuildHash()
