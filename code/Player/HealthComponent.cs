@@ -16,6 +16,10 @@ public partial class HealthComponent : Component
 	[Property] public Func<GameObject, int, bool> CanTakeDamage { get; set; }
 	[Property] public Action<int, Vector3> OnDeathAction { get; set; }
 
+	[Property] public bool Autoheal { get; set; } = false;
+
+	public TimeSince LastHit { get; set; }
+
 	public virtual void OnDeath( GameObject Attacker, Vector3 damagePos, Vector3 damageNormal ) { }
 
     [Authority]
@@ -26,6 +30,8 @@ public partial class HealthComponent : Component
 
 		if ( CanTakeDamage?.Invoke( Attacker, damage ) ?? false )
 			return;
+
+		LastHit = 0;
 
         var health = Health - damage;
 
@@ -45,10 +51,38 @@ public partial class HealthComponent : Component
         }
     }
 
+	protected override void OnUpdate()
+	{
+		if ( IsProxy )
+			return;
+
+		if ( IsAutoHealing() )
+		{
+			Heal( 1 );
+		}
+	}
+
+	public bool IsAutoHealing()
+	{
+		return Autoheal && !IsDead && Health < MaxHealth && LastHit > 5;
+	}
+
 	[Button]
 	public void TestDamage()
 	{
 		TakeDamage( GameObject );
+	}
+
+	TimeSince lastHeal;
+
+	public void Heal( int amount )
+	{
+		if ( lastHeal < 0.5f )
+			return;
+
+		lastHeal = 0;
+
+		Health = Math.Min( Health + amount, MaxHealth );
 	}
 
 	[Broadcast]
