@@ -82,12 +82,17 @@
 
 	public static Color GetColor()
 	{
-		switch ( FWPlayerController.Local?.TeamComponent?.Team )
+		return GetColor( FWPlayerController.Local?.TeamComponent?.Team ?? Team.None );
+	}
+
+	public static Color GetColor( Team team )
+	{
+		switch ( team )
 		{
 			case Team.Red:
-                return new Color(198, 46, 46);
+				return new Color(198, 46, 46);
 			case Team.Blue:
-                return new Color(13, 146, 244);
+				return new Color(13, 146, 244);
 			case Team.Green:
 				return Color.Green;
 			case Team.Yellow:
