@@ -131,7 +131,7 @@
 	public Package SelectedPackage { get; set; }
 	public MapInfo SelectedMap { get; set; }
 	[Change( nameof( OnValueMapChange ) )] private bool ClassicModels { get; set; } = true;
-	[Change( nameof( OnValueMapChange ) )] private int MaxProps { get; set; } = 100;
+	[Change( nameof( OnValueMapChange ) )] private int MaxProps { get; set; } = 150;
 	[Change( nameof( OnValueMapChange ) )] private int MaxPlayers { get; set; } = 64;
 	[Change( nameof( OnValueMapChange ) )] private int PlayersToStart { get; set; } = 1;
 
