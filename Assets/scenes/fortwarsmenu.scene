@@ -481,6 +481,8 @@
   "Title": "dead4leftmenurewrite",
   "Description": null,
   "__references": [
+    "apetavern.fw1x1x1_steel#78622",
+    "apetavern.fw1x2x1_steel#78633",
     "rust.field_day_breeze_01a#43855"
   ],
   "__version": 2

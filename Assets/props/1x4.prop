@@ -6,6 +6,8 @@
   "Max": 0,
   "Icon": "models/blocks/steel/fw_1x4.vmdl.png",
   "PrefabOverride": null,
-  "__references": [],
+  "__references": [
+    "apetavern.fw1x4_steel#78630"
+  ],
   "__version": 0
 }
