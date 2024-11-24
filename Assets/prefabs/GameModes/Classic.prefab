@@ -345,6 +345,66 @@
                     }
                   ]
                 },
+                "OnRoundEnd": {
+                  "__version": 8,
+                  "__guid": "93d9c637-6dd7-4e67-85d4-b7fe1f1c6ad5",
+                  "__changeId": 10,
+                  "UserData": {
+                    "Title": "On Round End",
+                    "ReferencedComponentTypes": []
+                  },
+                  "Variables": [],
+                  "Nodes": [
+                    {
+                      "Id": 0,
+                      "Type": "input"
+                    },
+                    {
+                      "Id": 1,
+                      "Type": "call",
+                      "Properties": {
+                        "_isStatic": false,
+                        "_name": "DeleteClassSelect",
+                        "_type": "RoundComponent"
+                      },
+                      "UserData": {
+                        "Position": "228,0"
+                      }
+                    },
+                    {
+                      "Id": 4,
+                      "Type": "scene.ref",
+                      "UserData": {
+                        "Position": "0,60"
+                      }
+                    }
+                  ],
+                  "Links": [
+                    {
+                      "SrcId": 0,
+                      "SrcName": "_signal",
+                      "DstId": 1,
+                      "DstName": "_signal"
+                    },
+                    {
+                      "SrcId": 4,
+                      "SrcName": "_result",
+                      "DstId": 1,
+                      "DstName": "_target",
+                      "UserData": {
+                        "x": 48
+                      }
+                    }
+                  ],
+                  "Defaults": {
+                    "$4.component": {
+                      "_type": "component",
+                      "component_id": "6ba6116e-10e0-4183-a2f1-45d8ec5648ca",
+                      "go": "f19aaa98-fa80-4421-b71d-92d0aa9591dc",
+                      "component_type": "RoundComponent"
+                    }
+                  }
+                },
                 "OnRoundStart": {
                   "__version": 8,
                   "__guid": "a8a041bc-7d5b-4c31-b007-98d025bf4fdf",
@@ -624,7 +684,7 @@
                       "DstName": "_signal"
                     },
                     {
-                      "Id": 43,
+                      "Id": 44,
                       "Value": true,
                       "DstId": 4,
                       "DstName": "enable"
@@ -790,6 +850,69 @@
                     }
                   ]
                 },
+                "OnRoundEnd": {
+                  "__version": 8,
+                  "__guid": "20afb44c-1384-4b9f-8bc7-09ce6e1d7869",
+                  "__changeId": 8,
+                  "UserData": {
+                    "Title": "On Round End",
+                    "ReferencedComponentTypes": []
+                  },
+                  "Variables": [],
+                  "Nodes": [
+                    {
+                      "Id": 0,
+                      "Type": "input",
+                      "UserData": {
+                        "Position": "0,0"
+                      }
+                    },
+                    {
+                      "Id": 1,
+                      "Type": "call",
+                      "Properties": {
+                        "_isStatic": false,
+                        "_name": "DeleteClassSelect",
+                        "_type": "RoundComponent"
+                      },
+                      "UserData": {
+                        "Position": "216,0"
+                      }
+                    },
+                    {
+                      "Id": 3,
+                      "Type": "scene.ref",
+                      "UserData": {
+                        "Position": "0,36"
+                      }
+                    }
+                  ],
+                  "Links": [
+                    {
+                      "SrcId": 0,
+                      "SrcName": "_signal",
+                      "DstId": 1,
+                      "DstName": "_signal"
+                    },
+                    {
+                      "SrcId": 3,
+                      "SrcName": "_result",
+                      "DstId": 1,
+                      "DstName": "_target",
+                      "UserData": {
+                        "x": 48
+                      }
+                    }
+                  ],
+                  "Defaults": {
+                    "$3.component": {
+                      "_type": "component",
+                      "component_id": "65f49401-aeef-4037-9d86-5909e2065aca",
+                      "go": "16ea68d0-920f-4120-8ad6-2baa383ea9ac",
+                      "component_type": "RoundComponent"
+                    }
+                  }
+                },
                 "OnRoundStart": {
                   "__version": 8,
                   "__guid": "f5bc333a-91aa-40c4-aac0-eb08023197d9",
@@ -909,7 +1032,7 @@
                       "DstName": "_signal"
                     },
                     {
-                      "Id": 21,
+                      "Id": 22,
                       "Value": false,
                       "DstId": 12,
                       "DstName": "enable"
