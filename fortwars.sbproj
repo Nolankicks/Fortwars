@@ -5,7 +5,7 @@
   "Ident": "fortwars",
   "Schema": 1,
   "IncludeSourceFiles": false,
-  "Resources": "\n*.mp3\n*.wav\n*.png",
+  "Resources": "\n*.mp3\n*.wav\n*.png\n*.ttf\n*.jpg",
   "PackageReferences": [],
   "EditorReferences": null,
   "IsWhitelistDisabled": false,
