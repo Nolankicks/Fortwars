@@ -1,9 +1,0 @@
-{
-  "DisplayName": "M Plane",
-  "Model": "models/blocks/48plane.vmdl",
-  "Cost": 10,
-  "Max": 100,
-  "Icon": "textures/propicons/48plane.vmdl.png",
-  "__references": [],
-  "__version": 0
-}

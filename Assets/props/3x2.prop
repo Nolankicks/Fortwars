@@ -1,0 +1,11 @@
+{
+  "DisplayName": "3x2",
+  "Hidden": false,
+  "Model": "models/blocks/steel/fw_3x2.vmdl",
+  "Cost": 0,
+  "Max": 0,
+  "Icon": "models/blocks/steel/fw_3x2.vmdl.png",
+  "PrefabOverride": null,
+  "__references": [],
+  "__version": 0
+}

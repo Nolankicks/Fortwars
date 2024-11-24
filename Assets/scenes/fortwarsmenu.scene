@@ -247,6 +247,9 @@
         {
           "__type": "HealthComponent",
           "__guid": "f5cdcc85-42e3-47df-b13f-daf8d54faa4e",
+          "AutohealDelay": 5,
+          "AutohealEnabled": false,
+          "AutohealRate": 1,
           "Health": 125,
           "IsDead": false,
           "MaxHealth": 100,
@@ -300,7 +303,7 @@
                 }
               },
               {
-                "Id": 4,
+                "Id": 5,
                 "Value": true,
                 "DstId": 2,
                 "DstName": "_value"
@@ -385,6 +388,66 @@
           "LightColor": "0.91373,0.98039,1,1",
           "Radius": 500,
           "Shadows": false
+        }
+      ]
+    },
+    {
+      "__guid": "ba6fffe7-cfd1-4dbf-af3c-46b8e55ca89e",
+      "Flags": 0,
+      "Name": "fw_1x1x1",
+      "Position": "453.4204,270.5734,277",
+      "Rotation": "0,0,0.1305262,0.9914449",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.Prop",
+          "__guid": "73fb711c-4ef4-4bf7-ab5c-b39155886389",
+          "BodyGroups": 18446744073709551615,
+          "Health": 0,
+          "IsStatic": false,
+          "Model": "models/blocks/steel/fw_1x1x1.vmdl",
+          "StartAsleep": false,
+          "Tint": "1,1,1,1"
+        }
+      ]
+    },
+    {
+      "__guid": "4df0eb66-ea29-4ca2-85c0-53611cb05020",
+      "Flags": 0,
+      "Name": "fw_1x1x1 (1)",
+      "Position": "531.7444,305.47,276.9999",
+      "Rotation": "0,0,0.3826833,0.9238796",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.Prop",
+          "__guid": "ce91dd03-8e81-4567-8534-e33f587e4c36",
+          "BodyGroups": 18446744073709551615,
+          "Health": 0,
+          "IsStatic": false,
+          "Model": "models/blocks/steel/fw_1x1x1.vmdl",
+          "StartAsleep": false,
+          "Tint": "1,1,1,1"
+        }
+      ]
+    },
+    {
+      "__guid": "c349289b-6b5c-4f34-9348-c4589b65bf92",
+      "Flags": 0,
+      "Name": "fw_1x2x1",
+      "Position": "403.2571,256.8727,297.014",
+      "Rotation": "0,0,0.1305262,0.9914449",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.Prop",
+          "__guid": "a3b28482-ad7e-4a6e-99de-1b17dd1d533b",
+          "BodyGroups": 18446744073709551615,
+          "Health": 0,
+          "IsStatic": false,
+          "Model": "models/blocks/steel/fw_1x2x1.vmdl",
+          "StartAsleep": false,
+          "Tint": "1,1,1,1"
         }
       ]
     }
