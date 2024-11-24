@@ -4,56 +4,59 @@
 @inherits Panel
 
 <root class="@(Visible ? "visible" : "")">
-    @{
-        var i = 0;
-        var count = Colors.Count;
+	@{
+		var i = 0;
+		var count = Props.Count;
 
-        foreach (var (name, color) in Colors)
-        {
-            var rgb = color.Rgb;
-            var size = (1f / count * 100f);
+		foreach (var color in Props)
+		{
+			var rgb = color.Rgb;
+			var size = (1f / count * 100f);
 
-            <div 
-                class="wheel-fraction @(SelectedColor == color ? "selected" : "")"
-                style="background: conic-gradient(
-                    @rgb @(MathF.Max(i * size, 0f))%, 
-                    @rgb @(i * size + size)%, 
-                    @rgb @(MathF.Min(i * size + size, 100f))%, 
-                    transparent @(MathF.Min(i * size + size, 100f))%, 
-                    transparent 100%);"
-            />
+			<div class="wheel-fraction @(SelectedColor == color ? "selected" : "")" style="background: conic-gradient(
+						@rgb @(MathF.Max(i * size, 0f))%, 
+						@rgb @(i * size + size)%, 
+						@rgb @(MathF.Min(i * size + size, 100f))%, 
+						transparent @(MathF.Min(i * size + size, 100f))%, 
+						transparent 100%);" />
 
-            i++;
-        }
-    }
+			i++;
+		}
+	}
 </root>
 
 @code {
-    private bool Visible => true;
-    private Color32 Color => Colors.ElementAtOrDefault(0).Value;
-    private Dictionary<string, Color32> Colors = new()
-    {
-        { "Red", Color32.Black },
-        { "Green", Color32.White },
-    };
+	private bool Visible => true;
+	private Color32 Prop => Props.ElementAtOrDefault(0);
+	private List<Color32> Props => new List<Color32>
+	{
+		new Color32(255, 0, 0),
+		new Color32(255, 255, 0),
+		new Color32(0, 255, 0),
+		new Color32(0, 255, 255),
+		new Color32(0, 0, 255),
+		new Color32(255, 0, 255),
+	};
 
-    public Color SelectedColor { get; set; }
+	public Color SelectedColor { get; set; }
 
-    public override void Tick()
-    {
-        if (!Visible)
-            return;
+	public override void Tick()
+	{
+		if (!Visible)
+			return;
 
-        var mouse = Mouse.Position;
-        var center = Screen.Size / 2f;
-        var direction = mouse - center;
+		var mouse = Mouse.Position;
+		var center = Screen.Size / 2f;
+		var direction = mouse - center;
 
-        var ang = (MathF.Atan2(direction.y, direction.x) * 180f / MathF.PI + 270f) % 360f;
-        var size = 360f / Colors.Count;
+		var ang = (MathF.Atan2(direction.y, direction.x) * 180f / MathF.PI + 360f) % 360f;
+		var size = 360f / Props.Count;
 
-        SelectedColor = Colors.ElementAtOrDefault((int)(ang / size)).Value;
-    }
+		ang = (ang + 90f) % 360f;
 
-    protected override int BuildHash()
-        => HashCode.Combine(Color, Visible, SelectedColor);
+		SelectedColor = Props.ElementAtOrDefault((int)(ang / size));
+	}
+
+	protected override int BuildHash()
+	=> HashCode.Combine(Prop, Visible, SelectedColor);
 }
