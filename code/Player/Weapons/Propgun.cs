@@ -68,18 +68,37 @@ public sealed class Propgun : Item
 
 		if ( Input.Pressed( "menu" ) && !HoldingObject )
 		{
-			var hud = Scene.GetAll<HUD>()?.FirstOrDefault();
-
 			Mouse.Visible = false;
 			UsingMouseInput = false;
 
-			var panel = new SpawnerMenu();
+			var menu = PropRadialMenu.Instance;
 
-			panel.Propgun = this;
+			if ( menu.IsValid() )
+			{
+				menu.Visible = true;
 
-			if ( hud.IsValid() && hud.Panel?.ChildrenOfType<SpawnerMenu>()?.Count() == 0 )
-				hud.Panel.AddChild( panel );
-			else (hud?.Panel?.ChildrenOfType<SpawnerMenu>()?.FirstOrDefault())?.Delete();
+				var player = FWPlayerController.Local;
+
+				if ( player.IsValid() )
+					Sound.Play( "weapon.deploy", player.WorldPosition );
+			}
+		}
+
+		if ( Input.Released( "menu" ) )
+		{
+			var menu = PropRadialMenu.Instance;
+
+			if ( menu.IsValid() )
+			{
+				CurrentProp = menu.SelectedProp;
+
+				menu.Visible = false;
+
+				var player = FWPlayerController.Local;
+
+				if ( player.IsValid() )
+					Sound.Play( "weapon.deploy", player.WorldPosition );
+			}
 		}
 
 		// Rotate the viewmodel around
@@ -142,6 +161,11 @@ public sealed class Propgun : Item
 
 		Mouse.Visible = false;
 		UsingMouseInput = false;
+
+		var menu = PropRadialMenu.Instance;
+
+		if ( menu.IsValid() )
+			menu.Visible = false;
 	}
 
 	public void HandleProp()

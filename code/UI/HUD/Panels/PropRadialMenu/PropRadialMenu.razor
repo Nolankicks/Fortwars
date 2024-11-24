@@ -6,7 +6,10 @@
 @*Ceitine is a genius*@
 
 <root class="@(Visible ? "visible" : "")">
-    <div class="title">PICK A PROP</div>
+    <div class="title">
+		<p>Prop Menu</p>
+		<p>@SelectedProp?.DisplayName</p>
+	</div>
 
     @{
         var i = 0;
@@ -14,7 +17,7 @@
 
         foreach ( var prop in Props )
         {
-            var rgb = Color.Green.Rgb;
+            var rgb = Color.Parse( "#1a1a1a" )?.Rgb;
             var size = (1f / count * 100f);
 
             <div 
@@ -28,17 +31,17 @@
             />
 
             @* Our radius is like 500px, use the one that you have... *@
-            var radius = 500f;
+            var radius = 600f;
 
             @* Use cosine and sine to determine the position in circle. *@
             var ang = MathF.PI * 2f * i / count - 0.5f * MathF.PI + 1f * MathF.PI / count;
-            var pos = radius / 2.5f * new Vector2( MathF.Cos( ang ), MathF.Sin( ang ) );
+            var pos = radius / (prop == SelectedProp ? 2.3f : 2.5f) * new Vector2( MathF.Cos( ang ), MathF.Sin( ang ) );
             pos += Screen.Size * ScaleFromScreen / 2f;
 
             @* Now draw our text at the circle position at our current index. *@
-            <p style="position: absolute; z-index:99; left: @($"{pos.x:N1}")px; top: @($"{pos.y:N1}")px; transform: translate(-50% -50%); color: black">
-				@prop.DisplayName
-			</p>
+            <div style="position: absolute; z-index:99; left: @($"{pos.x:N1}")px; top: @($"{pos.y:N1}")px; transform: translate(-50% -50%); color: black; transition: all 0.1s;">
+				<img style="width: 82px; height: 82px;" src=@prop.Icon />
+			</div>
 
             i++;
         }
@@ -46,16 +49,20 @@
 </root>
 
 @code {
-	private bool Visible => true;
+	public bool Visible { get; set; } = false;
 	private PropResource Prop => Props.ElementAtOrDefault(0);
 	private List<PropResource> Props { get; set; } = new();
 	public PropResource SelectedProp { get; set; }
+
+	public static PropRadialMenu Instance { get; set; }
 
 	protected override  void OnAfterTreeRender( bool firstTime )
 	{
 		if ( firstTime )
 		{
 			Props = ResourceLibrary.GetAll<PropResource>().Where( x => !x.Hidden ).ToList();
+
+			Instance = this;
 		}
 	}
 
@@ -74,8 +81,6 @@
 		ang = (ang + 90f) % 360f;
 
 		SelectedProp = Props.ElementAtOrDefault((int)(ang / size));
-
-		Log.Info( SelectedProp.DisplayName );
 	}
 
 	protected override int BuildHash()
