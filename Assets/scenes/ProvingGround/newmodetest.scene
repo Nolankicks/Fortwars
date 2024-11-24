@@ -64,6 +64,13 @@
       "Name": "BlueCore",
       "Position": "256,8,64",
       "Enabled": true,
+      "Components": [
+        {
+          "__type": "TeamComponent",
+          "__guid": "44652c26-6a2c-4bb4-badd-c420aceb7ca0",
+          "Team": "Blue"
+        }
+      ],
       "Children": [
         {
           "__guid": "fef012ef-3c78-4fa8-8a49-20125879dbda",
@@ -560,6 +567,13 @@
       "Name": "RedCore",
       "Position": "-256,0,64",
       "Enabled": true,
+      "Components": [
+        {
+          "__type": "TeamComponent",
+          "__guid": "be62db23-df2d-46c3-bb87-08e5556e63bb",
+          "Team": "Red"
+        }
+      ],
       "Children": [
         {
           "__guid": "35067b2d-d064-48ae-83e6-b7a65c4642db",

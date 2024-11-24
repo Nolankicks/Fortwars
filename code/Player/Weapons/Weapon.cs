@@ -152,6 +152,11 @@ public class Weapon : Item, IGameEventHandler<OnReloadEvent>
 
 			if ( WeaponCrosshair.IsValid() )
 				WeaponCrosshair.Enabled = !isAiming;
+
+			if ( CameraController.Instance.IsValid() )
+			{
+				CameraController.Instance.FOVMult = isAiming ? 0.8f : 1.0f;
+			}
 		}
 
 		Traces = new SceneTraceResult[TraceTimes];
