@@ -1,0 +1,160 @@
+@import "/UI/HUD/HUD.razor.scss";
+
+InputMapping
+{
+    position: absolute;
+    color: white;
+    left: 12px;
+    font-family: 'IBM Plex Mono';
+    width: 500px;
+    background-color: $primary;
+    flex-direction: column;
+    height: 70%;
+
+    border-radius: 4px;
+
+    background-color: $button-secondary;
+    color: $button-secondary-fg;
+
+    border-width: 2px;
+    border-color: $primary;
+    border-radius: 4px;
+
+    border-radius: 4px;
+    pointer-events: all;
+    gap: 21px;
+    font-size: 26px;
+
+    transition: transform 0.5s ease-in-out;
+
+    &:intro
+    {
+        transform: translateX( -105% );
+    }
+
+    &:outro
+    {
+        transform: translateX( -105% );
+    }
+
+    >.main
+    {
+        width: 100%;
+        height: 100%;
+
+        padding: 12px;
+
+        padding-top: 0px;
+
+        flex-shrink: 1;
+
+        flex-direction: column;
+
+        align-items: center;
+
+        overflow-y: scroll;
+        overflow-x: hidden;
+
+        gap: 12px;
+
+        >.header
+        {
+            width: 100%;
+            flex-shrink: 0;
+
+            height: 32px;
+
+            flex-direction: column;
+            margin-top: 5px;
+            margin-bottom: 5px;
+
+            >.title
+            {
+                width: 100%;
+                height: 100%;
+
+                font-size: 32px;
+                padding: 12px;
+            
+                justify-content: flex-start;
+                margin-bottom: 5px;
+            }
+
+            >.line
+            {
+                width: 100%;
+                height: 2px;
+                background-color: white;
+            }
+        }
+        
+        >.input
+        {
+            width: 100%;
+
+            background-color: $primary;
+
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+
+            border-radius: $border-radius;
+
+            >.hint
+            {
+                width: 25%;
+                flex-shrink: 1;
+                font-size: 20px;
+                padding: 12px;
+                text-align: center;
+            }
+
+            >.text
+            {
+                width: 100%;
+                flex-shrink: 1;
+                align-items: center;
+                justify-content: center;
+            }
+        }
+    }
+
+    >.close-button
+    {
+        position: relative;
+        width: 100%;
+        height: 32px;
+
+        padding: 12px;
+
+        flex-shrink: 0;
+
+        justify-content: flex-end;
+
+        >.close
+        {
+            position: relative;
+            align-items: center;
+            justify-content: center;
+            font-family: Material Icons;
+            background-color: $secondary;
+            width: 32px;
+            height: 32px;
+    
+            font-size: 32px;
+    
+            cursor: pointer;
+            border-radius: 4px;
+    
+            &:hover {
+                background-color: $button-secondary;
+            }
+    
+            &:active
+            {
+                background-color: $secondary;
+            }
+        }
+    }
+}

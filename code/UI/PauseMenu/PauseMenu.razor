@@ -12,6 +12,7 @@
 		<button onclick=@( () => Visible = false )> Resume </button>
 		<button onclick=@( () => Game.Overlay.ShowServerList( new Sandbox.Modals.ServerListConfig( Game.Ident ) ) )> Servers </button>
 		<button onclick=@( () => OpenAboutMenu() )> About </button>
+		<button onclick=@( () => OpenInputMapping() )> Input Mapping </button>
 		<button onclick=@( () => Game.Overlay.ShowSettingsModal() )> Settings </button>
 		<button onclick=@BackToMenu> Back to Menu </button>
 		<button onclick=@( () => Game.Close() )> Exit </button>
@@ -41,6 +42,28 @@
 			Panel.AddChild( new AboutPanel() );
 		}	
 		else if ( Panel.IsValid() && Panel.ChildrenOfType<AboutPanel>().Any() )
+		{
+			Panel.ChildrenOfType<AboutPanel>()?.ToList()?.ForEach( x => x.Delete() );
+		}
+
+		if ( Panel.IsValid() && Panel.ChildrenOfType<InputMapping>().Any() )
+		{
+			Panel.ChildrenOfType<InputMapping>()?.ToList()?.ForEach( x => x.Delete() );
+		}
+	}
+
+	public void OpenInputMapping()
+	{
+		if ( Panel.IsValid() && !Panel.ChildrenOfType<InputMapping>().Any() )
+		{
+			Panel.AddChild( new InputMapping() );
+		}	
+		else if ( Panel.IsValid() && Panel.ChildrenOfType<InputMapping>().Any() )
+		{
+			Panel.ChildrenOfType<InputMapping>()?.ToList()?.ForEach( x => x.Delete() );
+		}
+
+		if ( Panel.IsValid() && Panel.ChildrenOfType<AboutPanel>().Any() )
 		{
 			Panel.ChildrenOfType<AboutPanel>()?.ToList()?.ForEach( x => x.Delete() );
 		}

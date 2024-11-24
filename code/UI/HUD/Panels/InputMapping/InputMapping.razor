@@ -1,0 +1,41 @@
+@using Sandbox;
+@using Sandbox.UI;
+@inherits Panel
+
+<root>
+	<div class="close-button">
+		<div class="close" onclick=@( () => Delete() )>close</div>
+	</div>
+
+	<div class="main">
+		<div class="header" style="margin-top: 0%;">
+			<div class="title">General</div>
+			<div class="line"></div>
+		</div>
+
+		<div class="input">
+			<div class="hint">
+				<InputHint Action="View" ShowAction=@false />
+			</div>
+			<div class="text">Change class</div>
+		</div>
+
+		<div class="header">
+			<div class="title">Grav Gun</div>
+			<div class="line"></div>
+		</div>
+
+		<div class="input">
+			<div class="hint">
+				<InputHint Action="attack2" ShowAction=@false />
+			</div>
+			<div class="text">Grab rollermine</div>
+		</div>
+		<div class="input">
+			<div class="hint">
+				<InputHint Action="attack1" ShowAction=@false />
+			</div>
+			<div class="text">Shoot rollermine</div>
+		</div>
+	</div>
+</root>
