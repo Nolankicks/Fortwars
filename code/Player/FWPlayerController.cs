@@ -224,7 +224,7 @@ IGameEventHandler<DeathEvent>, IGameEventHandler<OnPhysgunGrabChange>
 		var dotProduct = Math.Max( Vector3.Dot( forwardDirection, velocityDirection ), 0.5f );
 		var sprintingCoefficient = MathX.Remap( dotProduct, 0.5f, 1f, 0f, 1f );
 
-		var sprintSpeed = MathX.Lerp( GetMoveSpeed(), RunSpeed, sprintingCoefficient );
+		var sprintSpeed = MathX.Lerp( WalkSpeed, GetMoveSpeed(), sprintingCoefficient );
 
 		var isCrouching = Input.Down( "duck" );
 		var wishSpeed = isCrouching ? 175 : sprintSpeed;

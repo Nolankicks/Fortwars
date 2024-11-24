@@ -3,7 +3,7 @@
   "ClassName": "Medium",
   "ClassDescription": "This class is armed with an M4A1, able to deal significant damage at medium distances. This class will generally do well on any map, and is best played offensively. ",
   "WalkSpeed": 250,
-  "RunSpeed": 300,
+  "RunSpeed": 325,
   "Health": 130,
   "Hidden": false,
   "__references": [],
