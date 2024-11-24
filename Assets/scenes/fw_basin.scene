@@ -1255,6 +1255,30 @@
           "Team": "None"
         }
       ]
+    },
+    {
+      "__guid": "ea17163f-2594-45e9-a57d-802a545ebf4a",
+      "Flags": 0,
+      "Name": "Kill Trigger",
+      "Position": "0,0,-320",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "Components": [
+        {
+          "__type": "DeathTrigger",
+          "__guid": "2f946654-700d-4a89-9a0e-889ce9739b29",
+          "TeleportBall": true
+        },
+        {
+          "__type": "Sandbox.BoxCollider",
+          "__guid": "ed97c837-0c6d-49ad-a96d-064a4320bcd4",
+          "Center": "0,0,0",
+          "IsTrigger": true,
+          "Scale": "15000,15000,50",
+          "Static": false,
+          "SurfaceVelocity": "0,0,0"
+        }
+      ]
     }
   ],
   "SceneProperties": {
@@ -1289,6 +1313,5 @@
   "__references": [
     "facepunch.glass_c#70691"
   ],
-  "HasUnsavedChanges": false,
   "__version": 2
 }
