@@ -15,7 +15,6 @@ PropRadialMenu
         z-index: 1;
         mask-image: radial-gradient(black 0%, black 30%, white 30%, white 100%);
         mask-size: 100%;
-        image-rendering: anisotropic;
     
         &.selected {
             transform: scale(1.1);

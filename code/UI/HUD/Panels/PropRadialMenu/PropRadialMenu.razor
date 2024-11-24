@@ -4,41 +4,41 @@
 @inherits Panel
 
 <root class="@(Visible ? "visible" : "")">
-	@{
-		var i = 0;
-		var count = Props.Count;
+    @{
+        var i = 0;
+        var count = Props.Count;
 
-		foreach (var color in Props)
-		{
-			var rgb = color.Rgb;
-			var size = (1f / count * 100f);
+        foreach (var prop in Props)
+        {
+            var rgb = Color.Blue.Rgb;
+            var size = (1f / count * 100f);
 
-			<div class="wheel-fraction @(SelectedColor == color ? "selected" : "")" style="background: conic-gradient(
-						@rgb @(MathF.Max(i * size, 0f))%, 
-						@rgb @(i * size + size)%, 
-						@rgb @(MathF.Min(i * size + size, 100f))%, 
-						transparent @(MathF.Min(i * size + size, 100f))%, 
-						transparent 100%);" />
+            <div class="wheel-fraction @(SelectedProp == prop ? "selected" : "")" style="background: conic-gradient(
+                        @rgb @(MathF.Max(i * size, 0f))%, 
+                        @rgb @(i * size + size)%, 
+                        @rgb @(MathF.Min(i * size + size, 100f))%, 
+                        transparent @(MathF.Min(i * size + size, 100f))%, 
+                        transparent 100%);">
+            </div>
 
-			i++;
-		}
-	}
+            i++;
+        }
+    }
 </root>
 
 @code {
 	private bool Visible => true;
-	private Color32 Prop => Props.ElementAtOrDefault(0);
-	private List<Color32> Props => new List<Color32>
-	{
-		new Color32(255, 0, 0),
-		new Color32(255, 255, 0),
-		new Color32(0, 255, 0),
-		new Color32(0, 255, 255),
-		new Color32(0, 0, 255),
-		new Color32(255, 0, 255),
-	};
+	private PropResource Prop => Props.ElementAtOrDefault(0);
+	private List<PropResource> Props { get; set; } = new();
+	public PropResource SelectedProp { get; set; }
 
-	public Color SelectedColor { get; set; }
+	protected override  void OnAfterTreeRender( bool firstTime )
+	{
+		if ( firstTime )
+		{
+			Props = ResourceLibrary.GetAll<PropResource>().Where( x => !x.Hidden ).ToList();
+		}
+	}
 
 	public override void Tick()
 	{
@@ -54,9 +54,9 @@
 
 		ang = (ang + 90f) % 360f;
 
-		SelectedColor = Props.ElementAtOrDefault((int)(ang / size));
+		SelectedProp = Props.ElementAtOrDefault((int)(ang / size));
 	}
 
 	protected override int BuildHash()
-	=> HashCode.Combine(Prop, Visible, SelectedColor);
+	=> HashCode.Combine(Prop, Visible, SelectedProp);
 }
