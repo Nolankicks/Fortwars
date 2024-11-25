@@ -20,6 +20,8 @@ public sealed class Propgun : Item
 	[Property] public PropResource CurrentProp { get; set; }
 	[Property] public SkinnedModelRenderer WeaponRenderer { get; set; }
 
+	public bool CanPlace { get; set; } = true;
+
 	public bool HoldingObject { get; set; } = false;
 
 	public GameObject HeldObject { get; set; }
@@ -44,6 +46,9 @@ public sealed class Propgun : Item
 	{
 		if ( IsProxy )
 			return;
+		
+		if ( !CanPlace )
+			return;
 
 		if ( Input.Pressed( "attack2" ) )
 		{
@@ -63,41 +68,6 @@ public sealed class Propgun : Item
 			PropRotation = Rotation.Identity;
 		}
 
-		if ( Input.Pressed( "voice" ) )
-		{
-			Mouse.Visible = false;
-			UsingMouseInput = false;
-
-			var menu = PropLevelRadialMenu.Instance;
-
-			if ( menu.IsValid() )
-			{
-				menu.Visible = true;
-
-				var player = FWPlayerController.Local;
-
-				if ( player.IsValid() )
-					Sound.Play( "weapon.deploy", player.WorldPosition );
-			}
-		}
-
-		if ( Input.Released( "voice" ) )
-		{
-			var menu = PropLevelRadialMenu.Instance;
-
-			if ( menu.IsValid() )
-			{
-				Level = menu.SelectedLevel;
-
-				menu.Visible = false;
-
-				var player = FWPlayerController.Local;
-
-				if ( player.IsValid() )
-					Sound.Play( "weapon.deploy", player.WorldPosition );
-			}
-		}
-
 		if ( Input.Pressed( "menu" ) && !HoldingObject )
 		{
 			Mouse.Visible = false;
@@ -113,25 +83,11 @@ public sealed class Propgun : Item
 
 				if ( player.IsValid() )
 					Sound.Play( "weapon.deploy", player.WorldPosition );
+
+				CanPlace = false;
 			}
 		}
 
-		if ( Input.Released( "menu" ) )
-		{
-			var menu = PropRadialMenu.Instance;
-
-			if ( menu.IsValid() )
-			{
-				CurrentProp = menu.SelectedProp;
-
-				menu.Visible = false;
-
-				var player = FWPlayerController.Local;
-
-				if ( player.IsValid() )
-					Sound.Play( "weapon.deploy", player.WorldPosition );
-			}
-		}
 
 		// Rotate the viewmodel around
 		if ( UsingMouseInput )
@@ -193,6 +149,8 @@ public sealed class Propgun : Item
 
 		Mouse.Visible = false;
 		UsingMouseInput = false;
+
+		CanPlace = true;
 
 		var menu = PropRadialMenu.Instance;
 
