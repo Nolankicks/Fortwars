@@ -290,7 +290,6 @@ public sealed class Propgun : Item
 
 		var fortWarsProp = gb.Components.Get<FortwarsProp>();
 
-
 		fortWarsProp.SetupObject( CurrentProp, team.Team );
 
 
@@ -316,6 +315,18 @@ public sealed class Propgun : Item
 		var gizmo = Gizmo.Draw.Model( prop.Model.ResourcePath );
 		gizmo.ColorTint = Color.White.WithAlpha( 0.5f );
 		gizmo.Rotation = PropRotation.SnapToGrid( 15 );
+
+		var local = FWPlayerController.Local;
+
+		if ( !local.IsValid() || (!local?.TeamComponent?.IsValid() ?? false) )
+			return;
+
+		gizmo.SetMaterialGroup( local.TeamComponent.Team switch
+		{
+			Team.Red => "red",
+			Team.Blue => "default",
+			_ => "default"
+		} );
 
 		if ( UseBounds )
 			gizmo.Position = SnapToGrid ? pos.SnapToGrid( 16, true, true, !(Hit && Normal == Vector3.Up) ) : pos;

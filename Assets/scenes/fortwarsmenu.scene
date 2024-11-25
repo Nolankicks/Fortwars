@@ -303,7 +303,7 @@
                 }
               },
               {
-                "Id": 5,
+                "Id": 3,
                 "Value": true,
                 "DstId": 2,
                 "DstName": "_value"
@@ -425,6 +425,7 @@
           "BodyGroups": 18446744073709551615,
           "Health": 0,
           "IsStatic": false,
+          "MaterialGroup": "red",
           "Model": "models/blocks/steel/fw_1x1x1.vmdl",
           "StartAsleep": false,
           "Tint": "1,1,1,1"
@@ -445,6 +446,7 @@
           "BodyGroups": 18446744073709551615,
           "Health": 0,
           "IsStatic": false,
+          "MaterialGroup": "default",
           "Model": "models/blocks/steel/fw_1x2x1.vmdl",
           "StartAsleep": false,
           "Tint": "1,1,1,1"

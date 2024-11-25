@@ -73,7 +73,18 @@ public sealed class FortwarsProp : Component, Component.ICollisionListener, Comp
 			Collider.Model = prop.Model;
 			CanKill = false;
 		}
+
 		Team = team;
+
+		if ( Components.TryGet<ModelRenderer>( out var m ) )
+		{
+			m.MaterialGroup = team switch
+			{
+				Team.Red => "red",
+				Team.Blue => "default",
+				_ => "default"
+			};
+		}
 
 	}
 
