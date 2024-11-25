@@ -26,6 +26,7 @@ public sealed class FortwarsProp : Component, Component.ICollisionListener, Comp
 	[RequireComponent] ModelCollider Collider { get; set; }
 
 	[Sync] public bool IsBuilding { get; set; } = false;
+	[Sync] public string Builder { get; set; } = "";
 
 	public void OnCollisionStart( Collision other )
 	{
@@ -70,9 +71,11 @@ public sealed class FortwarsProp : Component, Component.ICollisionListener, Comp
 		}
 	}
 
-	public void SetupObject( PropResource prop, Team team, PropLevel level = PropLevel.Base )
+	public void SetupObject( PropResource prop, Team team, PropLevel level = PropLevel.Base, string builder = "" )
 	{
 		Resource = prop;
+
+		Builder = builder;
 
 		var newHealth = level switch
 		{

@@ -324,7 +324,7 @@ public sealed class Propgun : Item
 
 		fortWarsProp.IsBuilding = true;
 
-		fortWarsProp.SetupObject( CurrentProp, team.Team, Level );
+		fortWarsProp.SetupObject( CurrentProp, team.Team, Level, Network.Owner.DisplayName );
 
 
 		gb.WorldPosition = SnapToGrid ? ObjectPos.SnapToGrid( 16, true, true, !(Hit && Normal == Vector3.Up) ) : ObjectPos;

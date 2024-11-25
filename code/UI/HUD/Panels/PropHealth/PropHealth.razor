@@ -9,6 +9,9 @@
 
 	if (!player.IsValid() || !ShowPanel || !CurrentProp.IsValid() || !gs.IsValid() || (!gs?.CurrentGameModeComponent?.CurrentRound.IsValid() ?? false))
 		return;
+
+	if ( !CurrentProp.IsBuilding )
+		return;
 }
 
 <root>
@@ -16,6 +19,8 @@
 		<div class="inner" style="width: @(CurrentProp?.Health / CurrentProp?.MaxHealth * 100)%;"></div>
 		<div class="health">@CurrentProp?.Health / @CurrentProp?.MaxHealth</div>
 	</div>
+
+	<div style="width: 220px; align-items: center; justify-content: center;">Built by @CurrentProp.Builder</div>
 </root>
 
 @code {
@@ -23,7 +28,7 @@
 	.WithoutTags(FW.Tags.Player, FW.Tags.Ragdoll)
 	.Run();
 
-	public FortwarsProp CurrentProp => tr.GameObject?.Components.Get<FortwarsProp>();
+	[Change( nameof( OnPropChange ) )] public FortwarsProp CurrentProp { get; set; }
 
 	public bool ShowPanel { get; set; }
 
@@ -40,6 +45,8 @@
 		var hitObject = tr.GameObject;
 		ShowPanel = tr.Hit && hitObject.IsValid() && hitObject.Components.TryGet<FortwarsProp>(out var fortwarsProp,
 		FindMode.EverythingInSelfAndParent) && fortwarsProp.IsBuilding;
+
+		CurrentProp = hitObject.IsValid() ? hitObject.Components.Get<FortwarsProp>() : null;
 
 		if (ShowPanel)
 		{
@@ -62,6 +69,15 @@
 
 			StateHasChanged();
 		}
+	}
+
+	public void OnPropChange( FortwarsProp oldProp, FortwarsProp newProp )
+	{
+		if ( oldProp.IsValid() && oldProp.Components.TryGet<HighlightOutline>( out var outline ) )
+			outline.Destroy();
+
+		if ( newProp.IsValid() && !newProp.Components.Get<HighlightOutline>().IsValid() )
+			newProp.Components.Create<HighlightOutline>();
 	}
 
 	protected override int BuildHash()

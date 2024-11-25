@@ -1,6 +1,7 @@
 PropHealth
 {
     position: absolute;
+    flex-direction: column;
 
     .bar
     {
@@ -22,8 +23,6 @@ PropHealth
             background-color: rgba(0, 255, 0, 0.5);
 
             border-radius: 4px;
-
-            transition: width 0.2s ease-in;
         }
 
         .health
