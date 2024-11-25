@@ -35,7 +35,7 @@
             foreach( var prop in AllProps)
             {
                 <div class="model-container">
-                    <button class="model" style="background-image: url(@prop?.Icon);" onclick=@( () =>
+                    <button class="model" style="background-image: url(@prop?.MetalIcon);" onclick=@( () =>
                     {
                         SetProp(prop);
                         Delete();

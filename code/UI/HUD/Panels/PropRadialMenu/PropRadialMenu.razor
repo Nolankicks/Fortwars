@@ -39,7 +39,7 @@
 			@* Now draw our text at the circle position at our current index. *@
 			<div
 				style="position: absolute; z-index:99; left: @($"{pos.x:N1}")px; top: @($"{pos.y:N1}")px; transform: translate(-50% -50%); color: black; transition: all 0.1s;">
-				<img style="width: 82px; height: 82px;" src=@prop.Icon />
+				<img style="width: 82px; height: 82px;" src=@GetIcon(prop) />
 			</div>
 
 			i++;
@@ -116,6 +116,21 @@
 		ang = (ang + 90f) % 360f;
 
 		SelectedProp = Props.ElementAtOrDefault((int)(ang / size));
+	}
+
+	public string GetIcon( PropResource prop )
+	{
+		switch ( SelectedLevel )
+		{
+			case PropLevel.Base:
+				return prop.BaseIcon;
+			case PropLevel.Metal:
+				return prop.MetalIcon;
+			case PropLevel.Steel:
+				return prop.SteelIcon;
+			default:
+				return prop.BaseIcon;
+		}
 	}
 
 	public void OnVisibleChange()

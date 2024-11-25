@@ -84,6 +84,11 @@ HUD {
             flex-shrink: 0;
         }
     }
+
+    PropRadialMenu
+    {
+        z-index: 5;
+    }
 }
 
 button {
