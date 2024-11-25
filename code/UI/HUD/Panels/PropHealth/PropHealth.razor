@@ -24,7 +24,7 @@
 </root>
 
 @code {
-	public SceneTraceResult tr => Scene.Trace.Ray(Scene.Camera.ScreenNormalToRay(0.5f), 250)
+	public SceneTraceResult tr => Scene.Trace.Ray(Scene.Camera.ScreenNormalToRay(0.5f), 500)
 	.WithoutTags(FW.Tags.Player, FW.Tags.Ragdoll)
 	.Run();
 
@@ -73,7 +73,7 @@
 
 	public void OnPropChange( FortwarsProp oldProp, FortwarsProp newProp )
 	{
-		if ( oldProp.IsValid() && oldProp.Components.TryGet<HighlightOutline>( out var outline ) )
+		if ( oldProp.IsValid() && oldProp.Components.TryGet<HighlightOutline>( out var outline ) && !oldProp.IsGrabbed )
 			outline.Destroy();
 
 		if ( newProp.IsValid() && !newProp.Components.Get<HighlightOutline>().IsValid() )

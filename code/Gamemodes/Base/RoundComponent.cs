@@ -33,8 +33,10 @@ public sealed class RoundComponent : Component
 	[InlineEditor, Property, Sync, JsonIgnore] public TimeUntil RoundTimer { get; set; }
 
 	[Property] bool PlayersToSpawns { get; set; } = true;
+	[Property] bool ResetPlayerResouces { get; set; } = false;
 
 	[Property] public bool CanOpenClassSelect { get; set; } = false;
+	[Property] public bool HasResources { get; set; } = false;
 
 	[Property, ToggleGroup( "Warning" )] public bool Warning { get; set; }
 	[Property, Group( "Warning" )] public string WarningText { get; set; }
@@ -66,6 +68,9 @@ public sealed class RoundComponent : Component
 
 			instance.CurrentTime = RoundTime;
 		}
+
+		if ( ResetPlayerResouces )
+			Scene?.GetAll<FWPlayerController>()?.ToList()?.ForEach( x => x.ResetResouces() );
 
 		if ( PlayersToSpawns )
 			TeamComponent.TeleportAllTeams();

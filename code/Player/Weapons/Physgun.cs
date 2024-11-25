@@ -176,8 +176,10 @@ public class Physgun : Item
 		var rootObject = tr.GameObject.Root;
 
 		if ( tr.GameObject.Components.TryGet<FortwarsProp>( out var p, FindMode.EverythingInSelfAndParent ) )
+		{
 			p.Rigidbody.Enabled = true;
-
+		}
+		
 		if ( !tr.GameObject.Components.TryGet<Rigidbody>( out var rigidbody, FindMode.EverythingInSelfAndAncestors ) )
 			return;
 
@@ -254,6 +256,11 @@ public class Physgun : Item
 		if ( body?.GetGameObject()?.Components.TryGet<HighlightOutline>( out var _) ?? false )
 			HasOutline = true;
 
+		if ( body?.GetGameObject()?.Components.TryGet<FortwarsProp>( out var prop ) ?? false )
+		{
+			prop.IsGrabbed = true;
+		}
+
 		Grabbing = true;
 		HeldBody = body;
 		HoldDistance = Vector3.DistanceBetween( startPosition, grabPosition );
@@ -281,8 +288,13 @@ public class Physgun : Item
 			{
 				HeldBody.Velocity = 0;
 				HeldBody.AngularVelocity = 0;
+				
+				if ( HeldBody.GetGameObject().Components.TryGet<FortwarsProp>( out var prop ) )
+				{
+					prop.IsGrabbed = false;
 
-				HeldBody.GetGameObject().Components.Get<FortwarsProp>().Rigidbody.Enabled = false;
+					prop.Rigidbody.Enabled = false;
+				}
 			}
 		}
 

@@ -46,7 +46,7 @@ public sealed class Propgun : Item
 	{
 		if ( IsProxy )
 			return;
-		
+
 		if ( !CanPlace )
 			return;
 
@@ -217,14 +217,6 @@ public sealed class Propgun : Item
 
 		if ( CanPlace && Input.Pressed( "attack1" ) )
 		{
-			if ( ShootSound is not null )
-			{
-				var sound = Sound.Play( ShootSound, WorldPosition );
-
-				if ( sound.IsValid() )
-					sound.Volume = 0.5f;
-			}
-
 			if ( !player.TeamComponent.IsValid() )
 				return;
 
@@ -257,14 +249,18 @@ public sealed class Propgun : Item
 		if ( !gs.IsValid() || !team.IsValid() )
 			return;
 
-		var currentTeam = team.Team;
-
-		var hud = Scene.GetAll<HUD>()?.FirstOrDefault();
-
-		if ( OverTeamPropLimit( currentTeam, hud, gs ) )
+		if ( OverTeamPropLimit() )
 		{
-			hud?.FlashPropsFailed();
+			Sound.Play( "ui.downvote" );
 			return;
+		}
+
+		if ( ShootSound is not null )
+		{
+			var sound = Sound.Play( ShootSound, WorldPosition );
+
+			if ( sound.IsValid() )
+				sound.Volume = 0.5f;
 		}
 
 		GameObject.Dispatch( new WeaponAnimEvent( "b_attack", true ) );
@@ -284,6 +280,20 @@ public sealed class Propgun : Item
 
 		fortWarsProp.SetupObject( CurrentProp, team.Team, Level, Network.Owner.DisplayName );
 
+		var local = FWPlayerController.Local;
+
+		switch ( Level )
+		{
+			case PropLevel.Metal:
+				local.MetalPropsLeft--;
+				break;
+			case PropLevel.Base:
+				local.WoodPropsLeft--;
+				break;
+			case PropLevel.Steel:
+				local.SteelPropsLeft--;
+				break;
+		}
 
 		gb.WorldPosition = SnapToGrid ? ObjectPos.SnapToGrid( 16, true, true, !(Hit && Normal == Vector3.Up) ) : ObjectPos;
 		gb.WorldRotation = PropRotation.SnapToGrid( 15 );
@@ -349,29 +359,26 @@ public sealed class Propgun : Item
 		}
 	}
 
-	bool OverTeamPropLimit( Team currentTeam, HUD hud, GameSystem gs )
+	bool OverTeamPropLimit()
 	{
-		switch ( currentTeam )
+		var local = FWPlayerController.Local;
+
+		if ( !local.IsValid() )
+			return true;
+
+		switch ( Level )
 		{
-			case Team.Red:
-				if ( gs.RedProps.Count() >= gs.MaxProps )
-					return true;
-				break;
-			case Team.Blue:
-				if ( gs.BlueProps.Count() >= gs.MaxProps )
-					return true;
-				break;
-			case Team.Green:
-				if ( gs.GreenProps.Count() >= gs.MaxProps )
-					return true;
-				break;
-			case Team.Yellow:
-				if ( gs.YellowProps.Count() >= gs.MaxProps )
-					return true;
-				break;
+			case PropLevel.Metal:
+				return local.MetalPropsLeft <= 0;
+			case PropLevel.Base:
+				return local.WoodPropsLeft <= 0;
+			case PropLevel.Steel:
+				return local.SteelPropsLeft <= 0;
 		}
-		return false;
+
+		return true;
 	}
+
 	private async Task DisplayControls()
 	{
 		float delay = 2.0f;

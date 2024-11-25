@@ -27,6 +27,7 @@ public sealed class FortwarsProp : Component, Component.ICollisionListener, Comp
 
 	[Sync] public bool IsBuilding { get; set; } = false;
 	[Sync] public string Builder { get; set; } = "";
+	[Sync] public bool IsGrabbed { get; set; } = false;
 
 	public void OnCollisionStart( Collision other )
 	{
