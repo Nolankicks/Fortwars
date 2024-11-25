@@ -1,4 +1,4 @@
-PropHealthRadialMenu
+PropLevelRadialMenu
 {
     position: absolute;
     width: 100%;
@@ -38,6 +38,8 @@ PropHealthRadialMenu
 
         align-items: center;
         justify-content: center;
+
+        color: white;
     }
 
     &.visible {

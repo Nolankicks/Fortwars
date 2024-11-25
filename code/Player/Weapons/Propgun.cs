@@ -65,7 +65,37 @@ public sealed class Propgun : Item
 
 		if ( Input.Pressed( "voice" ) )
 		{
-			UseBounds = !UseBounds;
+			Mouse.Visible = false;
+			UsingMouseInput = false;
+
+			var menu = PropLevelRadialMenu.Instance;
+
+			if ( menu.IsValid() )
+			{
+				menu.Visible = true;
+
+				var player = FWPlayerController.Local;
+
+				if ( player.IsValid() )
+					Sound.Play( "weapon.deploy", player.WorldPosition );
+			}
+		}
+
+		if ( Input.Released( "voice" ) )
+		{
+			var menu = PropLevelRadialMenu.Instance;
+
+			if ( menu.IsValid() )
+			{
+				Level = menu.SelectedLevel;
+
+				menu.Visible = false;
+
+				var player = FWPlayerController.Local;
+
+				if ( player.IsValid() )
+					Sound.Play( "weapon.deploy", player.WorldPosition );
+			}
 		}
 
 		if ( Input.Pressed( "menu" ) && !HoldingObject )
