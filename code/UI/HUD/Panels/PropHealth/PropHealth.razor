@@ -1,0 +1,57 @@
+@using Sandbox;
+@using Sandbox.UI;
+@inherits Panel
+
+@{
+    var player = FWPlayerController.Local;
+
+    if (!player.IsValid() || player.Inventory?.CurrentWeaponData?.Name != "Build Tool" || !ShowPanel)
+    {
+        return;
+    }
+}
+
+<root>
+    <div>@CurrentProp?.Health / @CurrentProp?.MaxHealth</div>
+</root>
+
+@code {
+    public SceneTraceResult tr => Scene.Trace.Ray(Scene.Camera.ScreenNormalToRay(0.5f), 500)
+        .WithoutTags(FW.Tags.Player, FW.Tags.Ragdoll)
+        .Run();
+
+    public FortwarsProp CurrentProp => tr.GameObject?.Components.Get<FortwarsProp>();
+
+    public bool ShowPanel { get; set; }
+
+    public override void Tick()
+    {
+        base.Tick();
+
+        if (!Scene.Camera.IsValid())
+        {
+            ShowPanel = false;
+            return;
+        }
+
+        var hitObject = tr.GameObject;
+        ShowPanel = tr.Hit && hitObject.IsValid() && hitObject.Components.TryGet<FortwarsProp>(out var fortwarsProp, FindMode.EverythingInSelfAndParent) && fortwarsProp.IsBuilding;
+
+        if (ShowPanel)
+        {
+            var pos = Scene.Camera.PointToScreenPixels(tr.GameObject.WorldPosition);
+            pos *= ScaleFromScreen;
+
+            Style.Left = Length.Pixels(pos.x);
+            Style.Top = Length.Pixels(pos.y);
+
+            StateHasChanged();
+        }
+    }
+
+    protected override int BuildHash()
+    {
+        var player = FWPlayerController.Local;
+        return System.HashCode.Combine(player?.Inventory?.CurrentWeaponData?.Name, ShowPanel);
+    }
+}

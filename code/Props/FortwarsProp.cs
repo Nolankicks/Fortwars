@@ -11,13 +11,14 @@ public sealed class FortwarsProp : Component, Component.ICollisionListener, Comp
 	[Property, Sync] public FWPlayerController Grabber { get; set; }
 	[Property, Sync] public bool CanKill { get; set; } = true;
 	[Property, Sync] public float Health { get; set; } = 100;
+	[Property, Sync] public float MaxHealth { get; set; } = 100;
 
 	[Property, Sync] public PropResource Resource { get; set; }
 
 	[RequireComponent] ModelRenderer Renderer { get; set; }
 	[RequireComponent] ModelCollider Collider { get; set; }
 
-
+	[Sync] public bool IsBuilding { get; set; } = false;
 
 	public void OnCollisionStart( Collision other )
 	{
@@ -94,6 +95,8 @@ public sealed class FortwarsProp : Component, Component.ICollisionListener, Comp
 		{
 			Network.SetOwnerTransfer( OwnerTransfer.Takeover );
 			Network.SetOrphanedMode( NetworkOrphaned.ClearOwner );
+
+			MaxHealth = Health;
 		}
 
 		//if ( IsProxy && !Invincible && Rigidbody.IsValid() && Rigidbody.PhysicsBody.IsValid() )

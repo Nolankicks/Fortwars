@@ -290,6 +290,8 @@ public sealed class Propgun : Item
 
 		var fortWarsProp = gb.Components.Get<FortwarsProp>();
 
+		fortWarsProp.IsBuilding = true;
+
 		fortWarsProp.SetupObject( CurrentProp, team.Team );
 
 
