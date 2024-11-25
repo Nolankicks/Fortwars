@@ -9,21 +9,23 @@
 		var gs = GameSystem.Instance;
 		var player = FWPlayerController.Local;
 
-		if (!gs.IsValid() || !player.IsValid())
+		if (!gs.IsValid() || !player.IsValid() || (!gs?.CurrentGameModeComponent.IsValid() ?? false) ||
+		(!gs.CurrentGameModeComponent?.CurrentRound.IsValid() ?? false))
 			return;
-		}
+	}
 
-		@if (gs.CurrentGameModeComponent.IsValid() && gs.CurrentGameModeComponent.CurrentRound.IsValid() &&
-		gs.CurrentGameModeComponent.CurrentRound.Name == "Build Mode")
-		{
-			var localTeam = player.TeamComponent;
+	@if (gs.CurrentGameModeComponent.IsValid() && gs.CurrentGameModeComponent.CurrentRound.IsValid() &&
+			gs.CurrentGameModeComponent.CurrentRound.Name == "Build Mode" || gs.CurrentGameModeComponent.CurrentRound.Name ==
+			"Overtime Build Mode")
+	{
+		var localTeam = player.TeamComponent;
 
-			if (!localTeam.IsValid())
-				return;
+		if (!localTeam.IsValid())
+			return;
 
-			<div class="text" style="background-color: @(HUD.GetColor( localTeam.Team ).Hex);">Props Left</div>
-			<div class="number">@(gs.MaxProps - gs.RedProps.Count())</div>
-		}
+		<div class="text" style="background-color: @(HUD.GetColor( localTeam.Team ).Hex);">Props Left</div>
+		<div class="number">@(gs.MaxProps - gs.RedProps.Count())</div>
+	}
 
 </root>
 
@@ -34,6 +36,7 @@
 		var gs = GameSystem.Instance;
 
 		return System.HashCode.Combine(gs?.MaxProps, gs?.RedProps?.Count(), gs?.BlueProps?.Count(), gs?.GreenProps?.Count(),
-		gs?.YellowProps?.Count(), gs?.CurrentGameModeComponent?.CurrentRound?.Name, FWPlayerController.Local?.TeamComponent?.Team);
+		gs?.YellowProps?.Count(), gs?.CurrentGameModeComponent?.CurrentRound?.Name,
+		FWPlayerController.Local?.TeamComponent?.Team);
 	}
 }
