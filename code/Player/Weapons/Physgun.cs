@@ -251,6 +251,9 @@ public class Physgun : Item
 
 		GrabEnd();
 
+		if ( body?.GetGameObject()?.Components.TryGet<HighlightOutline>( out var _) ?? false )
+			HasOutline = true;
+
 		Grabbing = true;
 		HeldBody = body;
 		HoldDistance = Vector3.DistanceBetween( startPosition, grabPosition );
@@ -288,8 +291,10 @@ public class Physgun : Item
 
 		RemoveTag( GrabbedObject, "grabbed" );
 
-		if ( GrabbedObject.IsValid() )
+		if ( GrabbedObject.IsValid() && !HasOutline )
 			GrabbedObject.Components.Get<HighlightOutline>().Destroy();
+
+		HasOutline = false;
 
 		GrabbedObject = null;
 		Scene.Dispatch( new OnPhysgunGrabChange( false ) );
@@ -366,13 +371,17 @@ public class Physgun : Item
 		Mouse.Visible = false;
 	}
 
+	public bool HasOutline { get; set; }
+
 	void UpdateEffects()
 	{
 		if ( GrabbedObject.IsValid() )
 		{
 			PhysLine.Enabled = true;
 			EndLineObject.WorldPosition = GrabbedObject.GetBounds().Center;
-			GrabbedObject.Components.GetOrCreate<HighlightOutline>();
+
+			if ( !HasOutline )
+				GrabbedObject.Components.GetOrCreate<HighlightOutline>();
 			//LineParticles.Enabled = true;
 			//LineParticles.WorldPosition = TracerPoint.WorldPosition.MoveTowards( GrabbedPosition, 0.5f );
 			////Emitter.Size = Emitter.Size.WithX( GrabbedPosition.Distance( TracerPoint.WorldPosition ) );
