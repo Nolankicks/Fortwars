@@ -5,8 +5,6 @@ public class PropResource : GameResource
 
 	public bool Hidden { get; set; } = false;
 
-	public Model Model { get; set; }
-
 	public int Cost { get; set; }
 
 	public int Max { get; set; }

@@ -46,7 +46,7 @@ public sealed class FortwarsProp : Component, Component.ICollisionListener, Comp
 				player?.TakeDamage( null, (int)dmg, WorldPosition );
 
 				var cam = Scene.Camera;
-				
+
 				var text = GameObject.Clone( ResourceLibrary.Get<PrefabFile>( "prefabs/effects/textparticle.prefab" ) );
 				text.WorldPosition = other.Contact.Point + other.Contact.Normal * 10;
 
@@ -69,25 +69,22 @@ public sealed class FortwarsProp : Component, Component.ICollisionListener, Comp
 
 		if ( !prop.PrefabOverride.IsValid() )
 		{
-			Health = 100;
-			Renderer.Model = prop.Model;
-			Collider.Model = prop.Model;
+			Health = prop.BaseHealth;
+			Renderer.Model = prop.BaseModel;
+			Collider.Model = prop.BaseModel;
 			CanKill = false;
 		}
 
 		Team = team;
 
-		if ( Components.TryGet<ModelRenderer>( out var m ) )
+		Renderer.MaterialGroup = team switch
 		{
-			m.MaterialGroup = team switch
-			{
-				Team.Red => "red",
-				Team.Blue => "default",
-				_ => "default"
-			};
-		}
-
+			Team.Red => "red",
+			Team.Blue => "default",
+			_ => "default"
+		};
 	}
+
 
 	protected override void OnStart()
 	{
@@ -133,6 +130,35 @@ public sealed class FortwarsProp : Component, Component.ICollisionListener, Comp
 			gibs?.ForEach( x => x.GameObject.NetworkSpawn() );
 
 			GameObject.Destroy();
+		}
+	}
+
+	[Broadcast, Button( "Upgrade Prop" )]
+	public void UpgradeProp()
+	{
+		if ( Resource is null )
+			return;
+
+		if ( Resource.BaseModel is null || Resource.BaseHealth == 0 )
+			return;
+
+		if ( Resource.MetalModel is null || Resource.MetalHealth == 0 )
+			return;
+
+		if ( Resource.SteelModel is null || Resource.SteelHealth == 0 )
+			return;
+
+		if ( Renderer.Model == Resource.BaseModel && Health <= Resource.BaseHealth )
+		{
+			Health = Resource.MetalHealth;
+			Renderer.Model = Resource.MetalModel;
+			Collider.Model = Resource.MetalModel;
+		}
+		else if ( Renderer.Model == Resource.MetalModel && Health <= Resource.MetalHealth )
+		{
+			Health = Resource.SteelHealth;
+			Renderer.Model = Resource.SteelModel;
+			Collider.Model = Resource.SteelModel;
 		}
 	}
 

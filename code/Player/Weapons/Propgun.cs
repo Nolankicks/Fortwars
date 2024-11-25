@@ -180,7 +180,7 @@ public sealed class Propgun : Item
 		else
 			ObjectPos = player.Eye.WorldPosition + player.Eye.WorldRotation.Forward * 400.0f;
 
-		var model = CurrentProp.Model;
+		var model = CurrentProp.BaseModel;
 
 		SceneTraceResult tr;
 
@@ -314,7 +314,7 @@ public sealed class Propgun : Item
 
 	void ShowPropPreview( Vector3 pos, PropResource prop, bool canPlace, Vector3 Normal, bool Hit )
 	{
-		var gizmo = Gizmo.Draw.Model( prop.Model.ResourcePath );
+		var gizmo = Gizmo.Draw.Model( prop.BaseModel.ResourcePath );
 		gizmo.ColorTint = Color.White.WithAlpha( 0.5f );
 		gizmo.Rotation = PropRotation.SnapToGrid( 15 );
 

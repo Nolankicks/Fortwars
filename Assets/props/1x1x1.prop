@@ -6,8 +6,16 @@
   "Max": 0,
   "Icon": "textures/propicons/steel1x1x1.png",
   "PrefabOverride": null,
+  "BaseModel": "models/blocks/wood/fw_1x1x1.vmdl",
+  "BaseHealth": 100,
+  "MetalModel": "models/blocks/fw_metal1x1x1.vmdl",
+  "MetalHealth": 200,
+  "SteelModel": "models/blocks/steel/fw_1x1x1.vmdl",
+  "SteelHealth": 300,
   "__references": [
-    "apetavern.fw1x1x1_steel#78622"
+    "apetavern.fw1x1x1_steel#78622",
+    "apetavern.fw1x1x1_wood#78625",
+    "apetavern.fwmetal1x1x1#78637"
   ],
   "__version": 0
 }
