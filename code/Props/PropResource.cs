@@ -14,4 +14,13 @@ public class PropResource : GameResource
 	[ImageAssetPath] public string Icon { get; set; }
 
 	public GameObject PrefabOverride { get; set; }
+
+	[Feature( "Wood" )] public Model BaseModel { get; set; }
+	[Feature( "Wood" )] public int BaseHealth { get; set; } = 100;
+
+	[Feature( "Metal" )] public Model MetalModel { get; set; }
+	[Feature( "Metal" )] public int MetalHealth { get; set; } = 200;
+
+	[Feature( "Steel" )] public Model SteelModel { get; set; }
+	[Feature( "Steel" )] public int SteelHealth { get; set; } = 300;
 }
