@@ -158,10 +158,11 @@ public sealed class FortwarsProp : Component, Component.ICollisionListener, Comp
 		}
 	}
 
-	[Broadcast]
+	[Authority]
 	public void HealProp( float amount )
 	{
 		Health += amount;
+
 		if ( Health > MaxHealth )
 			Health = MaxHealth;
 	}

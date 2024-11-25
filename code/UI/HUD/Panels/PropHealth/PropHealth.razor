@@ -5,18 +5,24 @@
 @{
 	var player = FWPlayerController.Local;
 
-	if (!player.IsValid() || player.Inventory?.CurrentWeaponData?.Name != "Build Tool" || !ShowPanel)
-	{
+	var gs = GameSystem.Instance;
+
+	if (!player.IsValid() || !ShowPanel || !CurrentProp.IsValid() || !gs.IsValid() || (!gs?.CurrentGameModeComponent?.CurrentRound.IsValid() ?? false))
 		return;
-	}
+
+	if ( gs.CurrentGameModeComponent.CurrentRound.Name != "Build Mode" && gs.CurrentGameModeComponent.CurrentRound.Name != "Overtime Build Mode" )
+		return;
 }
 
 <root>
-	<div>@CurrentProp?.Health / @CurrentProp?.MaxHealth</div>
+	<div class="bar">
+		<div class="inner" style="width: @(CurrentProp?.Health / CurrentProp?.MaxHealth * 100)%;"></div>
+		<div class="health">@CurrentProp?.Health / @CurrentProp?.MaxHealth</div>
+	</div>
 </root>
 
 @code {
-	public SceneTraceResult tr => Scene.Trace.Ray(Scene.Camera.ScreenNormalToRay(0.5f), 500)
+	public SceneTraceResult tr => Scene.Trace.Ray(Scene.Camera.ScreenNormalToRay(0.5f), 250)
 	.WithoutTags(FW.Tags.Player, FW.Tags.Ragdoll)
 	.Run();
 
@@ -46,14 +52,12 @@
 			// Turn screen position into a panel position
 			var panelPosition = screenPosition * ScaleFromScreen;
 
-			// Center the panel
-
 			// Floor it / make it use integers
 			var ipx = (int)panelPosition.x;
 			var ipy = (int)panelPosition.y;
 
 			// Offset it by half the panel size
-			ipx -= 50;
+			ipx -= 110;
 
 			// Set position
 			Style.Left = Length.Pixels(ipx);
