@@ -172,7 +172,7 @@
                       "DstName": "_signal"
                     },
                     {
-                      "Id": 44,
+                      "Id": 43,
                       "Value": true,
                       "DstId": 4,
                       "DstName": "enable"
@@ -226,7 +226,7 @@
                   "weapondatas/propgun.weapons",
                   "weapondatas/physgun.weapons"
                 ],
-                "ResetPlayerResouces": false,
+                "ResetPlayerResouces": true,
                 "RoundTime": 120,
                 "Time": true,
                 "Warning": false,
@@ -527,7 +527,7 @@
                       "DstName": "_signal"
                     },
                     {
-                      "Id": 22,
+                      "Id": 21,
                       "Value": false,
                       "DstId": 12,
                       "DstName": "enable"
@@ -689,7 +689,7 @@
                       "DstName": "_signal"
                     },
                     {
-                      "Id": 44,
+                      "Id": 43,
                       "Value": true,
                       "DstId": 4,
                       "DstName": "enable"
@@ -731,7 +731,7 @@
                   "weapondatas/propgun.weapons",
                   "weapondatas/physgun.weapons"
                 ],
-                "ResetPlayerResouces": false,
+                "ResetPlayerResouces": true,
                 "RoundTime": 120,
                 "Time": true,
                 "Warning": false,
@@ -1039,7 +1039,7 @@
                       "DstName": "_signal"
                     },
                     {
-                      "Id": 22,
+                      "Id": 21,
                       "Value": false,
                       "DstId": 12,
                       "DstName": "enable"

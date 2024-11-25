@@ -5,7 +5,9 @@ using Sandbox.Network;
 public sealed class LobbySettings
 {
 	public bool ClassicModels { get; set; } = true;
-	public int MaxProps { get; set; } = 150;
+	public int WoodProps { get; set; } = 60;
+	public int MetalProps { get; set; } = 30;
+	public int SteelProps { get; set; } = 15;
 	public LobbySettingsPanel.LobbyPrivacy Privacy { get; set; } = LobbySettingsPanel.LobbyPrivacy.Public;
 	public int MaxPlayers { get; set; } = 64;
 	public int PlayersToStart { get; set; } = 1;

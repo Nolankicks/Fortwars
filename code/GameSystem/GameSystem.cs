@@ -46,7 +46,10 @@ public sealed partial class GameSystem : Component
 	[Sync] public int Overtimes { get; set; } = 0;
 
 	[Property, Feature( "Lobby Settings" ), InlineEditor] public LobbySettings LobbySettings { get; set; } = new();
-	[Property, Sync, Feature( "Lobby Settings" )] public int MaxProps { get; set; } = 50;
+
+	[Property, Sync, Feature( "Lobby Settings" )] public int MetalProps { get; set; } = 30;
+	[Property, Sync, Feature( "Lobby Settings" )] public int SteelProps { get; set; } = 15;
+	[Property, Sync, Feature( "Lobby Settings" )] public int WoodProps { get; set; } = 60;
 
 
 	[Sync] public float InitBlueTimeHeld { get; set; } = 5;
@@ -161,7 +164,9 @@ public sealed partial class GameSystem : Component
 			if ( LoadLobbySettings && lobbySettings is not null )
 			{
 				ClassicModels = lobbySettings?.ClassicModels ?? true;
-				MaxProps = lobbySettings?.MaxProps ?? 50;
+				MetalProps = lobbySettings?.MetalProps ?? 30;
+				SteelProps = lobbySettings?.SteelProps ?? 15;
+				WoodProps = lobbySettings?.WoodProps ?? 60;
 				PlayerToStart = lobbySettings?.PlayersToStart ?? 1;
 			}
 

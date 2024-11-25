@@ -77,10 +77,6 @@ IGameEventHandler<DeathEvent>, IGameEventHandler<OnPhysgunGrabChange>
 	[Property] public int MetalPropsLeft { get; set; } = 30;
 	[Property] public int SteelPropsLeft { get; set; } = 15;
 
-	private int StartingWoodPropsLeft;
-	private int StartingMetalPropsLeft;
-	private int StartingSteelPropsLeft;
-
 	protected override void OnStart()
 	{
 		if ( !AnimHelper.IsValid() )
@@ -91,9 +87,14 @@ IGameEventHandler<DeathEvent>, IGameEventHandler<OnPhysgunGrabChange>
 		if ( IsProxy )
 			return;
 
-		StartingMetalPropsLeft = MetalPropsLeft;
-		StartingWoodPropsLeft = WoodPropsLeft;
-		StartingSteelPropsLeft = SteelPropsLeft;
+		var gs = GameSystem.Instance;
+
+		if ( gs.IsValid() )
+		{
+			WoodPropsLeft = gs.WoodProps;
+			MetalPropsLeft = gs.MetalProps;
+			SteelPropsLeft = gs.SteelProps;
+		}
 
 		StartingWalkSpeed = WalkSpeed;
 		StartingRunSpeed = RunSpeed;
@@ -554,8 +555,13 @@ IGameEventHandler<DeathEvent>, IGameEventHandler<OnPhysgunGrabChange>
 	[Authority]
 	public void ResetResouces()
 	{
-		MetalPropsLeft = StartingMetalPropsLeft;
-		WoodPropsLeft = StartingWoodPropsLeft;
-		SteelPropsLeft = StartingSteelPropsLeft;
+		var gs = GameSystem.Instance;
+
+		if ( !gs.IsValid() )
+			return;
+
+		MetalPropsLeft = gs.MetalProps;
+		WoodPropsLeft = gs.WoodProps;
+		SteelPropsLeft = gs.SteelProps;
 	}
 }
