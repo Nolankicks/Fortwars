@@ -1,0 +1,88 @@
+@using Sandbox;
+@using Sandbox.UI;
+@using System;
+@inherits Panel
+
+@*Ceitine is a genius*@
+
+<root class="@(Visible ? "visible" : "")">
+    <div class="title">
+		<p>Prop Upgrade</p>
+		<p>@SelectedProp?.DisplayName</p>
+	</div>
+
+    @{
+        var i = 0;
+        var count = Props.Count;
+
+        foreach ( var prop in Props )
+        {
+            var rgb = Color.Parse( "#1a1a1a" )?.Rgb;
+            var size = (1f / count * 100f);
+
+            <div 
+                class="wheel-fraction @(prop == SelectedProp ? "selected" : "")"
+                style="background: conic-gradient(
+                    @rgb @(MathF.Max( i * size, 0f ))%, 
+                    @rgb @(i * size + size)%, 
+                    @rgb @(MathF.Min( i * size + size, 100f ))%,
+                    transparent @(MathF.Min( i * size + size, 100f ))%, 
+                    transparent 100%);"
+            />
+
+            @* Our radius is like 500px, use the one that you have... *@
+            var radius = 600f;
+
+            @* Use cosine and sine to determine the position in circle. *@
+            var ang = MathF.PI * 2f * i / count - 0.5f * MathF.PI + 1f * MathF.PI / count;
+            var pos = radius / (prop == SelectedProp ? 2.3f : 2.5f) * new Vector2( MathF.Cos( ang ), MathF.Sin( ang ) );
+            pos += Screen.Size * ScaleFromScreen / 2f;
+
+            @* Now draw our text at the circle position at our current index. *@
+            <div style="position: absolute; z-index:99; left: @($"{pos.x:N1}")px; top: @($"{pos.y:N1}")px; transform: translate(-50% -50%); color: black; transition: all 0.1s;">
+				<img style="width: 82px; height: 82px;" src=@prop.Icon />
+			</div>
+
+            i++;
+        }
+    }
+</root>
+
+@code {
+	public bool Visible { get; set; } = false;
+	private PropResource Prop => Props.ElementAtOrDefault(0);
+	private List<PropResource> Props { get; set; } = new();
+	public PropResource SelectedProp { get; set; }
+
+	public static PropHealthRadialMenu Instance { get; set; }
+
+	protected override  void OnAfterTreeRender( bool firstTime )
+	{
+		if ( firstTime )
+		{
+			Props = ResourceLibrary.GetAll<PropResource>().Where( x => !x.Hidden ).ToList();
+
+			Instance = this;
+		}
+	}
+
+	public override void Tick()
+	{
+		if (!Visible)
+			return;
+
+		var mouse = Mouse.Position;
+		var center = Screen.Size / 2f;
+		var direction = mouse - center;
+
+		var ang = (MathF.Atan2(direction.y, direction.x) * 180f / MathF.PI + 360f) % 360f;
+		var size = 360f / Props.Count;
+
+		ang = (ang + 90f) % 360f;
+
+		SelectedProp = Props.ElementAtOrDefault((int)(ang / size));
+	}
+
+	protected override int BuildHash()
+	=> HashCode.Combine(Prop, Visible, SelectedProp);
+}

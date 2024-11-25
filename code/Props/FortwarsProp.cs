@@ -1,6 +1,13 @@
 using Sandbox.Events;
 using System;
 
+public enum PropLevel
+{
+	Base,
+	Metal,
+	Steel
+}
+
 public sealed class FortwarsProp : Component, Component.ICollisionListener, Component.IDamageable
 {
 	[RequireComponent, Sync] public Rigidbody Rigidbody { get; set; }
@@ -63,19 +70,37 @@ public sealed class FortwarsProp : Component, Component.ICollisionListener, Comp
 		}
 	}
 
-	public void SetupObject( PropResource prop, Team team )
+	public void SetupObject( PropResource prop, Team team, PropLevel level = PropLevel.Base )
 	{
 		Resource = prop;
 
+		var newHealth = level switch
+		{
+			PropLevel.Base => prop.BaseHealth,
+			PropLevel.Metal => prop.MetalHealth,
+			PropLevel.Steel => prop.SteelHealth,
+			_ => prop.BaseHealth
+		};
+
+		var newModel = level switch
+		{
+			PropLevel.Base => prop.BaseModel,
+			PropLevel.Metal => prop.MetalModel,
+			PropLevel.Steel => prop.SteelModel,
+			_ => prop.BaseModel
+		};
+
 		if ( !prop.PrefabOverride.IsValid() )
 		{
-			Health = prop.BaseHealth;
-			Renderer.Model = prop.BaseModel;
-			Collider.Model = prop.BaseModel;
+			Health = newHealth;
+			Renderer.Model = newModel;
+			Collider.Model = newModel;
 			CanKill = false;
 		}
 
 		Team = team;
+
+		MaxHealth = Health;
 
 		Renderer.MaterialGroup = team switch
 		{
@@ -133,33 +158,12 @@ public sealed class FortwarsProp : Component, Component.ICollisionListener, Comp
 		}
 	}
 
-	[Broadcast, Button( "Upgrade Prop" )]
-	public void UpgradeProp()
+	[Broadcast]
+	public void HealProp( float amount )
 	{
-		if ( Resource is null )
-			return;
-
-		if ( Resource.BaseModel is null || Resource.BaseHealth == 0 )
-			return;
-
-		if ( Resource.MetalModel is null || Resource.MetalHealth == 0 )
-			return;
-
-		if ( Resource.SteelModel is null || Resource.SteelHealth == 0 )
-			return;
-
-		if ( Renderer.Model == Resource.BaseModel && Health <= Resource.BaseHealth )
-		{
-			Health = Resource.MetalHealth;
-			Renderer.Model = Resource.MetalModel;
-			Collider.Model = Resource.MetalModel;
-		}
-		else if ( Renderer.Model == Resource.MetalModel && Health <= Resource.MetalHealth )
-		{
-			Health = Resource.SteelHealth;
-			Renderer.Model = Resource.SteelModel;
-			Collider.Model = Resource.SteelModel;
-		}
+		Health += amount;
+		if ( Health > MaxHealth )
+			Health = MaxHealth;
 	}
 
 	void IDamageable.OnDamage( in Sandbox.DamageInfo damage )
