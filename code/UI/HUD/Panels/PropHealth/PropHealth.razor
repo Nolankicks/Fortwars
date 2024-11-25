@@ -9,9 +9,6 @@
 
 	if (!player.IsValid() || !ShowPanel || !CurrentProp.IsValid() || !gs.IsValid() || (!gs?.CurrentGameModeComponent?.CurrentRound.IsValid() ?? false))
 		return;
-
-	if ( gs.CurrentGameModeComponent.CurrentRound.Name != "Build Mode" && gs.CurrentGameModeComponent.CurrentRound.Name != "Overtime Build Mode" )
-		return;
 }
 
 <root>
