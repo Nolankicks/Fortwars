@@ -30,6 +30,8 @@ public sealed class Propgun : Item
 
 	public bool UseBounds { get; set; } = false;
 
+	[Property] public PropLevel Level { get; set; } = PropLevel.Metal;
+
 	protected override void OnStart()
 	{
 		if ( IsProxy || !FirstTime )
@@ -47,7 +49,7 @@ public sealed class Propgun : Item
 		{
 			SwitchModes();
 		}
-		
+
 		if ( Input.Pressed( "togglegrid" ) )
 		{
 			SnapToGrid = !SnapToGrid;
@@ -292,7 +294,7 @@ public sealed class Propgun : Item
 
 		fortWarsProp.IsBuilding = true;
 
-		fortWarsProp.SetupObject( CurrentProp, team.Team );
+		fortWarsProp.SetupObject( CurrentProp, team.Team, Level );
 
 
 		gb.WorldPosition = SnapToGrid ? ObjectPos.SnapToGrid( 16, true, true, !(Hit && Normal == Vector3.Up) ) : ObjectPos;
@@ -314,7 +316,25 @@ public sealed class Propgun : Item
 
 	void ShowPropPreview( Vector3 pos, PropResource prop, bool canPlace, Vector3 Normal, bool Hit )
 	{
-		var gizmo = Gizmo.Draw.Model( prop.BaseModel.ResourcePath );
+		Model model;
+
+		switch ( Level )
+		{
+			case PropLevel.Metal:
+				model = prop.MetalModel;
+				break;
+			case PropLevel.Base:
+				model = prop.BaseModel;
+				break;
+			case PropLevel.Steel:
+				model = prop.SteelModel;
+				break;
+			default:
+				model = prop.BaseModel;
+				break;
+		}
+
+		var gizmo = Gizmo.Draw.Model( model.ResourcePath );
 		gizmo.ColorTint = Color.White.WithAlpha( 0.5f );
 		gizmo.Rotation = PropRotation.SnapToGrid( 15 );
 
@@ -333,7 +353,7 @@ public sealed class Propgun : Item
 		if ( UseBounds )
 			gizmo.Position = SnapToGrid ? pos.SnapToGrid( 16, true, true, !(Hit && Normal == Vector3.Up) ) : pos;
 		else
-			gizmo.Position = SnapToGrid ? pos.SnapToGrid( 16) : pos;
+			gizmo.Position = SnapToGrid ? pos.SnapToGrid( 16 ) : pos;
 
 		if ( !canPlace )
 		{
