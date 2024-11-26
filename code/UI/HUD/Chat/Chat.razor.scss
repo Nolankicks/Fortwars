@@ -43,12 +43,12 @@ Chat {
 			.author {
 				white-space: nowrap;
 				flex-shrink: 0;
-				text-shadow: 2px 2px 4px black;
+				text-shadow: 1px 1px 2px black;
 			}
 
 			.message {
 				color: #fff;
-				text-shadow: 2px 2px 4px black;
+				text-shadow: 1px 1px 2px black;
 			}
 		}
 	}
