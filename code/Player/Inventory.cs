@@ -123,6 +123,8 @@ public sealed class Inventory : Component
 		if ( items is null )
 			return;
 
+		DisableAll();
+
 		foreach ( var item in items )
 		{
 			RemoveItem( item );
@@ -342,7 +344,7 @@ public sealed class Inventory : Component
 	[Button, Authority, Category( "Buttons" )]
 	public void DisableAll()
 	{
-		foreach ( var item in Items )
+		foreach ( var item in Items.ToList() )
 		{
 			if ( item.IsValid() )
 				item.Enabled = false;
@@ -441,6 +443,11 @@ public sealed class Inventory : Component
 	[Authority]
 	public void AddClass( PlayerClass playerClass )
 	{
+		var local = FWPlayerController.Local;
+
+		if ( !local.IsValid() && (local.HealthComponent?.IsDead ?? false) )
+			return;
+
 		Log.Info( "Adding class" );
 
 		var gs = Scene.GetAll<GameSystem>()?.FirstOrDefault();
@@ -463,9 +470,7 @@ public sealed class Inventory : Component
 
 		SelectedClass = playerClass;
 
-		var local = FWPlayerController.Local;
-
-		if ( local.IsValid() && playerClass is not null )
+		if ( playerClass is not null )
 		{
 			local.SetSpeed( playerClass.WalkSpeed, playerClass.RunSpeed );
 			local.SetPlayerMaxHealth( playerClass.Health );

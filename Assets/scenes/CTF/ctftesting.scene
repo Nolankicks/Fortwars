@@ -12,7 +12,7 @@
           "__guid": "43dee88d-adb6-48a8-adff-cfe003251b8a",
           "__version": 1,
           "EnableCollision": true,
-          "MapName": "facepunch.construct",
+          "MapName": "facepunch.flatgrass",
           "NoOrigin": false,
           "OnMapLoaded": null,
           "OnMapUnloaded": null,
@@ -25,12 +25,47 @@
       "__guid": "13d90b8e-0295-466a-8b27-c4939f0cf9b3",
       "Flags": 0,
       "Name": "Flag",
-      "Position": "-279.1891,-203.4007,27.21106",
-      "Rotation": "-0.01495486,0.002084777,0.9903104,0.1380482",
+      "Position": "-80,-52.07769,-4",
       "Enabled": true,
       "NetworkMode": 1,
       "__Prefab": "prefabs/ctf/droppedflag.prefab",
       "__PrefabVariables": {}
+    },
+    {
+      "__guid": "a1f2134a-f5e8-479d-9acc-f550e0a11102",
+      "Flags": 0,
+      "Name": "CFT Trigger",
+      "Position": "40,-68,-4.000055",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.BoxCollider",
+          "__guid": "9d16d725-c331-48f3-9eeb-5fadf2b34a9e",
+          "Center": "0,0,0",
+          "IsTrigger": true,
+          "Scale": "32,32,32",
+          "Static": false,
+          "SurfaceVelocity": "0,0,0"
+        },
+        {
+          "__type": "CFTTrigger",
+          "__guid": "e9a3ded6-52df-47bd-b325-1e3745004172"
+        },
+        {
+          "__type": "Sandbox.ModelRenderer",
+          "__guid": "d9f86016-c0d1-4727-b701-9e1fd74f55e1",
+          "BodyGroups": 18446744073709551615,
+          "CreateAttachments": false,
+          "RenderOptions": {
+            "GameLayer": true,
+            "OverlayLayer": false,
+            "BloomLayer": false,
+            "AfterUILayer": false
+          },
+          "RenderType": "On",
+          "Tint": "1,1,1,1"
+        }
+      ]
     }
   ],
   "SceneProperties": {
