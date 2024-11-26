@@ -6,7 +6,7 @@
   "PrefabOverride": null,
   "BaseModel": "models/blocks/wood/fw_1x2x1.vmdl",
   "BaseHealth": 100,
-  "BaseIcon": null,
+  "BaseIcon": "textures/propicons/wood1x2x1.png",
   "MetalModel": "models/blocks/fw_metal1x2x1.vmdl",
   "MetalHealth": 200,
   "MetalIcon": "textures/propicons/metal1x2x1.png",
