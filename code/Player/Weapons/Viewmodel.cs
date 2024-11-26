@@ -10,16 +10,16 @@ public sealed class Viewmodel : Component, IGameEventHandler<JumpEvent>, IGameEv
 
 	[Property] public SkinnedModelRenderer Renderer { get; set; }
 
-	protected override void OnStart()
+	protected override void OnEnabled()
 	{
-		if ( GameObject.Parent.IsProxy )
+		if ( IsProxy )
 		{
-			foreach ( var renderer in Components.GetAll<SkinnedModelRenderer>().ToList() )
+			foreach ( var renderer in Components.GetAll<SkinnedModelRenderer>()?.ToList() )
 			{
-				renderer.Enabled = false;
+				renderer.Destroy();
 			}
-
-			Enabled = false;
+			
+			return;
 		}
 	}
 
@@ -35,7 +35,7 @@ public sealed class Viewmodel : Component, IGameEventHandler<JumpEvent>, IGameEv
 		if ( !local.IsValid() || !Renderer.IsValid() && !local.shrimpleCharacterController.IsValid() )
 			return;
 
-		Renderer.Set( "b_grounded", local.shrimpleCharacterController.IsOnGround );
+		Renderer?.Set( "b_grounded", local.shrimpleCharacterController.IsOnGround );
 	}
 
 	void ApplyInertia()
@@ -62,16 +62,16 @@ public sealed class Viewmodel : Component, IGameEventHandler<JumpEvent>, IGameEv
 		lastPitch = pitch;
 		lastYaw = yaw;
 
-		Renderer.Set( "aim_yaw_inertia", yawInertia * 2 );
-		Renderer.Set( "aim_pitch_inertia", pitchInertia * 2 );
-		Renderer.Set( "move_bob", controller.Velocity.Length.Remap( 0, 300, 0, 1, true ) );
+		Renderer?.Set( "aim_yaw_inertia", yawInertia * 2 );
+		Renderer?.Set( "aim_pitch_inertia", pitchInertia * 2 );
+		Renderer?.Set( "move_bob", controller.Velocity.Length.Remap( 0, 300, 0, 1, true ) );
 	}
 
 	protected override void OnDisabled()
 	{
 		if ( GameObject.Parent.IsProxy )
 			return;
-		
+
 		if ( Renderer.IsValid() )
 		{
 			Renderer.Set( "b_attack", false );

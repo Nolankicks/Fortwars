@@ -25,6 +25,9 @@ public sealed class CameraController : Component
 	{
 		var player = FWPlayerController.Local;
 
+		if ( IsProxy )
+			return;
+
 		if ( !player.IsValid() || !Scene.Camera.IsValid() )
 			return;
 

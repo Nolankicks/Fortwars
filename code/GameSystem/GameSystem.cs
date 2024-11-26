@@ -268,7 +268,7 @@ public sealed partial class GameSystem : Component
 
 	protected override void OnFixedUpdate()
 	{
-		if ( IsProxy )
+		if ( !Networking.IsHost )
 			return;
 
 		if ( Application.IsHeadless && !Connection.All.Any() && CurrentGameModeComponent.IsValid() && GameState == GameStates.S_ACTIVE )

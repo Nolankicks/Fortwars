@@ -11,7 +11,7 @@ public sealed class HealthPostProcessing : Component
 
 	protected override void OnUpdate()
 	{
-		if ( IsProxy )
+		if ( !GameObject.Parent.Network.IsOwner )
 			return;
 
 		vignette.Color = vignette.Color.WithAlpha( vignette.Color.a.LerpTo( GetIntensity(), Time.Delta * 10.0f ) );
