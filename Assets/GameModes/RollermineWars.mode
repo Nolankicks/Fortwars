@@ -1,6 +1,6 @@
 {
   "Title": "RollermineWars",
-  "Description": null,
+  "Description": "",
   "Prefab": {
     "_type": "gameobject",
     "prefab": "prefabs/gamemodes/rollerminewars.prefab"
@@ -8,6 +8,6 @@
   "Hidden": true,
   "Type": "RollermineWars",
   "__references": [],
-  "HasUnsavedChanges": true,
+  "IsValid": true,
   "__version": 0
 }
