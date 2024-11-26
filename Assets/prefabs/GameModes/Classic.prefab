@@ -548,6 +548,7 @@
                 },
                 "PlayersToSpawns": true,
                 "PlayerWeapons": [
+                  "weapondatas/pistol.weapons",
                   "weapondatas/gravgun.weapons"
                 ],
                 "ResetPlayerResouces": false,
@@ -1060,6 +1061,7 @@
                 },
                 "PlayersToSpawns": true,
                 "PlayerWeapons": [
+                  "weapondatas/pistol.weapons",
                   "weapondatas/gravgun.weapons"
                 ],
                 "ResetPlayerResouces": false,

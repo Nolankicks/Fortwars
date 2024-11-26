@@ -18,14 +18,17 @@
       {
         "__type": "Physgun",
         "__guid": "310b6a92-94d6-4c64-9bdd-c082fb7fc75a",
+        "ADSEnabled": false,
+        "ADSFOV": 0.8,
+        "ADSOffset": "4,0,0",
         "AmmoPerShot": 1,
-        "Emitter": null,
+        "CrosshairEnabled": false,
+        "DisableCrosshair": false,
         "EndLineObject": {
           "_type": "gameobject",
           "go": "e8617686-6c00-484b-bfb4-c0bc323acc44"
         },
         "HoldType": "Pistol",
-        "LineParticles": null,
         "MaxAmmo": 30,
         "Offset": "0,0,0",
         "PhysLine": {
@@ -812,6 +815,7 @@
             "__guid": "dcb16679-9c55-42bf-965c-79fc8572b367",
             "CastShadows": true,
             "Color": {
+              "blend": "Linear",
               "color": [
                 {
                   "t": 0.49786323,
@@ -848,7 +852,11 @@
             "VectorPoints": [],
             "Width": [
               {
-                "y": 0.40159574
+                "x": 0,
+                "y": 0.40159574,
+                "in": 0,
+                "out": 0,
+                "mode": "Mirrored"
               }
             ],
             "Wireframe": false

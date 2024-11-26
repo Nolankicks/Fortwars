@@ -44,6 +44,8 @@ public sealed class Propgun : Item
 
 	protected override void OnUpdate()
 	{
+		base.OnUpdate();
+
 		if ( IsProxy )
 			return;
 

@@ -23,6 +23,17 @@ public class Item : Component, IGameEventHandler<OnItemEquipped>
 
 	[Property] public GameObject TracerPoint { get; set; }
 
+	[Property, FeatureEnabled( "ADS" )] public bool ADSEnabled { get; set; } = true;
+	[Property, Feature( "ADS" )] public Vector3 ADSOffset { get; set; } = new( 4, 0, 0 );
+	[Property, Feature( "ADS" )] public float ADSFOV { get; set; } = 0.8f;
+	[Property, Feature( "ADS" )] public bool DisableCrosshair { get; set; } = false;
+
+	[Property, FeatureEnabled( "Crosshair" )] public bool CrosshairEnabled { get; set; }
+	[Property, Feature( "Crosshair" )] public WeaponCrosshair WeaponCrosshair { get; set; }
+
+	public virtual bool IsReloading { get; set; } = false;
+
+
 	[Authority]
 	public void SubtractAmmo()
 	{
@@ -49,6 +60,56 @@ public class Item : Component, IGameEventHandler<OnItemEquipped>
 			return;
 
 		Ammo = MaxAmmo;
+	}
+
+	protected override void OnDisabled()
+	{
+		if ( !IsProxy )
+		{
+			if ( WeaponCrosshair.IsValid() )
+				WeaponCrosshair.Enabled = true;
+
+			var local = FWPlayerController.Local;
+
+			if ( local.IsValid() )
+				local.IsADS = false;
+		}
+	}
+
+	protected override void OnUpdate()
+	{
+		if ( VModel.IsValid() && VModel.Renderer.IsValid() && ADSEnabled )
+		{
+			var isAiming = Input.Down( "attack2" ) && !IsReloading;
+
+			var local = FWPlayerController.Local;
+
+			if ( local.IsValid() )
+				local.IsADS = isAiming;
+
+			var Renderer = VModel.Renderer;
+
+			Renderer.Set( "ironsights", isAiming ? 1 : 0 );
+
+			var targetPos = isAiming ? ADSOffset : Vector3.Zero;
+
+			Renderer.LocalPosition = Renderer.LocalPosition.LerpTo( targetPos, Time.Delta * 10 );
+
+			if ( WeaponCrosshair.IsValid() && DisableCrosshair )
+				WeaponCrosshair.Enabled = !isAiming;
+
+			if ( CameraController.Instance.IsValid() )
+			{
+				CameraController.Instance.FOVMultTarget = isAiming ? 0.8f : 1.0f;
+			}
+		}
+		else if ( !ADSEnabled )
+		{
+			if ( CameraController.Instance.IsValid() )
+			{
+				CameraController.Instance.FOVMultTarget = 1.0f;
+			}
+		}
 	}
 
 	public virtual void OnEquip( OnItemEquipped onItemEquipped ) { }
@@ -108,14 +169,6 @@ public class Weapon : Item, IGameEventHandler<OnReloadEvent>
 	[Property, Feature( "Casing" )] public Model CasingModel { get; set; }
 	[Property, Feature( "Casing" )] public GameObject EjectionPoint { get; set; }
 
-	[Property, FeatureEnabled( "Crosshair" )] bool CrosshairEnabled { get; set; }
-	[Property, Feature( "Crosshair" )] WeaponCrosshair WeaponCrosshair { get; set; }
-
-	[Property, FeatureEnabled( "ADS" )] public bool ADSEnabled { get; set; } = true;
-	[Property, Feature( "ADS" )] public Vector3 ADSOffset { get; set; } = new( 4, 0, 0 );
-	[Property, Feature( "ADS" )] public float ADSFOV { get; set; } = 0.8f;
-	[Property, Feature( "ADS" )] public bool DisableCrosshair { get; set; } = false;
-
 	public enum FireTypes
 	{
 		F_SEMIAUTO,
@@ -137,29 +190,10 @@ public class Weapon : Item, IGameEventHandler<OnReloadEvent>
 
 	protected override void OnUpdate()
 	{
+		base.OnUpdate();
+
 		if ( IsProxy || equipTime < 0.2f )
 			return;
-
-		if ( VModel.IsValid() && VModel.Renderer.IsValid() && ADSEnabled )
-		{
-			var isAiming = Input.Down( "attack2" ) && !IsReloading;
-
-			var Renderer = VModel.Renderer;
-
-			Renderer.Set( "ironsights", isAiming ? 1 : 0 );
-
-			var targetPos = isAiming ? ADSOffset : Vector3.Zero;
-
-			Renderer.LocalPosition = Renderer.LocalPosition.LerpTo( targetPos, Time.Delta * 10 );
-
-			if ( WeaponCrosshair.IsValid() && DisableCrosshair )
-				WeaponCrosshair.Enabled = !isAiming;
-
-			if ( CameraController.Instance.IsValid() )
-			{
-				CameraController.Instance.FOVMultTarget = isAiming ? 0.8f : 1.0f;
-			}
-		}
 
 		Traces = new SceneTraceResult[TraceTimes];
 
@@ -292,11 +326,7 @@ public class Weapon : Item, IGameEventHandler<OnReloadEvent>
 				damageable.OnDamage( damage );
 			}
 		}
-
-
 	}
-
-	public bool IsReloading { get; set; }
 
 	public void TriggerReload()
 	{
@@ -384,13 +414,12 @@ public class Weapon : Item, IGameEventHandler<OnReloadEvent>
 
 	protected override void OnDisabled()
 	{
+		base.OnDisabled();
+
 		if ( IsProxy )
 			return;
 
 		IsReloading = false;
-
-		if ( WeaponCrosshair.IsValid() )
-			WeaponCrosshair.Enabled = true;
 	}
 
 	bool CheckFireInput()

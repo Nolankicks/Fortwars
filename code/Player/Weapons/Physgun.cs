@@ -41,6 +41,8 @@ public class Physgun : Item
 
 	protected override void OnUpdate()
 	{
+		base.OnUpdate();
+
 		if ( IsProxy )
 			return;
 

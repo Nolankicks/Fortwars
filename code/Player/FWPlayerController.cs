@@ -77,6 +77,8 @@ IGameEventHandler<DeathEvent>, IGameEventHandler<OnPhysgunGrabChange>
 	[Property] public int MetalPropsLeft { get; set; } = 30;
 	[Property] public int SteelPropsLeft { get; set; } = 15;
 
+	public bool IsADS { get; set; } = false;
+
 	protected override void OnStart()
 	{
 		if ( !AnimHelper.IsValid() )
@@ -241,6 +243,8 @@ IGameEventHandler<DeathEvent>, IGameEventHandler<OnPhysgunGrabChange>
 
 		var isCrouching = Input.Down( "duck" );
 		var wishSpeed = isCrouching ? 175 : sprintSpeed;
+
+		wishSpeed = IsADS ? 160 : wishSpeed;
 
 		var wishDirection = Input.AnalogMove.Normal * Rotation.FromYaw( EyeAngles.yaw );
 		WishVelocity = wishDirection * wishSpeed;

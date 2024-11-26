@@ -14,7 +14,7 @@
         "AmmoPerShot": 1,
         "AttackAnimName": "b_attack",
         "CasingModel": "models/weapons/sbox_ammo/12g_shell/12g_shell.vmdl",
-        "CrosshairEnabled": false,
+        "CrosshairEnabled": true,
         "Damage": 20,
         "DisableCrosshair": false,
         "EjectionPoint": {
@@ -46,6 +46,12 @@
           "component_id": "5e2b8a6b-2343-431e-807a-3da650ea1a0a",
           "go": "5096944a-1cf3-4bf4-8d11-f867d8c9ebec",
           "component_type": "Viewmodel"
+        },
+        "WeaponCrosshair": {
+          "_type": "component",
+          "component_id": "0b92223a-d9bb-4d55-bc35-484f60188a5c",
+          "go": "5096944a-1cf3-4bf4-8d11-f867d8c9ebec",
+          "component_type": "WeaponCrosshair"
         },
         "WorldModel": "models/weapons/sbox_shotgun_spaghellim4/w_spaghellim4.vmdl"
       },
