@@ -90,6 +90,8 @@ public sealed class DroppedFlag : Component, Component.ITriggerListener
 			if ( flag is not null )
 				inv.AddItem( flag, enabled: true, changeIndex: true );
 
+			PopupHolder.BroadcastPopup( $"{teamComponent.Team} grabbed the flag!", 5 );
+
 			if ( inv.Components.TryGet<Flag>( out var flagComponent, FindMode.EverythingInSelfAndDescendants ) )
 			{
 				flagComponent.Owner = TeamFlag;

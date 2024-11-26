@@ -25,7 +25,7 @@ public sealed class Viewmodel : Component, IGameEventHandler<JumpEvent>, IGameEv
 
 	protected override void OnUpdate()
 	{
-		if ( GameObject.Parent.IsProxy )
+		if ( IsProxy )
 			return;
 
 		ApplyInertia();
@@ -69,7 +69,7 @@ public sealed class Viewmodel : Component, IGameEventHandler<JumpEvent>, IGameEv
 
 	protected override void OnDisabled()
 	{
-		if ( GameObject.Parent.IsProxy )
+		if ( IsProxy )
 			return;
 
 		if ( Renderer.IsValid() )

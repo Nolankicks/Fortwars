@@ -277,15 +277,19 @@ public sealed class RoundComponent : Component
 		var flagPrefab = ResourceLibrary.Get<PrefabFile>( "prefabs/ctf/droppedflag.prefab" );
 
 		var spawnedFlag = GameObject.Clone( flagPrefab );
-		spawnedFlag.WorldPosition = flagSpawn.WorldPosition;
-		spawnedFlag.WorldRotation = flagSpawn.WorldRotation;
 
-		if ( spawnedFlag.Components.TryGet<DroppedFlag>( out var droppedFlag ) )
+		if ( spawnedFlag.IsValid() )
 		{
-			droppedFlag.TeamFlag = team;
-		}
+			spawnedFlag.WorldPosition = flagSpawn.WorldPosition;
+			spawnedFlag.WorldRotation = flagSpawn.WorldRotation;
 
-		spawnedFlag.NetworkSpawn( null );
+			if ( spawnedFlag.Components.TryGet<DroppedFlag>( out var droppedFlag ) )
+			{
+				droppedFlag.TeamFlag = team;
+			}
+
+			spawnedFlag.NetworkSpawn( null );
+		}
 	}
 
 	public void RemoveAllFlags()
