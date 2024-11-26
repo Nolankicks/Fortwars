@@ -170,6 +170,9 @@ public sealed class Propgun : Item
 		else
 			ObjectPos = player.Eye.WorldPosition + player.Eye.WorldRotation.Forward * 400.0f;
 
+		if ( CurrentProp is null || ( CurrentProp?.BaseModel is null ) )
+			return;
+
 		var model = CurrentProp.BaseModel;
 
 		SceneTraceResult tr;
