@@ -10,16 +10,16 @@ public sealed class Viewmodel : Component, IGameEventHandler<JumpEvent>, IGameEv
 
 	[Property] public SkinnedModelRenderer Renderer { get; set; }
 
-	protected override void OnStart()
+	protected override void OnEnabled()
 	{
-		if ( GameObject.Parent.IsProxy )
+		if ( IsProxy )
 		{
-			foreach ( var renderer in Components.GetAll<SkinnedModelRenderer>().ToList() )
+			foreach ( var renderer in Components.GetAll<SkinnedModelRenderer>() )
 			{
 				renderer.Enabled = false;
 			}
-
-			Enabled = false;
+			
+			return;
 		}
 	}
 
@@ -71,7 +71,7 @@ public sealed class Viewmodel : Component, IGameEventHandler<JumpEvent>, IGameEv
 	{
 		if ( GameObject.Parent.IsProxy )
 			return;
-		
+
 		if ( Renderer.IsValid() )
 		{
 			Renderer.Set( "b_attack", false );
