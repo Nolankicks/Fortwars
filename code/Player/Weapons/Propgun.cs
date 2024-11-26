@@ -172,7 +172,7 @@ public sealed class Propgun : Item
 		else
 			ObjectPos = player.Eye.WorldPosition + player.Eye.WorldRotation.Forward * 400.0f;
 
-		if ( CurrentProp is null || ( CurrentProp?.BaseModel is null ) )
+		if ( CurrentProp is null || (CurrentProp?.BaseModel is null) )
 			return;
 
 		var model = CurrentProp.BaseModel;
@@ -189,7 +189,11 @@ public sealed class Propgun : Item
 			ObjectPos = tr.HitPosition;
 
 			if ( !UseBounds )
-				ObjectPos = new Vector3( ObjectPos.x, ObjectPos.y, ObjectPos.z + model.Bounds.Size.z / 2 );
+			{
+				var rotatedBounds = model.Bounds.Rotate( PropRotation );
+
+				ObjectPos = new Vector3( ObjectPos.x, ObjectPos.y, ObjectPos.z + rotatedBounds.Size.z / 2 ) + tr.Normal * 0.1f;
+			}
 		}
 
 		//ObjectPos = ObjectPos.SnapToGrid( 16, true, true, !(tr.Hit && tr.Normal == Vector3.Up) );
