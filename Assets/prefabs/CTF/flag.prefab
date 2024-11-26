@@ -1,0 +1,61 @@
+{
+  "RootObject": {
+    "__guid": "45660918-5f1e-4bd1-be12-4ab613304df6",
+    "Flags": 0,
+    "Name": "flag",
+    "Enabled": true,
+    "Components": [
+      {
+        "__type": "Flag",
+        "__guid": "127936ec-4324-4b7d-9982-b2e906a16eac",
+        "ADSEnabled": false,
+        "ADSFOV": 0.8,
+        "ADSOffset": "4,0,0",
+        "AmmoPerShot": 1,
+        "CrosshairEnabled": false,
+        "DisableCrosshair": false,
+        "DroppedFlagPrefab": {
+          "_type": "gameobject",
+          "prefab": "prefabs/ctf/droppedflag.prefab"
+        },
+        "HoldType": "None",
+        "MaxAmmo": 30,
+        "Offset": "0,0,0",
+        "UsesAmmo": false,
+        "UseShotgunReload": false
+      }
+    ],
+    "Children": [],
+    "__variables": [],
+    "__properties": {
+      "FixedUpdateFrequency": 50,
+      "MaxFixedUpdates": 5,
+      "NetworkFrequency": 30,
+      "NetworkInterpolation": true,
+      "PhysicsSubSteps": 1,
+      "ThreadedAnimation": true,
+      "TimeScale": 1,
+      "UseFixedUpdate": true,
+      "Metadata": {},
+      "NavMesh": {
+        "Enabled": false,
+        "IncludeStaticBodies": true,
+        "IncludeKeyframedBodies": true,
+        "EditorAutoUpdate": true,
+        "AgentHeight": 64,
+        "AgentRadius": 16,
+        "AgentStepSize": 18,
+        "AgentMaxSlope": 40,
+        "ExcludedBodies": "",
+        "IncludedBodies": ""
+      }
+    }
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "DontBreakAsTemplate": false,
+  "ResourceVersion": 1,
+  "__references": [],
+  "__version": 1
+}

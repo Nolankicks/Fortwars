@@ -1,0 +1,9 @@
+{
+  "Name": "Flag",
+  "WeaponPrefab": {
+    "_type": "gameobject",
+    "prefab": "prefabs/ctf/flag.prefab"
+  },
+  "__references": [],
+  "__version": 0
+}

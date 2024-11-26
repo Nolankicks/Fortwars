@@ -1,0 +1,46 @@
+{
+  "RootObject": {
+    "__guid": "c0da0947-85bc-416c-975d-50a1621af49d",
+    "Flags": 0,
+    "Name": "Flag",
+    "Position": "-440,-220,27.99995",
+    "Enabled": true,
+    "NetworkMode": 1,
+    "Components": [
+      {
+        "__type": "Sandbox.BoxCollider",
+        "__guid": "c56cac57-1c3a-48a7-80a8-61c53d276997",
+        "Center": "0,0,0",
+        "IsTrigger": true,
+        "Scale": "32,32,32",
+        "Static": false,
+        "SurfaceVelocity": "0,0,0"
+      },
+      {
+        "__type": "Sandbox.ModelRenderer",
+        "__guid": "e65d891d-fd3f-4ab6-adc4-73498245e213",
+        "BodyGroups": 18446744073709551615,
+        "CreateAttachments": false,
+        "RenderOptions": {
+          "GameLayer": true,
+          "OverlayLayer": false,
+          "BloomLayer": false,
+          "AfterUILayer": false
+        },
+        "RenderType": "On",
+        "Tint": "1,1,1,1"
+      },
+      {
+        "__type": "DroppedFlag",
+        "__guid": "17a2ee5f-7bf0-4e23-94cb-b0005dffbf3c"
+      }
+    ]
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "DontBreakAsTemplate": false,
+  "ResourceVersion": 1,
+  "__references": [],
+  "__version": 1
+}

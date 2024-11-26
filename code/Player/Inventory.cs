@@ -149,7 +149,7 @@ public sealed class Inventory : Component
 	}
 
 	[Authority]
-	public void AddItem( WeaponData item, bool insert = false, int spot = 0 )
+	public void AddItem( WeaponData item, bool insert = false, int spot = 0, bool enabled = false, bool changeIndex = false )
 	{
 		if ( IsProxy || item is null )
 			return;
@@ -169,9 +169,9 @@ public sealed class Inventory : Component
 
 		clone.Parent = local.Eye;
 
-		clone.Enabled = false;
+		clone.Enabled = enabled;
 
-		clone.NetworkSpawn( false, Network.Owner );
+		clone.NetworkSpawn( enabled, Network.Owner );
 
 		if ( !insert )
 		{
@@ -182,6 +182,14 @@ public sealed class Inventory : Component
 		{
 			Items.Insert( spot, clone );
 			ItemsData.Insert( spot, item );
+		}
+
+		if ( changeIndex )
+		{
+			var index = Items.IndexOf( clone );
+
+			if ( index != -1 )
+				ChangeItem( index, Items );
 		}
 
 		if ( Items.Count() == 1 )
@@ -246,7 +254,7 @@ public sealed class Inventory : Component
 	}
 
 	[Authority]
-	public void RemoveItem( GameObject item )
+	public void RemoveItem( GameObject item, bool changeItem = true )
 	{
 		if ( !item.IsValid() || Items is null || ItemsData is null )
 			return;
@@ -263,7 +271,7 @@ public sealed class Inventory : Component
 
 		item.Destroy();
 
-		if ( CurrentItem == item )
+		if ( CurrentItem == item && changeItem )
 		{
 			ChangeItem( 0, Items );
 		}

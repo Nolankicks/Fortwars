@@ -1,0 +1,46 @@
+using Sandbox;
+
+public sealed class Flag : Item
+{
+	[Property] public GameObject DroppedFlagPrefab { get; set; }
+
+	protected override void OnDisabled()
+	{
+		base.OnDisabled();
+
+		if ( IsProxy )
+			return;
+
+		var local = FWPlayerController.Local;
+
+		if ( !local.IsValid() || (!local?.Inventory.IsValid() ?? true) )
+			return;
+
+		if ( local.Inventory.CurrentItem == GameObject )
+			Log.Info( "Flag disabled" );
+
+		local.Inventory.RemoveItem( GameObject, false );
+
+		var clone = DroppedFlagPrefab.Clone( Vector3.Zero );
+
+		clone.NetworkSpawn( null );
+	}
+}
+
+public sealed class DroppedFlag : Component, Component.ITriggerListener
+{
+	void ITriggerListener.OnTriggerEnter( Collider other )
+	{
+		if ( other.GameObject.Components.TryGet<Inventory>( out var inv, FindMode.EverythingInSelfAndParent ) )
+		{
+			var flag = ResourceLibrary.Get<WeaponData>( "weapondatas/flag.weapons" );
+
+			inv.DisableAll();
+
+			if ( flag is not null )
+				inv.AddItem( flag, enabled: true, changeIndex: true );
+
+			GameObject.Destroy();
+		}
+	}
+}

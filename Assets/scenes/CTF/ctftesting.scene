@@ -1,0 +1,64 @@
+{
+  "__guid": "99f9d8e0-4260-4f5c-8999-16feab67365e",
+  "GameObjects": [
+    {
+      "__guid": "fd6b1905-2868-4b63-9fb2-1e712af391cd",
+      "Flags": 0,
+      "Name": "Map",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.MapInstance",
+          "__guid": "43dee88d-adb6-48a8-adff-cfe003251b8a",
+          "__version": 1,
+          "EnableCollision": true,
+          "MapName": "facepunch.construct",
+          "NoOrigin": false,
+          "OnMapLoaded": null,
+          "OnMapUnloaded": null,
+          "UseMapFromLaunch": false
+        }
+      ],
+      "Children": []
+    },
+    {
+      "__guid": "13d90b8e-0295-466a-8b27-c4939f0cf9b3",
+      "Flags": 0,
+      "Name": "Flag",
+      "Position": "-279.1891,-203.4007,27.21106",
+      "Rotation": "-0.01495486,0.002084777,0.9903104,0.1380482",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "__Prefab": "prefabs/ctf/droppedflag.prefab",
+      "__PrefabVariables": {}
+    }
+  ],
+  "SceneProperties": {
+    "FixedUpdateFrequency": 50,
+    "MaxFixedUpdates": 5,
+    "NetworkFrequency": 30,
+    "NetworkInterpolation": true,
+    "PhysicsSubSteps": 1,
+    "ThreadedAnimation": true,
+    "TimeScale": 1,
+    "UseFixedUpdate": true,
+    "Metadata": {},
+    "NavMesh": {
+      "Enabled": false,
+      "IncludeStaticBodies": true,
+      "IncludeKeyframedBodies": true,
+      "EditorAutoUpdate": true,
+      "AgentHeight": 64,
+      "AgentRadius": 16,
+      "AgentStepSize": 18,
+      "AgentMaxSlope": 40,
+      "ExcludedBodies": "",
+      "IncludedBodies": ""
+    }
+  },
+  "ResourceVersion": 2,
+  "Title": null,
+  "Description": null,
+  "__references": [],
+  "__version": 2
+}
