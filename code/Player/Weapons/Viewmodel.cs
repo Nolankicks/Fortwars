@@ -14,9 +14,9 @@ public sealed class Viewmodel : Component, IGameEventHandler<JumpEvent>, IGameEv
 	{
 		if ( IsProxy )
 		{
-			foreach ( var renderer in Components.GetAll<SkinnedModelRenderer>() )
+			foreach ( var renderer in Components.GetAll<SkinnedModelRenderer>()?.ToList() )
 			{
-				renderer.Enabled = false;
+				renderer.Destroy();
 			}
 			
 			return;
