@@ -68,7 +68,7 @@
       "__guid": "0be1f601-53c1-4739-bbd6-4514f56a9ace",
       "Flags": 0,
       "Name": "Wall",
-      "Position": "0,-144,576.0035",
+      "Position": "0,-144,576",
       "Tags": "map",
       "Enabled": true,
       "NetworkMode": 1,
@@ -145,10 +145,10 @@
             "TextureOffset": [
               "0,0.001953125",
               "0.00001525879,511.9961",
-              "511.9961,511.998",
-              "0.00390625,511.998",
-              "0,511.998",
-              "0,511.998"
+              "511.9961,511.9844",
+              "0.00390625,511.9844",
+              "0,511.9844",
+              "0,511.9844"
             ],
             "MaterialIndex": [
               2,
@@ -1293,7 +1293,7 @@
           "__guid": "00b0ad82-0d8b-416c-b605-583b2404165f",
           "Collision": "Mesh",
           "Color": "1,1,1,1",
-          "HideInGame": false,
+          "HideInGame": true,
           "IsTrigger": true,
           "Mesh": {
             "Topology": "H4sIAAAAAAAACl2QCQ7CMAwEp4Qj3NBy/f\u002BlaMRGsohUVbFn1\u002Bt04ANs\u002BZ0VsM69AwfgBFyAKZ9MPXdgk3qLnsI\u002BUm/h/me9i2ZXfFvYOazafTJN0XRgKZmPyWtfXvYVL73PZRd52WdYPa7xtC8veys7u6t17/7t6Tn0ZtFjvIXZR895zjKjPWf4NiOrGt\u002BivpXZ3XnozaOndVn9vvVkkTjEAQAA",
