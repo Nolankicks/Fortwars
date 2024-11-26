@@ -350,6 +350,11 @@ public sealed class Inventory : Component
 				item.Enabled = false;
 		}
 
+		var local = FWPlayerController.Local;
+
+		if ( local.HoldRenderer.IsValid() )
+			FWPlayerController.ClearHoldRenderer( local.HoldRenderer );
+
 		CurrentItem = null;
 
 		CurrentWeaponData = null;
