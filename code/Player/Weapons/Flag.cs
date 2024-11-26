@@ -97,7 +97,27 @@ public sealed class DroppedFlag : Component, Component.ITriggerListener
 				flagComponent.Owner = TeamFlag;
 			}
 
+			using ( Rpc.FilterExclude( x => x == playerController.Network.Owner ) )
+			{
+				AddHighlight( playerController.GameObject );
+			}
+
 			GameObject.Destroy();
+		}
+	}
+
+	[Broadcast]
+	public static void AddHighlight( GameObject gameObject )
+	{
+		gameObject.Components.Create<HighlightOutline>();
+	}
+
+	[Broadcast]
+	public static void RemoveHighlight( GameObject gameObject )
+	{
+		if ( gameObject.Components.TryGet<HighlightOutline>( out var highlight ) )
+		{
+			highlight.Destroy();
 		}
 	}
 }
@@ -109,7 +129,7 @@ public sealed class CTFTrigger : Component, Component.ITriggerListener
 	{
 		var flag = ResourceLibrary.Get<WeaponData>( "weapondatas/flag.weapons" );
 
-		var local = FWPlayerController.Local;
+		var local = other.GameObject.Components.Get<FWPlayerController>();
 
 		if ( !local.IsValid() )
 			return;
@@ -126,6 +146,11 @@ public sealed class CTFTrigger : Component, Component.ITriggerListener
 			local.Inventory.RemoveItem( flagComponent.GameObject );
 
 			local.TeamComponent?.ResetToSpawnPoint();
+
+			using ( Rpc.FilterExclude( x => x == local.Network.Owner ) )
+			{
+				DroppedFlag.RemoveHighlight( local.GameObject );
+			}
 
 			gs.AddFlagCapture( local.TeamComponent.Team );
 
