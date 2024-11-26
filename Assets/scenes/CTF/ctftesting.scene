@@ -22,49 +22,159 @@
       "Children": []
     },
     {
-      "__guid": "13d90b8e-0295-466a-8b27-c4939f0cf9b3",
+      "__guid": "11445178-bd6f-4555-aa78-1589c986ef7f",
       "Flags": 0,
-      "Name": "Flag",
-      "Position": "-80,-52.07769,-4",
+      "Name": "droppedflag",
+      "Position": "188,212,548",
       "Enabled": true,
       "NetworkMode": 1,
       "__Prefab": "prefabs/ctf/droppedflag.prefab",
       "__PrefabVariables": {}
     },
     {
-      "__guid": "a1f2134a-f5e8-479d-9acc-f550e0a11102",
+      "__guid": "0e03ca57-1acd-419a-8d65-4e6053fc7489",
       "Flags": 0,
-      "Name": "CFT Trigger",
-      "Position": "40,-68,0",
+      "Name": "BlueSpawn",
+      "Position": "-51.99999,303.9999,514",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "TeamSpawnPoint",
+          "__guid": "e8536ae8-fb78-4d7e-a3af-8f9f4efe0d44",
+          "Team": "None"
+        }
+      ]
+    },
+    {
+      "__guid": "365361e6-5133-4bae-929b-fface36ca582",
+      "Flags": 0,
+      "Name": "Box",
+      "Position": "0,216,960.0041",
       "Enabled": true,
       "NetworkMode": 1,
       "Components": [
         {
-          "__type": "Sandbox.BoxCollider",
-          "__guid": "9d16d725-c331-48f3-9eeb-5fadf2b34a9e",
-          "Center": "0,0,0",
+          "__type": "Sandbox.MeshComponent",
+          "__guid": "dd90d927-a2e4-4b45-a112-216929f377b7",
+          "Collision": "Mesh",
+          "Color": "1,1,1,1",
+          "HideInGame": false,
           "IsTrigger": true,
-          "Scale": "32,32,32",
-          "Static": false,
+          "Mesh": {
+            "Topology": "H4sIAAAAAAAACl2QCQ7CMAwEp4Qj3NBy/f\u002BlaMRGsohUVbFn1\u002Bt04ANs\u002BZ0VsM69AwfgBFyAKZ9MPXdgk3qLnsI\u002BUm/h/me9i2ZXfFvYOazafTJN0XRgKZmPyWtfXvYVL73PZRd52WdYPa7xtC8veys7u6t17/7t6Tn0ZtFjvIXZR895zjKjPWf4NiOrGt\u002BivpXZ3XnozaOndVn9vvVkkTjEAQAA",
+            "Positions": [
+              "-16,-2104,976",
+              "16,-2104,976",
+              "16,2104,976",
+              "-16,2104,976",
+              "-16,2104,-976",
+              "16,2104,-976",
+              "16,-2104,-976",
+              "-16,-2104,-976"
+            ],
+            "TextureCoord": [
+              "0.25,32.875",
+              "-0.25,-15.25",
+              "0.25,-32.875",
+              "-32.875,-15.25",
+              "-0.25,-32.875",
+              "-0.25,-15.25",
+              "-0.25,32.875",
+              "-32.875,-15.25",
+              "0.25,-32.875",
+              "0.25,15.25",
+              "0.25,32.875",
+              "32.875,15.25",
+              "-0.25,32.875",
+              "0.25,15.25",
+              "-0.25,-32.875",
+              "32.875,15.25",
+              "32.875,-15.25",
+              "-0.25,15.25",
+              "-32.875,15.25",
+              "0.25,-15.25",
+              "-32.875,15.25",
+              "0.25,-15.25",
+              "32.875,-15.25",
+              "-0.25,15.25"
+            ],
+            "TextureUAxis": [
+              "1,0,0",
+              "1,0,-0",
+              "0,-1,0",
+              "0,1,0",
+              "-1,0,0",
+              "1,-0,0"
+            ],
+            "TextureVAxis": [
+              "0,-1,0",
+              "0,-1,0",
+              "0,0,-1",
+              "-0,0,-1",
+              "0,0,-1",
+              "-0,0,-1"
+            ],
+            "TextureScale": [
+              "0.25,0.25",
+              "0.25,0.25",
+              "0.25,0.25",
+              "0.25,0.25",
+              "0.25,0.25",
+              "0.25,0.25"
+            ],
+            "TextureOffset": [
+              "0,96",
+              "0,96",
+              "96,0.01635742",
+              "160,0.01660156",
+              "0,0.01635742",
+              "0,0.01660156"
+            ],
+            "MaterialIndex": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "EdgeFlags": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "Materials": [
+              "materials/tools/toolstrigger.vmat"
+            ]
+          },
+          "SmoothingAngle": 40,
+          "Static": true,
           "SurfaceVelocity": "0,0,0"
         },
         {
           "__type": "CFTTrigger",
-          "__guid": "e9a3ded6-52df-47bd-b325-1e3745004172"
-        },
-        {
-          "__type": "Sandbox.ModelRenderer",
-          "__guid": "d9f86016-c0d1-4727-b701-9e1fd74f55e1",
-          "BodyGroups": 18446744073709551615,
-          "CreateAttachments": false,
-          "RenderOptions": {
-            "GameLayer": true,
-            "OverlayLayer": false,
-            "BloomLayer": false,
-            "AfterUILayer": false
-          },
-          "RenderType": "On",
-          "Tint": "1,1,1,1"
+          "__guid": "9ecab200-0173-4d16-bdc1-1f0d121e306c"
         }
       ]
     }
@@ -96,5 +206,6 @@
   "Title": null,
   "Description": null,
   "__references": [],
+  "IsValid": true,
   "__version": 2
 }
