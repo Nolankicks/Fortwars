@@ -9,7 +9,7 @@ public sealed class TeamSpawnPoint : Component
 	{
 		Model model = Model.Load( "models/editor/spawnpoint.vmdl" );
 		Gizmo.Hitbox.Model( model );
-		Gizmo.Draw.Color = GetTeamColor().WithAlpha( (Gizmo.IsHovered || Gizmo.IsSelected) ? 0.7f : 0.5f );
+		Gizmo.Draw.Color = GetTeamColor( Team ).WithAlpha( (Gizmo.IsHovered || Gizmo.IsSelected) ? 0.7f : 0.5f );
 		SceneObject sceneObject = Gizmo.Draw.Model( model );
 		if ( sceneObject != null )
 		{
@@ -17,9 +17,9 @@ public sealed class TeamSpawnPoint : Component
 		}
 	}
 
-	public Color GetTeamColor()
+	public static Color GetTeamColor( Team team )
 	{
-		return Team switch
+		return team switch
 		{
 			Team.Blue => Color.Cyan,
 			Team.Red => Color.Red,

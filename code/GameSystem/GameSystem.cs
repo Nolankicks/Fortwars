@@ -42,8 +42,8 @@ public sealed partial class GameSystem : Component
 	[Property, Sync, Feature( "Game Data" )] public float RedTimeHeld { get; set; } = 5;
 	[Property, Sync, Feature( "Game Data" )] public float YellowTimeHeld { get; set; } = 5;
 	[Property, Sync, Feature( "Game Data" )] public float GreenTimeHeld { get; set; } = 5;
-	[Property, Sync, Feature( "Game Data" )] public float BlueFlagsCaptured { get; set; } = 0;
-	[Property, Sync, Feature( "Game Data" )] public float RedFlagsCaptured { get; set; } = 0;
+	[Property, Sync, Feature( "Game Data" )] public int BlueFlagsCaptured { get; set; } = 0;
+	[Property, Sync, Feature( "Game Data" )] public int RedFlagsCaptured { get; set; } = 0;
 
 	public static GameSystem Instance { get; set; }
 
@@ -227,13 +227,24 @@ public sealed partial class GameSystem : Component
 		{
 			case Team.Red:
 				RedFlagsCaptured++;
+
+				if ( RedFlagsCaptured < 3 )
+				{
+					RoundComponent.SpawnNewFlag( Team.Blue );
+				}
 				break;
 			case Team.Blue:
 				BlueFlagsCaptured++;
+
+				if ( BlueFlagsCaptured < 3 )
+				{
+					RoundComponent.SpawnNewFlag( Team.Red );
+				}
 				break;
 		}
 
 		Log.Info( $"Team {team} captured the flag" );
+		
 	}
 
 	[Authority]

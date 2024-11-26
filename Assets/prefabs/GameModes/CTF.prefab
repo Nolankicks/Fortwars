@@ -7,8 +7,8 @@
     "NetworkMode": 1,
     "Components": [
       {
-        "__type": "ClassicGameMode",
-        "__guid": "7579476d-6c7f-415d-97b8-149783e56e3e",
+        "__type": "CaptureTheFlag",
+        "__guid": "47d8827f-b9ec-49a2-b08e-4bc82b2cff19",
         "HasMapVoting": true,
         "InitialRound": {
           "_type": "component",
@@ -59,11 +59,12 @@
                 "OnRoundStart": {
                   "__version": 8,
                   "__guid": "0def4a9f-0327-4117-8b0a-b78f4dc75b92",
-                  "__changeId": 88,
+                  "__changeId": 103,
                   "UserData": {
                     "Title": "On Round Start",
                     "ReferencedComponentTypes": [
-                      "RoundComponent"
+                      "RoundComponent",
+                      "CaptureTheFlag"
                     ]
                   },
                   "Variables": [],
@@ -108,13 +109,6 @@
                       }
                     },
                     {
-                      "Id": 31,
-                      "Type": "scene.ref",
-                      "UserData": {
-                        "Position": "-108,132"
-                      }
-                    },
-                    {
                       "Id": 34,
                       "Type": "call",
                       "Properties": {
@@ -144,6 +138,35 @@
                       "UserData": {
                         "Position": "72,276"
                       }
+                    },
+                    {
+                      "Id": 44,
+                      "Type": "call",
+                      "Properties": {
+                        "_isStatic": false,
+                        "_name": "SpawnFlags",
+                        "_type": "RoundComponent"
+                      },
+                      "UserData": {
+                        "Position": "72,324"
+                      }
+                    },
+                    {
+                      "Id": 47,
+                      "Type": "scene.ref",
+                      "UserData": {
+                        "Position": "-456,84"
+                      }
+                    },
+                    {
+                      "Id": 48,
+                      "Type": "scene.get",
+                      "Properties": {
+                        "T": "CaptureTheFlag"
+                      },
+                      "UserData": {
+                        "Position": "-336,120"
+                      }
                     }
                   ],
                   "Links": [
@@ -172,7 +195,7 @@
                       "DstName": "_signal"
                     },
                     {
-                      "Id": 44,
+                      "Id": 45,
                       "Value": true,
                       "DstId": 4,
                       "DstName": "enable"
@@ -188,7 +211,7 @@
                       }
                     },
                     {
-                      "SrcId": 31,
+                      "SrcId": 48,
                       "SrcName": "_result",
                       "DstId": 34,
                       "DstName": "_target"
@@ -210,14 +233,30 @@
                       "SrcName": "_signal",
                       "DstId": 42,
                       "DstName": "_signal"
+                    },
+                    {
+                      "SrcId": 42,
+                      "SrcName": "_signal",
+                      "DstId": 44,
+                      "DstName": "_signal"
+                    },
+                    {
+                      "SrcId": 1,
+                      "SrcName": "_result",
+                      "DstId": 44,
+                      "DstName": "_target"
+                    },
+                    {
+                      "SrcId": 47,
+                      "SrcName": "_result",
+                      "DstId": 48,
+                      "DstName": "_this"
                     }
                   ],
                   "Defaults": {
-                    "$31.component": {
-                      "_type": "component",
-                      "component_id": "7579476d-6c7f-415d-97b8-149783e56e3e",
-                      "go": "a3d7f9ff-9c73-42da-acda-2a56ded467ea",
-                      "component_type": "ClassicGameMode"
+                    "$47.gameobject": {
+                      "_type": "gameobject",
+                      "go": "a3d7f9ff-9c73-42da-acda-2a56ded467ea"
                     }
                   }
                 },
@@ -255,11 +294,10 @@
                 "IsLastRound": false,
                 "IsRoundActive": false,
                 "Name": "Fight Mode",
-                "NextRoundTimer": null,
                 "OnPlayerJoin": {
                   "__version": 8,
                   "__guid": "9b8746c5-6c1c-4940-8385-d5cc7df81e4e",
-                  "__changeId": 13,
+                  "__changeId": 14,
                   "UserData": {
                     "Title": "On Player Join"
                   },
@@ -346,7 +384,7 @@
                 "OnRoundEnd": {
                   "__version": 8,
                   "__guid": "93d9c637-6dd7-4e67-85d4-b7fe1f1c6ad5",
-                  "__changeId": 10,
+                  "__changeId": 15,
                   "UserData": {
                     "Title": "On Round End",
                     "ReferencedComponentTypes": []
@@ -366,14 +404,29 @@
                         "_type": "RoundComponent"
                       },
                       "UserData": {
-                        "Position": "228,0"
+                        "Position": "0,-72"
                       }
                     },
                     {
                       "Id": 4,
                       "Type": "scene.ref",
                       "UserData": {
-                        "Position": "0,60"
+                        "Position": "0,36",
+                        "Labels": {
+                          "_result": "Round Component"
+                        }
+                      }
+                    },
+                    {
+                      "Id": 5,
+                      "Type": "call",
+                      "Properties": {
+                        "_isStatic": false,
+                        "_name": "RemoveAllFlags",
+                        "_type": "RoundComponent"
+                      },
+                      "UserData": {
+                        "Position": "0,-144"
                       }
                     }
                   ],
@@ -392,6 +445,18 @@
                       "UserData": {
                         "x": 48
                       }
+                    },
+                    {
+                      "SrcId": 1,
+                      "SrcName": "_signal",
+                      "DstId": 5,
+                      "DstName": "_signal"
+                    },
+                    {
+                      "SrcId": 4,
+                      "SrcName": "_result",
+                      "DstId": 5,
+                      "DstName": "_target"
                     }
                   ],
                   "Defaults": {
@@ -406,7 +471,7 @@
                 "OnRoundStart": {
                   "__version": 8,
                   "__guid": "a8a041bc-7d5b-4c31-b007-98d025bf4fdf",
-                  "__changeId": 66,
+                  "__changeId": 67,
                   "UserData": {
                     "Title": "On Round Start",
                     "ReferencedComponentTypes": [
@@ -589,5 +654,6 @@
   "DontBreakAsTemplate": false,
   "ResourceVersion": 1,
   "__references": [],
+  "IsValid": true,
   "__version": 1
 }

@@ -263,4 +263,33 @@ public sealed class RoundComponent : Component
 			PopupHolder.BroadcastPopup( title, 5 );
 		}
 	}
+
+	public void SpawnFlags()
+	{
+		SpawnNewFlag( Team.Red );
+		SpawnNewFlag( Team.Blue );
+	}
+
+	public static void SpawnNewFlag( Team team )
+	{
+		var flagSpawn = Game.ActiveScene?.GetAll<FlagSpawn>()?.FirstOrDefault( x => x.Team == team );
+
+		var flagPrefab = ResourceLibrary.Get<PrefabFile>( "prefabs/ctf/droppedflag.prefab" );
+
+		var spawnedFlag = GameObject.Clone( flagPrefab );
+		spawnedFlag.WorldPosition = flagSpawn.WorldPosition;
+		spawnedFlag.WorldRotation = flagSpawn.WorldRotation;
+
+		if ( spawnedFlag.Components.TryGet<DroppedFlag>( out var droppedFlag ) )
+		{
+			droppedFlag.TeamFlag = team;
+		}
+
+		spawnedFlag.NetworkSpawn( null );
+	}
+
+	public void RemoveAllFlags()
+	{
+		Scene.GetAll<DroppedFlag>()?.ToList()?.ForEach( x => x.GameObject.Destroy() );
+	}
 }

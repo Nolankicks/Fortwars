@@ -22,16 +22,6 @@
       "Children": []
     },
     {
-      "__guid": "11445178-bd6f-4555-aa78-1589c986ef7f",
-      "Flags": 0,
-      "Name": "droppedflag",
-      "Position": "188,212,548",
-      "Enabled": true,
-      "NetworkMode": 1,
-      "__Prefab": "prefabs/ctf/droppedflag.prefab",
-      "__PrefabVariables": {}
-    },
-    {
       "__guid": "0e03ca57-1acd-419a-8d65-4e6053fc7489",
       "Flags": 0,
       "Name": "BlueSpawn",
@@ -173,10 +163,79 @@
           "SurfaceVelocity": "0,0,0"
         },
         {
-          "__type": "CFTTrigger",
-          "__guid": "9ecab200-0173-4d16-bdc1-1f0d121e306c"
+          "__type": "CTFTrigger",
+          "__guid": "fe8cd7ae-0032-4047-8202-1e2451682ca9"
         }
       ]
+    },
+    {
+      "__guid": "20c5ea24-cfe2-436a-a2ef-a7f95e8b004d",
+      "Flags": 2048,
+      "Name": "Camera",
+      "Position": "258.3822,101.5152,528.0876",
+      "Tags": "maincamera",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.CameraComponent",
+          "__guid": "e837f20e-1463-4d38-97bb-0f562c607827",
+          "BackgroundColor": "0.33333,0.46275,0.52157,1",
+          "ClearFlags": "All",
+          "FieldOfView": 60,
+          "IsMainCamera": true,
+          "Orthographic": false,
+          "OrthographicHeight": 1204,
+          "Priority": 1,
+          "RenderExcludeTags": "",
+          "RenderTags": "",
+          "TargetEye": "None",
+          "Viewport": "0,0,1,1",
+          "ZFar": 10000,
+          "ZNear": 10
+        }
+      ]
+    },
+    {
+      "__guid": "d85d79c1-699a-4ad0-8769-6f5a471a57f8",
+      "Flags": 0,
+      "Name": "Blue Flag Spawn",
+      "Position": "1856,0,656",
+      "Rotation": "0,0,1,0.0000001947072",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "FlagSpawn",
+          "__guid": "6fb40a32-57b5-4487-9d76-ecadc2832dff",
+          "Team": "Blue"
+        }
+      ]
+    },
+    {
+      "__guid": "9c5cd487-d3bd-426f-b5d2-3305cd3fc7b1",
+      "Flags": 0,
+      "Name": "Red Flag Spawn",
+      "Position": "-1856,0,656",
+      "Rotation": "0,0,0.0000003874302,-1",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "FlagSpawn",
+          "__guid": "94ccb35d-48d2-45c5-b84a-b6ddb5eb56ad",
+          "Team": "Red"
+        }
+      ]
+    },
+    {
+      "__guid": "dbcbb8aa-a493-42dc-ade3-c620d954cb7f",
+      "Flags": 0,
+      "Name": "droppedflag",
+      "Position": "79.99998,212,532",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "__Prefab": "prefabs/ctf/droppedflag.prefab",
+      "__PrefabVariables": {
+        "Team Flag": "Red"
+      }
     }
   ],
   "SceneProperties": {

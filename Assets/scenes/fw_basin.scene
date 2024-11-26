@@ -201,7 +201,7 @@
         {
           "__type": "GameModeObject",
           "__guid": "dcf38f02-a756-4023-8899-f08f3bb3df17",
-          "Type": "Classic, RollermineWars"
+          "Type": "Classic, RollermineWars, CaptureTheFlag"
         }
       ]
     },
@@ -1279,6 +1279,174 @@
           "SurfaceVelocity": "0,0,0"
         }
       ]
+    },
+    {
+      "__guid": "d572e450-fe76-458e-9333-8581b13a78af",
+      "Flags": 0,
+      "Name": "Box",
+      "Position": "0,216,960.0041",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "Components": [
+        {
+          "__type": "Sandbox.MeshComponent",
+          "__guid": "00b0ad82-0d8b-416c-b605-583b2404165f",
+          "Collision": "Mesh",
+          "Color": "1,1,1,1",
+          "HideInGame": false,
+          "IsTrigger": true,
+          "Mesh": {
+            "Topology": "H4sIAAAAAAAACl2QCQ7CMAwEp4Qj3NBy/f\u002BlaMRGsohUVbFn1\u002Bt04ANs\u002BZ0VsM69AwfgBFyAKZ9MPXdgk3qLnsI\u002BUm/h/me9i2ZXfFvYOazafTJN0XRgKZmPyWtfXvYVL73PZRd52WdYPa7xtC8veys7u6t17/7t6Tn0ZtFjvIXZR895zjKjPWf4NiOrGt\u002BivpXZ3XnozaOndVn9vvVkkTjEAQAA",
+            "Positions": [
+              "-16,-2104,976",
+              "16,-2104,976",
+              "16,2104,976",
+              "-16,2104,976",
+              "-16,2104,-976",
+              "16,2104,-976",
+              "16,-2104,-976",
+              "-16,-2104,-976"
+            ],
+            "TextureCoord": [
+              "0.25,32.875",
+              "-0.25,-15.25",
+              "0.25,-32.875",
+              "-32.875,-15.25",
+              "-0.25,-32.875",
+              "-0.25,-15.25",
+              "-0.25,32.875",
+              "-32.875,-15.25",
+              "0.25,-32.875",
+              "0.25,15.25",
+              "0.25,32.875",
+              "32.875,15.25",
+              "-0.25,32.875",
+              "0.25,15.25",
+              "-0.25,-32.875",
+              "32.875,15.25",
+              "32.875,-15.25",
+              "-0.25,15.25",
+              "-32.875,15.25",
+              "0.25,-15.25",
+              "-32.875,15.25",
+              "0.25,-15.25",
+              "32.875,-15.25",
+              "-0.25,15.25"
+            ],
+            "TextureUAxis": [
+              "1,0,0",
+              "1,0,-0",
+              "0,-1,0",
+              "0,1,0",
+              "-1,0,0",
+              "1,-0,0"
+            ],
+            "TextureVAxis": [
+              "0,-1,0",
+              "0,-1,0",
+              "0,0,-1",
+              "-0,0,-1",
+              "0,0,-1",
+              "-0,0,-1"
+            ],
+            "TextureScale": [
+              "0.25,0.25",
+              "0.25,0.25",
+              "0.25,0.25",
+              "0.25,0.25",
+              "0.25,0.25",
+              "0.25,0.25"
+            ],
+            "TextureOffset": [
+              "0,96",
+              "0,96",
+              "96,0.01635742",
+              "160,0.01660156",
+              "0,0.01635742",
+              "0,0.01660156"
+            ],
+            "MaterialIndex": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "EdgeFlags": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "Materials": [
+              "materials/tools/toolstrigger.vmat"
+            ]
+          },
+          "SmoothingAngle": 40,
+          "Static": true,
+          "SurfaceVelocity": "0,0,0"
+        },
+        {
+          "__type": "CTFTrigger",
+          "__guid": "117c5495-5c52-4d03-9849-a3d3da584aaf"
+        },
+        {
+          "__type": "GameModeObject",
+          "__guid": "5eef2860-41c0-4aba-8870-94071f0c09b4",
+          "Type": "CaptureTheFlag"
+        }
+      ]
+    },
+    {
+      "__guid": "851bc570-ae94-44d1-bc00-b1d2b0e84235",
+      "Flags": 0,
+      "Name": "Blue Flag Spawn",
+      "Position": "1856,0,656",
+      "Rotation": "0,0,1,0.0000001947072",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "FlagSpawn",
+          "__guid": "e8680f85-7b5f-44e0-92ad-1a2c2599ece1",
+          "Team": "Blue"
+        }
+      ]
+    },
+    {
+      "__guid": "92a9107c-0d36-41c5-860c-6abfc297040b",
+      "Flags": 0,
+      "Name": "Red Flag Spawn",
+      "Position": "-1856,0,656",
+      "Rotation": "0,0,0.0000003874302,-1",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "FlagSpawn",
+          "__guid": "e4bf9523-a879-4c34-920b-b0c0cbefe30c",
+          "Team": "Red"
+        }
+      ]
     }
   ],
   "SceneProperties": {
@@ -1313,5 +1481,6 @@
   "__references": [
     "facepunch.glass_c#70691"
   ],
+  "IsValid": true,
   "__version": 2
 }

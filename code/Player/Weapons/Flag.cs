@@ -7,6 +7,8 @@ public sealed class Flag : Item
 
 	[Property, Sync] public Team Owner { get; set; }
 
+	public bool SpawnNewFlag { get; set; } = true;
+
 	protected override void OnDisabled()
 	{
 		base.OnDisabled();
@@ -28,8 +30,17 @@ public sealed class Flag : Item
 		}
 	}
 
+	[Authority]
+	public void SetSpawnNewFlag( bool value )
+	{
+		SpawnNewFlag = value;
+	}
+
 	public void DropFlag()
 	{
+		if ( !SpawnNewFlag )
+			return;
+
 		var local = FWPlayerController.Local;
 
 		if ( !local.IsValid() || (!local?.Inventory.IsValid() ?? true) )
@@ -79,12 +90,57 @@ public sealed class DroppedFlag : Component, Component.ITriggerListener
 			if ( flag is not null )
 				inv.AddItem( flag, enabled: true, changeIndex: true );
 
-			if ( inv.Components.TryGet<Flag>( out var flagComponent, FindMode.EverythingInSelfAndChildren ) )
+			if ( inv.Components.TryGet<Flag>( out var flagComponent, FindMode.EverythingInSelfAndDescendants ) )
 			{
 				flagComponent.Owner = TeamFlag;
 			}
 
 			GameObject.Destroy();
+		}
+	}
+}
+
+[Title( "CTF Trigger" )]
+public sealed class CTFTrigger : Component, Component.ITriggerListener
+{
+	void ITriggerListener.OnTriggerEnter( Collider other )
+	{
+		var flag = ResourceLibrary.Get<WeaponData>( "weapondatas/flag.weapons" );
+
+		var local = FWPlayerController.Local;
+
+		if ( !local.IsValid() )
+			return;
+
+		var gs = GameSystem.Instance;
+
+		if ( !gs.IsValid() || flag is null || !local.TeamComponent.IsValid() )
+			return;
+
+		if ( local.Inventory.IsValid() && local.Components.TryGet<Flag>( out var flagComponent, FindMode.EverythingInSelfAndDescendants ) )
+		{
+			flagComponent.SetSpawnNewFlag( false );
+
+			local.Inventory.RemoveItem( flagComponent.GameObject );
+
+			gs.AddFlagCapture( local.TeamComponent.Team );
+		}
+	}
+}
+
+public sealed class FlagSpawn : Component
+{
+	[Property] public Team Team { get; set; }
+
+	protected override void DrawGizmos()
+	{
+		Model model = Model.Load( "models/editor/spawnpoint.vmdl" );
+		Gizmo.Hitbox.Model( model );
+		Gizmo.Draw.Color = TeamSpawnPoint.GetTeamColor( Team ).WithAlpha( (Gizmo.IsHovered || Gizmo.IsSelected) ? 0.7f : 0.5f );
+		SceneObject sceneObject = Gizmo.Draw.Model( model );
+		if ( sceneObject != null )
+		{
+			sceneObject.Flags.CastShadows = true;
 		}
 	}
 }
