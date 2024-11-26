@@ -1,0 +1,593 @@
+{
+  "RootObject": {
+    "__guid": "a3d7f9ff-9c73-42da-acda-2a56ded467ea",
+    "Flags": 0,
+    "Name": "ctf",
+    "Enabled": true,
+    "NetworkMode": 1,
+    "Components": [
+      {
+        "__type": "ClassicGameMode",
+        "__guid": "7579476d-6c7f-415d-97b8-149783e56e3e",
+        "HasMapVoting": true,
+        "InitialRound": {
+          "_type": "component",
+          "component_id": "e44f4583-0b3c-4dca-8491-774985b7405b",
+          "go": "e9808dfe-3a94-45f9-903f-1e792cbc1ce4",
+          "component_type": "RoundComponent"
+        },
+        "MaxPlayersToStart": 2,
+        "RespawnPlayers": true,
+        "SetMaxPlayersToStart": false,
+        "TeamsEnabled": false
+      }
+    ],
+    "Children": [
+      {
+        "__guid": "e98b9be0-ef35-4daa-a32f-8a69b99ad7e1",
+        "Flags": 0,
+        "Name": "Rounds",
+        "Enabled": true,
+        "NetworkMode": 1,
+        "Children": [
+          {
+            "__guid": "e9808dfe-3a94-45f9-903f-1e792cbc1ce4",
+            "Flags": 0,
+            "Name": "Build",
+            "Enabled": true,
+            "NetworkMode": 1,
+            "Components": [
+              {
+                "__type": "RoundComponent",
+                "__guid": "e44f4583-0b3c-4dca-8491-774985b7405b",
+                "AddClass": false,
+                "CanOpenClassSelect": false,
+                "CheckForWinningTeam": false,
+                "ClearAllWeapons": true,
+                "ClearClass": false,
+                "Condition": false,
+                "HasResources": true,
+                "IsLastRound": false,
+                "IsRoundActive": false,
+                "Name": "Build Mode",
+                "NextRoundTimer": {
+                  "_type": "component",
+                  "component_id": "6ba6116e-10e0-4183-a2f1-45d8ec5648ca",
+                  "go": "f19aaa98-fa80-4421-b71d-92d0aa9591dc",
+                  "component_type": "RoundComponent"
+                },
+                "OnRoundStart": {
+                  "__version": 8,
+                  "__guid": "0def4a9f-0327-4117-8b0a-b78f4dc75b92",
+                  "__changeId": 88,
+                  "UserData": {
+                    "Title": "On Round Start",
+                    "ReferencedComponentTypes": [
+                      "RoundComponent"
+                    ]
+                  },
+                  "Variables": [],
+                  "Nodes": [
+                    {
+                      "Id": 0,
+                      "Type": "input",
+                      "UserData": {
+                        "Position": "288,-156"
+                      }
+                    },
+                    {
+                      "Id": 1,
+                      "Type": "scene.get",
+                      "Properties": {
+                        "T": "RoundComponent"
+                      },
+                      "UserData": {
+                        "Position": "-108,-156",
+                        "Labels": {
+                          "_result": "Round component"
+                        }
+                      }
+                    },
+                    {
+                      "Id": 3,
+                      "Type": "call",
+                      "Properties": {
+                        "_isStatic": false,
+                        "_name": "ResetAllHealth",
+                        "_type": "RoundComponent"
+                      },
+                      "UserData": {
+                        "Position": "288,-96"
+                      }
+                    },
+                    {
+                      "Id": 4,
+                      "Type": "Toggle Wall",
+                      "UserData": {
+                        "Position": "288,-36"
+                      }
+                    },
+                    {
+                      "Id": 31,
+                      "Type": "scene.ref",
+                      "UserData": {
+                        "Position": "-108,132"
+                      }
+                    },
+                    {
+                      "Id": 34,
+                      "Type": "call",
+                      "Properties": {
+                        "_isStatic": false,
+                        "_name": "EnableTeams",
+                        "_type": "GameMode"
+                      },
+                      "UserData": {
+                        "Position": "72,144"
+                      }
+                    },
+                    {
+                      "Id": 39,
+                      "Type": "call",
+                      "Properties": {
+                        "_isStatic": false,
+                        "_name": "DestroyAllProps",
+                        "_type": "RoundComponent"
+                      },
+                      "UserData": {
+                        "Position": "72,216"
+                      }
+                    },
+                    {
+                      "Id": 42,
+                      "Type": "Reset Rollermine",
+                      "UserData": {
+                        "Position": "72,276"
+                      }
+                    }
+                  ],
+                  "Links": [
+                    {
+                      "SrcId": 0,
+                      "SrcName": "_target",
+                      "DstId": 1,
+                      "DstName": "_this"
+                    },
+                    {
+                      "SrcId": 0,
+                      "SrcName": "_signal",
+                      "DstId": 3,
+                      "DstName": "_signal"
+                    },
+                    {
+                      "SrcId": 1,
+                      "SrcName": "_result",
+                      "DstId": 3,
+                      "DstName": "_target"
+                    },
+                    {
+                      "SrcId": 3,
+                      "SrcName": "_signal",
+                      "DstId": 4,
+                      "DstName": "_signal"
+                    },
+                    {
+                      "Id": 44,
+                      "Value": true,
+                      "DstId": 4,
+                      "DstName": "enable"
+                    },
+                    {
+                      "SrcId": 4,
+                      "SrcName": "_signal",
+                      "DstId": 34,
+                      "DstName": "_signal",
+                      "UserData": {
+                        "y": 96,
+                        "b": -24
+                      }
+                    },
+                    {
+                      "SrcId": 31,
+                      "SrcName": "_result",
+                      "DstId": 34,
+                      "DstName": "_target"
+                    },
+                    {
+                      "SrcId": 34,
+                      "SrcName": "_signal",
+                      "DstId": 39,
+                      "DstName": "_signal"
+                    },
+                    {
+                      "SrcId": 1,
+                      "SrcName": "_result",
+                      "DstId": 39,
+                      "DstName": "_target"
+                    },
+                    {
+                      "SrcId": 39,
+                      "SrcName": "_signal",
+                      "DstId": 42,
+                      "DstName": "_signal"
+                    }
+                  ],
+                  "Defaults": {
+                    "$31.component": {
+                      "_type": "component",
+                      "component_id": "7579476d-6c7f-415d-97b8-149783e56e3e",
+                      "go": "a3d7f9ff-9c73-42da-acda-2a56ded467ea",
+                      "component_type": "ClassicGameMode"
+                    }
+                  }
+                },
+                "PlayersToSpawns": true,
+                "PlayerWeapons": [
+                  "weapondatas/propgun.weapons",
+                  "weapondatas/physgun.weapons"
+                ],
+                "ResetPlayerResouces": true,
+                "RoundTime": 120,
+                "Time": true,
+                "Warning": false,
+                "WarningDuration": 0,
+                "WarningTime": 0
+              }
+            ]
+          },
+          {
+            "__guid": "f19aaa98-fa80-4421-b71d-92d0aa9591dc",
+            "Flags": 0,
+            "Name": "Fight",
+            "Enabled": true,
+            "NetworkMode": 1,
+            "Components": [
+              {
+                "__type": "RoundComponent",
+                "__guid": "6ba6116e-10e0-4183-a2f1-45d8ec5648ca",
+                "AddClass": true,
+                "CanOpenClassSelect": true,
+                "CheckForWinningTeam": true,
+                "ClearAllWeapons": true,
+                "ClearClass": false,
+                "Condition": false,
+                "HasResources": false,
+                "IsLastRound": false,
+                "IsRoundActive": false,
+                "Name": "Fight Mode",
+                "NextRoundTimer": null,
+                "OnPlayerJoin": {
+                  "__version": 8,
+                  "__guid": "9b8746c5-6c1c-4940-8385-d5cc7df81e4e",
+                  "__changeId": 13,
+                  "UserData": {
+                    "Title": "On Player Join"
+                  },
+                  "Variables": [],
+                  "Nodes": [
+                    {
+                      "Id": 0,
+                      "Type": "input",
+                      "UserData": {
+                        "Labels": {
+                          "obj": "Obj"
+                        }
+                      }
+                    },
+                    {
+                      "Id": 1,
+                      "Type": "call",
+                      "Properties": {
+                        "_isStatic": false,
+                        "_name": "TryGet",
+                        "_type": "Sandbox.IComponentLister",
+                        "T": "Inventory"
+                      },
+                      "UserData": {
+                        "Position": "-0,144",
+                        "Labels": {
+                          "component": "inv"
+                        }
+                      }
+                    },
+                    {
+                      "Id": 2,
+                      "Type": "if",
+                      "UserData": {
+                        "Position": "264,-0"
+                      }
+                    },
+                    {
+                      "Id": 3,
+                      "Type": "call",
+                      "Properties": {
+                        "_isStatic": false,
+                        "_name": "OpenClassSelect",
+                        "_type": "Inventory"
+                      },
+                      "UserData": {
+                        "Position": "492,0"
+                      }
+                    }
+                  ],
+                  "Links": [
+                    {
+                      "SrcId": 0,
+                      "SrcName": "obj",
+                      "DstId": 1,
+                      "DstName": "_target"
+                    },
+                    {
+                      "SrcId": 0,
+                      "SrcName": "_signal",
+                      "DstId": 2,
+                      "DstName": "_signal"
+                    },
+                    {
+                      "SrcId": 1,
+                      "SrcName": "_result",
+                      "DstId": 2,
+                      "DstName": "condition"
+                    },
+                    {
+                      "SrcId": 2,
+                      "SrcName": "true",
+                      "DstId": 3,
+                      "DstName": "_signal"
+                    },
+                    {
+                      "SrcId": 1,
+                      "SrcName": "component",
+                      "DstId": 3,
+                      "DstName": "_target"
+                    }
+                  ]
+                },
+                "OnRoundEnd": {
+                  "__version": 8,
+                  "__guid": "93d9c637-6dd7-4e67-85d4-b7fe1f1c6ad5",
+                  "__changeId": 10,
+                  "UserData": {
+                    "Title": "On Round End",
+                    "ReferencedComponentTypes": []
+                  },
+                  "Variables": [],
+                  "Nodes": [
+                    {
+                      "Id": 0,
+                      "Type": "input"
+                    },
+                    {
+                      "Id": 1,
+                      "Type": "call",
+                      "Properties": {
+                        "_isStatic": false,
+                        "_name": "DeleteClassSelect",
+                        "_type": "RoundComponent"
+                      },
+                      "UserData": {
+                        "Position": "228,0"
+                      }
+                    },
+                    {
+                      "Id": 4,
+                      "Type": "scene.ref",
+                      "UserData": {
+                        "Position": "0,60"
+                      }
+                    }
+                  ],
+                  "Links": [
+                    {
+                      "SrcId": 0,
+                      "SrcName": "_signal",
+                      "DstId": 1,
+                      "DstName": "_signal"
+                    },
+                    {
+                      "SrcId": 4,
+                      "SrcName": "_result",
+                      "DstId": 1,
+                      "DstName": "_target",
+                      "UserData": {
+                        "x": 48
+                      }
+                    }
+                  ],
+                  "Defaults": {
+                    "$4.component": {
+                      "_type": "component",
+                      "component_id": "6ba6116e-10e0-4183-a2f1-45d8ec5648ca",
+                      "go": "f19aaa98-fa80-4421-b71d-92d0aa9591dc",
+                      "component_type": "RoundComponent"
+                    }
+                  }
+                },
+                "OnRoundStart": {
+                  "__version": 8,
+                  "__guid": "a8a041bc-7d5b-4c31-b007-98d025bf4fdf",
+                  "__changeId": 66,
+                  "UserData": {
+                    "Title": "On Round Start",
+                    "ReferencedComponentTypes": [
+                      "RoundComponent"
+                    ]
+                  },
+                  "Variables": [],
+                  "Nodes": [
+                    {
+                      "Id": 0,
+                      "Type": "input",
+                      "UserData": {
+                        "Position": "-0,-0",
+                        "Labels": {
+                          "_signal": "Run"
+                        }
+                      }
+                    },
+                    {
+                      "Id": 9,
+                      "Type": "scene.get",
+                      "Properties": {
+                        "T": "RoundComponent"
+                      },
+                      "UserData": {
+                        "Position": "0,288",
+                        "Labels": {
+                          "_result": "Round component"
+                        }
+                      }
+                    },
+                    {
+                      "Id": 10,
+                      "Type": "call",
+                      "Properties": {
+                        "_isStatic": false,
+                        "_name": "OpenAllClassSelect",
+                        "_type": "RoundComponent"
+                      },
+                      "UserData": {
+                        "Position": "0,36"
+                      }
+                    },
+                    {
+                      "Id": 11,
+                      "Type": "call",
+                      "Properties": {
+                        "_isStatic": false,
+                        "_name": "ResetAllHealth",
+                        "_type": "RoundComponent"
+                      },
+                      "UserData": {
+                        "Position": "-0,96"
+                      }
+                    },
+                    {
+                      "Id": 12,
+                      "Type": "Toggle Wall",
+                      "UserData": {
+                        "Position": "0,156"
+                      }
+                    },
+                    {
+                      "Id": 17,
+                      "Type": "Reset All Teams",
+                      "UserData": {
+                        "Position": "0,216"
+                      }
+                    },
+                    {
+                      "Id": 20,
+                      "Type": "Reset Rollermine",
+                      "UserData": {
+                        "Position": "0,252"
+                      }
+                    }
+                  ],
+                  "Links": [
+                    {
+                      "SrcId": 0,
+                      "SrcName": "_target",
+                      "DstId": 9,
+                      "DstName": "_this"
+                    },
+                    {
+                      "SrcId": 0,
+                      "SrcName": "_signal",
+                      "DstId": 10,
+                      "DstName": "_signal"
+                    },
+                    {
+                      "SrcId": 9,
+                      "SrcName": "_result",
+                      "DstId": 10,
+                      "DstName": "_target"
+                    },
+                    {
+                      "SrcId": 0,
+                      "SrcName": "_signal",
+                      "DstId": 11,
+                      "DstName": "_signal"
+                    },
+                    {
+                      "SrcId": 9,
+                      "SrcName": "_result",
+                      "DstId": 11,
+                      "DstName": "_target"
+                    },
+                    {
+                      "SrcId": 0,
+                      "SrcName": "_signal",
+                      "DstId": 12,
+                      "DstName": "_signal"
+                    },
+                    {
+                      "Id": 22,
+                      "Value": false,
+                      "DstId": 12,
+                      "DstName": "enable"
+                    },
+                    {
+                      "SrcId": 0,
+                      "SrcName": "_signal",
+                      "DstId": 17,
+                      "DstName": "_signal"
+                    },
+                    {
+                      "SrcId": 0,
+                      "SrcName": "_signal",
+                      "DstId": 20,
+                      "DstName": "_signal"
+                    }
+                  ]
+                },
+                "PlayersToSpawns": true,
+                "PlayerWeapons": [
+                  "weapondatas/pistol.weapons",
+                  "weapondatas/gravgun.weapons"
+                ],
+                "ResetPlayerResouces": false,
+                "RoundTime": 300,
+                "Time": false,
+                "Warning": false,
+                "WarningDuration": 0,
+                "WarningTime": 0
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "__variables": [],
+    "__properties": {
+      "FixedUpdateFrequency": 50,
+      "MaxFixedUpdates": 5,
+      "NetworkFrequency": 30,
+      "NetworkInterpolation": true,
+      "PhysicsSubSteps": 1,
+      "ThreadedAnimation": true,
+      "TimeScale": 1,
+      "UseFixedUpdate": true,
+      "Metadata": {},
+      "NavMesh": {
+        "Enabled": false,
+        "IncludeStaticBodies": true,
+        "IncludeKeyframedBodies": true,
+        "EditorAutoUpdate": true,
+        "AgentHeight": 64,
+        "AgentRadius": 16,
+        "AgentStepSize": 18,
+        "AgentMaxSlope": 40,
+        "ExcludedBodies": "",
+        "IncludedBodies": ""
+      }
+    }
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "DontBreakAsTemplate": false,
+  "ResourceVersion": 1,
+  "__references": [],
+  "__version": 1
+}

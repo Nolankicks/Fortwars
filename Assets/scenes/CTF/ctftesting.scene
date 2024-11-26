@@ -12,7 +12,7 @@
           "__guid": "43dee88d-adb6-48a8-adff-cfe003251b8a",
           "__version": 1,
           "EnableCollision": true,
-          "MapName": "facepunch.flatgrass",
+          "MapName": "apetavern.fw_basin",
           "NoOrigin": false,
           "OnMapLoaded": null,
           "OnMapUnloaded": null,
@@ -35,8 +35,9 @@
       "__guid": "a1f2134a-f5e8-479d-9acc-f550e0a11102",
       "Flags": 0,
       "Name": "CFT Trigger",
-      "Position": "40,-68,-4.000055",
+      "Position": "40,-68,0",
       "Enabled": true,
+      "NetworkMode": 1,
       "Components": [
         {
           "__type": "Sandbox.BoxCollider",

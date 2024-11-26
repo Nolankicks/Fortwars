@@ -10,6 +10,7 @@ public enum GameModeType
 	RollermineWars = 2,
 	Deathmatch = 4,
 	Dodgeball = 8,
+	CaptureTheFlag = 16,
 }
 
 public sealed partial class GameSystem : Component

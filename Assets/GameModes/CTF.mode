@@ -1,0 +1,12 @@
+{
+  "Title": "Capture the Flag",
+  "Description": "",
+  "Prefab": {
+    "_type": "gameobject",
+    "prefab": "prefabs/gamemodes/ctf.prefab"
+  },
+  "Hidden": false,
+  "Type": "CaptureTheFlag",
+  "__references": [],
+  "__version": 0
+}
