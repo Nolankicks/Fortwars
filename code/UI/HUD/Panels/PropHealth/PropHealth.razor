@@ -73,10 +73,10 @@
 
 	public void OnPropChange( FortwarsProp oldProp, FortwarsProp newProp )
 	{
-		if ( oldProp.IsValid() && oldProp.Components.TryGet<HighlightOutline>( out var outline ) && !oldProp.IsGrabbed && !oldProp.IsBuilding )
+		if ( oldProp.IsValid() && oldProp.Components.TryGet<HighlightOutline>( out var outline ) && !oldProp.IsGrabbed && oldProp.IsBuilding )
 			outline.Destroy();
 
-		if ( newProp.IsValid() && !newProp.Components.Get<HighlightOutline>().IsValid() && !newProp.IsBuilding )
+		if ( newProp.IsValid() && !newProp.Components.Get<HighlightOutline>().IsValid() && newProp.IsBuilding )
 			newProp.Components.Create<HighlightOutline>();
 	}
 
