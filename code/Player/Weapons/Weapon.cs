@@ -391,6 +391,8 @@ public class Weapon : Item, IGameEventHandler<OnReloadEvent>
 
 	public static void SpawnParticleEffect( ParticleSystem system, Vector3 pos )
 	{
+		return;
+
 		var gb = new GameObject();
 
 		gb.WorldPosition = pos;
