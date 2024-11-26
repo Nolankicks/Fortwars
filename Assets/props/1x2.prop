@@ -1,13 +1,21 @@
 {
   "DisplayName": "1x2",
   "Hidden": false,
-  "Model": "models/blocks/steel/fw_1x2.vmdl",
   "Cost": 0,
   "Max": 0,
-  "Icon": "textures/propicons/steel1x2.png",
   "PrefabOverride": null,
+  "BaseModel": "models/blocks/wood/fw_1x2.vmdl",
+  "BaseHealth": 100,
+  "BaseIcon": "textures/propicons/wood1x2.png",
+  "MetalModel": "models/blocks/steel/fw_1x2.vmdl",
+  "MetalHealth": 200,
+  "MetalIcon": "textures/propicons/metal1x2.png",
+  "SteelModel": "models/blocks/steel/fw_1x2.vmdl",
+  "SteelHealth": 300,
+  "SteelIcon": "textures/propicons/steel1x2.png",
   "__references": [
-    "apetavern.fw1x2_steel#78632"
+    "apetavern.fw1x2_steel#78632",
+    "apetavern.fw1x2_wood#78626"
   ],
   "__version": 0
 }

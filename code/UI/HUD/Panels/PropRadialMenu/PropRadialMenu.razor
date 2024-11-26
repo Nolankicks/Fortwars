@@ -6,61 +6,65 @@
 @*Ceitine is a genius*@
 
 <root class="@(Visible ? "visible" : "")">
-    <div class="title">
+	<div class="title">
 		<p>Prop Menu</p>
+		<p>@SelectedLevel</p>
 		<p>@SelectedProp?.DisplayName</p>
+		<p>
+			<p style="font-size: 23px;">Change resource</p>
+			<img src="@Input.GetGlyph( "attack2", InputGlyphSize.Small, false )?.ResourcePath"/>
+		</p>
 	</div>
 
-    @{
-        var i = 0;
-        var count = Props.Count;
+	@{
+		var i = 0;
+		var count = Props.Count;
 
-        foreach ( var prop in Props )
-        {
-            var rgb = Color.Parse( "#1a1a1a" )?.Rgb;
-            var size = (1f / count * 100f);
+		foreach (var prop in Props)
+		{
+			var rgb = Color.Parse("#1a1a1a")?.Rgb;
+			var size = (1f / count * 100f);
 
-            <div 
-                class="wheel-fraction @(prop == SelectedProp ? "selected" : "")"
-                style="background: conic-gradient(
-                    @rgb @(MathF.Max( i * size, 0f ))%, 
-                    @rgb @(i * size + size)%, 
-                    @rgb @(MathF.Min( i * size + size, 100f ))%,
-                    transparent @(MathF.Min( i * size + size, 100f ))%, 
-                    transparent 100%);"
-            />
+			<div class="wheel-fraction @(prop == SelectedProp ? "selected" : "")" style="background: conic-gradient(
+							@rgb @(MathF.Max( i * size, 0f ))%, 
+							@rgb @(i * size + size)%, 
+							@rgb @(MathF.Min( i * size + size, 100f ))%,
+							transparent @(MathF.Min( i * size + size, 100f ))%, 
+							transparent 100%);" />
 
-            @* Our radius is like 500px, use the one that you have... *@
-            var radius = 600f;
+			@* Our radius is like 500px, use the one that you have... *@
+			var radius = 600f;
 
-            @* Use cosine and sine to determine the position in circle. *@
-            var ang = MathF.PI * 2f * i / count - 0.5f * MathF.PI + 1f * MathF.PI / count;
-            var pos = radius / (prop == SelectedProp ? 2.3f : 2.5f) * new Vector2( MathF.Cos( ang ), MathF.Sin( ang ) );
-            pos += Screen.Size * ScaleFromScreen / 2f;
+			@* Use cosine and sine to determine the position in circle. *@
+			var ang = MathF.PI * 2f * i / count - 0.5f * MathF.PI + 1f * MathF.PI / count;
+			var pos = radius / (prop == SelectedProp ? 2.3f : 2.5f) * new Vector2(MathF.Cos(ang), MathF.Sin(ang));
+			pos += Screen.Size * ScaleFromScreen / 2f;
 
-            @* Now draw our text at the circle position at our current index. *@
-            <div style="position: absolute; z-index:99; left: @($"{pos.x:N1}")px; top: @($"{pos.y:N1}")px; transform: translate(-50% -50%); color: black; transition: all 0.1s;">
-				<img style="width: 82px; height: 82px;" src=@prop.Icon />
+			@* Now draw our text at the circle position at our current index. *@
+			<div
+				style="position: absolute; z-index:99; left: @($"{pos.x:N1}")px; top: @($"{pos.y:N1}")px; transform: translate(-50% -50%); color: black; transition: all 0.1s;">
+				<img style="width: 82px; height: 82px;" src=@GetIcon(prop) />
 			</div>
 
-            i++;
-        }
-    }
+			i++;
+		}
+	}
 </root>
 
 @code {
-	public bool Visible { get; set; } = false;
+	[Change(nameof(OnVisibleChange))] public bool Visible { get; set; } = false;
 	private PropResource Prop => Props.ElementAtOrDefault(0);
 	private List<PropResource> Props { get; set; } = new();
 	public PropResource SelectedProp { get; set; }
+	public PropLevel SelectedLevel { get; set; } = PropLevel.Base;
 
 	public static PropRadialMenu Instance { get; set; }
 
-	protected override  void OnAfterTreeRender( bool firstTime )
+	protected override void OnAfterTreeRender(bool firstTime)
 	{
-		if ( firstTime )
+		if (firstTime)
 		{
-			Props = ResourceLibrary.GetAll<PropResource>().Where( x => !x.Hidden ).ToList();
+			Props = ResourceLibrary.GetAll<PropResource>().Where(x => !x.Hidden).ToList();
 
 			Instance = this;
 		}
@@ -70,6 +74,41 @@
 	{
 		if (!Visible)
 			return;
+
+		if (Input.Pressed("attack2"))
+		{
+			SelectedLevel = SelectedLevel switch
+			{
+				PropLevel.Base => PropLevel.Metal,
+				PropLevel.Metal => PropLevel.Steel,
+				PropLevel.Steel => PropLevel.Base,
+				_ => SelectedLevel
+			};
+		}
+
+		if (Input.Pressed("attack1"))
+		{
+			var propGun = Scene.GetAll<Propgun>()?.FirstOrDefault(x => !x.IsProxy);
+
+			if (!propGun.IsValid())
+			{
+				Visible = false;
+				return;
+			}
+
+			propGun.CurrentProp = SelectedProp;
+
+			propGun.Level = SelectedLevel;
+
+			Visible = false;
+
+			var player = FWPlayerController.Local;
+
+			if (player.IsValid())
+				Sound.Play("weapon.deploy", player.WorldPosition);
+
+			propGun.CanPlace = true;
+		}
 
 		var mouse = Mouse.Position;
 		var center = Screen.Size / 2f;
@@ -83,6 +122,26 @@
 		SelectedProp = Props.ElementAtOrDefault((int)(ang / size));
 	}
 
+	public string GetIcon( PropResource prop )
+	{
+		switch ( SelectedLevel )
+		{
+			case PropLevel.Base:
+				return prop.BaseIcon;
+			case PropLevel.Metal:
+				return prop.MetalIcon;
+			case PropLevel.Steel:
+				return prop.SteelIcon;
+			default:
+				return prop.BaseIcon;
+		}
+	}
+
+	public void OnVisibleChange()
+	{
+		Mouse.Visible = Visible;
+	}
+
 	protected override int BuildHash()
-	=> HashCode.Combine(Prop, Visible, SelectedProp);
+	=> HashCode.Combine(Prop, Visible, SelectedProp, SelectedLevel);
 }

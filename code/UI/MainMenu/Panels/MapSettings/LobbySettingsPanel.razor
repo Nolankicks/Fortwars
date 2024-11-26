@@ -63,9 +63,21 @@
 				</div>
 
                 <div class="setting">
-					<div class="label">Max Props</div>
-					<SliderControl Value:bind="@MaxProps" max=500 />
-					<div class="value">@MaxProps</div>
+					<div class="label">Wood Props</div>
+					<SliderControl Value:bind="@WoodProps" max=500 />
+					<div class="value">@WoodProps</div>
+				</div>
+
+				<div class="setting">
+					<div class="label">Metal Props</div>
+					<SliderControl Value:bind="@MetalProps" max=500 />
+					<div class="value">@MetalProps</div>
+				</div>
+
+				<div class="setting">
+					<div class="label">Steel Props</div>
+					<SliderControl Value:bind="@SteelProps" max=500 />
+					<div class="value">@SteelProps</div>
 				</div>
 
 			</div>
@@ -113,10 +125,23 @@
 					<div class="value">@MaxPlayers</div>
 				</div>
 
+				
+                <div class="setting">
+					<div class="label">Wood Props</div>
+					<SliderControl Value:bind="@WoodProps" max=500 />
+					<div class="value">@WoodProps</div>
+				</div>
+
 				<div class="setting">
-					<div class="label">Max Props</div>
-					<SliderControl Value:bind="@MaxProps" max=500 />
-					<div class="value">@MaxProps</div>
+					<div class="label">Metal Props</div>
+					<SliderControl Value:bind="@MetalProps" max=500 />
+					<div class="value">@MetalProps</div>
+				</div>
+
+				<div class="setting">
+					<div class="label">Steel Props</div>
+					<SliderControl Value:bind="@SteelProps" max=500 />
+					<div class="value">@SteelProps</div>
 				</div>
 			
 			</div>
@@ -131,7 +156,9 @@
 	public Package SelectedPackage { get; set; }
 	public MapInfo SelectedMap { get; set; }
 	[Change( nameof( OnValueMapChange ) )] private bool ClassicModels { get; set; } = true;
-	[Change( nameof( OnValueMapChange ) )] private int MaxProps { get; set; } = 150;
+	[Change( nameof( OnValueMapChange ) )] private int MetalProps { get; set; } = 30;
+	[Change( nameof( OnValueMapChange ) )] private int WoodProps { get; set; } = 60;
+	[Change( nameof( OnValueMapChange ) )] private int SteelProps { get; set; } = 15;
 	[Change( nameof( OnValueMapChange ) )] private int MaxPlayers { get; set; } = 64;
 	[Change( nameof( OnValueMapChange ) )] private int PlayersToStart { get; set; } = 1;
 
@@ -206,7 +233,15 @@
 
 	void OnValueMapChange()
 	{
-		var lobbySettings = new LobbySettings { ClassicModels = ClassicModels, MaxProps = MaxProps, MaxPlayers = MaxPlayers, PlayersToStart = PlayersToStart };
+		var lobbySettings = new LobbySettings 
+		{ 
+			ClassicModels = ClassicModels, 
+			SteelProps = SteelProps,
+			WoodProps = WoodProps,
+			MetalProps = MetalProps,
+			MaxPlayers = MaxPlayers, 
+			PlayersToStart = PlayersToStart 
+		};
 
 		if ( LocalDropDown is not null )
 		{
@@ -256,7 +291,15 @@
 
 	void OnValueChanged( string String )
 	{
-		var lobbySettings = new LobbySettings { ClassicModels = ClassicModels, MaxProps = MaxProps, MaxPlayers = MaxPlayers, PlayersToStart = PlayersToStart };
+		var lobbySettings = new LobbySettings 
+		{ 
+			ClassicModels = ClassicModels, 
+			SteelProps = SteelProps,
+			WoodProps = WoodProps,
+			MetalProps = MetalProps,
+			MaxPlayers = MaxPlayers, 
+			PlayersToStart = PlayersToStart 
+		};
 
 		if ( LocalDropDown is not null )
 		{

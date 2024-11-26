@@ -20,6 +20,8 @@ public sealed class Propgun : Item
 	[Property] public PropResource CurrentProp { get; set; }
 	[Property] public SkinnedModelRenderer WeaponRenderer { get; set; }
 
+	public bool CanPlace { get; set; } = true;
+
 	public bool HoldingObject { get; set; } = false;
 
 	public GameObject HeldObject { get; set; }
@@ -29,6 +31,8 @@ public sealed class Propgun : Item
 	public bool SnapToGrid { get; set; } = false;
 
 	public bool UseBounds { get; set; } = false;
+
+	[Property] public PropLevel Level { get; set; } = PropLevel.Metal;
 
 	protected override void OnStart()
 	{
@@ -43,11 +47,14 @@ public sealed class Propgun : Item
 		if ( IsProxy )
 			return;
 
+		if ( !CanPlace )
+			return;
+
 		if ( Input.Pressed( "attack2" ) )
 		{
 			SwitchModes();
 		}
-		
+
 		if ( Input.Pressed( "togglegrid" ) )
 		{
 			SnapToGrid = !SnapToGrid;
@@ -59,11 +66,6 @@ public sealed class Propgun : Item
 			UsingMouseInput = !UsingMouseInput;
 
 			PropRotation = Rotation.Identity;
-		}
-
-		if ( Input.Pressed( "voice" ) )
-		{
-			UseBounds = !UseBounds;
 		}
 
 		if ( Input.Pressed( "menu" ) && !HoldingObject )
@@ -81,25 +83,11 @@ public sealed class Propgun : Item
 
 				if ( player.IsValid() )
 					Sound.Play( "weapon.deploy", player.WorldPosition );
+
+				CanPlace = false;
 			}
 		}
 
-		if ( Input.Released( "menu" ) )
-		{
-			var menu = PropRadialMenu.Instance;
-
-			if ( menu.IsValid() )
-			{
-				CurrentProp = menu.SelectedProp;
-
-				menu.Visible = false;
-
-				var player = FWPlayerController.Local;
-
-				if ( player.IsValid() )
-					Sound.Play( "weapon.deploy", player.WorldPosition );
-			}
-		}
 
 		// Rotate the viewmodel around
 		if ( UsingMouseInput )
@@ -162,6 +150,8 @@ public sealed class Propgun : Item
 		Mouse.Visible = false;
 		UsingMouseInput = false;
 
+		CanPlace = true;
+
 		var menu = PropRadialMenu.Instance;
 
 		if ( menu.IsValid() )
@@ -180,7 +170,10 @@ public sealed class Propgun : Item
 		else
 			ObjectPos = player.Eye.WorldPosition + player.Eye.WorldRotation.Forward * 400.0f;
 
-		var model = CurrentProp.Model;
+		if ( CurrentProp is null || ( CurrentProp?.BaseModel is null ) )
+			return;
+
+		var model = CurrentProp.BaseModel;
 
 		SceneTraceResult tr;
 
@@ -227,14 +220,6 @@ public sealed class Propgun : Item
 
 		if ( CanPlace && Input.Pressed( "attack1" ) )
 		{
-			if ( ShootSound is not null )
-			{
-				var sound = Sound.Play( ShootSound, WorldPosition );
-
-				if ( sound.IsValid() )
-					sound.Volume = 0.5f;
-			}
-
 			if ( !player.TeamComponent.IsValid() )
 				return;
 
@@ -267,14 +252,18 @@ public sealed class Propgun : Item
 		if ( !gs.IsValid() || !team.IsValid() )
 			return;
 
-		var currentTeam = team.Team;
-
-		var hud = Scene.GetAll<HUD>()?.FirstOrDefault();
-
-		if ( OverTeamPropLimit( currentTeam, hud, gs ) )
+		if ( OverTeamPropLimit() )
 		{
-			hud?.FlashPropsFailed();
+			Sound.Play( "ui.downvote" );
 			return;
+		}
+
+		if ( ShootSound is not null )
+		{
+			var sound = Sound.Play( ShootSound, WorldPosition );
+
+			if ( sound.IsValid() )
+				sound.Volume = 0.5f;
 		}
 
 		GameObject.Dispatch( new WeaponAnimEvent( "b_attack", true ) );
@@ -290,8 +279,24 @@ public sealed class Propgun : Item
 
 		var fortWarsProp = gb.Components.Get<FortwarsProp>();
 
-		fortWarsProp.SetupObject( CurrentProp, team.Team );
+		fortWarsProp.IsBuilding = true;
 
+		fortWarsProp.SetupObject( CurrentProp, team.Team, Level, Network.Owner.DisplayName );
+
+		var local = FWPlayerController.Local;
+
+		switch ( Level )
+		{
+			case PropLevel.Metal:
+				local.MetalPropsLeft--;
+				break;
+			case PropLevel.Base:
+				local.WoodPropsLeft--;
+				break;
+			case PropLevel.Steel:
+				local.SteelPropsLeft--;
+				break;
+		}
 
 		gb.WorldPosition = SnapToGrid ? ObjectPos.SnapToGrid( 16, true, true, !(Hit && Normal == Vector3.Up) ) : ObjectPos;
 		gb.WorldRotation = PropRotation.SnapToGrid( 15 );
@@ -312,7 +317,25 @@ public sealed class Propgun : Item
 
 	void ShowPropPreview( Vector3 pos, PropResource prop, bool canPlace, Vector3 Normal, bool Hit )
 	{
-		var gizmo = Gizmo.Draw.Model( prop.Model.ResourcePath );
+		Model model;
+
+		switch ( Level )
+		{
+			case PropLevel.Metal:
+				model = prop.MetalModel;
+				break;
+			case PropLevel.Base:
+				model = prop.BaseModel;
+				break;
+			case PropLevel.Steel:
+				model = prop.SteelModel;
+				break;
+			default:
+				model = prop.BaseModel;
+				break;
+		}
+
+		var gizmo = Gizmo.Draw.Model( model.ResourcePath );
 		gizmo.ColorTint = Color.White.WithAlpha( 0.5f );
 		gizmo.Rotation = PropRotation.SnapToGrid( 15 );
 
@@ -331,7 +354,7 @@ public sealed class Propgun : Item
 		if ( UseBounds )
 			gizmo.Position = SnapToGrid ? pos.SnapToGrid( 16, true, true, !(Hit && Normal == Vector3.Up) ) : pos;
 		else
-			gizmo.Position = SnapToGrid ? pos.SnapToGrid( 16) : pos;
+			gizmo.Position = SnapToGrid ? pos.SnapToGrid( 16 ) : pos;
 
 		if ( !canPlace )
 		{
@@ -339,29 +362,26 @@ public sealed class Propgun : Item
 		}
 	}
 
-	bool OverTeamPropLimit( Team currentTeam, HUD hud, GameSystem gs )
+	bool OverTeamPropLimit()
 	{
-		switch ( currentTeam )
+		var local = FWPlayerController.Local;
+
+		if ( !local.IsValid() )
+			return true;
+
+		switch ( Level )
 		{
-			case Team.Red:
-				if ( gs.RedProps.Count() >= gs.MaxProps )
-					return true;
-				break;
-			case Team.Blue:
-				if ( gs.BlueProps.Count() >= gs.MaxProps )
-					return true;
-				break;
-			case Team.Green:
-				if ( gs.GreenProps.Count() >= gs.MaxProps )
-					return true;
-				break;
-			case Team.Yellow:
-				if ( gs.YellowProps.Count() >= gs.MaxProps )
-					return true;
-				break;
+			case PropLevel.Metal:
+				return local.MetalPropsLeft <= 0;
+			case PropLevel.Base:
+				return local.WoodPropsLeft <= 0;
+			case PropLevel.Steel:
+				return local.SteelPropsLeft <= 0;
 		}
-		return false;
+
+		return true;
 	}
+
 	private async Task DisplayControls()
 	{
 		float delay = 2.0f;

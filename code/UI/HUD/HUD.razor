@@ -19,8 +19,8 @@
 
 	<TeamProgress />
 	
-    <MaxProps @ref="MaxProps" />
 	<div class="healthholder">
+		<ResourcePanel />
 		<HealthPanel @ref="HealthPanel" />
 	</div>
 
@@ -29,6 +29,8 @@
 	<Timer />
 
 	<PropRadialMenu />
+
+	<PropHealth />
 </root>
 
 @code
@@ -65,19 +67,6 @@
 		{
 			Crosshair = lastCrosshair;
 		} );
-	}
-
-	public void FlashPropsFailed()
-	{
-		if ( !MaxProps.IsValid() )
-			return;
-
-		MaxProps.FlashClass( "hit", 0.2f );
-		
-		foreach ( var child in MaxProps?.Children )
-		{
-			child.FlashClass( "hit", 0.2f );
-		}
 	}
 
     // Pallete located here: https://colorhunt.co/palette/0d92f477cdfff95454c62e2e

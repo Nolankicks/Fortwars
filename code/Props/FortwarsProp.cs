@@ -1,6 +1,13 @@
 using Sandbox.Events;
 using System;
 
+public enum PropLevel
+{
+	Base,
+	Metal,
+	Steel
+}
+
 public sealed class FortwarsProp : Component, Component.ICollisionListener, Component.IDamageable
 {
 	[RequireComponent, Sync] public Rigidbody Rigidbody { get; set; }
@@ -11,13 +18,16 @@ public sealed class FortwarsProp : Component, Component.ICollisionListener, Comp
 	[Property, Sync] public FWPlayerController Grabber { get; set; }
 	[Property, Sync] public bool CanKill { get; set; } = true;
 	[Property, Sync] public float Health { get; set; } = 100;
+	[Property, Sync] public float MaxHealth { get; set; } = 100;
 
 	[Property, Sync] public PropResource Resource { get; set; }
 
 	[RequireComponent] ModelRenderer Renderer { get; set; }
 	[RequireComponent] ModelCollider Collider { get; set; }
 
-
+	[Sync] public bool IsBuilding { get; set; } = false;
+	[Sync] public string Builder { get; set; } = "";
+	[Sync] public bool IsGrabbed { get; set; } = false;
 
 	public void OnCollisionStart( Collision other )
 	{
@@ -45,7 +55,7 @@ public sealed class FortwarsProp : Component, Component.ICollisionListener, Comp
 				player?.TakeDamage( null, (int)dmg, WorldPosition );
 
 				var cam = Scene.Camera;
-				
+
 				var text = GameObject.Clone( ResourceLibrary.Get<PrefabFile>( "prefabs/effects/textparticle.prefab" ) );
 				text.WorldPosition = other.Contact.Point + other.Contact.Normal * 10;
 
@@ -62,31 +72,48 @@ public sealed class FortwarsProp : Component, Component.ICollisionListener, Comp
 		}
 	}
 
-	public void SetupObject( PropResource prop, Team team )
+	public void SetupObject( PropResource prop, Team team, PropLevel level = PropLevel.Base, string builder = "" )
 	{
 		Resource = prop;
 
+		Builder = builder;
+
+		var newHealth = level switch
+		{
+			PropLevel.Base => prop.BaseHealth,
+			PropLevel.Metal => prop.MetalHealth,
+			PropLevel.Steel => prop.SteelHealth,
+			_ => prop.BaseHealth
+		};
+
+		var newModel = level switch
+		{
+			PropLevel.Base => prop.BaseModel,
+			PropLevel.Metal => prop.MetalModel,
+			PropLevel.Steel => prop.SteelModel,
+			_ => prop.BaseModel
+		};
+
 		if ( !prop.PrefabOverride.IsValid() )
 		{
-			Health = 100;
-			Renderer.Model = prop.Model;
-			Collider.Model = prop.Model;
+			Health = newHealth;
+			Renderer.Model = newModel;
+			Collider.Model = newModel;
 			CanKill = false;
 		}
 
 		Team = team;
 
-		if ( Components.TryGet<ModelRenderer>( out var m ) )
-		{
-			m.MaterialGroup = team switch
-			{
-				Team.Red => "red",
-				Team.Blue => "default",
-				_ => "default"
-			};
-		}
+		MaxHealth = Health;
 
+		Renderer.MaterialGroup = team switch
+		{
+			Team.Red => "red",
+			Team.Blue => "default",
+			_ => "default"
+		};
 	}
+
 
 	protected override void OnStart()
 	{
@@ -94,6 +121,8 @@ public sealed class FortwarsProp : Component, Component.ICollisionListener, Comp
 		{
 			Network.SetOwnerTransfer( OwnerTransfer.Takeover );
 			Network.SetOrphanedMode( NetworkOrphaned.ClearOwner );
+
+			MaxHealth = Health;
 		}
 
 		//if ( IsProxy && !Invincible && Rigidbody.IsValid() && Rigidbody.PhysicsBody.IsValid() )
@@ -131,6 +160,15 @@ public sealed class FortwarsProp : Component, Component.ICollisionListener, Comp
 
 			GameObject.Destroy();
 		}
+	}
+
+	[Authority]
+	public void HealProp( float amount )
+	{
+		Health += amount;
+
+		if ( Health > MaxHealth )
+			Health = MaxHealth;
 	}
 
 	void IDamageable.OnDamage( in Sandbox.DamageInfo damage )

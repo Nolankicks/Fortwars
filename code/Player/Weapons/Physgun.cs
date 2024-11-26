@@ -176,8 +176,10 @@ public class Physgun : Item
 		var rootObject = tr.GameObject.Root;
 
 		if ( tr.GameObject.Components.TryGet<FortwarsProp>( out var p, FindMode.EverythingInSelfAndParent ) )
+		{
 			p.Rigidbody.Enabled = true;
-
+		}
+		
 		if ( !tr.GameObject.Components.TryGet<Rigidbody>( out var rigidbody, FindMode.EverythingInSelfAndAncestors ) )
 			return;
 
@@ -251,6 +253,14 @@ public class Physgun : Item
 
 		GrabEnd();
 
+		if ( body?.GetGameObject()?.Components.TryGet<HighlightOutline>( out var _) ?? false )
+			HasOutline = true;
+
+		if ( body?.GetGameObject()?.Components.TryGet<FortwarsProp>( out var prop ) ?? false )
+		{
+			prop.IsGrabbed = true;
+		}
+
 		Grabbing = true;
 		HeldBody = body;
 		HoldDistance = Vector3.DistanceBetween( startPosition, grabPosition );
@@ -278,8 +288,13 @@ public class Physgun : Item
 			{
 				HeldBody.Velocity = 0;
 				HeldBody.AngularVelocity = 0;
+				
+				if ( HeldBody.GetGameObject().Components.TryGet<FortwarsProp>( out var prop ) )
+				{
+					prop.IsGrabbed = false;
 
-				HeldBody.GetGameObject().Components.Get<FortwarsProp>().Rigidbody.Enabled = false;
+					prop.Rigidbody.Enabled = false;
+				}
 			}
 		}
 
@@ -288,8 +303,10 @@ public class Physgun : Item
 
 		RemoveTag( GrabbedObject, "grabbed" );
 
-		if ( GrabbedObject.IsValid() )
+		if ( GrabbedObject.IsValid() && !HasOutline )
 			GrabbedObject.Components.Get<HighlightOutline>().Destroy();
+
+		HasOutline = false;
 
 		GrabbedObject = null;
 		Scene.Dispatch( new OnPhysgunGrabChange( false ) );
@@ -366,13 +383,17 @@ public class Physgun : Item
 		Mouse.Visible = false;
 	}
 
+	public bool HasOutline { get; set; }
+
 	void UpdateEffects()
 	{
 		if ( GrabbedObject.IsValid() )
 		{
 			PhysLine.Enabled = true;
 			EndLineObject.WorldPosition = GrabbedObject.GetBounds().Center;
-			GrabbedObject.Components.GetOrCreate<HighlightOutline>();
+
+			if ( !HasOutline )
+				GrabbedObject.Components.GetOrCreate<HighlightOutline>();
 			//LineParticles.Enabled = true;
 			//LineParticles.WorldPosition = TracerPoint.WorldPosition.MoveTowards( GrabbedPosition, 0.5f );
 			////Emitter.Size = Emitter.Size.WithX( GrabbedPosition.Distance( TracerPoint.WorldPosition ) );
