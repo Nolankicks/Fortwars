@@ -272,8 +272,6 @@ public class Weapon : Item, IGameEventHandler<OnReloadEvent>
 		if ( !tr.GameObject.IsValid() || !tr.Hit )
 			return;
 
-		Log.Info( tr.Hitbox?.Tags.FirstOrDefault() );
-
 		//Make sure we don't freeze the rollermine
 		if ( tr.GameObject.Components.TryGet<RollerMine>( out var m, FindMode.EverythingInSelfAndParent ) )
 			return;
