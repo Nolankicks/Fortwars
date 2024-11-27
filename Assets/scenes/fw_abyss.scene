@@ -25,7 +25,9 @@
       "__guid": "592919c9-3811-4047-9d54-f32af70e2dc8",
       "Flags": 0,
       "Name": "Death Trigger",
+      "Position": "0,0,280",
       "Enabled": true,
+      "NetworkMode": 1,
       "Components": [
         {
           "__type": "Sandbox.BoxCollider",
