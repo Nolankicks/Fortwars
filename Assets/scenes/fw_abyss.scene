@@ -1093,7 +1093,8 @@
         },
         {
           "__type": "CTFTrigger",
-          "__guid": "3d0249dc-7cb1-4c0a-95ef-5bb9ed35e713"
+          "__guid": "3d0249dc-7cb1-4c0a-95ef-5bb9ed35e713",
+          "Team": "Red"
         }
       ]
     },
@@ -1226,7 +1227,8 @@
         },
         {
           "__type": "CTFTrigger",
-          "__guid": "0f8d5360-91cd-4445-8837-10e1b1f9b18b"
+          "__guid": "0f8d5360-91cd-4445-8837-10e1b1f9b18b",
+          "Team": "Blue"
         }
       ]
     },

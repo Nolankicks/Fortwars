@@ -2236,6 +2236,300 @@
           "Title": "Grassforts"
         }
       ]
+    },
+    {
+      "__guid": "2aa7822c-b98f-4e2e-b812-56f0d477d11d",
+      "Flags": 0,
+      "Name": "Flag Spawn",
+      "Position": "3072,0,128",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "FlagSpawn",
+          "__guid": "a5c4f1ed-4e7d-4093-b717-59abb04cf4ec",
+          "Team": "Blue"
+        }
+      ]
+    },
+    {
+      "__guid": "30993f11-0385-429a-bfbf-976093b329ec",
+      "Flags": 0,
+      "Name": "Flag Spawn (1)",
+      "Position": "-120,0,128",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "FlagSpawn",
+          "__guid": "67b092d1-94e5-490d-a037-0c2a999f1eb9",
+          "Team": "Red"
+        }
+      ]
+    },
+    {
+      "__guid": "4921a3dd-61e8-4b6c-b0e1-fed50f77cc9a",
+      "Flags": 0,
+      "Name": "Box",
+      "Position": "-12,164,832",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.MeshComponent",
+          "__guid": "9039f658-38e8-4e4f-acd1-a14229a0c230",
+          "Collision": "Mesh",
+          "Color": "1,1,1,1",
+          "HideInGame": true,
+          "IsTrigger": true,
+          "Mesh": {
+            "Topology": "H4sIAAAAAAAACl2QCQ7CMAwEp4Qj3NBy/f\u002BlaMRGsohUVbFn1\u002Bt04ANs\u002BZ0VsM69AwfgBFyAKZ9MPXdgk3qLnsI\u002BUm/h/me9i2ZXfFvYOazafTJN0XRgKZmPyWtfXvYVL73PZRd52WdYPa7xtC8veys7u6t17/7t6Tn0ZtFjvIXZR895zjKjPWf4NiOrGt\u002BivpXZ3XnozaOndVn9vvVkkTjEAQAA",
+            "Positions": [
+              "-12,-1612,1200",
+              "12,-1612,1200",
+              "12,1612,1200",
+              "-12,1612,1200",
+              "-12,1612,-1200",
+              "12,1612,-1200",
+              "12,-1612,-1200",
+              "-12,-1612,-1200"
+            ],
+            "TextureCoord": [
+              "0.1875,25.1875",
+              "-0.1875,-18.75",
+              "0.1875,-25.1875",
+              "-25.1875,-18.75",
+              "-0.1875,-25.1875",
+              "-0.1875,-18.75",
+              "-0.1875,25.1875",
+              "-25.1875,-18.75",
+              "0.1875,-25.1875",
+              "0.1875,18.75",
+              "0.1875,25.1875",
+              "25.1875,18.75",
+              "-0.1875,25.1875",
+              "0.1875,18.75",
+              "-0.1875,-25.1875",
+              "25.1875,18.75",
+              "25.1875,-18.75",
+              "-0.1875,18.75",
+              "-25.1875,18.75",
+              "0.1875,-18.75",
+              "-25.1875,18.75",
+              "0.1875,-18.75",
+              "25.1875,-18.75",
+              "-0.1875,18.75"
+            ],
+            "TextureUAxis": [
+              "1,0,0",
+              "1,0,-0",
+              "0,-1,0",
+              "0,1,0",
+              "-1,0,0",
+              "1,-0,0"
+            ],
+            "TextureVAxis": [
+              "0,-1,0",
+              "0,-1,0",
+              "0,0,-1",
+              "-0,0,-1",
+              "0,0,-1",
+              "-0,0,-1"
+            ],
+            "TextureScale": [
+              "0.25,0.25",
+              "0.25,0.25",
+              "0.25,0.25",
+              "0.25,0.25",
+              "0.25,0.25",
+              "0.25,0.25"
+            ],
+            "TextureOffset": [
+              "48,144",
+              "48,144",
+              "144,0",
+              "112,0",
+              "208,0",
+              "48,0"
+            ],
+            "MaterialIndex": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "EdgeFlags": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "Materials": [
+              "materials/tools/toolstrigger.vmat"
+            ]
+          },
+          "SmoothingAngle": 40,
+          "Static": true,
+          "SurfaceVelocity": "0,0,0"
+        },
+        {
+          "__type": "CTFTrigger",
+          "__guid": "0f70b817-731c-4c15-9009-b602a554505d",
+          "Team": "Blue"
+        }
+      ]
+    },
+    {
+      "__guid": "087895f7-2b0b-4b75-a94e-a4d6db8e8101",
+      "Flags": 0,
+      "Name": "Box (1)",
+      "Position": "2944,164,832",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.MeshComponent",
+          "__guid": "5fe19f8b-4ac4-4a2b-9ea2-eb2f6b1ea7a7",
+          "Collision": "Mesh",
+          "Color": "1,1,1,1",
+          "HideInGame": true,
+          "IsTrigger": true,
+          "Mesh": {
+            "Topology": "H4sIAAAAAAAACl2QCQ7CMAwEp4Qj3NBy/f\u002BlaMRGsohUVbFn1\u002Bt04ANs\u002BZ0VsM69AwfgBFyAKZ9MPXdgk3qLnsI\u002BUm/h/me9i2ZXfFvYOazafTJN0XRgKZmPyWtfXvYVL73PZRd52WdYPa7xtC8veys7u6t17/7t6Tn0ZtFjvIXZR895zjKjPWf4NiOrGt\u002BivpXZ3XnozaOndVn9vvVkkTjEAQAA",
+            "Positions": [
+              "-12,-1612,1200",
+              "12,-1612,1200",
+              "12,1612,1200",
+              "-12,1612,1200",
+              "-12,1612,-1200",
+              "12,1612,-1200",
+              "12,-1612,-1200",
+              "-12,-1612,-1200"
+            ],
+            "TextureCoord": [
+              "0.1875,25.1875",
+              "-0.1875,-18.75",
+              "0.1875,-25.1875",
+              "-25.1875,-18.75",
+              "-0.1875,-25.1875",
+              "-0.1875,-18.75",
+              "-0.1875,25.1875",
+              "-25.1875,-18.75",
+              "0.1875,-25.1875",
+              "0.1875,18.75",
+              "0.1875,25.1875",
+              "25.1875,18.75",
+              "-0.1875,25.1875",
+              "0.1875,18.75",
+              "-0.1875,-25.1875",
+              "25.1875,18.75",
+              "25.1875,-18.75",
+              "-0.1875,18.75",
+              "-25.1875,18.75",
+              "0.1875,-18.75",
+              "-25.1875,18.75",
+              "0.1875,-18.75",
+              "25.1875,-18.75",
+              "-0.1875,18.75"
+            ],
+            "TextureUAxis": [
+              "1,0,0",
+              "1,0,-0",
+              "0,-1,0",
+              "0,1,0",
+              "-1,0,0",
+              "1,-0,0"
+            ],
+            "TextureVAxis": [
+              "0,-1,0",
+              "0,-1,0",
+              "0,0,-1",
+              "-0,0,-1",
+              "0,0,-1",
+              "-0,0,-1"
+            ],
+            "TextureScale": [
+              "0.25,0.25",
+              "0.25,0.25",
+              "0.25,0.25",
+              "0.25,0.25",
+              "0.25,0.25",
+              "0.25,0.25"
+            ],
+            "TextureOffset": [
+              "0,144",
+              "0,144",
+              "144,0",
+              "112,0",
+              "0,0",
+              "0,0"
+            ],
+            "MaterialIndex": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "EdgeFlags": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "Materials": [
+              "materials/tools/toolstrigger.vmat"
+            ]
+          },
+          "SmoothingAngle": 40,
+          "Static": true,
+          "SurfaceVelocity": "0,0,0"
+        },
+        {
+          "__type": "CTFTrigger",
+          "__guid": "4aef28bc-5738-4f7e-8e22-0859265a191e",
+          "Team": "Red"
+        }
+      ]
     }
   ],
   "SceneProperties": {
@@ -2268,5 +2562,6 @@
   "Title": "Grassforts",
   "Description": null,
   "__references": [],
+  "IsValid": true,
   "__version": 2
 }

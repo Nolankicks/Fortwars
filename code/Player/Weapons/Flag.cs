@@ -156,6 +156,9 @@ public sealed class DroppedFlag : Component, Component.ITriggerListener
 [Title( "CTF Trigger" )]
 public sealed class CTFTrigger : Component, Component.ITriggerListener
 {
+	[Header( "Should be the opposite team of the side its on" )]
+	[Property, Sync] public Team Team { get; set; }
+
 	void ITriggerListener.OnTriggerEnter( Collider other )
 	{
 		var flag = ResourceLibrary.Get<WeaponData>( "weapondatas/flag.weapons" );
@@ -169,6 +172,9 @@ public sealed class CTFTrigger : Component, Component.ITriggerListener
 
 		if ( !gs.IsValid() || flag is null || !local.TeamComponent.IsValid() )
 			return;
+
+		if ( local.TeamComponent.Team == Team )
+			return;	
 
 		if ( local.Inventory.IsValid() && local.Components.TryGet<Flag>( out var flagComponent, FindMode.EverythingInSelfAndDescendants ) )
 		{

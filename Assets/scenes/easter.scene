@@ -2900,6 +2900,300 @@
           "Shadows": true
         }
       ]
+    },
+    {
+      "__guid": "ca92b087-6c06-4bef-980c-0726c6748632",
+      "Flags": 0,
+      "Name": "Blue Spawn Flag",
+      "Position": "1280,0,264",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "FlagSpawn",
+          "__guid": "1434193d-d353-403f-9328-998f7c1be822",
+          "Team": "Red"
+        }
+      ]
+    },
+    {
+      "__guid": "6357b3c8-5dda-432d-8d59-89ebeba6b293",
+      "Flags": 0,
+      "Name": "Blue Spawn Flag (1)",
+      "Position": "-1280,0,264",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "FlagSpawn",
+          "__guid": "fb820920-516d-4378-ae5a-2ed3508473bc",
+          "Team": "Blue"
+        }
+      ]
+    },
+    {
+      "__guid": "27cf1ed8-7f81-47e1-91d8-87fbcdd92697",
+      "Flags": 0,
+      "Name": "Box",
+      "Position": "-1172,-44,208",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.MeshComponent",
+          "__guid": "e4b92774-cb46-4030-8457-8a40c708efa1",
+          "Collision": "Mesh",
+          "Color": "1,1,1,1",
+          "HideInGame": true,
+          "IsTrigger": true,
+          "Mesh": {
+            "Topology": "H4sIAAAAAAAACl2QCQ7CMAwEp4Qj3NBy/f\u002BlaMRGsohUVbFn1\u002Bt04ANs\u002BZ0VsM69AwfgBFyAKZ9MPXdgk3qLnsI\u002BUm/h/me9i2ZXfFvYOazafTJN0XRgKZmPyWtfXvYVL73PZRd52WdYPa7xtC8veys7u6t17/7t6Tn0ZtFjvIXZR895zjKjPWf4NiOrGt\u002BivpXZ3XnozaOndVn9vvVkkTjEAQAA",
+            "Positions": [
+              "-20,-1180,928",
+              "20,-1180,928",
+              "20,1180,928",
+              "-20,1180,928",
+              "-20,1180,-928",
+              "20,1180,-928",
+              "20,-1180,-928",
+              "-20,-1180,-928"
+            ],
+            "TextureCoord": [
+              "0.3125,18.4375",
+              "-0.3125,-14.5",
+              "0.3125,-18.4375",
+              "-18.4375,-14.5",
+              "-0.3125,-18.4375",
+              "-0.3125,-14.5",
+              "-0.3125,18.4375",
+              "-18.4375,-14.5",
+              "0.3125,-18.4375",
+              "0.3125,14.5",
+              "0.3125,18.4375",
+              "18.4375,14.5",
+              "-0.3125,18.4375",
+              "0.3125,14.5",
+              "-0.3125,-18.4375",
+              "18.4375,14.5",
+              "18.4375,-14.5",
+              "-0.3125,14.5",
+              "-18.4375,14.5",
+              "0.3125,-14.5",
+              "-18.4375,14.5",
+              "0.3125,-14.5",
+              "18.4375,-14.5",
+              "-0.3125,14.5"
+            ],
+            "TextureUAxis": [
+              "1,0,0",
+              "1,0,-0",
+              "0,-1,0",
+              "0,1,0",
+              "-1,0,0",
+              "1,-0,0"
+            ],
+            "TextureVAxis": [
+              "0,-1,0",
+              "0,-1,0",
+              "0,0,-1",
+              "-0,0,-1",
+              "0,0,-1",
+              "-0,0,-1"
+            ],
+            "TextureScale": [
+              "0.25,0.25",
+              "0.25,0.25",
+              "0.25,0.25",
+              "0.25,0.25",
+              "0.25,0.25",
+              "0.25,0.25"
+            ],
+            "TextureOffset": [
+              "80,80",
+              "80,80",
+              "80,64",
+              "176,64",
+              "176,64",
+              "80,64"
+            ],
+            "MaterialIndex": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "EdgeFlags": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "Materials": [
+              "materials/tools/toolstrigger.vmat"
+            ]
+          },
+          "SmoothingAngle": 40,
+          "Static": true,
+          "SurfaceVelocity": "0,0,0"
+        },
+        {
+          "__type": "CTFTrigger",
+          "__guid": "5c2769dc-9a3e-4a48-a2ab-dd30fbf46137",
+          "Team": "Red"
+        }
+      ]
+    },
+    {
+      "__guid": "a5e2d1f3-2ae3-41a9-9945-256afc2e6eca",
+      "Flags": 0,
+      "Name": "Box (1)",
+      "Position": "1136,-44,208",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.MeshComponent",
+          "__guid": "e18d654a-d900-4738-bf6e-167a67b6095e",
+          "Collision": "Mesh",
+          "Color": "1,1,1,1",
+          "HideInGame": true,
+          "IsTrigger": true,
+          "Mesh": {
+            "Topology": "H4sIAAAAAAAACl2QCQ7CMAwEp4Qj3NBy/f\u002BlaMRGsohUVbFn1\u002Bt04ANs\u002BZ0VsM69AwfgBFyAKZ9MPXdgk3qLnsI\u002BUm/h/me9i2ZXfFvYOazafTJN0XRgKZmPyWtfXvYVL73PZRd52WdYPa7xtC8veys7u6t17/7t6Tn0ZtFjvIXZR895zjKjPWf4NiOrGt\u002BivpXZ3XnozaOndVn9vvVkkTjEAQAA",
+            "Positions": [
+              "-20,-1180,928",
+              "20,-1180,928",
+              "20,1180,928",
+              "-20,1180,928",
+              "-20,1180,-928",
+              "20,1180,-928",
+              "20,-1180,-928",
+              "-20,-1180,-928"
+            ],
+            "TextureCoord": [
+              "0.3125,18.4375",
+              "-0.3125,-14.5",
+              "0.3125,-18.4375",
+              "-18.4375,-14.5",
+              "-0.3125,-18.4375",
+              "-0.3125,-14.5",
+              "-0.3125,18.4375",
+              "-18.4375,-14.5",
+              "0.3125,-18.4375",
+              "0.3125,14.5",
+              "0.3125,18.4375",
+              "18.4375,14.5",
+              "-0.3125,18.4375",
+              "0.3125,14.5",
+              "-0.3125,-18.4375",
+              "18.4375,14.5",
+              "18.4375,-14.5",
+              "-0.3125,14.5",
+              "-18.4375,14.5",
+              "0.3125,-14.5",
+              "-18.4375,14.5",
+              "0.3125,-14.5",
+              "18.4375,-14.5",
+              "-0.3125,14.5"
+            ],
+            "TextureUAxis": [
+              "1,0,0",
+              "1,0,-0",
+              "0,-1,0",
+              "0,1,0",
+              "-1,0,0",
+              "1,-0,0"
+            ],
+            "TextureVAxis": [
+              "0,-1,0",
+              "0,-1,0",
+              "0,0,-1",
+              "-0,0,-1",
+              "0,0,-1",
+              "-0,0,-1"
+            ],
+            "TextureScale": [
+              "0.25,0.25",
+              "0.25,0.25",
+              "0.25,0.25",
+              "0.25,0.25",
+              "0.25,0.25",
+              "0.25,0.25"
+            ],
+            "TextureOffset": [
+              "64,80",
+              "64,80",
+              "80,64",
+              "176,64",
+              "192,64",
+              "64,64"
+            ],
+            "MaterialIndex": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "EdgeFlags": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "Materials": [
+              "materials/tools/toolstrigger.vmat"
+            ]
+          },
+          "SmoothingAngle": 40,
+          "Static": true,
+          "SurfaceVelocity": "0,0,0"
+        },
+        {
+          "__type": "CTFTrigger",
+          "__guid": "36aaf328-14c0-41ae-b0dc-0b5abe706808",
+          "Team": "Blue"
+        }
+      ]
     }
   ],
   "SceneProperties": {
@@ -2937,9 +3231,8 @@
     "facepunch.glass_c#70691",
     "facepunch.grass_mud_blend_01a#47043",
     "facepunch.wooden_crate#29138",
-    "nolankicks.barrier_blue#76309",
-    "nolankicks.barrier_neutral#76308",
     "rust.field_day_breeze_01a#43855"
   ],
+  "IsValid": true,
   "__version": 2
 }

@@ -8,8 +8,8 @@
   "PackageIndent": "apetavern.fw_dev",
   "Hidden": false,
   "Order": 2,
-  "AvailableGamemodes": "Classic, RollermineWars, Deathmatch",
+  "AvailableGamemodes": "Classic, RollermineWars, Deathmatch, CaptureTheFlag",
   "__references": [],
-  "HasUnsavedChanges": true,
+  "IsValid": true,
   "__version": 0
 }

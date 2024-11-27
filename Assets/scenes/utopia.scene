@@ -49,5 +49,6 @@
   "Title": null,
   "Description": null,
   "__references": [],
+  "IsValid": true,
   "__version": 2
 }
