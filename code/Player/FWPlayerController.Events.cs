@@ -64,6 +64,12 @@ partial class FWPlayerController
 			if ( !Inventory.IsValid() )
 				return;
 
+			if ( Components.TryGet<HighlightOutline>( out var highlightOutline ) )
+			{
+				highlightOutline.Destroy();
+				GameObject.Network.Refresh();
+			}
+
 			Inventory.DisableAll();
 			Inventory.CanScrollSwitch = false;
 

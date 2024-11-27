@@ -468,7 +468,8 @@ public sealed class Inventory : Component
 		{
 			ClearAll();
 
-			AddItem( ResourceLibrary.GetAll<WeaponData>().FirstOrDefault( x => x.ResourceName == "gravgun" ), true, 0 );
+			if ( gs.CurrentGameModeType == GameModeType.Classic )
+				AddItem( ResourceLibrary.GetAll<WeaponData>().FirstOrDefault( x => x.ResourceName == "gravgun" ), true, 0 );
 
 			ChangeItem( 0, Items );
 		}
@@ -485,6 +486,8 @@ public sealed class Inventory : Component
 		}
 
 		AddItem( playerClass.WeaponData, true, 0 );
+
+		//AddItem( ResourceLibrary.GetAll<WeaponData>().FirstOrDefault( x => x.ResourceName == "pistol" ), true, 1 );
 
 		ChangeItem( 0, Items );
 

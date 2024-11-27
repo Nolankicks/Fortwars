@@ -260,7 +260,7 @@ public class Weapon : Item, IGameEventHandler<OnReloadEvent>
 
 		var ray = cam.ScreenNormalToRay( 0.5f );
 
-		ray.Forward += Vector3.Random * Spread;
+		ray.Forward += Vector3.Random * (Spread / 2);
 
 		var tr = Scene.Trace.Ray( ray, Range )
 			.IgnoreGameObjectHierarchy( local.GameObject )

@@ -21,7 +21,7 @@ public sealed class DeathTrigger : Component, Component.ITriggerListener
 
 				if ( flagComponent.IsValid() )
 				{
-					flagComponent.SpawnNewFlag = false;
+					flagComponent.SetSpawnNewFlag( false );
 
 					player.Inventory.RemoveItem( flagComponent.GameObject, true );
 

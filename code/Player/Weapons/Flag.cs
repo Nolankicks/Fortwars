@@ -7,7 +7,7 @@ public sealed class Flag : Item
 
 	[Property, Sync] public Team Owner { get; set; }
 
-	public bool SpawnNewFlag { get; set; } = true;
+	[Sync] public bool SpawnNewFlag { get; set; } = true;
 
 	[Property, Sync] public SkinnedModelRenderer FlagRenderer { get; set; }
 
@@ -60,14 +60,17 @@ public sealed class Flag : Item
 		if ( local.Inventory.CurrentItem == GameObject )
 			Log.Info( "Flag disabled" );
 
-		var clone = DroppedFlagPrefab.Clone( WorldPosition + local.EyeAngles.Forward * 100 );
-
-		if ( clone.Components.TryGet<DroppedFlag>( out var droppedFlag ) )
+		if ( SpawnNewFlag )
 		{
-			droppedFlag.TeamFlag = Owner;
-		}
+			var clone = DroppedFlagPrefab.Clone( WorldPosition + local.EyeAngles.Forward * 100 );
 
-		clone.NetworkSpawn( null );
+			if ( clone.Components.TryGet<DroppedFlag>( out var droppedFlag ) )
+			{
+				droppedFlag.TeamFlag = local.TeamComponent.Team == Team.Red ? Team.Blue : Team.Red;
+			}
+
+			clone.NetworkSpawn( null );
+		}
 
 		local.Inventory.RemoveItem( GameObject, false );
 
@@ -101,10 +104,7 @@ public sealed class DroppedFlag : Component, Component.ITriggerListener
 			var teamComponent = playerController.TeamComponent;
 
 			if ( teamComponent.IsValid() && teamComponent.Team == TeamFlag )
-			{
-				Log.Info( "Can't pick up flag because of team mismatch or invalid inventory" );
 				return;
-			}
 
 			inv.DisableAll();
 
