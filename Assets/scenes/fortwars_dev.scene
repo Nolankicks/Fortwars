@@ -1302,18 +1302,6 @@
           "Team": "Blue"
         }
       ]
-    },
-    {
-      "__guid": "7bbe5089-b8e8-49e4-9f27-b44c9a187cbe",
-      "Flags": 0,
-      "Name": "droppedflag",
-      "Position": "383.9999,-623.9998,-256",
-      "Enabled": true,
-      "NetworkMode": 1,
-      "__Prefab": "prefabs/ctf/droppedflag.prefab",
-      "__PrefabVariables": {
-        "Team Flag": "Red"
-      }
     }
   ],
   "SceneProperties": {
