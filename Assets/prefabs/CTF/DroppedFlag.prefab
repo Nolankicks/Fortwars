@@ -29,7 +29,7 @@
       {
         "__type": "Sandbox.ModelCollider",
         "__guid": "9badcbe5-88b2-4ace-94da-a21b1a7c01bf",
-        "IsTrigger": true,
+        "IsTrigger": false,
         "Model": "models/dev_flag.vmdl",
         "Static": false,
         "SurfaceVelocity": "0,0,0"
@@ -45,22 +45,22 @@
       },
       {
         "__type": "CTFTrigger",
-        "__guid": "0215e67f-1ffc-4fd0-828e-46b8f14ec67f"
+        "__guid": "0215e67f-1ffc-4fd0-828e-46b8f14ec67f",
+        "Team": "Red"
       },
       {
         "__type": "Sandbox.Rigidbody",
         "__guid": "e5ae21ed-046b-4cd8-961e-662745afdd94",
-        "__enabled": false,
         "AngularDamping": 0,
         "Gravity": true,
         "LinearDamping": 0,
         "Locking": {
-          "X": false,
-          "Y": false,
+          "X": true,
+          "Y": true,
           "Z": false,
-          "Pitch": false,
-          "Yaw": false,
-          "Roll": false
+          "Pitch": true,
+          "Yaw": true,
+          "Roll": true
         },
         "MassCenterOverride": "0,0,0",
         "MassOverride": 0,
@@ -68,6 +68,15 @@
         "OverrideMassCenter": false,
         "RigidbodyFlags": 0,
         "StartAsleep": false
+      },
+      {
+        "__type": "Sandbox.BoxCollider",
+        "__guid": "5b5a7277-b07f-43e2-8ea0-9e4f654bc166",
+        "Center": "17.70001,0,37.19994",
+        "IsTrigger": true,
+        "Scale": "100,100,100",
+        "Static": false,
+        "SurfaceVelocity": "0,0,0"
       }
     ],
     "Children": [],

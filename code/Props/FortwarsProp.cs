@@ -28,6 +28,7 @@ public sealed class FortwarsProp : Component, Component.ICollisionListener, Comp
 	[Sync] public bool IsBuilding { get; set; } = false;
 	[Sync] public string Builder { get; set; } = "";
 	[Sync] public bool IsGrabbed { get; set; } = false;
+	[Sync] public PropLevel Level { get; set; } = PropLevel.Base;
 
 	public void OnCollisionStart( Collision other )
 	{
@@ -77,6 +78,8 @@ public sealed class FortwarsProp : Component, Component.ICollisionListener, Comp
 		Resource = prop;
 
 		Builder = builder;
+
+		Level = level;
 
 		var newHealth = level switch
 		{

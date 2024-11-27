@@ -69,6 +69,8 @@ public sealed class Flag : Item
 		clone.NetworkSpawn( null );
 
 		local.Inventory.RemoveItem( GameObject, false );
+
+		FWPlayerController.ClearHoldRenderer( local.HoldRenderer );
 	}
 }
 

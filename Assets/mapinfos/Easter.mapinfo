@@ -8,7 +8,8 @@
   "PackageIndent": "apetavern.fw_easter",
   "Hidden": false,
   "Order": 1,
-  "AvailableGamemodes": "Classic, RollermineWars, Deathmatch",
+  "AvailableGamemodes": "Classic, RollermineWars, Deathmatch, CaptureTheFlag",
   "__references": [],
+  "IsValid": true,
   "__version": 0
 }

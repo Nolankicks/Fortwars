@@ -4,9 +4,11 @@ using Matrix4x4 = System.Numerics.Matrix4x4;
 
 namespace SdfWorld;
 
+#nullable enable
+
 public sealed class ReflectivePlane : Component
 {
-	[RequireComponent] public ModelRenderer Renderer { get; private set; } = null!;
+	[RequireComponent] public ModelRenderer Renderer { get; set; } = null!;
 
 	private CameraComponent? _reflectionCamera;
 	private Texture? _renderTexture;

@@ -1256,7 +1256,25 @@
             "AfterUILayer": false
           },
           "RenderType": "On",
-          "Tint": "0,0.33333,1,1"
+          "Tint": "1,1,1,1"
+        }
+      ]
+    },
+    {
+      "__guid": "231d9e0d-da84-4a75-a509-00f7b1ceec43",
+      "Flags": 0,
+      "Name": "Meta",
+      "Position": "-993.3947,-247.1352,389.4836",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.SceneInformation",
+          "__guid": "a79ff2c9-94ee-4d3b-84a7-3e9d0f585f76",
+          "Author": "Ape Tavern",
+          "Changes": "",
+          "Description": "",
+          "SceneTags": "",
+          "Title": "fw_abyss"
         }
       ]
     }
@@ -1270,7 +1288,10 @@
     "ThreadedAnimation": true,
     "TimeScale": 1,
     "UseFixedUpdate": true,
-    "Metadata": {},
+    "Metadata": {
+      "Title": "fw_abyss",
+      "Author": "Ape Tavern"
+    },
     "NavMesh": {
       "Enabled": false,
       "IncludeStaticBodies": true,
@@ -1285,7 +1306,7 @@
     }
   },
   "ResourceVersion": 2,
-  "Title": null,
+  "Title": "fw_abyss",
   "Description": null,
   "__references": [],
   "IsValid": true,

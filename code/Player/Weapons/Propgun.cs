@@ -207,6 +207,19 @@ public sealed class Propgun : Item
 			if ( prop.Invincible )
 				return;
 
+			switch ( prop.Level )
+			{
+				case PropLevel.Metal:
+					player.MetalPropsLeft++;
+					break;
+				case PropLevel.Base:
+					player.WoodPropsLeft++;
+					break;
+				case PropLevel.Steel:
+					player.SteelPropsLeft++;
+					break;
+			}
+
 			tr.GameObject?.Root?.Destroy();
 		}
 
