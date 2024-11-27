@@ -166,7 +166,7 @@ public sealed class CTFTrigger : Component, Component.ITriggerListener
 	{
 		var flag = ResourceLibrary.Get<WeaponData>( "weapondatas/flag.weapons" );
 
-		var local = other.GameObject.Components.Get<FWPlayerController>();
+		var local = other.GameObject.Components.Get<FWPlayerController>( FindMode.EverythingInSelfAndParent );
 
 		if ( !local.IsValid() )
 			return;

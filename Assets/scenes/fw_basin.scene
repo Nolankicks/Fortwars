@@ -1291,7 +1291,7 @@
         {
           "__type": "Sandbox.MeshComponent",
           "__guid": "00b0ad82-0d8b-416c-b605-583b2404165f",
-          "Collision": "Mesh",
+          "Collision": "Hull",
           "Color": "1,1,1,1",
           "HideInGame": true,
           "IsTrigger": true,
@@ -1430,7 +1430,7 @@
         {
           "__type": "Sandbox.MeshComponent",
           "__guid": "0bbf039d-17e5-400f-88ed-ac148595a0d4",
-          "Collision": "Mesh",
+          "Collision": "Hull",
           "Color": "1,1,1,1",
           "HideInGame": true,
           "IsTrigger": true,
