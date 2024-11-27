@@ -13,20 +13,20 @@ public sealed class DeathTrigger : Component, Component.ITriggerListener
 		{
 			var inv = player?.Inventory;
 
-			if ( !player.IsValid() || (!inv.IsValid()) || (!player?.TeamComponent.IsValid() ?? true) )
-				return;
-
-			var team = player.TeamComponent.Team == Team.Red ? Team.Blue : Team.Red;
-
-			var flagComponent = player.Inventory.Components.Get<Flag>( FindMode.EverythingInSelfAndDescendants );
-
-			if ( flagComponent.IsValid() )
+			if ( player.IsValid() && inv.IsValid() && player.TeamComponent.IsValid() )
 			{
-				flagComponent.SpawnNewFlag = false;
+				var team = player.TeamComponent.Team == Team.Red ? Team.Blue : Team.Red;
 
-				player.Inventory.RemoveItem( flagComponent.GameObject, true );
+				var flagComponent = player.Inventory.Components.Get<Flag>( FindMode.EverythingInSelfAndDescendants );
 
-				RoundComponent.SpawnNewFlag( team );
+				if ( flagComponent.IsValid() )
+				{
+					flagComponent.SpawnNewFlag = false;
+
+					player.Inventory.RemoveItem( flagComponent.GameObject, true );
+
+					RoundComponent.SpawnNewFlag( team );
+				}
 			}
 		}
 

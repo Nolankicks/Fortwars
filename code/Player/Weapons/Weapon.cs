@@ -264,12 +264,15 @@ public class Weapon : Item, IGameEventHandler<OnReloadEvent>
 
 		var tr = Scene.Trace.Ray( ray, Range )
 			.IgnoreGameObjectHierarchy( local.GameObject )
+			.UseHitboxes()
 			.Run();
 
 		Traces[index] = tr;
 
 		if ( !tr.GameObject.IsValid() || !tr.Hit )
 			return;
+
+		Log.Info( tr.Hitbox?.Tags.FirstOrDefault() );
 
 		//Make sure we don't freeze the rollermine
 		if ( tr.GameObject.Components.TryGet<RollerMine>( out var m, FindMode.EverythingInSelfAndParent ) )
@@ -282,7 +285,17 @@ public class Weapon : Item, IGameEventHandler<OnReloadEvent>
 			if ( team.IsValid() && local.TeamComponent.IsValid() && local.TeamComponent.IsFriendly( team ) && team.Team != Team.None )
 				return;
 
-			health.TakeDamage( local.GameObject, Damage, tr.EndPosition, tr.Normal );
+			bool IsHeadShot = false;
+
+			var dmg = Damage;
+
+			if ( tr.Hitbox is not null && tr.Hitbox.Tags.Has( "head" ) )
+			{
+				dmg *= 2;
+				IsHeadShot = true;
+			}
+
+			health.TakeDamage( local.GameObject, dmg, tr.EndPosition, tr.Normal );
 
 			SpawnParticleEffect( Cloud.ParticleSystem( "bolt.impactflesh" ), tr.EndPosition );
 
@@ -296,7 +309,9 @@ public class Weapon : Item, IGameEventHandler<OnReloadEvent>
 
 					if ( text.Components.TryGet<ParticleTextRenderer>( out var textRenderer ) )
 					{
-						textRenderer.Text = new TextRendering.Scope( Damage.ToString(), Color.White, 24 );
+						var color = IsHeadShot ? Color.Red : Color.White;
+
+						textRenderer.Text = new TextRendering.Scope( dmg.ToString(), color, 64, "Chakra Petch", 1000 );
 					}
 				}
 

@@ -8,7 +8,7 @@ public enum PropLevel
 	Steel
 }
 
-public sealed class FortwarsProp : Component, Component.ICollisionListener, Component.IDamageable
+public sealed class FortwarsProp : Component, Component.IDamageable
 {
 	[RequireComponent, Sync] public Rigidbody Rigidbody { get; set; }
 	[Property, Sync] public bool Invincible { get; set; } = false;
@@ -30,9 +30,14 @@ public sealed class FortwarsProp : Component, Component.ICollisionListener, Comp
 	[Sync] public bool IsGrabbed { get; set; } = false;
 	[Sync] public PropLevel Level { get; set; } = PropLevel.Base;
 
-	public void OnCollisionStart( Collision other )
+	/*public void OnCollisionStart( Collision other )
 	{
 		if ( IsProxy || !Rigidbody.IsValid() ) return;
+
+		if ( other.Other.GameObject.Components.TryGet<Collider>( out var component ) )
+		{
+			Log.Info( component.IsTrigger );
+		}
 
 		var speed = Rigidbody.Velocity.Length;
 		var otherSpeed = other.Other.Body.Velocity.Length;
@@ -71,7 +76,7 @@ public sealed class FortwarsProp : Component, Component.ICollisionListener, Comp
 				Sound.Play( "hitmarker" );
 			}
 		}
-	}
+	}*/
 
 	public void SetupObject( PropResource prop, Team team, PropLevel level = PropLevel.Base, string builder = "" )
 	{
