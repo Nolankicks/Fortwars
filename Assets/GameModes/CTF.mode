@@ -5,7 +5,7 @@
     "_type": "gameobject",
     "prefab": "prefabs/gamemodes/ctf.prefab"
   },
-  "Hidden": true,
+  "Hidden": false,
   "Type": "CaptureTheFlag",
   "__references": [],
   "IsValid": true,
