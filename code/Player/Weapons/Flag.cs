@@ -124,6 +124,19 @@ public sealed class DroppedFlag : Component, Component.ITriggerListener
 		}
 	}
 
+	[Authority]
+	public void ResetPos()
+	{
+		var spawnPoint = Scene.GetAll<FlagSpawn>()?.FirstOrDefault( x => x.Team == TeamFlag );
+
+		if ( spawnPoint.IsValid() )
+		{
+			Transform.ClearInterpolation();
+
+			WorldTransform = spawnPoint.WorldTransform;
+		}
+	}
+
 	[Broadcast]
 	public static void AddHighlight( GameObject gameObject )
 	{

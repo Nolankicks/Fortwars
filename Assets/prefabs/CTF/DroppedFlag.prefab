@@ -46,6 +46,28 @@
       {
         "__type": "CTFTrigger",
         "__guid": "0215e67f-1ffc-4fd0-828e-46b8f14ec67f"
+      },
+      {
+        "__type": "Sandbox.Rigidbody",
+        "__guid": "e5ae21ed-046b-4cd8-961e-662745afdd94",
+        "__enabled": false,
+        "AngularDamping": 0,
+        "Gravity": true,
+        "LinearDamping": 0,
+        "Locking": {
+          "X": false,
+          "Y": false,
+          "Z": false,
+          "Pitch": false,
+          "Yaw": false,
+          "Roll": false
+        },
+        "MassCenterOverride": "0,0,0",
+        "MassOverride": 0,
+        "MotionEnabled": true,
+        "OverrideMassCenter": false,
+        "RigidbodyFlags": 0,
+        "StartAsleep": false
       }
     ],
     "Children": [],

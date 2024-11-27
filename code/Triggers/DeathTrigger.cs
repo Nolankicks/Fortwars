@@ -18,5 +18,24 @@ public sealed class DeathTrigger : Component, Component.ITriggerListener
 		{
 			mine.ResetPosition();
 		}
+
+		if ( other.GameObject.Components.TryGet<DroppedFlag>( out var flag ) )
+		{
+			flag.ResetPos();
+		}
+
+		if ( other.GameObject.Components.TryGet<Flag>( out var flagComponent, FindMode.EverythingInSelfAndParent ) )
+		{
+			var player = other.GameObject.Components.Get<FWPlayerController>( FindMode.EverythingInSelfAndParent );
+
+			if ( !player.IsValid() || (!player?.Inventory.IsValid() ?? true) || (!player?.TeamComponent.IsValid() ?? true) )
+				return;
+
+			var team = player.TeamComponent.Team;
+
+			player.Inventory.RemoveItem( flagComponent.GameObject, true );
+
+			RoundComponent.SpawnNewFlag( team );
+		}
 	}
 }
