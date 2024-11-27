@@ -195,7 +195,7 @@
                       "DstName": "_signal"
                     },
                     {
-                      "Id": 45,
+                      "Id": 50,
                       "Value": true,
                       "DstId": 4,
                       "DstName": "enable"
@@ -266,7 +266,7 @@
                   "weapondatas/physgun.weapons"
                 ],
                 "ResetPlayerResouces": true,
-                "RoundTime": 120,
+                "RoundTime": 140,
                 "Time": true,
                 "Warning": false,
                 "WarningDuration": 0,
@@ -607,9 +607,7 @@
                   ]
                 },
                 "PlayersToSpawns": true,
-                "PlayerWeapons": [
-                  "weapondatas/pistol.weapons"
-                ],
+                "PlayerWeapons": [],
                 "ResetPlayerResouces": false,
                 "RoundTime": 300,
                 "Time": false,

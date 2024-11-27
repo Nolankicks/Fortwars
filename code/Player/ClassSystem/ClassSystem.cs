@@ -11,4 +11,7 @@ public sealed class PlayerClass : GameResource
 	public int RunSpeed { get; set; } = 450;
 	public int Health { get; set; } = 100;
 	public bool Hidden { get; set; } = false;
+
+	[Property, ToggleGroup( "SecondaryEnabled" )] public bool SecondaryEnabled { get; set; } = false;
+	[Property, Group( "SecondaryEnabled" )] public WeaponData SecondaryWeaponData { get; set; }
 }

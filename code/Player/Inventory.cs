@@ -487,7 +487,8 @@ public sealed class Inventory : Component
 
 		AddItem( playerClass.WeaponData, true, 0 );
 
-		//AddItem( ResourceLibrary.GetAll<WeaponData>().FirstOrDefault( x => x.ResourceName == "pistol" ), true, 1 );
+		if ( playerClass.SecondaryEnabled )
+			AddItem( playerClass.SecondaryWeaponData, true, 1 );
 
 		ChangeItem( 0, Items );
 

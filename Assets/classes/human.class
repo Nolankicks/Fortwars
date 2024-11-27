@@ -6,6 +6,9 @@
   "RunSpeed": 400,
   "Health": 100,
   "Hidden": false,
+  "SecondaryEnabled": true,
+  "SecondaryWeaponData": "weapondatas/pistol.weapons",
   "__references": [],
+  "IsValid": true,
   "__version": 0
 }

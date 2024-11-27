@@ -172,7 +172,7 @@
                       "DstName": "_signal"
                     },
                     {
-                      "Id": 43,
+                      "Id": 45,
                       "Value": true,
                       "DstId": 4,
                       "DstName": "enable"
@@ -527,7 +527,7 @@
                       "DstName": "_signal"
                     },
                     {
-                      "Id": 21,
+                      "Id": 23,
                       "Value": false,
                       "DstId": 12,
                       "DstName": "enable"
@@ -548,7 +548,6 @@
                 },
                 "PlayersToSpawns": true,
                 "PlayerWeapons": [
-                  "weapondatas/pistol.weapons",
                   "weapondatas/gravgun.weapons"
                 ],
                 "ResetPlayerResouces": false,
@@ -690,7 +689,7 @@
                       "DstName": "_signal"
                     },
                     {
-                      "Id": 43,
+                      "Id": 45,
                       "Value": true,
                       "DstId": 4,
                       "DstName": "enable"
@@ -1040,7 +1039,7 @@
                       "DstName": "_signal"
                     },
                     {
-                      "Id": 21,
+                      "Id": 23,
                       "Value": false,
                       "DstId": 12,
                       "DstName": "enable"
@@ -1061,7 +1060,6 @@
                 },
                 "PlayersToSpawns": true,
                 "PlayerWeapons": [
-                  "weapondatas/pistol.weapons",
                   "weapondatas/gravgun.weapons"
                 ],
                 "ResetPlayerResouces": false,
@@ -1107,5 +1105,6 @@
   "DontBreakAsTemplate": false,
   "ResourceVersion": 1,
   "__references": [],
+  "IsValid": true,
   "__version": 1
 }

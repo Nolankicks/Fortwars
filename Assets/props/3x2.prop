@@ -15,7 +15,7 @@
   "SteelIcon": "textures/propicons/steel3x2.png",
   "__references": [
     "apetavern.fw3x2_steel#78631",
-    "apetavern.fw3x2_wood#78629",
+    "apetavern.fw3x2_wood#79041",
     "apetavern.fwmetal3x2#78634"
   ],
   "__version": 0
