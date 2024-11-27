@@ -6,7 +6,7 @@
   "Thumb": null,
   "Author": null,
   "PackageIndent": null,
-  "Hidden": false,
+  "Hidden": true,
   "Order": 0,
   "AvailableGamemodes": "CaptureTheFlag",
   "__references": [],
