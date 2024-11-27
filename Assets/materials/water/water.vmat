@@ -1,0 +1,9 @@
+// THIS FILE IS AUTO-GENERATED
+
+Layer0
+{
+	shader "shaders/coolwater.shader"
+
+	Fresnel "textures/water/water_fresnel (1).tga"
+	Normal "textures/water/water_normal (1).tga"
+}
