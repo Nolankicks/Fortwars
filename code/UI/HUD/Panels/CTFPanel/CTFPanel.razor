@@ -1,0 +1,74 @@
+@using Sandbox;
+@using Sandbox.UI;
+@using System.Threading.Tasks;
+@using System;
+@inherits Panel
+@attribute [StyleSheet]
+
+<root>
+	@{
+		var gs = GameSystem.Instance;
+
+		if (!gs.IsValid())
+			return;
+
+		var red = gs.RedFlagsCaptured;
+		var blue = gs.BlueFlagsCaptured;
+	}
+
+	@if (gs.CurrentGameModeType == GameModeType.CaptureTheFlag)
+	{
+		<div class="team-bar blue-bar">
+			<div class="bar" style="">
+				@for ( var i = 0; i < 3; i++ )
+				{
+					var active = i < blue;
+
+					var backgroundColor = active ? HUD.GetColor( Team.Blue ).Hex : Color.Transparent.Hex;
+
+					<div class="circle" style="background-color: @(backgroundColor);"></div>
+				}
+			</div>
+			<div class="time" style="border-radius: 0 4 4 0; background-color: @(HUD.GetColor( Team.Blue ).Hex);">@blue / 3</div>
+		</div>
+
+		<div class="team-bar red-bar">
+			<div class="time" style="border-radius: 4 0 0 4; background-color: @(HUD.GetColor( Team.Red ).Hex);">@red / 3</div>
+			<div class="bar">
+				@for ( var i = 0; i < 3; i++ )
+				{
+					var active = i < red;
+
+					var backgroundColor = active ? HUD.GetColor( Team.Red ).Hex : Color.Transparent.Hex;
+
+					<div class="circle" style="background-color: @(backgroundColor);"></div>
+				}
+			</div>
+
+		</div>
+
+		@if (!gs.FourTeams)
+			return;
+	}
+</root>
+
+@code
+{
+	protected override int BuildHash()
+	{
+		var gs = GameSystem.Instance;
+
+		if (!gs.IsValid())
+			return 0;
+
+		var red = gs.RedFlagsCaptured;
+		var blue = gs.BlueFlagsCaptured;
+
+		var hash = new HashCode();
+
+		hash.Add( red );
+		hash.Add( blue );
+
+		return hash.ToHashCode();
+	}
+}

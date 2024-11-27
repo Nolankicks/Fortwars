@@ -9,6 +9,8 @@ public sealed class Flag : Item
 
 	public bool SpawnNewFlag { get; set; } = true;
 
+	[Property, Sync] public SkinnedModelRenderer FlagRenderer { get; set; }
+
 	protected override void OnDisabled()
 	{
 		base.OnDisabled();
@@ -17,6 +19,14 @@ public sealed class Flag : Item
 			return;
 
 		DropFlag();
+	}
+
+	protected override void OnEnabled()
+	{
+		var team = Owner == Team.Blue ? Team.Red : Team.Blue;
+
+		if ( FlagRenderer.IsValid() )
+			FlagRenderer.Tint = HUD.GetColor( team ).Rgb;
 	}
 
 	protected override void OnUpdate()
@@ -64,7 +74,15 @@ public sealed class Flag : Item
 
 public sealed class DroppedFlag : Component, Component.ITriggerListener
 {
-	[Property] public Team TeamFlag { get; set; }
+	[Property, Sync] public Team TeamFlag { get; set; }
+
+	protected override void OnStart()
+	{
+		foreach ( var modelRenderer in GameObject.GetComponentsInChildren<ModelRenderer>() )
+		{
+			modelRenderer.Tint = HUD.GetColor( TeamFlag ).Rgb;
+		}
+	}
 
 	void ITriggerListener.OnTriggerEnter( Collider other )
 	{

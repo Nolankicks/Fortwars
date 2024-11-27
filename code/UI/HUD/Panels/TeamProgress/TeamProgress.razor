@@ -68,7 +68,7 @@
 		hash.Add(gs.YellowTimeHeld);
 		hash.Add(gs.CurrentGameModeType);
 
-		return HashCode.Combine( Time.Now );
+		return hash.ToHashCode();
 	}
 
 	public string FormatTime(float time)
