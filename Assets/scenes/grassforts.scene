@@ -158,7 +158,7 @@
         {
           "__type": "GameModeObject",
           "__guid": "125c9a9e-b2ca-4145-897f-daeb42cf5e3a",
-          "Type": "Classic, RollermineWars"
+          "Type": "Classic, RollermineWars, CaptureTheFlag"
         }
       ]
     },

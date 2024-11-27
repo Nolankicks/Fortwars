@@ -1277,6 +1277,141 @@
           "Title": "fw_abyss"
         }
       ]
+    },
+    {
+      "__guid": "52ce42b8-bab9-4757-86f3-d52124dc150a",
+      "Flags": 0,
+      "Name": "Box",
+      "Position": "0,56,980",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "Components": [
+        {
+          "__type": "Sandbox.MeshComponent",
+          "__guid": "a3c4835f-f48c-4abf-af3d-dc0cddcfd486",
+          "Collision": "Mesh",
+          "Color": "1,1,1,1",
+          "HideInGame": false,
+          "IsTrigger": false,
+          "Mesh": {
+            "Topology": "H4sIAAAAAAAACl2QCQ7CMAwEp4Qj3NBy/f\u002BlaMRGsohUVbFn1\u002Bt04ANs\u002BZ0VsM69AwfgBFyAKZ9MPXdgk3qLnsI\u002BUm/h/me9i2ZXfFvYOazafTJN0XRgKZmPyWtfXvYVL73PZRd52WdYPa7xtC8veys7u6t17/7t6Tn0ZtFjvIXZR895zjKjPWf4NiOrGt\u002BivpXZ3XnozaOndVn9vvVkkTjEAQAA",
+            "Positions": [
+              "-32,-4208,2340",
+              "32,-4208,2340",
+              "32,4208,2340",
+              "-32,4208,2340",
+              "-32,4208,-2340",
+              "32,4208,-2340",
+              "32,-4208,-2340",
+              "-32,-4208,-2340"
+            ],
+            "TextureCoord": [
+              "0.0625,8.21875",
+              "-0.0625,-4.570312",
+              "0.0625,-8.21875",
+              "-8.21875,-4.570312",
+              "-0.0625,-8.21875",
+              "-0.0625,-4.570312",
+              "-0.0625,8.21875",
+              "-8.21875,-4.570312",
+              "0.0625,-8.21875",
+              "0.0625,4.570312",
+              "0.0625,8.21875",
+              "8.21875,4.570312",
+              "-0.0625,8.21875",
+              "0.0625,4.570312",
+              "-0.0625,-8.21875",
+              "8.21875,4.570312",
+              "8.21875,-4.570312",
+              "-0.0625,4.570312",
+              "-8.21875,4.570312",
+              "0.0625,-4.570312",
+              "-8.21875,4.570312",
+              "0.0625,-4.570312",
+              "8.21875,-4.570312",
+              "-0.0625,4.570312"
+            ],
+            "TextureUAxis": [
+              "1,0,0",
+              "1,0,-0",
+              "0,-1,0",
+              "0,1,0",
+              "-1,0,0",
+              "1,-0,0"
+            ],
+            "TextureVAxis": [
+              "0,-1,0",
+              "0,-1,0",
+              "0,0,-1",
+              "-0,0,-1",
+              "0,0,-1",
+              "-0,0,-1"
+            ],
+            "TextureScale": [
+              "0.25,0.25",
+              "0.25,0.25",
+              "0.25,0.25",
+              "0.25,0.25",
+              "0.25,0.25",
+              "0.25,0.25"
+            ],
+            "TextureOffset": [
+              "0,224",
+              "0,224",
+              "224,1872",
+              "1824,1872",
+              "0,1872",
+              "0,1872"
+            ],
+            "MaterialIndex": [
+              2,
+              2,
+              2,
+              2,
+              2,
+              2
+            ],
+            "EdgeFlags": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "Materials": [
+              "materials/dev/reflectivity_30.vmat",
+              "materials/fortwars/barrier_blue.vmat",
+              "materials/fortwars/barrier_neutral.vmat"
+            ]
+          },
+          "SmoothingAngle": 40,
+          "Static": false,
+          "SurfaceVelocity": "0,0,0"
+        },
+        {
+          "__type": "WallComponent",
+          "__guid": "d03a5c30-9789-4164-85b0-fc10cc809861"
+        }
+      ]
     }
   ],
   "SceneProperties": {
