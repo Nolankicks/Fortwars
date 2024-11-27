@@ -185,15 +185,13 @@ public sealed class Propgun : Item
 			tr = Scene.Trace.Ray( player.Eye.WorldPosition, ObjectPos ).IgnoreGameObjectHierarchy( GameObject.Root ).Run();
 
 		if ( tr.Hit )
-		{
 			ObjectPos = tr.HitPosition;
 
-			if ( !UseBounds )
-			{
-				var rotatedBounds = model.Bounds.Rotate( PropRotation );
+		if ( !UseBounds )
+		{
+			var rotatedBounds = model.Bounds.Rotate( PropRotation );
 
-				ObjectPos = new Vector3( ObjectPos.x, ObjectPos.y, ObjectPos.z + rotatedBounds.Size.z / 2 ) + tr.Normal * 0.1f;
-			}
+			ObjectPos = new Vector3( ObjectPos.x, ObjectPos.y, ObjectPos.z + rotatedBounds.Size.z / 2 ) + tr.Normal * 0.1f;
 		}
 
 		//ObjectPos = ObjectPos.SnapToGrid( 16, true, true, !(tr.Hit && tr.Normal == Vector3.Up) );
