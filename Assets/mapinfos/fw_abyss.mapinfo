@@ -1,0 +1,15 @@
+{
+  "MapName": "fw_abyss",
+  "MapDescription": null,
+  "FourTeams": false,
+  "Scene": "scenes/fw_abyss.scene",
+  "Thumb": null,
+  "Author": null,
+  "PackageIndent": null,
+  "Hidden": false,
+  "Order": 0,
+  "AvailableGamemodes": "CaptureTheFlag",
+  "__references": [],
+  "IsValid": true,
+  "__version": 0
+}

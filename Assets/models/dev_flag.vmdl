@@ -17,7 +17,7 @@
 						import_scale = 1.0
 						align_origin_x_type = "None"
 						align_origin_y_type = "None"
-						align_origin_z_type = "None"
+						align_origin_z_type = "BoundsMin"
 						parent_bone = ""
 						import_filter = 
 						{
@@ -32,7 +32,7 @@
 				children = 
 				[
 					{
-						_class = "PhysicsMeshFile"
+						_class = "PhysicsHullFile"
 						name = "dev_flag"
 						parent_bone = ""
 						surface_prop = "default"
@@ -42,11 +42,13 @@
 						offset_angles = [ 0.0, 0.0, 0.0 ]
 						align_origin_x_type = "None"
 						align_origin_y_type = "None"
-						align_origin_z_type = "None"
+						align_origin_z_type = "BoundsMin"
 						filename = "models/dmx/mesh/dev_flag.dmx"
 						import_scale = 1.0
-						maxMeshVertices = 0
-						qemError = 0.0
+						faceMergeAngle = 10.0
+						maxHullVertices = 0
+						import_mode = "SingleHull"
+						optimization_algorithm = "QEM"
 						import_filter = 
 						{
 							exclude_by_default = false
