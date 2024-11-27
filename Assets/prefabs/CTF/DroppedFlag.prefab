@@ -3,7 +3,6 @@
     "__guid": "c0da0947-85bc-416c-975d-50a1621af49d",
     "Flags": 0,
     "Name": "droppedflag",
-    "Tags": "trigger",
     "Enabled": true,
     "NetworkMode": 1,
     "Components": [
