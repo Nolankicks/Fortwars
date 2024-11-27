@@ -95,6 +95,13 @@ PS
 		float fresnelFactor = dot( normalize( -i.vPositionWithOffsetWs.xyz ), normal );
 		fresnelFactor = Tex2DS( g_tFresnel, g_sSampler0, float2( fresnelFactor, fresnelFactor ) ).r;
 
-		return float4( lerp( refractionColor, reflectionColor, fresnelFactor ), 1.0 );
+		float3 finalColor = lerp( refractionColor, reflectionColor, fresnelFactor );
+
+		float3 blueTint = float3(0.45, 0.8, 1.0);
+		
+        finalColor *= blueTint;
+
+
+		return float4( finalColor, 1.0 );
 	}
 }
