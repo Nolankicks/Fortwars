@@ -1994,137 +1994,6 @@
       ]
     },
     {
-      "__guid": "7cfb580f-26e9-40cb-a350-70662354f169",
-      "Flags": 0,
-      "Name": "Water",
-      "Position": "0,0,-605.4902",
-      "Tags": "map",
-      "Enabled": true,
-      "Components": [
-        {
-          "__type": "Sandbox.MeshComponent",
-          "__guid": "99b231d9-31c4-49fa-8b50-d9a8d87bffed",
-          "Collision": "None",
-          "Color": "1,1,1,1",
-          "HideInGame": false,
-          "IsTrigger": false,
-          "Mesh": {
-            "Topology": "H4sIAAAAAAAACl2QCQ7CMAwEp4Qj3NBy/f\u002BlaMRGsohUVbFn1\u002Bt04ANs\u002BZ0VsM69AwfgBFyAKZ9MPXdgk3qLnsI\u002BUm/h/me9i2ZXfFvYOazafTJN0XRgKZmPyWtfXvYVL73PZRd52WdYPa7xtC8veys7u6t17/7t6Tn0ZtFjvIXZR895zjKjPWf4NiOrGt\u002BivpXZ3XnozaOndVn9vvVkkTjEAQAA",
-            "Positions": [
-              "-17960.17,-18865.21,64",
-              "17960.17,-18865.21,64",
-              "17960.17,18865.21,64",
-              "-17960.17,18865.21,64",
-              "-17960.17,18865.21,-6192.674",
-              "17960.17,18865.21,-6192.674",
-              "17960.17,-18865.21,-6192.674",
-              "-17960.17,-18865.21,-6192.674"
-            ],
-            "TextureCoord": [
-              "280.6276,294.7689",
-              "-280.6276,9",
-              "280.6276,-294.7689",
-              "-294.7689,9",
-              "-280.6276,-294.7689",
-              "-280.6276,9.000001",
-              "-280.6276,294.7689",
-              "-294.7689,9.000001",
-              "280.6276,-294.7689",
-              "280.6276,106.7606",
-              "280.6276,294.7689",
-              "294.7689,106.7606",
-              "-280.6276,294.7689",
-              "280.6276,106.7606",
-              "-280.6276,-294.7689",
-              "294.7689,106.7606",
-              "294.7689,9.000001",
-              "-280.6276,106.7606",
-              "-294.7689,106.7606",
-              "280.6276,9.000001",
-              "-294.7689,106.7606",
-              "280.6276,9",
-              "294.7689,9",
-              "-280.6276,106.7606"
-            ],
-            "TextureUAxis": [
-              "1,0,0",
-              "1,0,-0",
-              "0,-1,0",
-              "0,1,0",
-              "-1,0,0",
-              "1,-0,0"
-            ],
-            "TextureVAxis": [
-              "0,-1,0",
-              "0,-1,0",
-              "0,0,-1",
-              "-0,0,-1",
-              "0,0,-1",
-              "-0,0,-1"
-            ],
-            "TextureScale": [
-              "16,16",
-              "16,16",
-              "16,15.99999",
-              "16,15.99999",
-              "16,15.99999",
-              "16,15.99999"
-            ],
-            "TextureOffset": [
-              "0,0",
-              "0,0",
-              "0,2.15683",
-              "0,2.156841",
-              "0,2.156891",
-              "0,2.156845"
-            ],
-            "MaterialIndex": [
-              2,
-              2,
-              2,
-              2,
-              2,
-              2
-            ],
-            "EdgeFlags": [
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0
-            ],
-            "Materials": [
-              "materials/dev/reflectivity_30.vmat",
-              "materials/tools/toolstrigger.vmat",
-              "materials/lake_water.vmat"
-            ]
-          },
-          "SmoothingAngle": 40,
-          "Static": true,
-          "SurfaceVelocity": "0,0,0"
-        }
-      ]
-    },
-    {
       "__guid": "f10a2315-3787-4ddb-b728-4a12b52be558",
       "Flags": 0,
       "Name": "Fog",
@@ -2356,6 +2225,7 @@
           "Divisor": 20,
           "Health": 100,
           "Invincible": true,
+          "MaxHealth": 100,
           "Team": "None"
         },
         {
@@ -2495,8 +2365,8 @@
   "Title": "Cliffside",
   "Description": null,
   "__references": [
-    "igrium.rollermine-model#19481",
-    "nolankicks.lake_water#65330"
+    "igrium.rollermine-model#19481"
   ],
+  "IsValid": true,
   "__version": 2
 }
