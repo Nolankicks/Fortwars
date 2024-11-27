@@ -1,5 +1,5 @@
 {
-  "Title": "Classic",
+  "Title": "Rollermine Wars",
   "Description": "Classic source-style fortwars",
   "Prefab": {
     "_type": "gameobject",
@@ -8,5 +8,6 @@
   "Hidden": false,
   "Type": "Classic",
   "__references": [],
+  "IsValid": true,
   "__version": 0
 }
