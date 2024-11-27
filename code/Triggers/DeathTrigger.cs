@@ -7,7 +7,7 @@ public sealed class DeathTrigger : Component, Component.ITriggerListener
 
 	public void OnTriggerEnter( Collider other )
 	{
-        Log.Info( $"{other.GameObject} entered the trigger" );
+		Log.Info( $"{other.GameObject} entered the trigger" );
 
 		if ( other.GameObject.Components.TryGet<FWPlayerController>( out var player, FindMode.EverythingInSelfAndParent ) )
 		{
@@ -20,19 +20,19 @@ public sealed class DeathTrigger : Component, Component.ITriggerListener
 
 			var flagComponent = player.Inventory.Components.Get<Flag>( FindMode.EverythingInSelfAndDescendants );
 
-			if ( !flagComponent.IsValid() )
-				return;
+			if ( flagComponent.IsValid() )
+			{
+				flagComponent.SpawnNewFlag = false;
 
-			flagComponent.SpawnNewFlag = false;
+				player.Inventory.RemoveItem( flagComponent.GameObject, true );
 
-			player.Inventory.RemoveItem( flagComponent.GameObject, true );
-
-			RoundComponent.SpawnNewFlag( team );
+				RoundComponent.SpawnNewFlag( team );
+			}
 		}
 
 		if ( other.GameObject.Components.TryGet<HealthComponent>( out var health, FindMode.EverythingInSelfAndParent ) )
 		{
-			health.TakeDamage( null, health.Health );
+			health.TakeDamage( null, health.Health, spawnFlag: false );
 		}
 
 		if ( other.GameObject.Components.TryGet<RollerMine>( out var mine ) && TeleportBall )

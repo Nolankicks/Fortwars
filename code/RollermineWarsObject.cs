@@ -15,7 +15,7 @@ public sealed class RollermineWarsObject : HealthComponent
 			gamemode.EndGame( Team );
 	}
 
-	public override void TakeDamage( GameObject Attacker, int damage = 10, Vector3 HitPos = default, Vector3 normal = default )
+	public override void TakeDamage( GameObject Attacker, int damage = 10, Vector3 HitPos = default, Vector3 normal = default, bool spawnFlag = true )
 	{
 		if ( Attacker.Components.TryGet<TeamComponent>( out var team, FindMode.EverythingInSelfAndParent ) && team.Team != Team )
 		{

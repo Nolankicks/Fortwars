@@ -9,9 +9,9 @@ public record GlobalDamageEvent( int Amount, GameObject Attacker, GameObject Pla
 
 public partial class HealthComponent : Component
 {
-    [Property, Sync] public int Health { get; set; } = 100;
-    [Property] public int MaxHealth { get; set; } = 100;
-    [Property, Sync] public bool IsDead { get; set; } = false;
+	[Property, Sync] public int Health { get; set; } = 100;
+	[Property] public int MaxHealth { get; set; } = 100;
+	[Property, Sync] public bool IsDead { get; set; } = false;
 	[Property, Sync] public bool SpawnDamageIndicator { get; set; } = true;
 	[Property] public Func<GameObject, int, bool> CanTakeDamage { get; set; }
 	[Property] public Action<int, Vector3> OnDeathAction { get; set; }
@@ -24,34 +24,52 @@ public partial class HealthComponent : Component
 
 	public virtual void OnDeath( GameObject Attacker, Vector3 damagePos, Vector3 damageNormal ) { }
 
-    [Authority]
-    public virtual void TakeDamage( GameObject Attacker, int damage = 10, Vector3 HitPos = default, Vector3 normal = default )
-    {
-        if ( IsDead )
-            return;
+	[Authority]
+	public virtual void TakeDamage( GameObject Attacker, int damage = 10, Vector3 HitPos = default, Vector3 normal = default, bool spawnFlag = true )
+	{
+		if ( IsDead )
+			return;
 
 		if ( CanTakeDamage?.Invoke( Attacker, damage ) ?? false )
 			return;
 
 		LastHit = 0;
 
-        var health = Health - damage;
+		var health = Health - damage;
 
-        if ( health <= 0 )
-            Health = 0;
-        else
-            Health = health;
+		if ( health <= 0 )
+			Health = 0;
+		else
+			Health = health;
 
-        GameObject.Dispatch( new DamageEvent( damage, Attacker, GameObject, HitPos, normal ) );
+		GameObject.Dispatch( new DamageEvent( damage, Attacker, GameObject, HitPos, normal ) );
 
 		if ( Health <= 0 )
-        {
-            IsDead = true;
-            GameObject.Dispatch( new DeathEvent( Attacker, GameObject, HitPos, normal ) );
+		{
+			var gs = Scene?.GetAll<GameSystem>()?.FirstOrDefault();
+
+			if ( gs.CurrentGameModeType == GameModeType.CaptureTheFlag && spawnFlag )
+			{
+				var flag = Components.Get<Flag>( FindMode.EnabledInSelfAndChildren );
+
+				if ( flag.IsValid() )
+				{
+					flag.GameObject.Enabled = false;
+				}
+
+				var inv = Components.Get<Inventory>( FindMode.EnabledInSelfAndChildren );
+
+				//Since we are dropping the flag, we need to set our index to zero, since it was 2
+				if ( inv.IsValid() )
+					inv.Index = 0;
+			}
+
+			IsDead = true;
+			GameObject.Dispatch( new DeathEvent( Attacker, GameObject, HitPos, normal ) );
 			OnDeath( Attacker, HitPos, normal );
 			OnDeathAction?.Invoke( damage, HitPos );
-        }
-    }
+		}
+	}
 
 	protected override void OnUpdate()
 	{
@@ -94,9 +112,9 @@ public partial class HealthComponent : Component
 	}
 
 	[Broadcast]
-    public void ResetHealth()
-    {
-        Health = MaxHealth;
-        IsDead = false;
-    }
+	public void ResetHealth()
+	{
+		Health = MaxHealth;
+		IsDead = false;
+	}
 }

@@ -21,12 +21,13 @@ public sealed class Flag : Item
 		DropFlag();
 	}
 
-	protected override void OnEnabled()
+	protected override void OnStart()
 	{
-		var team = Owner == Team.Blue ? Team.Red : Team.Blue;
+		if ( IsProxy )
+			return;
 
 		if ( FlagRenderer.IsValid() )
-			FlagRenderer.Tint = HUD.GetColor( team ).Rgb;
+			FlagRenderer.Tint = HUD.GetColor( Owner ).Rgb;
 	}
 
 	protected override void OnUpdate()
@@ -176,7 +177,7 @@ public sealed class CTFTrigger : Component, Component.ITriggerListener
 			return;
 
 		if ( local.TeamComponent.Team == Team )
-			return;	
+			return;
 
 		if ( local.Inventory.IsValid() && local.Components.TryGet<Flag>( out var flagComponent, FindMode.EverythingInSelfAndDescendants ) )
 		{
