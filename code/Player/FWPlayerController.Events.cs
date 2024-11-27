@@ -72,6 +72,7 @@ partial class FWPlayerController
 
 			Inventory.DisableAll();
 			Inventory.CanScrollSwitch = false;
+			Inventory.CanPickUp = false;
 
 			var mode = Scene.GetAll<GameMode>()?.FirstOrDefault();
 
@@ -152,6 +153,7 @@ partial class FWPlayerController
 	{
 		Inventory.CanScrollSwitch = true;
 		Inventory.ChangeItem( Inventory.Index, Inventory?.Items );
+		Inventory.CanPickUp = true;
 
 		IsRespawning = false;
 		IsSpectating = false;

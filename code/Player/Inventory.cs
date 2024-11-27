@@ -13,6 +13,7 @@ public sealed class Inventory : Component
 	[Property, Sync, Category( "Current Item" )] public WeaponData CurrentWeaponData { get; set; }
 	[Sync] public PlayerClass SelectedClass { get; set; }
 	public bool CanScrollSwitch { get; set; } = true;
+	[Sync] public bool CanPickUp { get; set; } = true;
 
 	[Button, Category( "Buttons" )]
 	public void SwapItemsButton()
@@ -153,7 +154,7 @@ public sealed class Inventory : Component
 	[Authority]
 	public void AddItem( WeaponData item, bool insert = false, int spot = 0, bool enabled = false, bool changeIndex = false )
 	{
-		if ( IsProxy || item is null )
+		if ( IsProxy || item is null || !CanPickUp )
 			return;
 
 		if ( !item.WeaponPrefab.IsValid() )

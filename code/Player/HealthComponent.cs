@@ -48,20 +48,27 @@ public partial class HealthComponent : Component
 		{
 			var gs = Scene?.GetAll<GameSystem>()?.FirstOrDefault();
 
+			var local = FWPlayerController.Local;
+
+			if ( !local.IsValid() && local.Inventory.IsValid() )
+				return;
+
+			local.Inventory.CanPickUp = false;
+
 			if ( gs.CurrentGameModeType == GameModeType.CaptureTheFlag && spawnFlag )
 			{
-				var flag = Components.Get<Flag>( FindMode.EnabledInSelfAndChildren );
+				var flag = local.Inventory.Items.FirstOrDefault( x => x.Components.Get<Flag>().IsValid() )?.Components.Get<Flag>();
+
+				Log.Info( flag.IsValid() );
 
 				if ( flag.IsValid() )
 				{
 					flag.GameObject.Enabled = false;
 				}
 
-				var inv = Components.Get<Inventory>( FindMode.EnabledInSelfAndChildren );
-
 				//Since we are dropping the flag, we need to set our index to zero, since it was 2
-				if ( inv.IsValid() )
-					inv.Index = 0;
+				if ( local.Inventory.IsValid() )
+					local.Inventory.Index = 0;
 			}
 
 			IsDead = true;

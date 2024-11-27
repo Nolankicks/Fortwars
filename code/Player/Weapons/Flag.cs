@@ -106,6 +106,11 @@ public sealed class DroppedFlag : Component, Component.ITriggerListener
 			if ( teamComponent.IsValid() && teamComponent.Team == TeamFlag )
 				return;
 
+			Log.Info( inv.CanPickUp + " " + inv.Network.Owner.DisplayName );
+
+			if ( inv.IsValid() && !inv.CanPickUp )
+				return;
+				
 			inv.DisableAll();
 
 			if ( flag is not null )
