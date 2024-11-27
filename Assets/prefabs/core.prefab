@@ -35,8 +35,10 @@
             "__type": "Sandbox.Bloom",
             "__guid": "b0adb8ab-22de-4f19-ace5-3798378227d1",
             "BloomColor": {
+              "blend": "Linear",
               "color": [
                 {
+                  "t": 0,
                   "c": "1,1,1,1"
                 },
                 {
@@ -48,11 +50,18 @@
             },
             "BloomCurve": [
               {
-                "y": 0.5
+                "x": 0,
+                "y": 0.5,
+                "in": 0,
+                "out": 0,
+                "mode": "Mirrored"
               },
               {
                 "x": 1,
-                "y": 1
+                "y": 1,
+                "in": 0,
+                "out": 0,
+                "mode": "Mirrored"
               }
             ],
             "Mode": "Blur",
@@ -80,6 +89,7 @@
           {
             "__type": "Sandbox.AmbientOcclusion",
             "__guid": "e73987d8-5502-4230-85fe-0a8dec1b5a37",
+            "__enabled": false,
             "FalloffDistance": 1,
             "Intensity": 16,
             "Quality": "High",
@@ -113,6 +123,7 @@
           {
             "__type": "GameSystem",
             "__guid": "c2b69b60-c9c1-4a84-866a-a00f287f6fdc",
+            "BlueFlagsCaptured": 0,
             "BlueTimeHeld": 60,
             "BuildTime": 120,
             "ClassicModels": true,
@@ -126,18 +137,26 @@
             "LoadLobbySettings": true,
             "LobbySettings": {
               "ClassicModels": true,
-              "MaxProps": 50,
-              "MaxPlayers": 64
+              "WoodProps": 60,
+              "MetalProps": 30,
+              "SteelProps": 15,
+              "Privacy": "Public",
+              "MaxPlayers": 64,
+              "PlayersToStart": 1
             },
-            "MaxProps": 50,
+            "MapVotes": {},
+            "MetalProps": 30,
             "PlayerPrefab": {
               "_type": "gameobject",
               "prefab": "prefabs/player.prefab"
             },
             "PlayerToStart": 2,
+            "RedFlagsCaptured": 0,
             "RedTimeHeld": 60,
             "SpawnPlayer": true,
             "StartServer": true,
+            "SteelProps": 15,
+            "WoodProps": 60,
             "YellowTimeHeld": 60
           }
         ]
@@ -263,6 +282,6 @@
   "DontBreakAsTemplate": false,
   "ResourceVersion": 1,
   "__references": [],
-  "HasUnsavedChanges": false,
+  "IsValid": true,
   "__version": 1
 }
