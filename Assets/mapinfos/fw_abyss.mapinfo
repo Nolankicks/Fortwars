@@ -6,7 +6,7 @@
   "Thumb": "textures/abyss.vtex",
   "Author": "Ape Tavern",
   "PackageIndent": "apetavern.fw_abyss",
-  "Hidden": true,
+  "Hidden": false,
   "Order": 0,
   "AvailableGamemodes": "CaptureTheFlag",
   "__references": [],
