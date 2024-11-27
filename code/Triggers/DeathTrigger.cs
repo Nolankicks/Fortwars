@@ -7,8 +7,6 @@ public sealed class DeathTrigger : Component, Component.ITriggerListener
 
 	public void OnTriggerEnter( Collider other )
 	{
-		Log.Info( $"{other.GameObject} entered the trigger" );
-
 		if ( other.GameObject.Components.TryGet<FWPlayerController>( out var player, FindMode.EverythingInSelfAndParent ) )
 		{
 			var inv = player?.Inventory;

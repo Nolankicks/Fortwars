@@ -24,7 +24,7 @@
 				Options = ResourceLibrary.GetAll<GameModeResource>().Select( x => new Option() { Title = x.Title, Value = x } ).ToList();
 			
 			DropDown.Options = Options;
-			DropDown.Selected = Options.FirstOrDefault( x => x.Title == GameModeType.Classic.ToString() );
+			DropDown.Selected = Options.FirstOrDefault( x => x.Title == "Capture the Flag" );
 		}
 
 		GameSystem.SetGameMode( (GameModeResource)DropDown.Selected.Value );
