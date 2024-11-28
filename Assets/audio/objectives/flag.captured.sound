@@ -1,11 +1,11 @@
 {
   "UI": true,
-  "Volume": "2",
-  "Pitch": "0.9 1.1",
+  "Volume": "1",
+  "Pitch": "1",
   "Decibels": 70,
   "SelectionMode": "Random",
   "Sounds": [
-    "audio/bullet_flesh.vsnd"
+    "audio/objectives/flag_captured.vsnd"
   ],
   "Occlusion": true,
   "AirAbsorption": true,

@@ -1688,6 +1688,7 @@
             "ReflectionOverride": false,
             "Reflections": false,
             "Repeat": false,
+            "SoundEvent": "audio/objectives/flag.captured.sound",
             "SoundOverride": false,
             "StopOnNew": false,
             "TargetMixer": {

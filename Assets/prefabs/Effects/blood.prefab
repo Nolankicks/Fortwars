@@ -492,7 +492,7 @@
                   "Type": "CurveRange",
                   "Evaluation": "Life",
                   "CurveA": {
-                    "rangey": "0,30",
+                    "rangey": "0,50",
                     "frames": [
                       {
                         "x": 0,
@@ -518,7 +518,7 @@
                     ]
                   },
                   "CurveB": {
-                    "rangey": "0,30",
+                    "rangey": "0,50",
                     "frames": [
                       {
                         "x": 0,
@@ -741,10 +741,10 @@
                   "AfterUILayer": false
                 },
                 "RotationOffset": 0,
-                "Scale": 1.01,
+                "Scale": 2,
                 "Shadows": false,
                 "SortMode": "Unsorted",
-                "Texture": "materials/particle/smoke1/smoke1.vtex"
+                "Texture": "textures/particle/largesmoke.vtex"
               },
               {
                 "__type": "Sandbox.ParticleConeEmitter",
