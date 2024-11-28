@@ -1,0 +1,24 @@
+{
+  "publish": {
+    "Enabled": false,
+    "ProjectConfig": {
+      "Title": "Devtest",
+      "Type": "map",
+      "Org": "local",
+      "Ident": "devtest",
+      "Schema": 0,
+      "IncludeSourceFiles": false,
+      "Resources": null,
+      "PackageReferences": [],
+      "EditorReferences": [
+        "apetavern.dev_measuregeneric_blue#74238",
+        "apetavern.dev_measuregeneric_red#74239"
+      ],
+      "IsWhitelistDisabled": false,
+      "Metadata": {
+        "SingleAssetSource": "maps/dev/devtest.vmap",
+        "ParentPackage": "nolankicks.fortwars"
+      }
+    }
+  }
+}
