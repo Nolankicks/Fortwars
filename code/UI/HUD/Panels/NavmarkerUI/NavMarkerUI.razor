@@ -5,16 +5,17 @@
 
 <root>
     @foreach(var marker in GetAllNavMarkers()) {
-        <div class="marker"></div>
+        var pos = Scene.Camera.PointToScreenNormal(marker.WorldPosition, out bool behind);
+        if (behind) continue;
+        pos *= 100.0f;
+
+        <div class="marker" style="left: @(pos.x)%; top: @(pos.y)%;"></div>
     }
 	
 </root>
 
 @code
 {
-
-	[Property, TextArea] public string MyStringValue { get; set; } = "Hello World!";
-
     public List<NavMarker> GetAllNavMarkers() {
         return Scene.GetAllComponents<NavMarker>().ToList();
     }
@@ -22,5 +23,5 @@
 	/// <summary>
 	/// the hash determines if the system should be rebuilt. If it changes, it will be rebuilt
 	/// </summary>
-	protected override int BuildHash() => System.HashCode.Combine( MyStringValue );
+	protected override int BuildHash() => System.HashCode.Combine( GetAllNavMarkers() );
 }
