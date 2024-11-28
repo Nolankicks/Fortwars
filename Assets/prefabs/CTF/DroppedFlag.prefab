@@ -45,7 +45,26 @@
         "SurfaceVelocity": "0,0,0"
       }
     ],
-    "Children": [],
+    "Children": [
+      {
+        "__guid": "bed82358-1755-437e-867d-0896a5d0524a",
+        "Flags": 0,
+        "Name": "NavMarker",
+        "Position": "0,0,64",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "NavMarker",
+            "__guid": "378ef75d-1759-493c-9640-9d38cc9f4bc0",
+            "DrawDistance": false,
+            "DrawOffScreen": false,
+            "Scale": 1,
+            "Text": "FLAG",
+            "Tint": "1,0,0,1"
+          }
+        ]
+      }
+    ],
     "__variables": [
       {
         "Id": "Team Flag",

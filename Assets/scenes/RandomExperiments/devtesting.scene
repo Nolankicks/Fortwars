@@ -69,6 +69,17 @@
           "Tint": "1,1,1,1"
         }
       ]
+    },
+    {
+      "__guid": "94679a35-1587-49ef-80fe-45b99ad44762",
+      "Flags": 0,
+      "Name": "FlagCaptureEffect",
+      "Position": "288,-544.0001,24",
+      "Rotation": "0,-0.7071067,0,0.7071068",
+      "Tags": "particles",
+      "Enabled": true,
+      "__Prefab": "prefabs/effects/flagcapture.prefab",
+      "__PrefabVariables": {}
     }
   ],
   "SceneProperties": {
