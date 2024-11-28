@@ -188,8 +188,6 @@ public sealed class CTFTrigger : Component, Component.ITriggerListener
 
 			local.Inventory.RemoveItem( flagComponent.GameObject );
 
-			local.TeamComponent?.ResetToSpawnPoint();
-
 			gs.AddFlagCapture( local.TeamComponent.Team );
 
 			PopupHolder.BroadcastPopup( $"{local.TeamComponent.Team} captured the flag!", 5 );
