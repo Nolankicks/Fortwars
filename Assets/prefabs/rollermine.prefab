@@ -184,7 +184,7 @@
             "DrawDistance": false,
             "DrawOffScreen": true,
             "Scale": 1,
-            "Text": "BALL",
+            "Text": "OBJ",
             "Tint": "1,1,1,0.65"
           }
         ]

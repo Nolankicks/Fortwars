@@ -62,9 +62,10 @@
         {
           "__type": "NavMarker",
           "__guid": "9c37b7f2-eb1d-45a8-94fc-ba53971e177f",
-          "DrawDistance": false,
+          "DrawDistance": true,
           "DrawOffScreen": false,
           "Scale": 1,
+          "Text": "dist",
           "Tint": "1,1,1,1"
         }
       ]
