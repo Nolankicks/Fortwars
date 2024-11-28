@@ -247,19 +247,27 @@
                 "__guid": "654d225e-d44a-4c09-bfa2-67244aa0b124"
               }
             ]
+          }
+        ]
+      },
+      {
+        "__guid": "c25be28d-0623-4d6d-9d2d-b1a534e65eef",
+        "Flags": 0,
+        "Name": "Navmarkers",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.ScreenPanel",
+            "__guid": "148b37d5-a58d-438a-a259-be5a51efa876",
+            "AutoScreenScale": true,
+            "Opacity": 1,
+            "Scale": 1,
+            "ScaleStrategy": "ConsistentHeight",
+            "ZIndex": 99
           },
           {
-            "__guid": "3cf07500-c32a-4b8f-95d3-62bba6cdeff2",
-            "Flags": 0,
-            "Name": "NavMarkers",
-            "Enabled": true,
-            "Components": [
-              {
-                "__type": "Sandbox.NavMarkerUI",
-                "__guid": "69e7096f-efd8-4320-a395-018378130d9a",
-                "MyStringValue": "Hello World!"
-              }
-            ]
+            "__type": "Sandbox.NavMarkerUI",
+            "__guid": "0135eb19-a9f0-479e-8b33-c9fc4b9a1753"
           }
         ]
       }
