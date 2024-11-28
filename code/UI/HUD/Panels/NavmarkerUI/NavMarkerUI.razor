@@ -10,12 +10,14 @@
         pos *= 100.0f;
 
         <div class="marker" style="left: @(pos.x)%; top: @(pos.y)%;">
-            <div class="text">@marker.Text</div>
-            @if (marker.DrawDistance)
-            {
-                <div class="distance">@((int)marker.GetDistance())m</div>
-            }
-            <div class="icon" style="background-image-tint: @(marker.Tint.Hex)" />
+            <div class="container">
+                <div class="text">@marker.Text</div>
+                @if (marker.DrawDistance)
+                {
+                    <div class="distance">@((int)marker.GetDistance())m</div>
+                }
+                <div class="icon" style="background-image-tint: @(marker.Tint.Hex)" />
+            </div>
         </div>
     }
 

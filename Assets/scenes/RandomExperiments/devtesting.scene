@@ -44,7 +44,8 @@
         {
           "__type": "NavMarker",
           "__guid": "8756aa13-17f1-488e-99c6-f921e67f5e0c",
-          "Text": "BLUE FLAG",
+          "DrawDistance": false,
+          "Text": "HHI",
           "Tint": "0.46512,0.49186,1,1"
         }
       ]
@@ -59,6 +60,7 @@
         {
           "__type": "NavMarker",
           "__guid": "9c37b7f2-eb1d-45a8-94fc-ba53971e177f",
+          "DrawDistance": true,
           "Tint": "1,1,1,1"
         }
       ]

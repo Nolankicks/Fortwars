@@ -165,7 +165,23 @@
         "Type": "Classic, RollermineWars, Dodgeball"
       }
     ],
-    "Children": [],
+    "Children": [
+      {
+        "__guid": "a3b3eb2c-c60e-4696-a25f-86c31e1621a5",
+        "Flags": 0,
+        "Name": "Navmarker",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "NavMarker",
+            "__guid": "be909ae1-5503-4f38-9a33-ba758f82d670",
+            "DrawDistance": false,
+            "Text": "BALL",
+            "Tint": "1,1,1,1"
+          }
+        ]
+      }
+    ],
     "__variables": [],
     "__properties": {
       "FixedUpdateFrequency": 50,
