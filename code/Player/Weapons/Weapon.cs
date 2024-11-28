@@ -159,7 +159,14 @@ public class Weapon : Item, IGameEventHandler<OnReloadEvent>
 	[Property] public string ReloadAnimName { get; set; } = "b_reload";
 
 	[Property, FeatureEnabled( "Recoil" )] public bool UsesRecoil { get; set; }
-	[Property, Feature( "Recoil" )] public Vector3 RecoilValues { get; set; }
+	[Property, Feature( "Recoil" )] public Vector3 MinRecoilValues { get; set; }
+	[Property, Feature( "Recoil" )] public Vector3 MaxRecoilValues { get; set; }
+
+	[Property] public float PunchDecreaseRate { get; set; } = 0.05f;
+	[Property] public float PunchFireIncrease { get; set; } = 0.1f;
+
+	// Between 0-1, increases every fire and decreases over time
+	float FirePunch { get; set; } = 0.0f;
 
 	public virtual bool CanFire => true;
 
@@ -192,6 +199,10 @@ public class Weapon : Item, IGameEventHandler<OnReloadEvent>
 	{
 		base.OnUpdate();
 
+		FirePunch = FirePunch.LerpTo( 0.0f, PunchDecreaseRate * Time.Delta );
+		FirePunch = FirePunch.Clamp( 0, 1 );
+		Log.Info( FirePunch );
+
 		if ( IsProxy || equipTime < 0.2f )
 			return;
 
@@ -217,7 +228,9 @@ public class Weapon : Item, IGameEventHandler<OnReloadEvent>
 				local.BroadcastAttack();
 			}
 
-			CameraController.Instance.RecoilFire( RecoilValues );
+			CameraController.Instance.RecoilFire( GetRecoilValue() );
+			FirePunch += PunchFireIncrease;
+			FirePunch = FirePunch.Clamp( 0, 1 );
 
 			BroadcastShootEffects( Traces );
 			CreateMuzzleFlash();
@@ -260,7 +273,7 @@ public class Weapon : Item, IGameEventHandler<OnReloadEvent>
 
 		var ray = cam.ScreenNormalToRay( 0.5f );
 
-		ray.Forward += Vector3.Random * (Spread / 2);
+		ray.Forward += Vector3.Random * (Spread * FirePunch);
 
 		var tr = Scene.Trace.Ray( ray, Range )
 			.IgnoreGameObjectHierarchy( local.GameObject )
@@ -480,6 +493,11 @@ public class Weapon : Item, IGameEventHandler<OnReloadEvent>
 
 		var rb = casing.Components.Get<Rigidbody>();
 		rb.ApplyForce( EjectionPoint.WorldRotation.Up * 10.0f + EjectionPoint.WorldRotation.Forward * 500.0f + local.shrimpleCharacterController.Velocity );
+	}
+
+	Vector3 GetRecoilValue()
+	{
+		return Vector3.Lerp( MinRecoilValues, MaxRecoilValues, FirePunch );
 	}
 
 	public async Task ShotgunReload()
