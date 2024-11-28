@@ -123,5 +123,18 @@
 	/// <summary>
 	/// the hash determines if the system should be rebuilt. If it changes, it will be rebuilt
 	/// </summary>
-	protected override int BuildHash() => System.HashCode.Combine( Input.EscapePressed, Visible );
+	protected override int BuildHash()
+	{
+		var hash = new System.HashCode();
+
+		hash.Add( Input.EscapePressed );
+		hash.Add( Visible );
+
+		var local = FWPlayerController.Local;
+
+		if ( local.IsValid() && local.TeamComponent.IsValid() )
+			hash.Add( local.TeamComponent.Team );
+
+		return hash.ToHashCode();
+	}
 }
