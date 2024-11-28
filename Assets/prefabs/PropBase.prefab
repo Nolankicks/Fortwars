@@ -13,6 +13,7 @@
         "Divisor": 20,
         "Health": 100,
         "Invincible": false,
+        "MaxHealth": 100,
         "Team": "Red"
       },
       {
@@ -43,7 +44,14 @@
         "AngularDamping": 0,
         "Gravity": true,
         "LinearDamping": 0,
-        "Locking": {},
+        "Locking": {
+          "X": false,
+          "Y": false,
+          "Z": false,
+          "Pitch": false,
+          "Yaw": false,
+          "Roll": false
+        },
         "MassCenterOverride": "0,0,0",
         "MassOverride": 0,
         "MotionEnabled": true,
@@ -57,7 +65,16 @@
         "__guid": "e189e66b-50a3-470e-a7a6-4d58aaa77488",
         "Flags": 0,
         "Name": "GameObject",
-        "Enabled": true
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "NavMarker",
+            "__guid": "6ffd4dcf-7a1a-46a8-9a36-6891ed0f8288",
+            "DrawDistance": true,
+            "Text": "TEST",
+            "Tint": "0.87442,0.24651,1,1"
+          }
+        ]
       }
     ],
     "__variables": [],
@@ -91,5 +108,6 @@
   "DontBreakAsTemplate": false,
   "ResourceVersion": 1,
   "__references": [],
+  "IsValid": true,
   "__version": 1
 }

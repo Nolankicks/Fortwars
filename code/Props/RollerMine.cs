@@ -1,12 +1,11 @@
-using Sandbox;
-using Sandbox.Events;
-
 public sealed class RollerMine : Component
 {
 	[Sync] public Transform StartingTransform { get; set; }
 	[Sync] public bool IsGrabbed { get; set; } = false;
 	[Property, Sync] public SkinnedModelRenderer Renderer { get; set; }
 	[Property, Sync] public Gravgun Grabber { get; set; }
+
+	[Property] NavMarker Marker { get; set; }
 
 	protected override void OnStart()
 	{
@@ -49,5 +48,30 @@ public sealed class RollerMine : Component
 	{
 		IsGrabbed = isGrabbed;
 		Grabber = gravgun;
+	}
+
+	protected override void OnFixedUpdate()
+	{
+		if ( Grabber.IsValid() )
+		{
+			Marker.Enabled = Grabber.IsProxy;
+		}
+		else
+			Marker.Enabled = true;
+
+		// Handle color
+		if ( Grabber.IsValid() )
+		{
+			var team = Scene.GetAllComponents<FWPlayerController>().Where( x => x.Network.Owner == Grabber.Network.Owner ).First().Components.Get<TeamComponent>();
+
+			if ( team.IsValid() )
+			{
+				Marker.Tint = HUD.GetColor( team.Team ).WithAlpha( 0.8f );
+			}
+			else
+				Marker.Tint = Color.White.WithAlpha( 0.8f );
+		}
+		else
+			Marker.Tint = Color.White.WithAlpha( 0.8f );
 	}
 }

@@ -1,6 +1,6 @@
 public sealed class NavMarker : Component
 {
-	[Property] public Color Tint { get; set; } = Color.White.WithAlpha( 1.0f );
+	[Property] public Color Tint { get; set; }
 	[Property] public string Text { get; set; }
 
 	[Property] public bool DrawDistance { get; set; } = false;

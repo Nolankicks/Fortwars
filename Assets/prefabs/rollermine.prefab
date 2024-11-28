@@ -152,6 +152,12 @@
       {
         "__type": "RollerMine",
         "__guid": "95219195-d35e-449d-88c1-a0442c8298dd",
+        "Marker": {
+          "_type": "component",
+          "component_id": "be909ae1-5503-4f38-9a33-ba758f82d670",
+          "go": "a3b3eb2c-c60e-4696-a25f-86c31e1621a5",
+          "component_type": "NavMarker"
+        },
         "Renderer": {
           "_type": "component",
           "component_id": "f8b32643-7800-458e-add2-00f12fea5a3c",
@@ -177,7 +183,7 @@
             "__guid": "be909ae1-5503-4f38-9a33-ba758f82d670",
             "DrawDistance": false,
             "Text": "BALL",
-            "Tint": "1,1,1,1"
+            "Tint": "1,1,1,0.65"
           }
         ]
       }
