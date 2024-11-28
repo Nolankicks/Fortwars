@@ -9,7 +9,9 @@
         if (behind) continue;
         pos *= 100.0f;
 
-        <div class="marker" style="left: @(pos.x)%; top: @(pos.y)%;"></div>
+        <div class="marker" style="left: @(pos.x)%; top: @(pos.y)%;">
+            <div class="icon" style="background-image-tint: @(marker.Tint.Hex)" />
+        </div>
     }
 	
 </root>
