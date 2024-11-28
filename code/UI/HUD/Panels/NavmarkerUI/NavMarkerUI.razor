@@ -15,13 +15,15 @@
             <div class="icon" style="background-image-tint: @(marker.Tint.Hex)" />
         </div>
     }
-	
+
 </root>
 
 @code
 {
     public List<NavMarker> GetAllNavMarkers() {
-        return Scene.GetAllComponents<NavMarker>().ToList();
+        var list = Scene.GetAllComponents<NavMarker>();
+        
+        return list.OrderBy(x => x.GetDistance()).Reverse().ToList();
     }
 
 	/// <summary>
