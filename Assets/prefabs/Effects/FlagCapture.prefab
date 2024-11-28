@@ -293,7 +293,7 @@
               "mode": "Mirrored"
             }
           ],
-          "Constants": "10,0,0,0"
+          "Constants": "5,0,0,0"
         },
         "MaxParticles": 1000,
         "OrbitalForce": {
@@ -881,6 +881,7 @@
               "Constants": "1,0,0,0"
             },
             "MaxParticles": 1000,
+            "OnParticleCreated": null,
             "OrbitalForce": {
               "X": {
                 "Type": "Constant",
@@ -1227,6 +1228,79 @@
               },
               "Constants": "0,0,0,0"
             }
+          },
+          {
+            "__type": "Sandbox.ParticleLightRenderer",
+            "__guid": "b75e9d25-5bcc-4530-bbfb-2f2ab9102444",
+            "Attenuation": {
+              "Type": "Constant",
+              "Evaluation": "Life",
+              "CurveA": {
+                "rangex": "0,0",
+                "rangey": "0,0"
+              },
+              "CurveB": {
+                "rangex": "0,0",
+                "rangey": "0,0"
+              },
+              "Constants": "1,0,0,0"
+            },
+            "Brightness": {
+              "Type": "Constant",
+              "Evaluation": "Life",
+              "CurveA": {
+                "rangex": "0,0",
+                "rangey": "0,0"
+              },
+              "CurveB": {
+                "rangex": "0,0",
+                "rangey": "0,0"
+              },
+              "Constants": "46,0,0,0"
+            },
+            "CastShadows": false,
+            "LightColor": {
+              "Type": "Constant",
+              "Evaluation": "Life",
+              "GradientA": {
+                "blend": "Linear",
+                "color": [
+                  {
+                    "t": 0.5,
+                    "c": "1,1,1,1"
+                  }
+                ],
+                "alpha": []
+              },
+              "GradientB": {
+                "blend": "Linear",
+                "color": [
+                  {
+                    "t": 0.5,
+                    "c": "1,1,1,1"
+                  }
+                ],
+                "alpha": []
+              },
+              "ConstantA": "1,0.20465,0.20465,1",
+              "ConstantB": "1,1,1,1"
+            },
+            "MaximumLights": 8,
+            "Ratio": 1,
+            "Scale": {
+              "Type": "Constant",
+              "Evaluation": "Life",
+              "CurveA": {
+                "rangex": "0,0",
+                "rangey": "0,0"
+              },
+              "CurveB": {
+                "rangex": "0,0",
+                "rangey": "0,0"
+              },
+              "Constants": "128,0,0,0"
+            },
+            "UseParticleColor": true
           }
         ]
       }
