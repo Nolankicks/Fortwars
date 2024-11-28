@@ -20,15 +20,36 @@ NavMarkerUI {
         width: 50px;
         height: 50px;
         transform: translate(-50%, -50%);
-
+        display: flex;
+        font-family: 'Chakra Petch';
+        color: white;
+        font-weight: bolder;
+        font-size: 32px;
+        text-stroke: 2px black;
 
         .icon {
-            left:0;
-            right:0;
+            left: 0;
+            right: 0;
             width: 100%;
             height: 100%;
             background-image: url('textures/ui/navmarker.png');
             background-size: 100% 100%;
+        }
+
+        .text {
+            position: absolute;
+            left: 0%;
+            top: -25%;
+            z-index: 4;
+            text-align: center;
+        }
+
+        .distance{
+            position: absolute;
+            left: 0%;
+            bottom: -25%;
+            z-index: 4;
+            text-align: center;
         }
     }
 }
