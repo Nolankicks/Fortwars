@@ -1,3 +1,4 @@
+using Sandbox.Citizen;
 using Sandbox.Events;
 using System;
 
@@ -26,14 +27,15 @@ public partial class HealthComponent : Component
 	[Property, FeatureEnabled( "Animation" )] public bool HitAnimation { get; set; } = false;
 
 	[Property, Feature( "Animation" )] public SkinnedModelRenderer Target { get; set; }
-	[Property, Feature( "Animation" )] public string HitAnimationName { get; set; } = "b_hit";
+	[Property, Feature( "Animation" )] public CitizenAnimationHelper AnimHelper { get; set; }
+	[Property, Feature( "Animation" )] public string HitAnimationName { get; set; } = "hit";
 
 	public TimeSince LastHit { get; set; }
 
 	public virtual void OnDeath( GameObject Attacker, Vector3 damagePos, Vector3 damageNormal ) { }
 
 	[Authority]
-	public virtual void TakeDamage( GameObject Attacker, int damage = 10, Vector3 HitPos = default, Vector3 normal = default, bool spawnFlag = true )
+	public virtual void TakeDamage( GameObject Attacker, int damage = 10, Vector3 HitPos = default, Vector3 normal = default, bool spawnFlag = true, int boneId = 20 )
 	{
 		if ( IsDead )
 			return;
@@ -52,7 +54,7 @@ public partial class HealthComponent : Component
 
 		GameObject.Dispatch( new DamageEvent( damage, Attacker, GameObject, HitPos, normal ) );
 
-		HitEffects( HitPos, normal );
+		HitEffects( HitPos, normal, boneId );
 
 		if ( Health <= 0 )
 		{
@@ -128,13 +130,26 @@ public partial class HealthComponent : Component
 	}
 
 	[Broadcast]
-	public void HitEffects( Vector3 pos, Vector3 rot )
+	public void HitEffects( Vector3 Pos, Vector3 Normal, int boneId )
 	{
-		if ( BloodEnabled && (!PlayOnLocal && !IsProxy) )
-			BloodEffects( pos, rot );
+		if ( BloodEnabled )
+			BloodEffects( Pos, Normal );
 
 		if ( HitAnimation )
-			Target.Set( HitAnimationName, true );
+		{
+			var bone = Target.GetBoneObject( boneId );
+			Vector3 force = default;
+			float damageScale = 1.0f;
+
+			var localToBone = bone.LocalPosition;
+			if ( localToBone == Vector3.Zero ) localToBone = Vector3.One;
+
+			Target.Set( "hit", true );
+			Target.Set( "hit_bone", boneId );
+			Target.Set( "hit_offset", localToBone );
+			Target.Set( "hit_direction", force.Normal );
+			Target.Set( "hit_strength", (force.Length / 1000.0f) * damageScale );
+		}
 	}
 
 	public void BloodEffects( Vector3 pos, Vector3 rot )

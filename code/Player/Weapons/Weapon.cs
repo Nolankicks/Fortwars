@@ -293,7 +293,7 @@ public class Weapon : Item, IGameEventHandler<OnReloadEvent>
 				IsHeadShot = true;
 			}
 
-			health.TakeDamage( local.GameObject, dmg, tr.EndPosition, tr.Normal );
+			health.TakeDamage( local.GameObject, dmg, tr.EndPosition, tr.Normal, boneId: tr.Hitbox?.Bone?.Index ?? 0 );
 
 			SpawnParticleEffect( Cloud.ParticleSystem( "bolt.impactflesh" ), tr.EndPosition );
 
