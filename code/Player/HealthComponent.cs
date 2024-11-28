@@ -46,11 +46,15 @@ public partial class HealthComponent : Component
 
 		if ( Health <= 0 )
 		{
-			var gs = Scene?.GetAll<GameSystem>()?.FirstOrDefault();
+			IsDead = true;
+			GameObject.Dispatch( new DeathEvent( Attacker, GameObject, HitPos, normal ) );
+			OnDeath( Attacker, HitPos, normal );
+			OnDeathAction?.Invoke( damage, HitPos );
 
 			var local = FWPlayerController.Local;
+			var gs = Scene?.GetAll<GameSystem>()?.FirstOrDefault();
 
-			if ( !local.IsValid() && local.Inventory.IsValid() )
+			if ( !local.IsValid() || (!local?.Inventory.IsValid() ?? true) )
 				return;
 
 			local.Inventory.CanPickUp = false;
@@ -70,11 +74,6 @@ public partial class HealthComponent : Component
 				if ( local.Inventory.IsValid() )
 					local.Inventory.Index = 0;
 			}
-
-			IsDead = true;
-			GameObject.Dispatch( new DeathEvent( Attacker, GameObject, HitPos, normal ) );
-			OnDeath( Attacker, HitPos, normal );
-			OnDeathAction?.Invoke( damage, HitPos );
 		}
 	}
 
