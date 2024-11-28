@@ -11,7 +11,7 @@
         "OnEnabledAction": {
           "__version": 8,
           "__guid": "1abee19c-3476-4651-b2d6-21c810fe80d0",
-          "__changeId": 93,
+          "__changeId": 152,
           "UserData": {
             "Title": "On Enabled Action",
             "ReferencedComponentTypes": []
@@ -28,13 +28,6 @@
               "Type": "input"
             },
             {
-              "Id": 2,
-              "Type": "scene.ref",
-              "UserData": {
-                "Position": "36,60"
-              }
-            },
-            {
               "Id": 3,
               "Type": "property",
               "Properties": {
@@ -42,19 +35,7 @@
                 "_type": "Sandbox.DecalRenderer"
               },
               "UserData": {
-                "Position": "720,12"
-              }
-            },
-            {
-              "Id": 5,
-              "Type": "resource.ref",
-              "Properties": {
-                "package": "jase.blooddrip01",
-                "T": "Sandbox.Material",
-                "value": "blood_drip_01_decal.vmat"
-              },
-              "UserData": {
-                "Position": "-144,192"
+                "Position": "696,-96"
               }
             },
             {
@@ -194,13 +175,6 @@
               }
             },
             {
-              "Id": 25,
-              "Type": "log.info",
-              "UserData": {
-                "Position": "960,96"
-              }
-            },
-            {
               "Id": 30,
               "Type": "var",
               "Properties": {
@@ -208,6 +182,89 @@
               },
               "UserData": {
                 "Position": "276,48"
+              }
+            },
+            {
+              "Id": 32,
+              "Type": "scene.ref",
+              "UserData": {
+                "Position": "-60,84"
+              }
+            },
+            {
+              "Id": 34,
+              "Type": "scene.ref",
+              "UserData": {
+                "Position": "732,84"
+              }
+            },
+            {
+              "Id": 35,
+              "Type": "property",
+              "Properties": {
+                "_name": "LocalRotation",
+                "_type": "Sandbox.GameObject"
+              },
+              "UserData": {
+                "Position": "1020,132"
+              }
+            },
+            {
+              "Id": 36,
+              "Type": "angles.new",
+              "UserData": {
+                "Position": "888,240"
+              }
+            },
+            {
+              "Id": 41,
+              "Type": "random.float",
+              "UserData": {
+                "Position": "768,372"
+              }
+            },
+            {
+              "Id": 51,
+              "Type": "call",
+              "Properties": {
+                "_isStatic": false,
+                "_name": "ToRotation",
+                "_type": "Angles"
+              },
+              "UserData": {
+                "Position": "1092,372"
+              }
+            },
+            {
+              "Id": 52,
+              "Type": "vec3.new",
+              "UserData": {
+                "Position": "996,444"
+              }
+            },
+            {
+              "Id": 58,
+              "Type": "property",
+              "Properties": {
+                "_name": "Size",
+                "_type": "Sandbox.DecalRenderer"
+              },
+              "UserData": {
+                "Position": "1524,168"
+              }
+            },
+            {
+              "Id": 59,
+              "Type": "random.float",
+              "UserData": {
+                "Position": "1248,552"
+              }
+            },
+            {
+              "Id": 60,
+              "Type": "op.multiply",
+              "UserData": {
+                "Position": "1404,408"
               }
             }
           ],
@@ -219,7 +276,7 @@
               "DstName": "_signal"
             },
             {
-              "SrcId": 2,
+              "SrcId": 32,
               "SrcName": "_result",
               "DstId": 3,
               "DstName": "_target"
@@ -267,7 +324,7 @@
               "DstName": "_signal"
             },
             {
-              "SrcId": 5,
+              "SrcId": 7,
               "SrcName": "_result",
               "DstId": 21,
               "DstName": "_value"
@@ -309,19 +366,6 @@
               "DstName": "_value"
             },
             {
-              "SrcId": 3,
-              "SrcName": "_signal",
-              "DstId": 25,
-              "DstName": "_signal"
-            },
-            {
-              "Id": 29,
-              "Value": "test",
-              "DstId": 25,
-              "DstName": "args",
-              "DstIndex": 0
-            },
-            {
               "SrcId": 0,
               "SrcName": "_signal",
               "DstId": 30,
@@ -332,34 +376,134 @@
               "SrcName": "_result",
               "DstId": 30,
               "DstName": "_value"
+            },
+            {
+              "SrcId": 3,
+              "SrcName": "_signal",
+              "DstId": 35,
+              "DstName": "_signal"
+            },
+            {
+              "SrcId": 34,
+              "SrcName": "_result",
+              "DstId": 35,
+              "DstName": "_target"
+            },
+            {
+              "SrcId": 51,
+              "SrcName": "_result",
+              "DstId": 35,
+              "DstName": "_value"
+            },
+            {
+              "Id": 38,
+              "Value": 0,
+              "DstId": 36,
+              "DstName": "pitch"
+            },
+            {
+              "SrcId": 41,
+              "SrcName": "_result",
+              "DstId": 36,
+              "DstName": "roll"
+            },
+            {
+              "Id": 40,
+              "Value": 0,
+              "DstId": 36,
+              "DstName": "yaw"
+            },
+            {
+              "Id": 50,
+              "Value": 180,
+              "DstId": 41,
+              "DstName": "max"
+            },
+            {
+              "Id": 47,
+              "Value": -180,
+              "DstId": 41,
+              "DstName": "min"
+            },
+            {
+              "SrcId": 36,
+              "SrcName": "_result",
+              "DstId": 51,
+              "DstName": "_target"
+            },
+            {
+              "Id": 54,
+              "Value": 64,
+              "DstId": 52,
+              "DstName": "x"
+            },
+            {
+              "Id": 56,
+              "Value": 64,
+              "DstId": 52,
+              "DstName": "y"
+            },
+            {
+              "Id": 57,
+              "Value": 8,
+              "DstId": 52,
+              "DstName": "z"
+            },
+            {
+              "SrcId": 35,
+              "SrcName": "_signal",
+              "DstId": 58,
+              "DstName": "_signal"
+            },
+            {
+              "SrcId": 32,
+              "SrcName": "_result",
+              "DstId": 58,
+              "DstName": "_target"
+            },
+            {
+              "SrcId": 60,
+              "SrcName": "_result",
+              "DstId": 58,
+              "DstName": "_value"
+            },
+            {
+              "Id": 62,
+              "Value": 0.4,
+              "DstId": 59,
+              "DstName": "min"
+            },
+            {
+              "SrcId": 52,
+              "SrcName": "_result",
+              "DstId": 60,
+              "DstName": "a"
+            },
+            {
+              "SrcId": 59,
+              "SrcName": "_result",
+              "DstId": 60,
+              "DstName": "b"
             }
           ],
           "Defaults": {
-            "$2.component": {
+            "$34.gameobject": {
+              "_type": "gameobject",
+              "go": "b35f343d-d187-4c25-8dcd-c429af07e831"
+            },
+            "$32.component": {
               "_type": "component",
               "component_id": "54418868-2171-4443-9e45-b12c72a5404c",
-              "go": "e364fb39-504c-492a-9d23-755217490692",
+              "go": "b35f343d-d187-4c25-8dcd-c429af07e831",
               "component_type": "DecalRenderer"
             }
           }
         }
       },
       {
-        "__type": "Sandbox.DecalRenderer",
-        "__guid": "54418868-2171-4443-9e45-b12c72a5404c",
-        "CutoffAngle": 60,
-        "CutoffAngleSoftness": 5,
-        "Material": "blood_splatter_04_decal.vmat",
-        "Mod2XBlending": false,
-        "RenderOptions": {
-          "GameLayer": true,
-          "OverlayLayer": false,
-          "BloomLayer": false,
-          "AfterUILayer": false
-        },
-        "Size": "64,64,8",
-        "TintColor": "1,1,1,1",
-        "TriPlanar": false
+        "__type": "Destoryer",
+        "__guid": "3128bb34-70bc-4e8e-b6a4-6712f95c7095",
+        "Time": 10
       }
     ],
     "Children": [
@@ -385,6 +529,31 @@
             },
             "RenderType": "On",
             "Tint": "1,1,1,1"
+          }
+        ]
+      },
+      {
+        "__guid": "b35f343d-d187-4c25-8dcd-c429af07e831",
+        "Flags": 0,
+        "Name": "Decal",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.DecalRenderer",
+            "__guid": "54418868-2171-4443-9e45-b12c72a5404c",
+            "CutoffAngle": 60,
+            "CutoffAngleSoftness": 5,
+            "Material": "blood_splatter_04_decal.vmat",
+            "Mod2XBlending": false,
+            "RenderOptions": {
+              "GameLayer": true,
+              "OverlayLayer": false,
+              "BloomLayer": false,
+              "AfterUILayer": false
+            },
+            "Size": "64,64,8",
+            "TintColor": "1,1,1,1",
+            "TriPlanar": false
           }
         ]
       }
@@ -420,7 +589,6 @@
   "DontBreakAsTemplate": false,
   "ResourceVersion": 1,
   "__references": [
-    "jase.blooddrip01#11946",
     "jase.bloodsplatter02#11951",
     "jase.bloodsplatter03#11952",
     "jase.bloodsplatter04#11953"
