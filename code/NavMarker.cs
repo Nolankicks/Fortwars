@@ -2,7 +2,7 @@ public sealed class NavMarker : Component
 {
 	[Property] public Color Tint { get; set; }
 	[Property] public string Text { get; set; }
-
+	[Property] public bool DrawOffScreen { get; set; } = false;
 	[Property] public bool DrawDistance { get; set; } = false;
 
 	protected override void DrawGizmos()

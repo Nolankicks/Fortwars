@@ -60,23 +60,7 @@
         "StartAsleep": false
       }
     ],
-    "Children": [
-      {
-        "__guid": "e189e66b-50a3-470e-a7a6-4d58aaa77488",
-        "Flags": 0,
-        "Name": "GameObject",
-        "Enabled": true,
-        "Components": [
-          {
-            "__type": "NavMarker",
-            "__guid": "6ffd4dcf-7a1a-46a8-9a36-6891ed0f8288",
-            "DrawDistance": true,
-            "Text": "TEST",
-            "Tint": "0.87442,0.24651,1,1"
-          }
-        ]
-      }
-    ],
+    "Children": [],
     "__variables": [],
     "__properties": {
       "FixedUpdateFrequency": 50,

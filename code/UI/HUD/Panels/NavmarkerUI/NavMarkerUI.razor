@@ -1,4 +1,5 @@
 @using Sandbox;
+@using System;
 @using Sandbox.UI;
 @inherits PanelComponent
 @namespace Sandbox
@@ -6,7 +7,7 @@
 <root>
     @foreach(var marker in GetAllNavMarkers()) {
         var pos = Scene.Camera.PointToScreenNormal(marker.WorldPosition, out bool behind);
-        if (behind) continue;
+        if (behind || (pos.x > 1 || pos.x < 0) || (pos.y > 1 || pos.y < 0)) continue;
         pos *= 100.0f;
 
         <div class="marker" style="left: @(pos.x)%; top: @(pos.y)%;">
