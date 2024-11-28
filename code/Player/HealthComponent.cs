@@ -21,6 +21,7 @@ public partial class HealthComponent : Component
 
 	[Property, FeatureEnabled( "Blood" )] public bool BloodEnabled { get; set; } = false;
 	[Property, Feature( "Blood" )] public GameObject BloodPrefab { get; set; }
+	[Property, Feature( "Blood" )] public bool PlayOnLocal { get; set; }
 
 	public TimeSince LastHit { get; set; }
 
@@ -45,6 +46,9 @@ public partial class HealthComponent : Component
 			Health = health;
 
 		GameObject.Dispatch( new DamageEvent( damage, Attacker, GameObject, HitPos, normal ) );
+
+		if ( BloodEnabled )
+			BloodEffects( HitPos, normal );
 
 		if ( Health <= 0 )
 		{
@@ -117,6 +121,17 @@ public partial class HealthComponent : Component
 	public void BroadcastGlobalDamageEvent( int Amount, GameObject Attacker, GameObject Player )
 	{
 		Scene.Dispatch( new GlobalDamageEvent( Amount, Attacker, Player ) );
+	}
+
+	[Broadcast]
+	public void BloodEffects( Vector3 pos, Vector3 rot )
+	{
+		if ( !PlayOnLocal && !IsProxy )
+			return;
+
+		var go = BloodPrefab.Clone();
+		go.WorldPosition = pos;
+		go.WorldRotation = Rotation.LookAt( rot );
 	}
 
 	[Broadcast]

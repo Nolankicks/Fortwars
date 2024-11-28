@@ -51,10 +51,15 @@
                       }
                     ]
                   },
-                  "CurveB": {
-                    "rangex": "0,0",
-                    "rangey": "0,0"
-                  },
+                  "CurveB": [
+                    {
+                      "x": 0.5,
+                      "y": 0.5,
+                      "in": 0,
+                      "out": 0,
+                      "mode": "Mirrored"
+                    }
+                  ],
                   "Constants": "1,0,0,0"
                 },
                 "ApplyAlpha": true,
@@ -64,40 +69,70 @@
                 "Bounce": {
                   "Type": "Constant",
                   "Evaluation": "Life",
-                  "CurveA": {
-                    "rangex": "0,0",
-                    "rangey": "0,0"
-                  },
-                  "CurveB": {
-                    "rangex": "0,0",
-                    "rangey": "0,0"
-                  },
+                  "CurveA": [
+                    {
+                      "x": 0.5,
+                      "y": 0.5,
+                      "in": 0,
+                      "out": 0,
+                      "mode": "Mirrored"
+                    }
+                  ],
+                  "CurveB": [
+                    {
+                      "x": 0.5,
+                      "y": 0.5,
+                      "in": 0,
+                      "out": 0,
+                      "mode": "Mirrored"
+                    }
+                  ],
                   "Constants": "1,0,0,0"
                 },
                 "Brightness": {
                   "Type": "Constant",
                   "Evaluation": "Life",
-                  "CurveA": {
-                    "rangex": "0,0",
-                    "rangey": "0,0"
-                  },
-                  "CurveB": {
-                    "rangex": "0,0",
-                    "rangey": "0,0"
-                  },
+                  "CurveA": [
+                    {
+                      "x": 0.5,
+                      "y": 0.5,
+                      "in": 0,
+                      "out": 0,
+                      "mode": "Mirrored"
+                    }
+                  ],
+                  "CurveB": [
+                    {
+                      "x": 0.5,
+                      "y": 0.5,
+                      "in": 0,
+                      "out": 0,
+                      "mode": "Mirrored"
+                    }
+                  ],
                   "Constants": "0.5,0,0,0"
                 },
                 "Bumpiness": {
                   "Type": "Constant",
                   "Evaluation": "Life",
-                  "CurveA": {
-                    "rangex": "0,0",
-                    "rangey": "0,0"
-                  },
-                  "CurveB": {
-                    "rangex": "0,0",
-                    "rangey": "0,0"
-                  },
+                  "CurveA": [
+                    {
+                      "x": 0.5,
+                      "y": 0.5,
+                      "in": 0,
+                      "out": 0,
+                      "mode": "Mirrored"
+                    }
+                  ],
+                  "CurveB": [
+                    {
+                      "x": 0.5,
+                      "y": 0.5,
+                      "in": 0,
+                      "out": 0,
+                      "mode": "Mirrored"
+                    }
+                  ],
                   "Constants": "0,0,0,0"
                 },
                 "Collision": false,
@@ -105,27 +140,47 @@
                 "Damping": {
                   "Type": "Constant",
                   "Evaluation": "Life",
-                  "CurveA": {
-                    "rangex": "0,0",
-                    "rangey": "0,0"
-                  },
-                  "CurveB": {
-                    "rangex": "0,0",
-                    "rangey": "0,0"
-                  },
+                  "CurveA": [
+                    {
+                      "x": 0.5,
+                      "y": 0.5,
+                      "in": 0,
+                      "out": 0,
+                      "mode": "Mirrored"
+                    }
+                  ],
+                  "CurveB": [
+                    {
+                      "x": 0.5,
+                      "y": 0.5,
+                      "in": 0,
+                      "out": 0,
+                      "mode": "Mirrored"
+                    }
+                  ],
                   "Constants": "9,1.2,0,0"
                 },
                 "DieOnCollisionChance": {
                   "Type": "Constant",
                   "Evaluation": "Life",
-                  "CurveA": {
-                    "rangex": "0,0",
-                    "rangey": "0,0"
-                  },
-                  "CurveB": {
-                    "rangex": "0,0",
-                    "rangey": "0,0"
-                  },
+                  "CurveA": [
+                    {
+                      "x": 0.5,
+                      "y": 0.5,
+                      "in": 0,
+                      "out": 0,
+                      "mode": "Mirrored"
+                    }
+                  ],
+                  "CurveB": [
+                    {
+                      "x": 0.5,
+                      "y": 0.5,
+                      "in": 0,
+                      "out": 0,
+                      "mode": "Mirrored"
+                    }
+                  ],
                   "Constants": "0,0,0,0"
                 },
                 "Force": true,
@@ -133,27 +188,47 @@
                 "ForceScale": {
                   "Type": "Constant",
                   "Evaluation": "Life",
-                  "CurveA": {
-                    "rangex": "0,0",
-                    "rangey": "0,0"
-                  },
-                  "CurveB": {
-                    "rangex": "0,0",
-                    "rangey": "0,0"
-                  },
+                  "CurveA": [
+                    {
+                      "x": 0.5,
+                      "y": 0.5,
+                      "in": 0,
+                      "out": 0,
+                      "mode": "Mirrored"
+                    }
+                  ],
+                  "CurveB": [
+                    {
+                      "x": 0.5,
+                      "y": 0.5,
+                      "in": 0,
+                      "out": 0,
+                      "mode": "Mirrored"
+                    }
+                  ],
                   "Constants": "3,0,0,0"
                 },
                 "Friction": {
                   "Type": "Constant",
                   "Evaluation": "Life",
-                  "CurveA": {
-                    "rangex": "0,0",
-                    "rangey": "0,0"
-                  },
-                  "CurveB": {
-                    "rangex": "0,0",
-                    "rangey": "0,0"
-                  },
+                  "CurveA": [
+                    {
+                      "x": 0.5,
+                      "y": 0.5,
+                      "in": 0,
+                      "out": 0,
+                      "mode": "Mirrored"
+                    }
+                  ],
+                  "CurveB": [
+                    {
+                      "x": 0.5,
+                      "y": 0.5,
+                      "in": 0,
+                      "out": 0,
+                      "mode": "Mirrored"
+                    }
+                  ],
                   "Constants": "1,0,0,0"
                 },
                 "Gradient": {
@@ -185,109 +260,189 @@
                 "Lifetime": {
                   "Type": "Range",
                   "Evaluation": "Particle",
-                  "CurveA": {
-                    "rangex": "0,0",
-                    "rangey": "0,0"
-                  },
-                  "CurveB": {
-                    "rangex": "0,0",
-                    "rangey": "0,0"
-                  },
-                  "Constants": "2,3,0,0"
+                  "CurveA": [
+                    {
+                      "x": 0.5,
+                      "y": 0.5,
+                      "in": 0,
+                      "out": 0,
+                      "mode": "Mirrored"
+                    }
+                  ],
+                  "CurveB": [
+                    {
+                      "x": 0.5,
+                      "y": 0.5,
+                      "in": 0,
+                      "out": 0,
+                      "mode": "Mirrored"
+                    }
+                  ],
+                  "Constants": "1,2,0,0"
                 },
                 "MaxParticles": 100,
                 "OrbitalForce": {
                   "X": {
                     "Type": "Constant",
                     "Evaluation": "Life",
-                    "CurveA": {
-                      "rangex": "0,0",
-                      "rangey": "0,0"
-                    },
-                    "CurveB": {
-                      "rangex": "0,0",
-                      "rangey": "0,0"
-                    },
+                    "CurveA": [
+                      {
+                        "x": 0.5,
+                        "y": 0.5,
+                        "in": 0,
+                        "out": 0,
+                        "mode": "Mirrored"
+                      }
+                    ],
+                    "CurveB": [
+                      {
+                        "x": 0.5,
+                        "y": 0.5,
+                        "in": 0,
+                        "out": 0,
+                        "mode": "Mirrored"
+                      }
+                    ],
                     "Constants": "0,0,0,0"
                   },
                   "Y": {
                     "Type": "Constant",
                     "Evaluation": "Life",
-                    "CurveA": {
-                      "rangex": "0,0",
-                      "rangey": "0,0"
-                    },
-                    "CurveB": {
-                      "rangex": "0,0",
-                      "rangey": "0,0"
-                    },
+                    "CurveA": [
+                      {
+                        "x": 0.5,
+                        "y": 0.5,
+                        "in": 0,
+                        "out": 0,
+                        "mode": "Mirrored"
+                      }
+                    ],
+                    "CurveB": [
+                      {
+                        "x": 0.5,
+                        "y": 0.5,
+                        "in": 0,
+                        "out": 0,
+                        "mode": "Mirrored"
+                      }
+                    ],
                     "Constants": "0,0,0,0"
                   },
                   "Z": {
                     "Type": "Constant",
                     "Evaluation": "Life",
-                    "CurveA": {
-                      "rangex": "0,0",
-                      "rangey": "0,0"
-                    },
-                    "CurveB": {
-                      "rangex": "0,0",
-                      "rangey": "0,0"
-                    },
+                    "CurveA": [
+                      {
+                        "x": 0.5,
+                        "y": 0.5,
+                        "in": 0,
+                        "out": 0,
+                        "mode": "Mirrored"
+                      }
+                    ],
+                    "CurveB": [
+                      {
+                        "x": 0.5,
+                        "y": 0.5,
+                        "in": 0,
+                        "out": 0,
+                        "mode": "Mirrored"
+                      }
+                    ],
                     "Constants": "0,0,0,0"
                   }
                 },
                 "OrbitalPull": {
                   "Type": "Constant",
                   "Evaluation": "Life",
-                  "CurveA": {
-                    "rangex": "0,0",
-                    "rangey": "0,0"
-                  },
-                  "CurveB": {
-                    "rangex": "0,0",
-                    "rangey": "0,0"
-                  },
+                  "CurveA": [
+                    {
+                      "x": 0.5,
+                      "y": 0.5,
+                      "in": 0,
+                      "out": 0,
+                      "mode": "Mirrored"
+                    }
+                  ],
+                  "CurveB": [
+                    {
+                      "x": 0.5,
+                      "y": 0.5,
+                      "in": 0,
+                      "out": 0,
+                      "mode": "Mirrored"
+                    }
+                  ],
                   "Constants": "0,0,0,0"
                 },
                 "PerParticleTimeScale": {
                   "Type": "Constant",
                   "Evaluation": "Life",
-                  "CurveA": {
-                    "rangex": "0,0",
-                    "rangey": "0,0"
-                  },
-                  "CurveB": {
-                    "rangex": "0,0",
-                    "rangey": "0,0"
-                  },
+                  "CurveA": [
+                    {
+                      "x": 0.5,
+                      "y": 0.5,
+                      "in": 0,
+                      "out": 0,
+                      "mode": "Mirrored"
+                    }
+                  ],
+                  "CurveB": [
+                    {
+                      "x": 0.5,
+                      "y": 0.5,
+                      "in": 0,
+                      "out": 0,
+                      "mode": "Mirrored"
+                    }
+                  ],
                   "Constants": "1,0,0,0"
                 },
                 "Pitch": {
                   "Type": "Constant",
                   "Evaluation": "Life",
-                  "CurveA": {
-                    "rangex": "0,0",
-                    "rangey": "0,0"
-                  },
-                  "CurveB": {
-                    "rangex": "0,0",
-                    "rangey": "0,0"
-                  },
+                  "CurveA": [
+                    {
+                      "x": 0.5,
+                      "y": 0.5,
+                      "in": 0,
+                      "out": 0,
+                      "mode": "Mirrored"
+                    }
+                  ],
+                  "CurveB": [
+                    {
+                      "x": 0.5,
+                      "y": 0.5,
+                      "in": 0,
+                      "out": 0,
+                      "mode": "Mirrored"
+                    }
+                  ],
                   "Constants": "0,0,0,0"
                 },
                 "PreWarm": 0,
                 "PushStrength": {
                   "Type": "Constant",
                   "Evaluation": "Life",
-                  "CurveA": {
-                    "rangex": "0,0",
-                    "rangey": "0,0"
-                  },
-                  "CurveB": {
-                    "rangex": "0,0",
-                    "rangey": "0,0"
-                  },
+                  "CurveA": [
+                    {
+                      "x": 0.5,
+                      "y": 0.5,
+                      "in": 0,
+                      "out": 0,
+                      "mode": "Mirrored"
+                    }
+                  ],
+                  "CurveB": [
+                    {
+                      "x": 0.5,
+                      "y": 0.5,
+                      "in": 0,
+                      "out": 0,
+                      "mode": "Mirrored"
+                    }
+                  ],
                   "Constants": "0,0,0,0"
                 },
                 "Roll": {
@@ -337,7 +492,7 @@
                   "Type": "CurveRange",
                   "Evaluation": "Life",
                   "CurveA": {
-                    "rangey": "0,60",
+                    "rangey": "0,30",
                     "frames": [
                       {
                         "x": 0,
@@ -363,7 +518,7 @@
                     ]
                   },
                   "CurveB": {
-                    "rangey": "0,60",
+                    "rangey": "0,30",
                     "frames": [
                       {
                         "x": 0,
@@ -381,7 +536,7 @@
                       },
                       {
                         "x": 0.17101827,
-                        "y": 0.21784222,
+                        "y": 0.21784224,
                         "in": 0,
                         "out": 0,
                         "mode": "Linear"
@@ -400,40 +555,70 @@
                 "SequenceId": {
                   "Type": "Range",
                   "Evaluation": "Particle",
-                  "CurveA": {
-                    "rangex": "0,0",
-                    "rangey": "0,0"
-                  },
-                  "CurveB": {
-                    "rangex": "0,0",
-                    "rangey": "0,0"
-                  },
+                  "CurveA": [
+                    {
+                      "x": 0.5,
+                      "y": 0.5,
+                      "in": 0,
+                      "out": 0,
+                      "mode": "Mirrored"
+                    }
+                  ],
+                  "CurveB": [
+                    {
+                      "x": 0.5,
+                      "y": 0.5,
+                      "in": 0,
+                      "out": 0,
+                      "mode": "Mirrored"
+                    }
+                  ],
                   "Constants": "0,6,0,0"
                 },
                 "SequenceSpeed": {
                   "Type": "Constant",
                   "Evaluation": "Life",
-                  "CurveA": {
-                    "rangex": "0,0",
-                    "rangey": "0,0"
-                  },
-                  "CurveB": {
-                    "rangex": "0,0",
-                    "rangey": "0,0"
-                  },
+                  "CurveA": [
+                    {
+                      "x": 0.5,
+                      "y": 0.5,
+                      "in": 0,
+                      "out": 0,
+                      "mode": "Mirrored"
+                    }
+                  ],
+                  "CurveB": [
+                    {
+                      "x": 0.5,
+                      "y": 0.5,
+                      "in": 0,
+                      "out": 0,
+                      "mode": "Mirrored"
+                    }
+                  ],
                   "Constants": "1,0,0,0"
                 },
                 "SequenceTime": {
                   "Type": "Constant",
                   "Evaluation": "Life",
-                  "CurveA": {
-                    "rangex": "0,0",
-                    "rangey": "0,0"
-                  },
-                  "CurveB": {
-                    "rangex": "0,0",
-                    "rangey": "0,0"
-                  },
+                  "CurveA": [
+                    {
+                      "x": 0.5,
+                      "y": 0.5,
+                      "in": 0,
+                      "out": 0,
+                      "mode": "Mirrored"
+                    }
+                  ],
+                  "CurveB": [
+                    {
+                      "x": 0.5,
+                      "y": 0.5,
+                      "in": 0,
+                      "out": 0,
+                      "mode": "Mirrored"
+                    }
+                  ],
                   "Constants": "1,0,0,0"
                 },
                 "SheetSequence": true,
@@ -441,40 +626,70 @@
                 "StartDelay": {
                   "Type": "Constant",
                   "Evaluation": "Life",
-                  "CurveA": {
-                    "rangex": "0,0",
-                    "rangey": "0,0"
-                  },
-                  "CurveB": {
-                    "rangex": "0,0",
-                    "rangey": "0,0"
-                  },
+                  "CurveA": [
+                    {
+                      "x": 0.5,
+                      "y": 0.5,
+                      "in": 0,
+                      "out": 0,
+                      "mode": "Mirrored"
+                    }
+                  ],
+                  "CurveB": [
+                    {
+                      "x": 0.5,
+                      "y": 0.5,
+                      "in": 0,
+                      "out": 0,
+                      "mode": "Mirrored"
+                    }
+                  ],
                   "Constants": "0,0,0,0"
                 },
                 "StartVelocity": {
                   "Type": "Range",
                   "Evaluation": "Particle",
-                  "CurveA": {
-                    "rangex": "0,0",
-                    "rangey": "0,0"
-                  },
-                  "CurveB": {
-                    "rangex": "0,0",
-                    "rangey": "0,0"
-                  },
-                  "Constants": "20,200,0,0"
+                  "CurveA": [
+                    {
+                      "x": 0.5,
+                      "y": 0.5,
+                      "in": 0,
+                      "out": 0,
+                      "mode": "Mirrored"
+                    }
+                  ],
+                  "CurveB": [
+                    {
+                      "x": 0.5,
+                      "y": 0.5,
+                      "in": 0,
+                      "out": 0,
+                      "mode": "Mirrored"
+                    }
+                  ],
+                  "Constants": "20,100,0,0"
                 },
                 "Stretch": {
                   "Type": "Constant",
                   "Evaluation": "Life",
-                  "CurveA": {
-                    "rangex": "0,0",
-                    "rangey": "0,0"
-                  },
-                  "CurveB": {
-                    "rangex": "0,0",
-                    "rangey": "0,0"
-                  },
+                  "CurveA": [
+                    {
+                      "x": 0.5,
+                      "y": 0.5,
+                      "in": 0,
+                      "out": 0,
+                      "mode": "Mirrored"
+                    }
+                  ],
+                  "CurveB": [
+                    {
+                      "x": 0.5,
+                      "y": 0.5,
+                      "in": 0,
+                      "out": 0,
+                      "mode": "Mirrored"
+                    }
+                  ],
                   "Constants": "0,0,0,0"
                 },
                 "TimeScale": 1,
@@ -482,14 +697,24 @@
                 "Yaw": {
                   "Type": "Constant",
                   "Evaluation": "Life",
-                  "CurveA": {
-                    "rangex": "0,0",
-                    "rangey": "0,0"
-                  },
-                  "CurveB": {
-                    "rangex": "0,0",
-                    "rangey": "0,0"
-                  },
+                  "CurveA": [
+                    {
+                      "x": 0.5,
+                      "y": 0.5,
+                      "in": 0,
+                      "out": 0,
+                      "mode": "Mirrored"
+                    }
+                  ],
+                  "CurveB": [
+                    {
+                      "x": 0.5,
+                      "y": 0.5,
+                      "in": 0,
+                      "out": 0,
+                      "mode": "Mirrored"
+                    }
+                  ],
                   "Constants": "0,0,0,0"
                 }
               },
@@ -532,7 +757,7 @@
                 "DestroyOnEnd": true,
                 "Duration": 3,
                 "InVolume": false,
-                "Loop": true,
+                "Loop": false,
                 "OnEdge": false,
                 "Rate": 0,
                 "RateOverDistance": 0
@@ -573,10 +798,15 @@
                       }
                     ]
                   },
-                  "CurveB": {
-                    "rangex": "0,0",
-                    "rangey": "0,0"
-                  },
+                  "CurveB": [
+                    {
+                      "x": 0.5,
+                      "y": 0.5,
+                      "in": 0,
+                      "out": 0,
+                      "mode": "Mirrored"
+                    }
+                  ],
                   "Constants": "1,0,0,0"
                 },
                 "ApplyAlpha": true,
@@ -586,40 +816,70 @@
                 "Bounce": {
                   "Type": "Constant",
                   "Evaluation": "Life",
-                  "CurveA": {
-                    "rangex": "0,0",
-                    "rangey": "0,0"
-                  },
-                  "CurveB": {
-                    "rangex": "0,0",
-                    "rangey": "0,0"
-                  },
+                  "CurveA": [
+                    {
+                      "x": 0.5,
+                      "y": 0.5,
+                      "in": 0,
+                      "out": 0,
+                      "mode": "Mirrored"
+                    }
+                  ],
+                  "CurveB": [
+                    {
+                      "x": 0.5,
+                      "y": 0.5,
+                      "in": 0,
+                      "out": 0,
+                      "mode": "Mirrored"
+                    }
+                  ],
                   "Constants": "1,0,0,0"
                 },
                 "Brightness": {
                   "Type": "Range",
                   "Evaluation": "Particle",
-                  "CurveA": {
-                    "rangex": "0,0",
-                    "rangey": "0,0"
-                  },
-                  "CurveB": {
-                    "rangex": "0,0",
-                    "rangey": "0,0"
-                  },
+                  "CurveA": [
+                    {
+                      "x": 0.5,
+                      "y": 0.5,
+                      "in": 0,
+                      "out": 0,
+                      "mode": "Mirrored"
+                    }
+                  ],
+                  "CurveB": [
+                    {
+                      "x": 0.5,
+                      "y": 0.5,
+                      "in": 0,
+                      "out": 0,
+                      "mode": "Mirrored"
+                    }
+                  ],
                   "Constants": "0.3,1,0,0"
                 },
                 "Bumpiness": {
                   "Type": "Constant",
                   "Evaluation": "Life",
-                  "CurveA": {
-                    "rangex": "0,0",
-                    "rangey": "0,0"
-                  },
-                  "CurveB": {
-                    "rangex": "0,0",
-                    "rangey": "0,0"
-                  },
+                  "CurveA": [
+                    {
+                      "x": 0.5,
+                      "y": 0.5,
+                      "in": 0,
+                      "out": 0,
+                      "mode": "Mirrored"
+                    }
+                  ],
+                  "CurveB": [
+                    {
+                      "x": 0.5,
+                      "y": 0.5,
+                      "in": 0,
+                      "out": 0,
+                      "mode": "Mirrored"
+                    }
+                  ],
                   "Constants": "0,0,0,0"
                 },
                 "Collision": false,
@@ -627,27 +887,47 @@
                 "Damping": {
                   "Type": "Constant",
                   "Evaluation": "Life",
-                  "CurveA": {
-                    "rangex": "0,0",
-                    "rangey": "0,0"
-                  },
-                  "CurveB": {
-                    "rangex": "0,0",
-                    "rangey": "0,0"
-                  },
+                  "CurveA": [
+                    {
+                      "x": 0.5,
+                      "y": 0.5,
+                      "in": 0,
+                      "out": 0,
+                      "mode": "Mirrored"
+                    }
+                  ],
+                  "CurveB": [
+                    {
+                      "x": 0.5,
+                      "y": 0.5,
+                      "in": 0,
+                      "out": 0,
+                      "mode": "Mirrored"
+                    }
+                  ],
                   "Constants": "7,1.2,0,0"
                 },
                 "DieOnCollisionChance": {
                   "Type": "Constant",
                   "Evaluation": "Life",
-                  "CurveA": {
-                    "rangex": "0,0",
-                    "rangey": "0,0"
-                  },
-                  "CurveB": {
-                    "rangex": "0,0",
-                    "rangey": "0,0"
-                  },
+                  "CurveA": [
+                    {
+                      "x": 0.5,
+                      "y": 0.5,
+                      "in": 0,
+                      "out": 0,
+                      "mode": "Mirrored"
+                    }
+                  ],
+                  "CurveB": [
+                    {
+                      "x": 0.5,
+                      "y": 0.5,
+                      "in": 0,
+                      "out": 0,
+                      "mode": "Mirrored"
+                    }
+                  ],
                   "Constants": "0,0,0,0"
                 },
                 "Force": true,
@@ -655,27 +935,47 @@
                 "ForceScale": {
                   "Type": "Constant",
                   "Evaluation": "Life",
-                  "CurveA": {
-                    "rangex": "0,0",
-                    "rangey": "0,0"
-                  },
-                  "CurveB": {
-                    "rangex": "0,0",
-                    "rangey": "0,0"
-                  },
+                  "CurveA": [
+                    {
+                      "x": 0.5,
+                      "y": 0.5,
+                      "in": 0,
+                      "out": 0,
+                      "mode": "Mirrored"
+                    }
+                  ],
+                  "CurveB": [
+                    {
+                      "x": 0.5,
+                      "y": 0.5,
+                      "in": 0,
+                      "out": 0,
+                      "mode": "Mirrored"
+                    }
+                  ],
                   "Constants": "3,0,0,0"
                 },
                 "Friction": {
                   "Type": "Constant",
                   "Evaluation": "Life",
-                  "CurveA": {
-                    "rangex": "0,0",
-                    "rangey": "0,0"
-                  },
-                  "CurveB": {
-                    "rangex": "0,0",
-                    "rangey": "0,0"
-                  },
+                  "CurveA": [
+                    {
+                      "x": 0.5,
+                      "y": 0.5,
+                      "in": 0,
+                      "out": 0,
+                      "mode": "Mirrored"
+                    }
+                  ],
+                  "CurveB": [
+                    {
+                      "x": 0.5,
+                      "y": 0.5,
+                      "in": 0,
+                      "out": 0,
+                      "mode": "Mirrored"
+                    }
+                  ],
                   "Constants": "1,0,0,0"
                 },
                 "Gradient": {
@@ -707,109 +1007,189 @@
                 "Lifetime": {
                   "Type": "Range",
                   "Evaluation": "Particle",
-                  "CurveA": {
-                    "rangex": "0,0",
-                    "rangey": "0,0"
-                  },
-                  "CurveB": {
-                    "rangex": "0,0",
-                    "rangey": "0,0"
-                  },
-                  "Constants": "2,3,0,0"
+                  "CurveA": [
+                    {
+                      "x": 0.5,
+                      "y": 0.5,
+                      "in": 0,
+                      "out": 0,
+                      "mode": "Mirrored"
+                    }
+                  ],
+                  "CurveB": [
+                    {
+                      "x": 0.5,
+                      "y": 0.5,
+                      "in": 0,
+                      "out": 0,
+                      "mode": "Mirrored"
+                    }
+                  ],
+                  "Constants": "1,2,0,0"
                 },
                 "MaxParticles": 100,
                 "OrbitalForce": {
                   "X": {
                     "Type": "Constant",
                     "Evaluation": "Life",
-                    "CurveA": {
-                      "rangex": "0,0",
-                      "rangey": "0,0"
-                    },
-                    "CurveB": {
-                      "rangex": "0,0",
-                      "rangey": "0,0"
-                    },
+                    "CurveA": [
+                      {
+                        "x": 0.5,
+                        "y": 0.5,
+                        "in": 0,
+                        "out": 0,
+                        "mode": "Mirrored"
+                      }
+                    ],
+                    "CurveB": [
+                      {
+                        "x": 0.5,
+                        "y": 0.5,
+                        "in": 0,
+                        "out": 0,
+                        "mode": "Mirrored"
+                      }
+                    ],
                     "Constants": "0,0,0,0"
                   },
                   "Y": {
                     "Type": "Constant",
                     "Evaluation": "Life",
-                    "CurveA": {
-                      "rangex": "0,0",
-                      "rangey": "0,0"
-                    },
-                    "CurveB": {
-                      "rangex": "0,0",
-                      "rangey": "0,0"
-                    },
+                    "CurveA": [
+                      {
+                        "x": 0.5,
+                        "y": 0.5,
+                        "in": 0,
+                        "out": 0,
+                        "mode": "Mirrored"
+                      }
+                    ],
+                    "CurveB": [
+                      {
+                        "x": 0.5,
+                        "y": 0.5,
+                        "in": 0,
+                        "out": 0,
+                        "mode": "Mirrored"
+                      }
+                    ],
                     "Constants": "0,0,0,0"
                   },
                   "Z": {
                     "Type": "Constant",
                     "Evaluation": "Life",
-                    "CurveA": {
-                      "rangex": "0,0",
-                      "rangey": "0,0"
-                    },
-                    "CurveB": {
-                      "rangex": "0,0",
-                      "rangey": "0,0"
-                    },
+                    "CurveA": [
+                      {
+                        "x": 0.5,
+                        "y": 0.5,
+                        "in": 0,
+                        "out": 0,
+                        "mode": "Mirrored"
+                      }
+                    ],
+                    "CurveB": [
+                      {
+                        "x": 0.5,
+                        "y": 0.5,
+                        "in": 0,
+                        "out": 0,
+                        "mode": "Mirrored"
+                      }
+                    ],
                     "Constants": "0,0,0,0"
                   }
                 },
                 "OrbitalPull": {
                   "Type": "Constant",
                   "Evaluation": "Life",
-                  "CurveA": {
-                    "rangex": "0,0",
-                    "rangey": "0,0"
-                  },
-                  "CurveB": {
-                    "rangex": "0,0",
-                    "rangey": "0,0"
-                  },
+                  "CurveA": [
+                    {
+                      "x": 0.5,
+                      "y": 0.5,
+                      "in": 0,
+                      "out": 0,
+                      "mode": "Mirrored"
+                    }
+                  ],
+                  "CurveB": [
+                    {
+                      "x": 0.5,
+                      "y": 0.5,
+                      "in": 0,
+                      "out": 0,
+                      "mode": "Mirrored"
+                    }
+                  ],
                   "Constants": "0,0,0,0"
                 },
                 "PerParticleTimeScale": {
                   "Type": "Constant",
                   "Evaluation": "Life",
-                  "CurveA": {
-                    "rangex": "0,0",
-                    "rangey": "0,0"
-                  },
-                  "CurveB": {
-                    "rangex": "0,0",
-                    "rangey": "0,0"
-                  },
+                  "CurveA": [
+                    {
+                      "x": 0.5,
+                      "y": 0.5,
+                      "in": 0,
+                      "out": 0,
+                      "mode": "Mirrored"
+                    }
+                  ],
+                  "CurveB": [
+                    {
+                      "x": 0.5,
+                      "y": 0.5,
+                      "in": 0,
+                      "out": 0,
+                      "mode": "Mirrored"
+                    }
+                  ],
                   "Constants": "1,0,0,0"
                 },
                 "Pitch": {
                   "Type": "Constant",
                   "Evaluation": "Life",
-                  "CurveA": {
-                    "rangex": "0,0",
-                    "rangey": "0,0"
-                  },
-                  "CurveB": {
-                    "rangex": "0,0",
-                    "rangey": "0,0"
-                  },
+                  "CurveA": [
+                    {
+                      "x": 0.5,
+                      "y": 0.5,
+                      "in": 0,
+                      "out": 0,
+                      "mode": "Mirrored"
+                    }
+                  ],
+                  "CurveB": [
+                    {
+                      "x": 0.5,
+                      "y": 0.5,
+                      "in": 0,
+                      "out": 0,
+                      "mode": "Mirrored"
+                    }
+                  ],
                   "Constants": "0,0,0,0"
                 },
                 "PreWarm": 0,
                 "PushStrength": {
                   "Type": "Constant",
                   "Evaluation": "Life",
-                  "CurveA": {
-                    "rangex": "0,0",
-                    "rangey": "0,0"
-                  },
-                  "CurveB": {
-                    "rangex": "0,0",
-                    "rangey": "0,0"
-                  },
+                  "CurveA": [
+                    {
+                      "x": 0.5,
+                      "y": 0.5,
+                      "in": 0,
+                      "out": 0,
+                      "mode": "Mirrored"
+                    }
+                  ],
+                  "CurveB": [
+                    {
+                      "x": 0.5,
+                      "y": 0.5,
+                      "in": 0,
+                      "out": 0,
+                      "mode": "Mirrored"
+                    }
+                  ],
                   "Constants": "0,0,0,0"
                 },
                 "Roll": {
@@ -859,7 +1239,7 @@
                   "Type": "CurveRange",
                   "Evaluation": "Life",
                   "CurveA": {
-                    "rangey": "0,30",
+                    "rangey": "0,15",
                     "frames": [
                       {
                         "x": 0,
@@ -885,7 +1265,7 @@
                     ]
                   },
                   "CurveB": {
-                    "rangey": "0,30",
+                    "rangey": "0,15",
                     "frames": [
                       {
                         "x": 0,
@@ -922,40 +1302,70 @@
                 "SequenceId": {
                   "Type": "Constant",
                   "Evaluation": "Life",
-                  "CurveA": {
-                    "rangex": "0,0",
-                    "rangey": "0,0"
-                  },
-                  "CurveB": {
-                    "rangex": "0,0",
-                    "rangey": "0,0"
-                  },
+                  "CurveA": [
+                    {
+                      "x": 0.5,
+                      "y": 0.5,
+                      "in": 0,
+                      "out": 0,
+                      "mode": "Mirrored"
+                    }
+                  ],
+                  "CurveB": [
+                    {
+                      "x": 0.5,
+                      "y": 0.5,
+                      "in": 0,
+                      "out": 0,
+                      "mode": "Mirrored"
+                    }
+                  ],
                   "Constants": "0,6,0,0"
                 },
                 "SequenceSpeed": {
                   "Type": "Range",
                   "Evaluation": "Particle",
-                  "CurveA": {
-                    "rangex": "0,0",
-                    "rangey": "0,0"
-                  },
-                  "CurveB": {
-                    "rangex": "0,0",
-                    "rangey": "0,0"
-                  },
+                  "CurveA": [
+                    {
+                      "x": 0.5,
+                      "y": 0.5,
+                      "in": 0,
+                      "out": 0,
+                      "mode": "Mirrored"
+                    }
+                  ],
+                  "CurveB": [
+                    {
+                      "x": 0.5,
+                      "y": 0.5,
+                      "in": 0,
+                      "out": 0,
+                      "mode": "Mirrored"
+                    }
+                  ],
                   "Constants": "2.5,3,0,0"
                 },
                 "SequenceTime": {
                   "Type": "Constant",
                   "Evaluation": "Life",
-                  "CurveA": {
-                    "rangex": "0,0",
-                    "rangey": "0,0"
-                  },
-                  "CurveB": {
-                    "rangex": "0,0",
-                    "rangey": "0,0"
-                  },
+                  "CurveA": [
+                    {
+                      "x": 0.5,
+                      "y": 0.5,
+                      "in": 0,
+                      "out": 0,
+                      "mode": "Mirrored"
+                    }
+                  ],
+                  "CurveB": [
+                    {
+                      "x": 0.5,
+                      "y": 0.5,
+                      "in": 0,
+                      "out": 0,
+                      "mode": "Mirrored"
+                    }
+                  ],
                   "Constants": "1,0,0,0"
                 },
                 "SheetSequence": true,
@@ -963,40 +1373,70 @@
                 "StartDelay": {
                   "Type": "Constant",
                   "Evaluation": "Life",
-                  "CurveA": {
-                    "rangex": "0,0",
-                    "rangey": "0,0"
-                  },
-                  "CurveB": {
-                    "rangex": "0,0",
-                    "rangey": "0,0"
-                  },
+                  "CurveA": [
+                    {
+                      "x": 0.5,
+                      "y": 0.5,
+                      "in": 0,
+                      "out": 0,
+                      "mode": "Mirrored"
+                    }
+                  ],
+                  "CurveB": [
+                    {
+                      "x": 0.5,
+                      "y": 0.5,
+                      "in": 0,
+                      "out": 0,
+                      "mode": "Mirrored"
+                    }
+                  ],
                   "Constants": "0,0,0,0"
                 },
                 "StartVelocity": {
                   "Type": "Range",
                   "Evaluation": "Particle",
-                  "CurveA": {
-                    "rangex": "0,0",
-                    "rangey": "0,0"
-                  },
-                  "CurveB": {
-                    "rangex": "0,0",
-                    "rangey": "0,0"
-                  },
+                  "CurveA": [
+                    {
+                      "x": 0.5,
+                      "y": 0.5,
+                      "in": 0,
+                      "out": 0,
+                      "mode": "Mirrored"
+                    }
+                  ],
+                  "CurveB": [
+                    {
+                      "x": 0.5,
+                      "y": 0.5,
+                      "in": 0,
+                      "out": 0,
+                      "mode": "Mirrored"
+                    }
+                  ],
                   "Constants": "20,80,0,0"
                 },
                 "Stretch": {
                   "Type": "Constant",
                   "Evaluation": "Life",
-                  "CurveA": {
-                    "rangex": "0,0",
-                    "rangey": "0,0"
-                  },
-                  "CurveB": {
-                    "rangex": "0,0",
-                    "rangey": "0,0"
-                  },
+                  "CurveA": [
+                    {
+                      "x": 0.5,
+                      "y": 0.5,
+                      "in": 0,
+                      "out": 0,
+                      "mode": "Mirrored"
+                    }
+                  ],
+                  "CurveB": [
+                    {
+                      "x": 0.5,
+                      "y": 0.5,
+                      "in": 0,
+                      "out": 0,
+                      "mode": "Mirrored"
+                    }
+                  ],
                   "Constants": "0,0,0,0"
                 },
                 "TimeScale": 1,
@@ -1004,14 +1444,24 @@
                 "Yaw": {
                   "Type": "Constant",
                   "Evaluation": "Life",
-                  "CurveA": {
-                    "rangex": "0,0",
-                    "rangey": "0,0"
-                  },
-                  "CurveB": {
-                    "rangex": "0,0",
-                    "rangey": "0,0"
-                  },
+                  "CurveA": [
+                    {
+                      "x": 0.5,
+                      "y": 0.5,
+                      "in": 0,
+                      "out": 0,
+                      "mode": "Mirrored"
+                    }
+                  ],
+                  "CurveB": [
+                    {
+                      "x": 0.5,
+                      "y": 0.5,
+                      "in": 0,
+                      "out": 0,
+                      "mode": "Mirrored"
+                    }
+                  ],
                   "Constants": "0,0,0,0"
                 }
               },
@@ -1054,7 +1504,7 @@
                 "DestroyOnEnd": true,
                 "Duration": 3,
                 "InVolume": false,
-                "Loop": true,
+                "Loop": false,
                 "OnEdge": true,
                 "Rate": 0,
                 "RateOverDistance": 0
@@ -1099,10 +1549,15 @@
                       "mode": "Mirrored"
                     }
                   ],
-                  "CurveB": {
-                    "rangex": "0,0",
-                    "rangey": "0,0"
-                  },
+                  "CurveB": [
+                    {
+                      "x": 0.5,
+                      "y": 0.5,
+                      "in": 0,
+                      "out": 0,
+                      "mode": "Mirrored"
+                    }
+                  ],
                   "Constants": "1,0,0,0"
                 },
                 "ApplyAlpha": true,
@@ -1112,40 +1567,70 @@
                 "Bounce": {
                   "Type": "Constant",
                   "Evaluation": "Life",
-                  "CurveA": {
-                    "rangex": "0,0",
-                    "rangey": "0,0"
-                  },
-                  "CurveB": {
-                    "rangex": "0,0",
-                    "rangey": "0,0"
-                  },
+                  "CurveA": [
+                    {
+                      "x": 0.5,
+                      "y": 0.5,
+                      "in": 0,
+                      "out": 0,
+                      "mode": "Mirrored"
+                    }
+                  ],
+                  "CurveB": [
+                    {
+                      "x": 0.5,
+                      "y": 0.5,
+                      "in": 0,
+                      "out": 0,
+                      "mode": "Mirrored"
+                    }
+                  ],
                   "Constants": "0.03,0,0,0"
                 },
                 "Brightness": {
                   "Type": "Constant",
                   "Evaluation": "Life",
-                  "CurveA": {
-                    "rangex": "0,0",
-                    "rangey": "0,0"
-                  },
-                  "CurveB": {
-                    "rangex": "0,0",
-                    "rangey": "0,0"
-                  },
+                  "CurveA": [
+                    {
+                      "x": 0.5,
+                      "y": 0.5,
+                      "in": 0,
+                      "out": 0,
+                      "mode": "Mirrored"
+                    }
+                  ],
+                  "CurveB": [
+                    {
+                      "x": 0.5,
+                      "y": 0.5,
+                      "in": 0,
+                      "out": 0,
+                      "mode": "Mirrored"
+                    }
+                  ],
                   "Constants": "1,0,0,0"
                 },
                 "Bumpiness": {
                   "Type": "Constant",
                   "Evaluation": "Life",
-                  "CurveA": {
-                    "rangex": "0,0",
-                    "rangey": "0,0"
-                  },
-                  "CurveB": {
-                    "rangex": "0,0",
-                    "rangey": "0,0"
-                  },
+                  "CurveA": [
+                    {
+                      "x": 0.5,
+                      "y": 0.5,
+                      "in": 0,
+                      "out": 0,
+                      "mode": "Mirrored"
+                    }
+                  ],
+                  "CurveB": [
+                    {
+                      "x": 0.5,
+                      "y": 0.5,
+                      "in": 0,
+                      "out": 0,
+                      "mode": "Mirrored"
+                    }
+                  ],
                   "Constants": "0,0,0,0"
                 },
                 "Collision": false,
@@ -1153,27 +1638,47 @@
                 "Damping": {
                   "Type": "Constant",
                   "Evaluation": "Life",
-                  "CurveA": {
-                    "rangex": "0,0",
-                    "rangey": "0,0"
-                  },
-                  "CurveB": {
-                    "rangex": "0,0",
-                    "rangey": "0,0"
-                  },
-                  "Constants": "0,1.2,0,0"
+                  "CurveA": [
+                    {
+                      "x": 0.5,
+                      "y": 0.5,
+                      "in": 0,
+                      "out": 0,
+                      "mode": "Mirrored"
+                    }
+                  ],
+                  "CurveB": [
+                    {
+                      "x": 0.5,
+                      "y": 0.5,
+                      "in": 0,
+                      "out": 0,
+                      "mode": "Mirrored"
+                    }
+                  ],
+                  "Constants": "1,1.2,0,0"
                 },
                 "DieOnCollisionChance": {
                   "Type": "Constant",
                   "Evaluation": "Life",
-                  "CurveA": {
-                    "rangex": "0,0",
-                    "rangey": "0,0"
-                  },
-                  "CurveB": {
-                    "rangex": "0,0",
-                    "rangey": "0,0"
-                  },
+                  "CurveA": [
+                    {
+                      "x": 0.5,
+                      "y": 0.5,
+                      "in": 0,
+                      "out": 0,
+                      "mode": "Mirrored"
+                    }
+                  ],
+                  "CurveB": [
+                    {
+                      "x": 0.5,
+                      "y": 0.5,
+                      "in": 0,
+                      "out": 0,
+                      "mode": "Mirrored"
+                    }
+                  ],
                   "Constants": "0,0,0,0"
                 },
                 "Force": true,
@@ -1181,27 +1686,47 @@
                 "ForceScale": {
                   "Type": "Range",
                   "Evaluation": "Particle",
-                  "CurveA": {
-                    "rangex": "0,0",
-                    "rangey": "0,0"
-                  },
-                  "CurveB": {
-                    "rangex": "0,0",
-                    "rangey": "0,0"
-                  },
+                  "CurveA": [
+                    {
+                      "x": 0.5,
+                      "y": 0.5,
+                      "in": 0,
+                      "out": 0,
+                      "mode": "Mirrored"
+                    }
+                  ],
+                  "CurveB": [
+                    {
+                      "x": 0.5,
+                      "y": 0.5,
+                      "in": 0,
+                      "out": 0,
+                      "mode": "Mirrored"
+                    }
+                  ],
                   "Constants": "0.4,2,0,0"
                 },
                 "Friction": {
                   "Type": "Constant",
                   "Evaluation": "Life",
-                  "CurveA": {
-                    "rangex": "0,0",
-                    "rangey": "0,0"
-                  },
-                  "CurveB": {
-                    "rangex": "0,0",
-                    "rangey": "0,0"
-                  },
+                  "CurveA": [
+                    {
+                      "x": 0.5,
+                      "y": 0.5,
+                      "in": 0,
+                      "out": 0,
+                      "mode": "Mirrored"
+                    }
+                  ],
+                  "CurveB": [
+                    {
+                      "x": 0.5,
+                      "y": 0.5,
+                      "in": 0,
+                      "out": 0,
+                      "mode": "Mirrored"
+                    }
+                  ],
                   "Constants": "3,0,0,0"
                 },
                 "Gradient": {
@@ -1233,109 +1758,189 @@
                 "Lifetime": {
                   "Type": "Range",
                   "Evaluation": "Particle",
-                  "CurveA": {
-                    "rangex": "0,0",
-                    "rangey": "0,0"
-                  },
-                  "CurveB": {
-                    "rangex": "0,0",
-                    "rangey": "0,0"
-                  },
-                  "Constants": "2,3,0,0"
+                  "CurveA": [
+                    {
+                      "x": 0.5,
+                      "y": 0.5,
+                      "in": 0,
+                      "out": 0,
+                      "mode": "Mirrored"
+                    }
+                  ],
+                  "CurveB": [
+                    {
+                      "x": 0.5,
+                      "y": 0.5,
+                      "in": 0,
+                      "out": 0,
+                      "mode": "Mirrored"
+                    }
+                  ],
+                  "Constants": "1,2,0,0"
                 },
                 "MaxParticles": 100,
                 "OrbitalForce": {
                   "X": {
                     "Type": "Constant",
                     "Evaluation": "Life",
-                    "CurveA": {
-                      "rangex": "0,0",
-                      "rangey": "0,0"
-                    },
-                    "CurveB": {
-                      "rangex": "0,0",
-                      "rangey": "0,0"
-                    },
+                    "CurveA": [
+                      {
+                        "x": 0.5,
+                        "y": 0.5,
+                        "in": 0,
+                        "out": 0,
+                        "mode": "Mirrored"
+                      }
+                    ],
+                    "CurveB": [
+                      {
+                        "x": 0.5,
+                        "y": 0.5,
+                        "in": 0,
+                        "out": 0,
+                        "mode": "Mirrored"
+                      }
+                    ],
                     "Constants": "0,0,0,0"
                   },
                   "Y": {
                     "Type": "Constant",
                     "Evaluation": "Life",
-                    "CurveA": {
-                      "rangex": "0,0",
-                      "rangey": "0,0"
-                    },
-                    "CurveB": {
-                      "rangex": "0,0",
-                      "rangey": "0,0"
-                    },
+                    "CurveA": [
+                      {
+                        "x": 0.5,
+                        "y": 0.5,
+                        "in": 0,
+                        "out": 0,
+                        "mode": "Mirrored"
+                      }
+                    ],
+                    "CurveB": [
+                      {
+                        "x": 0.5,
+                        "y": 0.5,
+                        "in": 0,
+                        "out": 0,
+                        "mode": "Mirrored"
+                      }
+                    ],
                     "Constants": "0,0,0,0"
                   },
                   "Z": {
                     "Type": "Constant",
                     "Evaluation": "Life",
-                    "CurveA": {
-                      "rangex": "0,0",
-                      "rangey": "0,0"
-                    },
-                    "CurveB": {
-                      "rangex": "0,0",
-                      "rangey": "0,0"
-                    },
+                    "CurveA": [
+                      {
+                        "x": 0.5,
+                        "y": 0.5,
+                        "in": 0,
+                        "out": 0,
+                        "mode": "Mirrored"
+                      }
+                    ],
+                    "CurveB": [
+                      {
+                        "x": 0.5,
+                        "y": 0.5,
+                        "in": 0,
+                        "out": 0,
+                        "mode": "Mirrored"
+                      }
+                    ],
                     "Constants": "0,0,0,0"
                   }
                 },
                 "OrbitalPull": {
                   "Type": "Constant",
                   "Evaluation": "Life",
-                  "CurveA": {
-                    "rangex": "0,0",
-                    "rangey": "0,0"
-                  },
-                  "CurveB": {
-                    "rangex": "0,0",
-                    "rangey": "0,0"
-                  },
+                  "CurveA": [
+                    {
+                      "x": 0.5,
+                      "y": 0.5,
+                      "in": 0,
+                      "out": 0,
+                      "mode": "Mirrored"
+                    }
+                  ],
+                  "CurveB": [
+                    {
+                      "x": 0.5,
+                      "y": 0.5,
+                      "in": 0,
+                      "out": 0,
+                      "mode": "Mirrored"
+                    }
+                  ],
                   "Constants": "0,0,0,0"
                 },
                 "PerParticleTimeScale": {
                   "Type": "Constant",
                   "Evaluation": "Life",
-                  "CurveA": {
-                    "rangex": "0,0",
-                    "rangey": "0,0"
-                  },
-                  "CurveB": {
-                    "rangex": "0,0",
-                    "rangey": "0,0"
-                  },
+                  "CurveA": [
+                    {
+                      "x": 0.5,
+                      "y": 0.5,
+                      "in": 0,
+                      "out": 0,
+                      "mode": "Mirrored"
+                    }
+                  ],
+                  "CurveB": [
+                    {
+                      "x": 0.5,
+                      "y": 0.5,
+                      "in": 0,
+                      "out": 0,
+                      "mode": "Mirrored"
+                    }
+                  ],
                   "Constants": "1,0,0,0"
                 },
                 "Pitch": {
                   "Type": "Constant",
                   "Evaluation": "Life",
-                  "CurveA": {
-                    "rangex": "0,0",
-                    "rangey": "0,0"
-                  },
-                  "CurveB": {
-                    "rangex": "0,0",
-                    "rangey": "0,0"
-                  },
+                  "CurveA": [
+                    {
+                      "x": 0.5,
+                      "y": 0.5,
+                      "in": 0,
+                      "out": 0,
+                      "mode": "Mirrored"
+                    }
+                  ],
+                  "CurveB": [
+                    {
+                      "x": 0.5,
+                      "y": 0.5,
+                      "in": 0,
+                      "out": 0,
+                      "mode": "Mirrored"
+                    }
+                  ],
                   "Constants": "0,0,0,0"
                 },
                 "PreWarm": 0,
                 "PushStrength": {
                   "Type": "Constant",
                   "Evaluation": "Life",
-                  "CurveA": {
-                    "rangex": "0,0",
-                    "rangey": "0,0"
-                  },
-                  "CurveB": {
-                    "rangex": "0,0",
-                    "rangey": "0,0"
-                  },
+                  "CurveA": [
+                    {
+                      "x": 0.5,
+                      "y": 0.5,
+                      "in": 0,
+                      "out": 0,
+                      "mode": "Mirrored"
+                    }
+                  ],
+                  "CurveB": [
+                    {
+                      "x": 0.5,
+                      "y": 0.5,
+                      "in": 0,
+                      "out": 0,
+                      "mode": "Mirrored"
+                    }
+                  ],
                   "Constants": "0,0,0,0"
                 },
                 "Roll": {
@@ -1442,40 +2047,70 @@
                 "SequenceId": {
                   "Type": "Constant",
                   "Evaluation": "Life",
-                  "CurveA": {
-                    "rangex": "0,0",
-                    "rangey": "0,0"
-                  },
-                  "CurveB": {
-                    "rangex": "0,0",
-                    "rangey": "0,0"
-                  },
+                  "CurveA": [
+                    {
+                      "x": 0.5,
+                      "y": 0.5,
+                      "in": 0,
+                      "out": 0,
+                      "mode": "Mirrored"
+                    }
+                  ],
+                  "CurveB": [
+                    {
+                      "x": 0.5,
+                      "y": 0.5,
+                      "in": 0,
+                      "out": 0,
+                      "mode": "Mirrored"
+                    }
+                  ],
                   "Constants": "0,6,0,0"
                 },
                 "SequenceSpeed": {
                   "Type": "Constant",
                   "Evaluation": "Life",
-                  "CurveA": {
-                    "rangex": "0,0",
-                    "rangey": "0,0"
-                  },
-                  "CurveB": {
-                    "rangex": "0,0",
-                    "rangey": "0,0"
-                  },
+                  "CurveA": [
+                    {
+                      "x": 0.5,
+                      "y": 0.5,
+                      "in": 0,
+                      "out": 0,
+                      "mode": "Mirrored"
+                    }
+                  ],
+                  "CurveB": [
+                    {
+                      "x": 0.5,
+                      "y": 0.5,
+                      "in": 0,
+                      "out": 0,
+                      "mode": "Mirrored"
+                    }
+                  ],
                   "Constants": "0,0,0,0"
                 },
                 "SequenceTime": {
                   "Type": "Constant",
                   "Evaluation": "Life",
-                  "CurveA": {
-                    "rangex": "0,0",
-                    "rangey": "0,0"
-                  },
-                  "CurveB": {
-                    "rangex": "0,0",
-                    "rangey": "0,0"
-                  },
+                  "CurveA": [
+                    {
+                      "x": 0.5,
+                      "y": 0.5,
+                      "in": 0,
+                      "out": 0,
+                      "mode": "Mirrored"
+                    }
+                  ],
+                  "CurveB": [
+                    {
+                      "x": 0.5,
+                      "y": 0.5,
+                      "in": 0,
+                      "out": 0,
+                      "mode": "Mirrored"
+                    }
+                  ],
                   "Constants": "1,0,0,0"
                 },
                 "SheetSequence": true,
@@ -1483,40 +2118,70 @@
                 "StartDelay": {
                   "Type": "Constant",
                   "Evaluation": "Life",
-                  "CurveA": {
-                    "rangex": "0,0",
-                    "rangey": "0,0"
-                  },
-                  "CurveB": {
-                    "rangex": "0,0",
-                    "rangey": "0,0"
-                  },
+                  "CurveA": [
+                    {
+                      "x": 0.5,
+                      "y": 0.5,
+                      "in": 0,
+                      "out": 0,
+                      "mode": "Mirrored"
+                    }
+                  ],
+                  "CurveB": [
+                    {
+                      "x": 0.5,
+                      "y": 0.5,
+                      "in": 0,
+                      "out": 0,
+                      "mode": "Mirrored"
+                    }
+                  ],
                   "Constants": "0,0,0,0"
                 },
                 "StartVelocity": {
                   "Type": "Range",
                   "Evaluation": "Particle",
-                  "CurveA": {
-                    "rangex": "0,0",
-                    "rangey": "0,0"
-                  },
-                  "CurveB": {
-                    "rangex": "0,0",
-                    "rangey": "0,0"
-                  },
-                  "Constants": "125,350,0,0"
+                  "CurveA": [
+                    {
+                      "x": 0.5,
+                      "y": 0.5,
+                      "in": 0,
+                      "out": 0,
+                      "mode": "Mirrored"
+                    }
+                  ],
+                  "CurveB": [
+                    {
+                      "x": 0.5,
+                      "y": 0.5,
+                      "in": 0,
+                      "out": 0,
+                      "mode": "Mirrored"
+                    }
+                  ],
+                  "Constants": "125,200,0,0"
                 },
                 "Stretch": {
                   "Type": "Constant",
                   "Evaluation": "Life",
-                  "CurveA": {
-                    "rangex": "0,0",
-                    "rangey": "0,0"
-                  },
-                  "CurveB": {
-                    "rangex": "0,0",
-                    "rangey": "0,0"
-                  },
+                  "CurveA": [
+                    {
+                      "x": 0.5,
+                      "y": 0.5,
+                      "in": 0,
+                      "out": 0,
+                      "mode": "Mirrored"
+                    }
+                  ],
+                  "CurveB": [
+                    {
+                      "x": 0.5,
+                      "y": 0.5,
+                      "in": 0,
+                      "out": 0,
+                      "mode": "Mirrored"
+                    }
+                  ],
                   "Constants": "0,0,0,0"
                 },
                 "TimeScale": 1,
@@ -1524,14 +2189,24 @@
                 "Yaw": {
                   "Type": "Constant",
                   "Evaluation": "Life",
-                  "CurveA": {
-                    "rangex": "0,0",
-                    "rangey": "0,0"
-                  },
-                  "CurveB": {
-                    "rangex": "0,0",
-                    "rangey": "0,0"
-                  },
+                  "CurveA": [
+                    {
+                      "x": 0.5,
+                      "y": 0.5,
+                      "in": 0,
+                      "out": 0,
+                      "mode": "Mirrored"
+                    }
+                  ],
+                  "CurveB": [
+                    {
+                      "x": 0.5,
+                      "y": 0.5,
+                      "in": 0,
+                      "out": 0,
+                      "mode": "Mirrored"
+                    }
+                  ],
                   "Constants": "0,0,0,0"
                 }
               },
@@ -1567,14 +2242,14 @@
                 "__type": "Sandbox.ParticleConeEmitter",
                 "__guid": "b2139cc8-440a-43b0-8c7b-28c41ee96e11",
                 "Burst": 12,
-                "ConeAngle": 70,
+                "ConeAngle": 39.5,
                 "ConeFar": 2,
                 "ConeNear": 1,
                 "Delay": 0,
                 "DestroyOnEnd": true,
                 "Duration": 3,
                 "InVolume": false,
-                "Loop": true,
+                "Loop": false,
                 "OnEdge": false,
                 "Rate": 0,
                 "RateOverDistance": 0
