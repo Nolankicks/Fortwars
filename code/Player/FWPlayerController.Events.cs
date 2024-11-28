@@ -28,6 +28,8 @@ partial class FWPlayerController
 		if ( IsProxy )
 			return;
 
+		Sound.Play( "flesh.hit" );
+
 		Scene.Dispatch( new PlayerDamage( this, eventArgs ) );
 	}
 
