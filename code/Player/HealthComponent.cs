@@ -154,12 +154,23 @@ public partial class HealthComponent : Component
 
 	public void BloodEffects( Vector3 pos, Vector3 rot )
 	{
+		// WorldBlood
+		var tr = Scene.Trace.Ray( pos, pos - rot * 500 ).WithoutTags( "player" ).IgnoreGameObjectHierarchy( GameObject ).Run();
+		if ( tr.Hit )
+		{
+			var decal = GameObject.Clone( "prefabs/effects/blooddecal.prefab" );
+			decal.WorldPosition = tr.HitPosition + tr.Normal;
+			decal.WorldRotation = Rotation.LookAt( -tr.Normal );
+		}
+
 		if ( !PlayOnLocal && !IsProxy )
 			return;
 
 		var go = BloodPrefab.Clone();
 		go.WorldPosition = pos;
 		go.WorldRotation = Rotation.LookAt( rot );
+
+
 	}
 
 	[Broadcast]

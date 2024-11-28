@@ -1,0 +1,430 @@
+{
+  "RootObject": {
+    "__guid": "e364fb39-504c-492a-9d23-755217490692",
+    "Flags": 0,
+    "Name": "blooddecal",
+    "Enabled": true,
+    "Components": [
+      {
+        "__type": "Sandbox.ActionGraphs.ActionsInvoker",
+        "__guid": "5a48de7d-5138-43a9-9262-9654f58b0039",
+        "OnEnabledAction": {
+          "__version": 8,
+          "__guid": "1abee19c-3476-4651-b2d6-21c810fe80d0",
+          "__changeId": 93,
+          "UserData": {
+            "Title": "On Enabled Action",
+            "ReferencedComponentTypes": []
+          },
+          "Variables": [
+            {
+              "Name": "mat",
+              "Type": "Sandbox.Material"
+            }
+          ],
+          "Nodes": [
+            {
+              "Id": 0,
+              "Type": "input"
+            },
+            {
+              "Id": 2,
+              "Type": "scene.ref",
+              "UserData": {
+                "Position": "36,60"
+              }
+            },
+            {
+              "Id": 3,
+              "Type": "property",
+              "Properties": {
+                "_name": "Material",
+                "_type": "Sandbox.DecalRenderer"
+              },
+              "UserData": {
+                "Position": "720,12"
+              }
+            },
+            {
+              "Id": 5,
+              "Type": "resource.ref",
+              "Properties": {
+                "package": "jase.blooddrip01",
+                "T": "Sandbox.Material",
+                "value": "blood_drip_01_decal.vmat"
+              },
+              "UserData": {
+                "Position": "-144,192"
+              }
+            },
+            {
+              "Id": 7,
+              "Type": "resource.ref",
+              "Properties": {
+                "package": "jase.bloodsplatter04",
+                "T": "Sandbox.Material",
+                "value": "blood_splatter_04_decal.vmat"
+              },
+              "UserData": {
+                "Position": "-144,312"
+              }
+            },
+            {
+              "Id": 9,
+              "Type": "resource.ref",
+              "Properties": {
+                "package": "jase.bloodsplatter02",
+                "T": "Sandbox.Material",
+                "value": "blood_splatter_02_decal.vmat"
+              },
+              "UserData": {
+                "Position": "-144,540"
+              }
+            },
+            {
+              "Id": 11,
+              "Type": "resource.ref",
+              "Properties": {
+                "package": "jase.bloodsplatter03",
+                "T": "Sandbox.Material",
+                "value": "blood_splatter_03_decal.vmat"
+              },
+              "UserData": {
+                "Position": "-144,432"
+              }
+            },
+            {
+              "Id": 13,
+              "Type": "resource.ref",
+              "Properties": {
+                "package": "jase.bloodsplatter02",
+                "T": "Sandbox.Material",
+                "value": "blood_splatter_02_decal.vmat"
+              },
+              "UserData": {
+                "Position": "432,540"
+              }
+            },
+            {
+              "Id": 14,
+              "Type": "random.int",
+              "UserData": {
+                "Position": "96,204"
+              }
+            },
+            {
+              "Id": 16,
+              "Type": "switch",
+              "Properties": {
+                "cases": {
+                  "$type": "Array",
+                  "ElementType": "System.Int32",
+                  "Items": [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4,
+                    5
+                  ]
+                }
+              },
+              "UserData": {
+                "Position": "324,240"
+              }
+            },
+            {
+              "Id": 19,
+              "Type": "var",
+              "Properties": {
+                "_var": "mat"
+              },
+              "UserData": {
+                "Position": "504,108"
+              }
+            },
+            {
+              "Id": 20,
+              "Type": "var",
+              "Properties": {
+                "_var": "mat"
+              },
+              "UserData": {
+                "Position": "516,216"
+              }
+            },
+            {
+              "Id": 21,
+              "Type": "var",
+              "Properties": {
+                "_var": "mat"
+              },
+              "UserData": {
+                "Position": "552,312"
+              }
+            },
+            {
+              "Id": 22,
+              "Type": "var",
+              "Properties": {
+                "_var": "mat"
+              },
+              "UserData": {
+                "Position": "468,456"
+              }
+            },
+            {
+              "Id": 23,
+              "Type": "var",
+              "Properties": {
+                "_var": "mat"
+              },
+              "UserData": {
+                "Position": "528,396"
+              }
+            },
+            {
+              "Id": 24,
+              "Type": "var",
+              "Properties": {
+                "_var": "mat"
+              },
+              "UserData": {
+                "Position": "744,600"
+              }
+            },
+            {
+              "Id": 25,
+              "Type": "log.info",
+              "UserData": {
+                "Position": "960,96"
+              }
+            },
+            {
+              "Id": 30,
+              "Type": "var",
+              "Properties": {
+                "_var": "mat"
+              },
+              "UserData": {
+                "Position": "276,48"
+              }
+            }
+          ],
+          "Links": [
+            {
+              "SrcId": 16,
+              "SrcName": "_signal",
+              "DstId": 3,
+              "DstName": "_signal"
+            },
+            {
+              "SrcId": 2,
+              "SrcName": "_result",
+              "DstId": 3,
+              "DstName": "_target"
+            },
+            {
+              "SrcId": 19,
+              "SrcName": "_result",
+              "DstId": 3,
+              "DstName": "_value"
+            },
+            {
+              "Id": 18,
+              "Value": 4,
+              "DstId": 14,
+              "DstName": "max"
+            },
+            {
+              "SrcId": 30,
+              "SrcName": "_signal",
+              "DstId": 16,
+              "DstName": "_signal"
+            },
+            {
+              "SrcId": 14,
+              "SrcName": "_result",
+              "DstId": 16,
+              "DstName": "value"
+            },
+            {
+              "SrcId": 16,
+              "SrcName": "i:0",
+              "DstId": 20,
+              "DstName": "_signal"
+            },
+            {
+              "SrcId": 13,
+              "SrcName": "_result",
+              "DstId": 20,
+              "DstName": "_value"
+            },
+            {
+              "SrcId": 16,
+              "SrcName": "i:1",
+              "DstId": 21,
+              "DstName": "_signal"
+            },
+            {
+              "SrcId": 5,
+              "SrcName": "_result",
+              "DstId": 21,
+              "DstName": "_value"
+            },
+            {
+              "SrcId": 16,
+              "SrcName": "i:4",
+              "DstId": 22,
+              "DstName": "_signal"
+            },
+            {
+              "SrcId": 11,
+              "SrcName": "_result",
+              "DstId": 22,
+              "DstName": "_value"
+            },
+            {
+              "SrcId": 16,
+              "SrcName": "i:3",
+              "DstId": 23,
+              "DstName": "_signal"
+            },
+            {
+              "SrcId": 7,
+              "SrcName": "_result",
+              "DstId": 23,
+              "DstName": "_value"
+            },
+            {
+              "SrcId": 16,
+              "SrcName": "i:5",
+              "DstId": 24,
+              "DstName": "_signal"
+            },
+            {
+              "SrcId": 9,
+              "SrcName": "_result",
+              "DstId": 24,
+              "DstName": "_value"
+            },
+            {
+              "SrcId": 3,
+              "SrcName": "_signal",
+              "DstId": 25,
+              "DstName": "_signal"
+            },
+            {
+              "Id": 29,
+              "Value": "test",
+              "DstId": 25,
+              "DstName": "args",
+              "DstIndex": 0
+            },
+            {
+              "SrcId": 0,
+              "SrcName": "_signal",
+              "DstId": 30,
+              "DstName": "_signal"
+            },
+            {
+              "SrcId": 9,
+              "SrcName": "_result",
+              "DstId": 30,
+              "DstName": "_value"
+            }
+          ],
+          "Defaults": {
+            "$2.component": {
+              "_type": "component",
+              "component_id": "54418868-2171-4443-9e45-b12c72a5404c",
+              "go": "e364fb39-504c-492a-9d23-755217490692",
+              "component_type": "DecalRenderer"
+            }
+          }
+        }
+      },
+      {
+        "__type": "Sandbox.DecalRenderer",
+        "__guid": "54418868-2171-4443-9e45-b12c72a5404c",
+        "CutoffAngle": 60,
+        "CutoffAngleSoftness": 5,
+        "Material": "blood_splatter_04_decal.vmat",
+        "Mod2XBlending": false,
+        "RenderOptions": {
+          "GameLayer": true,
+          "OverlayLayer": false,
+          "BloomLayer": false,
+          "AfterUILayer": false
+        },
+        "Size": "64,64,8",
+        "TintColor": "1,1,1,1",
+        "TriPlanar": false
+      }
+    ],
+    "Children": [
+      {
+        "__guid": "abf2c6c5-8a9b-48e1-a3eb-ecd92d8a714f",
+        "Flags": 2048,
+        "Name": "Plane",
+        "Position": "0.6976891,0,-0.000001804797",
+        "Rotation": "0,-0.7071067,0,0.7071068",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.ModelRenderer",
+            "__guid": "58a55739-1d21-4610-a427-f351a7002c48",
+            "BodyGroups": 18446744073709551615,
+            "CreateAttachments": false,
+            "Model": "models/dev/plane.vmdl",
+            "RenderOptions": {
+              "GameLayer": true,
+              "OverlayLayer": false,
+              "BloomLayer": false,
+              "AfterUILayer": false
+            },
+            "RenderType": "On",
+            "Tint": "1,1,1,1"
+          }
+        ]
+      }
+    ],
+    "__variables": [],
+    "__properties": {
+      "FixedUpdateFrequency": 50,
+      "MaxFixedUpdates": 5,
+      "NetworkFrequency": 30,
+      "NetworkInterpolation": true,
+      "PhysicsSubSteps": 1,
+      "ThreadedAnimation": true,
+      "TimeScale": 1,
+      "UseFixedUpdate": true,
+      "Metadata": {},
+      "NavMesh": {
+        "Enabled": false,
+        "IncludeStaticBodies": true,
+        "IncludeKeyframedBodies": true,
+        "EditorAutoUpdate": true,
+        "AgentHeight": 64,
+        "AgentRadius": 16,
+        "AgentStepSize": 18,
+        "AgentMaxSlope": 40,
+        "ExcludedBodies": "",
+        "IncludedBodies": ""
+      }
+    }
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "DontBreakAsTemplate": false,
+  "ResourceVersion": 1,
+  "__references": [
+    "jase.blooddrip01#11946",
+    "jase.bloodsplatter02#11951",
+    "jase.bloodsplatter03#11952",
+    "jase.bloodsplatter04#11953"
+  ],
+  "IsValid": true,
+  "__version": 1
+}
