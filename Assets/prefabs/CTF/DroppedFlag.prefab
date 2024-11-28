@@ -9,6 +9,12 @@
       {
         "__type": "DroppedFlag",
         "__guid": "17a2ee5f-7bf0-4e23-94cb-b0005dffbf3c",
+        "Marker": {
+          "_type": "component",
+          "component_id": "378ef75d-1759-493c-9640-9d38cc9f4bc0",
+          "go": "bed82358-1755-437e-867d-0896a5d0524a",
+          "component_type": "NavMarker"
+        },
         "TeamFlag": "Red"
       },
       {
@@ -16,6 +22,7 @@
         "__guid": "a56476ae-1e21-4811-97aa-73dd322b675c",
         "BodyGroups": 18446744073709551615,
         "CreateAttachments": false,
+        "MaterialGroup": "2",
         "Model": "models/dev_flag.vmdl",
         "RenderOptions": {
           "GameLayer": true,
@@ -38,9 +45,9 @@
       {
         "__type": "Sandbox.BoxCollider",
         "__guid": "5b5a7277-b07f-43e2-8ea0-9e4f654bc166",
-        "Center": "17.70001,0,37.19994",
+        "Center": "0,0,36",
         "IsTrigger": true,
-        "Scale": "100,100,100",
+        "Scale": "16,16,72",
         "Static": false,
         "SurfaceVelocity": "0,0,0"
       }
@@ -50,7 +57,7 @@
         "__guid": "bed82358-1755-437e-867d-0896a5d0524a",
         "Flags": 0,
         "Name": "NavMarker",
-        "Position": "0,0,64",
+        "Position": "0,0,88",
         "Enabled": true,
         "Components": [
           {
@@ -58,9 +65,9 @@
             "__guid": "378ef75d-1759-493c-9640-9d38cc9f4bc0",
             "DrawDistance": false,
             "DrawOffScreen": false,
-            "Scale": 1,
+            "Scale": 1.25,
             "Text": "FLAG",
-            "Tint": "1,0,0,1"
+            "Tint": "1,1,1,1"
           }
         ]
       }

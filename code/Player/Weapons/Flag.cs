@@ -37,6 +37,8 @@ public sealed class Flag : Item
 
 		if ( FlagRenderer.IsValid() )
 			FlagRenderer.Tint = HUD.GetColor( Owner ).Rgb;
+
+		Scene.GetAll<CTFTrigger>()?.FirstOrDefault( x => x.Team == Owner ).OnTeamFlagPickup();
 	}
 
 	protected override void OnUpdate()
@@ -82,7 +84,7 @@ public sealed class Flag : Item
 
 		if ( SpawnNewFlag )
 		{
-			var clone = DroppedFlagPrefab.Clone( WorldPosition + local.EyeAngles.Forward * 100 );
+			var clone = DroppedFlagPrefab.Clone( local.WorldPosition );
 
 			if ( clone.Components.TryGet<DroppedFlag>( out var droppedFlag ) )
 			{
@@ -102,17 +104,24 @@ public sealed class DroppedFlag : Component, Component.ITriggerListener
 {
 	[Property, Sync] public Team TeamFlag { get; set; }
 
+	[Property] NavMarker Marker { get; set; }
+
+	TimeSince CreationDelay { get; set; }
+
 	protected override void OnStart()
 	{
+		CreationDelay = 0.0f;
 		foreach ( var modelRenderer in GameObject.GetComponentsInChildren<ModelRenderer>() )
 		{
 			modelRenderer.Tint = HUD.GetColor( TeamFlag ).Rgb;
 		}
+
+		Marker.Tint = HUD.GetColor( TeamFlag ).Rgb;
 	}
 
 	void ITriggerListener.OnTriggerEnter( Collider other )
 	{
-		if ( IsProxy )
+		if ( IsProxy || CreationDelay < 0.5f )
 			return;
 
 		if ( other.GameObject.Components.TryGet<FWPlayerController>( out var playerController, FindMode.EverythingInSelfAndParent ) )
@@ -165,6 +174,8 @@ public sealed class CTFTrigger : Component, Component.ITriggerListener
 	[Header( "Should be the opposite team of the side its on" )]
 	[Property, Sync] public Team Team { get; set; }
 
+	GameObject Marker { get; set; }
+
 	void ITriggerListener.OnTriggerEnter( Collider other )
 	{
 		var flag = ResourceLibrary.Get<WeaponData>( "weapondatas/flag.weapons" );
@@ -191,6 +202,51 @@ public sealed class CTFTrigger : Component, Component.ITriggerListener
 			gs.AddFlagCapture( local.TeamComponent.Team );
 
 			PopupHolder.BroadcastPopup( $"{local.TeamComponent.Team} captured the flag!", 5 );
+
+			OnTeamFlagDropped( Team );
+		}
+	}
+
+	// Team is the team who just picked up the flag
+	[Broadcast]
+	public void OnTeamFlagPickup()
+	{
+		var local = FWPlayerController.Local;
+
+		if ( !local.IsValid() )
+			return;
+
+		if ( Marker.IsValid() )
+			return;
+
+		// Let's enable this on the client side
+		if ( local.TeamComponent.Team != Team )
+		{
+			Marker = new GameObject();
+			Marker.SetParent( GameObject );
+			Marker.WorldPosition = WorldPosition;
+			var marker = Marker.Components.Create<NavMarker>();
+			marker.Tint = HUD.GetColor( Team ).Rgb;
+			marker.Text = "RETURN";
+
+		}
+	}
+
+	[Broadcast]
+	public void OnTeamFlagDropped( Team team )
+	{
+		var local = FWPlayerController.Local;
+
+		if ( !local.IsValid() )
+			return;
+
+		if ( !Marker.IsValid() )
+			return;
+
+		// Let's enable this on the client side
+		if ( local.TeamComponent.Team != Team )
+		{
+			Marker.Destroy();
 		}
 	}
 }
