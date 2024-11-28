@@ -203,7 +203,7 @@ public sealed class CTFTrigger : Component, Component.ITriggerListener
 
 			PopupHolder.BroadcastPopup( $"{local.TeamComponent.Team} captured the flag!", 5 );
 
-			OnTeamFlagDropped( Team );
+			OnTeamFlagCaptured( Team );
 		}
 	}
 
@@ -233,8 +233,13 @@ public sealed class CTFTrigger : Component, Component.ITriggerListener
 	}
 
 	[Broadcast]
-	public void OnTeamFlagDropped( Team team )
+	public void OnTeamFlagCaptured( Team team )
 	{
+		var particles = GameObject.Clone( "prefabs/effects/flagcapture.prefab" );
+		particles.WorldPosition = WorldPosition;
+		particles.WorldRotation = new Angles( -90, 0, 0 );
+		particles.Transform.ClearInterpolation();
+
 		var local = FWPlayerController.Local;
 
 		if ( !local.IsValid() )

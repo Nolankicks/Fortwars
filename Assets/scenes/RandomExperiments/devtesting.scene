@@ -74,7 +74,7 @@
       "__guid": "94679a35-1587-49ef-80fe-45b99ad44762",
       "Flags": 0,
       "Name": "FlagCaptureEffect",
-      "Position": "288,-544.0001,24",
+      "Position": "936,48,24",
       "Rotation": "0,-0.7071067,0,0.7071068",
       "Tags": "particles",
       "Enabled": true,
