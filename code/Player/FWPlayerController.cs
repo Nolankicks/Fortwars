@@ -1,7 +1,7 @@
-using System;
 using Sandbox.Citizen;
 using Sandbox.Events;
 using Sandbox.Services;
+using System;
 
 [Title( "FW - Player Controller" )]
 public sealed partial class FWPlayerController : Component, IGameEventHandler<DamageEvent>, IGameEventHandler<PlayerReset>,
@@ -316,7 +316,7 @@ IGameEventHandler<DeathEvent>, IGameEventHandler<OnPhysgunGrabChange>
 		var ee = EyeAngles;
 		if ( CanMoveHead )
 		{
-			ee += Input.AnalogLook;
+			ee += Input.AnalogLook * CameraController.Instance.FOVMult;
 		}
 
 		ee.pitch = ee.pitch.Clamp( -89, 89 );

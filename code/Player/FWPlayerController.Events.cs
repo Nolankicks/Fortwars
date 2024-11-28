@@ -1,4 +1,3 @@
-using System;
 using Sandbox.Events;
 
 public record PlayerDeath( FWPlayerController Player, GameObject Attacker ) : IGameEvent;
@@ -26,6 +25,8 @@ partial class FWPlayerController
 
 	void IGameEventHandler<DamageEvent>.OnGameEvent( DamageEvent eventArgs )
 	{
+		AnimHelper.Target.Set( "b_hit", true );
+
 		if ( IsProxy )
 			return;
 
