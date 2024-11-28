@@ -22,21 +22,11 @@
       "Children": []
     },
     {
-      "__guid": "5245524c-60f0-46df-bb69-46ba5754e1b0",
-      "Flags": 0,
-      "Name": "propdestroy",
-      "Position": "720,-312,66.82477",
-      "Tags": "particles",
-      "Enabled": true,
-      "__Prefab": "prefabs/effects/propdestroy.prefab",
-      "__PrefabVariables": {}
-    },
-    {
       "__guid": "776c7f60-315c-490a-9fff-d25ab9e3c4c7",
       "Flags": 0,
       "Name": "rollermine",
       "Position": "640,-136,15.99991",
-      "Tags": "rollermine,light_point,light",
+      "Tags": "light,light_point,rollermine",
       "Enabled": true,
       "NetworkMode": 1,
       "NetworkOrphaned": 3,
@@ -54,7 +44,8 @@
         {
           "__type": "NavMarker",
           "__guid": "8756aa13-17f1-488e-99c6-f921e67f5e0c",
-          "Tint": "1,1,1,1"
+          "Text": "aaa",
+          "Tint": "0.46512,0.49186,1,1"
         }
       ]
     },

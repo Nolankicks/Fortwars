@@ -165,38 +165,7 @@
         "Type": "Classic, RollermineWars, Dodgeball"
       }
     ],
-    "Children": [
-      {
-        "__guid": "a45a0e82-172b-4791-bad3-303003f090b2",
-        "Flags": 2048,
-        "Name": "Camera",
-        "Tags": "maincamera",
-        "Enabled": true,
-        "Components": [
-          {
-            "__type": "Sandbox.CameraComponent",
-            "__guid": "fe516973-79b3-4b4f-814a-ec1fec7aeba2",
-            "BackgroundColor": "0.33333,0.46275,0.52157,1",
-            "ClearFlags": "All",
-            "FieldOfView": 60,
-            "IsMainCamera": true,
-            "Orthographic": false,
-            "OrthographicHeight": 1204,
-            "Priority": 1,
-            "RenderExcludeTags": "",
-            "RenderTags": "",
-            "TargetEye": "None",
-            "Viewport": "0,0,1,1",
-            "ZFar": 10000,
-            "ZNear": 10
-          },
-          {
-            "__type": "Sandbox.Highlight",
-            "__guid": "9aca3228-c8f5-47a4-b776-8c5f7e9bf2f2"
-          }
-        ]
-      }
-    ],
+    "Children": [],
     "__variables": [],
     "__properties": {
       "FixedUpdateFrequency": 50,
