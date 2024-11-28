@@ -375,7 +375,7 @@ public class Weapon : Item, IGameEventHandler<OnReloadEvent>
 			foreach ( var trace in traces )
 			{
 				if ( trace.Hit && !trace.GameObject.Components.TryGet<FWPlayerController>( out var player )
-					&& !trace.GameObject.Components.TryGet<RollerMine>( out var mine ) )
+					&& !trace.GameObject.Components.TryGet<RollerMine>( out var mine ) && !trace.GameObject.Tags.Has( "no_decals" ) )
 				{
 					var decal = GameObject.Clone( "prefabs/effects/bulletdecal.prefab", new CloneConfig { Parent = Scene.Root, StartEnabled = true } );
 					decal.WorldPosition = trace.HitPosition + trace.Normal;
