@@ -23,14 +23,15 @@
         "HoldType": "Rifle",
         "MaxAmmo": 30,
         "MaxRecoilValues": "-12,2,0",
+        "MaxSpread": 0.05,
         "MinRecoilValues": "-4,2,0",
+        "MinSpread": 0.01,
         "Offset": "2.883967,0.1033601,-4.295026",
-        "PunchDecreaseRate": 1,
-        "PunchFireIncrease": 0.1,
+        "PunchDecreaseRate": 1.5,
+        "PunchFireIncrease": 0.2,
         "Range": 50000,
         "ReloadAnimName": "b_reload",
         "ReloadDelay": 1.2,
-        "Spread": 0.03,
         "TracerPoint": {
           "_type": "gameobject",
           "go": "71c6c219-ae51-49b1-9c06-22d36d6e1735"

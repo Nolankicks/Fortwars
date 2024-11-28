@@ -152,7 +152,8 @@ public class Weapon : Item, IGameEventHandler<OnReloadEvent>
 	TimeSince equipTime { get; set; }
 	TimeSince reloadTime { get; set; }
 	[Property] public float Range { get; set; } = 5000;
-	[Property] public float Spread { get; set; } = 0.03f;
+	[Property] public float MinSpread { get; set; } = 0.03f;
+	[Property] public float MaxSpread { get; set; } = 0.05f;
 	[Property] public int TraceTimes { get; set; } = 1;
 	[Property] public SoundEvent FireSound { get; set; }
 	[Property] public string AttackAnimName { get; set; } = "b_attack";
@@ -273,7 +274,7 @@ public class Weapon : Item, IGameEventHandler<OnReloadEvent>
 
 		var ray = cam.ScreenNormalToRay( 0.5f );
 
-		ray.Forward += Vector3.Random * (Spread * FirePunch);
+		ray.Forward += Vector3.Random * (MinSpread.LerpTo( MaxSpread, FirePunch ));
 
 		var tr = Scene.Trace.Ray( ray, Range )
 			.IgnoreGameObjectHierarchy( local.GameObject )
