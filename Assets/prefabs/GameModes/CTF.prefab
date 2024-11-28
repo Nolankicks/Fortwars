@@ -266,7 +266,7 @@
                   "weapondatas/physgun.weapons"
                 ],
                 "ResetPlayerResouces": true,
-                "RoundTime": 140,
+                "RoundTime": 210,
                 "Time": true,
                 "Warning": false,
                 "WarningDuration": 0,
