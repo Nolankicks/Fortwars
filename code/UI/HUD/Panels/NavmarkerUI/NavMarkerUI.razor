@@ -11,7 +11,7 @@
 
         <div class="marker" style="left: @(pos.x)%; top: @(pos.y)%;">
             <div class="text">@marker.Text</div>
-            <div class="distance">50m</div>
+            <div class="distance">@((int)marker.GetDistance())m</div>
             <div class="icon" style="background-image-tint: @(marker.Tint.Hex)" />
         </div>
     }
