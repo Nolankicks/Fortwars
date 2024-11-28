@@ -1,6 +1,5 @@
-using System;
-using Sandbox;
 using Sandbox.Events;
+using System;
 
 public record DamageEvent( int Amount, GameObject Attacker, GameObject Player, Vector3 HitPos = default, Vector3 HitNormal = default ) : IGameEvent;
 public record DeathEvent( GameObject Attacker, GameObject Player, Vector3 damagePos, Vector3 damageNormal ) : IGameEvent;
@@ -19,6 +18,9 @@ public partial class HealthComponent : Component
 	[Property, FeatureEnabled( "Autoheal" )] public bool AutohealEnabled { get; set; } = false;
 	[Property, FeatureEnabled( "Autoheal" )] public int AutohealRate { get; set; } = 1;
 	[Property, FeatureEnabled( "Autoheal" )] public float AutohealDelay { get; set; } = 5.0f;
+
+	[Property, FeatureEnabled( "Blood" )] public bool BloodEnabled { get; set; } = false;
+	[Property, Feature( "Blood" )] public GameObject BloodPrefab { get; set; }
 
 	public TimeSince LastHit { get; set; }
 

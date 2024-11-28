@@ -27,6 +27,14 @@ partial class FWPlayerController
 	{
 		AnimHelper.Target.Set( "b_hit", true );
 
+		// Do blood effects outside of the client
+		if ( IsProxy )
+		{
+			var go = GameObject.Clone( "prefabs/Effects/blood.prefab" );
+			go.WorldPosition = eventArgs.HitPos;
+			go.WorldRotation = Rotation.LookAt( eventArgs.HitNormal );
+		}
+
 		if ( IsProxy )
 			return;
 
