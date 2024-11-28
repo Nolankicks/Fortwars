@@ -484,17 +484,41 @@
           "Constants": "0,0,0,0"
         },
         "Scale": {
-          "Type": "Constant",
+          "Type": "Curve",
           "Evaluation": "Life",
-          "CurveA": [
-            {
-              "x": 0.5,
-              "y": 0.5,
-              "in": 0,
-              "out": 0,
-              "mode": "Mirrored"
-            }
-          ],
+          "CurveA": {
+            "rangey": "0,10",
+            "frames": [
+              {
+                "x": 0,
+                "y": 0,
+                "in": 0,
+                "out": 0,
+                "mode": "Mirrored"
+              },
+              {
+                "x": 0.08779762,
+                "y": 1,
+                "in": 0,
+                "out": 0,
+                "mode": "Mirrored"
+              },
+              {
+                "x": 0.8526786,
+                "y": 1,
+                "in": 0,
+                "out": 0,
+                "mode": "Mirrored"
+              },
+              {
+                "x": 1,
+                "y": 0,
+                "in": 0,
+                "out": 0,
+                "mode": "Mirrored"
+              }
+            ]
+          },
           "CurveB": [
             {
               "x": 0.5,
@@ -1180,8 +1204,8 @@
                     "mode": "Mirrored"
                   },
                   {
-                    "x": 0.6264881,
-                    "y": 0.9712655,
+                    "x": 0.67113096,
+                    "y": 0.9845634,
                     "in": 0,
                     "out": 0,
                     "mode": "Mirrored"
@@ -1700,7 +1724,34 @@
         ]
       }
     ],
-    "__variables": [],
+    "__variables": [
+      {
+        "Id": "Max Particles",
+        "Title": "Max Particles",
+        "Description": null,
+        "Group": null,
+        "Order": 0,
+        "Targets": [
+          {
+            "Id": "3912c7e4-1c67-4aaa-bb02-1b294cabcbab",
+            "Property": "MaxParticles"
+          }
+        ]
+      },
+      {
+        "Id": "Play On Start",
+        "Title": "Play On Start",
+        "Description": null,
+        "Group": null,
+        "Order": 0,
+        "Targets": [
+          {
+            "Id": "e43fb6e3-984b-41b4-865d-27cf30a4a5ed",
+            "Property": "PlayOnStart"
+          }
+        ]
+      }
+    ],
     "__properties": {
       "FixedUpdateFrequency": 50,
       "MaxFixedUpdates": 5,
