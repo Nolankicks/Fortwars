@@ -164,9 +164,24 @@ public sealed class FortwarsProp : Component, Component.IDamageable
 			gibs?.ForEach( x => x.GameObject.NetworkSpawn() );
 
 
+			DestructionEffects();
 
 			GameObject.Destroy();
 		}
+	}
+
+	[Broadcast]
+	public void DestructionEffects()
+	{
+		if ( !GameObject.IsValid() )
+			return;
+
+		var particles = GameObject.Clone( "prefabs/effects/propdestroy.prefab" );
+		particles.WorldPosition = WorldPosition;
+		particles.WorldRotation = WorldRotation;
+
+		var renderer = particles.Components.Get<SkinnedModelRenderer>( FindMode.InChildren );
+		renderer.Model = Renderer.Model;
 	}
 
 	[Authority]

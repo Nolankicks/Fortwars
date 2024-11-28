@@ -74,6 +74,7 @@
         "Divisor": 20,
         "Health": 100,
         "Invincible": true,
+        "MaxHealth": 100,
         "Team": "None"
       },
       {
@@ -229,5 +230,6 @@
   "__references": [
     "igrium.rollermine-model#19481"
   ],
+  "IsValid": true,
   "__version": 1
 }

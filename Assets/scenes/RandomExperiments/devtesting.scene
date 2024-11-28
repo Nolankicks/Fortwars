@@ -30,6 +30,19 @@
       "Enabled": true,
       "__Prefab": "prefabs/effects/propdestroy.prefab",
       "__PrefabVariables": {}
+    },
+    {
+      "__guid": "776c7f60-315c-490a-9fff-d25ab9e3c4c7",
+      "Flags": 0,
+      "Name": "rollermine",
+      "Position": "457.3042,-246.7788,16",
+      "Tags": "rollermine,light_point,light",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "NetworkOrphaned": 3,
+      "OwnerTransfer": 0,
+      "__Prefab": "prefabs/rollermine.prefab",
+      "__PrefabVariables": {}
     }
   ],
   "SceneProperties": {
