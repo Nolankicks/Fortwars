@@ -89,7 +89,7 @@ public sealed class Flag : Item
 
 			if ( clone.Components.TryGet<DroppedFlag>( out var droppedFlag ) )
 			{
-				droppedFlag.TeamFlag = local.TeamComponent.Team == Team.Red ? Team.Blue : Team.Red;
+				droppedFlag.TeamFlag = Owner;
 			}
 
 			clone.NetworkSpawn( null );
@@ -193,7 +193,7 @@ public sealed class CTFTrigger : Component, Component.ITriggerListener
 
 			local.TeamComponent?.ResetToSpawnPoint();
 
-			//gs.AddFlagCapture( local.TeamComponent.Team );
+			gs.AddFlagCapture( local.TeamComponent.Team );
 
 			PopupHolder.BroadcastPopup( $"{local.TeamComponent.Team} captured the flag!", 5 );
 		}

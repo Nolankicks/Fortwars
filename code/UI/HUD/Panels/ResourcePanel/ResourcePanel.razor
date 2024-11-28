@@ -43,6 +43,6 @@
 
 		var local = FWPlayerController.Local;
 
-		return System.HashCode.Combine( gs?.CurrentGameModeComponent?.CurrentRound?.HasResources, local?.MetalPropsLeft, local?.WoodPropsLeft, local?.SteelPropsLeft );
+		return System.HashCode.Combine( gs?.CurrentGameModeComponent?.CurrentRound?.HasResources, local?.MetalPropsLeft, local?.WoodPropsLeft, local?.SteelPropsLeft, local?.TeamComponent?.Team );
 	}
 }
