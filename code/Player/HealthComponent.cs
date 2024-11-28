@@ -23,6 +23,11 @@ public partial class HealthComponent : Component
 	[Property, Feature( "Blood" )] public GameObject BloodPrefab { get; set; }
 	[Property, Feature( "Blood" )] public bool PlayOnLocal { get; set; }
 
+	[Property, FeatureEnabled( "Animation" )] public bool HitAnimation { get; set; } = false;
+
+	[Property, Feature( "Animation" )] public SkinnedModelRenderer Target { get; set; }
+	[Property, Feature( "Animation" )] public string HitAnimationName { get; set; } = "b_hit";
+
 	public TimeSince LastHit { get; set; }
 
 	public virtual void OnDeath( GameObject Attacker, Vector3 damagePos, Vector3 damageNormal ) { }
@@ -47,8 +52,7 @@ public partial class HealthComponent : Component
 
 		GameObject.Dispatch( new DamageEvent( damage, Attacker, GameObject, HitPos, normal ) );
 
-		if ( BloodEnabled )
-			BloodEffects( HitPos, normal );
+		HitEffects( HitPos, normal );
 
 		if ( Health <= 0 )
 		{
@@ -124,6 +128,15 @@ public partial class HealthComponent : Component
 	}
 
 	[Broadcast]
+	public void HitEffects( Vector3 pos, Vector3 rot )
+	{
+		if ( BloodEnabled && (!PlayOnLocal && !IsProxy) )
+			BloodEffects( pos, rot );
+
+		if ( HitAnimation )
+			Target.Set( HitAnimationName, true );
+	}
+
 	public void BloodEffects( Vector3 pos, Vector3 rot )
 	{
 		if ( !PlayOnLocal && !IsProxy )
