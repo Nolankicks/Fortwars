@@ -1,14 +1,22 @@
 {
   "DisplayName": "Sentry Gun",
   "Hidden": true,
-  "Model": "models/blocks/128plane.vmdl",
   "Cost": 100,
   "Max": 3,
-  "Icon": "textures/propicons/tempicon.png",
   "PrefabOverride": {
     "_type": "gameobject",
     "prefab": "prefabs/props/sentrygun.prefab"
   },
+  "BaseModel": null,
+  "BaseHealth": 100,
+  "BaseIcon": null,
+  "MetalModel": null,
+  "MetalHealth": 200,
+  "MetalIcon": null,
+  "SteelModel": null,
+  "SteelHealth": 300,
+  "SteelIcon": null,
   "__references": [],
+  "IsValid": true,
   "__version": 0
 }

@@ -1,6 +1,3 @@
-using Sandbox.Events;
-using System;
-
 public enum PropLevel
 {
 	Base,
@@ -165,6 +162,8 @@ public sealed class FortwarsProp : Component, Component.IDamageable
 			prop.GameObject.Destroy();
 
 			gibs?.ForEach( x => x.GameObject.NetworkSpawn() );
+
+
 
 			GameObject.Destroy();
 		}

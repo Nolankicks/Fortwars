@@ -20,6 +20,16 @@
         }
       ],
       "Children": []
+    },
+    {
+      "__guid": "5245524c-60f0-46df-bb69-46ba5754e1b0",
+      "Flags": 0,
+      "Name": "propdestroy",
+      "Position": "720,-312,66.82477",
+      "Tags": "particles",
+      "Enabled": true,
+      "__Prefab": "prefabs/effects/propdestroy.prefab",
+      "__PrefabVariables": {}
     }
   ],
   "SceneProperties": {

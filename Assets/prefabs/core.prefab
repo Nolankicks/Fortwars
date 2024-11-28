@@ -99,7 +99,7 @@
             "__type": "CameraController",
             "__guid": "a87fedec-7022-4732-bff4-a219c75b66e3",
             "Recoil": "-2,2,0.35",
-            "ReturnSpeed": 2,
+            "ReturnSpeed": 1,
             "Snappiness": 20
           },
           {
