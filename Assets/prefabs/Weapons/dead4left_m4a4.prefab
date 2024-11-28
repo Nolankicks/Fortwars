@@ -24,7 +24,7 @@
         "MaxAmmo": 30,
         "Offset": "2.883967,0.1033601,-4.295026",
         "Range": 50000,
-        "RecoilValues": "-3,2,0.5",
+        "RecoilValues": "-8,2,0.5",
         "ReloadAnimName": "b_reload",
         "ReloadDelay": 1.2,
         "Spread": 0.03,

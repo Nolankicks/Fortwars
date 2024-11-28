@@ -24,7 +24,7 @@
         "MaxAmmo": 30,
         "Offset": "2.012506,-1.151374,-4.363367",
         "Range": 50000,
-        "RecoilValues": "-6,0,0.4",
+        "RecoilValues": "-8,0,0.4",
         "ReloadAnimName": "b_reload",
         "ReloadDelay": 1.75,
         "Spread": 0.06,
@@ -892,5 +892,6 @@
   "__references": [
     "facepunch.v_mp5#64494"
   ],
+  "IsValid": true,
   "__version": 1
 }
