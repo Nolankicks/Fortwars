@@ -105,6 +105,8 @@ public partial class GameMode : Component, Component.INetworkListener
 			teamCounts[team] = 0;
 		}
 
+		players = players.OrderBy( x => Game.Random.Next() ).ToList();
+
 		// Assign teams to players
 		foreach ( var player in players )
 		{
