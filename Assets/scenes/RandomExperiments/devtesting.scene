@@ -35,7 +35,7 @@
       "__guid": "776c7f60-315c-490a-9fff-d25ab9e3c4c7",
       "Flags": 0,
       "Name": "rollermine",
-      "Position": "457.3042,-246.7788,16",
+      "Position": "640,-136,15.99991",
       "Tags": "rollermine,light_point,light",
       "Enabled": true,
       "NetworkMode": 1,
@@ -43,6 +43,32 @@
       "OwnerTransfer": 0,
       "__Prefab": "prefabs/rollermine.prefab",
       "__PrefabVariables": {}
+    },
+    {
+      "__guid": "13d678e0-ab3c-4f2a-8e6f-2ba5ed64724c",
+      "Flags": 0,
+      "Name": "NavMarkerTest",
+      "Position": "562.84,-201.358,82.80157",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "NavMarker",
+          "__guid": "8756aa13-17f1-488e-99c6-f921e67f5e0c"
+        }
+      ]
+    },
+    {
+      "__guid": "71c4e19a-d286-41f1-b850-a69a8eda87c3",
+      "Flags": 0,
+      "Name": "NavMarkerTest (1)",
+      "Position": "562.84,-256,82.80157",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "NavMarker",
+          "__guid": "9c37b7f2-eb1d-45a8-94fc-ba53971e177f"
+        }
+      ]
     }
   ],
   "SceneProperties": {
