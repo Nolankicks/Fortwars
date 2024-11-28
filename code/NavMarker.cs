@@ -3,6 +3,8 @@ public sealed class NavMarker : Component
 	[Property] public Color Tint { get; set; } = Color.White.WithAlpha( 1.0f );
 	[Property] public string Text { get; set; }
 
+	[Property] public bool DrawDistance { get; set; } = false;
+
 	protected override void DrawGizmos()
 	{
 		Gizmo.Draw.Color = Tint;
