@@ -59,6 +59,8 @@ partial class FWPlayerController
 		if ( gs.IsValid() )
 			gs.AddKill();
 
+		TeleportToTeamSpawnPoint( false );
+
 		if ( AnimHelper?.Target.IsValid() ?? false )
 		{
 			if ( !Inventory.IsValid() )
@@ -126,8 +128,6 @@ partial class FWPlayerController
 			IsRespawning = true;
 
 			DeathPos = target.WorldPosition;
-
-			TeleportToTeamSpawnPoint( false );
 
 			if ( Components.TryGet<NameTag>( out var tag, FindMode.EnabledInSelfAndChildren ) )
 			{

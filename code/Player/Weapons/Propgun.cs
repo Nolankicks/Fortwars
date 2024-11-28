@@ -298,7 +298,8 @@ public sealed class Propgun : Item
 
 		fortWarsProp.IsBuilding = true;
 
-		fortWarsProp.SetupObject( CurrentProp, team.Team, Level, Network.Owner.DisplayName );
+		if ( Network.Owner is not null )
+			fortWarsProp?.SetupObject( CurrentProp, team.Team, Level, Network.Owner.DisplayName );
 
 		var local = FWPlayerController.Local;
 

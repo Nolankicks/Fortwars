@@ -10,19 +10,31 @@ public sealed class Flag : Item
 	[Sync] public bool SpawnNewFlag { get; set; } = true;
 
 	[Property, Sync] public SkinnedModelRenderer FlagRenderer { get; set; }
+	[Sync] public HighlightOutline HighlightOutline { get; set; }
 
 	protected override void OnDisabled()
 	{
 		base.OnDisabled();
 
+		if ( HighlightOutline.IsValid() )
+		{
+			HighlightOutline.Destroy();
+		}
+
 		if ( IsProxy )
 			return;
 
 		DropFlag();
+
+		GameObject?.Root?.Network?.Refresh();
 	}
 
 	protected override void OnStart()
 	{
+		base.OnStart();
+
+		HighlightOutline = GameObject.Root.Components.GetOrCreate<HighlightOutline>();
+
 		if ( IsProxy )
 			return;
 
@@ -41,6 +53,14 @@ public sealed class Flag : Item
 		}
 	}
 
+	protected override void OnPreRender()
+	{
+		if ( HighlightOutline.IsValid() )
+		{
+			HighlightOutline.Enabled = IsProxy;
+		}
+	}
+
 	[Authority]
 	public void SetSpawnNewFlag( bool value )
 	{
@@ -49,6 +69,9 @@ public sealed class Flag : Item
 
 	public void DropFlag()
 	{
+		if ( IsProxy )
+			return;
+
 		if ( !SpawnNewFlag )
 			return;
 
@@ -106,8 +129,6 @@ public sealed class DroppedFlag : Component, Component.ITriggerListener
 			if ( teamComponent.IsValid() && teamComponent.Team == TeamFlag )
 				return;
 
-			Log.Info( inv.CanPickUp + " " + inv.Network.Owner.DisplayName );
-
 			if ( inv.IsValid() && !inv.CanPickUp )
 				return;
 				
@@ -121,11 +142,6 @@ public sealed class DroppedFlag : Component, Component.ITriggerListener
 			if ( inv.Components.TryGet<Flag>( out var flagComponent, FindMode.EverythingInSelfAndDescendants ) )
 			{
 				flagComponent.Owner = TeamFlag;
-			}
-
-			using ( Rpc.FilterExclude( x => x == playerController.Network.Owner ) )
-			{
-				AddHighlight( playerController.GameObject );
 			}
 
 			GameObject.Destroy();
@@ -142,21 +158,6 @@ public sealed class DroppedFlag : Component, Component.ITriggerListener
 			Transform.ClearInterpolation();
 
 			WorldTransform = spawnPoint.WorldTransform;
-		}
-	}
-
-	[Broadcast]
-	public static void AddHighlight( GameObject gameObject )
-	{
-		gameObject.Components.Create<HighlightOutline>();
-	}
-
-	[Broadcast]
-	public static void RemoveHighlight( GameObject gameObject )
-	{
-		if ( gameObject.Components.TryGet<HighlightOutline>( out var highlight ) )
-		{
-			highlight.Destroy();
 		}
 	}
 }
@@ -192,12 +193,7 @@ public sealed class CTFTrigger : Component, Component.ITriggerListener
 
 			local.TeamComponent?.ResetToSpawnPoint();
 
-			using ( Rpc.FilterExclude( x => x == local.Network.Owner ) )
-			{
-				DroppedFlag.RemoveHighlight( local.GameObject );
-			}
-
-			gs.AddFlagCapture( local.TeamComponent.Team );
+			//gs.AddFlagCapture( local.TeamComponent.Team );
 
 			PopupHolder.BroadcastPopup( $"{local.TeamComponent.Team} captured the flag!", 5 );
 		}
