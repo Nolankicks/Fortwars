@@ -1,6 +1,3 @@
-using Sandbox;
-using Sandbox.Events;
-
 public sealed class Flag : Item
 {
 	[Property] public GameObject DroppedFlagPrefab { get; set; }
@@ -131,7 +128,7 @@ public sealed class DroppedFlag : Component, Component.ITriggerListener
 
 			if ( inv.IsValid() && !inv.CanPickUp )
 				return;
-				
+
 			inv.DisableAll();
 
 			if ( flag is not null )
@@ -162,7 +159,7 @@ public sealed class DroppedFlag : Component, Component.ITriggerListener
 	}
 }
 
-[Title( "CTF Trigger" )]
+[Title( "Flag Capture Zone" )]
 public sealed class CTFTrigger : Component, Component.ITriggerListener
 {
 	[Header( "Should be the opposite team of the side its on" )]
