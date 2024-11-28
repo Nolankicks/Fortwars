@@ -7,10 +7,13 @@
 <root>
     @foreach(var marker in GetAllNavMarkers()) {
         var pos = Scene.Camera.PointToScreenNormal(marker.WorldPosition, out bool behind);
-        if (behind || (pos.x > 1 || pos.x < 0) || (pos.y > 1 || pos.y < 0)) continue;
+        if (!marker.DrawOffScreen)
+            if ((behind || (pos.x > 1 || pos.x < 0) || (pos.y > 1 || pos.y < 0))) continue;
         pos *= 100.0f;
+        pos.x = Math.Clamp(pos.x, 0.5f, 98.5f);
+        pos.y = Math.Clamp(pos.y, 0.5f, 96.0f);
 
-        <div class="marker" style="left: @(pos.x)%; top: @(pos.y)%;">
+        <div class="marker" style="transform: translate(-50%, -50%) scale(@(marker.Scale)); left: @(pos.x)%; top: @(pos.y)%;">
             <div class="container">
                 <div class="text">@marker.Text</div>
                 @if (marker.DrawDistance)

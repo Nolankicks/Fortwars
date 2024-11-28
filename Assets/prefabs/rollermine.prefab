@@ -182,6 +182,8 @@
             "__type": "NavMarker",
             "__guid": "be909ae1-5503-4f38-9a33-ba758f82d670",
             "DrawDistance": false,
+            "DrawOffScreen": true,
+            "Scale": 1,
             "Text": "BALL",
             "Tint": "1,1,1,0.65"
           }

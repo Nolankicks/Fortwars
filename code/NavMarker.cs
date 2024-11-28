@@ -5,6 +5,8 @@ public sealed class NavMarker : Component
 	[Property] public bool DrawOffScreen { get; set; } = false;
 	[Property] public bool DrawDistance { get; set; } = false;
 
+	[Property] public float Scale { get; set; } = 1.0f;
+
 	protected override void DrawGizmos()
 	{
 		Gizmo.Draw.Color = Tint;
