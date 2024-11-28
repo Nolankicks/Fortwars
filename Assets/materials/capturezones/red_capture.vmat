@@ -1,0 +1,20 @@
+// THIS FILE IS AUTO-GENERATED
+
+Layer0
+{
+	shader "shaders/barrier.shader"
+
+	//---- Rendering ----
+	F_RENDER_BACKFACES 1
+
+	g_vBackgroundtint "[1.000000 0.360784 0.360784 1.000000]"
+	g_vScrollSpeed "[0.150 0.000]"
+	g_vTint "[1.000000 0.000000 0.000000 1.000000]"
+	Texture_ps_0 "materials/capturezones/pattern_47.png"
+
+	//---- Fog ----
+	g_bFogEnabled "1"
+
+	//---- Translucent ----
+	g_flOpacityScale "1.000"
+}
