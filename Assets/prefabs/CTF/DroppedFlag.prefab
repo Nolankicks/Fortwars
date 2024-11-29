@@ -36,9 +36,9 @@
       {
         "__type": "Sandbox.BoxCollider",
         "__guid": "5b5a7277-b07f-43e2-8ea0-9e4f654bc166",
-        "Center": "0,10.8,29.20002",
+        "Center": "0,35.00007,73.50002",
         "IsTrigger": true,
-        "Scale": "20.80002,37.30003,55.70021",
+        "Scale": "68.59994,96.10007,159.2",
         "Static": false,
         "SurfaceVelocity": "0,0,0"
       },
@@ -70,6 +70,35 @@
         },
         "Tint": "1,1,1,1",
         "UseAnimGraph": true
+      },
+      {
+        "__type": "Sandbox.Rigidbody",
+        "__guid": "01cc2b1d-41d2-4ed5-b56b-ae08d09dbbe9",
+        "AngularDamping": 0,
+        "Gravity": true,
+        "LinearDamping": 0,
+        "Locking": {
+          "X": true,
+          "Y": true,
+          "Z": false,
+          "Pitch": true,
+          "Yaw": true,
+          "Roll": true
+        },
+        "MassCenterOverride": "0,0,0",
+        "MassOverride": 0,
+        "MotionEnabled": true,
+        "OverrideMassCenter": false,
+        "RigidbodyFlags": 0,
+        "StartAsleep": false
+      },
+      {
+        "__type": "Sandbox.ModelCollider",
+        "__guid": "2a4eedb7-4ab4-443e-b5a1-06f984bffac9",
+        "IsTrigger": false,
+        "Model": "models/flag_blue/flag_blue.vmdl",
+        "Static": false,
+        "SurfaceVelocity": "0,0,0"
       }
     ],
     "Children": [
