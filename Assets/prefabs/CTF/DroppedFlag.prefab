@@ -3,6 +3,7 @@
     "__guid": "c0da0947-85bc-416c-975d-50a1621af49d",
     "Flags": 0,
     "Name": "droppedflag",
+    "Tags": "flag",
     "Enabled": true,
     "NetworkMode": 1,
     "Components": [
@@ -38,7 +39,7 @@
         "__guid": "5b5a7277-b07f-43e2-8ea0-9e4f654bc166",
         "Center": "0,35.00007,73.50002",
         "IsTrigger": true,
-        "Scale": "68.59994,96.10007,159.2",
+        "Scale": "37.90017,96.10007,159.2",
         "Static": false,
         "SurfaceVelocity": "0,0,0"
       },

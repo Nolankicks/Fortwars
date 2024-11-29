@@ -85,7 +85,7 @@ public sealed class Flag : Item
 		if ( SpawnNewFlag )
 		{
 			//We need this, but I don't think we should need it
-			var clone = DroppedFlagPrefab.Clone( local.WorldPosition + local.EyeAngles.Forward * 64 );
+			var clone = DroppedFlagPrefab.Clone( local.WorldPosition + local.EyeAngles.Forward * 120 );
 
 			if ( clone.Components.TryGet<DroppedFlag>( out var droppedFlag ) )
 			{

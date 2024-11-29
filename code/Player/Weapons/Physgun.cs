@@ -169,7 +169,7 @@ public class Physgun : Item
 		var tr = Scene.Trace.Ray( eyePos, eyePos + eyeDir * MaxTargetDistance )
 			.UseHitboxes()
 			.IgnoreGameObjectHierarchy( GameObject.Root )
-			.WithoutTags( FW.Tags.Player, FW.Tags.Trigger, FW.Tags.Rollermine )
+			.WithoutTags( FW.Tags.Player, FW.Tags.Trigger, FW.Tags.Rollermine, "flag" )
 			.Run();
 
 		if ( !tr.Hit || !tr.GameObject.IsValid() || tr.StartedSolid )
