@@ -23,7 +23,7 @@
         "BodyGroups": 18446744073709551615,
         "CreateAttachments": false,
         "MaterialGroup": "2",
-        "Model": "models/dev_flag.vmdl",
+        "Model": "models/flag_blue/flag_blue.vmdl",
         "RenderOptions": {
           "GameLayer": true,
           "OverlayLayer": false,
@@ -45,9 +45,9 @@
       {
         "__type": "Sandbox.BoxCollider",
         "__guid": "5b5a7277-b07f-43e2-8ea0-9e4f654bc166",
-        "Center": "0,0,36",
+        "Center": "0,10.8,29.20002",
         "IsTrigger": true,
-        "Scale": "16,16,72",
+        "Scale": "20.80002,37.30003,55.70021",
         "Static": false,
         "SurfaceVelocity": "0,0,0"
       }
@@ -117,6 +117,5 @@
   "DontBreakAsTemplate": false,
   "ResourceVersion": 1,
   "__references": [],
-  "IsValid": true,
   "__version": 1
 }

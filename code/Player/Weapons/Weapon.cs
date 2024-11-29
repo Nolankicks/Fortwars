@@ -202,7 +202,6 @@ public class Weapon : Item, IGameEventHandler<OnReloadEvent>
 
 		FirePunch = FirePunch.LerpTo( 0.0f, PunchDecreaseRate * Time.Delta );
 		FirePunch = FirePunch.Clamp( 0, 1 );
-		Log.Info( FirePunch );
 
 		if ( IsProxy || equipTime < 0.2f )
 			return;
@@ -463,8 +462,11 @@ public class Weapon : Item, IGameEventHandler<OnReloadEvent>
 
 	void CreateTracer( Vector3 StartPos, Vector3 Normal )
 	{
+		var tracer = GameObject.Clone( "prefabs/effects/tracer.prefab", new CloneConfig { StartEnabled = true } );
 
-		var tracer = GameObject.Clone( "prefabs/effects/tracer.prefab", new CloneConfig { Parent = Scene.Root, StartEnabled = true } );
+		if ( !tracer.IsValid() || !TracerPoint.IsValid() )
+			return;
+
 		if ( IsProxy ) { tracer.WorldPosition = StartPos; }
 		else { tracer.WorldPosition = TracerPoint.WorldPosition; }
 		tracer.WorldRotation = Rotation.LookAt( Normal );

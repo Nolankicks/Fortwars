@@ -106,14 +106,22 @@ public sealed class DroppedFlag : Component, Component.ITriggerListener
 
 	[Property] NavMarker Marker { get; set; }
 
+	[Property] public SkinnedModelRenderer FlagRenderer { get; set; }
+
 	TimeSince CreationDelay { get; set; }
 
 	protected override void OnStart()
 	{
 		CreationDelay = 0.0f;
-		foreach ( var modelRenderer in GameObject.GetComponentsInChildren<ModelRenderer>() )
+
+		if ( FlagRenderer.IsValid() )
 		{
-			modelRenderer.Tint = HUD.GetColor( TeamFlag ).Rgb;
+			FlagRenderer.MaterialGroup = TeamFlag switch
+			{
+				Team.Red => "red",
+				Team.Blue => "blue",
+				_ => "default"
+			};
 		}
 
 		Marker.Tint = HUD.GetColor( TeamFlag ).Rgb;
