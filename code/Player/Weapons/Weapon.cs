@@ -381,7 +381,7 @@ public class Weapon : Item, IGameEventHandler<OnReloadEvent>, IGameEventHandler<
 		} );
 	}
 
-	[Rpc.Broadcast]
+	[Rpc.Broadcast( NetFlags.Unreliable )]
 	public void BroadcastShootEffects( SceneTraceResult[] traces )
 	{
 		if ( traces.Any() )
