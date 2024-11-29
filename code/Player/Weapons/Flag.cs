@@ -217,7 +217,7 @@ public sealed class CTFTrigger : Component, Component.ITriggerListener
 	}
 
 	// Team is the team who just picked up the flag
-	[Broadcast]
+	[Rpc.Broadcast]
 	public void OnTeamFlagPickup()
 	{
 		var local = FWPlayerController.Local;
@@ -241,7 +241,7 @@ public sealed class CTFTrigger : Component, Component.ITriggerListener
 		}
 	}
 
-	[Broadcast]
+	[Rpc.Broadcast]
 	public void OnTeamFlagCaptured( Team team )
 	{
 		var particles = GameObject.Clone( "prefabs/effects/flagcapture.prefab" );

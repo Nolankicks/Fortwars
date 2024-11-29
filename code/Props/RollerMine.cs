@@ -43,7 +43,7 @@ public sealed class RollerMine : Component
 		}
 	}
 
-	[Broadcast]
+	[Rpc.Broadcast]
 	public void SetGrabbed( Gravgun gravgun, bool isGrabbed )
 	{
 		IsGrabbed = isGrabbed;

@@ -12,7 +12,7 @@ public sealed class TeamComponent : Component
 	[Property, Sync] public Team Team { get; set; } = Team.None;
 	[Property, Sync] public FWPlayerController Player { get; set; }
 
-	[Broadcast]
+	[Rpc.Broadcast]
 	public void SetTeam( Team team )
 	{
 		Team = team;

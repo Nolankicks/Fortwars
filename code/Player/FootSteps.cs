@@ -47,7 +47,7 @@ public sealed class Footsteps : Component
 		handle.Volume *= 2f;
 	}
 
-	[Broadcast]
+	[Rpc.Broadcast]
 	public void PlayFootstep( SceneModel.FootstepEvent e )
 	{
 		OnEvent( e );

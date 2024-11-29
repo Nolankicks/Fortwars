@@ -164,7 +164,7 @@ public sealed class RoundComponent : Component
 		}
 	}
 
-	[Broadcast]
+	[Rpc.Broadcast]
 	public void SetActiveRound()
 	{
 		//GameMode.ActiveRound = this;
@@ -197,7 +197,7 @@ public sealed class RoundComponent : Component
 		return Game.Random.Float( 0, 1 ) > 0.5f;
 	}
 
-	[Broadcast]
+	[Rpc.Broadcast]
 	public void DeleteClassSelect()
 	{
 		var hud = Scene.GetAll<HUD>()?.FirstOrDefault();

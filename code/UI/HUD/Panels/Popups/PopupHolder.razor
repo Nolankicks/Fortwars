@@ -24,7 +24,7 @@
 		Instance.Panel?.AddChild( popup );
 	}
 
-	[Broadcast]
+	[Rpc.Broadcast]
 	public static void BroadcastPopup( string title, int time )
 	{
 		var popup = new Popup();

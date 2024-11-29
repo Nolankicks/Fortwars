@@ -121,13 +121,13 @@ public partial class HealthComponent : Component
 		Health = Math.Min( Health + amount, MaxHealth );
 	}
 
-	[Broadcast]
+	[Rpc.Broadcast]
 	public void BroadcastGlobalDamageEvent( int Amount, GameObject Attacker, GameObject Player )
 	{
 		Scene.Dispatch( new GlobalDamageEvent( Amount, Attacker, Player ) );
 	}
 
-	[Broadcast]
+	[Rpc.Broadcast]
 	public void HitEffects( Vector3 Pos, Vector3 Normal, int boneId )
 	{
 		if ( BloodEnabled )
@@ -176,7 +176,7 @@ public partial class HealthComponent : Component
 
 	}
 
-	[Broadcast]
+	[Rpc.Broadcast]
 	public void ResetHealth()
 	{
 		Health = MaxHealth;

@@ -35,7 +35,7 @@
 		}
 	}
 
-	[Broadcast]
+	[Rpc.Broadcast]
 	void DoEmote( FWPlayerController player, int index )
 	{
 		var emote = ChatEmotes[index];

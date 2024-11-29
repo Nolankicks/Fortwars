@@ -49,7 +49,7 @@ public partial class GameMode : Component, Component.INetworkListener
 		OnActive( channel );
 	}
 
-	[Broadcast]
+	[Rpc.Broadcast]
 	public void EndGame( Team team = Team.None )
 	{
 		var gs = Scene.GetAll<GameSystem>()?.FirstOrDefault();
@@ -124,13 +124,13 @@ public partial class GameMode : Component, Component.INetworkListener
 
 	public virtual Team WinningTeam() => Team.None;
 
-	[Broadcast]
+	[Rpc.Broadcast]
 	public void ResetPlayers()
 	{
 		Scene.Dispatch( new PlayerReset() );
 	}
 
-	[Broadcast]
+	[Rpc.Broadcast]
 	public void SetGamemode( GameModeResource type )
 	{
 		if ( type is not null )

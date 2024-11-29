@@ -30,13 +30,13 @@ public sealed class PlayerTrigger : Component, Component.ITriggerListener
 		}
 	}
 
-	[Broadcast]
+	[Rpc.Broadcast]
 	public void OnEnterRPC( FWPlayerController player )
 	{
 		OnEnterBroadcast?.Invoke( player );
 	}
 
-	[Broadcast]
+	[Rpc.Broadcast]
 	public void OnExitRPC( FWPlayerController player )
 	{
 		OnExitBroadcast?.Invoke( player );

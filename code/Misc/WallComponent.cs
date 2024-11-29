@@ -9,7 +9,7 @@ public sealed class WallComponent : Component, Component.ExecuteInEditor
 		}
 	}
 
-	[Broadcast]
+	[Rpc.Broadcast]
 	public void ToggleEnable( bool enable )
 	{
 		if ( Scene.IsEditor )
@@ -25,7 +25,7 @@ public sealed class WallComponent : Component, Component.ExecuteInEditor
 		}
 	}
 
-	[ActionGraphNode( "Toggle Wall" ), Broadcast]
+	[ActionGraphNode( "Toggle Wall" ), Rpc.Broadcast]
 	public static void ToggleWall( bool enable )
 	{
 		foreach ( var wall in Game.ActiveScene?.GetAll<WallComponent>() )

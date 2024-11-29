@@ -42,7 +42,7 @@ public sealed class Button : Component, Component.IPressable
 		OnReleaseRPC( e.Source?.GameObject );
 	}
 
-	[Broadcast]
+	[Rpc.Broadcast]
 	public void OnPressRPC( GameObject presser )
 	{
 		var player = presser.Components.Get<FWPlayerController>();
@@ -54,7 +54,7 @@ public sealed class Button : Component, Component.IPressable
 		OnPressBroadcast?.Invoke( presser, player, health );
 	}
 
-	[Broadcast]
+	[Rpc.Broadcast]
 	public void OnReleaseRPC( GameObject presser )
 	{
 		var player = presser.Components.Get<FWPlayerController>();

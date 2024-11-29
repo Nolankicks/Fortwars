@@ -113,7 +113,7 @@ IGameEventHandler<DeathEvent>, IGameEventHandler<OnPhysgunGrabChange>
 		}*/
 	}
 
-	[Broadcast]
+	[Rpc.Broadcast]
 	public static void ClearHoldRenderer( ModelRenderer modelRenderer )
 	{
 		if ( modelRenderer.IsValid() )
@@ -282,7 +282,7 @@ IGameEventHandler<DeathEvent>, IGameEventHandler<OnPhysgunGrabChange>
 		}
 	}
 
-	[Broadcast]
+	[Rpc.Broadcast]
 	public void BroadcastJump()
 	{
 		if ( !AnimHelper.IsValid() )
@@ -369,7 +369,7 @@ IGameEventHandler<DeathEvent>, IGameEventHandler<OnPhysgunGrabChange>
 		//camera.FieldOfView = OverrideFOV == 0 ? Preferences.FieldOfView : OverrideFOV;
 	}
 
-	[Broadcast]
+	[Rpc.Broadcast]
 	public void BroadcastAttack()
 	{
 		if ( !AnimHelper.IsValid() || !AnimHelper.Target.IsValid() )
@@ -420,7 +420,7 @@ IGameEventHandler<DeathEvent>, IGameEventHandler<OnPhysgunGrabChange>
 		Stats.Increment( "deaths_new", 1 );
 	}
 
-	[Broadcast]
+	[Rpc.Broadcast]
 	public void BroadcastDeathMessage( GameObject attacker )
 	{
 		Scene.Dispatch( new PlayerDeath( this, attacker ) );
@@ -503,7 +503,7 @@ IGameEventHandler<DeathEvent>, IGameEventHandler<OnPhysgunGrabChange>
 		SetWorld( SpawnTransform );
 	}
 
-	[Broadcast]
+	[Rpc.Broadcast]
 	public static void BroadcastEnable( GameObject go, bool enable )
 	{
 		go.Enabled = enable;

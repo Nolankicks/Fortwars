@@ -204,7 +204,7 @@ public class Physgun : Item
 		GrabbedBone = body.GroupIndex;
 	}
 
-	[Broadcast]
+	[Rpc.Broadcast]
 	public static void AddTag( GameObject obj, string tag )
 	{
 		if ( obj.IsValid() )
@@ -213,7 +213,7 @@ public class Physgun : Item
 		}
 	}
 
-	[Broadcast]
+	[Rpc.Broadcast]
 	public static void RemoveTag( GameObject obj, string tag )
 	{
 		if ( obj.IsValid() )

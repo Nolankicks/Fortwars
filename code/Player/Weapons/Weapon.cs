@@ -131,7 +131,7 @@ public class Item : Component, IGameEventHandler<OnItemEquipped>
 		Sound.Play( "weapon.deploy", player.WorldPosition );
 	}
 
-	[Broadcast]
+	[Rpc.Broadcast]
 	public void BroadcastEquip( FWPlayerController local )
 	{
 		if ( !local.IsValid() )
@@ -381,7 +381,7 @@ public class Weapon : Item, IGameEventHandler<OnReloadEvent>, IGameEventHandler<
 		} );
 	}
 
-	[Broadcast]
+	[Rpc.Broadcast]
 	public void BroadcastShootEffects( SceneTraceResult[] traces )
 	{
 		if ( traces.Any() )

@@ -135,7 +135,7 @@ public sealed class FortwarsProp : Component, Component.IDamageable
 		//}
 	}
 
-	[Broadcast]
+	[Rpc.Broadcast]
 	public void Damage( float amount )
 	{
 		if ( Invincible )
@@ -170,7 +170,7 @@ public sealed class FortwarsProp : Component, Component.IDamageable
 		}
 	}
 
-	[Broadcast]
+	[Rpc.Broadcast]
 	public void DestructionEffects()
 	{
 		if ( !GameObject.IsValid() )
