@@ -129,13 +129,13 @@ public sealed class MapLoadingSystem : GameObjectSystem<MapLoadingSystem>, IScen
 		if ( CurrentMap is null )
 		{
 			Log.Warning( "No map selected! Falling back to default map: fw_easter" );
-			CurrentMap = ResourceLibrary.GetAll<MapInfo>().FirstOrDefault( x => x.MapName == "fw_easter" );
+			CurrentMap = ResourceLibrary.Get<MapInfo>( "mapinfos/easter.mapinfo" );
 		}
 
 		if ( CurrentGamemode is null )
 		{
-			Log.Warning( "No gamemode selected! Falling back to default gamemode: classic" );
-			CurrentGamemode = ResourceLibrary.GetAll<GameModeResource>().FirstOrDefault( x => x.ResourceName == "classic" );
+			Log.Warning( "No gamemode selected! Falling back to default gamemode: Capture the Flag" );
+			CurrentGamemode = ResourceLibrary.Get<GameModeResource>( "gamemodes/ctf.mode" );
 		}
 
 		GameSystem.SavedGameMode = CurrentGamemode;

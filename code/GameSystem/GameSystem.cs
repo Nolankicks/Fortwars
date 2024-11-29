@@ -94,7 +94,7 @@ public sealed partial class GameSystem : Component
 
 		if ( SavedGameMode is null && !Application.IsHeadless )
 		{
-			SavedGameMode = ResourceLibrary.Get<GameModeResource>( "gamemodes/classic.mode" );
+			SavedGameMode = ResourceLibrary.Get<GameModeResource>( "gamemodes/ctf.mode" );
 		}
 
 		if ( LoadGameData && SavedGameMode is not null )
