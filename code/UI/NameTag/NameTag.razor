@@ -14,7 +14,7 @@
 {
 	[Sync] public Color TextColor { get; set; } = Color.White;
 
-	[Broadcast]
+	[Rpc.Broadcast]
 	public void SetTeam( Team team )
 	{
 		switch ( team )
