@@ -74,7 +74,7 @@
 		AddText(text, color);
 	}
 
-	[Broadcast]
+	[Rpc.Broadcast]
 	public void AddText(string message, Color color)
 	{
 		message = message.Truncate(300);
@@ -89,7 +89,7 @@
 		StateHasChanged();
 	}
 
-	[Broadcast]
+	[Rpc.Broadcast]
 	public void AddSystemText( string message, string emoji )
 	{
 		message = message.Truncate(300);
@@ -128,7 +128,7 @@
 		BroadcastPlayerDeath( eventArgs.Player, eventArgs.Attacker );
 	}
 
-	[Broadcast]
+	[Rpc.Broadcast]
 	public void BroadcastPlayerDeath( FWPlayerController player, GameObject attacker )
 	{
 		if ( IsProxy || player is null )
