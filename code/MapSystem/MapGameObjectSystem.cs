@@ -123,7 +123,7 @@ public sealed class MapLoadingSystem : GameObjectSystem<MapLoadingSystem>, IScen
 		if ( !Application.IsHeadless )
 		{
 			Log.Warning( "This command can only be used on a dedicated server!" );
-			//return;
+			return;
 		}
 
 		if ( CurrentMap is null )
