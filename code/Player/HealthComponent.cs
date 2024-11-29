@@ -127,7 +127,7 @@ public partial class HealthComponent : Component
 		Scene.Dispatch( new GlobalDamageEvent( Amount, Attacker, Player ) );
 	}
 
-	[Rpc.Broadcast]
+	[Rpc.Broadcast( NetFlags.Unreliable )]
 	public void HitEffects( Vector3 Pos, Vector3 Normal, int boneId )
 	{
 		if ( BloodEnabled )
@@ -155,7 +155,6 @@ public partial class HealthComponent : Component
 		// WorldBlood is tied to chance so we don't spam the world with blood
 		if ( Game.Random.Float() > 0.5f )
 		{
-
 			var tr = Scene.Trace.Ray( pos, pos - rot * 500 ).WithoutTags( "player" ).IgnoreGameObjectHierarchy( GameObject ).Run();
 			if ( tr.Hit )
 			{
@@ -172,8 +171,6 @@ public partial class HealthComponent : Component
 		var go = BloodPrefab.Clone();
 		go.WorldPosition = pos;
 		go.WorldRotation = Rotation.LookAt( rot );
-
-
 	}
 
 	[Rpc.Broadcast]

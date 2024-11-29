@@ -309,8 +309,6 @@ public class Weapon : Item, IGameEventHandler<OnReloadEvent>, IGameEventHandler<
 
 			health.TakeDamage( local.GameObject, dmg, tr.EndPosition, tr.Normal, boneId: tr.Hitbox?.Bone?.Index ?? 0 );
 
-			SpawnParticleEffect( Cloud.ParticleSystem( "bolt.impactflesh" ), tr.EndPosition );
-
 			if ( !health.IsDead )
 			{
 				if ( health.SpawnDamageIndicator )
