@@ -217,7 +217,7 @@ public class Weapon : Item, IGameEventHandler<OnReloadEvent>, IGameEventHandler<
 
 			if ( Hit && CrosshairEnabled )
 			{
-				WeaponCrosshair.DoHitmarker( Died );
+				WeaponCrosshair?.DoHitmarker( Died );
 			}
 
 			SubtractAmmo();
