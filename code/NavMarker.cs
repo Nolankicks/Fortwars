@@ -11,7 +11,7 @@ public sealed class NavMarker : Component
 	{
 		Gizmo.Draw.Color = Tint;
 		Gizmo.Transform = Scene.Transform.World;
-		Gizmo.Draw.Sprite( WorldPosition, 12.0f, "textures/ui/navmarker.png" );
+		Gizmo.Draw.Sprite( WorldPosition, 12.0f, "textures/ui/navmarker.vtex" );
 
 		// Lets only draw the text while close
 		if ( WorldPosition.Distance( Gizmo.Camera.Position ) > 250 )
