@@ -1,5 +1,6 @@
 using Sandbox.Citizen;
 using Sandbox.Events;
+using System.Threading;
 using System.Threading.Tasks;
 
 public record WeaponAnimEvent( string anim, bool value ) : IGameEvent;
@@ -143,7 +144,7 @@ public class Item : Component, IGameEventHandler<OnItemEquipped>
 	}
 }
 
-public class Weapon : Item, IGameEventHandler<OnReloadEvent>
+public class Weapon : Item, IGameEventHandler<OnReloadEvent>, IGameEventHandler<PlayerDeath>
 {
 	[Property] public float FireRate { get; set; } = 0.1f;
 	[Property] public float ReloadDelay { get; set; } = 1f;
@@ -432,6 +433,16 @@ public class Weapon : Item, IGameEventHandler<OnReloadEvent>
 		gb.NetworkSpawn( null );
 	}
 
+	void IGameEventHandler<PlayerDeath>.OnGameEvent( PlayerDeath eventArgs )
+	{
+		if ( IsProxy )
+			return;
+
+		GameObject.Dispatch( new WeaponAnimEvent( "b_reloading", false ) );
+
+		IsReloading = false;
+	}
+
 	void IGameEventHandler<OnReloadEvent>.OnGameEvent( OnReloadEvent eventArgs )
 	{
 		if ( IsProxy )
@@ -446,6 +457,8 @@ public class Weapon : Item, IGameEventHandler<OnReloadEvent>
 
 		if ( IsProxy )
 			return;
+
+		GameObject.Dispatch( new WeaponAnimEvent( "b_reloading", false ) );
 
 		IsReloading = false;
 	}
@@ -511,7 +524,6 @@ public class Weapon : Item, IGameEventHandler<OnReloadEvent>
 		int ammoToFull = MaxAmmo - Ammo;
 		for ( int i = 0; i < ammoToFull; i++ )
 		{
-
 			if ( Ammo == 0 )
 			{
 				GameObject.Dispatch( new WeaponAnimEvent( "b_reloading_first_shell", true ) );
@@ -528,6 +540,7 @@ public class Weapon : Item, IGameEventHandler<OnReloadEvent>
 			{
 				GameObject.Dispatch( new WeaponAnimEvent( "b_reloading_shell", true ) );
 				Sound.Play( "shotgun.reload" );
+
 				await Task.DelaySeconds( 0.5f );
 			}
 
@@ -538,7 +551,6 @@ public class Weapon : Item, IGameEventHandler<OnReloadEvent>
 			}
 
 			Ammo++;
-
 		}
 
 		GameObject.Dispatch( new WeaponAnimEvent( "b_reloading", false ) );

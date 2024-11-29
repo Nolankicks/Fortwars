@@ -75,8 +75,6 @@ public partial class HealthComponent : Component
 			{
 				var flag = local.Inventory.Items.FirstOrDefault( x => x.Components.Get<Flag>().IsValid() )?.Components.Get<Flag>();
 
-				Log.Info( flag.IsValid() );
-
 				if ( flag.IsValid() )
 				{
 					flag.GameObject.Enabled = false;

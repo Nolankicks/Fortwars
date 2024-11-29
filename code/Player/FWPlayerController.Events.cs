@@ -49,8 +49,6 @@ partial class FWPlayerController
 		//Broadcast death message
 		BroadcastDeathMessage( eventArgs.Attacker );
 
-		Log.Info( "Player Death" );
-
 		//Add kills to attacker
 		if ( pc.IsValid() )
 			pc.AddKills( 1 );

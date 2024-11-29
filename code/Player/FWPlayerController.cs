@@ -458,7 +458,7 @@ IGameEventHandler<DeathEvent>, IGameEventHandler<OnPhysgunGrabChange>
 			return;
 
 		if ( Local.IsValid() )
-			Local.HealthComponent.TakeDamage( Local.GameObject, 100 );
+			Local.HealthComponent.TakeDamage( Local.GameObject, Local.HealthComponent.Health );
 	}
 
 	[Authority]
