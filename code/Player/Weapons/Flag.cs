@@ -270,13 +270,9 @@ public sealed class FlagSpawn : Component
 
 	protected override void DrawGizmos()
 	{
-		Model model = Model.Load( "models/editor/spawnpoint.vmdl" );
+		Model model = Model.Load( "models/flag_blue/flag_blue.vmdl" );
 		Gizmo.Hitbox.Model( model );
-		Gizmo.Draw.Color = TeamSpawnPoint.GetTeamColor( Team ).WithAlpha( (Gizmo.IsHovered || Gizmo.IsSelected) ? 0.7f : 0.5f );
+		Gizmo.Draw.Color = TeamSpawnPoint.GetTeamColor( Team );
 		SceneObject sceneObject = Gizmo.Draw.Model( model );
-		if ( sceneObject != null )
-		{
-			sceneObject.Flags.CastShadows = true;
-		}
 	}
 }

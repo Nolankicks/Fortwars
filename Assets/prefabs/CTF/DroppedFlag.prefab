@@ -9,6 +9,12 @@
       {
         "__type": "DroppedFlag",
         "__guid": "17a2ee5f-7bf0-4e23-94cb-b0005dffbf3c",
+        "FlagRenderer": {
+          "_type": "component",
+          "component_id": "003178cc-678b-4ff9-ac84-23fa9a11ff9b",
+          "go": "c0da0947-85bc-416c-975d-50a1621af49d",
+          "component_type": "SkinnedModelRenderer"
+        },
         "Marker": {
           "_type": "component",
           "component_id": "378ef75d-1759-493c-9640-9d38cc9f4bc0",
@@ -16,22 +22,6 @@
           "component_type": "NavMarker"
         },
         "TeamFlag": "Red"
-      },
-      {
-        "__type": "Sandbox.ModelRenderer",
-        "__guid": "a56476ae-1e21-4811-97aa-73dd322b675c",
-        "BodyGroups": 18446744073709551615,
-        "CreateAttachments": false,
-        "MaterialGroup": "2",
-        "Model": "models/flag_blue/flag_blue.vmdl",
-        "RenderOptions": {
-          "GameLayer": true,
-          "OverlayLayer": false,
-          "BloomLayer": false,
-          "AfterUILayer": false
-        },
-        "RenderType": "On",
-        "Tint": "1,1,1,1"
       },
       {
         "__type": "Sandbox.HighlightOutline",
@@ -50,6 +40,35 @@
         "Scale": "20.80002,37.30003,55.70021",
         "Static": false,
         "SurfaceVelocity": "0,0,0"
+      },
+      {
+        "__type": "Sandbox.SkinnedModelRenderer",
+        "__guid": "003178cc-678b-4ff9-ac84-23fa9a11ff9b",
+        "AnimationGraph": "animgraphs/flag.vanmgrph",
+        "BodyGroups": 18446744073709551615,
+        "CreateAttachments": false,
+        "CreateBoneObjects": false,
+        "Model": "models/flag_blue/flag_blue.vmdl",
+        "Morphs": {},
+        "Parameters": {
+          "bools": {},
+          "ints": {},
+          "floats": {},
+          "vectors": {},
+          "rotations": {}
+        },
+        "RenderOptions": {
+          "GameLayer": true,
+          "OverlayLayer": false,
+          "BloomLayer": false,
+          "AfterUILayer": false
+        },
+        "RenderType": "On",
+        "Sequence": {
+          "Name": null
+        },
+        "Tint": "1,1,1,1",
+        "UseAnimGraph": true
       }
     ],
     "Children": [

@@ -2242,6 +2242,7 @@
       "Flags": 0,
       "Name": "Flag Spawn",
       "Position": "3072,0,128",
+      "Rotation": "0,0,1,0.0000001947072",
       "Enabled": true,
       "Components": [
         {
@@ -2562,6 +2563,5 @@
   "Title": "Grassforts",
   "Description": null,
   "__references": [],
-  "IsValid": true,
   "__version": 2
 }

@@ -2906,6 +2906,7 @@
       "Flags": 0,
       "Name": "Blue Spawn Flag",
       "Position": "1280,0,264",
+      "Rotation": "0,0,1,0.0000001947072",
       "Enabled": true,
       "Components": [
         {
@@ -2919,7 +2920,7 @@
       "__guid": "6357b3c8-5dda-432d-8d59-89ebeba6b293",
       "Flags": 0,
       "Name": "Blue Spawn Flag (1)",
-      "Position": "-1280,0,264",
+      "Position": "-1280,0,272",
       "Enabled": true,
       "Components": [
         {

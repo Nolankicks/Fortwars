@@ -1014,6 +1014,7 @@
       "Flags": 0,
       "Name": "Flag Spawn",
       "Position": "0,-1536,-136",
+      "Rotation": "0,0,0.7071067,0.7071068",
       "Enabled": true,
       "Components": [
         {
@@ -1028,6 +1029,7 @@
       "Flags": 0,
       "Name": "Flag Spawn (1)",
       "Position": "0,1536,-136",
+      "Rotation": "0,0,-0.7071067,0.7071068",
       "Enabled": true,
       "Components": [
         {
@@ -1336,6 +1338,5 @@
   "__references": [
     "facepunch.glass_c#70691"
   ],
-  "IsValid": true,
   "__version": 2
 }
