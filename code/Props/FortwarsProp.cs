@@ -26,6 +26,7 @@ public sealed class FortwarsProp : Component, Component.IDamageable
 	[Sync] public string Builder { get; set; } = "";
 	[Sync] public bool IsGrabbed { get; set; } = false;
 	[Sync] public PropLevel Level { get; set; } = PropLevel.Base;
+	[Sync] public bool IsHovered { get; set; } = false;
 
 	/*public void OnCollisionStart( Collision other )
 	{

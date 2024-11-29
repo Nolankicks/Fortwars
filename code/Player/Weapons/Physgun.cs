@@ -181,7 +181,7 @@ public class Physgun : Item
 		{
 			p.Rigidbody.Enabled = true;
 		}
-		
+
 		if ( !tr.GameObject.Components.TryGet<Rigidbody>( out var rigidbody, FindMode.EverythingInSelfAndAncestors ) )
 			return;
 
@@ -255,9 +255,6 @@ public class Physgun : Item
 
 		GrabEnd();
 
-		if ( body?.GetGameObject()?.Components.TryGet<HighlightOutline>( out var _) ?? false )
-			HasOutline = true;
-
 		if ( body?.GetGameObject()?.Components.TryGet<FortwarsProp>( out var prop ) ?? false )
 		{
 			prop.IsGrabbed = true;
@@ -290,7 +287,7 @@ public class Physgun : Item
 			{
 				HeldBody.Velocity = 0;
 				HeldBody.AngularVelocity = 0;
-				
+
 				if ( HeldBody.GetGameObject().Components.TryGet<FortwarsProp>( out var prop ) )
 				{
 					prop.IsGrabbed = false;
@@ -305,10 +302,10 @@ public class Physgun : Item
 
 		RemoveTag( GrabbedObject, "grabbed" );
 
-		if ( GrabbedObject.IsValid() && !HasOutline )
-			GrabbedObject.Components.Get<HighlightOutline>().Destroy();
-
-		HasOutline = false;
+		if ( GrabbedObject.IsValid() && GrabbedObject.Components.TryGet<FortwarsProp>( out var fortwarsProp ) && !fortwarsProp.IsHovered )
+		{
+			GrabbedObject.Components.Get<HighlightOutline>()?.Destroy();
+		}
 
 		GrabbedObject = null;
 		Scene.Dispatch( new OnPhysgunGrabChange( false ) );
@@ -385,8 +382,6 @@ public class Physgun : Item
 		Mouse.Visible = false;
 	}
 
-	public bool HasOutline { get; set; }
-
 	void UpdateEffects()
 	{
 		if ( GrabbedObject.IsValid() )
@@ -394,7 +389,7 @@ public class Physgun : Item
 			PhysLine.Enabled = true;
 			EndLineObject.WorldPosition = GrabbedObject.GetBounds().Center;
 
-			if ( !HasOutline )
+			if ( GrabbedObject.Components.TryGet<FortwarsProp>( out var prop ) && !prop.IsHovered )
 				GrabbedObject.Components.GetOrCreate<HighlightOutline>();
 			//LineParticles.Enabled = true;
 			//LineParticles.WorldPosition = TracerPoint.WorldPosition.MoveTowards( GrabbedPosition, 0.5f );
@@ -405,7 +400,7 @@ public class Physgun : Item
 		{
 			if ( LineParticles.IsValid() )
 				LineParticles.Enabled = false;
-			
+
 			if ( PhysLine.IsValid() )
 				PhysLine.Enabled = false;
 		}
