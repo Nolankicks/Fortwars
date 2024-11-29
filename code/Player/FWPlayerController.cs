@@ -214,7 +214,7 @@ IGameEventHandler<DeathEvent>, IGameEventHandler<OnPhysgunGrabChange>
 		}
 	}
 
-	[Authority]
+	[Rpc.Owner]
 	public void ResetStats()
 	{
 		Kills = 0;
@@ -396,7 +396,7 @@ IGameEventHandler<DeathEvent>, IGameEventHandler<OnPhysgunGrabChange>
 			HoldRenderer.RenderType = renderType;
 	}
 
-	[Authority]
+	[Rpc.Owner]
 	public void AddKills( int amount )
 	{
 		if ( IsProxy )
@@ -408,7 +408,7 @@ IGameEventHandler<DeathEvent>, IGameEventHandler<OnPhysgunGrabChange>
 		Stats.Increment( "kills_new", 1 );
 	}
 
-	[Authority]
+	[Rpc.Owner]
 	public void AddDeaths( int amount )
 	{
 		if ( IsProxy )
@@ -426,7 +426,7 @@ IGameEventHandler<DeathEvent>, IGameEventHandler<OnPhysgunGrabChange>
 		Scene.Dispatch( new PlayerDeath( this, attacker ) );
 	}
 
-	[Authority]
+	[Rpc.Owner]
 	public void OnRestart()
 	{
 		if ( HealthComponent.IsValid() )
@@ -437,7 +437,7 @@ IGameEventHandler<DeathEvent>, IGameEventHandler<OnPhysgunGrabChange>
 		Deaths = 0;
 	}
 
-	[Authority]
+	[Rpc.Owner]
 	public void SetWorld( Transform transform, bool ChangeAngles = true )
 	{
 		Transform.ClearInterpolation();
@@ -461,7 +461,7 @@ IGameEventHandler<DeathEvent>, IGameEventHandler<OnPhysgunGrabChange>
 			Local.HealthComponent.TakeDamage( Local.GameObject, Local.HealthComponent.Health );
 	}
 
-	[Authority]
+	[Rpc.Owner]
 	public void TeleportToTeamSpawnPoint( bool changeEyeAngles = true )
 	{
 		List<TeamSpawnPoint> Spawns;
@@ -482,7 +482,7 @@ IGameEventHandler<DeathEvent>, IGameEventHandler<OnPhysgunGrabChange>
 		}
 	}
 
-	[Authority]
+	[Rpc.Owner]
 	public void TeleportToAnySpawnPoint()
 	{
 		var teamSpawns = Scene.GetAll<TeamSpawnPoint>()
@@ -509,14 +509,14 @@ IGameEventHandler<DeathEvent>, IGameEventHandler<OnPhysgunGrabChange>
 		go.Enabled = enable;
 	}
 
-	[Authority]
+	[Rpc.Owner]
 	public void SetSpeed( int walkSpeed, int runSpeed )
 	{
 		WalkSpeed = walkSpeed;
 		RunSpeed = runSpeed;
 	}
 
-	[Authority]
+	[Rpc.Owner]
 	public void SetPlayerMaxHealth( int health )
 	{
 		if ( !HealthComponent.IsValid() )
@@ -531,7 +531,7 @@ IGameEventHandler<DeathEvent>, IGameEventHandler<OnPhysgunGrabChange>
 			return;
 	}
 
-	[Authority]
+	[Rpc.Owner]
 	public void ResetMaxPlayerHealth()
 	{
 		if ( !HealthComponent.IsValid() )
@@ -541,7 +541,7 @@ IGameEventHandler<DeathEvent>, IGameEventHandler<OnPhysgunGrabChange>
 		HealthComponent.MaxHealth = 100;
 	}
 
-	[Authority]
+	[Rpc.Owner]
 	public void ResetSpeed()
 	{
 		Log.Info( "Resetting speed" );
@@ -550,13 +550,13 @@ IGameEventHandler<DeathEvent>, IGameEventHandler<OnPhysgunGrabChange>
 		RunSpeed = StartingRunSpeed;
 	}
 
-	[Authority]
+	[Rpc.Owner]
 	public void SetVotedMap( MapInfo map )
 	{
 		VotedForMap = map;
 	}
 
-	[Authority]
+	[Rpc.Owner]
 	public void ResetResouces()
 	{
 		var gs = GameSystem.Instance;

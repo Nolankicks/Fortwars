@@ -274,7 +274,7 @@ public class Gravgun : Item, IGameEventHandler<DeathEvent>
 		}
 	}
 
-	[Authority]
+	[Rpc.Owner]
 	public void GrabEnd( bool setGrabber = true )
 	{
 		if ( !GrabbedObject.IsValid() ) return;

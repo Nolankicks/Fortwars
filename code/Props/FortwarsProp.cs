@@ -184,7 +184,7 @@ public sealed class FortwarsProp : Component, Component.IDamageable
 		renderer.Model = Renderer.Model;
 	}
 
-	[Authority]
+	[Rpc.Owner]
 	public void HealProp( float amount )
 	{
 		Health += amount;
@@ -198,7 +198,7 @@ public sealed class FortwarsProp : Component, Component.IDamageable
 		Damage( damage.Damage );
 	}
 
-	[Authority]
+	[Rpc.Owner]
 	public void DestroyProp()
 	{
 		if ( Invincible )
@@ -207,7 +207,7 @@ public sealed class FortwarsProp : Component, Component.IDamageable
 		GameObject.Destroy();
 	}
 
-	[Authority]
+	[Rpc.Owner]
 	public void SetGrabber( FWPlayerController player )
 	{
 		Grabber = player;

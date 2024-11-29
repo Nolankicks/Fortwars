@@ -35,7 +35,7 @@ public class Item : Component, IGameEventHandler<OnItemEquipped>
 	public virtual bool IsReloading { get; set; } = false;
 
 
-	[Authority]
+	[Rpc.Owner]
 	public void SubtractAmmo()
 	{
 		if ( !UsesAmmo || Ammo <= 0 )

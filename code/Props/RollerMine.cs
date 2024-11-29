@@ -13,7 +13,7 @@ public sealed class RollerMine : Component
 			StartingTransform = Transform.World;
 	}
 
-	[Authority]
+	[Rpc.Owner]
 	public void ResetPosition()
 	{
 		if ( Components.TryGet<Rigidbody>( out var rb ) )

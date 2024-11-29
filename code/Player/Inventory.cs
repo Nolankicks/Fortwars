@@ -26,7 +26,7 @@ public sealed class Inventory : Component
 			hud.StateHasChanged();
 	}
 
-	[Authority]
+	[Rpc.Owner]
 	public void SwapItems( int index1, int index2 )
 	{
 		if ( Items?.Count() == 0 || Items is null )
@@ -116,7 +116,7 @@ public sealed class Inventory : Component
 		KeyboardInputs();
 	}
 
-	[Authority]
+	[Rpc.Owner]
 	public void ClearAll()
 	{
 		var items = Items?.ToList();
@@ -151,7 +151,7 @@ public sealed class Inventory : Component
 		ChangeItem( Index, Items );
 	}
 
-	[Authority]
+	[Rpc.Owner]
 	public void AddItem( WeaponData item, bool insert = false, int spot = 0, bool enabled = false, bool changeIndex = false )
 	{
 		if ( IsProxy || item is null || !CanPickUp )
@@ -201,7 +201,7 @@ public sealed class Inventory : Component
 		}
 	}
 
-	[Authority]
+	[Rpc.Owner]
 	public void AddItemAt( WeaponData item, int index )
 	{
 		if ( item is null || index < 0 || index >= Items.Count() || IsProxy )
@@ -232,7 +232,7 @@ public sealed class Inventory : Component
 		ItemsData.Insert( index, item );
 	}
 
-	[Authority]
+	[Rpc.Owner]
 	public void AddItems( List<WeaponData> weaponDatas )
 	{
 		if ( weaponDatas is null )
@@ -256,7 +256,7 @@ public sealed class Inventory : Component
 		RemoveItem( Items[0] );
 	}
 
-	[Authority]
+	[Rpc.Owner]
 	public void RemoveItem( GameObject item, bool changeItem = true )
 	{
 		if ( !item.IsValid() || Items is null || ItemsData is null )
@@ -296,7 +296,7 @@ public sealed class Inventory : Component
 		}
 	}
 
-	[Authority]
+	[Rpc.Owner]
 	public void RemoveItem( int index )
 	{
 		if ( index < 0 || index >= Items.Count() )
@@ -305,7 +305,7 @@ public sealed class Inventory : Component
 		RemoveItem( Items[index] );
 	}
 
-	[Authority]
+	[Rpc.Owner]
 	public void RemoveItem( WeaponData item )
 	{
 		if ( ItemsData is null || item is null )
@@ -314,7 +314,7 @@ public sealed class Inventory : Component
 		RemoveItem( ItemsData.IndexOf( item ) );
 	}
 
-	[Authority]
+	[Rpc.Owner]
 	public void ChangeItem( int index, List<GameObject> items )
 	{
 		if ( index < 0 || index >= items?.Count() || items is null || items.ElementAt( index ) == CurrentItem )
@@ -342,7 +342,7 @@ public sealed class Inventory : Component
 		CurrentItem.Dispatch( new OnItemEquipped() );
 	}
 
-	[Button, Authority, Category( "Buttons" )]
+	[Button, Rpc.Owner, Category( "Buttons" )]
 	public void DisableAll()
 	{
 		foreach ( var item in Items.ToList() )
@@ -361,7 +361,7 @@ public sealed class Inventory : Component
 		CurrentWeaponData = null;
 	}
 
-	[Authority]
+	[Rpc.Owner]
 	public void ClearSelectedClass()
 	{
 		var local = FWPlayerController.Local;
@@ -423,7 +423,7 @@ public sealed class Inventory : Component
 		}
 	}
 
-	[Authority]
+	[Rpc.Owner]
 	public void OpenClassSelect()
 	{
 		if ( IsProxy )
@@ -446,7 +446,7 @@ public sealed class Inventory : Component
 		Log.Info( "Opened class select" );
 	}
 
-	[Authority]
+	[Rpc.Owner]
 	public void AddClass( PlayerClass playerClass )
 	{
 		var local = FWPlayerController.Local;
@@ -496,7 +496,7 @@ public sealed class Inventory : Component
 		Log.Info( "Added weapon" );
 	}
 
-	[Authority]
+	[Rpc.Owner]
 	public void ResetAmmo()
 	{
 		var local = FWPlayerController.Local;

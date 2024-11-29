@@ -200,7 +200,7 @@ public sealed partial class GameSystem : Component
 		}
 	}
 
-	[Authority]
+	[Rpc.Owner]
 	public void SubtractTimeHeld( Team team, float time )
 	{
 		switch ( team )
@@ -220,7 +220,7 @@ public sealed partial class GameSystem : Component
 		}
 	}
 
-	[Authority]
+	[Rpc.Owner]
 	public void AddFlagCapture( Team team )
 	{
 		switch ( team )
@@ -247,7 +247,7 @@ public sealed partial class GameSystem : Component
 		
 	}
 
-	[Authority]
+	[Rpc.Owner]
 	public void AddKill()
 	{
 		TotalKills++;
@@ -332,7 +332,7 @@ public sealed partial class GameSystem : Component
 		return (Scene.GetAll<FWPlayerController>().Count() >= (Application.IsHeadless ? 1 : PlayerToStart)) && StateSwitch > 5;
 	}
 
-	[Authority]
+	[Rpc.Owner]
 	public void AddMapVote( MapInfo map, FWPlayerController caster )
 	{
 		if ( !caster.IsValid() )

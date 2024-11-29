@@ -34,7 +34,7 @@ public partial class HealthComponent : Component
 
 	public virtual void OnDeath( GameObject Attacker, Vector3 damagePos, Vector3 damageNormal ) { }
 
-	[Authority]
+	[Rpc.Owner]
 	public virtual void TakeDamage( GameObject Attacker, int damage = 10, Vector3 HitPos = default, Vector3 normal = default, bool spawnFlag = true, int boneId = 20 )
 	{
 		if ( IsDead )

@@ -60,7 +60,7 @@ public sealed class Flag : Item
 		}
 	}
 
-	[Authority]
+	[Rpc.Owner]
 	public void SetSpawnNewFlag( bool value )
 	{
 		SpawnNewFlag = value;
@@ -163,7 +163,7 @@ public sealed class DroppedFlag : Component, Component.ITriggerListener
 		}
 	}
 
-	[Authority]
+	[Rpc.Owner]
 	public void ResetPos()
 	{
 		var spawnPoint = Scene.GetAll<FlagSpawn>()?.FirstOrDefault( x => x.Team == TeamFlag );

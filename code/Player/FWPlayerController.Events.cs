@@ -147,7 +147,7 @@ partial class FWPlayerController
 		}
 	}
 
-	[Authority]
+	[Rpc.Owner]
 	public void RespawnPlayer()
 	{
 		Inventory.CanScrollSwitch = true;

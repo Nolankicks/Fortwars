@@ -72,7 +72,7 @@ public sealed class TeamComponent : Component
 		return Team == other.Team;
 	}
 
-	[Authority]
+	[Rpc.Owner]
 	public void ResetToSpawnPoint()
 	{
 		var spawns = Scene.GetAll<TeamSpawnPoint>()?.Where( x => x.Team == Team )?.ToList();
