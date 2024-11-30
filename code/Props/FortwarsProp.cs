@@ -123,17 +123,17 @@ public sealed class FortwarsProp : Component, Component.IDamageable
 
 	protected override void OnStart()
 	{
-		if ( Network.IsOwner )
+		if ( !IsProxy )
 		{
 			Network.SetOwnerTransfer( OwnerTransfer.Takeover );
 			Network.SetOrphanedMode( NetworkOrphaned.ClearOwner );
 
 			MaxHealth = Health;
 		}
-
-		//if ( IsProxy && !Invincible && Rigidbody.IsValid() && Rigidbody.PhysicsBody.IsValid() )
-		//{
-		//}
+		else if ( Components.TryGet<HighlightOutline>( out var highlightOutline ) )
+		{
+			highlightOutline.Destroy();
+		}
 	}
 
 	[Rpc.Broadcast]
