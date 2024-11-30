@@ -7,17 +7,19 @@ public class ModelPanel : Panel
 {
 	readonly ScenePanel scenePanel;
 
-	Angles CamAngles = new( 0.0f, 0.0f, 0.0f );
-	float CamDistance = 200;
+	Angles CamAngles = new( 14f, 14f, 0.0f );
+	float CamDistance = 94;
 	Vector3 CamPos => CamAngles.Forward * -CamDistance;
 
 	public SceneModel Citizen { get; set; }
 
 	public SceneWorld World => scenePanel.World;
 
-	public PlayerClass PlayerClass => ResourceLibrary.Get<PlayerClass>( "classes/jugg.class" );
+	public PlayerClass PlayerClass { get; set; }
 
 	public SceneModel Gun { get; set; }
+
+	public List<SceneModel> ClothingModels { get; set; } = new();
 
 	public ModelPanel()
 	{
@@ -26,9 +28,6 @@ public class ModelPanel : Panel
 		Style.AlignItems = Align.Center;
 		Style.AlignContent = Align.Center;
 		Style.Padding = 0;
-		Style.Width = Length.Percent( 100 );
-		Style.Height = Length.Percent( 100 );
-		Style.PointerEvents = PointerEvents.All;
 
 		var world = new SceneWorld();
 		scenePanel = new ScenePanel();
@@ -42,7 +41,54 @@ public class ModelPanel : Panel
 
 		AddChild( scenePanel );
 
-		Citizen = new SceneModel( world, "models/citizen/citizen.vmdl", new Transform( Vector3.Up * -50.0f, Rotation.From( 0, 180, 0 ) ) );
+		Citizen = new SceneModel( world, "models/citizen/citizen.vmdl", new Transform( Vector3.Up * -32.0f, Rotation.From( 0, 180, 0 ) ) );
+
+		var clothes = new ClothingContainer();
+
+		clothes.Deserialize( Connection.Local.GetUserData( "avatar" ) );
+
+		var SkinMaterial = clothes.Clothing.Select( x => x.Clothing.SkinMaterial ).Where( x => !string.IsNullOrWhiteSpace( x ) ).Select( x => Material.Load( x ) ).FirstOrDefault();
+		var EyesMaterial = clothes.Clothing.Select( x => x.Clothing.EyesMaterial ).Where( x => !string.IsNullOrWhiteSpace( x ) ).Select( x => Material.Load( x ) ).FirstOrDefault();
+
+		Citizen.SetMaterialOverride( SkinMaterial, "skin" );
+		Citizen.SetMaterialOverride( EyesMaterial, "eyes" );
+
+		foreach ( var entry in clothes.Clothing )
+		{
+			var c = entry.Clothing;
+
+			var modelPath = c.GetModel( clothes.Clothing.Select( x => x.Clothing ) );
+
+			if ( string.IsNullOrEmpty( modelPath ) || !string.IsNullOrEmpty( c.SkinMaterial ) )
+				continue;
+
+			var model = Model.Load( modelPath );
+			if ( !model.IsValid() || model.IsError )
+				continue;
+
+			var r = new SceneModel( world, model, Transform.Zero );
+			
+			if ( SkinMaterial is not null ) r.SetMaterialOverride( SkinMaterial, "skin" );
+			if ( EyesMaterial is not null ) r.SetMaterialOverride( EyesMaterial, "eyes" );
+
+			if ( !string.IsNullOrEmpty( c.MaterialGroup ) )
+				r.SetMaterialGroup( c.MaterialGroup );
+
+			if ( c.AllowTintSelect )
+			{
+				var tintValue = entry.Tint?.Clamp( 0, 1 ) ?? c.TintDefault;
+				var tintColor = c.TintSelection.Evaluate( tintValue );
+				r.ColorTint = tintColor;
+			}
+
+			ClothingModels.Add( r );
+		}
+
+		foreach ( var (name, value) in clothes.GetBodyGroups( clothes.Clothing.Select( x => x.Clothing ) ) )
+		{
+			Citizen.SetBodyGroup( name, value );
+		}
+
 
 		new SceneDirectionalLight( world, Rotation.From( 45, 0, 0 ), Color.White );
 
@@ -56,18 +102,26 @@ public class ModelPanel : Panel
 		scenePanel.Camera.Position = CamPos;
 		scenePanel.Camera.Rotation = Rotation.From( CamAngles );
 
+		foreach ( var renderer in scenePanel.World.SceneObjects.OfType<SceneModel>() )
+		{
+			renderer.Update( RealTime.Delta );
+		}
+
 		if ( !Citizen.IsValid() )
 			return;
 
-		Citizen.Update( RealTime.Delta );
+		foreach ( var renderer in ClothingModels )
+		{
+			renderer.MergeBones( Citizen );
+		}
 
 		var mousePos = MousePosition;
 		var headPos = scenePanel.Camera.ToScreen( (Citizen.GetAttachment( "eyes (on bone head)" ) ?? Transform.Zero).Position );
 		var localPos = mousePos - headPos;
 
-		Citizen.SetAnimParameter( "aim_eyes", SetLookDirection( new Vector3( 200, localPos.x, -localPos.y ), 1 ) );
-		Citizen.SetAnimParameter( "aim_body", SetLookDirection( new Vector3( 200, localPos.x, -localPos.y ), 0.3f ) );
-		Citizen.SetAnimParameter( "aim_head", SetLookDirection( new Vector3( 200, localPos.x, -localPos.y ), 0.6f ) );
+		//Citizen.SetAnimParameter( "aim_eyes", SetLookDirection( new Vector3( CamDistance, localPos.x, -localPos.y ), 1 ) );
+		//Citizen.SetAnimParameter( "aim_body", SetLookDirection( new Vector3( CamDistance, localPos.x, -localPos.y ), 1f ) );
+		//Citizen.SetAnimParameter( "aim_head", SetLookDirection( new Vector3( CamDistance, localPos.x, -localPos.y ), 1f ) );
 
 		var light = World.SceneObjects.OfType<SceneDirectionalLight>().FirstOrDefault();
 

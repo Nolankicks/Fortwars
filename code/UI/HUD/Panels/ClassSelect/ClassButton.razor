@@ -1,0 +1,29 @@
+@using Sandbox;
+@using Sandbox.UI;
+@inherits Panel
+
+<root style="width: 100%;">
+	<button style="width: 100%;">@PlayerClass.ClassName</button>
+</root>
+
+@code
+{
+	public ClassSelect ClassSelect { get; set; }
+	public PlayerClass PlayerClass { get; set; }
+
+	protected override void OnMouseOver( MousePanelEvent e )
+	{
+		base.OnMouseOver( e );
+
+		if ( ClassSelect is not null )
+			ClassSelect.SelectedClass = PlayerClass;
+	}
+
+	protected override void OnMouseDown( MousePanelEvent e )
+	{
+		base.OnMouseDown( e );
+
+		if ( ClassSelect is not null )
+			ClassSelect.SelectClass( PlayerClass );
+	}
+}

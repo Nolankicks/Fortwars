@@ -7,42 +7,44 @@
 
 <root>
 	<div class="main">
-		<div class="classes">
 		@foreach ( var playerClass in ResourceLibrary.GetAll<PlayerClass>() )
 		{
-			@if ( playerClass.Hidden )
+			if ( playerClass.Hidden )
 				continue;
 
-			<button class="class @( SelectedClass == playerClass ? "active" : "")" onclick=@( () => SelectedClass = playerClass)>@playerClass.ClassName</button>
+			<ClassButton ClassSelect=@this PlayerClass=@playerClass />
 		}
 	</div>
 
-	<div class="description">
-		@if ( SelectedClass is not null )
-		{
-			<div class="header">@SelectedClass.ClassName</div>
-			<div class="body">
-				<div>Health: @SelectedClass.Health</div>
-				<div>@(GetSpeedMutliplyer(300, SelectedClass.WalkSpeed)) Walk Speed</div>
-				<div>@(GetSpeedMutliplyer(450, SelectedClass.RunSpeed)) Run Speed</div>
-				<div>@SelectedClass.ClassDescription</div>
-			</div>
-			<button onclick=@( () => SelectClass( SelectedClass ) )>Select</button>
-		}
-	</div>
-	</div>
+	<div class="model">
+		<div class="title">@SelectedClass?.ClassName</div>
 
-	@* <div class="close" onclick=@Close>close</div> *@
+		<div class="description">@SelectedClass?.ClassDescription</div>
+
+		<ModelPanel PlayerClass=@SelectedClass @ref="ModelPanel" />
+	</div>
+	
 </root>
 
 @code
 {
 	public Inventory Inventory { get; set; }
 
+	public ModelPanel ModelPanel { get; set; }
+
 	public PlayerClass SelectedClass { get; set; } = ResourceLibrary.GetAll<PlayerClass>()?.FirstOrDefault( x => !x.Hidden );
 
 	public static bool FirstTimeClosing { get; set; } = true;
 
+	public Dictionary<PlayerClass, Panel> ClassPanels { get; set; } = new();
+
+	public override void Tick()
+	{
+		if ( ModelPanel.IsValid() )
+		{
+			ModelPanel.PlayerClass = SelectedClass;
+		}
+	}
 
 	public string GetSpeedMutliplyer( float playerSpeed, float speed )
 	{
