@@ -45,7 +45,10 @@ public class ModelPanel : Panel
 
 		var clothes = new ClothingContainer();
 
-		clothes.Deserialize( Connection.Local.GetUserData( "avatar" ) );
+		var local = FWPlayerController.Local;
+
+		if ( local.IsValid() && local.Network.Owner is not null )
+			clothes.Deserialize( local.Network.Owner.GetUserData( "avatar" ) );
 
 		var SkinMaterial = clothes.Clothing.Select( x => x.Clothing.SkinMaterial ).Where( x => !string.IsNullOrWhiteSpace( x ) ).Select( x => Material.Load( x ) ).FirstOrDefault();
 		var EyesMaterial = clothes.Clothing.Select( x => x.Clothing.EyesMaterial ).Where( x => !string.IsNullOrWhiteSpace( x ) ).Select( x => Material.Load( x ) ).FirstOrDefault();
