@@ -157,6 +157,9 @@ public partial class GameMode : Component, Component.INetworkListener
 		GameSystem.BlueTimeHeld = GameSystem.InitBlueTimeHeld;
 		GameSystem.YellowTimeHeld = GameSystem.InitYellowTimeHeld;
 		GameSystem.GreenTimeHeld = GameSystem.InitGreenTimeHeld;
+
+		GameSystem.RedFlagsCaptured = 0;
+		GameSystem.BlueFlagsCaptured = 0;
 	}
 
 	public virtual void CheckForWinningTeam() { }
