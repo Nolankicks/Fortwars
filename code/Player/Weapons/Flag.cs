@@ -82,6 +82,8 @@ public sealed class Flag : Item
 		if ( local.Inventory.CurrentItem == GameObject )
 			Log.Info( "Flag disabled" );
 
+		local.SetHasFlag( false );
+
 		if ( SpawnNewFlag )
 		{
 			//We need this, but I don't think we should need it
@@ -158,6 +160,8 @@ public sealed class DroppedFlag : Component, Component.ITriggerListener
 			{
 				flagComponent.Owner = TeamFlag;
 			}
+
+			playerController.SetHasFlag( true );
 
 			GameObject.Destroy();
 		}
