@@ -16,18 +16,27 @@
 		<div style="width: 100%;">Most Map Votes</div>
 		<div class="hr"></div>
 
-		@foreach ( var map in topMaps )
+		@if ( topMaps.Count() == 0 )
 		{
-			var votes = map.Value;
-			var mapInfo = map.Key;
-
-			if ( votes <= 0 )
-				continue;
-
 			<div class="map">
-				<div class="name">@mapInfo.MapName</div>
-				<div class="votes">Votes: @votes</div>
+				<div class="name" style="align-items: center; justify-content: center;">No votes yet</div>
 			</div>
+		}
+		else
+		{
+			@foreach ( var map in topMaps )
+			{
+				var votes = map.Value;
+				var mapInfo = map.Key;
+
+				if ( votes <= 0 )
+					continue;
+
+				<div class="map">
+					<div class="name">@mapInfo.MapName</div>
+					<div class="votes">Votes: @votes</div>
+				</div>
+			}
 		}
 	</div>
 	<div class="hint">
