@@ -35,9 +35,6 @@ public sealed class Flag : Item
 		if ( IsProxy )
 			return;
 
-		if ( FlagRenderer.IsValid() )
-			FlagRenderer.Tint = HUD.GetColor( Owner ).Rgb;
-
 		Scene.GetAll<CTFTrigger>()?.FirstOrDefault( x => x.Team == Owner ).OnTeamFlagPickup();
 	}
 
@@ -45,6 +42,9 @@ public sealed class Flag : Item
 	{
 		if ( IsProxy )
 			return;
+
+		if ( FlagRenderer.IsValid() )
+			FlagRenderer.Tint = HUD.GetColor( Owner ).Rgb;
 
 		if ( Input.Pressed( "menu" ) )
 		{
@@ -58,6 +58,12 @@ public sealed class Flag : Item
 		{
 			HighlightOutline.Enabled = IsProxy;
 		}
+	}
+
+	[Rpc.Owner]
+	public void SetOwner( Team team )
+	{
+		Owner = team;
 	}
 
 	[Rpc.Owner]
@@ -91,7 +97,7 @@ public sealed class Flag : Item
 
 			if ( clone.Components.TryGet<DroppedFlag>( out var droppedFlag ) )
 			{
-				droppedFlag.TeamFlag = Owner;
+				droppedFlag.TeamFlag = Team.Blue;
 			}
 
 			clone.NetworkSpawn( null );
@@ -100,6 +106,8 @@ public sealed class Flag : Item
 		local.Inventory.RemoveItem( GameObject, false );
 
 		FWPlayerController.ClearHoldRenderer( local.HoldRenderer );
+
+		GameObject.Destroy();
 	}
 }
 
@@ -151,15 +159,16 @@ public sealed class DroppedFlag : Component, Component.ITriggerListener
 
 			inv.DisableAll();
 
-			if ( flag is not null )
-				inv.AddItem( flag, enabled: true, changeIndex: true );
+			var obj = flag.WeaponPrefab.Clone();
+
+			obj.NetworkSpawn( playerController.Network.Owner );
+
+			if ( obj.IsValid() )
+				inv.AddItem( obj, flag, enabled: true, changeIndex: true );
 
 			PopupHolder.BroadcastPopup( $"{teamComponent.Team} grabbed the flag!", 5 );
 
-			if ( inv.Components.TryGet<Flag>( out var flagComponent, FindMode.EverythingInSelfAndDescendants ) )
-			{
-				flagComponent.Owner = TeamFlag;
-			}
+			obj.Components.Get<Flag>()?.SetOwner( TeamFlag );
 
 			playerController.SetHasFlag( true );
 

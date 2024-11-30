@@ -202,6 +202,46 @@ public sealed class Inventory : Component
 	}
 
 	[Rpc.Owner]
+	public void AddItem( GameObject clone, WeaponData data, bool insert = false, int spot = 0, bool enabled = false, bool changeIndex = false )
+	{
+		if ( IsProxy || clone is null || !CanPickUp )
+			return;
+
+		var local = FWPlayerController.Local;
+
+		if ( !clone.IsValid() || !local.IsValid() || (!local?.Eye.IsValid() ?? false) )
+			return;
+
+		clone.Parent = local.Eye;
+
+		clone.Enabled = enabled;
+
+		if ( !insert )
+		{
+			Items.Add( clone );
+			ItemsData.Add( data );
+		}
+		else
+		{
+			Items.Insert( spot, clone );
+			ItemsData.Insert( spot, data );
+		}
+
+		if ( changeIndex )
+		{
+			var index = Items.IndexOf( clone );
+
+			if ( index != -1 )
+				ChangeItem( index, Items );
+		}
+
+		if ( Items.Count() == 1 )
+		{
+			ChangeItem( 0, Items );
+		}
+	}
+
+	[Rpc.Owner]
 	public void AddItemAt( WeaponData item, int index )
 	{
 		if ( item is null || index < 0 || index >= Items.Count() || IsProxy )
