@@ -8,7 +8,12 @@
   "Hidden": false,
   "SecondaryEnabled": true,
   "SecondaryWeaponData": "weapondatas/pistol.weapons",
-  "__references": [],
-  "IsValid": true,
+  "ClassModelEnabled": true,
+  "ClassModel": "models/weapons/sbox_smg_mp5/w_mp5.vmdl",
+  "HoldType": "Rifle",
+  "Offset": "0,0,-4.600007",
+  "__references": [
+    "facepunch.w_mp5#33703"
+  ],
   "__version": 0
 }

@@ -8,7 +8,12 @@
   "Hidden": false,
   "SecondaryEnabled": true,
   "SecondaryWeaponData": "weapondatas/pistol.weapons",
-  "__references": [],
-  "IsValid": true,
+  "ClassModelEnabled": true,
+  "ClassModel": "models/weapons/sbox_assault_m4a1/w_m4a1.vmdl",
+  "HoldType": "Rifle",
+  "Offset": "0,0,-6.299998",
+  "__references": [
+    "facepunch.w_m4a1#60166"
+  ],
   "__version": 0
 }
