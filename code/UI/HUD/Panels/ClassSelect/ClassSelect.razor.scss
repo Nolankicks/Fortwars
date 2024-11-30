@@ -15,6 +15,8 @@ ClassSelect
 
     pointer-events: all;
 
+    transition: opacity 0.2s linear;
+
     .main
     {
         width: 100%;
@@ -79,5 +81,15 @@ ClassSelect
         height: 100%;
 
         z-index: -1;
+    }
+
+    &:intro
+    {
+        opacity: 0;
+    }
+
+    &:outro
+    {
+        opacity: 0;
     }
 }
