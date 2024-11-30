@@ -77,6 +77,18 @@ public class Item : Component, IGameEventHandler<OnItemEquipped>
 		}
 	}
 
+	[Rpc.Broadcast]
+	public void DestroyViewmodelRenderers()
+	{
+		if ( IsProxy )
+		{
+			foreach ( var renderer in Components.GetAll<ModelRenderer>().ToList() )
+			{
+				renderer.Destroy();
+			}
+		}
+	}
+
 	protected override void OnUpdate()
 	{
 		if ( VModel.IsValid() && VModel.Renderer.IsValid() && ADSEnabled )

@@ -97,7 +97,7 @@ public sealed class Flag : Item
 
 			if ( clone.Components.TryGet<DroppedFlag>( out var droppedFlag ) )
 			{
-				droppedFlag.TeamFlag = Team.Blue;
+				droppedFlag.TeamFlag = Owner == Team.Red ? Team.Blue : Team.Red;
 			}
 
 			clone.NetworkSpawn( null );
@@ -168,7 +168,13 @@ public sealed class DroppedFlag : Component, Component.ITriggerListener
 
 			PopupHolder.BroadcastPopup( $"{teamComponent.Team} grabbed the flag!", 5 );
 
-			obj.Components.Get<Flag>()?.SetOwner( TeamFlag );
+			var flagComponent = obj.Components.Get<Flag>();
+
+			if ( flagComponent.IsValid() )
+			{
+				flagComponent.SetOwner( teamComponent.Team );
+				flagComponent.DestroyViewmodelRenderers();
+			}
 
 			playerController.SetHasFlag( true );
 
