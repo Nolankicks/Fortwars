@@ -514,7 +514,7 @@ IGameEventHandler<DeathEvent>, IGameEventHandler<OnPhysgunGrabChange>
 	protected override void OnDisabled()
 	{
 		if ( HasFlag )
-			RoundComponent.SpawnNewFlag( TeamComponent.Team == Team.Red ? Team.Blue : Team.Red );
+			RoundComponent.SpawnNewFlag( TeamComponent.Team );
 	}
 
 	[Rpc.Broadcast]

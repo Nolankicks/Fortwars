@@ -58,13 +58,10 @@ partial class FWPlayerController
 		if ( gs.IsValid() )
 			gs.AddKill();
 
+		TeleportToTeamSpawnPoint( false );
 
 		if ( AnimHelper?.Target.IsValid() ?? false )
 		{
-			var deathPos = AnimHelper.Target.WorldTransform;
-
-			TeleportToTeamSpawnPoint( false );
-
 			if ( !Inventory.IsValid() )
 				return;
 
@@ -84,7 +81,8 @@ partial class FWPlayerController
 
 			var go = new GameObject( true, $"{Network.Owner?.DisplayName}'s ragdoll" );
 			go.Tags.Add( FW.Tags.Ragdoll );
-			go.WorldTransform = deathPos;
+			go.WorldTransform = target.WorldTransform;
+			go.WorldRotation = target.WorldRotation;
 
 			var ragdollBody = go.Components.Create<SkinnedModelRenderer>();
 			ragdollBody.CopyFrom( target );
@@ -112,7 +110,7 @@ partial class FWPlayerController
 
 			go.Network.SetOwnerTransfer( OwnerTransfer.Takeover );
 
-			go.NetworkSpawn( null );
+			go.NetworkSpawn();
 
 			BroadcastEnable( target.GameObject, false );
 
@@ -158,7 +156,6 @@ partial class FWPlayerController
 
 		IsRespawning = false;
 		IsSpectating = false;
-		HasFlag = false;
 
 		EyeAngles = WorldRotation.Angles();
 
