@@ -162,7 +162,7 @@ partial class FWPlayerController
 		GameObject.Dispatch( new PlayerReset() );
 
 		if ( shrimpleCharacterController.IsValid() )
-			shrimpleCharacterController.Enabled = false;
+			shrimpleCharacterController.Enabled = true;
 
 		if ( AnimHelper.Target.IsValid() )
 			BroadcastEnable( AnimHelper.Target.GameObject, true );

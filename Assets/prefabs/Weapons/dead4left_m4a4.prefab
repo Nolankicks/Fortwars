@@ -8,7 +8,7 @@
       {
         "__type": "Weapon",
         "__guid": "4ed6a63a-4d64-4b12-b540-69664f44f101",
-        "ADSEnabled": true,
+        "ADSEnabled": false,
         "ADSFOV": 0.8,
         "ADSOffset": "0,0,0",
         "AmmoPerShot": 1,
@@ -895,6 +895,5 @@
     "facepunch.v_m4a1#68031",
     "facepunch.w_m4a1#60166"
   ],
-  "IsValid": true,
   "__version": 1
 }

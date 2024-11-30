@@ -212,7 +212,7 @@ public sealed class CTFTrigger : Component, Component.ITriggerListener
 
 			PopupHolder.BroadcastPopup( $"{local.TeamComponent.Team} captured the flag!", 5 );
 
-			OnTeamFlagCaptured( Team );
+			OnTeamFlagCaptured();
 		}
 	}
 
@@ -242,7 +242,7 @@ public sealed class CTFTrigger : Component, Component.ITriggerListener
 	}
 
 	[Rpc.Broadcast]
-	public void OnTeamFlagCaptured( Team team )
+	public void OnTeamFlagCaptured()
 	{
 		var particles = GameObject.Clone( "prefabs/effects/flagcapture.prefab" );
 		particles.WorldPosition = WorldPosition;

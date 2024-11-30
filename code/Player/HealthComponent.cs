@@ -29,6 +29,7 @@ public partial class HealthComponent : Component
 	[Property, Feature( "Animation" )] public SkinnedModelRenderer Target { get; set; }
 	[Property, Feature( "Animation" )] public CitizenAnimationHelper AnimHelper { get; set; }
 	[Property, Feature( "Animation" )] public string HitAnimationName { get; set; } = "hit";
+	public bool AbleToTakeDamage { get; set; } = true;
 
 	public TimeSince LastHit { get; set; }
 
@@ -40,7 +41,7 @@ public partial class HealthComponent : Component
 		if ( IsDead )
 			return;
 
-		if ( CanTakeDamage?.Invoke( Attacker, damage ) ?? false )
+		if ( (CanTakeDamage?.Invoke( Attacker, damage ) ?? false) || !AbleToTakeDamage )
 			return;
 
 		LastHit = 0;
@@ -178,5 +179,6 @@ public partial class HealthComponent : Component
 	{
 		Health = MaxHealth;
 		IsDead = false;
+		AbleToTakeDamage = true;
 	}
 }

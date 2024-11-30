@@ -308,7 +308,7 @@ public class Physgun : Item
 		}
 
 		GrabbedObject = null;
-		Scene.Dispatch( new OnPhysgunGrabChange( false ) );
+		Scene?.Dispatch( new OnPhysgunGrabChange( false ) );
 	}
 
 	void PhysicsStep()

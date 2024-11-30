@@ -10,8 +10,8 @@
   "SecondaryWeaponData": "weapondatas/pistol.weapons",
   "ClassModelEnabled": true,
   "ClassModel": "models/weapons/sbox_shotgun_spaghellim4/w_spaghellim4.vmdl",
-  "HoldType": "None",
-  "Offset": "0,0,0",
+  "HoldType": "Shotgun",
+  "Offset": "0,0,-5.799997",
   "__references": [
     "facepunch.w_spaghellim4#58057"
   ],

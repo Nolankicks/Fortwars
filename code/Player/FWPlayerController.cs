@@ -464,6 +464,9 @@ IGameEventHandler<DeathEvent>, IGameEventHandler<OnPhysgunGrabChange>
 	[Rpc.Owner]
 	public void TeleportToTeamSpawnPoint( bool changeEyeAngles = true )
 	{
+		if ( HealthComponent.IsValid() )
+			HealthComponent.AbleToTakeDamage = false;
+
 		List<TeamSpawnPoint> Spawns;
 
 		Spawns = Scene.GetAll<TeamSpawnPoint>()?.Where( x => x.Team == TeamComponent.Team )?.ToList();
@@ -480,6 +483,9 @@ IGameEventHandler<DeathEvent>, IGameEventHandler<OnPhysgunGrabChange>
 
 			SetWorld( spawn.Transform.World, changeEyeAngles );
 		}
+
+		if ( HealthComponent.IsValid() )
+			HealthComponent.AbleToTakeDamage = true;
 	}
 
 	[Rpc.Owner]
