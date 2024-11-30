@@ -7,7 +7,7 @@ public class ModelPanel : Panel
 {
 	readonly ScenePanel scenePanel;
 
-	Angles CamAngles = new( 14f, 14f, 0.0f );
+	Angles CamAngles = new( 14f, -21f, 0.0f );
 	float CamDistance = 94;
 	Vector3 CamPos => CamAngles.Forward * -CamDistance;
 
@@ -127,7 +127,7 @@ public class ModelPanel : Panel
 
 		if ( light is not null )
 		{
-			light.Rotation = Rotation.From( 0, 0, 0 );
+			light.Rotation = Rotation.From( 0, -14, 0 );
 		}
 
 		if ( PlayerClass is null || (!PlayerClass?.ClassModelEnabled ?? true) )

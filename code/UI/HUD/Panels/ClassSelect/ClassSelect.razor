@@ -6,6 +6,14 @@
 @attribute [StyleSheet]
 
 <root>
+	<div class="model">
+		<div class="title">@SelectedClass?.ClassName</div>
+
+		<div class="description">@SelectedClass?.ClassDescription</div>
+
+		<ModelPanel PlayerClass=@SelectedClass @ref="ModelPanel" />
+	</div>
+	
 	<div class="main">
 		@foreach ( var playerClass in ResourceLibrary.GetAll<PlayerClass>() )
 		{
@@ -15,15 +23,6 @@
 			<ClassButton ClassSelect=@this PlayerClass=@playerClass />
 		}
 	</div>
-
-	<div class="model">
-		<div class="title">@SelectedClass?.ClassName</div>
-
-		<div class="description">@SelectedClass?.ClassDescription</div>
-
-		<ModelPanel PlayerClass=@SelectedClass @ref="ModelPanel" />
-	</div>
-	
 </root>
 
 @code
