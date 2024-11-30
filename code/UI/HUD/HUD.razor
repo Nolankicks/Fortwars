@@ -106,9 +106,10 @@
 		hud.Panel?.AddChild( new MapVoting() );
 
 		hud.Invoke( 30, () => {
-			if ( hud.Panel.IsValid() && hud.IsValid() && hud.Panel.ChildrenOfType<MapVoting>().Any() )
+			if ( hud.Panel.IsValid() && hud.IsValid() )
 			{
 				hud?.Panel?.ChildrenOfType<MapVoting>()?.ToList()?.ForEach( x => x.Delete() );
+				hud?.Panel?.ChildrenOfType<MiniMapVoting>()?.ToList()?.ForEach( x => x.Delete() );
 			}
 		});
 	}

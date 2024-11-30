@@ -13,7 +13,10 @@
 
 <root>
 	<div class="map-voting-header">
-		<div style="margin-bottom: 6px;">Map Voting</div>
+		<div style="width: 100%;">
+			<div style="flex-shrink: 0;">Map Voting</div>
+			<div class="close-button" onclick=@AddMiniMapVoting>close</div>
+		</div>
 		<div class="hr"></div>
 	</div>
 
@@ -41,6 +44,21 @@
 
 @code
 {
+	public void AddMiniMapVoting()
+	{
+		var hud = HUD.Instance;
+
+		if ( !hud.IsValid() )
+			return;
+
+		if ( hud.Panel?.ChildrenOfType<MiniMapVoting>().Any() ?? false )
+			return;
+
+		hud.Panel?.AddChild<MiniMapVoting>();
+
+		Delete();
+	}
+
 	protected override int BuildHash()
 	{
 		var gs = GameSystem.Instance;

@@ -24,6 +24,26 @@ MapVoting
 
         flex-direction: column;
         flex-shrink: 0;
+
+        margin-bottom: 6px;
+
+        .close-button
+        {
+            width: 100%;
+            align-items: center;
+            justify-content: flex-end;
+
+            font-family: Material Icons;
+
+            font-size: 42px;
+            color: $button-primary-fg;
+
+            &:hover
+            {
+                color: $button-primary-fg;
+                cursor: pointer;
+            }
+        }
     }
 
     .hr

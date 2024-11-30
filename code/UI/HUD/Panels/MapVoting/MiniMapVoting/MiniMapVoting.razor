@@ -1,0 +1,68 @@
+@using Sandbox;
+@using Sandbox.UI;
+@inherits Panel
+
+@{
+	var gs = GameSystem.Instance;
+
+	if ( !gs.IsValid() )
+		return;
+
+	var topMaps = gs.MapVotes.OrderByDescending( x => x.Value ).Take( 3 );
+}
+
+<root>
+	<div class="main">
+		<div style="width: 100%;">Most Map Votes</div>
+		<div class="hr"></div>
+
+		@foreach ( var map in topMaps )
+		{
+			var votes = map.Value;
+			var mapInfo = map.Key;
+
+			if ( votes <= 0 )
+				continue;
+
+			<div class="map">
+				<div class="name">@mapInfo.MapName</div>
+				<div class="votes">Votes: @votes</div>
+			</div>
+		}
+	</div>
+	<div class="hint">
+		<p>Press</p>
+		<img src="@(Input.GetGlyph( "View", InputGlyphSize.Small, false )?.ResourcePath)"/>
+		<p>to reopen map voting</p>
+	</div>
+</root>
+
+@code
+{
+	protected override int BuildHash()
+	{
+		var gs = GameSystem.Instance;
+
+		if ( !gs.IsValid() )
+			return 0;
+
+		return gs.MapVotes.Count();
+	}
+
+	public override void Tick()
+	{
+		ButtonInput = PanelInputType.Game;
+
+		if ( Input.Pressed( "View" ) )
+		{
+			var hud = HUD.Instance;
+
+			if ( hud.IsValid() && hud.Panel.IsValid() && hud.Panel.ChildrenOfType<MapVoting>().Count() == 0 )
+			{
+				hud.Panel.AddChild<MapVoting>();
+			}
+
+			Delete();
+		}
+	}
+}
