@@ -272,18 +272,13 @@ public sealed class RoundComponent : Component
 
 	public static void SpawnNewFlag( Team team )
 	{
-		var flags = Game.ActiveScene.GetAll<FlagSpawn>();
-
-		if ( flags.Count() == 0 || !Networking.IsHost )
-			return;
-
 		var flagSpawn = Game.ActiveScene?.GetAll<FlagSpawn>()?.FirstOrDefault( x => x.Team == team );
 
 		var flagPrefab = ResourceLibrary.Get<PrefabFile>( "prefabs/ctf/droppedflag.prefab" );
 
 		var spawnedFlag = GameObject.Clone( flagPrefab );
 
-		if ( spawnedFlag.IsValid() && flagSpawn.IsValid() )
+		if ( spawnedFlag.IsValid() )
 		{
 			spawnedFlag.WorldPosition = flagSpawn.WorldPosition;
 			spawnedFlag.WorldRotation = flagSpawn.WorldRotation;

@@ -509,14 +509,6 @@ IGameEventHandler<DeathEvent>, IGameEventHandler<OnPhysgunGrabChange>
 		SetWorld( SpawnTransform );
 	}
 
-	[Sync] public bool HasFlag { get; set; } = true;
-
-	protected override void OnDisabled()
-	{
-		if ( HasFlag )
-			RoundComponent.SpawnNewFlag( TeamComponent.Team );
-	}
-
 	[Rpc.Broadcast]
 	public static void BroadcastEnable( GameObject go, bool enable )
 	{
@@ -581,11 +573,5 @@ IGameEventHandler<DeathEvent>, IGameEventHandler<OnPhysgunGrabChange>
 		MetalPropsLeft = gs.MetalProps;
 		WoodPropsLeft = gs.WoodProps;
 		SteelPropsLeft = gs.SteelProps;
-	}
-
-	[Rpc.Owner]
-	public void SetHasFlag( bool value )
-	{
-		HasFlag = value;
 	}
 }
