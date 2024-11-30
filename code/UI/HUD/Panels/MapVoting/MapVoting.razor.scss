@@ -104,6 +104,11 @@ MapVoting
                 justify-content: center;
                 transition: all 0.2s;
 
+                .active
+                {
+                    background-color: hsl(0, 0%, 20%);
+                }
+
                 >.map-image
                 {
                     width: 95%;

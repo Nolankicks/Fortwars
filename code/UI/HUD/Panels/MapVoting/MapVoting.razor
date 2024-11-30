@@ -7,8 +7,12 @@
 @{
 	var gs = GameSystem.Instance;
 
-	if ( !gs.IsValid() ) 
+	var local = FWPlayerController.Local;
+
+	if ( !gs.IsValid() || !local.IsValid() ) 
 		return;
+
+	var castedVote = local.VotedForMap;
 }
 
 <root>
@@ -30,7 +34,9 @@
 
 				var votes = gs.MapVotes.ContainsKey(map) ? gs.MapVotes[map] : 0;
 
-				<div class="map" onclick=@( () => gs.AddMapVote( map, FWPlayerController.Local ) )>
+				var active = castedVote == map;
+
+				<div class="map @(active ? "active" : "")" onclick=@( () => gs.AddMapVote( map, FWPlayerController.Local ) )>
 					<div class="info">
 						<div>@map.MapName</div>
 						<div>Votes: @votes</div>

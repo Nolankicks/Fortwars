@@ -4,8 +4,9 @@
 
 @{
 	var gs = GameSystem.Instance;
+	var local = FWPlayerController.Local;
 
-	if ( !gs.IsValid() )
+	if ( !gs.IsValid() || !local.IsValid() )
 		return;
 
 	var topMaps = gs.MapVotes.OrderByDescending( x => x.Value ).Take( 3 );
@@ -32,7 +33,9 @@
 				if ( votes <= 0 )
 					continue;
 
-				<div class="map">
+				var active = local.VotedForMap == mapInfo;
+
+				<div class="map @(active ? "active" : "")">
 					<div class="name">@mapInfo.MapName</div>
 					<div class="votes">Votes: @votes</div>
 				</div>
