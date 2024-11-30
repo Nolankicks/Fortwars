@@ -52,6 +52,9 @@ public sealed class RollerMine : Component
 
 	protected override void OnFixedUpdate()
 	{
+		if ( !Marker.IsValid() )
+			return;
+
 		if ( Grabber.IsValid() )
 		{
 			Marker.Enabled = Grabber.IsProxy;
