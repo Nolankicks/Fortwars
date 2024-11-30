@@ -291,7 +291,12 @@
 				healthComponent.TakeDamage( GameObject, 25 );
 				Sound.Play( tr.Surface.Sounds.Bullet, tr.HitPosition );
 
-				Weapon.SpawnParticleEffect( Cloud.ParticleSystem( "bolt.impactflesh" ), tr.EndPosition + (tr.Normal * 5) );
+				var prefab = ResourceLibrary.Get<PrefabFile>( "prefabs/effects/blood.prefab" );
+
+				var clone = GameObject.Clone( prefab );
+
+				clone.Transform.Position = tr.HitPosition + tr.Normal * 5;
+				clone.Transform.Rotation = Rotation.From( 0, 0, Game.Random.Float( 0, 360 ) );
 			}
 
             if ( tr.Body.IsValid() )
