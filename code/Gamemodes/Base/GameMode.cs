@@ -189,8 +189,11 @@ public partial class GameMode : Component, Component.INetworkListener
 	[ConCmd( "skip_wait" )]
 	public static void SkipWait( int i )
 	{
-		if ( !Networking.IsHost )
+		if ( !Networking.IsHost && !(DevCheck.IsDev( Connection.Local.SteamId ) && !Networking.IsHost) )
+		{
+			Log.Warning( "Only the host or a dev can call this method" );
 			return;
+		}
 
 		var gs = GameSystem.Instance;
 
@@ -213,8 +216,11 @@ public partial class GameMode : Component, Component.INetworkListener
 	[ConCmd( "end_game" )]
 	public static void EndGame()
 	{
-		if ( !Networking.IsHost )
+		if ( !Networking.IsHost && !(DevCheck.IsDev( Connection.Local.SteamId ) && !Networking.IsHost) )
+		{
+			Log.Warning( "Only the host or a dev can call this method" );
 			return;
+		}
 
 		var gs = GameSystem.Instance;
 
