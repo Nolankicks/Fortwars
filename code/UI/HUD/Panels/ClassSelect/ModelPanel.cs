@@ -43,10 +43,8 @@ public class ModelPanel : Panel
 
 		Citizen = new SceneModel( world, "models/citizen/citizen.vmdl", new Transform( Vector3.Up * -32.0f, Rotation.From( 0, 180, 0 ) ) );
 
-		var clothes = new ClothingContainer();
-
-		clothes.Deserialize( Connection.Local.GetUserData( "avatar" ) );
-
+		var clothes = ClothingContainer.CreateFromLocalUser();
+		
 		var SkinMaterial = clothes.Clothing.Select( x => x.Clothing.SkinMaterial ).Where( x => !string.IsNullOrWhiteSpace( x ) ).Select( x => Material.Load( x ) ).FirstOrDefault();
 		var EyesMaterial = clothes.Clothing.Select( x => x.Clothing.EyesMaterial ).Where( x => !string.IsNullOrWhiteSpace( x ) ).Select( x => Material.Load( x ) ).FirstOrDefault();
 
