@@ -197,6 +197,7 @@ public class Weapon : Item, IGameEventHandler<OnReloadEvent>, IGameEventHandler<
 	}
 
 	[Property] FireTypes FireType { get; set; } = FireTypes.F_SEMIAUTO;
+	[Property] public bool HeadShotEnabled { get; set; } = true;
 
 	public override void OnEquip( OnItemEquipped onItemEquipped )
 	{
@@ -291,6 +292,7 @@ public class Weapon : Item, IGameEventHandler<OnReloadEvent>, IGameEventHandler<
 
 		var tr = Scene.Trace.Ray( ray, Range )
 			.IgnoreGameObjectHierarchy( local.GameObject )
+			.WithoutTags( "playercollider" )
 			.UseHitboxes()
 			.Run();
 
@@ -314,7 +316,7 @@ public class Weapon : Item, IGameEventHandler<OnReloadEvent>, IGameEventHandler<
 
 			var dmg = Damage;
 
-			if ( tr.Hitbox is not null && tr.Hitbox.Tags.Has( "head" ) )
+			if ( tr.Hitbox is not null && tr.Hitbox.Tags.Has( "head" ) && HeadShotEnabled )
 			{
 				dmg *= 2;
 				IsHeadShot = true;

@@ -11,7 +11,6 @@ IGameEventHandler<DeathEvent>, IGameEventHandler<OnPhysgunGrabChange>
 	[Property, Category( "References" )] public ShrimpleCharacterController.ShrimpleCharacterController shrimpleCharacterController { get; set; }
 	[Property, Category( "References" ), Sync] public CitizenAnimationHelper AnimHelper { get; set; }
 	[Property, Category( "References" )] public GameObject Eye { get; set; }
-	[Property, Category( "References" )] public CapsuleCollider Hitbox { get; set; }
 	[Property, Sync, Category( "References" )] public ModelRenderer HoldRenderer { get; set; }
 	[Property, Sync, Category( "References" )] public Inventory Inventory { get; set; }
 

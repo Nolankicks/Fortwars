@@ -8,26 +8,40 @@
       {
         "__type": "Facepunch.ScopeWeaponComponent",
         "__guid": "2077eade-48b2-401d-aba4-9c0a530681c7",
+        "ADSEnabled": true,
+        "ADSFOV": 0.8,
+        "ADSOffset": "4,0,0",
         "AmmoPerShot": 1,
         "AngleOffsetScale": 0.01,
         "AttackAnimName": "b_attack",
+        "CrosshairEnabled": false,
         "Damage": 70,
+        "DisableCrosshair": false,
         "FireRate": 1,
         "FireSound": "audio/rifle.fire.sound",
+        "HasBulletCasing": false,
+        "HeadShotEnabled": true,
         "HoldType": "Rifle",
         "MaxAmmo": 8,
+        "MaxRecoilValues": "0,0,0",
+        "MaxSpread": 0.05,
+        "MinRecoilValues": "0,0,0",
+        "MinSpread": 0.03,
         "Offset": "0,0,0",
+        "PunchDecreaseRate": 0.05,
+        "PunchFireIncrease": 0.1,
         "Range": 5000,
         "ReloadAnimName": "b_reload",
         "ReloadDelay": 1,
         "ScopeOverlay": "materials/scope.vmat",
-        "Spread": 0,
         "TracerPoint": {
           "_type": "gameobject",
           "go": "148e6693-0f67-4ed6-b235-85bb57f8768e"
         },
         "TraceTimes": 1,
         "UsesAmmo": true,
+        "UseShotgunReload": false,
+        "UsesRecoil": false,
         "VModel": {
           "_type": "component",
           "component_id": "79ef99fc-bb70-4ef1-8bbf-8115a0aaca4f",
@@ -48,6 +62,7 @@
             "__type": "Sandbox.SkinnedModelRenderer",
             "__guid": "888f432f-7801-45e3-9285-2fe583ebb230",
             "BodyGroups": 42259,
+            "CreateAttachments": false,
             "CreateBoneObjects": true,
             "Model": "models/weapons/sbox_assault_m4a1/v_m4a1.vmdl",
             "Morphs": {},
@@ -65,6 +80,9 @@
               "AfterUILayer": false
             },
             "RenderType": "Off",
+            "Sequence": {
+              "Name": null
+            },
             "Tint": "1,1,1,1",
             "UseAnimGraph": true
           },
@@ -228,6 +246,7 @@
                     "__type": "Sandbox.SkinnedModelRenderer",
                     "__guid": "e788029e-43e5-4eb7-b625-23d187f3d721",
                     "BodyGroups": 171,
+                    "CreateAttachments": false,
                     "CreateBoneObjects": false,
                     "Model": "models/weapons/sbox_sniper_m700/w_m700.vmdl",
                     "Morphs": {},
@@ -245,6 +264,9 @@
                       "AfterUILayer": false
                     },
                     "RenderType": "On",
+                    "Sequence": {
+                      "Name": null
+                    },
                     "Tint": "1,1,1,1",
                     "UseAnimGraph": true
                   }
@@ -833,6 +855,7 @@
                   "go": "828b9f0e-08d5-4a59-9ad6-52aed986bd0a",
                   "component_type": "SkinnedModelRenderer"
                 },
+                "CreateAttachments": false,
                 "CreateBoneObjects": false,
                 "Model": "models/first_person/first_person_arms.vmdl",
                 "Morphs": {},
@@ -850,6 +873,9 @@
                   "AfterUILayer": false
                 },
                 "RenderType": "Off",
+                "Sequence": {
+                  "Name": null
+                },
                 "Tint": "1,1,1,1",
                 "UseAnimGraph": true
               },

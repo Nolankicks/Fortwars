@@ -25,6 +25,7 @@
         "FireSound": "audio/shotgun.fire.sound",
         "FireType": "F_SEMIAUTO",
         "HasBulletCasing": true,
+        "HeadShotEnabled": false,
         "HoldType": "Shotgun",
         "MaxAmmo": 6,
         "MaxRecoilValues": "0,0,0",

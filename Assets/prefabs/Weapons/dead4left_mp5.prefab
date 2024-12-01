@@ -20,6 +20,7 @@
         "FireSound": "audio/smg.fire.sound",
         "FireType": "F_AUTOMATIC",
         "HasBulletCasing": false,
+        "HeadShotEnabled": true,
         "HoldType": "Rifle",
         "MaxAmmo": 30,
         "MaxRecoilValues": "-10,4,2",
@@ -32,7 +33,6 @@
         "Range": 50000,
         "ReloadAnimName": "b_reload",
         "ReloadDelay": 1.75,
-        "Spread": 0.06,
         "TracerPoint": {
           "_type": "gameobject",
           "go": "b898340e-bc25-44d0-a7ee-0bcf46adc81f"
@@ -897,6 +897,5 @@
   "__references": [
     "facepunch.v_mp5#64494"
   ],
-  "IsValid": true,
   "__version": 1
 }

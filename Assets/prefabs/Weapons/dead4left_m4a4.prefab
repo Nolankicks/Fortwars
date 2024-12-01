@@ -20,6 +20,7 @@
         "FireSound": "audio/rifle.fire.sound",
         "FireType": "F_AUTOMATIC",
         "HasBulletCasing": false,
+        "HeadShotEnabled": false,
         "HoldType": "Rifle",
         "MaxAmmo": 30,
         "MaxRecoilValues": "-12,2,0",
