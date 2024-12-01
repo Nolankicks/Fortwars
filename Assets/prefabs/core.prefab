@@ -235,18 +235,6 @@
                 "__guid": "2e086689-0c20-4c18-88db-16d4e2c508fd"
               }
             ]
-          },
-          {
-            "__guid": "49c587a6-2dde-45b0-9f1f-fd86e305573b",
-            "Flags": 0,
-            "Name": "Popup",
-            "Enabled": true,
-            "Components": [
-              {
-                "__type": "PopupHolder",
-                "__guid": "654d225e-d44a-4c09-bfa2-67244aa0b124"
-              }
-            ]
           }
         ]
       },
@@ -268,6 +256,27 @@
           {
             "__type": "Sandbox.NavMarkerUI",
             "__guid": "0135eb19-a9f0-479e-8b33-c9fc4b9a1753"
+          }
+        ]
+      },
+      {
+        "__guid": "5f53383e-0c95-4f93-b915-3a0486cf2280",
+        "Flags": 0,
+        "Name": "Popup",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "PopupHolder",
+            "__guid": "74995588-6d77-4829-aad4-3c76223d286c"
+          },
+          {
+            "__type": "Sandbox.ScreenPanel",
+            "__guid": "d531fe1b-ab76-4cdb-ab41-8429cfc17771",
+            "AutoScreenScale": true,
+            "Opacity": 1,
+            "Scale": 1,
+            "ScaleStrategy": "ConsistentHeight",
+            "ZIndex": 99
           }
         ]
       }
@@ -303,6 +312,5 @@
   "DontBreakAsTemplate": false,
   "ResourceVersion": 1,
   "__references": [],
-  "IsValid": true,
   "__version": 1
 }
