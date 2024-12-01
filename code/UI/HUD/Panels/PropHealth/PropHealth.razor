@@ -75,14 +75,14 @@
 	{
 		if ( oldProp.IsValid() && oldProp.Components.TryGet<HighlightOutline>( out var outline ) && oldProp.IsBuilding )
 		{
+			oldProp.IsHovered = false;
+
 			RemoveHighlightOutline( oldProp );
 		}
 
 		if ( newProp.IsValid() && newProp.IsBuilding )
 		{
 			newProp.Components.GetOrCreate<HighlightOutline>();
-
-			newProp.IsHovered = true;
 		}
 	}
 
@@ -92,6 +92,15 @@
 		if ( prop.IsValid() && prop.Components.TryGet<HighlightOutline>( out var outline ) )
 		{
 			outline.Destroy();
+		}
+	}
+
+	[Rpc.Broadcast]
+	public static void RemoveHighlightOutline( HighlightOutline highlightOutline )
+	{
+		if ( highlightOutline.IsValid() )
+		{
+			highlightOutline.Destroy();
 		}
 	}
 

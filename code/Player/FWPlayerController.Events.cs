@@ -79,7 +79,7 @@ partial class FWPlayerController
 
 			if ( Components.TryGet<HighlightOutline>( out var highlightOutline ) )
 			{
-				highlightOutline.Destroy();
+				PropHealth.RemoveHighlightOutline( highlightOutline );
 				GameObject.Network.Refresh();
 			}
 

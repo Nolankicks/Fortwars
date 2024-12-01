@@ -304,7 +304,10 @@ public class Physgun : Item
 
 		if ( GrabbedObject.IsValid() && GrabbedObject.Components.TryGet<FortwarsProp>( out var fortwarsProp ) && !fortwarsProp.IsHovered )
 		{
-			GrabbedObject.Components.Get<HighlightOutline>()?.Destroy();
+			var outline = GrabbedObject.Components.Get<HighlightOutline>();
+
+			if ( outline.IsValid() )
+				PropHealth.RemoveHighlightOutline( fortwarsProp );
 		}
 
 		GrabbedObject = null;
