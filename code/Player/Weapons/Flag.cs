@@ -90,7 +90,7 @@ public sealed class Flag : Item
 		if ( SpawnNewFlag )
 		{
 			//We need this, but I don't think we should need it
-			var clone = DroppedFlagPrefab.Clone( local.WorldPosition + local.EyeAngles.Forward * 120 );
+			var clone = DroppedFlagPrefab.Clone( local.WorldPosition + local.EyeAngles.Forward * 120 + Vector3.Up * 120 );
 
 			if ( clone.Components.TryGet<DroppedFlag>( out var droppedFlag ) )
 			{
@@ -106,7 +106,7 @@ public sealed class Flag : Item
 	}
 }
 
-public sealed class DroppedFlag : Component, Component.ITriggerListener
+public sealed class DroppedFlag : Component, Component.ITriggerListener, Component.IDamageable
 {
 	[Property, Sync] public Team TeamFlag { get; set; }
 
@@ -194,6 +194,24 @@ public sealed class DroppedFlag : Component, Component.ITriggerListener
 			Transform.ClearInterpolation();
 
 			WorldTransform = spawnPoint.WorldTransform;
+		}
+	}
+
+	
+	[Sync, Property, ReadOnly] public int Health { get; set; } = 100;
+
+	void IDamageable.OnDamage( in DamageInfo damage )
+	{
+		if ( IsProxy )
+			return;
+
+		Health -= (int)damage.Damage;
+
+		if ( Health <= 0 )
+		{
+			ResetPos();
+
+			Health = 100;
 		}
 	}
 }
