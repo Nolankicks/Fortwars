@@ -207,6 +207,20 @@ public sealed class Propgun : Item
 			if ( prop.Invincible )
 				return;
 
+			if ( prop.Builder != player.Network.Owner?.DisplayName )
+			{
+				var popup = new Popup();
+				popup.Title = "You can't destroy this prop because you don't own it!";
+				popup.Time = 5;
+
+				if ( Popup.HasPopup( popup ) )
+					return;
+				
+				PopupHolder.AddPopup( popup );
+
+				return;
+			}
+
 			switch ( prop.Level )
 			{
 				case PropLevel.Metal:
