@@ -133,16 +133,15 @@ public sealed class FortwarsProp : Component, Component.IDamageable
 		else if ( Components.TryGet<HighlightOutline>( out var highlightOutline ) )
 		{
 			highlightOutline.Destroy();
+			GameObject.Network.Refresh();
 		}
 	}
 
 	[Rpc.Broadcast]
 	public void Damage( float amount )
 	{
-		if ( Invincible )
+		if ( Invincible || IsProxy )
 			return;
-
-		if ( IsProxy ) return;
 
 		Health -= amount;
 		if ( Health <= 0 )
@@ -163,7 +162,6 @@ public sealed class FortwarsProp : Component, Component.IDamageable
 			prop.GameObject.Destroy();
 
 			gibs?.ForEach( x => x.GameObject.NetworkSpawn() );
-
 
 			DestructionEffects();
 

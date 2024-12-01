@@ -202,9 +202,6 @@ public sealed class DroppedFlag : Component, Component.ITriggerListener, Compone
 
 	void IDamageable.OnDamage( in DamageInfo damage )
 	{
-		if ( IsProxy )
-			return;
-
 		Health -= (int)damage.Damage;
 
 		if ( Health <= 0 )
