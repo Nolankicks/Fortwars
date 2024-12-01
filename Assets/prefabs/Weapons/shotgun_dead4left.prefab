@@ -15,7 +15,7 @@
         "AttackAnimName": "b_attack",
         "CasingModel": "models/weapons/sbox_ammo/12g_shell/12g_shell.vmdl",
         "CrosshairEnabled": true,
-        "Damage": 20,
+        "Damage": 10,
         "DisableCrosshair": false,
         "EjectionPoint": {
           "_type": "gameobject",
@@ -27,12 +27,16 @@
         "HasBulletCasing": true,
         "HoldType": "Shotgun",
         "MaxAmmo": 6,
+        "MaxRecoilValues": "0,0,0",
+        "MaxSpread": 0.05,
+        "MinRecoilValues": "0,0,0",
+        "MinSpread": 0.03,
         "Offset": "6.846531,0.005981312,-5.724832",
-        "Range": 500,
-        "RecoilValues": "-10,5,2",
+        "PunchDecreaseRate": 0.05,
+        "PunchFireIncrease": 0.1,
+        "Range": 2000,
         "ReloadAnimName": "b_reload",
         "ReloadDelay": 5.25,
-        "Spread": 0.1,
         "TracerPoint": {
           "_type": "gameobject",
           "go": "956d25ca-2cba-4cfa-93a6-dfe90ea33096"
