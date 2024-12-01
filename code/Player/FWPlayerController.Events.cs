@@ -61,6 +61,10 @@ partial class FWPlayerController
 
 		if ( AnimHelper?.Target.IsValid() ?? false )
 		{
+			Inventory.DisableAll();
+			Inventory.CanScrollSwitch = false;
+			Inventory.CanPickUp = false;
+
 			var deathPos = AnimHelper.Target.WorldTransform;
 
 			TeleportToTeamSpawnPoint( false );
@@ -73,10 +77,6 @@ partial class FWPlayerController
 				highlightOutline.Destroy();
 				GameObject.Network.Refresh();
 			}
-
-			Inventory.DisableAll();
-			Inventory.CanScrollSwitch = false;
-			Inventory.CanPickUp = false;
 
 			var mode = Scene.GetAll<GameMode>()?.FirstOrDefault();
 

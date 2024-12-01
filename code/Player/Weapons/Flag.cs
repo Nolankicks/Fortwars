@@ -44,7 +44,7 @@ public sealed class Flag : Item
 			return;
 
 		if ( FlagRenderer.IsValid() )
-			FlagRenderer.Tint = HUD.GetColor( Owner ).Rgb;
+			FlagRenderer.Tint = HUD.GetColor( Owner == Team.Red ? Team.Blue : Team.Red ).Rgb;
 
 		if ( Input.Pressed( "menu" ) )
 		{
@@ -93,7 +93,7 @@ public sealed class Flag : Item
 		if ( SpawnNewFlag )
 		{
 			//We need this, but I don't think we should need it
-			var clone = DroppedFlagPrefab.Clone( local.WorldPosition + local.EyeAngles.Forward * 120 + Vector3.Up * 120 );
+			var clone = DroppedFlagPrefab.Clone( local.WorldPosition + local.EyeAngles.Forward * 5 );
 
 			if ( clone.Components.TryGet<DroppedFlag>( out var droppedFlag ) )
 			{
@@ -103,7 +103,7 @@ public sealed class Flag : Item
 			clone.NetworkSpawn( null );
 		}
 
-		local.Inventory.RemoveItem( GameObject, false );
+		local.Inventory.RemoveItem( GameObject, true );
 
 		FWPlayerController.ClearHoldRenderer( local.HoldRenderer );
 
