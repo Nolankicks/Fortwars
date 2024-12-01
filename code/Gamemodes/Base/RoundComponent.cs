@@ -235,6 +235,25 @@ public sealed class RoundComponent : Component
 		} );
 	}
 
+	[Rpc.Broadcast]
+	public static void DeleteAllMapVoting()
+	{
+		var hud = Game.ActiveScene?.GetAll<HUD>()?.FirstOrDefault();
+
+		if ( hud.IsValid() && hud.Panel.IsValid() )
+		{
+			foreach ( var select in hud.Panel.ChildrenOfType<MapVoting>().ToList() )
+			{
+				select.Delete();
+			}
+
+			foreach ( var select in hud.Panel.ChildrenOfType<MiniMapVoting>().ToList() )
+			{
+				select.Delete();
+			}
+		}
+	}
+
 	public void DestroyAllProps()
 	{
 		Scene.GetAll<FortwarsProp>()?.Where( x => !x.Invincible )?.ToList()?.ForEach( x => x.DestroyProp() );
