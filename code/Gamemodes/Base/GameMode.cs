@@ -136,7 +136,7 @@ public partial class GameMode : Component, Component.INetworkListener
 		if ( type is not null )
 			GameSystem.SavedGameMode = type;
 	}
-
+	
 	public virtual void WinGame( Team team = Team.None )
 	{
 		if ( team == Team.None )
@@ -152,6 +152,7 @@ public partial class GameMode : Component, Component.INetworkListener
 
 		Scene.GetAll<HealthComponent>()?.ToList()?.ForEach( x => x.ResetHealth() );
 		Scene.GetAll<RollerMine>()?.ToList()?.ForEach( x => x.ResetPosition() );
+		Scene.GetAll<TeamComponent>()?.ToList()?.ForEach( x => x.SetTeam( Team.None, true ) );
 
 		GameSystem.RedTimeHeld = GameSystem.InitRedTimeHeld;
 		GameSystem.BlueTimeHeld = GameSystem.InitBlueTimeHeld;
@@ -223,8 +224,6 @@ public partial class GameMode : Component, Component.INetworkListener
 		gs.CurrentGameModeComponent?.EndGame();
 	}
 }
-
-
 
 public sealed class GameModeObject : Component
 {

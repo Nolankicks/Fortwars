@@ -13,7 +13,7 @@ public sealed class TeamComponent : Component
 	[Property, Sync] public FWPlayerController Player { get; set; }
 
 	[Rpc.Broadcast]
-	public void SetTeam( Team team )
+	public void SetTeam( Team team, bool resetToSpawnPoint = false )
 	{
 		Team = team;
 
@@ -52,6 +52,9 @@ public sealed class TeamComponent : Component
 		{
 			nameTag.SetTeam( team );
 		}
+
+		if ( resetToSpawnPoint )
+			ResetToSpawnPoint();
 	}
 
 	private Color BlendColors( Color original, Color tint, float blendFactor )
