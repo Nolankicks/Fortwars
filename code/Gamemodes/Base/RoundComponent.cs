@@ -282,8 +282,14 @@ public sealed class RoundComponent : Component
 
 	//Workaround until the builds get fixed
 	[Rpc.Host]
-	public static void SpawnFlag( Team team )
+	private static void SpawnFlag( Team team )
 	{
+		if ( Game.ActiveScene.GetAll<DroppedFlag>().Any( x => x.TeamFlag == team ) )
+		{
+			Log.Warning( "Flag already exists" );
+			return;
+		}
+
 		var flagSpawn = Game.ActiveScene?.GetAll<FlagSpawn>()?.FirstOrDefault( x => x.Team == team );
 
 		var flagPrefab = ResourceLibrary.Get<PrefabFile>( "prefabs/ctf/droppedflag.prefab" );
