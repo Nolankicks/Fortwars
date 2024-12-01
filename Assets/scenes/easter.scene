@@ -2693,21 +2693,6 @@
       ]
     },
     {
-      "__guid": "2f373b00-9ba2-446e-8fcb-c9dc5dbb55ac",
-      "Flags": 0,
-      "Name": "Spawn (8)",
-      "Position": "24,-344,136",
-      "Rotation": "0,0,-0.6791465,0.7340028",
-      "Enabled": true,
-      "Components": [
-        {
-          "__type": "TeamSpawnPoint",
-          "__guid": "e7f6e0f9-47ba-421e-8412-97814cd4ab8e",
-          "Team": "None"
-        }
-      ]
-    },
-    {
       "__guid": "7e544d70-c44d-4d5b-a629-634129c8b4f7",
       "Flags": 0,
       "Name": "Kill Trigger",
