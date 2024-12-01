@@ -379,6 +379,8 @@ public sealed class Inventory : Component
 
 		CurrentItem.Enabled = true;
 
+		Items.Where( x => x != CurrentItem )?.ToList()?.ForEach( x => x.Enabled = false );
+
 		CurrentItem.Dispatch( new OnItemEquipped() );
 	}
 
