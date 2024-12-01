@@ -115,31 +115,28 @@ Scoreboard {
                 background-color: $secondary;
                 padding: 12px;
                 border-radius: $border-radius;
-                justify-content: center;
+                justify-content: space-around;
                 flex-shrink: 0;
             
-                > .player-info {
-                    width: 100%;
+                > .name {
+                    font-size: 20px;
+                    text-overflow: ellipsis;
+
                     align-items: center;
                     justify-content: center;
-            
-                    > .name {
-                        font-size: 20px;
-                        text-overflow: ellipsis;
-                    
-                        padding: 12px;
-                    }
-            
-                    > .avatar {
-                        width: auto;
-                        height: 100%;
-                        border-radius: 6px;
-            
-                        aspect-ratio: 1/1;
-            
-                        background-position: center;
-                        background-size: cover;
-                    }
+                
+                    padding: 12px;
+                }
+        
+                > .avatar {
+                    width: auto;
+                    height: 100%;
+                    border-radius: 6px;
+        
+                    aspect-ratio: 1/1;
+        
+                    background-position: center;
+                    background-size: cover;
                 }
             
                 > .stats {
