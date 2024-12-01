@@ -207,6 +207,7 @@ public class Weapon : Item, IGameEventHandler<OnReloadEvent>, IGameEventHandler<
 		reloadTime = ReloadDelay;
 		lastFired = FireRate;
 		GameObject.Dispatch( new WeaponAnimEvent( "b_empty", false ) );
+		GameObject.Dispatch( new WeaponAnimEvent( "b_reloading", false ) );
 	}
 
 	protected override void OnUpdate()

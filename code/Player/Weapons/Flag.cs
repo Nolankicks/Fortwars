@@ -1,11 +1,8 @@
 public sealed class Flag : Item
 {
 	[Property] public GameObject DroppedFlagPrefab { get; set; }
-
 	[Property, Sync] public Team Owner { get; set; }
-
 	[Sync] public bool SpawnNewFlag { get; set; } = true;
-
 	[Property, Sync] public SkinnedModelRenderer FlagRenderer { get; set; }
 	[Sync] public HighlightOutline HighlightOutline { get; set; }
 
@@ -44,7 +41,7 @@ public sealed class Flag : Item
 			return;
 
 		if ( FlagRenderer.IsValid() )
-			FlagRenderer.Tint = HUD.GetColor( Owner == Team.Red ? Team.Blue : Team.Red ).Rgb;
+			FlagRenderer.Tint = HUD.GetColor( Owner ).Rgb;
 
 		if ( Input.Pressed( "menu" ) )
 		{
@@ -93,11 +90,11 @@ public sealed class Flag : Item
 		if ( SpawnNewFlag )
 		{
 			//We need this, but I don't think we should need it
-			var clone = DroppedFlagPrefab.Clone( local.WorldPosition + local.EyeAngles.Forward * 5 );
+			var clone = DroppedFlagPrefab.Clone( local.WorldPosition + local.EyeAngles.Forward * 120 );
 
 			if ( clone.Components.TryGet<DroppedFlag>( out var droppedFlag ) )
 			{
-				droppedFlag.TeamFlag = Owner == Team.Red ? Team.Blue : Team.Red;
+				droppedFlag.TeamFlag = Owner;
 			}
 
 			clone.NetworkSpawn( null );
@@ -106,8 +103,6 @@ public sealed class Flag : Item
 		local.Inventory.RemoveItem( GameObject, true );
 
 		FWPlayerController.ClearHoldRenderer( local.HoldRenderer );
-
-		GameObject.Destroy();
 	}
 }
 
@@ -159,9 +154,12 @@ public sealed class DroppedFlag : Component, Component.ITriggerListener
 
 			inv.DisableAll();
 
-			var obj = flag.WeaponPrefab.Clone();
+			var config = new CloneConfig();
+			config.StartEnabled = false;
 
-			obj.NetworkSpawn( playerController.Network.Owner );
+			var obj = flag.WeaponPrefab.Clone( config );
+
+			obj.NetworkSpawn( false, playerController.Network.Owner );
 
 			if ( obj.IsValid() )
 				inv.AddItem( obj, flag, enabled: true, changeIndex: true );
@@ -172,7 +170,7 @@ public sealed class DroppedFlag : Component, Component.ITriggerListener
 
 			if ( flagComponent.IsValid() )
 			{
-				flagComponent.SetOwner( teamComponent.Team );
+				flagComponent.SetOwner( TeamFlag );
 				flagComponent.DestroyViewmodelRenderers();
 			}
 
