@@ -35,7 +35,7 @@ IGameEventHandler<DeathEvent>, IGameEventHandler<OnPhysgunGrabChange>
 	[Sync] public Transform RespawnPoint { get; set; }
 	[Sync] public bool IsCrouching { get; set; } = false;
 	public Vector3 DeathPos { get; set; }
-	public bool IsRespawning { get; set; } = false;
+	[Sync] public bool IsRespawning { get; set; } = false;
 	public Vector3 WishVelocity { get; set; }
 	public bool CanMoveHead = true;
 	public float EyeHeight { get; set; } = 64;

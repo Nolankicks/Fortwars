@@ -120,6 +120,9 @@ public sealed class DroppedFlag : Component, Component.ITriggerListener, Compone
 	{
 		CreationDelay = 0.0f;
 
+		if ( !IsProxy )
+			Network.SetOwnerTransfer( OwnerTransfer.Takeover );
+
 		if ( FlagRenderer.IsValid() )
 		{
 			FlagRenderer.MaterialGroup = TeamFlag switch

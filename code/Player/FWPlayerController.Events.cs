@@ -35,6 +35,9 @@ partial class FWPlayerController
 
 	void IGameEventHandler<DeathEvent>.OnGameEvent( DeathEvent eventArgs )
 	{
+		if ( IsProxy )
+			return;
+
 		var pc = eventArgs.Attacker?.Root?.Components?.Get<FWPlayerController>();
 
 		//Make sure we are only calling this
@@ -66,6 +69,8 @@ partial class FWPlayerController
 			Inventory.CanPickUp = false;
 
 			var deathPos = AnimHelper.Target.WorldTransform;
+
+			DeathPos = deathPos.Position;
 
 			TeleportToTeamSpawnPoint( false );
 
@@ -112,6 +117,8 @@ partial class FWPlayerController
 
 			go.Network.SetOwnerTransfer( OwnerTransfer.Takeover );
 
+			Ragdoll = go;
+
 			go.NetworkSpawn( null );
 
 			BroadcastEnable( target.GameObject, false );
@@ -128,14 +135,10 @@ partial class FWPlayerController
 
 			IsRespawning = true;
 
-			DeathPos = target.WorldPosition;
-
 			if ( Components.TryGet<NameTag>( out var tag, FindMode.EnabledInSelfAndChildren ) )
 			{
 				BroadcastEnable( tag.GameObject, false );
 			}
-
-			Ragdoll = go;
 
 			Invoke( 2, () =>
 			{

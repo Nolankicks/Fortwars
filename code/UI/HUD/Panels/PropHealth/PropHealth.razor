@@ -75,10 +75,7 @@
 	{
 		if ( oldProp.IsValid() && oldProp.Components.TryGet<HighlightOutline>( out var outline ) && oldProp.IsBuilding )
 		{
-			if ( oldProp.IsHovered )
-				outline.Destroy();
-			
-			oldProp.IsHovered = false;
+			RemoveHighlightOutline( oldProp );
 		}
 
 		if ( newProp.IsValid() && newProp.IsBuilding )
@@ -86,6 +83,15 @@
 			newProp.Components.GetOrCreate<HighlightOutline>();
 
 			newProp.IsHovered = true;
+		}
+	}
+
+	[Rpc.Broadcast]
+	public static void RemoveHighlightOutline( FortwarsProp prop )
+	{
+		if ( prop.IsValid() && prop.Components.TryGet<HighlightOutline>( out var outline ) )
+		{
+			outline.Destroy();
 		}
 	}
 

@@ -274,9 +274,16 @@ public sealed class RoundComponent : Component
 	{
 		var flags = Game.ActiveScene.GetAll<FlagSpawn>();
 
-		if ( flags.Count() == 0 || !Networking.IsHost )
+		if ( flags.Count() == 0 )
 			return;
 
+		SpawnFlag( team );
+	}
+
+	//Workaround until the builds get fixed
+	[Rpc.Host]
+	public static void SpawnFlag( Team team )
+	{
 		var flagSpawn = Game.ActiveScene?.GetAll<FlagSpawn>()?.FirstOrDefault( x => x.Team == team );
 
 		var flagPrefab = ResourceLibrary.Get<PrefabFile>( "prefabs/ctf/droppedflag.prefab" );
