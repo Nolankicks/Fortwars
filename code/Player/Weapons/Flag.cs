@@ -159,6 +159,11 @@ public sealed class DroppedFlag : Component, Component.ITriggerListener
 
 			var obj = flag.WeaponPrefab.Clone( config );
 
+			if ( obj.Components.TryGet<Flag>( out var preSpawnFlag, FindMode.DisabledInSelf ) )
+			{
+				preSpawnFlag.Owner = TeamFlag;
+			}
+
 			obj.NetworkSpawn( false, playerController.Network.Owner );
 
 			if ( obj.IsValid() )
@@ -170,7 +175,6 @@ public sealed class DroppedFlag : Component, Component.ITriggerListener
 
 			if ( flagComponent.IsValid() )
 			{
-				flagComponent.SetOwner( TeamFlag );
 				flagComponent.DestroyViewmodelRenderers();
 			}
 
