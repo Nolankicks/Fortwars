@@ -24,7 +24,7 @@
 				{
 					var active = i < blue;
 
-					var backgroundColor = active ? HUD.GetColor( Team.Blue ).Hex : Color.Transparent.Hex;
+					var backgroundColor = active ? HUD.GetColor( Team.Blue ).Hex : "#333333";
 
 					<div class="circle" style="background-color: @(backgroundColor);"></div>
 				}
@@ -39,7 +39,7 @@
 				{
 					var active = i < red;
 
-					var backgroundColor = active ? HUD.GetColor( Team.Red ).Hex : Color.Transparent.Hex;
+					var backgroundColor = active ? HUD.GetColor( Team.Red ).Hex : "#333333";
 
 					<div class="circle" style="background-color: @(backgroundColor);"></div>
 				}
