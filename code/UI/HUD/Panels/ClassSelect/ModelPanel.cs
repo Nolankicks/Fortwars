@@ -70,7 +70,7 @@ public class ModelPanel : Panel
 				continue;
 
 			var r = new SceneModel( world, model, Transform.Zero );
-			
+
 			if ( SkinMaterial is not null ) r.SetMaterialOverride( SkinMaterial, "skin" );
 			if ( EyesMaterial is not null ) r.SetMaterialOverride( EyesMaterial, "eyes" );
 
@@ -93,7 +93,10 @@ public class ModelPanel : Panel
 		}
 
 
-		new SceneDirectionalLight( world, Rotation.From( 45, 0, 0 ), Color.White );
+		new SceneLight( world, Vector3.Up * 150.0f, 200.0f, Color.White * 2.0f );
+		new SceneLight( world, Vector3.Up * 150.0f + Vector3.Backward * 100.0f, 200, Color.White * 5.0f );
+		new SceneLight( world, Vector3.Up * 10.0f + Vector3.Right * 100.0f, 200, Color.White * 5.0f );
+		new SceneLight( world, Vector3.Up * 10.0f + Vector3.Left * 100.0f, 200, Color.White * 5.0f );
 
 		Gun = new SceneModel( world, Cloud.Model( "facepunch.w_mp5" ), new Transform( Vector3.Up * -50.0f, Rotation.From( 0, 180, 0 ) ) );
 	}
@@ -125,13 +128,6 @@ public class ModelPanel : Panel
 		//Citizen.SetAnimParameter( "aim_eyes", SetLookDirection( new Vector3( CamDistance, localPos.x, -localPos.y ), 1 ) );
 		//Citizen.SetAnimParameter( "aim_body", SetLookDirection( new Vector3( CamDistance, localPos.x, -localPos.y ), 1f ) );
 		//Citizen.SetAnimParameter( "aim_head", SetLookDirection( new Vector3( CamDistance, localPos.x, -localPos.y ), 1f ) );
-
-		var light = World.SceneObjects.OfType<SceneDirectionalLight>().FirstOrDefault();
-
-		if ( light is not null )
-		{
-			light.Rotation = Rotation.From( 0, -14, 0 );
-		}
 
 		if ( PlayerClass is null || (!PlayerClass?.ClassModelEnabled ?? true) )
 		{
