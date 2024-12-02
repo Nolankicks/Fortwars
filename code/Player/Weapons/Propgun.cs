@@ -7,7 +7,6 @@ public sealed class Propgun : Item
 	enum Modes
 	{
 		P_PLACE,
-		P_MOVE
 	}
 
 	[Property] public Model Prop { get; set; }
@@ -101,29 +100,7 @@ public sealed class Propgun : Item
 			LocalRotation = Rotation.Identity;
 		}
 
-		if ( Mode == Modes.P_MOVE && !HoldingObject )
-		{
-			if ( Input.Pressed( "attack1" ) )
-			{
-				var player = FWPlayerController.Local;
-				if ( !player.IsValid() )
-					return;
-
-				var tr = Scene.Trace.Ray( player.Eye.WorldPosition, player.Eye.WorldPosition + player.Eye.WorldRotation.Forward * 400.0f ).WithoutTags( FW.Tags.NoBuild, FW.Tags.Player ).Run();
-				if ( tr.Hit && tr.GameObject.Components.TryGet<FortwarsProp>( out var fwProp ) )
-				{
-					if ( fwProp.Resource == null )
-						return;
-					HoldingObject = true;
-					var res = fwProp.Resource;
-					CurrentProp = res;
-					HeldObject = tr.GameObject;
-				}
-			}
-			return;
-		}
-
-		if ( (Mode == Modes.P_PLACE && CurrentProp is not null) || (Mode == Modes.P_MOVE && HeldObject.IsValid()) )
+		if ( Mode == Modes.P_PLACE && CurrentProp is not null )
 		{
 			HandleProp();
 		}
@@ -185,7 +162,7 @@ public sealed class Propgun : Item
 			tr = Scene.Trace.Ray( player.Eye.WorldPosition, ObjectPos ).IgnoreGameObjectHierarchy( GameObject.Root ).Run();
 
 		if ( tr.Hit )
-			ObjectPos = tr.HitPosition;
+			ObjectPos = tr.EndPosition;
 
 		if ( !UseBounds )
 		{
@@ -196,7 +173,7 @@ public sealed class Propgun : Item
 
 		//ObjectPos = ObjectPos.SnapToGrid( 16, true, true, !(tr.Hit && tr.Normal == Vector3.Up) );
 
-		bool CanPlace = tr.Hit && tr.Distance > 32.0f && ObjectPos.Distance( GameObject.Root.WorldPosition ) > 32.0f && !tr.GameObject.Tags.Has( FW.Tags.NoBuild );
+		bool CanPlace = tr.Distance > 32.0f && ObjectPos.Distance( GameObject.Root.WorldPosition ) > 32.0f && (!tr.GameObject?.Tags.Has( FW.Tags.NoBuild ) ?? true);
 
 		ShowPropPreview( ObjectPos, CurrentProp, CanPlace, tr.Normal, tr.Hit );
 
@@ -440,7 +417,7 @@ public sealed class Propgun : Item
 
 	void SwitchModes()
 	{
-		if ( Mode == Modes.P_PLACE )
+		/*if ( Mode == Modes.P_PLACE )
 		{
 			Mode = Modes.P_MOVE;
 
@@ -454,7 +431,7 @@ public sealed class Propgun : Item
 
 			if ( WeaponRenderer.IsValid() )
 				WeaponRenderer.Tint = Color.White;
-		}
+		}*/
 	}
 
 	public string GetModeString()
