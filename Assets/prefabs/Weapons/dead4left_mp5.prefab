@@ -23,7 +23,7 @@
         "HeadShotEnabled": true,
         "HoldType": "Rifle",
         "MaxAmmo": 30,
-        "MaxRecoilValues": "-10,4,2",
+        "MaxRecoilValues": "-5,4,2",
         "MaxSpread": 0.06,
         "MinRecoilValues": "-2,1,1",
         "MinSpread": 0.01,

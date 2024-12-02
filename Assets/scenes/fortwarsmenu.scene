@@ -10,6 +10,7 @@
         {
           "__type": "Sandbox.SceneInformation",
           "__guid": "96db79d6-6f4a-4b3b-bf2a-59017508ca11",
+          "Changes": "",
           "Description": "",
           "SceneTags": "",
           "Title": "dead4leftmenurewrite"
@@ -221,7 +222,8 @@
         },
         {
           "__type": "LocalPlayerDresser",
-          "__guid": "6e36e25b-5680-49c3-a425-f3bd0e93300f"
+          "__guid": "6e36e25b-5680-49c3-a425-f3bd0e93300f",
+          "MungusModel": "terryisdead/citizen_terryisdead.vmdl"
         },
         {
           "__type": "Sandbox.ModelPhysics",
@@ -490,6 +492,7 @@
     "apetavern.fw1x1x1_wood#78625",
     "apetavern.fw1x2x1_steel#78633",
     "apetavern.fw1x2x1_wood#78627",
+    "mungus.citizenterryisdead#79496",
     "rust.field_day_breeze_01a#43855"
   ],
   "__version": 2

@@ -15,6 +15,7 @@
           "MapName": "willow.utopia",
           "NoOrigin": false,
           "OnMapLoaded": null,
+          "OnMapUnloaded": null,
           "UseMapFromLaunch": false
         }
       ],
