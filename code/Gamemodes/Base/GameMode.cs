@@ -187,7 +187,7 @@ public partial class GameMode : Component, Component.INetworkListener
 	};
 
 	[ConCmd( "skip_wait" )]
-	public static void SkipWait( int i )
+	public static void SkipWait( int i = 1 )
 	{
 		if ( !Networking.IsHost && !(DevCheck.IsDev( Connection.Local.SteamId ) && !Networking.IsHost) )
 		{
@@ -211,9 +211,13 @@ public partial class GameMode : Component, Component.INetworkListener
 		{
 			gs.CurrentGameModeComponent.InitialRound.ActivateRound();
 		}
-		else
+		else if ( (gs.CurrentGameModeComponent?.CurrentRound?.NextRoundCondition.IsValid() ?? false) || (gs.CurrentGameModeComponent?.CurrentRound?.NextRoundTimer.IsValid() ?? false))
 		{
 			gs.CurrentGameModeComponent?.CurrentRound?.EndRound( i == 0 ? false : true );
+		}
+		else if ( gs.CurrentGameModeComponent?.CurrentRound.IsValid() ?? false )
+		{
+			Log.Warning( "Next round not found, use 'end_game' to force next round" );
 		}
 	}
 
