@@ -416,27 +416,6 @@
       ]
     },
     {
-      "__guid": "4df0eb66-ea29-4ca2-85c0-53611cb05020",
-      "Flags": 0,
-      "Name": "fw_1x1x1 (1)",
-      "Position": "554.3718,294.1562,276.9999",
-      "Rotation": "0,0,0.3681232,0.9297771",
-      "Enabled": true,
-      "Components": [
-        {
-          "__type": "Sandbox.Prop",
-          "__guid": "ce91dd03-8e81-4567-8534-e33f587e4c36",
-          "BodyGroups": 18446744073709551615,
-          "Health": 0,
-          "IsStatic": false,
-          "MaterialGroup": "red",
-          "Model": "models/blocks/steel/fw_1x1x1.vmdl",
-          "StartAsleep": false,
-          "Tint": "1,1,1,1"
-        }
-      ]
-    },
-    {
       "__guid": "c349289b-6b5c-4f34-9348-c4589b65bf92",
       "Flags": 0,
       "Name": "fw_1x2x1",
@@ -461,7 +440,7 @@
       "__guid": "98c21e29-d3ff-4bca-be1a-b52dae3adce7",
       "Flags": 0,
       "Name": "fw_1x2x1",
-      "Position": "510.8307,267.2154,296.0589",
+      "Position": "538.5435,283.2153,296.0589",
       "Rotation": "0,0,0.258819,0.9659258",
       "Enabled": true,
       "Components": [
@@ -508,7 +487,6 @@
   "Title": "dead4leftmenurewrite",
   "Description": null,
   "__references": [
-    "apetavern.fw1x1x1_steel#78622",
     "apetavern.fw1x1x1_wood#78625",
     "apetavern.fw1x2x1_steel#78633",
     "apetavern.fw1x2x1_wood#78627",
