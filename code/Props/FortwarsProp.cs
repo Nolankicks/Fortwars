@@ -84,6 +84,8 @@ public sealed class FortwarsProp : Component, Component.IDamageable
 
 		Level = level;
 
+		Physgun.AddTag( GameObject, "prop" );
+
 		var newHealth = level switch
 		{
 			PropLevel.Base => prop.BaseHealth,
@@ -119,7 +121,6 @@ public sealed class FortwarsProp : Component, Component.IDamageable
 			_ => "default"
 		};
 	}
-
 
 	protected override void OnStart()
 	{
