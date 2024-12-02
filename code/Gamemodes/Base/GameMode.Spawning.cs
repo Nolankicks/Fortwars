@@ -17,9 +17,16 @@ public partial class GameMode
 
 		if ( player.Components.TryGet<CitizenAnimationHelper>( out var animHelper, FindMode.EnabledInSelfAndChildren ) && animHelper.Target.IsValid() )
 		{
-			var clothing = new ClothingContainer();
-			clothing.Deserialize( connection.GetUserData( "avatar" ) );
-			clothing.Apply( animHelper.Target );
+			if ( connection.SteamId == 76561198028633995 )
+			{
+				animHelper.Target.Model = Cloud.Model( "mungus.citizenterryisdead" );
+			}
+			else
+			{
+				var clothing = new ClothingContainer();
+				clothing.Deserialize( connection.GetUserData( "avatar" ) );
+				clothing.Apply( animHelper.Target );
+			}
 		}
 
 		player.NetworkSpawn( connection );

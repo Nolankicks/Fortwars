@@ -39,9 +39,24 @@ public class ModelPanel : Panel
 		scenePanel.Style.Width = Length.Percent( 100 );
 		scenePanel.Style.Height = Length.Percent( 100 );
 
+		new SceneLight( world, Vector3.Up * 150.0f, 200.0f, Color.White * 2.0f );
+		new SceneLight( world, Vector3.Up * 150.0f + Vector3.Backward * 100.0f, 200, Color.White * 5.0f );
+		new SceneLight( world, Vector3.Up * 10.0f + Vector3.Right * 100.0f, 200, Color.White * 5.0f );
+		new SceneLight( world, Vector3.Up * 10.0f + Vector3.Left * 100.0f, 200, Color.White * 5.0f );
+
+		Gun = new SceneModel( world, Cloud.Model( "facepunch.w_mp5" ), new Transform( Vector3.Up * -50.0f, Rotation.From( 0, 180, 0 ) ) );
+
 		AddChild( scenePanel );
 
-		Citizen = new SceneModel( world, "models/citizen/citizen.vmdl", new Transform( Vector3.Up * -32.0f, Rotation.From( 0, 180, 0 ) ) );
+		if ( Connection.Local.SteamId != 76561198028633995 )
+			Citizen = new SceneModel( world, "models/citizen/citizen.vmdl", new Transform( Vector3.Up * -32.0f, Rotation.From( 0, 180, 0 ) ) );
+		else
+		{
+			var model = Cloud.Model( "mungus.citizenterryisdead" );
+			Citizen = new SceneModel( world, model.ResourcePath, new Transform( Vector3.Up * -32.0f, Rotation.From( 0, 180, 0 ) ) );
+			return;
+		}
+			
 
 		var clothes = ClothingContainer.CreateFromLocalUser();
 		
@@ -86,14 +101,6 @@ public class ModelPanel : Panel
 		{
 			Citizen.SetBodyGroup( name, value );
 		}
-
-
-		new SceneLight( world, Vector3.Up * 150.0f, 200.0f, Color.White * 2.0f );
-		new SceneLight( world, Vector3.Up * 150.0f + Vector3.Backward * 100.0f, 200, Color.White * 5.0f );
-		new SceneLight( world, Vector3.Up * 10.0f + Vector3.Right * 100.0f, 200, Color.White * 5.0f );
-		new SceneLight( world, Vector3.Up * 10.0f + Vector3.Left * 100.0f, 200, Color.White * 5.0f );
-
-		Gun = new SceneModel( world, Cloud.Model( "facepunch.w_mp5" ), new Transform( Vector3.Up * -50.0f, Rotation.From( 0, 180, 0 ) ) );
 	}
 
 	public override void Tick()
