@@ -21,7 +21,7 @@
           "_type": "gameobject",
           "go": "0f6b5eb1-d448-465e-ae32-2f9b3fc3fa6a"
         },
-        "FireRate": 0.7,
+        "FireRate": 0.5,
         "FireSound": "audio/shotgun.fire.sound",
         "FireType": "F_SEMIAUTO",
         "HasBulletCasing": true,
