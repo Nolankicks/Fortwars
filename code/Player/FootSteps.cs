@@ -38,8 +38,6 @@ public sealed class Footsteps : Component
 
 	private void PlayFootstepSound( Vector3 worldPosition, float volume, int foot )
 	{
-		Log.Info( "Playing footstep sound" );
-
 		var tr = Scene.Trace
 			.Ray( worldPosition + Vector3.Up * 10, worldPosition + Vector3.Down * 20 )
 			.IgnoreGameObjectHierarchy( GameObject )
