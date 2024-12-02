@@ -1,14 +1,19 @@
 
+using Sandbox.Audio;
+using ShrimpleCharacterController;
+
 public sealed class Footsteps : Component
 {
 	[Property] SkinnedModelRenderer Source { get; set; }
+	[Property] ShrimpleCharacterController.ShrimpleCharacterController CharacterController { get; set; }
+	[Property] MixerHandle FootstepMixer { get; set; }
 
 	protected override void OnEnabled()
 	{
 		if ( Source is null )
 			return;
 
-		Source.OnFootstepEvent += PlayFootstep;
+		Source.OnFootstepEvent += OnFootstepEvent;
 	}
 
 	protected override void OnDisabled()
@@ -16,40 +21,40 @@ public sealed class Footsteps : Component
 		if ( Source is null )
 			return;
 
-		Source.OnFootstepEvent -= PlayFootstep;
+		Source.OnFootstepEvent -= OnFootstepEvent;
 	}
 
 	TimeSince timeSinceStep;
 
-	private void OnEvent( SceneModel.FootstepEvent e )
+	private void OnFootstepEvent( SceneModel.FootstepEvent e )
 	{
-		if ( timeSinceStep < 0.2f )
-			return;
-
-		var tr = Scene.Trace
-			.Ray( e.Transform.Position + Vector3.Up * 20, e.Transform.Position + Vector3.Up * -20  + e.Transform.Rotation.Forward * 20 )
-			.Run();
-
-		if ( !tr.Hit )
-			return;
-
-		if ( tr.Surface is null )
-			return;
+		if ( !CharacterController.IsOnGround ) return;
+		if ( timeSinceStep < 0.2f ) return;
 
 		timeSinceStep = 0;
 
-		var sound = e.FootId == 0 ? tr.Surface.Sounds.FootLeft : tr.Surface.Sounds.FootRight;
-		if ( sound is null ) return;
-
-		var handle = Sound.Play( sound, tr.HitPosition + tr.Normal * 5 );
-		handle.Volume *= e.Volume;
-
-		handle.Volume *= 2f;
+		PlayFootstepSound( e.Transform.Position, e.Volume, e.FootId );
 	}
 
 	[Rpc.Broadcast]
-	public void PlayFootstep( SceneModel.FootstepEvent e )
+	private void PlayFootstepSound( Vector3 worldPosition, float volume, int foot )
 	{
-		OnEvent( e );
+		var tr = Scene.Trace
+			.Ray( worldPosition + Vector3.Up * 10, worldPosition + Vector3.Down * 20 )
+			.IgnoreGameObjectHierarchy( GameObject )
+			.Run();
+
+		if ( !tr.Hit || tr.Surface is null )
+			return;
+
+		var sound = foot == 0 ? tr.Surface.Sounds.FootLeft : tr.Surface.Sounds.FootRight;
+		var soundEvent = ResourceLibrary.Get<SoundEvent>( sound );
+
+		if ( soundEvent is null )
+			return;
+
+		var handle = GameObject.PlaySound( soundEvent, 0 );
+		handle.TargetMixer = FootstepMixer.GetOrDefault();
+		handle.Volume *= volume * 2;
 	}
 }
