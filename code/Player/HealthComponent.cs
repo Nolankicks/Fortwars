@@ -114,7 +114,7 @@ public partial class HealthComponent : Component
 
 	public void Heal( int amount )
 	{
-		if ( lastHeal < 0.5f )
+		if ( lastHeal < 1f )
 			return;
 
 		lastHeal = 0;
