@@ -105,12 +105,16 @@ public sealed class TeamComponent : Component
 		if ( Team != capturingTeam )
 		{
 			var handle = Sound.Play( "audio/objectives/flag.captured.sound" );
-			handle.TargetMixer = Mixer.FindMixerByName( "ui" );
+
+			if ( handle.IsValid() )
+				handle.TargetMixer = Mixer.FindMixerByName( "ui" );
 		}
 		else if ( Team != Team.None )
 		{
 			var handle = Sound.Play( "enemy.flag.captured.sound" );
-			handle.TargetMixer = Mixer.FindMixerByName( "ui" );
+
+			if ( handle.IsValid() )
+				handle.TargetMixer = Mixer.FindMixerByName( "ui" );
 		}
 	}
 
