@@ -15,7 +15,7 @@
 	</div>
 	
 	<div class="main">
-		@foreach ( var playerClass in ResourceLibrary.GetAll<PlayerClass>() )
+		@foreach ( var playerClass in ResourceLibrary.GetAll<PlayerClass>().OrderBy( x => x.Order ).Reverse() )
 		{
 			if ( playerClass.Hidden )
 				continue;

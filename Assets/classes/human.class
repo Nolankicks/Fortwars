@@ -6,6 +6,7 @@
   "RunSpeed": 400,
   "Health": 100,
   "Hidden": false,
+  "Order": 0,
   "SecondaryEnabled": true,
   "SecondaryWeaponData": "weapondatas/pistol.weapons",
   "ClassModelEnabled": true,

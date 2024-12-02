@@ -6,9 +6,13 @@
   "RunSpeed": 550,
   "Health": 80,
   "Hidden": true,
+  "Order": 1,
   "SecondaryEnabled": true,
   "SecondaryWeaponData": "weapondatas/pistol.weapons",
+  "ClassModelEnabled": false,
+  "ClassModel": null,
+  "HoldType": "None",
+  "Offset": "0,0,0",
   "__references": [],
-  "IsValid": true,
   "__version": 0
 }
