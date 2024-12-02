@@ -142,6 +142,20 @@ public sealed class MapLoadingSystem : GameObjectSystem<MapLoadingSystem>, IScen
 
 		Game.ActiveScene.Load( CurrentMap.Scene );
 	}
+
+	public void LoadAdditiveScene( SceneFile mainScene, SceneFile additiveScene )
+	{
+		if ( Scene.IsEditor )
+			return;
+
+		Scene.Load( mainScene );
+
+		var slo = new SceneLoadOptions();
+		slo.IsAdditive = true;
+		slo.SetScene( additiveScene );
+		
+		Scene.Load( slo );
+	}
 }
 
 public sealed class SceneLoaderBlocker : Component { }

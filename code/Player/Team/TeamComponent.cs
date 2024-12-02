@@ -111,7 +111,7 @@ public sealed class TeamComponent : Component
 		}
 		else if ( Team != Team.None )
 		{
-			var handle = Sound.Play( "enemy.flag.captured.sound" );
+			var handle = Sound.Play( "audio/enemy.flag.captured.sound" );
 
 			if ( handle.IsValid() )
 				handle.TargetMixer = Mixer.FindMixerByName( "ui" );

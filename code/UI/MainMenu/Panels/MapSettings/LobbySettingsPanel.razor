@@ -172,7 +172,6 @@
 		Private
 	}
 
-
 	public async void LoadPackage()
 	{
 		if ( SelectedPackage is null )
@@ -223,12 +222,46 @@
 		if ( map is null )
 			return;
 
+		if ( map.SceneMapEnabled )
+		{
+			LoadSceneMap( map );
+			return;
+		}
+
 		var scene = map.Scene;
 
 		if ( scene is null )
 			return;
 
 		Scene?.Load( scene );
+	}
+
+	public async void LoadSceneMap( MapInfo mapInfo )
+	{
+		var pkg = await Package.Fetch( mapInfo.PackageIndent, false );
+
+		if ( pkg is null )
+			return;
+
+		await pkg?.MountAsync();
+
+		if ( pkg?.GetMeta<string>( "PrimaryAsset" ).EndsWith( ".scene" ) ?? false )
+		{
+			var sceneFile = pkg?.GetMeta<SceneFile>( "PrimaryAsset" );
+
+			if ( sceneFile is null )
+			{
+				Scene?.LoadFromFile( "scenes/easter.scene" );
+				return;
+			}
+
+			var mapSystem = Scene?.GetAll<MapLoadingSystem>()?.FirstOrDefault();
+
+			if ( mapSystem is not null && sceneFile is not null && mapInfo.AdditiveSceneMap is not null )
+				mapSystem.LoadAdditiveScene( sceneFile, mapInfo.AdditiveSceneMap );
+			else if ( mapSystem is not null && sceneFile is not null )
+				Scene?.Load( sceneFile );
+		}
 	}
 
 	void OnValueMapChange()
