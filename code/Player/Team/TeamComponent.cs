@@ -1,3 +1,5 @@
+using Sandbox.Audio;
+
 public enum Team
 {
 	Red,
@@ -94,6 +96,21 @@ public sealed class TeamComponent : Component
 		if ( GameObject.Components.TryGet<FWPlayerController>( out var player ) )
 		{
 			player.SetWorld( spawn.Transform.World );
+		}
+	}
+
+	[Rpc.Owner]
+	public void PlayFlagCapturedSound( Team capturingTeam )
+	{
+		if ( Team != capturingTeam )
+		{
+			var handle = Sound.Play( "audio/objectives/flag.captured.sound" );
+			handle.TargetMixer = Mixer.FindMixerByName( "ui" );
+		}
+		else if ( Team != Team.None )
+		{
+			var handle = Sound.Play( "enemy.flag.captured.sound" );
+			handle.TargetMixer = Mixer.FindMixerByName( "ui" );
 		}
 	}
 

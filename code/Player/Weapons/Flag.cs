@@ -211,6 +211,8 @@ public sealed class DroppedFlag : Component, Component.ITriggerListener, Compone
 		{
 			ResetPos();
 
+			PopupHolder.BroadcastPopup( $"{TeamFlag} flag has been returned!", 5 );
+
 			Health = 100;
 		}
 	}
@@ -252,6 +254,8 @@ public sealed class CTFTrigger : Component, Component.ITriggerListener
 			PopupHolder.BroadcastPopup( $"{local.TeamComponent.Team} captured the flag!", 5 );
 
 			OnTeamFlagCaptured();
+
+			Scene?.GetAll<TeamComponent>()?.ToList()?.ForEach( x => x.PlayFlagCapturedSound( Team ) );
 		}
 	}
 
@@ -276,7 +280,6 @@ public sealed class CTFTrigger : Component, Component.ITriggerListener
 			var marker = Marker.Components.Create<NavMarker>();
 			marker.Tint = HUD.GetColor( Team ).Rgb;
 			marker.Text = "RETURN";
-
 		}
 	}
 
