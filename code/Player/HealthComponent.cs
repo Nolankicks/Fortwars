@@ -134,7 +134,7 @@ public partial class HealthComponent : Component
 		if ( BloodEnabled )
 			BloodEffects( Pos, Normal );
 
-		if ( HitAnimation )
+		if ( HitAnimation && Target.IsValid() )
 		{
 			var bone = Target.GetBoneObject( boneId );
 			Vector3 force = default;
