@@ -1,6 +1,6 @@
 {
   "Title": "Deathmatch",
-  "Description": null,
+  "Description": "Kill the most amount of people!",
   "Prefab": {
     "_type": "gameobject",
     "prefab": "prefabs/gamemodes/deathmatch.prefab"

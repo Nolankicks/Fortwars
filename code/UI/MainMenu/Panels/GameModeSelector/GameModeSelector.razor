@@ -3,7 +3,7 @@
 @inherits Panel
 
 <root>
-    <DropDown @ref="DropDown" onclick=@OnClick ValueChanged="@OnValueChange" />
+    <DropDown @ref="DropDown" tooltip=@(((GameModeResource)DropDown?.Selected.Value).Description) onclick=@OnClick ValueChanged="@OnValueChange" />
 </root>
 
 @code
@@ -18,7 +18,7 @@
 		{
 			List<Option> Options;
 			
-			if ( !Game.IsEditor )
+			if ( Game.IsEditor )
 				Options = ResourceLibrary.GetAll<GameModeResource>().Where( x => !x.Hidden ).Select( x => new Option() { Title = x.Title, Value = x } ).ToList();
 			else
 				Options = ResourceLibrary.GetAll<GameModeResource>().Select( x => new Option() { Title = x.Title, Value = x } ).ToList();

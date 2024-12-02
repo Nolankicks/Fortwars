@@ -1,6 +1,6 @@
 {
   "Title": "Capture the Flag",
-  "Description": "",
+  "Description": "Capture the enemy team\u0027s flag 3 times!",
   "Prefab": {
     "_type": "gameobject",
     "prefab": "prefabs/gamemodes/ctf.prefab"
@@ -8,6 +8,5 @@
   "Hidden": false,
   "Type": "CaptureTheFlag",
   "__references": [],
-  "IsValid": true,
   "__version": 0
 }
