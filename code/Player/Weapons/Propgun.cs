@@ -173,7 +173,7 @@ public sealed class Propgun : Item
 
 		//ObjectPos = ObjectPos.SnapToGrid( 16, true, true, !(tr.Hit && tr.Normal == Vector3.Up) );
 
-		bool CanPlace = tr.Distance > 32.0f && ObjectPos.Distance( GameObject.Root.WorldPosition ) > 32.0f && (!tr.GameObject?.Tags.Has( FW.Tags.NoBuild ) ?? true);
+		bool CanPlace = tr.Hit && tr.Distance > 32.0f && ObjectPos.Distance( GameObject.Root.WorldPosition ) > 32.0f && (!tr.GameObject?.Tags.Has( FW.Tags.NoBuild ) ?? true);
 
 		ShowPropPreview( ObjectPos, CurrentProp, CanPlace, tr.Normal, tr.Hit );
 
