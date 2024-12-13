@@ -63,6 +63,6 @@ public sealed class CameraController : Component
 
 	public void RecoilFire( Vector3 recoil )
 	{
-		TargetRotation += new Angles( recoil.x, Game.Random.Float( -recoil.y, recoil.y ), Game.Random.Float( -recoil.z, recoil.z ) ).ToRotation();
+		TargetRotation += new Angles( recoil.x, Game.Random.Float( -recoil.y, recoil.y ), Game.Random.Float( -recoil.z, recoil.z ) ).ToRotation() * 0.5f;
 	}
 }
