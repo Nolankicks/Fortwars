@@ -46,7 +46,7 @@ Layer0
 	TextureScale "128.000"
 
 	//---- Water ----
-	DepthColor "[0.035294 0.039216 0.003922 1.000000]"
+	DepthColor "[0.007843 0.019608 0.023529 1.000000]"
 	MaxDepth "75.889"
 	Refraction "0.287"
 	SurfaceColor "[0.094118 0.109804 0.047059 0.474510]"
