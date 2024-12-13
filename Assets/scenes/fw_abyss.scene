@@ -14,8 +14,6 @@
           "EnableCollision": true,
           "MapName": "apetavern.fw_abyss",
           "NoOrigin": false,
-          "OnMapLoaded": null,
-          "OnMapUnloaded": null,
           "UseMapFromLaunch": false
         }
       ],
@@ -1239,18 +1237,16 @@
       "Flags": 0,
       "Name": "Water",
       "Position": "0,0,313.8569",
+      "Rotation": "0,-0.005803673,0,0.9999831",
       "Enabled": true,
       "Components": [
-        {
-          "__type": "SdfWorld.ReflectivePlane",
-          "__guid": "158b6dbd-48b5-4c5f-ad01-4d432c3ea491"
-        },
         {
           "__type": "Sandbox.ModelRenderer",
           "__guid": "68d8bba5-2333-4725-b693-0606f34b49ea",
           "BodyGroups": 18446744073709551615,
           "CreateAttachments": false,
-          "Model": "models/waterplane.vmdl",
+          "MaterialOverride": "materials/water/watertest.vmat",
+          "Model": "models/dev/plane_large.vmdl",
           "RenderOptions": {
             "GameLayer": true,
             "OverlayLayer": false,
