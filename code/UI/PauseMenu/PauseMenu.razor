@@ -113,10 +113,22 @@
 
 		if ( gs.CurrentGameModeComponent.IsValid() && currentRound.IsValid() )
 		{
+			var startingCanPickUp = local.Inventory.CanPickUp;
+			var startingCanControlSwitch = local.Inventory.CanScrollSwitch;
+
+			local.Inventory.CanPickUp = true;
+			local.Inventory.CanScrollSwitch = true;
+
 			local.Inventory.AddItems( currentRound.PlayerWeapons );
 
 			if ( currentRound.CanOpenClassSelect && local.Inventory.SelectedClass is not null )
 				local.Inventory.AddClass( local.Inventory.SelectedClass );
+
+			if ( local.HealthComponent.IsDead )
+				local.Inventory.DisableAll();
+
+			local.Inventory.CanPickUp = startingCanPickUp;
+			local.Inventory.CanScrollSwitch = startingCanControlSwitch;
 		}
 	}
 
