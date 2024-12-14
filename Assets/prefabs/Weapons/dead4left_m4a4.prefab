@@ -14,7 +14,7 @@
         "AmmoPerShot": 1,
         "AttackAnimName": "b_attack",
         "CrosshairEnabled": true,
-        "Damage": 15,
+        "Damage": 20,
         "DisableCrosshair": false,
         "FireRate": 0.1,
         "FireSound": "audio/rifle.fire.sound",

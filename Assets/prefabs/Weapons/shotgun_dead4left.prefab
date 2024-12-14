@@ -15,7 +15,7 @@
         "AttackAnimName": "b_attack",
         "CasingModel": "models/weapons/sbox_ammo/12g_shell/12g_shell.vmdl",
         "CrosshairEnabled": true,
-        "Damage": 12,
+        "Damage": 15,
         "DisableCrosshair": false,
         "EjectionPoint": {
           "_type": "gameobject",
@@ -35,7 +35,7 @@
         "Offset": "6.846531,0.005981312,-5.724832",
         "PunchDecreaseRate": 0.05,
         "PunchFireIncrease": 0.1,
-        "Range": 2000,
+        "Range": 2500,
         "ReloadAnimName": "b_reload",
         "ReloadDelay": 5.25,
         "TracerPoint": {

@@ -14,7 +14,7 @@
         "AmmoPerShot": 1,
         "AttackAnimName": "b_attack",
         "CrosshairEnabled": true,
-        "Damage": 8,
+        "Damage": 15,
         "DisableCrosshair": true,
         "FireRate": 0.065,
         "FireSound": "audio/smg.fire.sound",
