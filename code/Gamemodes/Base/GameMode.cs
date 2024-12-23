@@ -54,10 +54,8 @@ public partial class GameMode : Component, Component.INetworkListener
 
 		Log.Info( $"Game Ended: {team}" );
 
-		if ( team != Team.None )
-			WinGame( team );
-		else
-			WinGame();
+		// Credit Matek
+		WinGame( team );
 
 		OnGameEnd?.Invoke( team );
 
