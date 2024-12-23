@@ -16,10 +16,8 @@ public partial class GameMode : Component, Component.INetworkListener
 	public static RoundComponent ActiveRound { get { return Game.ActiveScene.GetAllComponents<GameMode>().FirstOrDefault().Components.GetAll<RoundComponent>().Where( x => x.IsRoundActive ).FirstOrDefault(); } }
 
 	[Property, Sync] public bool RespawnPlayers { get; set; } = true;
-
 	[Property, ToggleGroup( "SetMaxPlayersToStart" )] public bool SetMaxPlayersToStart { get; set; } = false;
 	[Property, ToggleGroup( "SetMaxPlayersToStart" )] public int MaxPlayersToStart { get; set; } = 2;
-
 
 	protected override void OnStart()
 	{
