@@ -10,6 +10,7 @@ public partial class GameMode : Component, Component.INetworkListener
 	[Property] public bool HasMapVoting { get; set; } = true;
 
 	// Note this is awful and long and i hate it but it works
+	// TODO: Big T says to fix this
 	public static RoundComponent ActiveRound { get { return Game.ActiveScene.GetAllComponents<GameMode>().FirstOrDefault().Components.GetAll<RoundComponent>().Where( x => x.IsRoundActive ).FirstOrDefault(); } }
 
 	[Property, Sync] public bool RespawnPlayers { get; set; } = true;
