@@ -6,7 +6,7 @@ public partial class GameMode : Component, Component.INetworkListener
 	/// <summary> The current state of the game, should never be null </summary>
 	[Property, ReadOnly, Sync] public GameSystem GameSystem { get; set; }
 
-	[Property] public RoundComponent InitialRound { get; set; }
+	[Property] public RoundComponent InitialRound { get; private set; }
 
 	[Property, Sync, ReadOnly] public RoundComponent CurrentRound { get; set; }
 
