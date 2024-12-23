@@ -1,6 +1,3 @@
-using Sandbox.Events;
-using System;
-
 public partial class GameMode : Component, Component.INetworkListener
 {
 	/// <summary> The current state of the game, should never be null </summary>

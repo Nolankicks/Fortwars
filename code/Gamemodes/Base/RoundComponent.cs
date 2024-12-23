@@ -1,5 +1,3 @@
-using Sandbox.Events;
-using System;
 using System.Text.Json.Serialization;
 
 public record OnRoundSwitch() : IGameEvent;
