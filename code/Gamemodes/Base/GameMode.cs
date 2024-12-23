@@ -41,7 +41,7 @@ public partial class GameMode : Component, Component.INetworkListener
 	[Rpc.Broadcast]
 	public void EndGame( Team team = Team.None )
 	{
-		var gs = Scene.GetAll<GameSystem>()?.FirstOrDefault();
+		var gs = GameSystem.Instance;
 
 		if ( !gs.IsValid() || !Networking.IsHost )
 			return;
