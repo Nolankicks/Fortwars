@@ -9,12 +9,16 @@
       {
         "__type": "GameMode",
         "__guid": "d0134842-9152-4312-bb6e-a9b56c502a56",
+        "HasMapVoting": true,
         "InitialRound": {
           "_type": "component",
           "component_id": "df05ff94-946b-4454-a585-108371024637",
           "go": "55f67082-e687-43c4-8907-51b7cbda86b3",
           "component_type": "RoundComponent"
         },
+        "MaxPlayersToStart": 2,
+        "RespawnPlayers": true,
+        "SetMaxPlayersToStart": false,
         "TeamsEnabled": false
       }
     ],
@@ -37,10 +41,12 @@
                 "__type": "RoundComponent",
                 "__guid": "df05ff94-946b-4454-a585-108371024637",
                 "AddClass": false,
+                "CanOpenClassSelect": false,
                 "CheckForWinningTeam": false,
                 "ClearAllWeapons": true,
                 "ClearClass": false,
                 "Condition": false,
+                "HasResources": false,
                 "IsLastRound": false,
                 "IsRoundActive": false,
                 "Name": "Build",
@@ -202,8 +208,12 @@
                   "weapondatas/propgun.weapons",
                   "weapondatas/physgun.weapons"
                 ],
+                "ResetPlayerResouces": false,
                 "RoundTime": 60,
-                "Time": true
+                "Time": true,
+                "Warning": false,
+                "WarningDuration": 0,
+                "WarningTime": 0
               }
             ]
           },
@@ -218,6 +228,7 @@
                 "__type": "RoundComponent",
                 "__guid": "b088f2a5-4d6a-4ca6-bccd-e9f762c4ec37",
                 "AddClass": true,
+                "CanOpenClassSelect": false,
                 "CheckForWinningTeam": false,
                 "ClearAllWeapons": true,
                 "ClearClass": false,
@@ -259,6 +270,7 @@
                     }
                   ]
                 },
+                "HasResources": false,
                 "IsLastRound": false,
                 "IsRoundActive": false,
                 "Name": "Fight",
@@ -397,8 +409,12 @@
                 "PlayerWeapons": [
                   "weapondatas/gravgun.weapons"
                 ],
+                "ResetPlayerResouces": false,
                 "RoundTime": 60,
-                "Time": true
+                "Time": true,
+                "Warning": false,
+                "WarningDuration": 0,
+                "WarningTime": 0
               }
             ]
           },
@@ -413,10 +429,12 @@
                 "__type": "RoundComponent",
                 "__guid": "8f8caaa3-44b9-48ff-8bd9-4c25fc343d1e",
                 "AddClass": false,
+                "CanOpenClassSelect": false,
                 "CheckForWinningTeam": false,
                 "ClearAllWeapons": true,
                 "ClearClass": false,
                 "Condition": false,
+                "HasResources": false,
                 "IsLastRound": false,
                 "IsRoundActive": false,
                 "Name": "OvertimeBuild",
@@ -578,8 +596,12 @@
                 },
                 "PlayersToSpawns": true,
                 "PlayerWeapons": [],
+                "ResetPlayerResouces": false,
                 "RoundTime": 60,
-                "Time": true
+                "Time": true,
+                "Warning": false,
+                "WarningDuration": 0,
+                "WarningTime": 0
               }
             ]
           },
@@ -594,10 +616,12 @@
                 "__type": "RoundComponent",
                 "__guid": "27c13cac-ded0-4785-bf04-4d2ac597d346",
                 "AddClass": false,
+                "CanOpenClassSelect": false,
                 "CheckForWinningTeam": true,
                 "ClearAllWeapons": true,
                 "ClearClass": false,
                 "Condition": false,
+                "HasResources": false,
                 "IsLastRound": false,
                 "IsRoundActive": false,
                 "Name": "OvertimeFight",
@@ -734,8 +758,12 @@
                 },
                 "PlayersToSpawns": true,
                 "PlayerWeapons": [],
+                "ResetPlayerResouces": false,
                 "RoundTime": 60,
-                "Time": true
+                "Time": true,
+                "Warning": false,
+                "WarningDuration": 0,
+                "WarningTime": 0
               }
             ]
           }

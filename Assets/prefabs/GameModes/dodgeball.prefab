@@ -130,6 +130,7 @@
             "ClearAllWeapons": true,
             "ClearClass": false,
             "Condition": false,
+            "HasResources": false,
             "IsLastRound": false,
             "IsRoundActive": false,
             "Name": "Ongoing",
@@ -228,6 +229,7 @@
             "PlayerWeapons": [
               "weapondatas/gravgun.weapons"
             ],
+            "ResetPlayerResouces": false,
             "RoundTime": 30,
             "Time": false,
             "Warning": false,

@@ -145,6 +145,8 @@ public sealed partial class GameSystem : Component
 		if ( IsProxy )
 			return;
 
+		GameObject.Network.SetOrphanedMode( NetworkOrphaned.Host );
+
 		Scene.GetAll<GameModeObject>()?.Where( x => !x.Type.HasFlag( CurrentGameModeType ) )?.ToList()?.ForEach( x => x.GameObject?.Destroy() );
 
 		if ( Networking.IsHost )

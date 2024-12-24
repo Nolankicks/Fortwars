@@ -16,6 +16,9 @@
           "go": "047cc4fb-e838-4df1-9ccc-0e949a6a36f2",
           "component_type": "RoundComponent"
         },
+        "MaxPlayersToStart": 2,
+        "RespawnPlayers": true,
+        "SetMaxPlayersToStart": false,
         "TeamsEnabled": false
       }
     ],
@@ -218,7 +221,7 @@
                       "DstName": "a"
                     },
                     {
-                      "Id": 24,
+                      "Id": 27,
                       "Value": 25,
                       "DstId": 16,
                       "DstName": "b"
@@ -230,7 +233,7 @@
                       "DstName": "_signal"
                     },
                     {
-                      "Id": 25,
+                      "Id": 28,
                       "Value": true,
                       "DstId": 20,
                       "DstName": "_value"
@@ -242,13 +245,14 @@
                       "DstName": "_signal"
                     },
                     {
-                      "Id": 26,
+                      "Id": 29,
                       "Value": false,
                       "DstId": 23,
                       "DstName": "_value"
                     }
                   ]
                 },
+                "HasResources": false,
                 "IsLastRound": true,
                 "IsRoundActive": false,
                 "Name": "Ongoing",
@@ -403,7 +407,7 @@
                       "DstName": "_target"
                     },
                     {
-                      "Id": 18,
+                      "Id": 19,
                       "Value": false,
                       "DstId": 4,
                       "DstName": "enable"
@@ -460,6 +464,7 @@
                   "weapondatas/m4a4.weapons",
                   "weapondatas/mp5.weapons"
                 ],
+                "ResetPlayerResouces": false,
                 "RoundTime": 360,
                 "Time": true,
                 "Warning": false,
@@ -502,6 +507,5 @@
   "DontBreakAsTemplate": false,
   "ResourceVersion": 1,
   "__references": [],
-  "HasUnsavedChanges": false,
   "__version": 1
 }

@@ -2,7 +2,7 @@ public partial class GameMode : Component, Component.INetworkListener
 {
 	/// <summary> The current state of the game, should never be null </summary>
 	[Property, ReadOnly, Sync] public GameSystem GameSystem { get; set; }
-	[Property] public RoundComponent InitialRound { get; private set; }
+	[Property] public RoundComponent InitialRound { get; set; }
 	[Property, Sync, ReadOnly] public RoundComponent CurrentRound { get; set; }
 	[Property] public Action<Team> OnGameEnd { get; set; }
 	[Property] public Action OnGameStart { get; set; }
@@ -20,6 +20,11 @@ public partial class GameMode : Component, Component.INetworkListener
 	protected override void OnStart()
 	{
 		Log.Info( "Game Mode Started" );
+
+		if ( IsProxy )
+			return;
+
+		GameObject.Network.SetOrphanedMode( NetworkOrphaned.Host );
 	}
 
 	public bool GameHasStarted { get; set; } = false;
