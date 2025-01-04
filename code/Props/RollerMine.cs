@@ -10,7 +10,10 @@ public sealed class RollerMine : Component
 	protected override void OnStart()
 	{
 		if ( Networking.IsHost )
+		{
 			StartingTransform = Transform.World;
+			Network.SetOrphanedMode( NetworkOrphaned.ClearOwner );
+		}
 	}
 
 	[Rpc.Owner]
