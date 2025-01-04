@@ -519,7 +519,8 @@ IGameEventHandler<DeathEvent>, IGameEventHandler<OnPhysgunGrabChange>
 	[Rpc.Broadcast]
 	public static void BroadcastEnable( GameObject go, bool enable )
 	{
-		go.Enabled = enable;
+		if ( go.IsValid() )
+			go.Enabled = enable;
 	}
 
 	[Rpc.Owner]
