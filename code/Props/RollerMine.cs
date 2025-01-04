@@ -12,6 +12,8 @@ public sealed class RollerMine : Component
 		if ( Networking.IsHost )
 		{
 			StartingTransform = Transform.World;
+			
+			Network.SetOwnerTransfer( OwnerTransfer.Takeover );
 			Network.SetOrphanedMode( NetworkOrphaned.ClearOwner );
 		}
 	}
