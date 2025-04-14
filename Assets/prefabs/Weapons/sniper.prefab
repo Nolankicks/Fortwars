@@ -25,10 +25,10 @@
         "HeadShotEnabled": true,
         "HoldType": "Rifle",
         "MaxAmmo": 8,
-        "MaxRecoilValues": "0,0,0",
-        "MaxSpread": 0.05,
-        "MinRecoilValues": "0,0,0",
-        "MinSpread": 0.03,
+        "MaxRecoilValues": "10,10,0",
+        "MaxSpread": 0.01,
+        "MinRecoilValues": "10,10,10",
+        "MinSpread": 0,
         "Offset": "0,0,0",
         "OnComponentDestroy": null,
         "OnComponentDisabled": null,
@@ -39,7 +39,7 @@
         "OnFire": {
           "__version": 9,
           "__guid": "1f89901e-ea28-4b55-8cf4-b67746fa3ad5",
-          "__changeId": 22,
+          "__changeId": 29,
           "UserData": {
             "Title": "On Fire",
             "ReferencedComponentTypes": []
@@ -49,13 +49,6 @@
             {
               "Id": 0,
               "Type": "input"
-            },
-            {
-              "Id": 2,
-              "Type": "scene.ref",
-              "UserData": {
-                "Position": "-12,156"
-              }
             },
             {
               "Id": 3,
@@ -85,6 +78,13 @@
               "UserData": {
                 "Position": "432,-12"
               }
+            },
+            {
+              "Id": 14,
+              "Type": "scene.ref",
+              "UserData": {
+                "Position": "-12,132"
+              }
             }
           ],
           "Links": [
@@ -95,7 +95,7 @@
               "DstName": "_signal"
             },
             {
-              "SrcId": 2,
+              "SrcId": 14,
               "SrcName": "_result",
               "DstId": 3,
               "DstName": "_target"
@@ -107,13 +107,13 @@
               "DstName": "_value"
             },
             {
-              "Id": 7,
+              "Id": 10,
               "Value": 3,
               "DstId": 4,
               "DstName": "max"
             },
             {
-              "Id": 8,
+              "Id": 11,
               "Value": 3,
               "DstId": 4,
               "DstName": "min"
@@ -125,20 +125,20 @@
               "DstName": "_signal"
             },
             {
-              "SrcId": 2,
+              "SrcId": 14,
               "SrcName": "_result",
               "DstId": 9,
               "DstName": "_target"
             },
             {
-              "Id": 11,
+              "Id": 12,
               "Value": false,
               "DstId": 9,
               "DstName": "_value"
             }
           ],
           "Defaults": {
-            "$2.component": {
+            "$14.component": {
               "_type": "component",
               "component_id": "2077eade-48b2-401d-aba4-9c0a530681c7",
               "go": "132bd3cc-7112-414e-82ed-24e030459c23",
@@ -146,8 +146,8 @@
             }
           }
         },
-        "PunchDecreaseRate": 0.05,
-        "PunchFireIncrease": 0.1,
+        "PunchDecreaseRate": 0.1,
+        "PunchFireIncrease": 0.6,
         "Range": 5000,
         "ReloadAnimName": "b_reload",
         "ReloadDelay": 1,
@@ -159,7 +159,7 @@
         "TraceTimes": 1,
         "UsesAmmo": true,
         "UseShotgunReload": false,
-        "UsesRecoil": false,
+        "UsesRecoil": true,
         "VModel": {
           "_type": "component",
           "component_id": "79ef99fc-bb70-4ef1-8bbf-8115a0aaca4f",
@@ -183,7 +183,7 @@
             "AnimationGraph": null,
             "BodyGroups": 1299,
             "BoneMergeTarget": null,
-            "CreateAttachments": false,
+            "CreateAttachments": true,
             "CreateBoneObjects": true,
             "MaterialGroup": null,
             "MaterialOverride": null,
