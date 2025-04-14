@@ -1,6 +1,4 @@
 using Sandbox.Citizen;
-using Sandbox.Events;
-using System.Threading;
 using System.Threading.Tasks;
 
 public record WeaponAnimEvent( string anim, bool value ) : IGameEvent;
@@ -161,7 +159,7 @@ public class Weapon : Item, IGameEventHandler<OnReloadEvent>, IGameEventHandler<
 	[Property] public float FireRate { get; set; } = 0.1f;
 	[Property] public float ReloadDelay { get; set; } = 1f;
 	[Property] public int Damage { get; set; } = 10;
-	TimeSince lastFired { get; set; }
+	public TimeSince lastFired { get; set; }
 	TimeSince equipTime { get; set; }
 	TimeSince reloadTime { get; set; }
 	[Property] public float Range { get; set; } = 5000;
@@ -198,6 +196,8 @@ public class Weapon : Item, IGameEventHandler<OnReloadEvent>, IGameEventHandler<
 
 	[Property] FireTypes FireType { get; set; } = FireTypes.F_SEMIAUTO;
 	[Property] public bool HeadShotEnabled { get; set; } = true;
+
+	[Property] public Action OnFire { get; set; }
 
 	public override void OnEquip( OnItemEquipped onItemEquipped )
 	{
@@ -279,6 +279,8 @@ public class Weapon : Item, IGameEventHandler<OnReloadEvent>, IGameEventHandler<
 
 	public void Shoot( int index = 0 )
 	{
+		OnFire?.Invoke();
+
 		var local = FWPlayerController.Local;
 
 		var cam = Scene.Camera;
@@ -297,6 +299,9 @@ public class Weapon : Item, IGameEventHandler<OnReloadEvent>, IGameEventHandler<
 			.Run();
 
 		Traces[index] = tr;
+
+
+
 
 		if ( !tr.GameObject.IsValid() || !tr.Hit )
 			return;

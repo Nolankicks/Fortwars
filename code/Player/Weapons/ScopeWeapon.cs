@@ -1,5 +1,3 @@
-using System;
-
 namespace Facepunch;
 
 [Title( "Scoped Weapon" ), Group( "Weapon Components" )]
@@ -16,6 +14,8 @@ public class ScopeWeaponComponent : Weapon
 	[Property] private float AngleOffsetScale { get; set; } = 0.01f;
 
 	public bool IsZooming = false;
+
+	public TimeUntil BoltCycling = 0;
 
 	protected void StartZoom()
 	{
@@ -46,6 +46,8 @@ public class ScopeWeaponComponent : Weapon
 		IsZooming = false;
 
 		FWPlayerController.Local.SpeedMult = 1;
+
+		VModel.Renderer.Set( "b_reload_bolt", false );
 	}
 
 	public override void OnEquip( OnItemEquipped onItemEquipped )
@@ -70,7 +72,7 @@ public class ScopeWeaponComponent : Weapon
 
 	protected virtual bool CanAim()
 	{
-		if ( Tags.Has( FW.Tags.Reloading ) ) return false;
+		if ( Tags.Has( FW.Tags.Reloading ) || IsReloading || !BoltCycling || (lastFired > 0.1f && lastFired < FireRate) ) return false;
 
 		return true;
 	}
@@ -99,6 +101,7 @@ public class ScopeWeaponComponent : Weapon
 		EndZoom();
 	}
 
+	bool Cycled = false;
 	protected override void OnUpdate()
 	{
 		base.OnUpdate();
@@ -111,7 +114,7 @@ public class ScopeWeaponComponent : Weapon
 		if ( hud.IsValid() )
 			hud.ShowCrosshair = false;
 
-		if ( Input.Down( "attack2" ) )
+		if ( Input.Down( "attack2" ) && CanAim() )
 		{
 			StartZoom();
 		}
@@ -131,8 +134,15 @@ public class ScopeWeaponComponent : Weapon
 			EndZoom();
 		}
 
+		if ( BoltCycling > 0.1f )
+		{
+			CycleBolt();
+			BoltCycling = 0;
+		}
+
 		if ( IsZooming )
 		{
+			CameraController.Instance.FOVMultTarget = 0.3f;
 
 			var cc = FWPlayerController.Local?.shrimpleCharacterController;
 
@@ -154,5 +164,14 @@ public class ScopeWeaponComponent : Weapon
 			AnglesLerp = AnglesLerp.LerpTo( delta, Time.Delta * 10.0f );
 			LastAngles = angles;
 		}
+	}
+
+	void CycleBolt()
+	{
+		VModel.Renderer.Set( "b_reload_bolt", true );
+
+		var snd = Sound.Play( "sniper.bolt" );
+		snd.SetParent( VModel.Renderer.GameObject );
+		snd.FollowParent = true;
 	}
 };

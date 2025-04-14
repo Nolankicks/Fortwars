@@ -9,10 +9,12 @@
   "Order": 0,
   "SecondaryEnabled": false,
   "SecondaryWeaponData": null,
-  "ClassModelEnabled": false,
-  "ClassModel": null,
-  "HoldType": "None",
+  "ClassModelEnabled": true,
+  "ClassModel": "models/weapons/sbox_sniper_m700/w_m700.vmdl",
+  "HoldType": "Shotgun",
   "Offset": "0,0,0",
-  "__references": [],
+  "__references": [
+    "facepunch.w_m700#71263"
+  ],
   "__version": 0
 }

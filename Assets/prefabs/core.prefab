@@ -4,6 +4,7 @@
     "Flags": 0,
     "Name": "core",
     "Enabled": true,
+    "Components": [],
     "Children": [
       {
         "__guid": "dcbb3125-5417-44ed-885a-afa66bb9cdc8",
@@ -20,7 +21,14 @@
             "BackgroundColor": "0.33333,0.46275,0.52157,1",
             "ClearFlags": "All",
             "FieldOfView": 90,
+            "FovAxis": "Horizontal",
             "IsMainCamera": true,
+            "OnComponentDestroy": null,
+            "OnComponentDisabled": null,
+            "OnComponentEnabled": null,
+            "OnComponentFixedUpdate": null,
+            "OnComponentStart": null,
+            "OnComponentUpdate": null,
             "Orthographic": false,
             "OrthographicHeight": 1204,
             "Priority": 1,
@@ -29,75 +37,78 @@
             "TargetEye": "None",
             "Viewport": "0,0,1,1",
             "ZFar": 10000,
-            "ZNear": 5
+            "ZNear": 1
           },
           {
             "__type": "Sandbox.Bloom",
             "__guid": "b0adb8ab-22de-4f19-ace5-3798378227d1",
-            "BloomColor": {
-              "blend": "Linear",
-              "color": [
-                {
-                  "t": 0,
-                  "c": "1,1,1,1"
-                },
-                {
-                  "t": 1,
-                  "c": "1,1,1,1"
-                }
-              ],
-              "alpha": []
-            },
-            "BloomCurve": [
-              {
-                "x": 0,
-                "y": 0.5,
-                "in": 0,
-                "out": 0,
-                "mode": "Mirrored"
-              },
-              {
-                "x": 1,
-                "y": 1,
-                "in": 0,
-                "out": 0,
-                "mode": "Mirrored"
-              }
-            ],
+            "__version": 1,
+            "Gamma": 2.2,
             "Mode": "Blur",
+            "OnComponentDestroy": null,
+            "OnComponentDisabled": null,
+            "OnComponentEnabled": null,
+            "OnComponentFixedUpdate": null,
+            "OnComponentStart": null,
+            "OnComponentUpdate": null,
             "Strength": 0.15,
-            "Threshold": 0.5,
-            "ThresholdWidth": 0
+            "Threshold": 1.25,
+            "Tint": "1,1,1,1"
           },
           {
             "__type": "Sandbox.Highlight",
-            "__guid": "1e3d7818-d8dc-4fe3-8687-ddecdb81988c"
+            "__guid": "1e3d7818-d8dc-4fe3-8687-ddecdb81988c",
+            "OnComponentDestroy": null,
+            "OnComponentDisabled": null,
+            "OnComponentEnabled": null,
+            "OnComponentFixedUpdate": null,
+            "OnComponentStart": null,
+            "OnComponentUpdate": null
           },
           {
             "__type": "Sandbox.Tonemapping",
             "__guid": "af004622-4293-425b-94ac-54a37d85fabc",
-            "__version": 1,
+            "__version": 3,
             "AutoExposureEnabled": true,
-            "ExposureBias": 2,
             "ExposureCompensation": 0.2,
             "ExposureMethod": "RGB",
             "MaximumExposure": 2.65,
             "MinimumExposure": 1.7,
-            "Mode": "Legacy",
+            "Mode": "HableFilmic",
+            "OnComponentDestroy": null,
+            "OnComponentDisabled": null,
+            "OnComponentEnabled": null,
+            "OnComponentFixedUpdate": null,
+            "OnComponentStart": null,
+            "OnComponentUpdate": null,
             "Rate": 8.57
           },
           {
             "__type": "Sandbox.AmbientOcclusion",
             "__guid": "e73987d8-5502-4230-85fe-0a8dec1b5a37",
-            "__enabled": false,
-            "FalloffDistance": 1,
-            "Intensity": 16,
+            "__version": 1,
+            "DenoiseMode": "Temporal",
+            "FalloffRange": 0.75,
+            "Intensity": 0.15,
+            "OnComponentDestroy": null,
+            "OnComponentDisabled": null,
+            "OnComponentEnabled": null,
+            "OnComponentFixedUpdate": null,
+            "OnComponentStart": null,
+            "OnComponentUpdate": null,
             "Quality": "High",
-            "Radius": 32
+            "Radius": 128,
+            "ThinCompensation": 0
           },
           {
             "__type": "CameraController",
             "__guid": "a87fedec-7022-4732-bff4-a219c75b66e3",
+            "OnComponentDestroy": null,
+            "OnComponentDisabled": null,
+            "OnComponentEnabled": null,
+            "OnComponentFixedUpdate": null,
+            "OnComponentStart": null,
+            "OnComponentUpdate": null,
             "Recoil": "-2,2,0.35",
             "ReturnSpeed": 1,
             "Snappiness": 20
@@ -108,10 +119,17 @@
             "Center": "0.5,0.5",
             "Color": "1,0.06047,0.06047,0",
             "Intensity": 0.49,
+            "OnComponentDestroy": null,
+            "OnComponentDisabled": null,
+            "OnComponentEnabled": null,
+            "OnComponentFixedUpdate": null,
+            "OnComponentStart": null,
+            "OnComponentUpdate": null,
             "Roundness": 1,
             "Smoothness": 1
           }
-        ]
+        ],
+        "Children": []
       },
       {
         "__guid": "965f1533-4bc6-4caf-a83f-7a28d4a9be8f",
@@ -146,6 +164,12 @@
             },
             "MapVotes": {},
             "MetalProps": 30,
+            "OnComponentDestroy": null,
+            "OnComponentDisabled": null,
+            "OnComponentEnabled": null,
+            "OnComponentFixedUpdate": null,
+            "OnComponentStart": null,
+            "OnComponentUpdate": null,
             "PlayerPrefab": {
               "_type": "gameobject",
               "prefab": "prefabs/player.prefab"
@@ -159,7 +183,8 @@
             "WoodProps": 60,
             "YellowTimeHeld": 60
           }
-        ]
+        ],
+        "Children": []
       },
       {
         "__guid": "b6d92249-b6e5-46ff-a9f3-65dd9aa8a5ce",
@@ -171,21 +196,41 @@
             "__type": "Sandbox.ScreenPanel",
             "__guid": "061bc0a1-34d3-46e2-bd81-1a20341e71c5",
             "AutoScreenScale": true,
+            "OnComponentDestroy": null,
+            "OnComponentDisabled": null,
+            "OnComponentEnabled": null,
+            "OnComponentFixedUpdate": null,
+            "OnComponentStart": null,
+            "OnComponentUpdate": null,
             "Opacity": 1,
             "Scale": 1,
             "ScaleStrategy": "ConsistentHeight",
+            "TargetCamera": null,
             "ZIndex": 100
           },
           {
             "__type": "HUD",
             "__guid": "9f2de297-1b36-475f-a258-f8adb383e300",
             "Crosshair": "textures/crosshairs/crosshair010.png",
-            "HitMarker": "textures/ui/hitmarker.png"
+            "HitMarker": "textures/ui/hitmarker.png",
+            "lastCrosshair": null,
+            "OnComponentDestroy": null,
+            "OnComponentDisabled": null,
+            "OnComponentEnabled": null,
+            "OnComponentFixedUpdate": null,
+            "OnComponentStart": null,
+            "OnComponentUpdate": null
           },
           {
             "__type": "PauseMenu",
             "__guid": "d665ea46-b2a1-47ce-8afd-d444cfcc5d37",
-            "MenuScene": "scenes/fortwarsmenu.scene"
+            "MenuScene": "scenes/fortwarsmenu.scene",
+            "OnComponentDestroy": null,
+            "OnComponentDisabled": null,
+            "OnComponentEnabled": null,
+            "OnComponentFixedUpdate": null,
+            "OnComponentStart": null,
+            "OnComponentUpdate": null
           }
         ],
         "Children": [
@@ -207,7 +252,7 @@
                   {
                     "Name": "Angry",
                     "Icon": "textures/emotes/emote_faceangry.vtex",
-                    "ChatMessage": "\u003E:("
+                    "ChatMessage": ">:("
                   },
                   {
                     "Name": "Alert",
@@ -219,9 +264,16 @@
                     "Icon": "textures/emotes/emote_laugh.vtex",
                     "ChatMessage": "XD"
                   }
-                ]
+                ],
+                "OnComponentDestroy": null,
+                "OnComponentDisabled": null,
+                "OnComponentEnabled": null,
+                "OnComponentFixedUpdate": null,
+                "OnComponentStart": null,
+                "OnComponentUpdate": null
               }
-            ]
+            ],
+            "Children": []
           },
           {
             "__guid": "bf52124b-0cae-407c-9394-0ac8d638d6bc",
@@ -232,9 +284,16 @@
             "Components": [
               {
                 "__type": "Chat",
-                "__guid": "2e086689-0c20-4c18-88db-16d4e2c508fd"
+                "__guid": "2e086689-0c20-4c18-88db-16d4e2c508fd",
+                "OnComponentDestroy": null,
+                "OnComponentDisabled": null,
+                "OnComponentEnabled": null,
+                "OnComponentFixedUpdate": null,
+                "OnComponentStart": null,
+                "OnComponentUpdate": null
               }
-            ]
+            ],
+            "Children": []
           }
         ]
       },
@@ -248,16 +307,30 @@
             "__type": "Sandbox.ScreenPanel",
             "__guid": "148b37d5-a58d-438a-a259-be5a51efa876",
             "AutoScreenScale": true,
+            "OnComponentDestroy": null,
+            "OnComponentDisabled": null,
+            "OnComponentEnabled": null,
+            "OnComponentFixedUpdate": null,
+            "OnComponentStart": null,
+            "OnComponentUpdate": null,
             "Opacity": 1,
             "Scale": 1,
             "ScaleStrategy": "ConsistentHeight",
+            "TargetCamera": null,
             "ZIndex": 99
           },
           {
             "__type": "Sandbox.NavMarkerUI",
-            "__guid": "0135eb19-a9f0-479e-8b33-c9fc4b9a1753"
+            "__guid": "0135eb19-a9f0-479e-8b33-c9fc4b9a1753",
+            "OnComponentDestroy": null,
+            "OnComponentDisabled": null,
+            "OnComponentEnabled": null,
+            "OnComponentFixedUpdate": null,
+            "OnComponentStart": null,
+            "OnComponentUpdate": null
           }
-        ]
+        ],
+        "Children": []
       },
       {
         "__guid": "5f53383e-0c95-4f93-b915-3a0486cf2280",
@@ -267,30 +340,39 @@
         "Components": [
           {
             "__type": "PopupHolder",
-            "__guid": "74995588-6d77-4829-aad4-3c76223d286c"
+            "__guid": "74995588-6d77-4829-aad4-3c76223d286c",
+            "OnComponentDestroy": null,
+            "OnComponentDisabled": null,
+            "OnComponentEnabled": null,
+            "OnComponentFixedUpdate": null,
+            "OnComponentStart": null,
+            "OnComponentUpdate": null
           },
           {
             "__type": "Sandbox.ScreenPanel",
             "__guid": "d531fe1b-ab76-4cdb-ab41-8429cfc17771",
             "AutoScreenScale": true,
+            "OnComponentDestroy": null,
+            "OnComponentDisabled": null,
+            "OnComponentEnabled": null,
+            "OnComponentFixedUpdate": null,
+            "OnComponentStart": null,
+            "OnComponentUpdate": null,
             "Opacity": 1,
             "Scale": 1,
             "ScaleStrategy": "ConsistentHeight",
+            "TargetCamera": null,
             "ZIndex": 99
           }
-        ]
+        ],
+        "Children": []
       }
     ],
     "__variables": [],
     "__properties": {
-      "FixedUpdateFrequency": 50,
-      "MaxFixedUpdates": 5,
-      "NetworkFrequency": 30,
       "NetworkInterpolation": true,
-      "PhysicsSubSteps": 1,
-      "ThreadedAnimation": true,
       "TimeScale": 1,
-      "UseFixedUpdate": true,
+      "WantsSystemScene": true,
       "Metadata": {},
       "NavMesh": {
         "Enabled": false,

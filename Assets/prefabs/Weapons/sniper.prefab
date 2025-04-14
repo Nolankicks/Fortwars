@@ -8,7 +8,7 @@
       {
         "__type": "Facepunch.ScopeWeaponComponent",
         "__guid": "2077eade-48b2-401d-aba4-9c0a530681c7",
-        "ADSEnabled": true,
+        "ADSEnabled": false,
         "ADSFOV": 0.8,
         "ADSOffset": "4,0,0",
         "AmmoPerShot": 1,
@@ -36,6 +36,81 @@
         "OnComponentFixedUpdate": null,
         "OnComponentStart": null,
         "OnComponentUpdate": null,
+        "OnFire": {
+          "__version": 9,
+          "__guid": "1f89901e-ea28-4b55-8cf4-b67746fa3ad5",
+          "__changeId": 11,
+          "UserData": {
+            "Title": "On Fire",
+            "ReferencedComponentTypes": []
+          },
+          "Variables": [],
+          "Nodes": [
+            {
+              "Id": 0,
+              "Type": "input"
+            },
+            {
+              "Id": 2,
+              "Type": "scene.ref",
+              "UserData": {
+                "Position": "-12,156"
+              }
+            },
+            {
+              "Id": 3,
+              "Type": "property",
+              "Properties": {
+                "_name": "BoltCycling",
+                "_type": "Facepunch.ScopeWeaponComponent"
+              },
+              "UserData": {
+                "Position": "312,132"
+              }
+            },
+            {
+              "Id": 4,
+              "Type": "random.float",
+              "UserData": {
+                "Position": "132,276"
+              }
+            }
+          ],
+          "Links": [
+            {
+              "SrcId": 0,
+              "SrcName": "_signal",
+              "DstId": 3,
+              "DstName": "_signal"
+            },
+            {
+              "SrcId": 2,
+              "SrcName": "_result",
+              "DstId": 3,
+              "DstName": "_target"
+            },
+            {
+              "SrcId": 4,
+              "SrcName": "_result",
+              "DstId": 3,
+              "DstName": "_value"
+            },
+            {
+              "Id": 5,
+              "Value": 1,
+              "DstId": 4,
+              "DstName": "min"
+            }
+          ],
+          "Defaults": {
+            "$2.component": {
+              "_type": "component",
+              "component_id": "2077eade-48b2-401d-aba4-9c0a530681c7",
+              "go": "132bd3cc-7112-414e-82ed-24e030459c23",
+              "component_type": "ScopeWeaponComponent"
+            }
+          }
+        },
         "PunchDecreaseRate": 0.05,
         "PunchFireIncrease": 0.1,
         "Range": 5000,
