@@ -5,7 +5,14 @@
   "WalkSpeed": 200,
   "RunSpeed": 250,
   "Health": 100,
-  "Hidden": true,
+  "Hidden": false,
+  "Order": 0,
+  "SecondaryEnabled": false,
+  "SecondaryWeaponData": null,
+  "ClassModelEnabled": false,
+  "ClassModel": null,
+  "HoldType": "None",
+  "Offset": "0,0,0",
   "__references": [],
   "__version": 0
 }
