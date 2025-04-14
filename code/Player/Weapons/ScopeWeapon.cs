@@ -101,7 +101,7 @@ public class ScopeWeaponComponent : Weapon
 		EndZoom();
 	}
 
-	bool Cycled = false;
+	public bool Cycled = true;
 	protected override void OnUpdate()
 	{
 		base.OnUpdate();
@@ -134,10 +134,11 @@ public class ScopeWeaponComponent : Weapon
 			EndZoom();
 		}
 
-		if ( BoltCycling > 0.1f )
+		if ( BoltCycling.Passed > 0.3f && !Cycled )
 		{
 			CycleBolt();
 			BoltCycling = 0;
+			Cycled = true;
 		}
 
 		if ( IsZooming )

@@ -39,7 +39,7 @@
         "OnFire": {
           "__version": 9,
           "__guid": "1f89901e-ea28-4b55-8cf4-b67746fa3ad5",
-          "__changeId": 11,
+          "__changeId": 22,
           "UserData": {
             "Title": "On Fire",
             "ReferencedComponentTypes": []
@@ -74,6 +74,17 @@
               "UserData": {
                 "Position": "132,276"
               }
+            },
+            {
+              "Id": 9,
+              "Type": "property",
+              "Properties": {
+                "_name": "Cycled",
+                "_type": "Facepunch.ScopeWeaponComponent"
+              },
+              "UserData": {
+                "Position": "432,-12"
+              }
             }
           ],
           "Links": [
@@ -96,10 +107,34 @@
               "DstName": "_value"
             },
             {
-              "Id": 5,
-              "Value": 1,
+              "Id": 7,
+              "Value": 3,
+              "DstId": 4,
+              "DstName": "max"
+            },
+            {
+              "Id": 8,
+              "Value": 3,
               "DstId": 4,
               "DstName": "min"
+            },
+            {
+              "SrcId": 3,
+              "SrcName": "_signal",
+              "DstId": 9,
+              "DstName": "_signal"
+            },
+            {
+              "SrcId": 2,
+              "SrcName": "_result",
+              "DstId": 9,
+              "DstName": "_target"
+            },
+            {
+              "Id": 11,
+              "Value": false,
+              "DstId": 9,
+              "DstName": "_value"
             }
           ],
           "Defaults": {
