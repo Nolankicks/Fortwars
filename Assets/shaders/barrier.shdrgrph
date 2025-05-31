@@ -1,7 +1,21 @@
 {
+  "IsSubgraph": false,
+  "Path": "shaders/barrier.shdrgrph",
   "Model": "models/dev/plane.vmdl",
+  "Title": null,
   "Description": null,
+  "Category": null,
+  "Icon": null,
+  "AddToNodeLibrary": false,
   "BlendMode": "Translucent",
+  "ShadingModel": "Lit",
+  "Domain": "Surface",
+  "PreviewSettings": {
+    "EnableShadows": true,
+    "ShowSkybox": true,
+    "BackgroundColor": "0,0,0,1",
+    "Tint": "1,1,1,1"
+  },
   "nodes": [
     {
       "_class": "Result",
@@ -11,6 +25,7 @@
       "DefaultAmbientOcclusion": 1,
       "Identifier": "0",
       "Position": "564,-60",
+      "HandleOffsets": {},
       "Albedo": {
         "Identifier": "11",
         "Output": "Result"
@@ -35,6 +50,7 @@
       },
       "Identifier": "1",
       "Position": "-372,-156",
+      "HandleOffsets": {},
       "Coords": {
         "Identifier": "9",
         "Output": "Result"
@@ -49,7 +65,8 @@
         "Type": "Color"
       },
       "Identifier": "2",
-      "Position": "-456,-408"
+      "Position": "-456,-408",
+      "HandleOffsets": {}
     },
     {
       "_class": "Multiply",
@@ -57,6 +74,7 @@
       "DefaultB": 1,
       "Identifier": "3",
       "Position": "-60,-192",
+      "HandleOffsets": {},
       "A": {
         "Identifier": "2",
         "Output": "Result"
@@ -69,7 +87,8 @@
     {
       "_class": "Time",
       "Identifier": "4",
-      "Position": "-888,-384"
+      "Position": "-888,-384",
+      "HandleOffsets": {}
     },
     {
       "_class": "Float2",
@@ -80,12 +99,14 @@
       "IsAttribute": false,
       "UI": {},
       "Identifier": "5",
-      "Position": "-828,-192"
+      "Position": "-828,-192",
+      "HandleOffsets": {}
     },
     {
       "_class": "Depth",
       "Identifier": "6",
-      "Position": "-840,-60"
+      "Position": "-840,-60",
+      "HandleOffsets": {}
     },
     {
       "_class": "Multiply",
@@ -93,6 +114,7 @@
       "DefaultB": 1,
       "Identifier": "7",
       "Position": "-528,-264",
+      "HandleOffsets": {},
       "A": {
         "Identifier": "4",
         "Output": "Result"
@@ -107,7 +129,8 @@
       "UseSecondaryCoord": false,
       "Tiling": "1,1",
       "Identifier": "8",
-      "Position": "-792,48"
+      "Position": "-792,48",
+      "HandleOffsets": {}
     },
     {
       "_class": "Add",
@@ -115,6 +138,7 @@
       "DefaultB": 1,
       "Identifier": "9",
       "Position": "-516,-12",
+      "HandleOffsets": {},
       "A": {
         "Identifier": "7",
         "Output": "Result"
@@ -133,7 +157,8 @@
         "Type": "Color"
       },
       "Identifier": "10",
-      "Position": "-96,-444"
+      "Position": "-96,-444",
+      "HandleOffsets": {}
     },
     {
       "_class": "Add",
@@ -141,6 +166,7 @@
       "DefaultB": 1,
       "Identifier": "11",
       "Position": "300,-372",
+      "HandleOffsets": {},
       "A": {
         "Identifier": "3",
         "Output": "Result"
@@ -156,6 +182,7 @@
       "DefaultB": 1,
       "Identifier": "12",
       "Position": "-168,60",
+      "HandleOffsets": {},
       "A": {
         "Identifier": "1",
         "Output": "R"
@@ -174,7 +201,8 @@
       "IsAttribute": false,
       "UI": {},
       "Identifier": "13",
-      "Position": "-408,120"
+      "Position": "-408,120",
+      "HandleOffsets": {}
     },
     {
       "_class": "Add",
@@ -182,6 +210,7 @@
       "DefaultB": 1,
       "Identifier": "14",
       "Position": "-60,216",
+      "HandleOffsets": {},
       "A": {
         "Identifier": "12",
         "Output": "Result"
@@ -200,7 +229,8 @@
       "IsAttribute": false,
       "UI": {},
       "Identifier": "15",
-      "Position": "-444,312"
+      "Position": "-444,312",
+      "HandleOffsets": {}
     },
     {
       "_class": "Multiply",
@@ -208,6 +238,7 @@
       "DefaultB": 1,
       "Identifier": "16",
       "Position": "84,168",
+      "HandleOffsets": {},
       "A": {
         "Identifier": "14",
         "Output": "Result"
@@ -226,7 +257,8 @@
       "IsAttribute": false,
       "UI": {},
       "Identifier": "17",
-      "Position": "-24,336"
+      "Position": "-24,336",
+      "HandleOffsets": {}
     },
     {
       "_class": "Add",
@@ -234,6 +266,7 @@
       "DefaultB": 1,
       "Identifier": "18",
       "Position": "132,24",
+      "HandleOffsets": {},
       "A": {
         "Identifier": "1",
         "Output": "R"
